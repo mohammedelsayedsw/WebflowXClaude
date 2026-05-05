@@ -1,3 +1,6 @@
+/* Hoisted so @import is not nested inside @layer webflow (fixes Lightning CSS / build). */
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700|PT+Serif:400,700,400italic,700italic|Varela:400|Vollkorn:400,700,400italic,700italic|Golos+Text:300,400,500,600,700|Inter:300,400,500,600,700|Roboto:300,400,500,600,700&subset=latin");
+
 @import "tailwindcss";
 @import "../webflow/css/global.css" layer(webflow);
 @layer properties, theme, base, webflow, components, utilities; 

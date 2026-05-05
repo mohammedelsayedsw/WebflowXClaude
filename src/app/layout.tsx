@@ -42,7 +42,12 @@ export default function RootLayout({
       <body className="min-h-full" suppressHydrationWarning>
         <DevLinkProvider>
           {children}
-          <WebflowFooter />
+          <WebflowFooter
+            callToActionHeadingCta1Visibility={false}
+            callToActionHeadingCta2Visibility={false}
+            callToActionHeadingCta3Visibility={false}
+            callToActionHeadingHeadingCareerVisibility={false}
+          />
         </DevLinkProvider>
         <EmbedScriptRunner />
       </body>

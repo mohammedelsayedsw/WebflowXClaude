@@ -9,14 +9,12 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+/** DevLink output — do not lint (generated; edits should not be required for CI). */
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    ignores: [
-      "**/webflow/**",
-      "**/webflow-*/**",
-    ],
+    ignores: ["src/webflow/**","src/webflow.d.ts"],
   },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
 export default eslintConfig;

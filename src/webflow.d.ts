@@ -9,6 +9,7 @@ declare module "*.css" {
 
 // Webflow component modules
 declare module "@/webflow/webflow_modules/*" {
-  const Component: any;
+  import type { ComponentType } from "react";
+  const Component: ComponentType<Record<string, unknown>>;
   export default Component;
 }

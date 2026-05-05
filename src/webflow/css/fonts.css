@@ -1,0 +1,28 @@
+/* Fonts */
+
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700|PT+Serif:400,700,400italic,700italic|Varela:400|Vollkorn:400,700,400italic,700italic|Golos+Text:300,400,500,600,700|Inter:300,400,500,600,700|Roboto:300,400,500,600,700&subset=latin");
+
+@font-face {
+  font-family: "Satoshi variable";
+  src: url("https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/6138bd60b13287745eb61366_Satoshi-Variable.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Secular One";
+  src: url("https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/619cc4ab64dc6d0f6733ca0c_SecularOne-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proximanova";
+  src: url("https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/6257d8aa2cd4a6016207c7fc_ProximaNova-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

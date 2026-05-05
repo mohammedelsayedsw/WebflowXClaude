@@ -1,0 +1,18 @@
+"use client";
+import * as React from "react";
+
+type HeadingProps = React.PropsWithChildren<{
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}> &
+  React.HTMLAttributes<HTMLHeadingElement>;
+
+const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+  function Heading({ tag = "h1", ...props }, ref) {
+    return React.createElement(tag, {
+      ...props,
+      ref,
+    });
+  }
+);
+
+export default Heading;

@@ -1,0 +1,21 @@
+{
+  "cloud": {
+    "framework": "nextjs"
+  },
+  "devlink-export": {
+    "rootDir": "./src/webflow",
+    "components": ".*",
+    "componentGroups": ".*",
+    "ts": true,
+    "cssScopes": true,
+    "relativeHrefRoot": "/"
+  },
+  "siteId": "61387043ab1e4143deac1e21",
+  "telemetry": {
+    "global": {
+      "allowTelemetry": true,
+      "lastPrompted": 1777974422322,
+      "version": "1.20.1"
+    }
+  }
+}

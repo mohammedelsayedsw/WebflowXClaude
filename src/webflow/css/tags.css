@@ -1,0 +1,126 @@
+@scope (.wf-devlink-6c69cc54e257f8aa1822dfee250a8be7) {
+  body {
+    font-family: Inter, sans-serif;
+    color: var(--black);
+    font-size: 16px;
+    line-height: 24px;
+  }
+  h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: "Secular One", sans-serif;
+    color: var(--black);
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 400;
+    text-align: center;
+  }
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    padding-top: 0px;
+    font-family: "Secular One", sans-serif;
+    color: var(--black);
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+    text-align: left;
+  }
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-family: "Secular One", sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  h4 {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-family: "Secular One", sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  h5 {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+  p {
+    margin-bottom: 16px;
+    font-family: Inter, sans-serif;
+    color: var(--black);
+    font-size: 16px;
+    line-height: 24px;
+  }
+  a {
+    font-family: Inter, sans-serif;
+    color: var(--sw-red);
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+  ul {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-family: Satoshi;
+    color: var(--black);
+    font-size: 18px;
+  }
+  ol {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-left: 40px;
+  }
+  li {
+    margin-top: 8px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  @media screen and (max-width: 991px) {
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    h1 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    h3 {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    p {
+      font-size: 16px;
+    }
+    a {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    a {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    ul {
+      font-family: Vollkorn, serif;
+      font-size: 16px;
+    }
+  }
+}

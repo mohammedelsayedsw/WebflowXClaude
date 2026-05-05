@@ -469,7 +469,6 @@ export function Footer({
                     href: "https://scandiweb.com/headless-ecommerce-solutions",
                     target: "_blank",
                   }}
-                  target={"_blank"}
                 >
                   {"Hyvä Theme Development"}
                 </Link>

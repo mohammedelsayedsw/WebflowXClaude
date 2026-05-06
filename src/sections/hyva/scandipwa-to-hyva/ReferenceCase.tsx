@@ -74,7 +74,10 @@ export function ReferenceCase() {
               ["12 wk", "kickoff → live"],
             ].map(([v, l]) => (
               <div key={v} className="flex flex-col gap-3">
-                <div className="font-head text-white text-[36px] md:text-[44px] lg:text-[52px] leading-none tabular-nums">
+                <div
+                  className="font-head text-[36px] md:text-[44px] lg:text-[52px] leading-none tabular-nums"
+                  style={{ color: "var(--sw-mint)" }}
+                >
                   {v}
                 </div>
                 <div className="label-code text-white/60">{l}</div>

@@ -7,27 +7,27 @@ export function Problems() {
   const problems = [
     {
       n: "1",
-      title: "ScandiPWA hires are getting expensive",
+      title: "Easier to staff",
       body:
-        "The pool of engineers who know ScandiPWA shrinks every quarter. Hyvä, by contrast, runs on Alpine.js and Tailwind – stacks any Magento or frontend dev can ramp into in days. You stop paying a scarcity premium.",
+        "Hyvä runs on Alpine.js and Tailwind – stacks any Magento or frontend developer can ramp into in days. ScandiPWA needs senior React engineers who know its conventions, and that pool is shrinking. You stop paying a scarcity premium.",
     },
     {
       n: "2",
-      title: "Heavy frontend, hidden bugs",
+      title: "Lighter frontend, fewer bugs",
       body:
-        "Service workers, hydration mismatches, GraphQL caching corners – every PWA stack has them. They surface as silent checkout drop-offs and basket bugs that QA misses but customers find. Hyvä’s server-rendered approach removes the entire class.",
+        "Hyvä’s server-rendered approach removes a whole class of issues PWA stacks live with – service workers, hydration mismatches, GraphQL caching corners – the kind that surface as silent checkout drop-offs.",
     },
     {
       n: "3",
-      title: "Magento upgrades cost twice",
+      title: "One upgrade pass, not two",
       body:
-        "Every Magento release triggers a parallel ScandiPWA compatibility cycle. Themes break, GraphQL schemas drift, frontend gets re-tested end-to-end. On Hyvä, the upgrade footprint is the same as native Magento – one pass, not two.",
+        "On ScandiPWA, every Magento release triggers a parallel frontend compatibility cycle – themes, GraphQL schemas, end-to-end tests. On Hyvä, the upgrade footprint matches native Magento. One pass.",
     },
     {
       n: "4",
-      title: "Hyvä is where Adobe Commerce is going",
+      title: "Where the ecosystem is investing",
       body:
-        "Hyvä is the de-facto modern Magento frontend, and Hyvä Commerce now extends it into a full suite – checkout, B2B portal, customer account. Staying on ScandiPWA is a bet that gets lonelier every quarter.",
+        "Hyvä is the de-facto modern Magento frontend, and Hyvä Commerce now extends it into a full suite – checkout, B2B portal, customer account. The community, the modules, and the partner network are all moving in the same direction.",
     },
   ];
 
@@ -49,11 +49,11 @@ export function Problems() {
               <span className="text-[var(--sw-mint)]">Hyvä</span>
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[58ch] leading-relaxed">
-              We built ScandiPWA in 2019, when Magento desperately needed a fast
-              frontend. It worked. Six years on, the calculus has shifted –
-              Hyvä is faster to build, cheaper to staff, and ships fewer bugs.
-              The merchants we host on ScandiPWA are migrating, and we are
-              the people writing the migration playbook.
+              We built ScandiPWA in 2019, when Magento needed a fast frontend
+              and didn’t have one. It earned its place. Six years on, Hyvä
+              has surpassed it on speed, simplicity, and ecosystem support –
+              and our merchants are quietly making the move. We are the team
+              writing the migration playbook.
             </p>
           </Reveal>
         </div>
@@ -84,8 +84,8 @@ export function Problems() {
               />
             </svg>
             <blockquote className="font-head text-white text-[24px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.01em]">
-              We built ScandiPWA. We know exactly where it bends, where it
-              breaks, and how to <span className="text-[var(--sw-mint)]">lift a store off it without losing data, SEO, or a single line of business logic</span>.
+              We built ScandiPWA. We know its strengths and its limits –
+              and how to <span className="text-[var(--sw-mint)]">lift a store off it without losing data, SEO, or a single line of business logic</span>.
             </blockquote>
             <figcaption className="mt-7 label-code text-white/60">
               Engineering Director · scandiweb

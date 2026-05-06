@@ -176,10 +176,7 @@ export function Hero() {
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                We <span className="font-semibold text-white">built ScandiPWA</span>. We are also a Hyvä Platinum Partner and the team behind some of the most-cited Hyvä migrations in the industry. If your store runs on ScandiPWA today and you want to move to Hyvä, no one knows both codebases better.
-              </p>
-              <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
-                <span className="font-bold text-white">10–14 weeks</span> from kickoff to live. Custom logic, ERP and PIM connections, third-party tools, and data – preserved. Frontend, performance, and maintenance – rebuilt on Hyvä.
+                We <span className="font-semibold text-white">built ScandiPWA</span> and we are a Hyvä Platinum Partner – no one knows both codebases better. <span className="font-semibold text-white">10–14 weeks</span> from kickoff to live, with your data, integrations, and SEO preserved.
               </p>
 
               <div className="mt-14 md:mt-20 flex items-center gap-3 text-white">

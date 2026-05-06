@@ -1360,7 +1360,7 @@ export function Outcomes() {
       ],
       diagram: (
         <BrowserFrame
-          src={assetUrl("/pages/school-uniform/screenshots/screen-1.png")}
+          src={assetUrl("/accelerator/school-uniform/screenshots/screen-1.png")}
           alt="Child registration screen"
           url="reference-retailer.com/account/child-registration"
         />
@@ -1387,7 +1387,7 @@ export function Outcomes() {
       ],
       diagram: (
         <BrowserFrame
-          src={assetUrl("/pages/school-uniform/screenshots/screen-2.jpg")}
+          src={assetUrl("/accelerator/school-uniform/screenshots/screen-2.jpg")}
           alt="School-gated catalog page"
           url="reference-retailer.com/c/st-patricks-secondary"
         />
@@ -1414,7 +1414,7 @@ export function Outcomes() {
       ],
       diagram: (
         <BrowserFrame
-          src={assetUrl("/pages/school-uniform/screenshots/screen-3.jpg")}
+          src={assetUrl("/accelerator/school-uniform/screenshots/screen-3.jpg")}
           alt="Uniform set product detail page"
           url="reference-retailer.com/p/full-uniform-grade-7"
         />
@@ -1478,7 +1478,7 @@ export function Outcomes() {
       ],
       diagram: (
         <BrowserFrame
-          src={assetUrl("/pages/school-uniform/screenshots/screen-4.png")}
+          src={assetUrl("/accelerator/school-uniform/screenshots/screen-4.png")}
           alt="Fitting appointment booking screen"
           url="reference-retailer.com/account/fitting-appointment"
         />
@@ -1576,7 +1576,7 @@ export function Outcomes() {
       ],
       diagram: (
         <BrowserFrame
-          src={assetUrl("/pages/school-uniform/screenshots/screen-5.jpg")}
+          src={assetUrl("/accelerator/school-uniform/screenshots/screen-5.jpg")}
           alt="Reference retailer homepage"
           url="reference-retailer.com"
         />

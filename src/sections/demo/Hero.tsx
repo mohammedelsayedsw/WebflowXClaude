@@ -87,7 +87,7 @@ function HeroCard() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden min-h-screen flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">

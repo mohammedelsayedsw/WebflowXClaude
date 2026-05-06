@@ -110,10 +110,10 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
       <div className="wrap relative py-24 md:py-32">
         <div className={`grid gap-12 lg:gap-16 md:grid-cols-2 items-center`}>
           <Reveal className={reverse ? "md:order-2" : "md:order-1"}>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
               <span className={`label-code ${labelColor}`}>OUTCOME · {n}</span>
-              <span className={`h-px w-6 ${dark ? "bg-white/15" : "bg-[var(--sw-black)]/15"}`} />
-              <span className={`label-code ${labelColor}`}>{kicker}</span>
+              <span className={`h-px w-6 hidden sm:block ${dark ? "bg-white/15" : "bg-[var(--sw-black)]/15"}`} />
+              <span className={`label-code ${labelColor} whitespace-normal sm:whitespace-nowrap`}>{kicker}</span>
             </div>
             <h3 className={`font-head ${textColor} text-[28px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mb-5 max-w-[22ch]`}>
               {title}

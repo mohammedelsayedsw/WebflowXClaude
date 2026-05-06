@@ -441,3 +441,21 @@
   text-transform: none !important;
   letter-spacing: 0 !important;
 }
+
+/* Trust-logos marquee — single-line horizontal infinite scroll */
+@keyframes sw-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.sw-marquee-track {
+  animation: sw-marquee 40s linear infinite;
+  width: max-content;
+}
+.sw-marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sw-marquee-track {
+    animation: none;
+  }
+}

@@ -32,7 +32,7 @@ export function AcceleratorValue() {
               <div className="flex items-baseline justify-between mb-8">
                 <span className="label-code text-[var(--sw-black)]/55">WITHOUT ACCELERATOR</span>
                 <span className="font-head text-[40px] md:text-[52px] leading-none text-[var(--sw-black)]/55 tabular-nums">
-                  12–18 mo
+                  avg 15 mo
                 </span>
               </div>
               <ul className="space-y-4 text-[14px] md:text-[15px] text-[var(--sw-black)]/75 leading-relaxed">

@@ -112,7 +112,7 @@ function TrustLogos() {
       }}
     >
       <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] max-w-[18ch] shrink-0">
+        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
           Trusted by 700+ leading brands worldwide
         </div>
         {/* Marquee — single horizontal line, auto-scrolling, infinite loop */}

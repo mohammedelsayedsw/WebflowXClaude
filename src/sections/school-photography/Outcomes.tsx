@@ -108,7 +108,7 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
 
       <div className="wrap relative py-24 md:py-32">
         <div className={`grid gap-12 lg:gap-16 md:grid-cols-2 items-center`}>
-          <Reveal className={reverse ? "md:order-2" : "md:order-1"}>
+          <Reveal className={`min-w-0 ${reverse ? "md:order-2" : "md:order-1"}`}>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
               <span className={`label-code ${labelColor}`}>OUTCOME · {n}</span>
               <span className={`h-px w-6 hidden sm:block `} />
@@ -124,12 +124,12 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
               {results.map((r, i) => (
                 <li key={i} className={`flex gap-3 ${bulletColor} text-[14px] md:text-[15px] leading-relaxed`}>
                   <Check className="h-4 w-4 shrink-0 mt-1" style={{ color: accentColor }} />
-                  <span>{r}</span>
+                  <span className="min-w-0">{r}</span>
                 </li>
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.12} className={reverse ? "md:order-1" : "md:order-2"}>
+          <Reveal delay={0.12} className={`min-w-0 ${reverse ? "md:order-1" : "md:order-2"}`}>
             <div className={`relative ${diagramWrapClass}`} style={diagramWrapStyle}>
               {/* bracket corners only render on the bracket-frame variant */}
               <span className="bracket-bl" />

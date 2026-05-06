@@ -144,8 +144,8 @@ export function Header() {
               }}
             >
               <div
-                className="flex flex-col px-8 md:px-12 pb-10"
-                style={{ paddingTop: "32px", minHeight: "100%" }}
+                className="flex flex-col px-8 md:px-12 pb-10 pt-[92px] md:pt-[107px]"
+                style={{ minHeight: "100%" }}
               >
                 {/* Drawer top – menu label only. Close action lives in the page-level
                     header (top-right "close" button), so duplicating it here is removed. */}

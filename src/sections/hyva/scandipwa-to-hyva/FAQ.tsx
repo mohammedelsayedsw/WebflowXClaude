@@ -24,8 +24,8 @@ function FAQItem({ q, a, i }: { q: string; a: string; i: number }) {
 export function FAQ() {
   const items = [
     {
-      q: "Why are you, the makers of ScandiPWA, recommending we leave it?",
-      a: "We built ScandiPWA in 2019 because Magento needed a fast frontend. The market evolved – Hyvä is now lighter, easier to staff, and supported by a deeper ecosystem. We make recommendations our merchants benefit from, not the ones that protect a legacy product. Hyvä is the right call for almost every ScandiPWA store today.",
+      q: "Why are you, the makers of ScandiPWA, recommending Hyvä?",
+      a: "ScandiPWA earned its place. We built it in 2019 because Magento needed a fast frontend and didn’t have one – and merchants got a real lift from it. The market has moved on: Hyvä is now lighter, easier to staff, and supported by a deeper ecosystem. We make the recommendation our merchants benefit from, not the one that protects a legacy product.",
     },
     {
       q: "How long does a ScandiPWA → Hyvä migration take?",

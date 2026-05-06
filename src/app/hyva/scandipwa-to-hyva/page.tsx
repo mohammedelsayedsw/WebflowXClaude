@@ -2,6 +2,7 @@
 
 import { Hero } from "@/sections/hyva/scandipwa-to-hyva/Hero";
 import { Problems } from "@/sections/hyva/scandipwa-to-hyva/Problems";
+import { Metrics } from "@/sections/hyva/scandipwa-to-hyva/Metrics";
 import { ReferenceCase } from "@/sections/hyva/scandipwa-to-hyva/ReferenceCase";
 import { Timeline } from "@/sections/hyva/scandipwa-to-hyva/Timeline";
 import { WhatShips } from "@/sections/hyva/scandipwa-to-hyva/WhatShips";
@@ -13,6 +14,7 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Problems />
+      <Metrics />
       <ReferenceCase />
       <Timeline />
       <WhatShips />

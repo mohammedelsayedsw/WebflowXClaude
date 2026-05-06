@@ -147,8 +147,9 @@ export function Header() {
                 className="flex flex-col px-8 md:px-12 pb-10"
                 style={{ paddingTop: "32px", minHeight: "100%" }}
               >
-                {/* Drawer top – code label + close button */}
-                <div className="flex items-center justify-between mb-12 md:mb-16">
+                {/* Drawer top – menu label only. Close action lives in the page-level
+                    header (top-right "close" button), so duplicating it here is removed. */}
+                <div className="flex items-center mb-12 md:mb-16">
                   <span
                     className="inline-flex items-center gap-3 text-white/60"
                     style={{
@@ -161,21 +162,6 @@ export function Header() {
                     <span>menu</span>
                     <span className="block h-px w-8 bg-[var(--sw-mint)]/60" aria-hidden />
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(false)}
-                    aria-label="Close menu"
-                    className="inline-flex items-center gap-2 cursor-pointer text-white/80 hover:text-white transition-colors"
-                    style={{
-                      fontFamily: "var(--font-golos), Golos Text, sans-serif",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    <span>close</span>
-                    <CloseIcon />
-                  </button>
                 </div>
 
                 {/* Primary links – numbered, animated, hover mint */}

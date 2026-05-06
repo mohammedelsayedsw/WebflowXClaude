@@ -3,6 +3,21 @@ import { APP_BASE_PATH } from "./src/lib/appBasePath";
 
 const nextConfig: NextConfig = {
   basePath: APP_BASE_PATH,
+  // Redirect old /pages/<slug> URLs to /accelerator/<slug> (renamed 2026-05-06).
+  async redirects() {
+    return [
+      {
+        source: "/pages/:slug",
+        destination: "/accelerator/:slug",
+        permanent: true,
+      },
+      {
+        source: "/pages/:slug/:path*",
+        destination: "/accelerator/:slug/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -37,7 +37,7 @@ export function CTA() {
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
                 <img
-                  src={assetUrl("/pages/school-photography/team/kristaps.png")}
+                  src={assetUrl("/accelerator/school-photography/team/kristaps.png")}
                   alt="Kristaps Gailitis"
                   className="h-11 w-11 rounded-full object-cover shrink-0"
                   style={{

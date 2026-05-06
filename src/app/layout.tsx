@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Golos_Text, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { DevLinkProvider } from "@/webflow/DevLinkProvider";
 import { Footer as WebflowFooter } from "@/webflow/v7Layout/Footer";
 import { EmbedScriptRunner } from "@/components/site/EmbedScriptRunner";
+
+// Same GTM container as scandiweb.com so events from these LPs land in the
+// main analytics estate. Apply at the root so every page under this app
+// (current and future LPs) is instrumented automatically.
+const GTM_ID = "GTM-TCLKQ96";
 
 const golos = Golos_Text({
   variable: "--font-golos",
@@ -43,7 +49,24 @@ export default function RootLayout({
       lang="en"
       className={`${golos.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
     >
+      <head>
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+      </head>
       <body className="min-h-full" suppressHydrationWarning>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <DevLinkProvider>
           {children}
           <WebflowFooter

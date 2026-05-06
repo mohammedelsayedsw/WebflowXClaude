@@ -27,8 +27,12 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "scandiweb",
-  description: "scandiweb landing pages on Webflow Cloud.",
+  title: {
+    default: "scandiweb — eCommerce Solutions for the World's Biggest Brands",
+    template: "%s | scandiweb",
+  },
+  description:
+    "scandiweb builds and grows eCommerce solutions for retailers and B2B brands. Custom development, design, growth marketing, AI, and analytics – trusted by 700+ leading brands worldwide.",
 };
 
 export default function RootLayout({

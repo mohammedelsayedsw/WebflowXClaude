@@ -136,7 +136,7 @@ function TrustLogos() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
+    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-[calc(100vh+60px)] md:min-h-[calc(100vh+75px)] flex flex-col">
       <HeroBg />
 
       {/* Hero body – fills the viewport minus trust strip */}

@@ -2,27 +2,25 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "The best ChatGPT App agency for eCommerce — scandiweb",
+  title: "ChatGPT Apps for eCommerce — MCP App development | scandiweb",
   description:
-    "scandiweb builds MCP-powered ChatGPT Apps for Shopify, Adobe Commerce, and B2B commerce. 22+ years of eCommerce engineering, 2,100+ projects shipped. Three productized packages from €9,900.",
+    "Build an MCP-powered ChatGPT App connected to your real catalog, real prices, and real customer data. Prebuilt blueprints for Shopify, Adobe Commerce, and B2B commerce. Productized packages from €9,900.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/ai/chatgpt-app-agency",
   },
   openGraph: {
-    title:
-      "ChatGPT Apps for eCommerce, built by the people who ship eCommerce — scandiweb",
+    title: "ChatGPT Apps for eCommerce — MCP App development | scandiweb",
     description:
-      "MCP-powered ChatGPT Apps connected to your real catalog, real prices, and real customer data. Three productized packages from €9,900. By scandiweb — Adobe Commerce Gold Partner, Hyvä Platinum Partner, 22 years in eCommerce.",
+      "MCP-powered ChatGPT Apps connected to your real catalog, real prices, and real customer data. Prebuilt blueprints for Shopify, Adobe Commerce, and B2B commerce. Productized packages from €9,900.",
     url: "https://scandiweb.com/solutions/ai/chatgpt-app-agency",
     siteName: "scandiweb",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "ChatGPT Apps for eCommerce, built by the people who ship eCommerce",
+    title: "ChatGPT Apps for eCommerce — MCP App development",
     description:
-      "MCP-powered ChatGPT Apps for Shopify, Adobe Commerce, and B2B commerce. Three productized packages from €9,900.",
+      "MCP-powered ChatGPT Apps for Shopify, Adobe Commerce, and B2B commerce. Productized packages from €9,900.",
   },
 };
 
@@ -98,7 +96,15 @@ const jsonLd = {
           name: "We already have a chatbot. How is this different?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "A chatbot answers questions on your site. A ChatGPT App lets users act inside ChatGPT, against your real systems, with approved tools. Different layer, different value.",
+            text: "A chatbot answers questions on your site. A ChatGPT App lets users act inside ChatGPT, against your real systems, with approved tools, live data, and structured UI. Different layer, different value – not just a prompt, but an action layer connected to live commerce.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "We are not ready to give AI access to our systems.",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You don't need to start with risky actions. Most clients begin with read-only tools – search catalog, show policies, answer product questions, check stock, show order status after login. Write actions like creating quotes or returns can require explicit confirmation and permissions.",
           },
         },
         {
@@ -106,7 +112,15 @@ const jsonLd = {
           name: "What if the AI gives wrong answers?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The app does not guess core data. It calls your tools and returns what your systems say. For sensitive actions we add confirmation steps, permission checks, audit logs, and human handoff – by default.",
+            text: "The app does not guess core business data. It calls your tools and returns structured information from your approved systems. For sensitive actions we add confirmation steps, permission checks, audit logs, and human handoff – by default.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Will this replace our website?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. It gives your website and systems a new entry point. The website still matters. ChatGPT becomes another high-intent channel where people can discover, decide, and act.",
           },
         },
         {
@@ -114,7 +128,31 @@ const jsonLd = {
           name: "Will OpenAI approve our app?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We build to OpenAI's documented review path: structured metadata, safety testing, auth flows, mobile UI checks. Approval is OpenAI's call. Readiness is ours – and we stay on through review feedback if it comes back.",
+            text: "Nobody outside OpenAI can guarantee approval. We build against the documented review path, prepare the app properly, test it in Developer Mode, review safety issues, clean up metadata, and support fixes if review feedback comes back.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Our systems are too custom.",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "MCP lets us expose clean tools to ChatGPT while your complex backend logic stays where it belongs. ChatGPT does not need to understand your whole ERP. It needs safe, well-defined tools that return the right data.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can users buy directly inside ChatGPT?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Depends on your platform, payment flow, risk model, and what OpenAI supports for your use case at submission time. A safe v1 often starts with product discovery, quote creation, cart creation, or checkout handoff.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How fast can we launch?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A focused proof of concept can be built in 10–15 business days. A real customer-facing app usually takes 4–6 weeks. An enterprise app with several systems usually takes 8–12 weeks or more.",
           },
         },
       ],

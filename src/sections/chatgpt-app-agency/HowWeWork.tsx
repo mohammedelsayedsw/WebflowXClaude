@@ -6,33 +6,33 @@ export function HowWeWork() {
   const steps = [
     {
       n: "1",
-      title: "Strategy workshop",
+      title: "Strategy + workflow design",
       body:
-        "Define the workflow that actually moves the metric. Not 'let’s add AI' – a use case tied to revenue, ticket volume, or speed.",
+        "Define the use case that actually moves the metric. Increase product discovery. Reduce support tickets. Speed up reorders. Connect ChatGPT to live catalog data.",
     },
     {
       n: "2",
-      title: "MCP server + tools",
+      title: "MCP server build",
       body:
-        "Remote MCP server, tool definitions, schemas, auth rules, error handling, logging, rate limits, secure hosting.",
+        "Remote MCP server, tool definitions, input/output schemas, auth rules, error handling, logging, rate limits, permission boundaries, secure hosting.",
     },
     {
       n: "3",
       title: "Platform integrations",
       body:
-        "Connect to Shopify, Adobe Commerce, BigCommerce, ERP, CRM, PIM, helpdesk, search, analytics – whatever’s in your stack.",
+        "Shopify, Adobe Commerce, BigCommerce, commercetools, SAP, Akeneo, Pimcore, NetSuite, HubSpot, Salesforce, Klaviyo, GA4, Zendesk, Gorgias – or custom APIs.",
     },
     {
       n: "4",
-      title: "Widgets + auth",
+      title: "ChatGPT widgets + OAuth",
       body:
-        "Embedded ChatGPT widgets where workflows need more than text. OAuth account linking where workflows need a logged-in user.",
+        "Embedded widgets where workflows need more than text – product cards, comparisons, quote builders, order timelines. OAuth for customer-specific actions.",
     },
     {
       n: "5",
-      title: "Submission + launch",
+      title: "Submission + post-launch",
       body:
-        "Golden-prompt testing, safety review, metadata, mobile UI, OpenAI submission package. We stay through review.",
+        "Golden-prompt testing, broken-flow checks, privacy + safety review, metadata, mobile UI, OpenAI submission package. We stay through review feedback and iterate.",
     },
   ];
 
@@ -44,14 +44,16 @@ export function HowWeWork() {
       <div className="wrap">
         <div className="max-w-[64ch] mb-14 md:mb-20">
           <Reveal>
-            <div className="label-code text-[var(--sw-mint)] mb-4">How we build it</div>
+            <p className="text-[13px] uppercase tracking-[0.18em] font-semibold text-[var(--sw-mint)] mb-5">
+              How we build it
+            </p>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
               From idea to live{" "}
               <span className="text-[var(--sw-mint)]">ChatGPT App</span>{" "}
               in weeks.
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[60ch] leading-relaxed">
-              One team. One contract. From workflow design to OpenAI submission to post-launch support.
+              One team, one contract. You don&apos;t need to hire separate AI consultants, backend engineers, frontend developers, DevOps, security reviewers, and OpenAI submission experts. We cover the full path.
             </p>
           </Reveal>
         </div>
@@ -75,14 +77,6 @@ export function HowWeWork() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal>
-          <p className="text-[16px] md:text-[17px] text-white/85 max-w-[60ch] leading-relaxed border-t border-white/10 pt-10">
-            We&apos;ve already shipped commerce systems for{" "}
-            <span className="font-semibold text-white">700+ brands</span> across{" "}
-            <span className="font-semibold text-white">22 years</span>. ChatGPT is the next interface. We know the stack underneath.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

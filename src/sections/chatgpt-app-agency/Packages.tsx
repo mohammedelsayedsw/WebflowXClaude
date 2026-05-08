@@ -10,12 +10,13 @@ const packages = [
     pricePrefix: "",
     timeline: "10–15 business days",
     who:
-      "Working proof of concept. Internal demo. Shopify or Magento team that wants to see real value fast.",
+      "Working proof of concept. Internal demo. Founder-led brand or team that wants to see real value fast.",
     features: [
       "1 core use case",
       "2–3 MCP tools",
       "1 platform integration",
       "Read-only workflow",
+      "Basic auth or no-auth",
       "Developer Mode tested",
       "10 golden prompts",
       "Launch recommendation doc",
@@ -29,17 +30,17 @@ const packages = [
     pricePrefix: "",
     timeline: "4–6 weeks",
     who:
-      "Real customer-facing app. Funded brand, Shopify Plus store, Adobe Commerce merchant, or B2B commerce team.",
+      "Real customer-facing app. Funded brand, Shopify Plus, Adobe Commerce, or B2B commerce team ready to launch.",
     features: [
-      "1 main use case",
+      "Strategy workshop + user journey",
       "4–6 MCP tools",
       "Main + secondary integration",
       "OAuth account linking",
       "1 ChatGPT widget",
       "Tool safety + confirmation flows",
-      "OpenAI submission prep",
+      "Production hosting + observability",
+      "OpenAI submission asset prep",
       "1 review cycle support",
-      "25 golden prompts + QA pass",
     ],
     upgradeNote:
       "€5,000 credit toward Suite if you upgrade within 90 days.",
@@ -52,15 +53,15 @@ const packages = [
     pricePrefix: "from ",
     timeline: "8–12 weeks",
     who:
-      "Enterprise commerce AI channel. Multi-store, marketplace, B2B distributor, or complex ERP/PIM/CRM stack.",
+      "Enterprise commerce AI channel. Multi-store, marketplace, B2B distributor, or complex ERP/PIM/CRM/OMS stack.",
     features: [
-      "3–6 workflows",
+      "Full app strategy + architecture",
       "8–15 MCP tools",
       "Multi-system integration",
       "Role-based OAuth permissions",
       "2–4 ChatGPT widgets",
       "Agent orchestration + approval flows",
-      "Audit logs + observability",
+      "Audit logs + advanced observability",
       "Submission prep + 2 review cycles",
       "30-day post-launch sprint",
     ],
@@ -92,7 +93,9 @@ export function Packages() {
       <div className="wrap">
         <div className="max-w-[68ch] mb-14 md:mb-16">
           <Reveal>
-            <div className="label-code text-[var(--sw-blue)] mb-4">Packages</div>
+            <p className="text-[13px] uppercase tracking-[0.18em] font-semibold text-[var(--sw-blue)] mb-5">
+              Packages
+            </p>
             <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
               Three productized{" "}
               <span className="text-[var(--sw-blue)]">paths</span>{" "}
@@ -115,7 +118,7 @@ export function Packages() {
                 }
               >
                 {pkg.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--sw-blue)] px-3.5 py-1.5">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-[2px] bg-[var(--sw-blue)] px-3.5 py-1.5">
                     <span className="font-head font-semibold text-[10px] text-white tracking-[0.12em] uppercase">
                       Most popular
                     </span>
@@ -132,9 +135,9 @@ export function Packages() {
                   )}
                   {pkg.price}
                 </div>
-                <div className="label-code text-[var(--sw-black)]/55 mb-5">
+                <p className="text-[12px] uppercase tracking-[0.12em] font-semibold text-[var(--sw-black)]/55 mb-5">
                   {pkg.timeline}
-                </div>
+                </p>
                 <p className="text-[13px] text-[var(--sw-black)]/65 mb-6 leading-relaxed min-h-[64px]">
                   {pkg.who}
                 </p>
@@ -149,7 +152,7 @@ export function Packages() {
                 </ul>
 
                 {pkg.upgradeNote && (
-                  <div className="rounded-[4px] bg-[var(--sw-mint)]/15 px-3.5 py-2.5 mb-5 text-[12px] text-[var(--sw-black)]/80 leading-snug">
+                  <div className="rounded-[2px] bg-[var(--sw-mint)]/15 px-3.5 py-2.5 mb-5 text-[12px] text-[var(--sw-black)]/80 leading-snug">
                     <span className="font-semibold text-[var(--sw-black)]">€5,000 credit</span>{" "}
                     toward Suite if you upgrade within 90 days.
                   </div>
@@ -159,8 +162,8 @@ export function Packages() {
                   href="#cta"
                   className={
                     pkg.featured
-                      ? "mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-[var(--sw-blue)] text-white px-6 py-3 font-head font-semibold text-[14px] hover:bg-[var(--sw-blue)]/90 transition"
-                      : "mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-[var(--sw-black)] text-[var(--sw-black)] px-6 py-3 font-head font-semibold text-[14px] hover:bg-[var(--sw-black)] hover:text-white transition"
+                      ? "mt-auto inline-flex items-center justify-center gap-2 rounded-[2px] bg-[var(--sw-blue)] text-white px-6 py-3 font-head font-semibold text-[14px] hover:bg-[var(--sw-blue)]/90 transition"
+                      : "mt-auto inline-flex items-center justify-center gap-2 rounded-[2px] border border-[var(--sw-black)] text-[var(--sw-black)] px-6 py-3 font-head font-semibold text-[14px] hover:bg-[var(--sw-black)] hover:text-white transition"
                   }
                 >
                   {pkg.cta} →
@@ -170,7 +173,6 @@ export function Packages() {
           ))}
         </div>
 
-        {/* Comparison table */}
         <Reveal>
           <div className="overflow-x-auto rounded-[4px] border border-[var(--sw-black)]/10 bg-white">
             <table className="w-full text-[13px] md:text-[14px]">
@@ -204,7 +206,6 @@ export function Packages() {
           </div>
         </Reveal>
 
-        {/* Monthly support */}
         <Reveal delay={0.1}>
           <div className="mt-10 rounded-[4px] bg-[var(--sw-black)]/[0.04] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
@@ -216,7 +217,9 @@ export function Packages() {
               </p>
             </div>
             <div className="text-left md:text-right shrink-0">
-              <div className="label-code text-[var(--sw-black)]/55 mb-1">From</div>
+              <p className="text-[12px] uppercase tracking-[0.12em] font-semibold text-[var(--sw-black)]/55 mb-1">
+                From
+              </p>
               <div className="font-head text-[var(--sw-black)] text-[28px] md:text-[32px] font-bold leading-none">
                 €4,900<span className="text-[14px] text-[var(--sw-black)]/55 font-medium">/month</span>
               </div>

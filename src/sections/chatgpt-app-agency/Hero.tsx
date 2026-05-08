@@ -1,7 +1,5 @@
 "use client";
 
-import { assetUrl } from "@/lib/assets";
-
 function HeroBg() {
   return (
     <>
@@ -27,15 +25,14 @@ function HeroBg() {
   );
 }
 
-function HeroSpecCard() {
-  const stats: [string, string][] = [
-    ["2,100+", "Magento + Shopify projects shipped"],
-    ["$4B+", "client commerce processed annually"],
-    ["894+", "Adobe certifications · Gold Partner"],
-  ];
+/**
+ * Visual: a stylized ChatGPT conversation showing an MCP App in action.
+ * Concrete demo of what users get — not a brand spec card.
+ */
+function ChatMockup() {
   return (
     <div
-      className="relative block overflow-hidden rounded-[4px] backdrop-blur"
+      className="relative overflow-hidden rounded-[4px] backdrop-blur"
       style={{
         background:
           "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.04) 100%), rgba(16,19,44,0.55)",
@@ -43,79 +40,59 @@ function HeroSpecCard() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      <div className="p-6 md:p-8">
-        <div className="label-code text-white/55 mb-4">scandiweb · the proof</div>
-        <blockquote className="font-head text-white text-[22px] md:text-[26px] leading-[1.2] tracking-[-0.005em]">
-          The{" "}
-          <span className="text-[var(--sw-mint)]">#1 most-certified</span>{" "}
-          Adobe Commerce + Hyvä agency in the world. Now building ChatGPT Apps on top of the same stack.
-        </blockquote>
+      <div className="px-5 py-3 border-b border-white/10 flex items-center gap-2 text-[12px] text-white/55">
+        <span className="h-2 w-2 rounded-full bg-[var(--sw-mint)]"></span>
+        <span>chat.openai.com</span>
+        <span className="ml-auto text-white/35">connected to your-store-app</span>
+      </div>
 
-        <div className="mt-7 pt-6 border-t border-white/10 grid grid-cols-3 gap-2">
-          {stats.map(([k, l]) => (
-            <div
-              key={k}
-              className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 py-3"
-            >
-              <div className="font-head text-white text-[20px] md:text-[22px] leading-none tabular-nums">
-                {k}
-              </div>
-              <div className="label-code mt-2 text-[9px] text-white/55 leading-snug">
-                {l}
-              </div>
-            </div>
-          ))}
+      <div className="p-5 md:p-6 space-y-4">
+        <div className="text-[12px] text-white/45 mb-1">You</div>
+        <div className="text-white text-[15px] leading-relaxed">
+          Find me a waterproof hiking jacket under €200, in stock for next-day delivery.
         </div>
 
-        <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] text-white/60">
-          <span className="text-white">Adobe Commerce Gold Partner</span>
-          <span className="text-white/30">·</span>
-          <span className="text-white">Hyvä Platinum Partner</span>
-          <span className="text-white/30">·</span>
-          <span className="text-white">Organizers of Meet Magento NY · Canada · Baltics</span>
+        <div className="border-t border-white/10 pt-4 mt-4">
+          <div className="flex items-center gap-2 text-[12px] text-white/45 mb-3">
+            <span className="font-head font-semibold text-white">ChatGPT</span>
+            <span className="text-white/30">·</span>
+            <span>your-store-app · 3 results · all in stock</span>
+          </div>
+
+          <div className="space-y-2">
+            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+              <div>
+                <div className="text-white text-[14px] font-semibold">North Face Resolve 2</div>
+                <div className="text-white/50 text-[12px] mt-0.5">M, L in stock · ships next-day</div>
+              </div>
+              <div className="text-white font-head text-[16px] tabular-nums">€179</div>
+            </div>
+            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+              <div>
+                <div className="text-white text-[14px] font-semibold">Patagonia Torrentshell</div>
+                <div className="text-white/50 text-[12px] mt-0.5">S, M, L in stock · ships next-day</div>
+              </div>
+              <div className="text-white font-head text-[16px] tabular-nums">€189</div>
+            </div>
+            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+              <div>
+                <div className="text-white text-[14px] font-semibold">Marmot PreCip Eco</div>
+                <div className="text-white/50 text-[12px] mt-0.5">M in stock · ships next-day</div>
+              </div>
+              <div className="text-white font-head text-[16px] tabular-nums">€169</div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2 text-[12px] text-white/55">
+            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)]"></span>
+            <span>Pulled from your live catalog · stock checked at request time · checkout link ready</span>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
 
-function TrustBar() {
-  const logos: { src: string; alt: string; h: number }[] = [
-    { src: "/shared/logos/clients/puma.svg",      alt: "PUMA",                            h: 30 },
-    { src: "/shared/logos/clients/nytimes.svg",   alt: "The New York Times",              h: 22 },
-    { src: "/shared/logos/clients/samsung.svg",   alt: "Samsung",                         h: 22 },
-    { src: "/shared/logos/clients/adobe.svg",     alt: "Adobe",                           h: 22 },
-    { src: "/shared/logos/clients/olympus.png",   alt: "OM Digital Solutions / Olympus",  h: 24 },
-    { src: "/shared/logos/clients/acer.png",      alt: "Acer",                            h: 22 },
-    { src: "/shared/logos/clients/mercedes.svg",  alt: "Mercedes-Benz",                   h: 30 },
-  ];
-  return (
-    <div
-      className="relative z-10"
-      style={{
-        background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,0.55) 100%)",
-        borderTop: "1px solid rgba(255,255,255,0.12)",
-      }}
-    >
-      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-        <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-[1.35] max-w-[22ch] shrink-0">
-          Trusted by 700+ brands worldwide
-        </div>
-        <div className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-5 flex-1 md:justify-end">
-          {logos.map((l, i) => (
-            <img
-              key={i}
-              src={assetUrl(l.src)}
-              alt={l.alt}
-              className="w-auto opacity-80"
-              style={{
-                maxHeight: `${l.h}px`,
-                height: "auto",
-                filter: "brightness(0) invert(1)",
-              }}
-            />
-          ))}
-        </div>
+      <div className="px-5 py-3 border-t border-white/10 flex items-center justify-between text-[11px] text-white/45">
+        <span>Tools called: <span className="text-white/75">search_products</span> · <span className="text-white/75">check_stock</span></span>
+        <span className="text-white/35">2.1s</span>
       </div>
     </div>
   );
@@ -128,7 +105,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.15fr_1fr] items-start">
             <div>
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
@@ -139,40 +116,37 @@ export function Hero() {
               <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[18ch]">
                 ChatGPT Apps for{" "}
                 <span style={{ color: "var(--sw-mint)" }}>eCommerce</span>.
-                <br className="hidden md:block" />
-                <span className="text-white/85 text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.1]">
-                  Built by the people who ship eCommerce.
-                </span>
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
-                <span className="font-semibold text-white">scandiweb is an Adobe Commerce Gold Partner and Hyvä Platinum Partner with 22+ years of eCommerce engineering.</span> We build MCP-powered ChatGPT Apps that connect to Shopify, Adobe Commerce, BigCommerce, and B2B commerce systems – so customers can search, compare, reorder, and buy directly inside ChatGPT.
+                Build an <span className="font-semibold text-white">MCP-powered ChatGPT App</span> connected to your real catalog, real prices, and real customer data. Customers can search, compare, reorder, request quotes, get support, and complete workflows directly inside ChatGPT.
+              </p>
+              <p className="mt-4 text-[15px] md:text-[16px] text-white/75 max-w-[58ch] leading-relaxed">
+                We design, build, deploy, and prepare your app for OpenAI review – with prebuilt blueprints for Shopify, Adobe Commerce, B2B commerce, and the systems behind them.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <a
                   href="#cta"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--sw-mint)] px-7 py-3.5 font-head font-semibold text-[14px] text-[var(--sw-mint)] hover:bg-[var(--sw-mint)] hover:text-[var(--sw-black)] transition"
+                  className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--sw-mint)] px-7 py-3.5 font-head font-semibold text-[14px] text-[var(--sw-mint)] hover:bg-[var(--sw-mint)] hover:text-[var(--sw-black)] transition"
                 >
                   Get my MCP App plan →
                 </a>
                 <a
                   href="#packages"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 font-head font-semibold text-[14px] text-white hover:bg-white/10 transition"
+                  className="inline-flex items-center gap-2 rounded-[2px] border border-white/40 px-7 py-3.5 font-head font-semibold text-[14px] text-white hover:bg-white/10 transition"
                 >
                   See package pricing
                 </a>
               </div>
             </div>
 
-            <div className="lg:pt-24">
-              <HeroSpecCard />
+            <div className="lg:pt-16">
+              <ChatMockup />
             </div>
           </div>
         </div>
       </div>
-
-      <TrustBar />
     </section>
   );
 }

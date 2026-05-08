@@ -2,52 +2,7 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-
-function FormPlaceholder() {
-  return (
-    <div className="rounded-[4px] bg-white p-6 md:p-8 shadow-xl">
-      {/* TODO: insert HubSpot formId */}
-      <div className="label-code text-[var(--sw-black)]/55 mb-5">Get my MCP App plan</div>
-      <div className="space-y-4">
-        <div>
-          <div className="font-head text-[12px] font-semibold text-[var(--sw-black)] mb-1.5">Work email</div>
-          <div className="h-10 rounded-[4px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.02]" />
-        </div>
-        <div>
-          <div className="font-head text-[12px] font-semibold text-[var(--sw-black)] mb-1.5">Company website</div>
-          <div className="h-10 rounded-[4px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.02]" />
-        </div>
-        <div>
-          <div className="font-head text-[12px] font-semibold text-[var(--sw-black)] mb-1.5">Current platform</div>
-          <div className="h-10 rounded-[4px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.02]" />
-        </div>
-        <div>
-          <div className="font-head text-[12px] font-semibold text-[var(--sw-black)] mb-1.5">What should the app help users do?</div>
-          <div className="grid grid-cols-2 gap-1.5 text-[12px] text-[var(--sw-black)]/70">
-            <span>☐ Find products</span>
-            <span>☐ Compare products</span>
-            <span>☐ Check order status</span>
-            <span>☐ Create quote</span>
-            <span>☐ Reorder products</span>
-            <span>☐ Start return</span>
-            <span>☐ Get support</span>
-            <span>☐ Connect CRM/ERP/PIM</span>
-          </div>
-        </div>
-        <div>
-          <div className="font-head text-[12px] font-semibold text-[var(--sw-black)] mb-1.5">Timeline</div>
-          <div className="h-10 rounded-[4px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.02]" />
-        </div>
-        <button
-          type="button"
-          className="w-full rounded-full bg-[var(--sw-blue)] text-white px-6 py-3 font-head font-semibold text-[14px] mt-3"
-        >
-          Get my MCP App plan →
-        </button>
-      </div>
-    </div>
-  );
-}
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -101,7 +56,11 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <FormPlaceholder />
+            <HubSpotForm
+              portalId="25724996"
+              formId="9fd53a40-251e-4440-9814-9b66e0d5fd2f"
+              region="eu1"
+            />
             <p className="label-code text-white/45 mt-3 px-1">
               We respond within one business day. No spam, no pressure.
             </p>

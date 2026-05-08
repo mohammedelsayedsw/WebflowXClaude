@@ -1,9 +1,23 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { Network } from "lucide-react";
+import { assetUrl } from "@/lib/assets";
+
+type Pack = {
+  name: string;
+  forWho: string;
+  tools: string[];
+  /** Either an asset path (logo SVG) or a render function for an inline icon. */
+  logoSrc?: string;
+  logoAlt?: string;
+  logoBg: string; // background color tile for the icon area
+  iconNode?: React.ReactNode;
+  startsAt: string;
+};
 
 export function Blueprints() {
-  const packs = [
+  const packs: Pack[] = [
     {
       name: "Shopify",
       forWho: "D2C, retail, fashion, beauty, subscription",
@@ -12,19 +26,29 @@ export function Blueprints() {
         "live inventory",
         "order status",
         "cart creation",
+        "discount validation",
         "returns",
       ],
+      logoSrc: "/shared/logos/platforms/shopify.svg",
+      logoAlt: "Shopify",
+      logoBg: "#95BF47",
+      startsAt: "from €9,900",
     },
     {
       name: "Adobe Commerce",
-      forWho: "Enterprise retail, B2B, multi-store",
+      forWho: "Enterprise retail, B2B, multi-store, multi-market",
       tools: [
         "catalog + layered search",
         "customer-specific pricing",
-        "warehouse inventory",
+        "warehouse inventory (MSI)",
         "reorder from history",
-        "B2B quote request",
+        "B2B account + quote",
+        "product comparison",
       ],
+      logoSrc: "/shared/logos/platforms/adobe.svg",
+      logoAlt: "Adobe",
+      logoBg: "#FA0F00",
+      startsAt: "from €9,900",
     },
     {
       name: "B2B Reorder",
@@ -32,10 +56,14 @@ export function Blueprints() {
       tools: [
         "account + previous orders",
         "reorder + substitutes",
-        "contract pricing",
+        "contract pricing + stock",
         "create quote",
+        "send to sales rep",
         "approval routing",
       ],
+      iconNode: <Network className="h-7 w-7 text-white" strokeWidth={2.2} />,
+      logoBg: "#2440ff",
+      startsAt: "from €9,900",
     },
   ];
 
@@ -60,7 +88,24 @@ export function Blueprints() {
         <div className="grid gap-5 md:grid-cols-3">
           {packs.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.07}>
-              <div className="relative rounded-[4px] bg-white border border-[var(--sw-black)]/10 p-8 md:p-10 h-full">
+              <div className="relative rounded-[4px] bg-white border border-[var(--sw-black)]/10 p-8 md:p-10 h-full flex flex-col">
+                {/* Logo tile */}
+                <div
+                  className="inline-flex h-14 w-14 items-center justify-center rounded-[4px] mb-7"
+                  style={{ background: p.logoBg }}
+                >
+                  {p.logoSrc ? (
+                    <img
+                      src={assetUrl(p.logoSrc)}
+                      alt={p.logoAlt ?? ""}
+                      className="h-7 w-auto"
+                      style={{ filter: "brightness(0) invert(1)" }}
+                    />
+                  ) : (
+                    p.iconNode
+                  )}
+                </div>
+
                 <h3 className="font-head text-[var(--sw-black)] text-[26px] md:text-[30px] leading-[1.1] font-bold mb-3 tracking-[-0.01em]">
                   {p.name}
                 </h3>
@@ -68,7 +113,7 @@ export function Blueprints() {
                   {p.forWho}
                 </p>
 
-                <ul className="space-y-2.5 text-[15px] text-[var(--sw-black)]/85 leading-snug">
+                <ul className="space-y-2.5 text-[15px] text-[var(--sw-black)]/85 leading-snug mb-8">
                   {p.tools.map((t) => (
                     <li key={t} className="flex items-center gap-3">
                       <span className="h-1 w-1 rounded-full bg-[var(--sw-blue)] shrink-0" />
@@ -76,6 +121,18 @@ export function Blueprints() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="mt-auto pt-5 border-t border-[var(--sw-black)]/10 flex items-center justify-between">
+                  <span className="text-[12px] uppercase tracking-[0.12em] font-semibold text-[var(--sw-black)]/55">
+                    {p.startsAt}
+                  </span>
+                  <a
+                    href="#cta"
+                    className="text-[13px] font-head font-semibold text-[var(--sw-blue)] hover:underline"
+                  >
+                    Start →
+                  </a>
+                </div>
               </div>
             </Reveal>
           ))}

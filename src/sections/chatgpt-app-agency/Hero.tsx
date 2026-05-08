@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUp, Sparkles } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
@@ -27,52 +28,79 @@ function HeroBg() {
   );
 }
 
-/** Stripped-down ChatGPT conversation card. No header chrome, no tool footer. */
+/** ChatGPT-style conversation card — header avatar + chat + input box. */
 function ChatMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-[4px] backdrop-blur"
+      className="relative overflow-hidden rounded-[8px]"
       style={{
-        background:
-          "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.04) 100%), rgba(16,19,44,0.55)",
+        background: "#212121",
         boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
+          "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(255,255,255,0.08), 0 30px 60px -20px rgba(0,0,0,0.6)",
       }}
     >
-      <div className="p-6 md:p-7 space-y-5">
-        <div>
-          <div className="text-[12px] text-white/40 mb-2">You</div>
-          <div className="text-white text-[16px] leading-relaxed">
-            Find me a waterproof hiking jacket under €200, in stock for next-day.
+      {/* Top bar — looks like ChatGPT app chrome */}
+      <div className="px-4 py-3 border-b border-white/[0.07] flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        </div>
+        <div className="flex-1 text-center text-[12px] text-white/40 font-medium">
+          ChatGPT
+        </div>
+        <div className="w-12" />
+      </div>
+
+      {/* Conversation area */}
+      <div className="px-5 md:px-6 py-6 space-y-6">
+        {/* User turn */}
+        <div className="flex gap-3 justify-end">
+          <div className="rounded-[18px] bg-white/[0.08] px-4 py-3 max-w-[90%]">
+            <div className="text-white text-[15px] leading-relaxed">
+              Find me a waterproof hiking jacket under €200, in stock for next-day.
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-5">
-          <div className="text-[12px] text-white/40 mb-3">ChatGPT</div>
-
-          <div className="space-y-2">
-            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+        {/* Assistant turn */}
+        <div className="flex gap-3 items-start">
+          <div className="h-7 w-7 rounded-full bg-[var(--sw-mint)]/15 ring-1 ring-[var(--sw-mint)]/40 flex items-center justify-center shrink-0 mt-0.5">
+            <Sparkles className="h-3.5 w-3.5 text-[var(--sw-mint)]" strokeWidth={2.5} />
+          </div>
+          <div className="flex-1 space-y-2">
+            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">North Face Resolve 2</div>
-                <div className="text-white/45 text-[12px] mt-0.5">M, L · ships next-day</div>
+                <div className="text-white/40 text-[12px] mt-0.5">M, L · ships next-day</div>
               </div>
-              <div className="text-white font-head text-[16px] tabular-nums">€179</div>
+              <div className="text-white font-head text-[15px] tabular-nums">€179</div>
             </div>
-            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">Patagonia Torrentshell</div>
-                <div className="text-white/45 text-[12px] mt-0.5">S, M, L · ships next-day</div>
+                <div className="text-white/40 text-[12px] mt-0.5">S, M, L · ships next-day</div>
               </div>
-              <div className="text-white font-head text-[16px] tabular-nums">€189</div>
+              <div className="text-white font-head text-[15px] tabular-nums">€189</div>
             </div>
-            <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
+            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">Marmot PreCip Eco</div>
-                <div className="text-white/45 text-[12px] mt-0.5">M · ships next-day</div>
+                <div className="text-white/40 text-[12px] mt-0.5">M · ships next-day</div>
               </div>
-              <div className="text-white font-head text-[16px] tabular-nums">€169</div>
+              <div className="text-white font-head text-[15px] tabular-nums">€169</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Input row at bottom — looks like ChatGPT&rsquo;s composer */}
+      <div className="px-5 md:px-6 pb-5">
+        <div className="flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/[0.08] pl-5 pr-2 py-2.5">
+          <span className="text-[13px] text-white/35 flex-1">Message ChatGPT…</span>
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white">
+            <ArrowUp className="h-3.5 w-3.5 text-[#212121]" strokeWidth={3} />
+          </span>
         </div>
       </div>
     </div>
@@ -81,13 +109,13 @@ function ChatMockup() {
 
 function TrustBar() {
   const logos: { src: string; alt: string; h: number }[] = [
-    { src: "/shared/logos/clients/puma.svg",      alt: "PUMA",                            h: 30 },
-    { src: "/shared/logos/clients/nytimes.svg",   alt: "The New York Times",              h: 22 },
-    { src: "/shared/logos/clients/samsung.svg",   alt: "Samsung",                         h: 22 },
-    { src: "/shared/logos/clients/adobe.svg",     alt: "Adobe",                           h: 22 },
-    { src: "/shared/logos/clients/olympus.png",   alt: "OM Digital Solutions / Olympus",  h: 24 },
-    { src: "/shared/logos/clients/acer.png",      alt: "Acer",                            h: 22 },
-    { src: "/shared/logos/clients/mercedes.svg",  alt: "Mercedes-Benz",                   h: 30 },
+    { src: "/shared/logos/clients/puma.svg",      alt: "PUMA",                            h: 22 },
+    { src: "/shared/logos/clients/nytimes.svg",   alt: "The New York Times",              h: 18 },
+    { src: "/shared/logos/clients/samsung.svg",   alt: "Samsung",                         h: 18 },
+    { src: "/shared/logos/clients/adobe.svg",     alt: "Adobe",                           h: 18 },
+    { src: "/shared/logos/clients/olympus.png",   alt: "OM Digital Solutions / Olympus",  h: 20 },
+    { src: "/shared/logos/clients/acer.png",      alt: "Acer",                            h: 18 },
+    { src: "/shared/logos/clients/mercedes.svg",  alt: "Mercedes-Benz",                   h: 24 },
   ];
   return (
     <div
@@ -97,17 +125,17 @@ function TrustBar() {
         borderTop: "1px solid rgba(255,255,255,0.12)",
       }}
     >
-      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-        <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-[1.35] max-w-[22ch] shrink-0">
+      <div className="wrap py-4 md:py-5 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10">
+        <div className="font-head font-bold text-white text-[14px] md:text-[15px] leading-[1.35] max-w-[22ch] shrink-0">
           Trusted by 700+ brands worldwide
         </div>
-        <div className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-5 flex-1 md:justify-end">
+        <div className="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-3 flex-1 md:justify-end">
           {logos.map((l, i) => (
             <img
               key={i}
               src={assetUrl(l.src)}
               alt={l.alt}
-              className="w-auto opacity-80"
+              className="w-auto opacity-75"
               style={{
                 maxHeight: `${l.h}px`,
                 height: "auto",

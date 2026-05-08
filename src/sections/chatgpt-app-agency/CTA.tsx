@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 
@@ -27,23 +26,8 @@ export function CTA() {
               <span className="text-[var(--sw-mint)]">We&rsquo;ll send back a concrete app idea.</span>
             </h2>
             <p className="mt-6 text-white/80 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
-              No generic sales call. Within 48 hours you get a specific app concept, suggested package, rough timeline, and the data access we&rsquo;d need from your systems.
+              Within 48 hours: a specific app concept, a suggested package, a rough timeline, and the data access we&rsquo;d need.
             </p>
-
-            <ul className="mt-10 space-y-2.5 text-[13px] md:text-[14px] text-white/75">
-              {[
-                "One concrete app concept",
-                "Suggested package – Launchpad, Pilot, or Suite",
-                "Rough timeline + cost estimate",
-                "What data access we’d need",
-                "If we are not the right fit, we will say so",
-              ].map((t, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-[var(--sw-mint)]" />
-                  {t}
-                </li>
-              ))}
-            </ul>
           </Reveal>
 
           <Reveal delay={0.15}>
@@ -52,9 +36,6 @@ export function CTA() {
               formId="9fd53a40-251e-4440-9814-9b66e0d5fd2f"
               region="eu1"
             />
-            <p className="text-[11px] uppercase tracking-[0.12em] font-semibold text-white/45 mt-3 px-1">
-              We respond within one business day
-            </p>
           </Reveal>
         </div>
       </div>

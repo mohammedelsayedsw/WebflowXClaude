@@ -4,36 +4,11 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 export function HowWeWork() {
   const steps = [
-    {
-      n: "1",
-      title: "Strategy + workflow design",
-      body:
-        "Define the use case that actually moves the metric. Increase product discovery. Reduce support tickets. Speed up reorders. Connect ChatGPT to live catalog data.",
-    },
-    {
-      n: "2",
-      title: "MCP server build",
-      body:
-        "Remote MCP server, tool definitions, input/output schemas, auth rules, error handling, logging, rate limits, permission boundaries, secure hosting.",
-    },
-    {
-      n: "3",
-      title: "Platform integrations",
-      body:
-        "Shopify, Adobe Commerce, BigCommerce, commercetools, SAP, Akeneo, Pimcore, NetSuite, HubSpot, Salesforce, Klaviyo, GA4, Zendesk, Gorgias – or custom APIs.",
-    },
-    {
-      n: "4",
-      title: "ChatGPT widgets + OAuth",
-      body:
-        "Embedded widgets where workflows need more than text – product cards, comparisons, quote builders, order timelines. OAuth for customer-specific actions.",
-    },
-    {
-      n: "5",
-      title: "Submission + post-launch",
-      body:
-        "Golden-prompt testing, broken-flow checks, privacy + safety review, metadata, mobile UI, OpenAI submission package. We stay through review feedback and iterate.",
-    },
+    { n: "01", title: "Strategy", body: "The use case that actually moves the metric." },
+    { n: "02", title: "MCP server", body: "Tools, schemas, auth, hosting." },
+    { n: "03", title: "Integrations", body: "Your platforms, ERP, CRM, PIM, and search." },
+    { n: "04", title: "Widgets + auth", body: "ChatGPT UI where text isn’t enough." },
+    { n: "05", title: "Submission", body: "Test, harden, and ship to OpenAI review." },
   ];
 
   return (
@@ -42,7 +17,7 @@ export function HowWeWork() {
       className="relative bg-[var(--sw-black)] py-28 md:py-36"
     >
       <div className="wrap">
-        <div className="max-w-[64ch] mb-14 md:mb-20">
+        <div className="max-w-[64ch] mb-16 md:mb-24">
           <Reveal>
             <p className="text-[13px] uppercase tracking-[0.18em] font-semibold text-[var(--sw-mint)] mb-5">
               How we build it
@@ -52,30 +27,38 @@ export function HowWeWork() {
               <span className="text-[var(--sw-mint)]">ChatGPT App</span>{" "}
               in weeks.
             </h2>
-            <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[60ch] leading-relaxed">
-              One team, one contract. You don&apos;t need to hire separate AI consultants, backend engineers, frontend developers, DevOps, security reviewers, and OpenAI submission experts. We cover the full path.
+            <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[58ch] leading-relaxed">
+              One team. One contract. From workflow to OpenAI review.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid gap-6 md:gap-4 md:grid-cols-5 mb-14 md:mb-16">
-          {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.07}>
-              <div className="relative h-full">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--sw-mint)]/15 mb-5">
-                  <span className="font-head font-bold text-[14px] text-[var(--sw-mint)]">
-                    {s.n}
-                  </span>
+        <div className="relative">
+          {/* horizontal connecting line, desktop only */}
+          <div
+            aria-hidden
+            className="hidden md:block absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+          />
+
+          <div className="grid gap-10 md:gap-6 md:grid-cols-5">
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <div className="relative h-full">
+                  <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--sw-mint)]/10 border border-[var(--sw-mint)]/30 mb-7 backdrop-blur">
+                    <span className="font-head font-bold text-[15px] text-[var(--sw-mint)] tabular-nums">
+                      {s.n}
+                    </span>
+                  </div>
+                  <h3 className="font-head text-white text-[20px] md:text-[22px] leading-[1.2] mb-3 font-bold">
+                    {s.title}
+                  </h3>
+                  <p className="text-[14px] md:text-[15px] text-white/65 leading-relaxed max-w-[28ch]">
+                    {s.body}
+                  </p>
                 </div>
-                <h3 className="font-head text-white text-[18px] md:text-[19px] leading-[1.25] mb-3 font-semibold">
-                  {s.title}
-                </h3>
-                <p className="text-[13px] md:text-[14px] text-white/65 leading-relaxed">
-                  {s.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

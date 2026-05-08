@@ -5,35 +5,35 @@ import { Reveal } from "@/components/primitives/Reveal";
 export function Examples() {
   const examples = [
     {
-      audience: "For eCommerce brands",
+      audience: "eCommerce",
       quote:
         "Find me a waterproof hiking jacket under €200 for winter use.",
       returns:
-        "Live products, filters, stock, size options, reviews, and a checkout path.",
+        "Live products, sizes, stock, reviews, and a checkout path.",
     },
     {
-      audience: "For B2B companies",
+      audience: "B2B",
       quote:
-        "Reorder the same industrial gloves we bought last month, but increase quantity by 20%.",
+        "Reorder the gloves we bought last month, but +20% quantity.",
       returns:
-        "Account pricing, stock, delivery rules, and a draft order or quote ready to approve.",
+        "Account pricing, stock, delivery, and a draft order or quote.",
     },
     {
-      audience: "For support teams",
+      audience: "Support",
       quote:
-        "Where is my order? Can I return this? Which spare part fits this model?",
+        "Where is my order? Can I return this? Which spare part fits?",
       returns:
-        "Answers from order data, return rules, product specs, and helpdesk history.",
+        "Answers from order data, return rules, product specs, and helpdesk.",
     },
     {
-      audience: "For sales teams",
+      audience: "Sales",
       quote:
-        "I need a solution for 12 locations, with approval workflow and monthly billing.",
+        "12 locations, approval workflow, monthly billing.",
       returns:
-        "Qualification, recommendation, a CRM record, and routing to the right rep.",
+        "Qualification, recommendation, a CRM record, and the right rep.",
     },
     {
-      audience: "For internal teams",
+      audience: "Internal",
       quote:
         "Show slow-moving stock in Germany and suggest discounts.",
       returns:
@@ -53,14 +53,11 @@ export function Examples() {
               The shift
             </p>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
-              Your customers, teams, and partners are already asking{" "}
+              Customers, teams, and partners are already asking{" "}
               <span className="text-[var(--sw-mint)]">ChatGPT</span>.
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[60ch] leading-relaxed">
-              Now they can do more than ask. With a custom MCP-powered ChatGPT App, they search your catalog, check order status, create quotes, compare products, request support, and reorder supplies – directly inside the conversation.
-            </p>
-            <p className="mt-4 text-[15px] md:text-[16px] text-white/65 max-w-[60ch] leading-relaxed">
-              No AI theater. No demo that dies after one meeting. A real app connected to your real business systems.
+              Now they can do more than ask. A custom MCP App lets them search your catalog, check order status, create quotes, request support, and reorder – directly inside the conversation.
             </p>
           </Reveal>
         </div>
@@ -76,7 +73,6 @@ export function Examples() {
                   &ldquo;{ex.quote}&rdquo;
                 </p>
                 <div className="text-[13px] text-white/65 leading-relaxed">
-                  <span className="text-white/85 font-semibold">App returns:</span>{" "}
                   {ex.returns}
                 </div>
                 <span className="absolute top-0 left-6 h-px w-10 bg-[var(--sw-mint)]/70" />

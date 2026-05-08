@@ -2,7 +2,6 @@
 
 import { Hero } from "@/sections/chatgpt-app-agency/Hero";
 import { Examples } from "@/sections/chatgpt-app-agency/Examples";
-import { WhatIsMCP } from "@/sections/chatgpt-app-agency/WhatIsMCP";
 import { Blueprints } from "@/sections/chatgpt-app-agency/Blueprints";
 import { HowWeWork } from "@/sections/chatgpt-app-agency/HowWeWork";
 import { BuiltByCommerce } from "@/sections/chatgpt-app-agency/BuiltByCommerce";
@@ -15,7 +14,6 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Examples />
-      <WhatIsMCP />
       <Blueprints />
       <HowWeWork />
       <BuiltByCommerce />

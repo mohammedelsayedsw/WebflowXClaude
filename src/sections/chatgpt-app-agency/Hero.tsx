@@ -25,10 +25,7 @@ function HeroBg() {
   );
 }
 
-/**
- * Visual: a stylized ChatGPT conversation showing an MCP App in action.
- * Concrete demo of what users get — not a brand spec card.
- */
+/** Stripped-down ChatGPT conversation card. No header chrome, no tool footer. */
 function ChatMockup() {
   return (
     <div
@@ -40,59 +37,41 @@ function ChatMockup() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      <div className="px-5 py-3 border-b border-white/10 flex items-center gap-2 text-[12px] text-white/55">
-        <span className="h-2 w-2 rounded-full bg-[var(--sw-mint)]"></span>
-        <span>chat.openai.com</span>
-        <span className="ml-auto text-white/35">connected to your-store-app</span>
-      </div>
-
-      <div className="p-5 md:p-6 space-y-4">
-        <div className="text-[12px] text-white/45 mb-1">You</div>
-        <div className="text-white text-[15px] leading-relaxed">
-          Find me a waterproof hiking jacket under €200, in stock for next-day delivery.
+      <div className="p-6 md:p-7 space-y-5">
+        <div>
+          <div className="text-[12px] text-white/40 mb-2">You</div>
+          <div className="text-white text-[16px] leading-relaxed">
+            Find me a waterproof hiking jacket under €200, in stock for next-day.
+          </div>
         </div>
 
-        <div className="border-t border-white/10 pt-4 mt-4">
-          <div className="flex items-center gap-2 text-[12px] text-white/45 mb-3">
-            <span className="font-head font-semibold text-white">ChatGPT</span>
-            <span className="text-white/30">·</span>
-            <span>your-store-app · 3 results · all in stock</span>
-          </div>
+        <div className="border-t border-white/10 pt-5">
+          <div className="text-[12px] text-white/40 mb-3">ChatGPT</div>
 
           <div className="space-y-2">
             <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">North Face Resolve 2</div>
-                <div className="text-white/50 text-[12px] mt-0.5">M, L in stock · ships next-day</div>
+                <div className="text-white/45 text-[12px] mt-0.5">M, L · ships next-day</div>
               </div>
               <div className="text-white font-head text-[16px] tabular-nums">€179</div>
             </div>
             <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">Patagonia Torrentshell</div>
-                <div className="text-white/50 text-[12px] mt-0.5">S, M, L in stock · ships next-day</div>
+                <div className="text-white/45 text-[12px] mt-0.5">S, M, L · ships next-day</div>
               </div>
               <div className="text-white font-head text-[16px] tabular-nums">€189</div>
             </div>
             <div className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white text-[14px] font-semibold">Marmot PreCip Eco</div>
-                <div className="text-white/50 text-[12px] mt-0.5">M in stock · ships next-day</div>
+                <div className="text-white/45 text-[12px] mt-0.5">M · ships next-day</div>
               </div>
               <div className="text-white font-head text-[16px] tabular-nums">€169</div>
             </div>
           </div>
-
-          <div className="mt-4 flex items-center gap-2 text-[12px] text-white/55">
-            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)]"></span>
-            <span>Pulled from your live catalog · stock checked at request time · checkout link ready</span>
-          </div>
         </div>
-      </div>
-
-      <div className="px-5 py-3 border-t border-white/10 flex items-center justify-between text-[11px] text-white/45">
-        <span>Tools called: <span className="text-white/75">search_products</span> · <span className="text-white/75">check_stock</span></span>
-        <span className="text-white/35">2.1s</span>
       </div>
     </div>
   );
@@ -105,11 +84,11 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.15fr_1fr] items-start">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.15fr_1fr] items-center">
             <div>
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                  ChatGPT App development · MCP · OpenAI
+                  ChatGPT App development
                 </span>
               </div>
 
@@ -118,11 +97,8 @@ export function Hero() {
                 <span style={{ color: "var(--sw-mint)" }}>eCommerce</span>.
               </h1>
 
-              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
-                Build an <span className="font-semibold text-white">MCP-powered ChatGPT App</span> connected to your real catalog, real prices, and real customer data. Customers can search, compare, reorder, request quotes, get support, and complete workflows directly inside ChatGPT.
-              </p>
-              <p className="mt-4 text-[15px] md:text-[16px] text-white/75 max-w-[58ch] leading-relaxed">
-                We design, build, deploy, and prepare your app for OpenAI review – with prebuilt blueprints for Shopify, Adobe Commerce, B2B commerce, and the systems behind them.
+              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/85 max-w-[54ch] leading-relaxed">
+                Build an <span className="font-semibold text-white">MCP-powered ChatGPT App</span> connected to your real catalog, real prices, and real customer data. Customers search, compare, reorder, and buy directly inside ChatGPT.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -141,7 +117,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="lg:pt-16">
+            <div>
               <ChatMockup />
             </div>
           </div>

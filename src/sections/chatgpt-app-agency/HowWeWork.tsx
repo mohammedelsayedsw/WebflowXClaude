@@ -34,17 +34,18 @@ export function HowWeWork() {
         </div>
 
         <div className="relative">
-          {/* horizontal connecting line, desktop only */}
+          {/* solid connecting line — runs across the row at the circles' centers */}
           <div
             aria-hidden
-            className="hidden md:block absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            className="hidden md:block absolute top-7 h-px bg-white/15"
+            style={{ left: "calc(10% + 28px - 1px)", right: "calc(10% + 28px - 1px)" }}
           />
 
           <div className="grid gap-10 md:gap-6 md:grid-cols-5">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
                 <div className="relative h-full">
-                  <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--sw-mint)]/10 border border-[var(--sw-mint)]/30 mb-7 backdrop-blur">
+                  <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--sw-black)] border border-[var(--sw-mint)]/40 mb-7">
                     <span className="font-head font-bold text-[15px] text-[var(--sw-mint)] tabular-nums">
                       {s.n}
                     </span>

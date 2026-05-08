@@ -1,7 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { Network } from "lucide-react";
+import { Layers, Network } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 type Pack = {
@@ -11,7 +11,7 @@ type Pack = {
   /** Either an asset path (logo SVG) or a render function for an inline icon. */
   logoSrc?: string;
   logoAlt?: string;
-  logoBg: string; // background color tile for the icon area
+  logoBg: string;
   iconNode?: React.ReactNode;
   startsAt: string;
 };
@@ -45,8 +45,7 @@ export function Blueprints() {
         "B2B account + quote",
         "product comparison",
       ],
-      logoSrc: "/shared/logos/platforms/adobe.svg",
-      logoAlt: "Adobe",
+      iconNode: <Layers className="h-7 w-7 text-white" strokeWidth={2.2} />,
       logoBg: "#FA0F00",
       startsAt: "from €9,900",
     },
@@ -89,16 +88,15 @@ export function Blueprints() {
           {packs.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.07}>
               <div className="relative rounded-[4px] bg-white border border-[var(--sw-black)]/10 p-8 md:p-10 h-full flex flex-col">
-                {/* Logo tile */}
                 <div
-                  className="inline-flex h-14 w-14 items-center justify-center rounded-[4px] mb-7"
+                  className="inline-flex h-14 w-14 items-center justify-center rounded-[4px] mb-7 overflow-hidden"
                   style={{ background: p.logoBg }}
                 >
                   {p.logoSrc ? (
                     <img
                       src={assetUrl(p.logoSrc)}
                       alt={p.logoAlt ?? ""}
-                      className="h-7 w-auto"
+                      className="h-7 w-7 object-contain"
                       style={{ filter: "brightness(0) invert(1)" }}
                     />
                   ) : (

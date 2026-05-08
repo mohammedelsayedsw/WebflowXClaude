@@ -175,7 +175,7 @@ export function Packages() {
 
         <Reveal>
           <div className="overflow-x-auto rounded-[4px] border border-[var(--sw-black)]/10 bg-white">
-            <table className="w-full text-[13px] md:text-[14px]">
+            <table className="w-full text-[13px] md:text-[14px] border-collapse">
               <thead>
                 <tr>
                   <th className="text-left bg-[var(--sw-black)] text-white font-head font-semibold px-5 py-4">
@@ -193,11 +193,11 @@ export function Packages() {
                 </tr>
               </thead>
               <tbody>
-                {compareRows.map(([k, a, b, c], i) => (
-                  <tr key={k} className={i % 2 === 0 ? "bg-lp-bright" : "bg-white"}>
+                {compareRows.map(([k, a, b, c]) => (
+                  <tr key={k} className="bg-white border-t border-[var(--sw-black)]/8">
                     <td className="px-5 py-3 font-head font-semibold text-[var(--sw-black)]">{k}</td>
                     <td className="px-5 py-3 text-[var(--sw-black)]/75">{a}</td>
-                    <td className="px-5 py-3 text-[var(--sw-black)]/85 bg-[var(--sw-blue)]/[0.05]">{b}</td>
+                    <td className="px-5 py-3 text-[var(--sw-black)]/85">{b}</td>
                     <td className="px-5 py-3 text-[var(--sw-black)]/75">{c}</td>
                   </tr>
                 ))}

@@ -32,7 +32,7 @@ export function FAQ() {
     },
     {
       q: "Will OpenAI approve our app?",
-      a: "We build to OpenAI&apos;s documented review path: structured metadata, safety testing, OAuth flows, mobile UI checks, and Developer Mode validation from day one. Approval is OpenAI&apos;s call. Readiness is ours – and we stay on through review feedback if it comes back.",
+      a: "We build to OpenAI’s documented review path: structured metadata, safety testing, OAuth flows, mobile UI checks, and Developer Mode validation from day one. Approval is OpenAI’s call. Readiness is ours – and we stay on through review feedback if it comes back.",
     },
   ];
 
@@ -49,7 +49,7 @@ export function FAQ() {
           </Reveal>
           <div>
             {items.map((it, i) => (
-              <FAQItem key={i} q={it.q} a={it.a.replace(/&apos;/g, "'")} i={i} />
+              <FAQItem key={i} q={it.q} a={it.a} i={i} />
             ))}
           </div>
         </div>

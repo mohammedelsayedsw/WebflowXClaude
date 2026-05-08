@@ -1,5 +1,7 @@
 "use client";
 
+import { assetUrl } from "@/lib/assets";
+
 function HeroBg() {
   return (
     <>
@@ -78,6 +80,15 @@ function HeroSpecCard() {
 }
 
 function TrustBar() {
+  const logos: { src: string; alt: string; h: number }[] = [
+    { src: "/shared/logos/clients/puma.svg",      alt: "PUMA",                            h: 30 },
+    { src: "/shared/logos/clients/nytimes.svg",   alt: "The New York Times",              h: 22 },
+    { src: "/shared/logos/clients/samsung.svg",   alt: "Samsung",                         h: 22 },
+    { src: "/shared/logos/clients/adobe.svg",     alt: "Adobe",                           h: 22 },
+    { src: "/shared/logos/clients/olympus.png",   alt: "OM Digital Solutions / Olympus",  h: 24 },
+    { src: "/shared/logos/clients/acer.png",      alt: "Acer",                            h: 22 },
+    { src: "/shared/logos/clients/mercedes.svg",  alt: "Mercedes-Benz",                   h: 30 },
+  ];
   return (
     <div
       className="relative z-10"
@@ -86,18 +97,24 @@ function TrustBar() {
         borderTop: "1px solid rgba(255,255,255,0.12)",
       }}
     >
-      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10">
+      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
         <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-[1.35] max-w-[22ch] shrink-0">
-          Trusted by 700+ brands · 22 years in eCommerce
+          Trusted by 700+ brands worldwide
         </div>
-        <div className="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-3 flex-1 md:justify-end text-[12px] md:text-[13px] text-white/70">
-          <span><span className="text-white font-semibold">2,100+</span> projects shipped</span>
-          <span className="text-white/30">·</span>
-          <span><span className="text-white font-semibold">$4B+</span> processed annually</span>
-          <span className="text-white/30">·</span>
-          <span><span className="text-white font-semibold">894+</span> Adobe certifications</span>
-          <span className="text-white/30">·</span>
-          <span><span className="text-white font-semibold">3×</span> Meet Magento NY winner</span>
+        <div className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-5 flex-1 md:justify-end">
+          {logos.map((l, i) => (
+            <img
+              key={i}
+              src={assetUrl(l.src)}
+              alt={l.alt}
+              className="w-auto opacity-80"
+              style={{
+                maxHeight: `${l.h}px`,
+                height: "auto",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export function HowWeWork() {
       n: "1",
       title: "Strategy workshop",
       body:
-        "Define the workflow that actually moves the metric. Not 'let&apos;s add AI' – a use case tied to revenue, ticket volume, or speed.",
+        "Define the workflow that actually moves the metric. Not 'let’s add AI' – a use case tied to revenue, ticket volume, or speed.",
     },
     {
       n: "2",
@@ -20,7 +20,7 @@ export function HowWeWork() {
       n: "3",
       title: "Platform integrations",
       body:
-        "Connect to Shopify, Adobe Commerce, BigCommerce, ERP, CRM, PIM, helpdesk, search, analytics – whatever&apos;s in your stack.",
+        "Connect to Shopify, Adobe Commerce, BigCommerce, ERP, CRM, PIM, helpdesk, search, analytics – whatever’s in your stack.",
     },
     {
       n: "4",
@@ -69,7 +69,7 @@ export function HowWeWork() {
                   {s.title}
                 </h3>
                 <p className="text-[13px] md:text-[14px] text-white/65 leading-relaxed">
-                  {s.body.replace(/&apos;/g, "'")}
+                  {s.body}
                 </p>
               </div>
             </Reveal>

@@ -5,7 +5,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 function FAQItem({ q, a, i }: { q: string; a: string; i: number }) {
   return (
-    <Reveal delay={i * 0.05}>
+    <Reveal delay={i * 0.04}>
       <details className="group border-b border-white/10 py-5 md:py-6 [&_summary]:list-none [&_summary::-webkit-details-marker]:hidden">
         <summary className="flex cursor-pointer items-start justify-between gap-6 font-head text-white text-[17px] md:text-[20px] leading-[1.3]">
           <span>{q}</span>
@@ -24,15 +24,35 @@ export function FAQ() {
   const items = [
     {
       q: "We already have a chatbot. How is this different?",
-      a: "A chatbot answers questions on your site. A ChatGPT App lets users act inside ChatGPT, against your real systems, with approved tools. Different layer, different value – not just an AI prompt, but an action layer connected to live commerce.",
+      a: "A chatbot answers questions on your site. A ChatGPT App lets users act inside ChatGPT, against your real systems, with approved tools, live data, and structured UI. Different layer, different value – not just a prompt, but an action layer connected to live commerce.",
     },
     {
-      q: "What if it gives wrong answers?",
-      a: "The app does not guess core business data. It calls your tools and returns what your systems say. For sensitive actions we add confirmation steps, permission checks, audit logs, and human handoff – by default. The AI does not decide pricing, stock, or order state. Your systems do.",
+      q: "We are not ready to give AI access to our systems.",
+      a: "You don’t need to start with risky actions. Most clients begin with read-only tools – search catalog, show policies, answer product questions, check stock, show order status after login. Write actions like creating quotes or returns can require explicit confirmation and permissions.",
+    },
+    {
+      q: "What if the AI gives wrong answers?",
+      a: "The app does not guess core business data. It calls your tools and returns structured information from your approved systems. For sensitive actions we add confirmation steps, permission checks, audit logs, fallback messages, validation rules, and human handoff – by default. The AI does not decide pricing, stock, or order state. Your systems do.",
+    },
+    {
+      q: "Will this replace our website?",
+      a: "No. It gives your website and systems a new entry point. The website still matters. Search still matters. Email still matters. Paid ads still matter. ChatGPT becomes another high-intent channel where people can discover, decide, and act.",
     },
     {
       q: "Will OpenAI approve our app?",
-      a: "We build to OpenAI’s documented review path: structured metadata, safety testing, OAuth flows, mobile UI checks, and Developer Mode validation from day one. Approval is OpenAI’s call. Readiness is ours – and we stay on through review feedback if it comes back.",
+      a: "Nobody outside OpenAI can guarantee approval. What we do: build against the documented review path, prepare the app properly, test it in Developer Mode, review safety issues, clean up metadata, and support fixes if review feedback comes back.",
+    },
+    {
+      q: "Our systems are too custom.",
+      a: "That is exactly why MCP makes sense. MCP lets us expose clean tools to ChatGPT while your complex backend logic stays where it belongs. ChatGPT does not need to understand your whole ERP. It needs safe, well-defined tools that return the right data.",
+    },
+    {
+      q: "Can users buy directly inside ChatGPT?",
+      a: "Depends on your platform, payment flow, risk model, and what OpenAI supports for your use case at submission time. A safe v1 often starts with product discovery, quote creation, cart creation, or checkout handoff – then expands as the platform matures.",
+    },
+    {
+      q: "How fast can we launch?",
+      a: "A focused proof of concept can be built in 10–15 business days. A real customer-facing app usually takes 4–6 weeks. An enterprise app with several systems usually takes 8–12 weeks or more.",
     },
   ];
 
@@ -41,9 +61,11 @@ export function FAQ() {
       <div className="wrap">
         <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20">
           <Reveal>
-            <div className="label-code text-[var(--sw-mint)] mb-4">What about…</div>
-            <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[16ch]">
-              Three things every commerce team asks{" "}
+            <p className="text-[13px] uppercase tracking-[0.18em] font-semibold text-[var(--sw-mint)] mb-5">
+              Common questions
+            </p>
+            <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[14ch]">
+              The things every team asks{" "}
               <span className="text-[var(--sw-mint)]">first</span>.
             </h2>
           </Reveal>

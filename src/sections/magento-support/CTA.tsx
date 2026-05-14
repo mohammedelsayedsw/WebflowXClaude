@@ -69,7 +69,7 @@ export function CTA() {
           <Reveal delay={0.15}>
             <HubSpotForm
               portalId="25724996"
-              formId="e0c4052e-523c-4d24-a008-feb45b6b85dd"
+              formId="a2a9bbba-140b-49a2-b20c-8990b1d85a41"
               region="eu1"
             />
             <p className="label-code text-white/45 mt-3 px-1">

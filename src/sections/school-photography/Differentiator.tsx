@@ -140,7 +140,7 @@ function SvgEntitySchema() {
               x={t.x + 18}
               y={t.y + 27}
               fill="#10132C"
-              fontFamily="JetBrains Mono"
+              fontFamily="Inter"
               fontSize="13"
               fontWeight="700"
               letterSpacing="0.5"
@@ -151,7 +151,7 @@ function SvgEntitySchema() {
               x={t.x + t.w - 18}
               y={t.y + 27}
               fill="rgba(16,19,44,0.45)"
-              fontFamily="JetBrains Mono"
+              fontFamily="Inter"
               fontSize="10"
               letterSpacing="1.5"
               textAnchor="end"
@@ -182,13 +182,13 @@ function SvgEntitySchema() {
                   {f.key === "pk" && (
                     <g transform={`translate(${t.x + 14}, ${y + rowH / 2 - 6})`}>
                       <rect x={0} y={0} width={16} height={12} rx={2} fill="#FF5A31" opacity={0.9} />
-                      <text x={8} y={9} fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill="#fff" textAnchor="middle" letterSpacing="0.5">PK</text>
+                      <text x={8} y={9} fontSize="8" fontFamily="Inter" fontWeight="700" fill="#fff" textAnchor="middle" letterSpacing="0.5">PK</text>
                     </g>
                   )}
                   {f.key === "fk" && (
                     <g transform={`translate(${t.x + 14}, ${y + rowH / 2 - 6})`}>
                       <rect x={0} y={0} width={16} height={12} rx={2} fill="#3F4AAF" opacity={0.92} />
-                      <text x={8} y={9} fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill="#fff" textAnchor="middle" letterSpacing="0.5">FK</text>
+                      <text x={8} y={9} fontSize="8" fontFamily="Inter" fontWeight="700" fill="#fff" textAnchor="middle" letterSpacing="0.5">FK</text>
                     </g>
                   )}
                   {!f.key && (
@@ -200,7 +200,7 @@ function SvgEntitySchema() {
                     x={t.x + 40}
                     y={y + rowH / 2 + 4}
                     fill="#10132C"
-                    fontFamily="JetBrains Mono"
+                    fontFamily="Inter"
                     fontSize="12"
                   >
                     {f.name}
@@ -210,7 +210,7 @@ function SvgEntitySchema() {
                     x={t.x + t.w - 16}
                     y={y + rowH / 2 + 4}
                     fill={f.key === "fk" ? "#3F4AAF" : "rgba(16,19,44,0.45)"}
-                    fontFamily="JetBrains Mono"
+                    fontFamily="Inter"
                     fontSize="11"
                     textAnchor="end"
                   >
@@ -275,7 +275,7 @@ function SvgEntitySchema() {
           x={(parentsIdX + studentsLeftX) / 2}
           y={(parentsIdY + studentsParentY) / 2 + 3}
           fill="#3F4AAF"
-          fontFamily="JetBrains Mono"
+          fontFamily="Inter"
           fontSize="10"
           fontWeight="700"
           textAnchor="middle"
@@ -325,7 +325,7 @@ function SvgEntitySchema() {
           x={(schoolsIdX + studentsRightX) / 2}
           y={(schoolsIdY + studentsSchoolY) / 2 + 3}
           fill="#3F4AAF"
-          fontFamily="JetBrains Mono"
+          fontFamily="Inter"
           fontSize="10"
           fontWeight="700"
           textAnchor="middle"
@@ -348,7 +348,7 @@ function SvgEntitySchema() {
         x={studentsRightX + 32}
         y={(fieldY(students, 4) + fieldY(students, 0)) / 2 + 3}
         fill="rgba(63,74,175,0.55)"
-        fontFamily="JetBrains Mono"
+        fontFamily="Inter"
         fontSize="9"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

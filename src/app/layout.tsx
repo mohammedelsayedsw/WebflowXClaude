@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Golos_Text, Inter, JetBrains_Mono } from "next/font/google";
+import { Golos_Text, Inter } from "next/font/google";
 import "./globals.css";
 import { DevLinkProvider } from "@/webflow/DevLinkProvider";
 import { Footer as WebflowFooter } from "@/webflow/v7Layout/Footer";
@@ -25,13 +25,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: {
     default: "scandiweb — eCommerce Solutions for the World's Biggest Brands",
@@ -47,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${golos.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
+      className={`${golos.variable} ${inter.variable} antialiased`}
     >
       <head>
         <Script id="gtm-init" strategy="afterInteractive">

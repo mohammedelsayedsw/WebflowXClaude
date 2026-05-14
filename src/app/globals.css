@@ -104,7 +104,9 @@
 
   --font-head: var(--font-golos);
   --font-body: var(--font-inter);
-  --font-mono: var(--font-jetbrains);
+  /* No mono font — scandiweb brand uses Golos Text + Inter only. Code and
+     mono-styled labels render in Inter at a smaller weight / spacing. */
+  --font-mono: var(--font-inter);
 
   --radius-sm: 2px;
   --radius-md: 4px;
@@ -132,7 +134,7 @@
   }
   p, blockquote { text-wrap: pretty; }
   code, kbd, samp, pre {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-family: var(--font-inter), ui-monospace, monospace;
   }
   ::selection {
     background: var(--sw-red);
@@ -142,8 +144,9 @@
 
 @layer utilities {
   .label-code {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--lp-muted);
@@ -259,7 +262,7 @@
 .hubspot-form-wrapper fieldset > div > label {
   display: block !important;
   color: rgba(255, 255, 255, 0.55) !important;
-  font-family: var(--font-jetbrains), "JetBrains Mono", monospace !important;
+  font-family: var(--font-inter), Inter, sans-serif !important;
   font-size: 11px !important;
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;

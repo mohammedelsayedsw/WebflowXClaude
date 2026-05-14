@@ -188,7 +188,7 @@ function SvgPortal() {
       </defs>
 
       {/* y-axis helper label */}
-      <text x={ox} y={36} fill="currentColor" opacity="0.55" fontSize="11" fontFamily="JetBrains Mono" letterSpacing="1.5">
+      <text x={ox} y={36} fill="currentColor" opacity="0.55" fontSize="11" fontFamily="Inter" letterSpacing="1.5">
         SUPPORT LOAD · TICKETS / WEEK
       </text>
 
@@ -255,13 +255,13 @@ function SvgPortal() {
       {/* annotations */}
       <g>
         <rect x={ox + cw + 12} y={scale(before[before.length - 1]) - 14} width={70} height={28} rx={2} fill="none" stroke="#E04F4F" strokeOpacity="0.5" />
-        <text x={ox + cw + 22} y={scale(before[before.length - 1]) - 1} fill="#E04F4F" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="1">BEFORE</text>
-        <text x={ox + cw + 22} y={scale(before[before.length - 1]) + 10} fill="#fff" opacity="0.9" fontSize="11" fontFamily="JetBrains Mono" fontWeight="600">climbing</text>
+        <text x={ox + cw + 22} y={scale(before[before.length - 1]) - 1} fill="#E04F4F" fontSize="10" fontFamily="Inter" letterSpacing="1">BEFORE</text>
+        <text x={ox + cw + 22} y={scale(before[before.length - 1]) + 10} fill="#fff" opacity="0.9" fontSize="11" fontFamily="Inter" fontWeight="600">climbing</text>
       </g>
       <g>
         <rect x={ox + cw + 12} y={scale(after[after.length - 1]) - 14} width={70} height={28} rx={2} fill="none" stroke="#6EF76E" strokeOpacity="0.7" />
-        <text x={ox + cw + 22} y={scale(after[after.length - 1]) - 1} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="1">AFTER</text>
-        <text x={ox + cw + 22} y={scale(after[after.length - 1]) + 10} fill="#fff" opacity="0.9" fontSize="11" fontFamily="JetBrains Mono" fontWeight="600">−95%</text>
+        <text x={ox + cw + 22} y={scale(after[after.length - 1]) - 1} fill="#6EF76E" fontSize="10" fontFamily="Inter" letterSpacing="1">AFTER</text>
+        <text x={ox + cw + 22} y={scale(after[after.length - 1]) + 10} fill="#fff" opacity="0.9" fontSize="11" fontFamily="Inter" fontWeight="600">−95%</text>
       </g>
 
       {/* x-axis labels */}
@@ -273,7 +273,7 @@ function SvgPortal() {
           fill="currentColor"
           opacity="0.55"
           fontSize="10"
-          fontFamily="JetBrains Mono"
+          fontFamily="Inter"
           textAnchor="middle"
         >
           {t}
@@ -289,7 +289,7 @@ function SvgCron() {
   return (
     <svg viewBox="0 0 560 340" className="w-full h-auto" role="img" aria-label="Cron batch export schedule">
       {/* header label */}
-      <text x={30} y={34} fill="#6EF76E" fontSize="11" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={30} y={34} fill="#6EF76E" fontSize="11" fontFamily="Inter" letterSpacing="2">
         CRON · 03:00 · OFF-PEAK
       </text>
       <DrawnPath d="M30 48 H530" stroke="rgba(255,255,255,0.12)" strokeWidth={1} />
@@ -298,7 +298,7 @@ function SvgCron() {
         const y = 80 + i * 34;
         return (
           <g key={d}>
-            <text x={30} y={y + 10} fill="currentColor" opacity="0.55" fontSize="11" fontFamily="JetBrains Mono" letterSpacing="1.5">
+            <text x={30} y={y + 10} fill="currentColor" opacity="0.55" fontSize="11" fontFamily="Inter" letterSpacing="1.5">
               {d}
             </text>
             {/* timeline bar */}
@@ -331,7 +331,7 @@ function SvgCron() {
               viewport={{ once: true, amount: 0.3 }}
               style={{ transformOrigin: `${90 + (i * 10) + 20 + 13}px ${y + 7}px` }}
             />
-            <text x={520} y={y + 10} fill="currentColor" opacity="0.55" fontSize="9" fontFamily="JetBrains Mono" textAnchor="end">
+            <text x={520} y={y + 10} fill="currentColor" opacity="0.55" fontSize="9" fontFamily="Inter" textAnchor="end">
               03:00 · auto
             </text>
           </g>
@@ -362,7 +362,7 @@ function SvgDataGraph() {
       </defs>
 
       {/* LEFT column – legacy stack */}
-      <text x={20} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={20} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="Inter" letterSpacing="2">
         BEFORE · 5 LEGACY SYSTEMS
       </text>
       {legacy.map((n, i) => {
@@ -382,7 +382,7 @@ function SvgDataGraph() {
             <text x={36} y={y + 28} fill="#fff" fontSize="12" fontFamily="Inter" fontWeight="500">
               {n}
             </text>
-            <text x={174} y={y + 28} fill="rgba(224,79,79,0.85)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="end" letterSpacing="1">
+            <text x={174} y={y + 28} fill="rgba(224,79,79,0.85)" fontSize="9" fontFamily="Inter" textAnchor="end" letterSpacing="1">
               {[".mdb", ".sql", "api", "xml", "csv"][i]}
             </text>
           </motion.g>
@@ -405,10 +405,10 @@ function SvgDataGraph() {
         transition={{ delay: 0.5, duration: 0.4 }}
         viewport={{ once: true, amount: 0.25 }}
       />
-      <text x={325} y={78} fill="rgba(63,74,175,0.95)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="middle">
+      <text x={325} y={78} fill="rgba(63,74,175,0.95)" fontSize="10" fontFamily="Inter" letterSpacing="2" textAnchor="middle">
         NORMALIZATION LANE
       </text>
-      <text x={325} y={94} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1" textAnchor="middle">
+      <text x={325} y={94} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="Inter" letterSpacing="1" textAnchor="middle">
         pimcore · mdm
       </text>
 
@@ -462,7 +462,7 @@ function SvgDataGraph() {
           y={y as number}
           fill="rgba(255,255,255,0.85)"
           fontSize="11"
-          fontFamily="JetBrains Mono"
+          fontFamily="Inter"
           textAnchor="middle"
           initial={{ opacity: 0, y: (y as number) + 4 }}
           whileInView={{ opacity: 1, y: y as number }}
@@ -474,7 +474,7 @@ function SvgDataGraph() {
       ))}
 
       {/* RIGHT – one clean entity graph */}
-      <text x={W - 20} y={28} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="end">
+      <text x={W - 20} y={28} fill="#6EF76E" fontSize="10" fontFamily="Inter" letterSpacing="2" textAnchor="end">
         AFTER · ONE CLEAN GRAPH
       </text>
 
@@ -519,7 +519,7 @@ function SvgDataGraph() {
                     viewport={{ once: true, amount: 0.2 }}
                   >
                     <rect x={mx - 18} y={my - 7} width={36} height={14} rx={2} fill="#10132C" stroke="rgba(110,247,110,0.3)" strokeWidth={0.5} />
-                    <text x={mx} y={my + 3} fill="rgba(110,247,110,0.9)" fontSize="8.5" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="0.5">
+                    <text x={mx} y={my + 3} fill="rgba(110,247,110,0.9)" fontSize="8.5" fontFamily="Inter" textAnchor="middle" letterSpacing="0.5">
                       {label}
                     </text>
                   </motion.g>
@@ -538,7 +538,7 @@ function SvgDataGraph() {
                 <circle cx={n.x} cy={n.y} r={30} fill="rgba(110,247,110,0.05)" stroke="url(#dgClean)" strokeWidth={1.5} />
                 <circle cx={n.x} cy={n.y} r={22} fill="rgba(16,19,44,0.55)" stroke="rgba(110,247,110,0.5)" strokeWidth={0.7} />
                 <circle cx={n.x} cy={n.y} r={3} fill="#6EF76E" className="pulse-green" />
-                <text x={n.x} y={n.y + 46} fill="#fff" fontSize="11" fontFamily="JetBrains Mono" fontWeight="700" textAnchor="middle" letterSpacing="0.5">
+                <text x={n.x} y={n.y + 46} fill="#fff" fontSize="11" fontFamily="Inter" fontWeight="700" textAnchor="middle" letterSpacing="0.5">
                   {n.label}
                 </text>
               </motion.g>
@@ -592,7 +592,7 @@ function SvgIdCard() {
       />
 
       {/* ======================================== LEFT PANEL · BEFORE ======================================== */}
-      <text x={leftPad} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={leftPad} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="Inter" letterSpacing="2">
         BEFORE · CSV EMAIL CHAIN
       </text>
 
@@ -631,10 +631,10 @@ function SvgIdCard() {
               <rect x={threadX} y={y} width={3} height={threadH} fill="#E04F4F" opacity={0.75} />
               {/* subject line + status */}
               <circle cx={threadX + 22} cy={y + 22} r={3} fill="#E04F4F" />
-              <text x={threadX + 34} y={y + 25} fill="#fff" fontSize="12" fontFamily="JetBrains Mono">
+              <text x={threadX + 34} y={y + 25} fill="#fff" fontSize="12" fontFamily="Inter">
                 RE: RE: cards-{t.v}.csv
               </text>
-              <text x={threadX + 34} y={y + 42} fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="JetBrains Mono">
+              <text x={threadX + 34} y={y + 42} fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="Inter">
                 {t.meta}
               </text>
               {/* strike-through on subject */}
@@ -662,7 +662,7 @@ function SvgIdCard() {
         y={H - 30}
         fill="rgba(224,79,79,0.75)"
         fontSize="10"
-        fontFamily="JetBrains Mono"
+        fontFamily="Inter"
         letterSpacing="1.5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -673,7 +673,7 @@ function SvgIdCard() {
       </motion.text>
 
       {/* ======================================== RIGHT PANEL · AFTER ======================================== */}
-      <text x={W - 20} y={28} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="end">
+      <text x={W - 20} y={28} fill="#6EF76E" fontSize="10" fontFamily="Inter" letterSpacing="2" textAnchor="end">
         AFTER · IN-PLATFORM BUILDER
       </text>
 
@@ -691,10 +691,10 @@ function SvgIdCard() {
 
         {/* top header row */}
         <rect x={cx + 18} y={cy + 14} width={96} height={14} rx={2} fill="#10132C" />
-        <text x={cx + 24} y={cy + 24} fill="#fff" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5" fontWeight="700">
+        <text x={cx + 24} y={cy + 24} fill="#fff" fontSize="8" fontFamily="Inter" letterSpacing="1.5" fontWeight="700">
           LINCOLN HIGH
         </text>
-        <text x={cx + cw - 18} y={cy + 24} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="JetBrains Mono" textAnchor="end" letterSpacing="1.5">
+        <text x={cx + cw - 18} y={cy + 24} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="Inter" textAnchor="end" letterSpacing="1.5">
           2026 / GRADE 10
         </text>
 
@@ -734,10 +734,10 @@ function SvgIdCard() {
           ["EXPIRES", "12 / 2026"],
         ].map(([k, v], i) => (
           <g key={i}>
-            <text x={cx + 114} y={cy + 98 + i * 14} fill="rgba(16,19,44,0.45)" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5">
+            <text x={cx + 114} y={cy + 98 + i * 14} fill="rgba(16,19,44,0.45)" fontSize="8" fontFamily="Inter" letterSpacing="1.5">
               {k}
             </text>
-            <text x={cx + 176} y={cy + 98 + i * 14} fill="#10132C" fontSize="10" fontFamily="JetBrains Mono">
+            <text x={cx + 176} y={cy + 98 + i * 14} fill="#10132C" fontSize="10" fontFamily="Inter">
               {v}
             </text>
           </g>
@@ -757,7 +757,7 @@ function SvgIdCard() {
             />
           ))}
         </g>
-        <text x={cx + cw - 18} y={cy + ch - 8} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="JetBrains Mono" textAnchor="end" letterSpacing="1">
+        <text x={cx + cw - 18} y={cy + ch - 8} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="Inter" textAnchor="end" letterSpacing="1">
           v1 · LOCKED
         </text>
       </motion.g>
@@ -809,7 +809,7 @@ function SvgIdCard() {
                   <text x={x + 20} y={stripY + 19} fill="#fff" fontSize="11" fontFamily="Inter" fontWeight="600">
                     {s.label}
                   </text>
-                  <text x={x + 10} y={stripY + 36} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="JetBrains Mono">
+                  <text x={x + 10} y={stripY + 36} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="Inter">
                     {s.meta}
                   </text>
                 </motion.g>
@@ -865,7 +865,7 @@ function SvgSSO() {
         </radialGradient>
       </defs>
 
-      <text x={20} y={26} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={20} y={26} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Inter" letterSpacing="2">
         IDENTITY PROVIDERS
       </text>
 
@@ -922,7 +922,7 @@ function SvgSSO() {
                 y={y + 45}
                 fill={p.color}
                 fontSize="15"
-                fontFamily="JetBrains Mono"
+                fontFamily="Inter"
                 fontWeight="700"
                 textAnchor="middle"
                 letterSpacing="0.5"
@@ -947,7 +947,7 @@ function SvgSSO() {
               y={y + 45}
               fill={p.color}
               fontSize="9"
-              fontFamily="JetBrains Mono"
+              fontFamily="Inter"
               letterSpacing="1.5"
             >
               {p.sub.toUpperCase()}
@@ -1072,10 +1072,10 @@ function SvgSSO() {
         />
         <circle cx={hx} cy={hy + 6} r={1.8} fill="#6EF76E" />
         {/* label */}
-        <text x={hx} y={hy + hubR + 22} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="middle" fontWeight="700">
+        <text x={hx} y={hy + hubR + 22} fill="#6EF76E" fontSize="10" fontFamily="Inter" letterSpacing="2" textAnchor="middle" fontWeight="700">
           AUDIT · SYSTEM LEVEL
         </text>
-        <text x={hx} y={hy + hubR + 38} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="1">
+        <text x={hx} y={hy + hubR + 38} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="Inter" textAnchor="middle" letterSpacing="1">
           every login · every action
         </text>
       </motion.g>
@@ -1099,15 +1099,15 @@ function SvgSSO() {
       />
 
       {/* LOG stream */}
-      <text x={500} y={28} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={500} y={28} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Inter" letterSpacing="2">
         LOG · LIVE
       </text>
       {/* log card bg */}
       <rect x={500} y={42} width={200} height={348} rx={3} fill="rgba(230,231,239,0.025)" stroke="rgba(230,231,239,0.1)" strokeWidth={1} />
 
       {/* static table header */}
-      <text x={512} y={62} fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1.5">TIME</text>
-      <text x={578} y={62} fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1.5">EVENT</text>
+      <text x={512} y={62} fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter" letterSpacing="1.5">TIME</text>
+      <text x={578} y={62} fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter" letterSpacing="1.5">EVENT</text>
       <line x1={508} x2={692} y1={70} y2={70} stroke="rgba(230,231,239,0.1)" strokeWidth={1} />
 
       {logs.map(([t, ev, meta, status], i) => {
@@ -1121,11 +1121,11 @@ function SvgSSO() {
             viewport={{ once: true, amount: 0.25 }}
           >
             <rect x={508} y={y - 8} width={184} height={40} fill={i === 0 ? "rgba(110,247,110,0.05)" : "transparent"} />
-            <text x={512} y={y + 6} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="JetBrains Mono">{t}</text>
+            <text x={512} y={y + 6} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Inter">{t}</text>
             <rect x={570} y={y - 6} width={2} height={14} fill="#6EF76E" opacity={0.7} />
-            <text x={578} y={y + 6} fill="#fff" fontSize="11" fontFamily="JetBrains Mono" fontWeight="500">{ev}</text>
-            <text x={578} y={y + 22} fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="JetBrains Mono">{meta}</text>
-            <text x={686} y={y + 6} fill="#6EF76E" fontSize="9" fontFamily="JetBrains Mono" textAnchor="end" fontWeight="700" letterSpacing="1">{status}</text>
+            <text x={578} y={y + 6} fill="#fff" fontSize="11" fontFamily="Inter" fontWeight="500">{ev}</text>
+            <text x={578} y={y + 22} fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="Inter">{meta}</text>
+            <text x={686} y={y + 6} fill="#6EF76E" fontSize="9" fontFamily="Inter" textAnchor="end" fontWeight="700" letterSpacing="1">{status}</text>
           </motion.g>
         );
       })}
@@ -1139,7 +1139,7 @@ function SvgSSO() {
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 2, repeat: Infinity }}
       />
-      <text x={678} y={58} fill="rgba(110,247,110,0.85)" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5" textAnchor="end" fontWeight="700">LIVE</text>
+      <text x={678} y={58} fill="rgba(110,247,110,0.85)" fontSize="8" fontFamily="Inter" letterSpacing="1.5" textAnchor="end" fontWeight="700">LIVE</text>
     </svg>
   );
 }
@@ -1149,7 +1149,7 @@ function SvgIntegration() {
   return (
     <svg viewBox="0 0 560 340" className="w-full h-auto" role="img" aria-label="Legacy integration layer">
       {/* left: legacy */}
-      <text x={20} y={30} fill="#E04F4F" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={20} y={30} fill="#E04F4F" fontSize="10" fontFamily="Inter" letterSpacing="2">
         LEGACY · STAYS LIVE
       </text>
       {["GlobalJade", "ImageDB", "The Hub", "CRM", "eWay"].map((n, i) => {
@@ -1189,7 +1189,7 @@ function SvgIntegration() {
       >
         <rect x={230} y={94} width={120} height={180} rx={3} fill="rgba(110,247,110,0.04)" stroke="#6EF76E" strokeWidth={1.5} />
         <text x={290} y={120} fill="#fff" fontSize="12" fontWeight="700" fontFamily="Golos Text" textAnchor="middle">MIDDLEWARE</text>
-        <text x={290} y={136} fill="#6EF76E" fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1.5" textAnchor="middle">ADAPTER · .NET</text>
+        <text x={290} y={136} fill="#6EF76E" fontSize="9" fontFamily="Inter" letterSpacing="1.5" textAnchor="middle">ADAPTER · .NET</text>
         <DrawnPath d="M246 148 H334" stroke="rgba(255,255,255,0.08)" strokeWidth={1} duration={0.6} delay={1.2} />
         {["REST", "GraphQL", "SOAP", "webhooks", "Kafka/SQS", "SFTP", "EDI"].map((p, i) => (
           <motion.g
@@ -1200,7 +1200,7 @@ function SvgIntegration() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <circle cx={252} cy={162 + i * 14} r={2} fill="#6EF76E" opacity={0.5 + i * 0.06} />
-            <text x={260} y={166 + i * 14} fill="#fff" opacity="0.85" fontSize="10" fontFamily="JetBrains Mono">{p}</text>
+            <text x={260} y={166 + i * 14} fill="#fff" opacity="0.85" fontSize="10" fontFamily="Inter">{p}</text>
           </motion.g>
         ))}
       </motion.g>
@@ -1219,7 +1219,7 @@ function SvgIntegration() {
       ))}
 
       {/* right: new */}
-      <text x={430} y={30} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={430} y={30} fill="#6EF76E" fontSize="10" fontFamily="Inter" letterSpacing="2">
         NEW · PRODUCTION
       </text>
       {["Data model", "Commerce", "Portal", "Batch Engine", "ID Builder"].map((n, i) => {

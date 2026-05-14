@@ -153,7 +153,7 @@ export function Header() {
                   <span
                     className="inline-flex items-center gap-3 text-white/60"
                     style={{
-                      fontFamily: "var(--font-jetbrains), 'JetBrains Mono', monospace",
+                      fontFamily: "var(--font-inter), Inter, sans-serif",
                       fontSize: "11px",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
@@ -188,7 +188,7 @@ export function Header() {
                         <span
                           className="text-white/40 group-hover:text-[var(--sw-mint)]/80 transition-colors tabular-nums"
                           style={{
-                            fontFamily: "var(--font-jetbrains), 'JetBrains Mono', monospace",
+                            fontFamily: "var(--font-inter), Inter, sans-serif",
                             fontSize: "12px",
                             fontWeight: 500,
                             letterSpacing: "0.1em",

@@ -153,9 +153,9 @@ export function Hero() {
               </div>
 
               <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch]">
-                Adobe Commerce support at{" "}
+                Adobe Commerce support,{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  rates that change the math
+                  recosted
                 </span>
                 .
               </h1>

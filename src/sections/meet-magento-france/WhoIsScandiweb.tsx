@@ -6,7 +6,7 @@ import { assetUrl } from "@/lib/assets";
 
 const badges = [
   {
-    src: "/events/meet-magento-france/badges/badge-mmnyc25.svg",
+    src: "/events/meet-magento-france/badges/badge-mmnyc25.png",
     label: "Co-organizer · Meet Magento NYC 2025",
   },
   {
@@ -62,12 +62,14 @@ export function WhoIsScandiweb() {
           {badges.map((b, i) => (
             <Reveal key={i} delay={i * 0.07}>
               <div className="bg-white rounded-[4px] p-4 md:p-5 h-full flex flex-col items-center text-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={assetUrl(b.src)}
-                  alt={b.label}
-                  className="h-16 md:h-20 w-auto mb-3"
-                />
+                <div className="h-16 md:h-20 w-full flex items-center justify-center mb-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl(b.src)}
+                    alt={b.label}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
                 <span className="text-[var(--sw-black)]/75 text-[12px] md:text-[13px] leading-tight">
                   {b.label}
                 </span>

@@ -51,8 +51,8 @@ export function WhoIsScandiweb() {
               We&apos;ve shipped Adobe Commerce, Magento Open Source and Hyvä
               stores for brands like Jaguar Land Rover, The New York Times,
               Samsung, Toyota and Reuters. Last year, in 2025, we co-organized
-              Meet Magento NYC and Meet Magento Canada. If it runs on Magento,
-              chances are we&apos;ve built one like it before.
+              Meet Magento NYC and Meet Magento Canada. Every Magento build is
+              its own puzzle &ndash; we&apos;re built to solve them.
             </p>
           </Reveal>
         </div>

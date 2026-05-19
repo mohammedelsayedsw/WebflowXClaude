@@ -28,7 +28,7 @@ export function WhatsMeetMagento() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-[var(--sw-black)]/80 max-w-[62ch] leading-relaxed">
+            <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 max-w-[58ch] leading-relaxed">
               Meet Magento France is the annual French gathering of the Adobe
               Commerce, Magento and Hyvä community &ndash; one day of talks,
               demos and corridor conversations with merchants, agencies,
@@ -38,7 +38,7 @@ export function WhatsMeetMagento() {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-5 text-[15px] md:text-[17px] text-[var(--sw-black)]/65 max-w-[62ch] leading-relaxed">
+            <p className="mt-5 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 max-w-[58ch] leading-relaxed">
               If you run or build on Magento, this is where you find out
               what&apos;s actually working right now &ndash; straight from the
               merchants and agencies doing the work.

@@ -94,7 +94,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[2fr_1fr] items-start">
             {/* LEFT · copy */}
             <div>
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
@@ -103,8 +103,9 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[80px] leading-[1.04] tracking-[-0.015em]">
-                Going to Meet Magento France?{" "}
+              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[72px] leading-[1.04] tracking-[-0.015em]">
+                Going to Meet Magento<br />
+                France?{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
                   Let&apos;s talk.
                 </span>

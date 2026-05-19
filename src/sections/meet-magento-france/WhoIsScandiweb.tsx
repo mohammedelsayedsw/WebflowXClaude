@@ -35,7 +35,7 @@ export function WhoIsScandiweb() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="max-w-[64ch] mb-14 md:mb-20">
+        <div className="mb-14 md:mb-20">
           <Reveal>
             <SectionLabel index="02">The agency</SectionLabel>
           </Reveal>
@@ -46,7 +46,7 @@ export function WhoIsScandiweb() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-6 text-[16px] md:text-[18px] text-white/85 max-w-[62ch] leading-relaxed">
+            <p className="mt-6 text-[15px] md:text-[17px] text-white/75 max-w-[62ch] leading-relaxed">
               A 500-person eCommerce agency across 33 countries, 23 years in.
               We&apos;ve shipped Adobe Commerce, Magento Open Source and Hyvä
               stores for brands like Jaguar Land Rover, The New York Times,

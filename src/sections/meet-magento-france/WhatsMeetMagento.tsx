@@ -12,7 +12,7 @@ export function WhatsMeetMagento() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
-        <div className="max-w-[64ch] mb-12 md:mb-16">
+        <div className="mb-12 md:mb-16">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]/55">
               <span>01</span>

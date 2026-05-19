@@ -23,7 +23,7 @@ const badges = [
   },
   {
     src: "/events/meet-magento-france/badges/badge-magento-association-gold.png",
-    label: "Magento Association · Gold Member",
+    label: "Magento Association\nGold Member",
   },
 ];
 
@@ -70,7 +70,7 @@ export function WhoIsScandiweb() {
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <span className="text-[var(--sw-black)]/75 text-[12px] md:text-[13px] leading-tight">
+                <span className="text-[var(--sw-black)]/75 text-[12px] md:text-[13px] leading-tight whitespace-pre-line">
                   {b.label}
                 </span>
               </div>

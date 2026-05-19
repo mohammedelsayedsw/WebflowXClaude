@@ -27,8 +27,8 @@ export function SeeYouInParis() {
           <Reveal delay={0.1}>
             <p className="mt-6 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
               Drop Michael a line on LinkedIn before the event &ndash; easier
-              than trying to find each other in the crowd at Les Salons de
-              l&apos;Aveyron.
+              than trying to find each other in the crowd at Meet Magento
+              France 2026.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

@@ -99,7 +99,7 @@ export function Hero() {
             <div>
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                  Event · 25 Jun 2026 · Paris
+                  Meet Magento France · 25 Jun 2026 · Paris
                 </span>
               </div>
 

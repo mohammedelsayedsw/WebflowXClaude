@@ -41,8 +41,8 @@ export function WhoIsScandiweb() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">
-              What is{" "}
-              <span style={{ color: "var(--sw-mint)" }}>scandiweb</span>?
+              <span style={{ color: "var(--sw-mint)" }}>scandiweb</span>{" "}
+              &ndash; leaders in Adobe Commerce &amp; Magento
             </h2>
           </Reveal>
           <Reveal delay={0.15}>

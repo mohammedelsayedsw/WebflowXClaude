@@ -106,14 +106,13 @@ export function Hero() {
               <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[80px] leading-[1.04] tracking-[-0.015em]">
                 Going to Meet Magento France?{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Let&apos;s talk
+                  Let&apos;s talk.
                 </span>
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">
-                Michael will be at the event all day &ndash; grab him for a
-                real conversation about your Adobe Commerce store with someone
-                who&apos;s worked on a few hundred of them.
+                Michael will be there all day. Find him for a chat &ndash;
+                he&apos;s helped hundreds of leading brands grow online.
               </p>
 
               <div className="mt-10 md:mt-12">

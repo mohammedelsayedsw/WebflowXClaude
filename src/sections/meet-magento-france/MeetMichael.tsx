@@ -62,15 +62,54 @@ export function MeetMichael() {
                 the call, and the agency delivering on it.
               </p>
               <p className="mt-5 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                He&apos;ll be at the event all day, free to grab coffee with
-                merchants, agencies and partners. Topics he&apos;s there to
-                dig into: Adobe Commerce, Hyvä migrations, B2B on Magento,
-                and how AI is actually showing up in serious eCommerce stacks
-                &ndash; not the demoware version.
+                He&apos;ll be at the event all day. Bring him the kind of
+                problem you&apos;d usually hire a senior consultant to solve
+                &ndash; things like:
               </p>
-              <p className="mt-5 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                If you find him in Paris, bring one real problem you&apos;re
-                working on.
+
+              <ul className="mt-6 space-y-3 max-w-[62ch]">
+                {[
+                  {
+                    topic: "Replatforming and Magento migrations",
+                    body: "off Magento 1, SAP Commerce, Salesforce Commerce Cloud, Shopify Plus, custom stacks",
+                  },
+                  {
+                    topic: "B2B commerce on Magento",
+                    body: "complex pricing, customer-specific catalogs, account hierarchies, quoting, portals",
+                  },
+                  {
+                    topic: "PIM, product data and inventory at scale",
+                    body: "clean catalogs, multi-warehouse stock, syndication across channels",
+                  },
+                  {
+                    topic: "Omnichannel and order management",
+                    body: "store, warehouse, POS and online tied into one journey",
+                  },
+                  {
+                    topic: "AI in commerce that actually ships",
+                    body: "merchandising, search, content ops, internal tooling – beyond the demoware",
+                  },
+                ].map((t, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-[15px] md:text-[17px] leading-relaxed"
+                  >
+                    <span className="mt-[10px] inline-block h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)] shrink-0" />
+                    <span>
+                      <span className="font-medium text-[var(--sw-black)]">
+                        {t.topic}
+                      </span>
+                      <span className="text-[var(--sw-black)]/70">
+                        {" "}
+                        &ndash; {t.body}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-6 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
+                Find him at the event and talk it through.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnLight } from "@/components/primitives/buttonStyles";
 import { assetUrl } from "@/lib/assets";
@@ -45,10 +45,6 @@ export function MeetMichael() {
                 </div>
                 <div className="text-[var(--sw-black)]/65 text-[14px] mt-1 leading-snug">
                   VP of North America &amp; B2B at scandiweb
-                </div>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-[var(--sw-blue)] text-[13px] leading-snug">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" />
-                  Attending Meet Magento France · 25 June, Paris
                 </div>
               </div>
             </div>

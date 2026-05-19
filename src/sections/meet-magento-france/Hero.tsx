@@ -1,8 +1,7 @@
 "use client";
 
-import { Reveal } from "@/components/primitives/Reveal";
+import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { ArrowUpRight, Calendar, MapPin, Handshake } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
@@ -30,6 +29,64 @@ function HeroBg() {
   );
 }
 
+function TrustLogos() {
+  const logos: { src: string; alt: string; h: number }[] = [
+    { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
+    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
+    { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 30 },
+    { src: "/shared/logos/clients/mercedes.svg", alt: "Mercedes-Benz", h: 32 },
+    { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 24 },
+    { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
+    { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
+    { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
+  ];
+  const loop = [...logos, ...logos];
+  return (
+    <div
+      className="relative z-10"
+      style={{
+        background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,0.55) 100%)",
+        borderTop: "1px solid rgba(255,255,255,0.12)",
+      }}
+    >
+      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+          Trusted by 700+ leading brands worldwide
+        </div>
+        <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
+          <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">
+            {loop.map((l, i) => (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                key={i}
+                src={assetUrl(l.src)}
+                alt={i < logos.length ? l.alt : ""}
+                aria-hidden={i >= logos.length}
+                className="w-auto opacity-80 shrink-0"
+                style={{
+                  maxHeight: `${l.h}px`,
+                  height: "auto",
+                  filter: "brightness(0) invert(1)",
+                }}
+              />
+            ))}
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20"
+            style={{ background: "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20"
+            style={{ background: "linear-gradient(270deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)" }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
     <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
@@ -40,41 +97,34 @@ export function Hero() {
           <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
             {/* LEFT · copy */}
             <div>
-              {/* Pill eyebrow */}
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                   Event · 25 Jun 2026 · Paris
                 </span>
               </div>
 
-              {/* H1 */}
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[14ch]">
-                We&apos;re at Meet Magento{" "}
-                <span style={{ color: "var(--sw-mint)" }}>France 2026</span>
+              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[80px] leading-[1.04] tracking-[-0.015em] max-w-[18ch]">
+                Going to Meet Magento France?{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  Let&apos;s talk.
+                </span>
               </h1>
 
-              {/* Subhead */}
-              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                We&apos;re attending. Grab a slot and let&apos;s talk Magento,
-                headless, and where eCommerce is heading next.
+              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">
+                Michael will be at the event all day &ndash; grab him for a
+                real conversation about your Adobe Commerce store with someone
+                who&apos;s worked on a few hundred of them.
               </p>
 
-              {/* CTAs */}
-              <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+              <div className="mt-10 md:mt-12">
                 <a
-                  href="https://calendly.com/scandi-bd/30min"
+                  href="https://www.linkedin.com/in/michaelbliah/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={btnPrimary}
                 >
-                  Book a call with our team
+                  Connect with Michael on LinkedIn
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#meet-michael"
-                  className="inline-flex items-center gap-2 text-white/70 hover:text-white text-[14px] underline underline-offset-4 px-4 py-3"
-                >
-                  Meet Michael
                 </a>
               </div>
             </div>
@@ -91,37 +141,10 @@ export function Hero() {
               </div>
             </div>
           </div>
-
-          {/* Event details strip */}
-          <div className="mt-14 md:mt-20 pt-10 border-t border-white/10">
-            <Reveal>
-              <div className="grid sm:grid-cols-3 gap-8 max-w-[760px]">
-                <div className="flex items-start gap-3">
-                  <Calendar className="h-5 w-5 text-[var(--sw-mint)] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="label-code text-white/55">When</div>
-                    <div className="text-white text-[15px] mt-1">25 June 2026</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-[var(--sw-mint)] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="label-code text-white/55">Where</div>
-                    <div className="text-white text-[15px] mt-1">Paris</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Handshake className="h-5 w-5 text-[var(--sw-mint)] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="label-code text-white/55">scandiweb</div>
-                    <div className="text-white text-[15px] mt-1">Attending</div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
         </div>
       </div>
+
+      <TrustLogos />
     </section>
   );
 }

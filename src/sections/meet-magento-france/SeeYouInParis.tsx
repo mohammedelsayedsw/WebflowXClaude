@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
 
+
 export function SeeYouInParis() {
   return (
     <section
@@ -26,42 +27,30 @@ export function SeeYouInParis() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              Drop Michael a line on LinkedIn before the event &ndash; easier
-              than trying to find each other in the crowd at Meet Magento
-              France 2026.
+              Book a meeting with the scandiweb team before the event
+              &ndash; easier than trying to find us in the crowd.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="mt-10 flex flex-col items-center gap-4">
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="https://www.linkedin.com/in/michaelbliah/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={btnPrimary}
-                >
-                  Connect with Michael on LinkedIn
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://scandiweb.com/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={btnSecondary}
-                >
-                  Have a question? Contact us
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-              <p className="text-white/60 text-[14px]">
-                Or email Michael directly:{" "}
-                <a
-                  href="mailto:michael.bliah@scandiweb.com"
-                  className="text-white/85 hover:text-white underline underline-offset-4"
-                >
-                  michael.bliah@scandiweb.com
-                </a>
-              </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://calendly.com/scandi-bd/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={btnPrimary}
+              >
+                Book a meeting
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="https://scandiweb.com/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={btnSecondary}
+              >
+                Have questions? Contact us
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </Reveal>
         </div>

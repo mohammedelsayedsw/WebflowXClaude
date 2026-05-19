@@ -107,14 +107,14 @@ export function Hero() {
                 <span style={{ color: "var(--sw-mint)" }}>
                   #1 Adobe Commerce agency
                 </span>{" "}
-                at Meet Magento France 2026.
+                at Meet Magento France 2026
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">
-                894+ Adobe Commerce certifications. Hyvä Platinum partner.
-                Co-organizers of Meet Magento NYC and Canada. We&apos;ll be
-                at Meet Magento France too &ndash; come find us in Paris on
-                June 25.
+                894+ Adobe Commerce certifications. Hyvä Platinum partner.{" "}
+                <span className="whitespace-nowrap">Co-organizers</span> of
+                Meet Magento NYC and Canada. We&apos;ll be at Meet Magento
+                France too &ndash; come find us in Paris on June 25.
               </p>
 
               <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">

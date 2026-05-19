@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Linkedin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnLight } from "@/components/primitives/buttonStyles";
 import { assetUrl } from "@/lib/assets";
@@ -14,9 +14,9 @@ export function MeetMichael() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
         <Reveal>
-          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch] mb-14 md:mb-20">
+          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mb-14 md:mb-20">
             Meet{" "}
-            <span className="text-[var(--sw-blue)]">Michael</span>.
+            <span className="text-[var(--sw-blue)]">Michael</span>
           </h2>
         </Reveal>
 
@@ -39,17 +39,6 @@ export function MeetMichael() {
                 <div className="text-[var(--sw-black)]/65 text-[14px] mt-1 leading-snug">
                   VP of North America &amp; B2B at scandiweb
                 </div>
-                <a
-                  href="https://www.linkedin.com/in/michaelbliah/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Michael Bliah on LinkedIn"
-                  className="inline-flex items-center gap-1.5 mt-3 text-[var(--sw-blue)] hover:text-[var(--sw-black)] text-[13px] underline underline-offset-4"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  View on LinkedIn
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
               </div>
             </div>
           </Reveal>

@@ -19,9 +19,9 @@ export function SeeYouInParis() {
       <div className="wrap relative">
         <div className="max-w-[64ch] mx-auto text-center">
           <Reveal>
-            <h2 className="font-head text-white text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] max-w-[18ch] mx-auto">
+            <h2 className="font-head text-white text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] mx-auto">
               See you in{" "}
-              <span style={{ color: "var(--sw-mint)" }}>Paris</span>.
+              <span style={{ color: "var(--sw-mint)" }}>Paris</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

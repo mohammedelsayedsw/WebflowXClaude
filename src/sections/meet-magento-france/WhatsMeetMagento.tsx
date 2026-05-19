@@ -18,7 +18,7 @@ export function WhatsMeetMagento() {
             <SectionLabel index="01">About the event</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[20ch]">
+            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">
               What&apos;s{" "}
               <span className="text-[var(--sw-blue)]">Meet Magento</span>{" "}
               France?

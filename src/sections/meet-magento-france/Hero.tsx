@@ -34,9 +34,8 @@ export function Hero() {
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-white/80 text-[15px] md:text-[17px] leading-relaxed mt-6 max-w-[52ch]">
-                  We&apos;re attending &ndash; not sponsoring. Grab a slot and
-                  let&apos;s talk Magento, headless, and where eCommerce is
-                  heading next.
+                  We&apos;re attending. Grab a slot and let&apos;s talk
+                  Magento, headless, and where eCommerce is heading next.
                 </p>
               </Reveal>
               <Reveal delay={0.3}>
@@ -92,9 +91,7 @@ export function Hero() {
                 <Handshake className="h-5 w-5 text-[var(--sw-mint)] mt-0.5 shrink-0" />
                 <div>
                   <div className="label-code text-white/50">scandiweb</div>
-                  <div className="text-white text-[15px] mt-1">
-                    Attending, not sponsoring
-                  </div>
+                  <div className="text-white text-[15px] mt-1">Attending</div>
                 </div>
               </div>
             </div>

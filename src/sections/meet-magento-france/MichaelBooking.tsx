@@ -76,10 +76,10 @@ export function MichaelBooking() {
               <p className="text-white/50 text-[13px] mt-4">
                 Or email{" "}
                 <a
-                  href="mailto:michael@scandiweb.com"
+                  href="mailto:michael.bliah@scandiweb.com"
                   className="text-white/75 hover:text-white underline underline-offset-4"
                 >
-                  michael@scandiweb.com
+                  michael.bliah@scandiweb.com
                 </a>
               </p>
             </div>

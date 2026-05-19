@@ -111,8 +111,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">
-                Michael will be there all day. Find him for a chat &ndash;
-                he&apos;s helped hundreds of leading brands grow online.
+                Michael&apos;s at the event all day &ndash; the senior
+                eCommerce take that usually costs six figures, in Paris over
+                coffee, free if you find him. Bring your hardest store
+                problem and walk away with a fresh take.
               </p>
 
               <div className="mt-10 md:mt-12">

@@ -14,7 +14,7 @@ const badges = [
     label: "Co-organizer · Meet Magento Canada 2025",
   },
   {
-    src: "/events/meet-magento-france/badges/badge-adobe-certified.svg",
+    src: "/events/meet-magento-france/badges/badge-adobe-certified.png",
     label: "894+ Adobe Commerce certifications · #1 globally",
   },
   {
@@ -40,7 +40,7 @@ export function WhoIsScandiweb() {
             <SectionLabel index="02">The agency</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[22ch]">
+            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">
               Quick: who is{" "}
               <span style={{ color: "var(--sw-mint)" }}>scandiweb</span>?
             </h2>

@@ -68,14 +68,14 @@ export function FAQ() {
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <FaqSchema />
       <div className="wrap relative">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20">
-          <Reveal>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
-              Frequently{" "}
-              <span style={{ color: "var(--sw-mint)" }}>asked</span>.
-            </h2>
-          </Reveal>
+        <Reveal>
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mb-14 md:mb-20">
+            Frequently{" "}
+            <span style={{ color: "var(--sw-mint)" }}>asked</span>
+          </h2>
+        </Reveal>
 
+        <div className="max-w-[80ch]">
           <div>
             {faqs.map((it, i) => (
               <Reveal key={i} delay={i * 0.04}>

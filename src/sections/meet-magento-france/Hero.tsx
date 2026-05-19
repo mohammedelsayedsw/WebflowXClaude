@@ -103,10 +103,10 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[80px] leading-[1.04] tracking-[-0.015em] max-w-[18ch]">
+              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[80px] leading-[1.04] tracking-[-0.015em]">
                 Going to Meet Magento France?{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Let&apos;s talk.
+                  Let&apos;s talk
                 </span>
               </h1>
 

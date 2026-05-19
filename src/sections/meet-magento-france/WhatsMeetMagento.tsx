@@ -2,7 +2,6 @@
 
 import { ArrowUpRight, Calendar, MapPin } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 import { btnLight } from "@/components/primitives/buttonStyles";
 
 export function WhatsMeetMagento() {
@@ -15,7 +14,11 @@ export function WhatsMeetMagento() {
       <div className="wrap relative">
         <div className="max-w-[64ch] mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="01">About the event</SectionLabel>
+            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]/55">
+              <span>01</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+              <span>About the event</span>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">

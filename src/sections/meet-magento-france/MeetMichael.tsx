@@ -14,17 +14,24 @@ export function MeetMichael() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
         <Reveal>
+          <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]/55">
+            <span>03</span>
+            <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+            <span>scandiweb in Paris</span>
+          </div>
+        </Reveal>
+        <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mb-14 md:mb-20">
             Meet{" "}
             <span className="text-[var(--sw-blue)]">Michael</span>
           </h2>
         </Reveal>
 
-        <div className="grid lg:grid-cols-[260px_1fr] gap-10 md:gap-14 items-start">
-          {/* Left column: photo + name + linkedin */}
+        <div className="grid lg:grid-cols-[280px_1fr] gap-10 md:gap-14 items-start">
+          {/* Left column: photo + name */}
           <Reveal delay={0.1}>
             <div>
-              <div className="aspect-square w-full max-w-[260px] rounded-[4px] overflow-hidden border border-[var(--sw-black)]/10">
+              <div className="aspect-[2/3] w-full max-w-[280px] rounded-[4px] overflow-hidden border border-[var(--sw-black)]/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={assetUrl("/events/meet-magento-france/assets/michael-bliah.jpg")}
@@ -46,7 +53,7 @@ export function MeetMichael() {
           {/* Right column: bio + CTA + email */}
           <Reveal delay={0.15}>
             <div>
-              <p className="text-[var(--sw-black)] text-[17px] md:text-[19px] leading-relaxed max-w-[62ch]">
+              <p className="text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
                 Michael leads scandiweb&apos;s North America and B2B practice.
                 He&apos;s spent 25+ years in digital and eCommerce &ndash; VP
                 of eCommerce &amp; CRM at Groupe Dynamite, senior roles at
@@ -54,14 +61,14 @@ export function MeetMichael() {
                 he&apos;s worked both sides of the table: the merchant making
                 the call, and the agency delivering on it.
               </p>
-              <p className="mt-5 text-[var(--sw-black)]/85 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
+              <p className="mt-5 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
                 He&apos;ll be at the event all day, free to grab coffee with
                 merchants, agencies and partners. Topics he&apos;s there to
                 dig into: Adobe Commerce, Hyvä migrations, B2B on Magento,
                 and how AI is actually showing up in serious eCommerce stacks
                 &ndash; not the demoware version.
               </p>
-              <p className="mt-5 text-[var(--sw-black)]/85 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
+              <p className="mt-5 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
                 If you find him in Paris, bring one real problem you&apos;re
                 working on.
               </p>

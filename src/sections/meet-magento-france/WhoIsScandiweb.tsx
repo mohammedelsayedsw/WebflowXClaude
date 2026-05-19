@@ -37,7 +37,7 @@ export function WhoIsScandiweb() {
       <div className="wrap relative">
         <div className="mb-14 md:mb-20">
           <Reveal>
-            <SectionLabel index="02">The agency</SectionLabel>
+            <SectionLabel index="2">The agency</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">

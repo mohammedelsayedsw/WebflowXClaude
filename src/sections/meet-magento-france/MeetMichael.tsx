@@ -15,7 +15,7 @@ export function MeetMichael() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]/55">
-            <span>03</span>
+            <span>3</span>
             <span className="h-px w-6 bg-[var(--sw-black)]/20" />
             <span>scandiweb in Paris</span>
           </div>

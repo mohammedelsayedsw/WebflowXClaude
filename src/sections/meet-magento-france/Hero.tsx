@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
 import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
@@ -117,7 +117,7 @@ export function Hero() {
                 problem and walk away with a fresh take.
               </p>
 
-              <div className="mt-10 md:mt-12">
+              <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
                 <a
                   href="https://www.linkedin.com/in/michaelbliah/"
                   target="_blank"
@@ -125,6 +125,15 @@ export function Hero() {
                   className={btnPrimary}
                 >
                   Connect with Michael on LinkedIn
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://scandiweb.com/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnSecondary}
+                >
+                  Have a question? Contact us
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>

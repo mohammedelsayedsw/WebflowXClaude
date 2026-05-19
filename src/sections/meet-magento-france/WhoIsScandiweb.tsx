@@ -10,7 +10,7 @@ const badges = [
     label: "Co-organizer · Meet Magento NYC 2025",
   },
   {
-    src: "/events/meet-magento-france/badges/badge-mmca25.svg",
+    src: "/events/meet-magento-france/badges/badge-mmca25.png",
     label: "Co-organizer · Meet Magento Canada 2025",
   },
   {

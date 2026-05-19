@@ -31,12 +31,11 @@ function HeroBg() {
 
 function TrustLogos() {
   const logos: { src: string; alt: string; h: number }[] = [
-    { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
-    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
     { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 30 },
-    { src: "/shared/logos/clients/mercedes.svg", alt: "Mercedes-Benz", h: 32 },
     { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 24 },
     { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
+    { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
+    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
     { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
     { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
   ];
@@ -89,7 +88,7 @@ function TrustLogos() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden min-h-screen flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">

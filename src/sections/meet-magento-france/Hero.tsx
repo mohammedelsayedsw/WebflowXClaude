@@ -103,11 +103,12 @@ export function Hero() {
               </div>
 
               <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[52px] lg:text-[56px] leading-[1.05] tracking-[-0.015em]">
-                Meet the{" "}
+                Meet the<br />
                 <span style={{ color: "var(--sw-mint)" }}>
                   #1 Adobe Commerce agency
                 </span>{" "}
-                at Meet Magento France 2026
+                at<br />
+                Meet Magento France 2026
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">

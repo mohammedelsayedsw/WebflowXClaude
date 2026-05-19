@@ -18,11 +18,11 @@ const badges = [
     label: "894+ Adobe Commerce certifications · #1 globally",
   },
   {
-    src: "/events/meet-magento-france/badges/badge-hyva-platinum.svg",
+    src: "/events/meet-magento-france/badges/badge-hyva-platinum.png",
     label: "Hyvä Platinum Partner",
   },
   {
-    src: "/events/meet-magento-france/badges/badge-magento-association-gold.svg",
+    src: "/events/meet-magento-france/badges/badge-magento-association-gold.png",
     label: "Magento Association · Gold Member",
   },
 ];

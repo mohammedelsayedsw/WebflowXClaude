@@ -102,29 +102,29 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[64px] lg:text-[72px] leading-[1.04] tracking-[-0.015em]">
-                Going to Meet Magento<br />
-                France?{" "}
+              <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[52px] lg:text-[56px] leading-[1.05] tracking-[-0.015em]">
+                Meet the{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Let&apos;s talk.
-                </span>
+                  #1 Adobe Commerce agency
+                </span>{" "}
+                at Meet Magento France 2026.
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[56ch] leading-relaxed">
-                Michael&apos;s at the event all day. Get the kind of senior
-                eCommerce expert advice you&apos;d normally pay six figures
-                for &ndash; free, over coffee in Paris. Bring your hardest
-                store problem and walk away with a fresh take.
+                894+ Adobe Commerce certifications. Hyvä Platinum partner.
+                Co-organizers of Meet Magento NYC and Canada. We&apos;ll be
+                at Meet Magento France too &ndash; come find us in Paris on
+                June 25.
               </p>
 
               <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
                 <a
-                  href="https://www.linkedin.com/in/michaelbliah/"
+                  href="https://calendly.com/scandi-bd/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={btnPrimary}
                 >
-                  Connect with Michael on LinkedIn
+                  Book a meeting
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <a
@@ -133,7 +133,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className={btnSecondary}
                 >
-                  Have a question? Contact us
+                  Have questions? Contact us
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>

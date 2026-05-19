@@ -18,7 +18,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Will scandiweb be at Meet Magento France 2026?",
-    a: "Yes – Michael Bliah, our VP of North America & B2B, will be at the event all day for informal conversations with merchants, agencies and partners. Connect with him on LinkedIn before the conference if you’d like to meet up in Paris.",
+    a: "Yes – scandiweb is the #1 Adobe Commerce agency in the world, and we’ll be at Meet Magento France in person. Michael Bliah, our VP of North America & B2B, is your point of contact for the day. Book a meeting through our form, or connect with him on LinkedIn ahead of the conference.",
   },
   {
     q: "Who is scandiweb?",

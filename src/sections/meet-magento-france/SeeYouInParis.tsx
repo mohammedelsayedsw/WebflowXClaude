@@ -2,7 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
 
 export function SeeYouInParis() {
   return (
@@ -33,15 +33,26 @@ export function SeeYouInParis() {
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-col items-center gap-4">
-              <a
-                href="https://www.linkedin.com/in/michaelbliah/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={btnPrimary}
-              >
-                Connect with Michael on LinkedIn
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="https://www.linkedin.com/in/michaelbliah/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnPrimary}
+                >
+                  Connect with Michael on LinkedIn
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://scandiweb.com/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnSecondary}
+                >
+                  Have a question? Contact us
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
               <p className="text-white/60 text-[14px]">
                 Or email Michael directly:{" "}
                 <a

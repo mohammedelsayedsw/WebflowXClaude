@@ -15,7 +15,7 @@ export function WhatsMeetMagento() {
         <div className="mb-12 md:mb-16">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]/55">
-              <span>01</span>
+              <span>1</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>About the event</span>
             </div>

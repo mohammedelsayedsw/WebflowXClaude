@@ -41,18 +41,19 @@ export function WhoIsScandiweb() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6">
-              Quick: who is{" "}
+              What is{" "}
               <span style={{ color: "var(--sw-mint)" }}>scandiweb</span>?
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-6 text-[15px] md:text-[17px] text-white/75 max-w-[62ch] leading-relaxed">
-              A 500-person eCommerce agency across 33 countries, 23 years in.
-              We&apos;ve shipped Adobe Commerce, Magento Open Source and Hyvä
-              stores for brands like Jaguar Land Rover, The New York Times,
-              Samsung, Toyota and Reuters. Last year, in 2025, we co-organized
-              Meet Magento NYC and Meet Magento Canada. Every Magento build is
-              its own puzzle &ndash; we&apos;re built to solve them.
+              An eCommerce agency 23 years in, working across 33 countries.
+              We&apos;ve shipped 2,100+ Magento projects for 700+ clients
+              &ndash; Adobe Commerce, Magento Open Source and Hyvä stores for
+              brands like Jaguar Land Rover, The New York Times, Samsung,
+              Toyota and Reuters. Last year, in 2025, we co-organized Meet
+              Magento NYC and Meet Magento Canada. Every Magento build is its
+              own puzzle &ndash; we&apos;re built to solve them.
             </p>
           </Reveal>
         </div>

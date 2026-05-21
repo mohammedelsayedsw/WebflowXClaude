@@ -287,7 +287,7 @@ export function Outcomes() {
             ["Structures", "Family hierarchies · configurable products"],
             ["Exceptions", "Workspace for rejected rows · merchandiser review"],
             ["Promotion", "Draft → review → live · audit log"],
-            ["Anchor", "Ermitazas · 4 years · 165 Jira issues closed"],
+            ["Anchor", "Ermitazas · 4 years · weekly supplier-feed churn"],
           ]}
         />
       ),

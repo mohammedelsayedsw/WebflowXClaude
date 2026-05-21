@@ -9,13 +9,13 @@ export function Problems() {
       n: "1",
       title: "Stock that lies",
       body:
-        "The site says yes. The warehouse bay says no. Central stock, regional stock, store stock, transfer-in-progress – every DIY retailer pretends these reconcile in real time. They do not. Cancellations and refunds carry the cost.",
+        "The site says yes. The warehouse bay says no. Central stock, regional stock, store stock, transfer-in-progress. Every DIY retailer pretends these reconcile in real time. They do not. Cancellations and refunds carry the cost.",
     },
     {
       n: "2",
       title: "Trade and DIY in one cart",
       body:
-        "A builder buying 40 sheets of plasterboard sees the same UX as a homeowner buying one. Tiered pricing, role-based access, account-specific catalogs, bulk PO upload – none of this ships as default in Shopify, Magento, or BigCommerce.",
+        "A builder buying 40 sheets of plasterboard sees the same interface as a homeowner buying one. Tiered pricing, role-based access, account-specific catalogs, bulk purchase orders. None of this ships as default in Shopify, Magento, or BigCommerce.",
     },
     {
       n: "3",
@@ -25,9 +25,9 @@ export function Problems() {
     },
     {
       n: "4",
-      title: "Peak season patched with people",
+      title: "Every sale breaks the site",
       body:
-        "Spring building season. Autumn Black Friday. Traffic five-x overnight. The platform creaks, the ERP queue backs up, customer service answers the same questions for two weeks. Every year. Built-in.",
+        "A campaign goes live. A sale lands. Traffic doubles overnight. The platform creaks. The ERP queue backs up. Customer service answers the same questions for two weeks. Every year. Built-in.",
     },
   ];
 

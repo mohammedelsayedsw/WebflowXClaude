@@ -18,7 +18,7 @@ export function AcceleratorValue() {
             <span className="text-[var(--sw-blue)]">discovery year</span>
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[58ch] text-[16px] md:text-[17px] leading-relaxed">
-            Multi-warehouse stock, trade-and-DIY accounts, supplier-feed automation, semantic search, content velocity, peak resilience – already built. You inherit the proven stack, configured to your warehouses and your back office.
+            Multi-warehouse stock, trade-and-DIY accounts, supplier-feed automation, semantic search, content velocity, peak resilience. All already built. You inherit the proven stack, configured to your warehouses and your back office.
           </p>
         </Reveal>
 
@@ -73,11 +73,11 @@ export function AcceleratorValue() {
                 </div>
                 <ul className="space-y-4 text-[14px] md:text-[15px] text-white/90 leading-relaxed">
                   {[
-                    "External-WMS-as-truth pattern in production – your existing WMS keeps owning inventory, storefront stays view-only",
-                    "Session-based VAT toggle, pallet-math pricing, B2B invoice email – proven across 200+ trade accounts in production",
-                    "4-level PIM hierarchy with dynamic attribute inheritance, or supplier-feed pipeline – both shipping in production today",
-                    "Semantic search, personalisation, headless CMS – the patterns travel, the engine is your choice",
-                    "Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, custom – layer onto your platform first; replatform decision is step two",
+                    "External WMS keeps owning inventory. Storefront stays view-only. One reconciled stock truth per product page",
+                    "Session-based VAT toggle, pallet-math pricing, and B2B invoice email in production",
+                    "4-level PIM hierarchy with dynamic attribute inheritance, or supplier-feed pipeline. Both shipping today",
+                    "Semantic search, personalisation, headless CMS. The patterns travel, the engine is your choice",
+                    "Layer onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, or custom. Replatform decision is step two",
                   ].map((t, i) => (
                     <li key={i} className="flex gap-3">
                       <Check className="h-4 w-4 shrink-0 mt-1 text-[var(--sw-mint)]" />

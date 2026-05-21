@@ -251,7 +251,7 @@ export function Differentiator() {
             <span className="text-[var(--sw-blue)]">is the architecture, not a feature</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[62ch]">
-            Every module in this stack flows from one modeling decision. Treat stock origin, account type, and supplier feed as first-class entities – linked, audited, reconciled. Generic platforms get this wrong. It is what makes every downstream feature work.
+            Every module in this stack flows from one modeling decision. Treat stock origin, account type, and supplier feed as first-class entities. Linked, audited, reconciled. Generic platforms get this wrong. It is what makes every downstream feature work.
           </p>
         </Reveal>
 

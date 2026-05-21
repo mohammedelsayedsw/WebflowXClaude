@@ -19,8 +19,8 @@ export function AcceleratorAtAGlance() {
   const spec: [string, string][] = [
     ["First module live in", "14 weeks · full programme 6-18 months"],
     ["Platforms we layer onto", "Adobe Commerce · BigCommerce · Shopify Plus · Bizzkit · proprietary · custom"],
-    ["Configurable layers", "PIM · search · CMS · personalisation · WMS · payments – your choice"],
-    ["Where we have deepest depth", "Magento 2.4 LTS + Hyvä (Byggmax, Murergrej) · Akeneo PIM (Ermitazas, Bradfords)"],
+    ["Configurable layers", "PIM · search · CMS · personalisation · WMS · payments"],
+    ["Built on", "Magento 2.4 LTS + Hyvä · Akeneo PIM · headless content patterns"],
     ["Integrates with", "REST · GraphQL · SOAP · webhooks · message queues · SFTP · CSV"],
     ["WMS-ready", "External-WMS-as-truth pattern – plugs into YouWe, Manhattan, custom"],
     ["Proven across", "Sweden · Denmark · Lithuania · 5+ peak seasons"],

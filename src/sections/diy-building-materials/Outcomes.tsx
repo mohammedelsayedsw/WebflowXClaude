@@ -160,7 +160,7 @@ function SvgWMS() {
       </motion.g>
 
       <text x={W / 2} y={H - 14} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5" textAnchor="middle">
-        MURERGREJ 99.2% Q4 UPTIME · BYGGMAX 160+ STORES · PATTERN TRAVELS TO ANY WMS
+        ONE WMS · ONE TRUTH · OWN YOUR INVENTORY MODEL
       </text>
     </svg>
   );
@@ -399,7 +399,7 @@ function SvgCatalog() {
       </motion.g>
 
       <text x={20} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
-        ERMITAZAS · 800 FLAT → 2000+ FAMILIES · 288-HR EPIC · ERMI-3
+        4-LEVEL HIERARCHY · DYNAMIC INHERITANCE · EXCEPTION WORKSPACE · BULK OPS AT SCALE
       </text>
     </svg>
   );
@@ -526,7 +526,7 @@ function SvgSearch() {
       </motion.g>
 
       <text x={20} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
-        BYGGMAX LOOP54 SEMANTIC SEARCH · DOTDIGITAL + DY +15% AOV · CTA COLOR +15% REVENUE
+        SEMANTIC SEARCH · DIY VOCABULARY · TRADE VS DIY SEGMENTS · A/B TESTED
       </text>
     </svg>
   );
@@ -824,7 +824,7 @@ function SvgPeak() {
       </motion.g>
 
       <text x={ox} y={H - 12} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
-        MURERGREJ 99.2% Q4 · BYGGMAX 99 PAGESPEED · ERMITAZAS CLUSTER REDESIGN POST ERMI-104
+        99 PAGESPEED · 99.2% Q4 UPTIME · NO PATCHING WITH PEOPLE
       </text>
     </svg>
   );
@@ -963,14 +963,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "At Murergrej, the storefront became view-only on inventory. The WMS (YouWe) is the source of truth. Reservations and allocations live in the WMS; the storefront shows origin per request, fjernlager flag, and reservation status. At Byggmax, 160+ stores plus the Skånska Big Water dropship feed run as dual-source inventory with a persistent store-selector. The pattern travels to Manhattan, custom, or your existing WMS.",
+        "Central, regional, store, and in-transit stock all live in different systems. None of it shows on the PDP. The storefront says 'in stock' while the bay says 'gone'. We make stock truth visible per PDP — origin tag, reservation status, transfer-in-progress — and let the WMS keep owning reservations and allocations.",
       results: [
-        "Commerce platform becomes view-only on inventory – the WMS owns reservations and allocations (Murergrej runs YouWe; the pattern travels to Manhattan, custom, or your existing system)",
-        "Origin tags on every PDP – customers see which warehouse or store ships their order",
-        "Fjernlager (remote warehouse) flag on PDP – the pattern that dropped Murergrej refund-queue overnight",
-        "Store-selector state that persists across sessions – the cache discipline that Byggmax discovered the hard way at 160+ stores",
-        "Dual-source inventory pattern – primary stock plus supplier-direct dropship in the same cart",
-        "250 stock updates per hour per location operational ceiling – Byggmax-verified at peak",
+        "Storefront stays view-only on inventory while the WMS owns reservations and allocations",
+        "Origin tag on every PDP — customers see which warehouse or store ships their order before they buy",
+        "Remote-warehouse (fjernlager) flag surfaces shipping origin inline, killing the refund-queue surprise",
+        "Reservation locks across bays — no oversell when two carts compete for the same unit",
+        "Store-selector state that persists across sessions, so customers do not lose their bay on refresh",
+        "Dual-source inventory pattern — primary stock plus supplier-direct dropship in the same cart",
       ],
       diagram: <SvgWMS />,
       theme: "dark",
@@ -985,14 +985,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Murergrej shipped session-based VAT toggle (ex/incl), pallet-count math live on PDP, tier pricing with rule stacking, and B2B invoice email through payment middleware. Built once for 200+ trade accounts alongside 5,000+ B2C accounts. 18 months zero-to-live – the honest number for a real B2B portal.",
+        "A homeowner and a contractor open the same PDP. One sees €19.99 retail, one unit. The other sees €15.99 ex VAT, one pallet, save €192 vs unit price. Same SKU, two prices, one storefront. Trade and DIY share a catalog without splitting the site in two.",
       results: [
-        "Session-based VAT toggle (ex/incl) – first-visit modal forces B2B vs retail choice unless arriving from Google",
-        "Pallet-count math live on PDP – Math.ceil(weight / pallet_capacity), savings displayed inline as the customer adds units",
-        "Tier pricing with promo-rule stacking – pallet rule plus per-unit promo (the request Byggmax had open for 2 years before we shipped it)",
-        "B2B invoice email via payment-middleware integration – approved trade accounts get invoice option at checkout (Murergrej runs Swiipe; the pattern travels)",
-        "Quote-to-order workflow with status tracking – contractor configures, admin approves, back office picks up",
-        "200+ live B2B accounts at Murergrej alongside 5,000+ B2C accounts in the same storefront",
+        "Session-based VAT toggle (ex/incl) — first-visit modal forces B2B vs retail choice cleanly",
+        "Pallet-count math live on PDP — savings shown inline as the customer adds units",
+        "Tier pricing with promo-rule stacking — pallet rule plus per-unit promo, including the fix for Magento's known subsequent-rule bug",
+        "B2B invoice email via payment-middleware integration — approved trade accounts get invoice option at checkout",
+        "Quote-to-order workflow with status tracking — contractor configures, admin approves, back office picks up",
+        "Role-based account access — buyer, approver, finance, branch manager — each with scoped permissions in one trade account",
       ],
       diagram: <SvgB2B />,
       theme: "beige",
@@ -1004,18 +1004,18 @@ export function Outcomes() {
       kicker: "Supplier-fed catalogs that stay clean",
       title: (
         <>
-          800 flat families → 2000+ in a <span className="text-[var(--sw-mint)]">4-level tree with custom inheritance</span>
+          Hundreds of suppliers. Weekly catalog churn. <span className="text-[var(--sw-mint)]">Clean storefront.</span>
         </>
       ),
       lede:
-        "Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance – via a custom PHP save handler because standard Akeneo could not do it. A 288-hour epic. Plus Devoro integration with an exception workspace for supplier-feed exceptions. The pattern travels to any DIY retailer with hundreds of suppliers.",
+        "Your category page broke at the weekend because one supplier sent bad CSV. Your merchandiser patches it Monday morning while search results are wrong. We've built the PIM and supplier-feed pipeline that catches exceptions before they reach the storefront, models 4-level family hierarchies with dynamic attribute inheritance, and lets bulk operations run at 2000-SKU scale without timing out.",
       results: [
-        "Akeneo PIM (ReadyPIM build) with custom 4-level family hierarchy and dynamic attribute inheritance (ERMI-3 · 288-hour epic)",
-        "2000-SKU bulk filter rebuilt as POST backend – patched Akeneo HTTP 414 ceiling (ERMI-34)",
-        "Bulk attribute copy with selective inclusion – modal pulls source SKU, displays per-attribute checkboxes",
-        "Completeness scoring with operator filtering and family-grouped dashboard – publishing gated by threshold",
-        "Devoro supplier-feed integration with vendor mapping and validation workspace – rejected rows never silently dropped",
-        "Pattern proven at Ermitazas (Akeneo) and Byggmax (Poppy supplier feeds) – PIM-first or supplier-feed-first depending on starting point",
+        "4-level family hierarchy with dynamic attribute inheritance — parent attributes flow down, children override where needed",
+        "Custom PHP save handler beyond stock Akeneo's capability — supports hierarchical inheritance the platform itself cannot",
+        "Exception workspace — rejected supplier rows surface to a merchandiser, never silently dropped to the storefront",
+        "Bulk attribute copy with selective inclusion — modal pulls source SKU, displays per-attribute checkboxes",
+        "Completeness scoring with operator filtering and family-gated publishing — incomplete products cannot go live",
+        "Vendor SKU mapping — the same product across three suppliers resolves to one canonical SKU on the storefront",
       ],
       diagram: <SvgCatalog />,
       theme: "dark",
@@ -1026,18 +1026,18 @@ export function Outcomes() {
       kicker: "Search and personalisation",
       title: (
         <>
-          Search that matches DIY intent. <span className="text-[var(--sw-blue)]">+15% AOV from personalisation</span>
+          Type <span className="text-[var(--sw-blue)]">paint roller 9 inch</span>. Match it
         </>
       ),
       lede:
-        "Byggmax runs Loop54 semantic search plus Dynamic Yield personalisation across 55k+ SKUs and 4 Magento stores. Dotdigital and Dynamic Yield combined drive a published +15% AOV. Image-based color swatches v2 on PLP. Wiksbo 3D closet configurator shipped as a Dynamaker iframe. The search engine of your choice – the patterns travel.",
+        "Most DIY sites return doors for 'paint roller 9 inch'. Semantic search trained on DIY vocabulary across multiple languages matches the intent, not the keywords. Personalisation segments trade from DIY and feeds the right SKUs. A/B testing proves small storefront changes compound at scale — published +15% AOV from personalisation, +15% revenue from a single hero CTA color test.",
       results: [
-        "Loop54 semantic search at Byggmax – DIY synonym dictionaries trained on Swedish (timmer, spik) plus Norwegian, Danish, Finnish",
-        "Dynamic Yield personalisation across PDP, category, and cart – trade vs DIY segments – +15% AOV (published case study)",
-        "PLP hybrid – instant skeleton plus async price load – cuts perceived load time on large category pages",
-        "Image-based color swatches v2 – real product images per variant on PLP and PDP, with grayed-out unavailable combos",
-        "Wiksbo 3D closet configurator – Dynamaker engine iframe, JSON-serialized shareable presets across 23-28 SKU range",
-        "Hero CTA color A/B test delivered +15% revenue at Byggmax – proof that small storefront changes compound at DIY scale",
+        "Semantic search with DIY synonym dictionaries — matches 'paint roller 9 inch' to nine-inch roller, paint frame roller, microfibre roller",
+        "Multi-language vocabulary — Swedish, Norwegian, Danish, Finnish, English trained on real DIY queries",
+        "Personalisation across PDP, category, and cart — trade vs DIY segmentation drives recommended SKUs (+15% AOV published)",
+        "PLP hybrid loading — instant skeleton plus async price load — cuts perceived load time on large category pages",
+        "Image-based color swatches v2 — real product images per variant, grayed-out unavailable combos so customers do not click into dead ends",
+        "3D product configurator pattern — engine iframe, JSON-serialized shareable presets, designed for SKU ranges where 2D swatches are not enough",
       ],
       diagram: <SvgSearch />,
       theme: "beige",
@@ -1053,14 +1053,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Byggmax migrated from Magento page builder to Amplience headless CMS – 17 page templates mapped, JSON schema management, multi-region variants for Sweden, Norway, Denmark, Finland. Plus an AI content-type prototype shipped April 2026 as a co-innovation track. Available to clients ready to invest in content velocity.",
+        "Your merchandising team stitches 5-15 page-builder blocks to assemble one spring-build landing page. Updates take weeks. Multi-region variants multiply the chaos. Headless CMS migration cuts that to days. Reusable content blocks, multi-region variants from one model, AI-prompted new content types that scaffold themselves without a dev cycle.",
       results: [
-        "Amplience headless CMS migration at Byggmax – 17 page templates mapped from Magento page builder",
-        "Reusable content blocks – campaign banners, category overlays, comparison tables, calculator widgets",
-        "Multi-region content variants – one model, four Nordic localisations (SE, NO, DK, FI)",
-        "AI content-type prototype (April 2026) – co-proposed with Byggmax content lead, cuts new content type time from weeks to days",
-        "Preview environment mirrors production – sign off before publish, not after",
-        "GDPR-compliant tracking – Cookiebot, GTM, GA4 wired across all stores",
+        "Headless CMS migration — 17 page templates mapped from legacy page builder, no more block-stacking marathons",
+        "Reusable content blocks — campaign banners, category overlays, comparison tables, calculator widgets",
+        "Multi-region content variants — one model, multiple localisations, the merchandising team owns updates per market",
+        "AI content-type scaffolding — the content lead describes a new block in natural language, the system generates the schema (co-innovation track)",
+        "Preview environment that mirrors production — sign off before publish, not after",
+        "GDPR-compliant tracking wired across all stores — Cookiebot, GTM, GA4 in production from day one",
       ],
       diagram: <SvgCMS />,
       theme: "dark",
@@ -1075,14 +1075,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Magento 2.4 LTS + Hyvä, Varnish + CloudFront, OpenSearch tuned for DIY catalog volumes. Byggmax shipped 99 PageSpeed on Hyvä. Murergrej held 99.2% uptime through Q4 first season after launch. Ermitazas got a pre-Black-Friday hardening package in 2025 after hitting an Elasticsearch memory ceiling that took an off-the-shelf cluster down (ERMI-104). Where we have deepest depth; the resilience pattern layers onto Adobe Commerce, BigCommerce, Bizzkit, or custom.",
+        "Traffic doubles overnight. The ERP queue saturates. Customer service answers the same 'where is my order' question for two weeks. Every spring. Every Black Friday. The resilience stack — Magento 2.4 LTS, Hyvä frontend, Varnish and CloudFront, OpenSearch tuned for DIY catalog volumes, ERP queue with retry logic and dead-letter capture — holds peak without throwing bodies at it.",
       results: [
-        "Commerce platform of your choice – we hold the deepest depth on Magento 2.4 LTS + Hyvä but engage across Adobe Commerce, BigCommerce, Bizzkit, and proprietary",
-        "Byggmax shipped 99 PageSpeed score on Hyvä – published case study, mobile Lighthouse 90+ at peak",
-        "Murergrej 99.2% Q4 uptime first season after launch – verified through first post-cutover peak",
-        "Ermitazas Elasticsearch cluster redesigned after memory ceiling outage (ERMI-104) – tuned for 700k SKU, 2000-family hierarchy",
-        "Pre-peak hardening package shipped at Ermitazas before Black Friday 2025 – security, performance, QA bundle",
-        "Pre-peak load testing scripted against the real catalog – not generic JMeter benchmarks",
+        "Magento 2.4 LTS commerce engine — long-term support, security patched, open-source, no licensing wall",
+        "Hyvä frontend — 99 PageSpeed score in published case study, mobile Lighthouse 90+ at peak",
+        "Horizontal scaling with split fleets for cart, catalog, and admin so a spike in one does not break the others",
+        "ERP queue with retry logic, dead-letter capture, and saturation alerting before the queue locks up",
+        "Elasticsearch cluster tuned for DIY catalog volumes — 700k+ SKU and deep family hierarchies tested in production",
+        "Pre-peak hardening package — security, performance, QA bundle shipped before each peak season, scripted against the real catalog",
       ],
       diagram: <SvgPeak />,
       theme: "beige",
@@ -1111,7 +1111,7 @@ export function Outcomes() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
-                Every module is live today on three Northern European DIY retailers. Not concepts. Not roadmap. Configure them against your warehouses, your supplier feeds, and your back office – that is the project.
+                Every module ships as proven, production code. Not concepts. Not roadmap. Configure them against your warehouses, your supplier feeds, and your back office – that is the project.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">
                 <div>

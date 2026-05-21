@@ -25,7 +25,7 @@ export function FAQ() {
   const items = [
     {
       q: "What is the tech stack, and can it be adjusted?",
-      a: "The core is Magento 2.4 LTS + Hyvä – the only stack we run at all three reference clients. Around it, the layers are configurable: Akeneo PIM (Ermitazas) OR a supplier-feed pipeline (Byggmax Poppy). Loop54 semantic search (Byggmax) OR HelloRetail (Murergrej) OR native. Amplience headless CMS (Byggmax) OR native page builder. Dynamic Yield personalisation (Byggmax) OR HelloRetail recommendations (Murergrej). We assess your stack in the diagnostic audit and recommend what fits – we never claim a stack we have not run.",
+      a: "The accelerator is platform-agnostic. We have layered modules onto Adobe Commerce (Bradfords, National Tiles), BigCommerce (Howarth-shape stacks), Bizzkit (Davidsens-shape stacks), and custom proprietary platforms. Our deepest depth is Magento 2.4 LTS + Hyvä because two of our anchor clients run it (Byggmax, Murergrej), but the operating patterns – external-WMS-as-truth, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace – are platform-independent. Around the core, the layers are configurable: Akeneo PIM (Ermitazas, Bradfords) OR a supplier-feed pipeline (Byggmax Poppy) OR your existing PIM. Loop54 (Byggmax) OR HelloRetail (Murergrej) OR Attraqt OR native. Amplience headless CMS OR native. We assess your stack in the diagnostic audit and recommend what fits – we never claim a stack we have not run.",
     },
     {
       q: "What if we are not on Magento? Does the accelerator still apply?",

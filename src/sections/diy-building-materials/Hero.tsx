@@ -197,10 +197,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                A <span className="font-semibold text-white">production-ready commerce backbone</span> for multi-warehouse DIY retail. Built across Byggmax, Murergrej, and Ermitazas. Three countries, three peak seasons, zero rebuilds.
+                A <span className="font-semibold text-white">production-ready commerce backbone</span> for multi-warehouse DIY retail. Built across Byggmax (Sweden, 6 years), Murergrej (Denmark, 5 years), and Ermitazas (Lithuania, 4 years).
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
-                <span className="font-bold text-white">14 weeks</span> kickoff to live – not 14 months. Multi-warehouse stock that doesn&apos;t lie, trade and DIY in one storefront, supplier-fed catalogs that stay clean, peak-resilient infrastructure.
+                <span className="font-bold text-white">99 PageSpeed</span> at Byggmax. <span className="font-bold text-white">99.2% Q4 uptime</span> first season after Murergrej went live on Magento 2.4 LTS + Hyvä. Multi-warehouse stock that does not lie, trade and DIY in one storefront, supplier-fed catalogs with exception workspace, peak resilience across spring and Black Friday.
               </p>
 
               <div className="mt-14 md:mt-20 flex items-center gap-3 text-white">

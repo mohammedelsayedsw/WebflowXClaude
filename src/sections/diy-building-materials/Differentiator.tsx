@@ -232,7 +232,7 @@ export function Differentiator() {
       n: "3",
       title: "Supplier feeds run through a clean pipe",
       body:
-        "Akeneo PIM as the master data layer. Devoro for supplier-feed sync. Family hierarchies, attribute mapping, bulk import, and exception flagging built in. Bad CSV does not reach the storefront.",
+        "PIM-first or supplier-feed-first depending on where you start. Ermitazas runs Akeneo with custom attribute inheritance across 2000+ families. Byggmax runs Poppy supplier-feed pipeline. Bad CSV does not reach the storefront.",
       tag: "catalog",
     },
   ];

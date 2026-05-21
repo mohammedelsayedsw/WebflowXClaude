@@ -68,16 +68,16 @@ export function AcceleratorValue() {
                 <div className="flex items-baseline justify-between mb-8">
                   <span className="label-code text-[var(--sw-mint)]">WITH ACCELERATOR</span>
                   <span className="font-head text-[40px] md:text-[52px] leading-none text-white tabular-nums">
-                    14 wk
+                    14-wk start
                   </span>
                 </div>
                 <ul className="space-y-4 text-[14px] md:text-[15px] text-white/90 leading-relaxed">
                   {[
-                    "Multi-warehouse stock, trade-and-DIY accounts, supplier pipeline – already in production",
-                    "Akeneo PIM + Devoro supplier feed shipped from day one",
-                    "Loop54 semantic search + Dynamic Yield personalisation pre-wired",
-                    "Amplience headless CMS for content velocity, prompt-built blocks available",
-                    "ERP adapters extend to SAP, Navision, NetSuite, Odoo, custom",
+                    "External-WMS-as-truth pattern – Murergrej runs YouWe, Byggmax runs dual-source",
+                    "Session-based VAT toggle, pallet-math pricing, B2B invoice email – Murergrej proven across 200+ trade accounts",
+                    "Custom Akeneo (Ermitazas: 2000-family · 4-level inheritance) or supplier-feed pipeline (Byggmax: Poppy) – your choice",
+                    "Loop54, HelloRetail, native, or your search engine – the patterns travel, the layer is configurable",
+                    "Adobe Commerce, BigCommerce, or proprietary – layer onto your platform first; replatform decision is step two",
                   ].map((t, i) => (
                     <li key={i} className="flex gap-3">
                       <Check className="h-4 w-4 shrink-0 mt-1 text-[var(--sw-mint)]" />
@@ -93,7 +93,7 @@ export function AcceleratorValue() {
         <Reveal>
           <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
-              Six modules in production from day one – saving you a year of build time.
+              First module live in 14 weeks. Layered onto your existing platform, not a forced replatform.
             </p>
             <a href="#cta" className={btnLight}>
               Start the accelerator

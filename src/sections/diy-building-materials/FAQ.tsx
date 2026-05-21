@@ -25,7 +25,15 @@ export function FAQ() {
   const items = [
     {
       q: "What is the tech stack, and can it be adjusted?",
-      a: "The reference build runs on Magento 2.4 LTS + Hyvä – an enterprise-grade, open-source stack with a large global community, deep extensibility, no vendor lock-in, and no software licensing fees. Akeneo PIM (ReadyPIM build) for catalog master data, Devoro for supplier-feed sync, Loop54 for semantic search, Dynamic Yield for personalisation, Amplience for content. We assess your stack in the diagnostic audit and recommend what fits. SaaS platforms rarely flex to multi-warehouse, multi-supplier, multi-region DIY operations.",
+      a: "The core is Magento 2.4 LTS + Hyvä – the only stack we run at all three reference clients. Around it, the layers are configurable: Akeneo PIM (Ermitazas) OR a supplier-feed pipeline (Byggmax Poppy). Loop54 semantic search (Byggmax) OR HelloRetail (Murergrej) OR native. Amplience headless CMS (Byggmax) OR native page builder. Dynamic Yield personalisation (Byggmax) OR HelloRetail recommendations (Murergrej). We assess your stack in the diagnostic audit and recommend what fits – we never claim a stack we have not run.",
+    },
+    {
+      q: "What if we are not on Magento? Does the accelerator still apply?",
+      a: "Yes. The accelerator is patterns and modules, not a forced replatform. The external-WMS-as-truth pattern, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace, and search-and-personalisation logic all layer onto Adobe Commerce, BigCommerce, or proprietary stacks. The first engagement step is normally a wedge that lives on your existing platform. The platform decision is step two – only if the existing platform is the actual blocker.",
+    },
+    {
+      q: "We just acquired several brands and need to harmonise catalogs. Does the accelerator help?",
+      a: "Yes – this is one of the strongest fit signals. Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance via a custom PHP save handler. Akeneo could not do it out of the box. The pattern travels to any DIY group integrating multiple acquired catalogs with overlapping SKUs, inconsistent attribute models, and supplier mismatches.",
     },
     {
       q: "Does it work outside the Nordic markets?",
@@ -40,12 +48,12 @@ export function FAQ() {
       a: "The data model and PIM tooling are built for that scale and beyond. Ermitazas runs the same stack with weekly catalog churn across hundreds of suppliers. Family hierarchies model fitment and configurable products. Vendor SKU mapping resolves duplicate-supplier products to one canonical SKU on the storefront.",
     },
     {
-      q: "What does a fourteen-week kickoff-to-launch actually cover?",
-      a: "All six modules configured against your environment: multi-warehouse inventory, trade-and-DIY accounts, supplier-feed pipeline, semantic search, content stack, peak resilience. Migration from your legacy platform. Live in time for your next seasonal peak.",
+      q: "What does fourteen weeks actually deliver?",
+      a: "The first production module on the highest-value workflow – not the full programme. Realistic timeline for a full configure-and-launch programme is 6–18 months depending on platform and integration depth. Murergrej's B2B portal took 18 months zero-to-live for 200+ trade accounts. We do not promise full accelerator delivery in 14 weeks – we promise the first module in production.",
     },
     {
-      q: "What if our ERP is SAP, Navision, or something else?",
-      a: "The adapter pattern extends naturally. SAP S/4HANA, SAP B1, MS Dynamics, Odoo, NetSuite, Pyramid, and in-house systems have all been scoped. Protocol mix per integration – REST, GraphQL, SOAP, webhooks, message queues, SFTP/CSV, flat-file drops.",
+      q: "What if our back office is SAP, Kerridge K8, Epicor BisTrack, or a custom WMS?",
+      a: "Integration is protocol-agnostic – REST, GraphQL, SOAP, webhooks, message queues, SFTP, CSV. Murergrej runs YouWe WMS as source of truth on inventory (Magento's reservation table is truncated; the WMS owns allocation). Byggmax runs a Poppy supplier-feed pipeline. Ermitazas runs Devoro for supplier sync. The integration pattern travels; the system you already own does not have to be replaced.",
     },
     {
       q: "How does the trade-and-DIY account model work in practice?",

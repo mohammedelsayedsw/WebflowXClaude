@@ -64,7 +64,7 @@ export function ReferenceCase() {
             {[
               ["6 yr", "engagement · still running"],
               ["80+", "Nordic stores online"],
-              ["489", "Jira issues across the engagement"],
+              ["40+", "feature releases since 2024"],
               ["3", "anchor cases in this stack"],
             ].map(([v, l]) => (
               <div key={v} className="flex flex-col gap-3">

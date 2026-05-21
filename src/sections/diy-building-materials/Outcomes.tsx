@@ -105,15 +105,14 @@ function SvgWMS() {
         <text x={hubX + hubW / 2} y={hubY + 56} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="1.5" textAnchor="middle">YOUWE · MANHATTAN · CUSTOM</text>
         <line x1={hubX + 18} x2={hubX + hubW - 18} y1={hubY + 74} y2={hubY + 74} stroke="rgba(230,231,239,0.14)" />
         {[
-          ["Reservations", "owned by WMS"],
-          ["Allocations", "owned by WMS"],
-          ["Audit ledger", "append-only"],
-          ["Reconciliation", "nightly vs ERP"],
-        ].map(([k, v], i) => (
-          <g key={k}>
+          "Owns reservations",
+          "Owns allocations",
+          "Append-only ledger",
+          "Nightly reconciliation",
+        ].map((label, i) => (
+          <g key={label}>
             <circle cx={hubX + 26} cy={hubY + 100 + i * 30} r={3} fill="#6EF76E" />
-            <text x={hubX + 40} y={hubY + 104 + i * 30} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="600">{k}</text>
-            <text x={hubX + hubW - 18} y={hubY + 104 + i * 30} fill="rgba(110,247,110,0.7)" fontFamily="Inter" fontSize="10" textAnchor="end">{v}</text>
+            <text x={hubX + 40} y={hubY + 104 + i * 30} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="600">{label}</text>
           </g>
         ))}
       </motion.g>
@@ -478,41 +477,49 @@ function SvgSearch() {
         viewport={{ once: true, amount: 0.25 }}
       >
         {(() => {
-          const x = 410, y = 90, w = 270, h = 230;
-          const barWidth = 80;
-          const barGap = 40;
-          const bar1X = x + 40;
-          const bar2X = bar1X + barWidth + barGap;
-          const bar1H = 110;
-          const bar2H = 165;
-          const baseline = y + h - 40;
+          const x = 410, y = 90, w = 270, h = 290;
+          const barWidth = 70;
+          const bar1X = x + 35;
+          const bar2X = x + 165;
+          const bar1H = 85;
+          const bar2H = 130;
+          const baseline = y + h - 60;
           return (
             <>
               <rect x={x} y={y} width={w} height={h} rx={3}
                     fill="url(#srchA)" stroke="rgba(230,231,239,0.16)" strokeWidth={1} />
-              <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">A/B test · hero CTA color</text>
+              <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">A/B test result</text>
               <text x={x + 16} y={y + 42} fill="rgba(110,247,110,0.8)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">PUBLISHED CASE STUDY</text>
+              <text x={x + 16} y={y + 60} fill="rgba(255,255,255,0.6)" fontFamily="Inter" fontSize="11">Hero CTA color · revenue per visitor</text>
 
-              <motion.rect x={bar1X} y={baseline - bar1H} width={barWidth} height={bar1H}
-                initial={{ height: 0, y: baseline }}
-                whileInView={{ height: bar1H, y: baseline - bar1H }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                viewport={{ once: true, amount: 0.3 }}
-                fill="rgba(230,231,239,0.14)" stroke="rgba(230,231,239,0.3)" />
-              <text x={bar1X + barWidth / 2} y={baseline - bar1H - 8} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11" fontWeight="600" textAnchor="middle">100</text>
-              <text x={bar1X + barWidth / 2} y={baseline + 20} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" textAnchor="middle">Control</text>
-
-              <motion.rect x={bar2X} y={baseline - bar2H} width={barWidth} height={bar2H}
-                initial={{ height: 0, y: baseline }}
-                whileInView={{ height: bar2H, y: baseline - bar2H }}
-                transition={{ delay: 1.2, duration: 0.7 }}
-                viewport={{ once: true, amount: 0.3 }}
-                fill="rgba(110,247,110,0.22)" stroke="#6EF76E" strokeWidth={1.2} />
-              <text x={bar2X + barWidth / 2} y={baseline - bar2H - 8} fill="#6EF76E" fontFamily="Inter" fontSize="13" fontWeight="700" textAnchor="middle">+15%</text>
-              <text x={bar2X + barWidth / 2} y={baseline + 20} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="10" textAnchor="middle">Variant</text>
-
+              {/* baseline rule */}
               <line x1={x + 16} x2={x + w - 16} y1={baseline} y2={baseline} stroke="rgba(230,231,239,0.18)" />
-              <text x={x + w / 2} y={y + h - 12} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" textAnchor="middle">Hero CTA color · revenue per visitor</text>
+
+              {/* Bar 1 — Control */}
+              <motion.g
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <rect x={bar1X} y={baseline - bar1H} width={barWidth} height={bar1H}
+                      fill="rgba(230,231,239,0.14)" stroke="rgba(230,231,239,0.3)" />
+                <text x={bar1X + barWidth / 2} y={baseline - bar1H - 10} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="12" fontWeight="600" textAnchor="middle">100</text>
+                <text x={bar1X + barWidth / 2} y={baseline + 22} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="11" textAnchor="middle">Control</text>
+              </motion.g>
+
+              {/* Bar 2 — Variant */}
+              <motion.g
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.5 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <rect x={bar2X} y={baseline - bar2H} width={barWidth} height={bar2H}
+                      fill="rgba(110,247,110,0.22)" stroke="#6EF76E" strokeWidth={1.2} />
+                <text x={bar2X + barWidth / 2} y={baseline - bar2H - 10} fill="#6EF76E" fontFamily="Inter" fontSize="14" fontWeight="700" textAnchor="middle">+15%</text>
+                <text x={bar2X + barWidth / 2} y={baseline + 22} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11" textAnchor="middle">Variant</text>
+              </motion.g>
             </>
           );
         })()}
@@ -723,7 +730,7 @@ function SvgPeak() {
         </linearGradient>
       </defs>
 
-      <text x={ox} y={32} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">PLATFORM LOAD · % CAPACITY · SPRING + BLACK FRIDAY</text>
+      <text x={ox} y={28} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">% PLATFORM CAPACITY</text>
 
       {/* Gridlines */}
       {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
@@ -732,7 +739,7 @@ function SvgPeak() {
       ))}
       {/* Capacity ceiling */}
       <line x1={ox} x2={ox + cw} y1={scale(100)} y2={scale(100)} stroke="rgba(224,79,79,0.55)" strokeWidth={1} strokeDasharray="4 5" />
-      <text x={ox + cw - 4} y={scale(100) - 6} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" textAnchor="end" letterSpacing="0.5">CEILING — 100%</text>
+      <text x={ox + 4} y={scale(100) - 6} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" textAnchor="start" letterSpacing="0.5">100% CEILING</text>
 
       {/* Baseline */}
       <line x1={ox} x2={ox + cw} y1={baseline} y2={baseline} stroke="rgba(230,231,239,0.3)" strokeWidth={1} />

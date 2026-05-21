@@ -8,12 +8,12 @@ import { btnLight } from "@/components/primitives/buttonStyles";
 
 export function AcceleratorAtAGlance() {
   const modules = [
-    { n: "1", name: "Multi-warehouse stock that doesn't lie" },
+    { n: "1", name: "One stock truth on every product page" },
     { n: "2", name: "Trade and DIY in one storefront" },
     { n: "3", name: "Supplier-fed catalogs that stay clean" },
-    { n: "4", name: "Search that matches intent, not keywords" },
-    { n: "5", name: "Content velocity for seasonal campaigns" },
-    { n: "6", name: "Peak resilience across spring and Black Friday" },
+    { n: "4", name: "Search built for DIY language" },
+    { n: "5", name: "Headless content for fast campaigns" },
+    { n: "6", name: "Resilience for every sales event" },
   ];
 
   const spec: [string, string][] = [

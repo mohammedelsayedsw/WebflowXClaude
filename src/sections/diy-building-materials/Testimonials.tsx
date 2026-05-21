@@ -6,21 +6,21 @@ import { DrawnPath } from "@/components/primitives/DrawnPath";
 export function Testimonials() {
   const quotes = [
     {
-      short: "We stopped patching peak with extra hands. The platform held. Customer service finally got their Saturdays back.",
-      who: "Head of Operations",
-      role: "Nordic DIY chain · post first peak season on the new stack",
+      short: "We had been asking for pallet pricing to stack with per-unit promotions for two years. Magento has a known bug on subsequent rules. scandiweb shipped the fix.",
+      who: "Digital lead",
+      role: "Nordic DIY chain · 6-year engagement",
       accent: "mint",
     },
     {
-      short: "The fjernlager flag changed the conversation with our customers. They know where the product is coming from. Refund queue dropped overnight.",
-      who: "Head of eCommerce",
-      role: "Danish building materials retailer · 6 months post-launch",
+      short: "It really halts the workflow, and demotivates having to redo changes, especially big ones, because the BE freezes up and needs to be refreshed.",
+      who: "Marketing lead",
+      role: "Danish building materials retailer · pre-Hyvä migration",
       accent: "blue",
     },
     {
-      short: "We brought 20 years of supplier-feed chaos into one PIM. The merchandising team is doing in two hours what used to take two weeks.",
-      who: "CTO",
-      role: "Baltic DIY retailer · 4 years into the engagement",
+      short: "We have started to import many additional products to Akeneo. It is just a question of time before the supplier-driven catalog overtakes us.",
+      who: "Head of digital",
+      role: "Baltic DIY retailer · 4 years into the Akeneo build",
       accent: "mint",
     },
   ];

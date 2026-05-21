@@ -40,7 +40,7 @@ export function HowWeWork() {
             <span className="text-[var(--sw-blue)]">Step up only when each step earns the next</span>
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[58ch] text-[16px] md:text-[17px] leading-relaxed">
-            Three levels, three concrete outputs. The €490 audit is the lowest-friction entry – credited toward the next step within 14 days if you continue. You only commit to a full programme once you have already seen one module working.
+            Three levels, three concrete outputs. The €490 audit is the lowest-friction entry – credited toward the next step within 14 days if you continue. You only commit to a full programme once you have already seen one module working. Full accelerator programmes run 6–18 months depending on platform and integration depth.
           </p>
         </Reveal>
 

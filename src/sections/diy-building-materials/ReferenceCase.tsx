@@ -22,7 +22,7 @@ export function ReferenceCase() {
               <span className="text-white">Sweden.</span>
             </h2>
             <p className="text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[60ch]">
-              Byggmax is Sweden&apos;s largest DIY chain – 80+ stores across the Nordics plus online. scandiweb has run their commerce stack since 2020: Magento 2 + Amplience headless CMS + Loop54 semantic search + Dynamic Yield personalisation, with a multi-region trade-pricing engine and full ERP integration. The engagement evolved from DevOps and stabilisation through personalisation and search to AI co-innovation in 2026.
+              Byggmax is Sweden&apos;s leading DIY chain – 160+ physical stores across Sweden, Norway, Denmark, Finland plus online. 55,000+ SKUs across four Magento stores. scandiweb has run their commerce stack since 2020: Magento 2 + Hyvä (99 PageSpeed) + Amplience headless CMS + Loop54 semantic search + Dynamic Yield personalisation + Dotdigital email. Published wins: +15% AOV from Dotdigital and Dynamic Yield combined, +15% revenue from a single hero CTA color A/B test.
             </p>
           </div>
         </Reveal>
@@ -31,18 +31,18 @@ export function ReferenceCase() {
           {[
             {
               n: "Stage · 1",
-              title: "DevOps and stabilisation",
-              body: "Took ownership of a Magento 2 stack that had been outsourced and patched for years. Rebuilt CI/CD, cleaned up the deployment pipeline, set up environment parity, and got the team to a place where peak no longer broke production.",
+              title: "DevOps, Hyvä, performance",
+              body: "Took ownership of a Magento 2 stack that had been outsourced and patched for years. Rebuilt CI/CD with Terraform IaC, Varnish + CloudFront caching, environment parity. Migrated the storefront to Hyvä – 99 PageSpeed score (published case study). Peak stopped breaking production.",
             },
             {
               n: "Stage · 2",
-              title: "Personalisation and search",
-              body: "Loop54 semantic search wired to the Magento catalog. Dynamic Yield personalisation rolled out across PDP, category, and cart. Synonym dictionaries trained on DIY vocabulary across Swedish, Norwegian, Danish, and Finnish.",
+              title: "Search, personalisation, content",
+              body: "Loop54 semantic search wired with synonym dictionaries across Swedish, Norwegian, Danish, Finnish. Dynamic Yield personalisation rolled out PDP / category / cart. Migrated content from Magento page builder to Amplience headless – 17 page templates mapped. Dotdigital plus Dynamic Yield drove +15% AOV (published).",
             },
             {
               n: "Stage · 3",
-              title: "AI co-innovation",
-              body: "April 2026: working AI prototype lets the content team prompt for new Amplience content types and ship them in days, not weeks. Co-proposed with Byggmax&apos;s digital lead. Now the template for content velocity across the group.",
+              title: "Configurators and AI co-innovation",
+              body: "Wiksbo 3D closet configurator – Dynamaker iframe, JSON-serialized shareable presets across 23-28 SKU range. April 2026: AI content-type prototype – content lead describes the block in natural language, system scaffolds the Amplience schema. Cuts new content type time from weeks to days. Co-innovation track, not a productised module.",
             },
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.08}>
@@ -62,10 +62,10 @@ export function ReferenceCase() {
         <Reveal delay={0.2}>
           <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 pt-12 border-t border-white/10">
             {[
+              ["99", "PageSpeed score on Hyvä · published"],
+              ["+15%", "AOV from personalisation · published"],
+              ["160+", "Nordic stores live"],
               ["6 yr", "engagement · still running"],
-              ["80+", "Nordic stores online"],
-              ["40+", "feature releases since 2024"],
-              ["3", "anchor cases in this stack"],
             ].map(([v, l]) => (
               <div key={v} className="flex flex-col gap-3">
                 <div className="font-head text-white text-[36px] md:text-[44px] lg:text-[52px] leading-none tabular-nums">
@@ -79,7 +79,7 @@ export function ReferenceCase() {
 
         <Reveal delay={0.3}>
           <p className="mt-14 md:mt-16 max-w-[70ch] text-white/75 text-[14px] md:text-[15px] leading-relaxed">
-            Byggmax is the longest engagement in the stack. The same architecture also runs at Murergrej in Denmark (3.7 years, B2B2C zero-to-live in 18 months, 99.2% peak uptime) and Ermitazas in Lithuania (4 years, Akeneo PIM master data layer, supplier-feed automation). Three retailers, three countries, three peak seasons. Same back office.
+            Byggmax is the longest engagement. The same patterns also run at Murergrej in Denmark (5 years, B2B portal live across 200+ trade accounts plus 5,000+ B2C accounts, 99.2% Q4 uptime first season after launch, external YouWe WMS as source of truth) and Ermitazas in Lithuania (4 years, custom Akeneo PIM with 2000-family 4-level hierarchy, Devoro supplier-feed integration, monthly managed-support retainer since 2025). Three retailers, three countries, three different starting points. Same operating pattern.
           </p>
         </Reveal>
       </div>

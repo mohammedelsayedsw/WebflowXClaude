@@ -17,11 +17,13 @@ export function AcceleratorAtAGlance() {
   ];
 
   const spec: [string, string][] = [
-    ["Live in", "14 weeks · kickoff to production"],
-    ["Stack", "Magento 2.4 LTS · Hyvä · Akeneo PIM · Loop54 · Amplience"],
-    ["Connects to", "REST · GraphQL · SOAP · webhooks · message queues · SFTP · CSV"],
-    ["ERP-ready", "SAP · Navision · Odoo · NetSuite · Pyramid · custom"],
-    ["Proven across", "Sweden · Denmark · Lithuania · 3 peak seasons"],
+    ["First module live in", "14 weeks · full programme 6-18 months"],
+    ["Core stack", "Magento 2.4 LTS · Hyvä storefront · ReadyMage hosting"],
+    ["Configurable layers", "PIM · search · CMS · personalisation – your choice"],
+    ["Patterns travel", "Adobe Commerce · BigCommerce · proprietary"],
+    ["Integrates with", "REST · GraphQL · SOAP · webhooks · message queues · SFTP · CSV"],
+    ["WMS-ready", "External-WMS-as-truth pattern (Murergrej runs YouWe)"],
+    ["Proven across", "Sweden · Denmark · Lithuania · 5+ peak seasons"],
     ["You keep", "Code · runbooks · architecture docs · admin training"],
   ];
 
@@ -38,7 +40,7 @@ export function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">Configure it to your business</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            Production code, proven architecture, battle-tested through three peak seasons across Northern Europe. Configure it against your warehouses, your supplier feeds, and your trade accounts – instead of spending 18 months discovering what DIY retail actually needs.
+            Production code, proven architecture, battle-tested through five Q4 peaks across Northern Europe. Modules and patterns that layer onto your existing stack – Adobe Commerce, BigCommerce, or proprietary. The platform does not have to change in step one.
           </p>
         </Reveal>
 
@@ -127,7 +129,7 @@ export function AcceleratorAtAGlance() {
         <Reveal>
           <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
-              Live in 14 weeks. Configured to your warehouses and your ERP, not built from scratch.
+              First production module in 14 weeks. Layered onto your existing stack, not a forced replatform.
             </p>
             <a href="#cta" className={btnLight}>
               Start the accelerator

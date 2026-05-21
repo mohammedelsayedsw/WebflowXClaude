@@ -3,6 +3,7 @@
 import { ArrowUpRight, Check } from "lucide-react";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { DrawnPath } from "@/components/primitives/DrawnPath";
 import { btnLight } from "@/components/primitives/buttonStyles";
 
 type OutcomeBlock = {
@@ -18,59 +19,814 @@ type OutcomeBlock = {
 };
 
 
-function SpecPanel({
-  title,
-  subtitle,
-  rows,
-}: {
-  title: string;
-  subtitle?: string;
-  rows: [string, string][];
-}) {
+// ============================================================
+// Outcome 1 — External WMS as source of truth
+// 3 stock sources → WMS hub → PDP card with origin tag
+// ============================================================
+function SvgWMS() {
+  const W = 700;
+  const H = 480;
+
+  const sources = [
+    { y: 50, color: "#3F4AAF", label: "Central DC", sub: "Live · 24/7 feed", stock: "12,418 SKU" },
+    { y: 180, color: "#3F4AAF", label: "Regional hubs", sub: "Hourly polling", stock: "8,213 SKU" },
+    { y: 310, color: "#3F4AAF", label: "Store bays", sub: "30-min sync", stock: "1,604 SKU" },
+  ];
+
+  const hubX = 270;
+  const hubY = 130;
+  const hubW = 180;
+  const hubH = 220;
+
+  const pdpX = 510;
+  const pdpY = 130;
+  const pdpW = 175;
+
   return (
-    <div
-      className="relative rounded-[4px] p-6 md:p-8 text-white overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, #171a38 0%, #10132c 100%)",
-        border: "1px solid rgba(230,231,239,0.08)",
-      }}
-    >
-      <span
-        className="absolute top-0 left-0 h-[3px] w-20"
-        style={{ background: "var(--sw-mint)" }}
-      />
-      <div className="flex items-baseline justify-between mb-7 gap-4 flex-wrap">
-        <h4 className="font-head text-white text-[18px] md:text-[20px] leading-tight">
-          {title}
-        </h4>
-        {subtitle && (
-          <span className="label-code text-[var(--sw-mint)]/80 tracking-[0.18em]">
-            {subtitle}
-          </span>
-        )}
-      </div>
-      <dl className="space-y-0">
-        {rows.map(([k, v], i) => (
-          <motion.div
-            key={k}
-            initial={{ opacity: 0, x: 6 }}
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="External WMS as source of truth">
+      <defs>
+        <linearGradient id="wmsHub" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#6EF76E" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#6EF76E" stopOpacity="0.04" />
+        </linearGradient>
+        <linearGradient id="wmsPdp" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#3F4AAF" stopOpacity="0.12" />
+          <stop offset="100%" stopColor="#3F4AAF" stopOpacity="0.02" />
+        </linearGradient>
+      </defs>
+
+      {sources.map((s, i) => {
+        const cardX = 0;
+        const cardW = 215;
+        const cardH = 100;
+        const midY = s.y + cardH / 2;
+
+        return (
+          <motion.g
+            key={s.label}
+            initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 + i * 0.05, duration: 0.35 }}
+            transition={{ delay: 0.15 + i * 0.1, duration: 0.45 }}
             viewport={{ once: true, amount: 0.25 }}
-            className="grid grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] gap-4 py-3 border-b border-white/10 last:border-b-0"
           >
-            <dt className="label-code text-white/55">{k}</dt>
-            <dd className="text-[13px] md:text-[14px] text-white/90 leading-snug">
-              {v}
-            </dd>
-          </motion.div>
+            <rect x={cardX} y={s.y} width={cardW} height={cardH} rx={3}
+                  fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.18)" strokeWidth={1} />
+            <rect x={cardX} y={s.y} width={4} height={cardH} fill={s.color} />
+            <text x={cardX + 18} y={s.y + 30} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="700">{s.label}</text>
+            <text x={cardX + 18} y={s.y + 50} fill="rgba(255,255,255,0.6)" fontFamily="Inter" fontSize="11">{s.sub}</text>
+            <rect x={cardX + 18} y={s.y + 62} width={120} height={22} rx={2}
+                  fill="rgba(63,74,175,0.18)" stroke="rgba(63,74,175,0.4)" />
+            <text x={cardX + 26} y={s.y + 77} fill="#9aa3e0" fontFamily="Inter" fontSize="11" fontWeight="600" letterSpacing="0.5">{s.stock}</text>
+
+            <DrawnPath
+              d={`M ${cardX + cardW} ${midY} C ${cardX + cardW + 30} ${midY}, ${hubX - 30} ${hubY + hubH / 2}, ${hubX} ${hubY + hubH / 2}`}
+              stroke={s.color} strokeOpacity={0.55} strokeWidth={1.3} strokeDasharray="4 5"
+              duration={0.7} delay={0.5 + i * 0.08}
+            />
+            <motion.circle r={3} fill={s.color}
+              initial={{ cx: cardX + cardW, cy: midY, opacity: 0 }}
+              animate={{ cx: [cardX + cardW, hubX], cy: [midY, hubY + hubH / 2], opacity: [0, 1, 1, 0] }}
+              transition={{ delay: 1.4 + i * 0.4, duration: 1.3, repeat: Infinity, repeatDelay: 2.5, times: [0, 0.2, 0.8, 1] }}
+            />
+          </motion.g>
+        );
+      })}
+
+      {/* WMS hub */}
+      <motion.g
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        <rect x={hubX} y={hubY} width={hubW} height={hubH} rx={4}
+              fill="url(#wmsHub)" stroke="#6EF76E" strokeOpacity={0.5} strokeWidth={1} />
+        <text x={hubX + hubW / 2} y={hubY + 36} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="700" textAnchor="middle">WMS · source of truth</text>
+        <text x={hubX + hubW / 2} y={hubY + 56} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="1.5" textAnchor="middle">YOUWE · MANHATTAN · CUSTOM</text>
+        <line x1={hubX + 18} x2={hubX + hubW - 18} y1={hubY + 74} y2={hubY + 74} stroke="rgba(230,231,239,0.14)" />
+        {[
+          ["Reservations", "owned by WMS"],
+          ["Allocations", "owned by WMS"],
+          ["Audit ledger", "append-only"],
+          ["Reconciliation", "nightly vs ERP"],
+        ].map(([k, v], i) => (
+          <g key={k}>
+            <circle cx={hubX + 26} cy={hubY + 100 + i * 30} r={3} fill="#6EF76E" />
+            <text x={hubX + 40} y={hubY + 104 + i * 30} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="600">{k}</text>
+            <text x={hubX + hubW - 18} y={hubY + 104 + i * 30} fill="rgba(110,247,110,0.7)" fontFamily="Inter" fontSize="10" textAnchor="end">{v}</text>
+          </g>
         ))}
-      </dl>
-    </div>
+      </motion.g>
+
+      {/* hub → PDP arrow */}
+      <DrawnPath
+        d={`M ${hubX + hubW} ${hubY + hubH / 2} C ${hubX + hubW + 25} ${hubY + hubH / 2}, ${pdpX - 25} ${pdpY + 120}, ${pdpX} ${pdpY + 120}`}
+        stroke="#6EF76E" strokeOpacity={0.75} strokeWidth={1.5} duration={0.9} delay={1.0}
+      />
+      <motion.circle r={3.5} fill="#6EF76E"
+        initial={{ cx: hubX + hubW, cy: hubY + hubH / 2, opacity: 0 }}
+        animate={{ cx: [hubX + hubW, pdpX], cy: [hubY + hubH / 2, pdpY + 120], opacity: [0, 1, 1, 0] }}
+        transition={{ delay: 2.4, duration: 1.4, repeat: Infinity, repeatDelay: 1.5, times: [0, 0.2, 0.8, 1] }}
+      />
+
+      {/* Storefront PDP card */}
+      <motion.g
+        initial={{ opacity: 0, x: 10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.7, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        <rect x={pdpX} y={pdpY} width={pdpW} height={240} rx={4}
+              fill="url(#wmsPdp)" stroke="rgba(63,74,175,0.4)" strokeWidth={1} />
+        <rect x={pdpX} y={pdpY} width={pdpW} height={4} rx={2} fill="#6EF76E" />
+        <text x={pdpX + 16} y={pdpY + 28} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">Storefront PDP</text>
+        <text x={pdpX + 16} y={pdpY + 46} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="1">VIEW-ONLY ON STOCK</text>
+        <line x1={pdpX + 16} x2={pdpX + pdpW - 16} y1={pdpY + 60} y2={pdpY + 60} stroke="rgba(230,231,239,0.1)" />
+
+        <text x={pdpX + 16} y={pdpY + 82} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">In stock</text>
+        <text x={pdpX + pdpW - 16} y={pdpY + 82} fill="#6EF76E" fontFamily="Inter" fontSize="14" fontWeight="700" textAnchor="end">178</text>
+
+        <text x={pdpX + 16} y={pdpY + 108} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">Available now</text>
+        <text x={pdpX + pdpW - 16} y={pdpY + 108} fill="#fff" fontFamily="Inter" fontSize="12" fontWeight="600" textAnchor="end">156</text>
+
+        <text x={pdpX + 16} y={pdpY + 132} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">Ships from</text>
+        <text x={pdpX + pdpW - 16} y={pdpY + 132} fill="#fff" fontFamily="Inter" fontSize="11" textAnchor="end">Central DC</text>
+
+        <text x={pdpX + 16} y={pdpY + 156} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">Fjernlager</text>
+        <text x={pdpX + pdpW - 16} y={pdpY + 156} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11" textAnchor="end">22 remote</text>
+
+        <rect x={pdpX + 16} y={pdpY + 182} width={pdpW - 32} height={28} rx={2}
+              fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.55)" />
+        <text x={pdpX + pdpW / 2} y={pdpY + 200} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">ONE SOURCE OF TRUTH</text>
+      </motion.g>
+
+      <text x={W / 2} y={H - 14} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5" textAnchor="middle">
+        MURERGREJ 99.2% Q4 UPTIME · BYGGMAX 160+ STORES · PATTERN TRAVELS TO ANY WMS
+      </text>
+    </svg>
   );
 }
 
 
+// ============================================================
+// Outcome 2 — B2B + B2C: VAT toggle + pallet math
+// Centered toggle + two PDP cards side by side
+// ============================================================
+function SvgB2B() {
+  const W = 700;
+  const H = 480;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="VAT toggle and pallet math">
+      <defs>
+        <linearGradient id="b2bDark" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#3F4AAF" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#3F4AAF" stopOpacity="0.02" />
+        </linearGradient>
+        <linearGradient id="b2bMint" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#6EF76E" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#6EF76E" stopOpacity="0.02" />
+        </linearGradient>
+      </defs>
+
+      {/* VAT toggle */}
+      <motion.g
+        initial={{ opacity: 0, y: -6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <text x={W / 2} y={32} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2" textAnchor="middle">SESSION-BASED VAT TOGGLE · FIRST-VISIT MODAL</text>
+        <rect x={W / 2 - 130} y={48} width={260} height={42} rx={3}
+              fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.16)" />
+        <rect x={W / 2 - 130} y={48} width={130} height={42} rx={3} fill="rgba(63,74,175,0.25)" stroke="#3F4AAF" />
+        <text x={W / 2 - 65} y={74} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700" textAnchor="middle">€ incl VAT</text>
+        <text x={W / 2 + 65} y={74} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="13" fontWeight="600" textAnchor="middle">€ ex VAT</text>
+      </motion.g>
+
+      {/* Left PDP card · B2C */}
+      <motion.g
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 40, y = 130, w = 280, h = 250;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={h} rx={4}
+                    fill="url(#b2bDark)" stroke="rgba(63,74,175,0.4)" strokeWidth={1} />
+              <rect x={x} y={y} width={w} height={4} rx={2} fill="#3F4AAF" />
+              <text x={x + 18} y={y + 28} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="700">B2C view · homeowner</text>
+              <text x={x + 18} y={y + 46} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="1.2">€ INCL VAT · 1 UNIT · RETAIL</text>
+              <line x1={x + 18} x2={x + w - 18} y1={y + 60} y2={y + 60} stroke="rgba(230,231,239,0.1)" />
+
+              <text x={x + 18} y={y + 90} fill="rgba(255,255,255,0.8)" fontFamily="Inter" fontSize="12">Plasterboard 12.5mm</text>
+              <text x={x + 18} y={y + 108} fill="rgba(255,255,255,0.5)" fontFamily="Inter" fontSize="10">SKU 4029-12-100</text>
+
+              <text x={x + 18} y={y + 152} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="11">Unit price</text>
+              <text x={x + w - 18} y={y + 152} fill="#fff" fontFamily="Inter" fontSize="20" fontWeight="700" textAnchor="end" letterSpacing="-0.3">€ 19.99</text>
+
+              <text x={x + 18} y={y + 174} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="11">Quantity</text>
+              <text x={x + w - 18} y={y + 174} fill="rgba(255,255,255,0.85)" fontFamily="Inter" fontSize="12" textAnchor="end">1 unit</text>
+
+              <rect x={x + 18} y={y + 200} width={w - 36} height={32} rx={2}
+                    fill="rgba(63,74,175,0.18)" stroke="rgba(63,74,175,0.5)" />
+              <text x={x + w / 2} y={y + 220} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="700" letterSpacing="0.5" textAnchor="middle">ADD TO CART · € 19.99</text>
+            </>
+          );
+        })()}
+      </motion.g>
+
+      {/* Right PDP card · B2B */}
+      <motion.g
+        initial={{ opacity: 0, x: 10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.55, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 380, y = 130, w = 280, h = 250;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={h} rx={4}
+                    fill="url(#b2bMint)" stroke="rgba(110,247,110,0.45)" strokeWidth={1} />
+              <rect x={x} y={y} width={w} height={4} rx={2} fill="#6EF76E" />
+              <text x={x + 18} y={y + 28} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="700">B2B view · contractor</text>
+              <text x={x + 18} y={y + 46} fill="rgba(110,247,110,0.7)" fontFamily="Inter" fontSize="10" letterSpacing="1.2">€ EX VAT · PALLET · TIER PRICE</text>
+              <line x1={x + 18} x2={x + w - 18} y1={y + 60} y2={y + 60} stroke="rgba(230,231,239,0.1)" />
+
+              <text x={x + 18} y={y + 90} fill="rgba(255,255,255,0.8)" fontFamily="Inter" fontSize="12">Plasterboard 12.5mm</text>
+              <text x={x + 18} y={y + 108} fill="rgba(255,255,255,0.5)" fontFamily="Inter" fontSize="10">SKU 4029-12-100 · contract A</text>
+
+              <text x={x + 18} y={y + 132} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="11">Pack size</text>
+              <text x={x + w - 18} y={y + 132} fill="#fff" fontFamily="Inter" fontSize="12" fontWeight="600" textAnchor="end">1 pallet = 48 units</text>
+
+              <text x={x + 18} y={y + 152} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="11">Unit price</text>
+              <text x={x + w - 18} y={y + 152} fill="#fff" fontFamily="Inter" fontSize="20" fontWeight="700" textAnchor="end" letterSpacing="-0.3">€ 15.99</text>
+
+              <text x={x + 18} y={y + 174} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11">Save vs unit price</text>
+              <text x={x + w - 18} y={y + 174} fill="#6EF76E" fontFamily="Inter" fontSize="12" fontWeight="700" textAnchor="end">€ 192 / pallet</text>
+
+              <rect x={x + 18} y={y + 200} width={w - 36} height={32} rx={2}
+                    fill="rgba(110,247,110,0.18)" stroke="rgba(110,247,110,0.55)" />
+              <text x={x + w / 2} y={y + 220} fill="#6EF76E" fontFamily="Inter" fontSize="11" fontWeight="700" letterSpacing="0.5" textAnchor="middle">ADD PALLET · € 767.52 EX</text>
+            </>
+          );
+        })()}
+      </motion.g>
+
+      {/* Roles row */}
+      <motion.g
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        <text x={40} y={420} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">ACCOUNT ROLES (B2B)</text>
+        {["buyer", "approver", "finance", "branch manager"].map((r, i) => (
+          <g key={r}>
+            <rect x={40 + i * 150} y={432} width={138} height={26} rx={2}
+                  fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.18)" />
+            <text x={40 + i * 150 + 69} y={449} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="600" textAnchor="middle">{r}</text>
+          </g>
+        ))}
+      </motion.g>
+    </svg>
+  );
+}
+
+
+// ============================================================
+// Outcome 3 — Catalog: 4-level family tree + exception workspace
+// ============================================================
+function SvgCatalog() {
+  const W = 700;
+  const H = 480;
+
+  const levels = [
+    { y: 40, label: "Category", value: "Plumbing", attrs: ["base attributes"] },
+    { y: 130, label: "Subcategory", value: "Pipes & fittings", attrs: ["inherits +"] },
+    { y: 220, label: "Family", value: "Copper pipes", attrs: ["inherits +"] },
+    { y: 310, label: "Product", value: "22mm × 3m", attrs: ["inherits + size, length, grade"] },
+  ];
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="4-level catalog hierarchy with attribute inheritance">
+      <defs>
+        <linearGradient id="catTile" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#3F4AAF" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#3F4AAF" stopOpacity="0.02" />
+        </linearGradient>
+      </defs>
+
+      <text x={20} y={24} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">4-LEVEL HIERARCHY · DYNAMIC ATTRIBUTE INHERITANCE</text>
+
+      {levels.map((lv, i) => {
+        const x = 40 + i * 30;
+        const w = 320;
+        return (
+          <motion.g
+            key={lv.label}
+            initial={{ opacity: 0, x: -8 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 + i * 0.1, duration: 0.4 }}
+            viewport={{ once: true, amount: 0.25 }}
+          >
+            <rect x={x} y={lv.y} width={w} height={62} rx={3}
+                  fill="url(#catTile)" stroke="rgba(63,74,175,0.4)" strokeWidth={1} />
+            <rect x={x} y={lv.y} width={4} height={62} fill={i === 3 ? "#6EF76E" : "#3F4AAF"} />
+            <text x={x + 18} y={lv.y + 22} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">{`LEVEL ${i + 1} · ${lv.label.toUpperCase()}`}</text>
+            <text x={x + 18} y={lv.y + 42} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="700">{lv.value}</text>
+            <text x={x + w - 18} y={lv.y + 42} fill={i === 3 ? "#6EF76E" : "rgba(255,255,255,0.6)"} fontFamily="Inter" fontSize="10" textAnchor="end">{lv.attrs[0]}</text>
+
+            {i < 3 && (
+              <DrawnPath
+                d={`M ${x + 18} ${lv.y + 62} V ${levels[i + 1].y}`}
+                stroke="rgba(110,247,110,0.5)" strokeWidth={1.2} strokeDasharray="3 4"
+                duration={0.5} delay={0.5 + i * 0.1}
+              />
+            )}
+          </motion.g>
+        );
+      })}
+
+      {/* Exception workspace */}
+      <motion.g
+        initial={{ opacity: 0, x: 10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 460, y = 40, w = 220;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={332} rx={3}
+                    fill="rgba(224,79,79,0.06)" stroke="rgba(224,79,79,0.35)" strokeWidth={1} />
+              <rect x={x} y={y} width={w} height={4} rx={2} fill="#E04F4F" />
+              <text x={x + 16} y={y + 26} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">Exception workspace</text>
+              <text x={x + 16} y={y + 44} fill="rgba(224,79,79,0.8)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">REJECTED SUPPLIER ROWS · 3</text>
+              <line x1={x + 16} x2={x + w - 16} y1={y + 56} y2={y + 56} stroke="rgba(224,79,79,0.2)" />
+
+              {[
+                ["SKU 4029-12-100", "missing PEI"],
+                ["SKU 7741-22-150", "img 404"],
+                ["SKU 3122-A4-80", "attr mismatch"],
+              ].map(([sku, reason], i) => (
+                <motion.g
+                  key={sku}
+                  initial={{ opacity: 0, y: 4 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 + i * 0.12, duration: 0.35 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <rect x={x + 12} y={y + 70 + i * 56} width={w - 24} height={46} rx={2}
+                        fill="rgba(224,79,79,0.08)" stroke="rgba(224,79,79,0.25)" />
+                  <text x={x + 22} y={y + 90 + i * 56} fill="#fff" fontFamily="Inter" fontSize="11" fontWeight="600">{sku}</text>
+                  <text x={x + 22} y={y + 106 + i * 56} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="10">⚠ {reason}</text>
+                </motion.g>
+              ))}
+
+              <rect x={x + 12} y={y + 250} width={w - 24} height={62} rx={2}
+                    fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.3)" />
+              <text x={x + 22} y={y + 270} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" letterSpacing="0.5">NEVER REACHES STOREFRONT</text>
+              <text x={x + 22} y={y + 286} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="10">Routed to merchandiser</text>
+              <text x={x + 22} y={y + 302} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10">Reviewed · fixed · promoted</text>
+            </>
+          );
+        })()}
+      </motion.g>
+
+      <text x={20} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
+        ERMITAZAS · 800 FLAT → 2000+ FAMILIES · 288-HR EPIC · ERMI-3
+      </text>
+    </svg>
+  );
+}
+
+
+// ============================================================
+// Outcome 4 — Search + A/B test result (+15% lift)
+// ============================================================
+function SvgSearch() {
+  const W = 700;
+  const H = 480;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Semantic search and A/B test result">
+      <defs>
+        <linearGradient id="srchA" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.04)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+        </linearGradient>
+      </defs>
+
+      {/* Search bar + results */}
+      <motion.g
+        initial={{ opacity: 0, y: -6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        <text x={20} y={24} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">SEMANTIC SEARCH · MATCHES INTENT</text>
+        <rect x={20} y={36} width={660} height={42} rx={3}
+              fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.18)" />
+        <circle cx={42} cy={57} r={6} fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth={1.5} />
+        <line x1={47} x2={54} y1={62} y2={69} stroke="rgba(255,255,255,0.55)" strokeWidth={1.5} />
+        <text x={64} y={62} fill="#fff" fontFamily="Inter" fontSize="14" fontWeight="600">paint roller 9 inch</text>
+        <text x={660} y={62} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11" textAnchor="end">3 matched</text>
+      </motion.g>
+
+      {/* Ranked results */}
+      {[
+        { name: "9-inch roller · medium pile", brand: "Hamilton · stock 142", score: 95, top: true },
+        { name: "Nine-inch microfibre roller", brand: "Harris · stock 28", score: 87, top: false },
+        { name: "9\" paint frame roller kit", brand: "Wickes · stock 6", score: 71, top: false },
+      ].map((r, i) => (
+        <motion.g
+          key={i}
+          initial={{ opacity: 0, x: -6 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4 + i * 0.1, duration: 0.4 }}
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          {(() => {
+            const x = 20, y = 100 + i * 54, w = 350;
+            return (
+              <>
+                <rect x={x} y={y} width={w} height={46} rx={3}
+                      fill={r.top ? "rgba(110,247,110,0.06)" : "rgba(230,231,239,0.03)"}
+                      stroke={r.top ? "rgba(110,247,110,0.4)" : "rgba(230,231,239,0.14)"} strokeWidth={1} />
+                {r.top && <rect x={x} y={y} width={3} height={46} fill="#6EF76E" />}
+                <text x={x + 16} y={y + 20} fill="#fff" fontFamily="Inter" fontSize="12" fontWeight="600">{r.name}</text>
+                <text x={x + 16} y={y + 36} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10">{r.brand}</text>
+                <text x={x + w - 16} y={y + 20} fill={r.top ? "#6EF76E" : "rgba(255,255,255,0.7)"} fontFamily="Inter" fontSize="11" fontWeight="700" textAnchor="end">{r.score}%</text>
+                <text x={x + w - 16} y={y + 36} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="9" textAnchor="end">relevance</text>
+              </>
+            );
+          })()}
+        </motion.g>
+      ))}
+
+      {/* A/B test result chart */}
+      <motion.g
+        initial={{ opacity: 0, x: 10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.55, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 410, y = 90, w = 270, h = 230;
+          const barWidth = 80;
+          const barGap = 40;
+          const bar1X = x + 40;
+          const bar2X = bar1X + barWidth + barGap;
+          const bar1H = 110;
+          const bar2H = 165;
+          const baseline = y + h - 40;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={h} rx={3}
+                    fill="url(#srchA)" stroke="rgba(230,231,239,0.16)" strokeWidth={1} />
+              <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">A/B test · hero CTA color</text>
+              <text x={x + 16} y={y + 42} fill="rgba(110,247,110,0.8)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">PUBLISHED CASE STUDY</text>
+
+              <motion.rect x={bar1X} y={baseline - bar1H} width={barWidth} height={bar1H}
+                initial={{ height: 0, y: baseline }}
+                whileInView={{ height: bar1H, y: baseline - bar1H }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                fill="rgba(230,231,239,0.14)" stroke="rgba(230,231,239,0.3)" />
+              <text x={bar1X + barWidth / 2} y={baseline - bar1H - 8} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11" fontWeight="600" textAnchor="middle">100</text>
+              <text x={bar1X + barWidth / 2} y={baseline + 20} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" textAnchor="middle">Control</text>
+
+              <motion.rect x={bar2X} y={baseline - bar2H} width={barWidth} height={bar2H}
+                initial={{ height: 0, y: baseline }}
+                whileInView={{ height: bar2H, y: baseline - bar2H }}
+                transition={{ delay: 1.2, duration: 0.7 }}
+                viewport={{ once: true, amount: 0.3 }}
+                fill="rgba(110,247,110,0.22)" stroke="#6EF76E" strokeWidth={1.2} />
+              <text x={bar2X + barWidth / 2} y={baseline - bar2H - 8} fill="#6EF76E" fontFamily="Inter" fontSize="13" fontWeight="700" textAnchor="middle">+15%</text>
+              <text x={bar2X + barWidth / 2} y={baseline + 20} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="10" textAnchor="middle">Variant</text>
+
+              <line x1={x + 16} x2={x + w - 16} y1={baseline} y2={baseline} stroke="rgba(230,231,239,0.18)" />
+              <text x={x + w / 2} y={y + h - 12} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" textAnchor="middle">Hero CTA color · revenue per visitor</text>
+            </>
+          );
+        })()}
+      </motion.g>
+
+      <text x={20} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
+        BYGGMAX LOOP54 SEMANTIC SEARCH · DOTDIGITAL + DY +15% AOV · CTA COLOR +15% REVENUE
+      </text>
+    </svg>
+  );
+}
+
+
+// ============================================================
+// Outcome 5 — Page builder → Headless CMS migration
+// ============================================================
+function SvgCMS() {
+  const W = 700;
+  const H = 480;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Page builder to headless CMS migration">
+      <defs>
+        <linearGradient id="cmsBefore" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="rgba(224,79,79,0.08)" />
+          <stop offset="100%" stopColor="rgba(224,79,79,0.02)" />
+        </linearGradient>
+        <linearGradient id="cmsAfter" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="rgba(110,247,110,0.1)" />
+          <stop offset="100%" stopColor="rgba(110,247,110,0.02)" />
+        </linearGradient>
+      </defs>
+
+      <text x={20} y={24} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">BYGGMAX · 17 PAGE TEMPLATES MAPPED FROM MAGENTO PAGE BUILDER TO AMPLIENCE</text>
+
+      {/* BEFORE — page builder chaos */}
+      <motion.g
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 30, y = 50, w = 280, h = 380;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={h} rx={3}
+                    fill="url(#cmsBefore)" stroke="rgba(224,79,79,0.35)" strokeWidth={1} />
+              <rect x={x} y={y} width={w} height={4} rx={2} fill="#E04F4F" />
+              <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">Before · page builder</text>
+              <text x={x + 16} y={y + 42} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">5–15 BLOCKS PER PAGE</text>
+
+              {/* Chaotic block stack */}
+              {[0, 1, 2, 3, 4].map((i) => {
+                const rotation = (i % 2 === 0 ? -1 : 1) * (1 + i * 0.5);
+                const offsetX = i % 2 === 0 ? -4 : 6;
+                const yy = y + 70 + i * 56;
+                return (
+                  <motion.g
+                    key={i}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 + i * 0.08, duration: 0.35 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+                    <g transform={`rotate(${rotation} ${x + w / 2 + offsetX} ${yy + 22})`}>
+                      <rect x={x + 16 + offsetX} y={yy} width={w - 32} height={44} rx={2}
+                            fill="rgba(224,79,79,0.08)" stroke="rgba(224,79,79,0.3)" />
+                      <rect x={x + 24 + offsetX} y={yy + 10} width={24} height={24} rx={2} fill="rgba(224,79,79,0.18)" />
+                      <line x1={x + 56 + offsetX} x2={x + w - 24 + offsetX} y1={yy + 16} y2={yy + 16} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} />
+                      <line x1={x + 56 + offsetX} x2={x + w - 70 + offsetX} y1={yy + 24} y2={yy + 24} stroke="rgba(255,255,255,0.25)" strokeWidth={1.2} />
+                      <line x1={x + 56 + offsetX} x2={x + w - 90 + offsetX} y1={yy + 32} y2={yy + 32} stroke="rgba(255,255,255,0.2)" strokeWidth={1.2} />
+                    </g>
+                  </motion.g>
+                );
+              })}
+            </>
+          );
+        })()}
+      </motion.g>
+
+      {/* Arrow migration */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        <DrawnPath
+          d="M 320 230 L 380 230"
+          stroke="#6EF76E" strokeWidth={2} duration={0.6} delay={1.1}
+        />
+        <path d="M 375 224 L 384 230 L 375 236 Z" fill="#6EF76E" />
+        <text x={350} y={216} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="9" letterSpacing="1" textAnchor="middle">MIGRATE</text>
+      </motion.g>
+
+      {/* AFTER — headless schema */}
+      <motion.g
+        initial={{ opacity: 0, x: 10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        {(() => {
+          const x = 390, y = 50, w = 280, h = 380;
+          return (
+            <>
+              <rect x={x} y={y} width={w} height={h} rx={3}
+                    fill="url(#cmsAfter)" stroke="rgba(110,247,110,0.5)" strokeWidth={1} />
+              <rect x={x} y={y} width={w} height={4} rx={2} fill="#6EF76E" />
+              <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">After · headless CMS</text>
+              <text x={x + 16} y={y + 42} fill="rgba(110,247,110,0.8)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">17 CLEAN CONTENT TYPES</text>
+
+              {/* Code block: schema */}
+              <rect x={x + 14} y={y + 60} width={w - 28} height={132} rx={2}
+                    fill="rgba(16,19,44,0.55)" stroke="rgba(110,247,110,0.18)" />
+              <text x={x + 26} y={y + 80} fill="rgba(110,247,110,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`{`}</text>
+              <text x={x + 38} y={y + 94} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"type": "campaign_block",`}</text>
+              <text x={x + 38} y={y + 108} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"id": "spring-build-2026",`}</text>
+              <text x={x + 38} y={y + 122} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"region": "SE",`}</text>
+              <text x={x + 38} y={y + 136} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"hero": { … },`}</text>
+              <text x={x + 38} y={y + 150} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"products": [ … ],`}</text>
+              <text x={x + 38} y={y + 164} fill="rgba(255,255,255,0.85)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`"cta": { … }`}</text>
+              <text x={x + 26} y={y + 180} fill="rgba(110,247,110,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10">{`}`}</text>
+
+              {/* Multi-region tabs */}
+              <text x={x + 16} y={y + 220} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">MULTI-REGION VARIANTS</text>
+              {["SE", "NO", "DK", "FI"].map((c, i) => {
+                const active = i === 0;
+                return (
+                  <g key={c}>
+                    <rect x={x + 16 + i * 60} y={y + 232} width={50} height={26} rx={2}
+                          fill={active ? "rgba(110,247,110,0.18)" : "rgba(230,231,239,0.04)"}
+                          stroke={active ? "rgba(110,247,110,0.5)" : "rgba(230,231,239,0.14)"} />
+                    <text x={x + 16 + i * 60 + 25} y={y + 249} fill={active ? "#6EF76E" : "rgba(255,255,255,0.7)"} fontFamily="Inter" fontSize="11" fontWeight="600" textAnchor="middle">{c}</text>
+                  </g>
+                );
+              })}
+
+              {/* Template registry */}
+              <rect x={x + 14} y={y + 280} width={w - 28} height={86} rx={2}
+                    fill="rgba(230,231,239,0.03)" stroke="rgba(230,231,239,0.14)" />
+              <text x={x + 26} y={y + 300} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11" fontWeight="600">Template registry</text>
+              <text x={x + w - 24} y={y + 300} fill="#6EF76E" fontFamily="Inter" fontSize="11" fontWeight="700" textAnchor="end">17 live</text>
+              {["Campaign block · 4 variants", "Category overlay · 3 variants", "Comparison table · 2 variants"].map((t, i) => (
+                <g key={t}>
+                  <circle cx={x + 30} cy={y + 320 + i * 16} r={2} fill="#6EF76E" />
+                  <text x={x + 40} y={y + 324 + i * 16} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="10">{t}</text>
+                </g>
+              ))}
+            </>
+          );
+        })()}
+      </motion.g>
+
+      <text x={20} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
+        AI CONTENT-TYPE PROTOTYPE · APRIL 2026 · CO-INNOVATION TRACK
+      </text>
+    </svg>
+  );
+}
+
+
+// ============================================================
+// Outcome 6 — Peak resilience: traffic curve through spring + Q4
+// ============================================================
+function SvgPeak() {
+  const W = 700;
+  const H = 480;
+
+  // y-axis: capacity %
+  // x-axis: time (Jan → Dec)
+  const ox = 60;
+  const oy = 380;
+  const cw = 600;
+  const ch = 320;
+  const baseline = oy;
+
+  // Two curves through Spring (Apr-May) and Black Friday (Nov)
+  const old = [30, 35, 40, 75, 95, 60, 50, 55, 60, 70, 105, 45]; // hits ceiling, crashes
+  const fresh = [28, 32, 36, 62, 78, 55, 48, 52, 58, 68, 90, 75]; // stable
+
+  const scale = (v: number) => baseline - (v / 110) * ch;
+  const step = cw / (old.length - 1);
+
+  const pathOf = (arr: number[]) =>
+    arr.map((v, i) => {
+      const x = ox + i * step;
+      const y = scale(v);
+      if (i === 0) return `M ${x} ${y}`;
+      const prevX = ox + (i - 1) * step;
+      const prevY = scale(arr[i - 1]);
+      const cx1 = prevX + step / 2;
+      const cx2 = x - step / 2;
+      return `C ${cx1} ${prevY}, ${cx2} ${y}, ${x} ${y}`;
+    }).join(" ");
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Peak season resilience curve">
+      <defs>
+        <linearGradient id="peakOld" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#E04F4F" stopOpacity="0.32" />
+          <stop offset="100%" stopColor="#E04F4F" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="peakNew" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#6EF76E" stopOpacity="0.24" />
+          <stop offset="100%" stopColor="#6EF76E" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      <text x={ox} y={32} fill="rgba(255,255,255,0.55)" fontFamily="Inter" fontSize="10" letterSpacing="2">PLATFORM LOAD · % CAPACITY · SPRING + BLACK FRIDAY</text>
+
+      {/* Gridlines */}
+      {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
+        <line key={i} x1={ox} x2={ox + cw} y1={baseline - p * ch} y2={baseline - p * ch}
+              stroke="rgba(230,231,239,0.08)" strokeWidth={1} />
+      ))}
+      {/* Capacity ceiling */}
+      <line x1={ox} x2={ox + cw} y1={scale(100)} y2={scale(100)} stroke="rgba(224,79,79,0.55)" strokeWidth={1} strokeDasharray="4 5" />
+      <text x={ox + cw - 4} y={scale(100) - 6} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" textAnchor="end" letterSpacing="0.5">CEILING — 100%</text>
+
+      {/* Baseline */}
+      <line x1={ox} x2={ox + cw} y1={baseline} y2={baseline} stroke="rgba(230,231,239,0.3)" strokeWidth={1} />
+
+      {/* Old stack area + line */}
+      <motion.path
+        d={`${pathOf(old)} L ${ox + cw} ${baseline} L ${ox} ${baseline} Z`}
+        fill="url(#peakOld)"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      />
+      <DrawnPath d={pathOf(old)} stroke="#E04F4F" strokeWidth={2.2} duration={1.6} delay={0.2} />
+
+      {/* New stack area + line */}
+      <motion.path
+        d={`${pathOf(fresh)} L ${ox + cw} ${baseline} L ${ox} ${baseline} Z`}
+        fill="url(#peakNew)"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.0 }}
+        viewport={{ once: true, amount: 0.3 }}
+      />
+      <DrawnPath d={pathOf(fresh)} stroke="#6EF76E" strokeWidth={2.2} duration={1.8} delay={0.8} />
+
+      {/* Peak markers */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {/* Spring marker */}
+        <line x1={ox + 4 * step} x2={ox + 4 * step} y1={baseline - ch} y2={baseline} stroke="rgba(255,255,255,0.18)" strokeDasharray="2 4" />
+        <rect x={ox + 4 * step - 36} y={baseline - ch - 28} width={72} height={20} rx={2}
+              fill="rgba(110,247,110,0.18)" stroke="rgba(110,247,110,0.4)" />
+        <text x={ox + 4 * step} y={baseline - ch - 14} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" textAnchor="middle">SPRING</text>
+
+        {/* Black Friday marker */}
+        <line x1={ox + 10 * step} x2={ox + 10 * step} y1={baseline - ch} y2={baseline} stroke="rgba(255,255,255,0.18)" strokeDasharray="2 4" />
+        <rect x={ox + 10 * step - 50} y={baseline - ch - 28} width={100} height={20} rx={2}
+              fill="rgba(110,247,110,0.18)" stroke="rgba(110,247,110,0.4)" />
+        <text x={ox + 10 * step} y={baseline - ch - 14} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" textAnchor="middle">BLACK FRIDAY</text>
+      </motion.g>
+
+      {/* Old crash marker */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 2.0, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <circle cx={ox + 10 * step} cy={scale(105)} r={5} fill="#E04F4F" />
+        <line x1={ox + 10 * step + 8} x2={ox + 10 * step + 36} y1={scale(105)} y2={scale(105) - 12} stroke="rgba(224,79,79,0.7)" strokeWidth={1} />
+        <text x={ox + 10 * step + 42} y={scale(105) - 8} fill="rgba(224,79,79,0.95)" fontFamily="Inter" fontSize="10" fontWeight="700">OUTAGE</text>
+      </motion.g>
+
+      {/* New stable marker */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <circle cx={ox + 10 * step} cy={scale(90)} r={5} fill="#6EF76E" />
+        <line x1={ox + 10 * step - 8} x2={ox + 10 * step - 56} y1={scale(90)} y2={scale(90) + 22} stroke="rgba(110,247,110,0.7)" strokeWidth={1} />
+        <text x={ox + 10 * step - 60} y={scale(90) + 26} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" textAnchor="end">99.2% UPTIME</text>
+      </motion.g>
+
+      {/* Legend */}
+      <motion.g
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.0, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <line x1={ox} x2={ox + 24} y1={H - 36} y2={H - 36} stroke="#E04F4F" strokeWidth={2.2} />
+        <text x={ox + 32} y={H - 33} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="11">Before · old stack</text>
+        <line x1={ox + 180} x2={ox + 204} y1={H - 36} y2={H - 36} stroke="#6EF76E" strokeWidth={2.2} />
+        <text x={ox + 212} y={H - 33} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="11">After · Magento 2.4 LTS · Hyvä · cache + queue tuned</text>
+      </motion.g>
+
+      <text x={ox} y={H - 12} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
+        MURERGREJ 99.2% Q4 · BYGGMAX 99 PAGESPEED · ERMITAZAS CLUSTER REDESIGN POST ERMI-104
+      </text>
+    </svg>
+  );
+}
+
+
+// ============================================================
+// OutcomeBlockRow — layout shell (unchanged from original)
+// ============================================================
 function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
   const dark = theme === "dark";
   const diagramOnDark = diagramDark ?? dark;
@@ -186,6 +942,9 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
 }
 
 
+// ============================================================
+// Outcomes — main export
+// ============================================================
 export function Outcomes() {
   const items: OutcomeBlock[] = [
     {
@@ -193,11 +952,11 @@ export function Outcomes() {
       kicker: "Multi-warehouse truth",
       title: (
         <>
-          External WMS as truth. <span className="text-[var(--sw-mint)]">Magento as view</span>
+          External WMS as truth. <span className="text-[var(--sw-mint)]">Storefront as view</span>
         </>
       ),
       lede:
-        "At Murergrej, Magento became view-only on stock. The WMS (YouWe) is the source of truth. Reservations and allocations live in the WMS; the storefront shows origin per request, fjernlager flag, and reservation status. At Byggmax, 160+ stores plus the Skånska Big Water dropship feed run as dual-source inventory with a persistent store-selector.",
+        "At Murergrej, the storefront became view-only on inventory. The WMS (YouWe) is the source of truth. Reservations and allocations live in the WMS; the storefront shows origin per request, fjernlager flag, and reservation status. At Byggmax, 160+ stores plus the Skånska Big Water dropship feed run as dual-source inventory with a persistent store-selector. The pattern travels to Manhattan, custom, or your existing WMS.",
       results: [
         "Commerce platform becomes view-only on inventory – the WMS owns reservations and allocations (Murergrej runs YouWe; the pattern travels to Manhattan, custom, or your existing system)",
         "Origin tags on every PDP – customers see which warehouse or store ships their order",
@@ -206,20 +965,7 @@ export function Outcomes() {
         "Dual-source inventory pattern – primary stock plus supplier-direct dropship in the same cart",
         "250 stock updates per hour per location operational ceiling – Byggmax-verified at peak",
       ],
-      diagram: (
-        <SpecPanel
-          title="Inventory architecture"
-          subtitle="WMS-AS-TRUTH"
-          rows={[
-            ["Pattern", "External WMS owns reservations · Magento is view-only"],
-            ["Murergrej", "YouWe WMS · 5,000 customer accounts · 2,000 orders/month"],
-            ["Byggmax", "160+ stores · Skånska Big Water dropship · store-selector"],
-            ["PDP signal", "Origin tag · fjernlager flag · stock per location"],
-            ["Sync rate", "250 updates/hr/location ceiling (Byggmax peak)"],
-            ["Result", "Murergrej 99.2% Q4 uptime · first season post-cutover"],
-          ]}
-        />
-      ),
+      diagram: <SvgWMS />,
       theme: "dark",
       diagramDark: true,
     },
@@ -232,7 +978,7 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Murergrej shipped session-based VAT toggle (ex/incl) on Hyvä, pallet-count math live on PDP, tier pricing with rule stacking, and B2B invoice email through Swiipe checkout. Built once for 200+ trade accounts. Took 18 months zero-to-live – the honest number for a real B2B portal.",
+        "Murergrej shipped session-based VAT toggle (ex/incl), pallet-count math live on PDP, tier pricing with rule stacking, and B2B invoice email through payment middleware. Built once for 200+ trade accounts alongside 5,000+ B2C accounts. 18 months zero-to-live – the honest number for a real B2B portal.",
       results: [
         "Session-based VAT toggle (ex/incl) – first-visit modal forces B2B vs retail choice unless arriving from Google",
         "Pallet-count math live on PDP – Math.ceil(weight / pallet_capacity), savings displayed inline as the customer adds units",
@@ -241,20 +987,7 @@ export function Outcomes() {
         "Quote-to-order workflow with status tracking – contractor configures, admin approves, back office picks up",
         "200+ live B2B accounts at Murergrej alongside 5,000+ B2C accounts in the same storefront",
       ],
-      diagram: (
-        <SpecPanel
-          title="B2B + B2C model"
-          subtitle="MURERGREJ-PROVEN"
-          rows={[
-            ["VAT toggle", "Session-based ex/incl on Hyvä · first-visit modal"],
-            ["Pricing", "Customer · account · volume · pallet-stack rules"],
-            ["Pallet math", "Live PDP calc · savings shown inline"],
-            ["B2B payment", "Swiipe invoice middleware at checkout"],
-            ["Live scale", "200+ trade accounts · 5,000+ B2C accounts"],
-            ["Honest timing", "Murergrej B2B portal · 18 months zero-to-live"],
-          ]}
-        />
-      ),
+      diagram: <SvgB2B />,
       theme: "beige",
       reverse: true,
       diagramDark: true,
@@ -268,7 +1001,7 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance – via a custom PHP save handler because standard Akeneo could not do it. A 288-hour epic. Plus Devoro integration with exception workspace for supplier-feed exceptions. The pattern travels to any DIY retailer with hundreds of suppliers.",
+        "Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance – via a custom PHP save handler because standard Akeneo could not do it. A 288-hour epic. Plus Devoro integration with an exception workspace for supplier-feed exceptions. The pattern travels to any DIY retailer with hundreds of suppliers.",
       results: [
         "Akeneo PIM (ReadyPIM build) with custom 4-level family hierarchy and dynamic attribute inheritance (ERMI-3 · 288-hour epic)",
         "2000-SKU bulk filter rebuilt as POST backend – patched Akeneo HTTP 414 ceiling (ERMI-34)",
@@ -277,20 +1010,7 @@ export function Outcomes() {
         "Devoro supplier-feed integration with vendor mapping and validation workspace – rejected rows never silently dropped",
         "Pattern proven at Ermitazas (Akeneo) and Byggmax (Poppy supplier feeds) – PIM-first or supplier-feed-first depending on starting point",
       ],
-      diagram: (
-        <SpecPanel
-          title="Catalog pipeline"
-          subtitle="PIM-FIRST OR FEED-FIRST"
-          rows={[
-            ["Ermitazas", "Akeneo · 2000-family · 4-level inheritance"],
-            ["Byggmax", "Poppy · supplier-feed pipeline · 55k+ SKU"],
-            ["Custom build", "PHP save handler for dynamic inheritance (ERMI-3)"],
-            ["Exceptions", "Workspace for rejected rows · merchandiser review"],
-            ["Bulk ops", "2000-SKU bulk filter via POST (ERMI-34)"],
-            ["Anchor", "Ermitazas · 4 years · supplier-driven growth"],
-          ]}
-        />
-      ),
+      diagram: <SvgCatalog />,
       theme: "dark",
       diagramDark: true,
     },
@@ -312,20 +1032,7 @@ export function Outcomes() {
         "Wiksbo 3D closet configurator – Dynamaker engine iframe, JSON-serialized shareable presets across 23-28 SKU range",
         "Hero CTA color A/B test delivered +15% revenue at Byggmax – proof that small storefront changes compound at DIY scale",
       ],
-      diagram: (
-        <SpecPanel
-          title="Search and personalisation"
-          subtitle="BYGGMAX-PROVEN"
-          rows={[
-            ["Search", "Loop54 semantic · DIY synonyms · multi-language"],
-            ["Personalisation", "Dynamic Yield · trade vs DIY · +15% AOV"],
-            ["PLP performance", "Hybrid skeleton-then-price · 99 PageSpeed"],
-            ["Swatches", "Image-based v2 · per-variant · grayed unavailable"],
-            ["3D configurator", "Wiksbo · Dynamaker iframe · shareable presets"],
-            ["A/B testing", "+15% revenue from hero CTA color · published"],
-          ]}
-        />
-      ),
+      diagram: <SvgSearch />,
       theme: "beige",
       reverse: true,
       diagramDark: true,
@@ -348,20 +1055,7 @@ export function Outcomes() {
         "Preview environment mirrors production – sign off before publish, not after",
         "GDPR-compliant tracking – Cookiebot, GTM, GA4 wired across all stores",
       ],
-      diagram: (
-        <SpecPanel
-          title="Content stack"
-          subtitle="BYGGMAX-PROVEN"
-          rows={[
-            ["CMS", "Amplience headless · 17 templates mapped"],
-            ["Multi-region", "SE · NO · DK · FI · one model, localised"],
-            ["AI prototype", "Co-innovation track · April 2026 · early access"],
-            ["GDPR", "Cookiebot · GTM · GA4 across all stores"],
-            ["Workflow", "Preview environment mirrors production"],
-            ["Honest claim", "Headless migration is a rebuild, not a config"],
-          ]}
-        />
-      ),
+      diagram: <SvgCMS />,
       theme: "dark",
       diagramDark: true,
     },
@@ -374,7 +1068,7 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Magento 2.4 LTS, Hyvä frontend, Varnish + CloudFront, OpenSearch tuned for DIY catalog volumes. Byggmax shipped 99 PageSpeed on Hyvä. Murergrej held 99.2% uptime through Q4 first season after launch. Ermitazas got a pre-Black-Friday hardening package in 2025 after hitting an Elasticsearch memory ceiling that took an off-the-shelf cluster down (ERMI-104, ERMI-120).",
+        "Magento 2.4 LTS + Hyvä, Varnish + CloudFront, OpenSearch tuned for DIY catalog volumes. Byggmax shipped 99 PageSpeed on Hyvä. Murergrej held 99.2% uptime through Q4 first season after launch. Ermitazas got a pre-Black-Friday hardening package in 2025 after hitting an Elasticsearch memory ceiling that took an off-the-shelf cluster down (ERMI-104). Where we have deepest depth; the resilience pattern layers onto Adobe Commerce, BigCommerce, Bizzkit, or custom.",
       results: [
         "Commerce platform of your choice – we hold the deepest depth on Magento 2.4 LTS + Hyvä but engage across Adobe Commerce, BigCommerce, Bizzkit, and proprietary",
         "Byggmax shipped 99 PageSpeed score on Hyvä – published case study, mobile Lighthouse 90+ at peak",
@@ -383,20 +1077,7 @@ export function Outcomes() {
         "Pre-peak hardening package shipped at Ermitazas before Black Friday 2025 – security, performance, QA bundle",
         "Pre-peak load testing scripted against the real catalog – not generic JMeter benchmarks",
       ],
-      diagram: (
-        <SpecPanel
-          title="Resilience pattern"
-          subtitle="3-CLIENT TESTED"
-          rows={[
-            ["Platforms", "Adobe Commerce · BigCommerce · Bizzkit · custom"],
-            ["Byggmax peak", "99 PageSpeed · mobile Lighthouse 90+"],
-            ["Murergrej peak", "99.2% uptime · first Q4 post-cutover"],
-            ["Ermitazas peak", "Elasticsearch cluster redesign (ERMI-104)"],
-            ["Pre-peak package", "Security · performance · QA bundle"],
-            ["Load testing", "Scripted against real catalog · pre-peak"],
-          ]}
-        />
-      ),
+      diagram: <SvgPeak />,
       theme: "beige",
       reverse: true,
       diagramDark: true,

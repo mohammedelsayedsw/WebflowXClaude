@@ -959,7 +959,7 @@ export function Outcomes() {
       kicker: "Multi-warehouse truth",
       title: (
         <>
-          External WMS as truth. <span className="text-[var(--sw-mint)]">Storefront as view</span>
+          One <span className="text-[var(--sw-mint)]">stock truth</span> on every product page
         </>
       ),
       lede:
@@ -981,7 +981,7 @@ export function Outcomes() {
       kicker: "Trade and DIY in one storefront",
       title: (
         <>
-          VAT toggle on the same PDP. <span className="text-[var(--sw-blue)]">Two worlds, one catalog</span>
+          Trade and DIY in <span className="text-[var(--sw-blue)]">one storefront</span>
         </>
       ),
       lede:
@@ -1004,7 +1004,7 @@ export function Outcomes() {
       kicker: "Supplier-fed catalogs that stay clean",
       title: (
         <>
-          Hundreds of suppliers. Weekly catalog churn. <span className="text-[var(--sw-mint)]">Clean storefront.</span>
+          Supplier-fed catalogs that <span className="text-[var(--sw-mint)]">stay clean</span>
         </>
       ),
       lede:
@@ -1026,7 +1026,7 @@ export function Outcomes() {
       kicker: "Search and personalisation",
       title: (
         <>
-          Type <span className="text-[var(--sw-blue)]">paint roller 9 inch</span>. Match it
+          Search built for <span className="text-[var(--sw-blue)]">DIY language</span>
         </>
       ),
       lede:
@@ -1049,7 +1049,7 @@ export function Outcomes() {
       kicker: "Content velocity for seasonal campaigns",
       title: (
         <>
-          Migrate from page-builder limbo to <span className="text-[var(--sw-mint)]">headless CMS</span>
+          Headless content for <span className="text-[var(--sw-mint)]">fast campaigns</span>
         </>
       ),
       lede:
@@ -1071,7 +1071,7 @@ export function Outcomes() {
       kicker: "Built for sales events",
       title: (
         <>
-          Built to <span className="text-[var(--sw-blue)]">hold every peak</span>
+          Resilience for <span className="text-[var(--sw-blue)]">every sales event</span>
         </>
       ),
       lede:

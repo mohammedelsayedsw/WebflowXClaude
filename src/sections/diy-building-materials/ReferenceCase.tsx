@@ -22,7 +22,7 @@ export function ReferenceCase() {
               <span className="text-white">Sweden.</span>
             </h2>
             <p className="text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[60ch]">
-              Byggmax is Sweden&apos;s leading DIY chain – 160+ physical stores across Sweden, Norway, Denmark, Finland plus online. 55,000+ SKUs across four Magento stores. scandiweb has run their commerce stack since 2020: Magento 2 + Hyvä (99 PageSpeed) + Amplience headless CMS + Loop54 semantic search + Dynamic Yield personalisation + Dotdigital email. Published wins: +15% AOV from Dotdigital and Dynamic Yield combined, +15% revenue from a single hero CTA color A/B test.
+              Byggmax is Sweden&apos;s leading DIY chain. 160+ physical stores across Sweden, Norway, Denmark, Finland plus online. 55,000+ SKUs across four Magento stores. scandiweb has run their commerce stack since 2020: Magento 2 + Hyvä (99 PageSpeed) + Amplience headless CMS + Loop54 semantic search + Dynamic Yield personalisation + Dotdigital email. Published wins: +15% AOV from Dotdigital and Dynamic Yield combined, +15% revenue from a single hero CTA color A/B test.
             </p>
           </div>
         </Reveal>
@@ -32,17 +32,17 @@ export function ReferenceCase() {
             {
               n: "Stage · 1",
               title: "DevOps, Hyvä, performance",
-              body: "Took ownership of a Magento 2 stack that had been outsourced and patched for years. Rebuilt CI/CD with Terraform IaC, Varnish + CloudFront caching, environment parity. Migrated the storefront to Hyvä – 99 PageSpeed score (published case study). Peak stopped breaking production.",
+              body: "Took ownership of a Magento 2 stack that had been outsourced and patched for years. Rebuilt CI/CD with Terraform IaC, Varnish + CloudFront caching, environment parity. Migrated the storefront to Hyvä for a 99 PageSpeed score (published case study). Peak stopped breaking production.",
             },
             {
               n: "Stage · 2",
               title: "Search, personalisation, content",
-              body: "Loop54 semantic search wired with synonym dictionaries across Swedish, Norwegian, Danish, Finnish. Dynamic Yield personalisation rolled out PDP / category / cart. Migrated content from Magento page builder to Amplience headless – 17 page templates mapped. Dotdigital plus Dynamic Yield drove +15% AOV (published).",
+              body: "Loop54 semantic search wired with synonym dictionaries across Swedish, Norwegian, Danish, Finnish. Dynamic Yield personalisation rolled out across product page, category, and cart. Migrated content from Magento page builder to Amplience headless, with 17 page templates mapped. Dotdigital plus Dynamic Yield drove +15% AOV (published).",
             },
             {
               n: "Stage · 3",
               title: "Configurators and AI co-innovation",
-              body: "Wiksbo 3D closet configurator – Dynamaker iframe, JSON-serialized shareable presets across 23-28 SKU range. April 2026: AI content-type prototype – content lead describes the block in natural language, system scaffolds the Amplience schema. Cuts new content type time from weeks to days. Co-innovation track, not a productised module.",
+              body: "Wiksbo 3D closet configurator shipped via Dynamaker iframe, with JSON-serialized shareable presets across the 23 to 28 SKU range. April 2026 saw an AI content-type prototype: the content lead describes the block in natural language and the system scaffolds the Amplience schema. Cuts new content type time from weeks to days. Co-innovation track, not a productised module.",
             },
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.08}>

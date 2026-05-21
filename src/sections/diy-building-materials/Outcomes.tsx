@@ -151,8 +151,8 @@ function SvgWMS() {
         <text x={pdpX + 16} y={pdpY + 132} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">Ships from</text>
         <text x={pdpX + pdpW - 16} y={pdpY + 132} fill="#fff" fontFamily="Inter" fontSize="11" textAnchor="end">Central DC</text>
 
-        <text x={pdpX + 16} y={pdpY + 156} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">Fjernlager</text>
-        <text x={pdpX + pdpW - 16} y={pdpY + 156} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11" textAnchor="end">22 remote</text>
+        <text x={pdpX + 16} y={pdpY + 156} fill="rgba(255,255,255,0.7)" fontFamily="Inter" fontSize="11">From remote bay</text>
+        <text x={pdpX + pdpW - 16} y={pdpY + 156} fill="rgba(110,247,110,0.85)" fontFamily="Inter" fontSize="11" textAnchor="end">22</text>
 
         <rect x={pdpX + 16} y={pdpY + 182} width={pdpW - 32} height={28} rx={2}
               fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.55)" />
@@ -570,7 +570,7 @@ function SvgCMS() {
                     fill="url(#cmsBefore)" stroke="rgba(224,79,79,0.35)" strokeWidth={1} />
               <rect x={x} y={y} width={w} height={4} rx={2} fill="#E04F4F" />
               <text x={x + 16} y={y + 24} fill="#fff" fontFamily="Inter" fontSize="13" fontWeight="700">Before · page builder</text>
-              <text x={x + 16} y={y + 42} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">5–15 BLOCKS PER PAGE</text>
+              <text x={x + 16} y={y + 42} fill="rgba(224,79,79,0.85)" fontFamily="Inter" fontSize="9" letterSpacing="1.5">UP TO 15 BLOCKS PER PAGE</text>
 
               {/* Chaotic block stack */}
               {[0, 1, 2, 3, 4].map((i) => {
@@ -807,7 +807,7 @@ function SvgPeak() {
       >
         <circle cx={ox + 10 * step} cy={scale(90)} r={5} fill="#6EF76E" />
         <line x1={ox + 10 * step - 8} x2={ox + 10 * step - 56} y1={scale(90)} y2={scale(90) + 22} stroke="rgba(110,247,110,0.7)" strokeWidth={1} />
-        <text x={ox + 10 * step - 60} y={scale(90) + 26} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" textAnchor="end">99.2% UPTIME</text>
+        <text x={ox + 10 * step - 60} y={scale(90) + 26} fill="#6EF76E" fontFamily="Inter" fontSize="10" fontWeight="700" textAnchor="end">SITE HOLDS</text>
       </motion.g>
 
       {/* Legend */}
@@ -820,11 +820,11 @@ function SvgPeak() {
         <line x1={ox} x2={ox + 24} y1={H - 36} y2={H - 36} stroke="#E04F4F" strokeWidth={2.2} />
         <text x={ox + 32} y={H - 33} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="11">Before · old stack</text>
         <line x1={ox + 180} x2={ox + 204} y1={H - 36} y2={H - 36} stroke="#6EF76E" strokeWidth={2.2} />
-        <text x={ox + 212} y={H - 33} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="11">After · Magento 2.4 LTS · Hyvä · cache + queue tuned</text>
+        <text x={ox + 212} y={H - 33} fill="rgba(255,255,255,0.75)" fontFamily="Inter" fontSize="11">After · resilience stack tuned for DIY peaks</text>
       </motion.g>
 
       <text x={ox} y={H - 12} fill="rgba(255,255,255,0.45)" fontFamily="Inter" fontSize="10" letterSpacing="1.5">
-        99 PAGESPEED · 99.2% Q4 UPTIME · NO PATCHING WITH PEOPLE
+        OPTIMISED FRONTEND · CACHE + QUEUE TUNED · LOAD TESTED ON YOUR REAL CATALOG
       </text>
     </svg>
   );
@@ -963,14 +963,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Central, regional, store, and in-transit stock all live in different systems. None of it shows on the PDP. The storefront says 'in stock' while the bay says 'gone'. We make stock truth visible per PDP — origin tag, reservation status, transfer-in-progress — and let the WMS keep owning reservations and allocations.",
+        "Central stock, regional stock, store stock, in-transit. None of it shows on the product page today. The site says 'in stock', the warehouse bay says 'gone'. One reconciled truth per product page, live from your warehouse system. The customer sees where their order ships from before they buy.",
       results: [
-        "Storefront stays view-only on inventory while the WMS owns reservations and allocations",
-        "Origin tag on every PDP — customers see which warehouse or store ships their order before they buy",
-        "Remote-warehouse (fjernlager) flag surfaces shipping origin inline, killing the refund-queue surprise",
-        "Reservation locks across bays — no oversell when two carts compete for the same unit",
-        "Store-selector state that persists across sessions, so customers do not lose their bay on refresh",
-        "Dual-source inventory pattern — primary stock plus supplier-direct dropship in the same cart",
+        "One reconciled stock truth on every product page, surfaced live from your warehouse system",
+        "Origin tag per product page. Customers see which warehouse or store ships their order before they buy",
+        "Remote-warehouse flag tells the customer up front when an item ships from a different bay",
+        "Reservation locks across bays prevent oversell when two carts compete for the same unit",
+        "Persistent store-selector keeps a customer's chosen branch through every page refresh",
+        "Dual-source inventory: primary stock plus supplier-direct dropship live in one cart",
       ],
       diagram: <SvgWMS />,
       theme: "dark",
@@ -987,12 +987,12 @@ export function Outcomes() {
       lede:
         "A homeowner and a contractor open the same PDP. One sees €19.99 retail, one unit. The other sees €15.99 ex VAT, one pallet, save €192 vs unit price. Same SKU, two prices, one storefront. Trade and DIY share a catalog without splitting the site in two.",
       results: [
-        "Session-based VAT toggle (ex/incl) — first-visit modal forces B2B vs retail choice cleanly",
-        "Pallet-count math live on PDP — savings shown inline as the customer adds units",
-        "Tier pricing with promo-rule stacking — pallet rule plus per-unit promo, including the fix for Magento's known subsequent-rule bug",
-        "B2B invoice email via payment-middleware integration — approved trade accounts get invoice option at checkout",
-        "Quote-to-order workflow with status tracking — contractor configures, admin approves, back office picks up",
-        "Role-based account access — buyer, approver, finance, branch manager — each with scoped permissions in one trade account",
+        "Session-based VAT toggle. First-visit modal asks once whether the buyer is B2B or retail",
+        "Pallet-count math live on the product page, with savings shown inline as the customer adds units",
+        "Tier pricing with promo-rule stacking. Pallet rule plus per-unit promo can run together cleanly",
+        "B2B invoice email at checkout for approved trade accounts. No phone calls, no manual workarounds",
+        "Quote-to-order workflow with status tracking. Contractor configures, admin approves, back office picks up",
+        "Role-based access in one trade account. Buyer, approver, finance, branch manager each with scoped permissions",
       ],
       diagram: <SvgB2B />,
       theme: "beige",
@@ -1010,12 +1010,12 @@ export function Outcomes() {
       lede:
         "Your category page broke at the weekend because one supplier sent bad CSV. Your merchandiser patches it Monday morning while search results are wrong. We've built the PIM and supplier-feed pipeline that catches exceptions before they reach the storefront, models 4-level family hierarchies with dynamic attribute inheritance, and lets bulk operations run at 2000-SKU scale without timing out.",
       results: [
-        "4-level family hierarchy with dynamic attribute inheritance — parent attributes flow down, children override where needed",
-        "Custom PHP save handler beyond stock Akeneo's capability — supports hierarchical inheritance the platform itself cannot",
-        "Exception workspace — rejected supplier rows surface to a merchandiser, never silently dropped to the storefront",
-        "Bulk attribute copy with selective inclusion — modal pulls source SKU, displays per-attribute checkboxes",
-        "Completeness scoring with operator filtering and family-gated publishing — incomplete products cannot go live",
-        "Vendor SKU mapping — the same product across three suppliers resolves to one canonical SKU on the storefront",
+        "4-level family hierarchy with dynamic attribute inheritance. Parent attributes flow down, children override where needed",
+        "Custom save handler beyond stock Akeneo's capability. Supports the hierarchical inheritance the platform itself cannot",
+        "Exception workspace catches rejected supplier rows. They surface to a merchandiser, never silently drop to the storefront",
+        "Bulk attribute copy with selective inclusion. Modal pulls source SKU, displays per-attribute checkboxes",
+        "Completeness scoring with operator filtering. Family-gated publishing means incomplete products cannot go live",
+        "Vendor SKU mapping. The same product across three suppliers resolves to one canonical SKU on the storefront",
       ],
       diagram: <SvgCatalog />,
       theme: "dark",
@@ -1030,14 +1030,14 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Most DIY sites return doors for 'paint roller 9 inch'. Semantic search trained on DIY vocabulary across multiple languages matches the intent, not the keywords. Personalisation segments trade from DIY and feeds the right SKUs. A/B testing proves small storefront changes compound at scale — published +15% AOV from personalisation, +15% revenue from a single hero CTA color test.",
+        "Most DIY sites return doors for 'paint roller 9 inch'. Semantic search trained on DIY vocabulary matches the intent, not the keywords. Personalisation separates trade buyers from homeowners and feeds the right SKUs to each. Small storefront changes compound at scale, validated by A/B testing on the live catalog.",
       results: [
-        "Semantic search with DIY synonym dictionaries — matches 'paint roller 9 inch' to nine-inch roller, paint frame roller, microfibre roller",
-        "Multi-language vocabulary — Swedish, Norwegian, Danish, Finnish, English trained on real DIY queries",
-        "Personalisation across PDP, category, and cart — trade vs DIY segmentation drives recommended SKUs (+15% AOV published)",
-        "PLP hybrid loading — instant skeleton plus async price load — cuts perceived load time on large category pages",
-        "Image-based color swatches v2 — real product images per variant, grayed-out unavailable combos so customers do not click into dead ends",
-        "3D product configurator pattern — engine iframe, JSON-serialized shareable presets, designed for SKU ranges where 2D swatches are not enough",
+        "Semantic search with DIY synonym dictionaries. Matches 'paint roller 9 inch' to nine-inch roller, paint frame roller, microfibre roller",
+        "Multi-language vocabulary. Swedish, Norwegian, Danish, Finnish, English trained on real DIY queries",
+        "Personalisation across product page, category, and cart. Trade vs DIY segmentation drives recommended SKUs",
+        "Hybrid product-listing loading. Instant skeleton plus async price load cuts perceived load time on large category pages",
+        "Image-based color swatches. Real product images per variant, with unavailable combos grayed out so customers never click into dead ends",
+        "3D product configurator pattern for SKU ranges where 2D swatches cannot show the variation",
       ],
       diagram: <SvgSearch />,
       theme: "beige",
@@ -1055,12 +1055,12 @@ export function Outcomes() {
       lede:
         "Your merchandising team stitches 5-15 page-builder blocks to assemble one spring-build landing page. Updates take weeks. Multi-region variants multiply the chaos. Headless CMS migration cuts that to days. Reusable content blocks, multi-region variants from one model, AI-prompted new content types that scaffold themselves without a dev cycle.",
       results: [
-        "Headless CMS migration — 17 page templates mapped from legacy page builder, no more block-stacking marathons",
-        "Reusable content blocks — campaign banners, category overlays, comparison tables, calculator widgets",
-        "Multi-region content variants — one model, multiple localisations, the merchandising team owns updates per market",
-        "AI content-type scaffolding — the content lead describes a new block in natural language, the system generates the schema (co-innovation track)",
-        "Preview environment that mirrors production — sign off before publish, not after",
-        "GDPR-compliant tracking wired across all stores — Cookiebot, GTM, GA4 in production from day one",
+        "Headless CMS replaces the page builder. Reusable content types, no more block-stacking marathons for every campaign",
+        "Reusable content blocks for campaign banners, category overlays, comparison tables, calculator widgets",
+        "Multi-region content from one model. Merchandising team owns updates per market without dev cycles",
+        "AI content-type scaffolding. Content lead describes a new block in natural language, the system generates the schema",
+        "Preview environment that mirrors production. Sign off before publish, not after",
+        "GDPR-compliant tracking wired across all stores. Cookiebot, GTM, GA4 in production from day one",
       ],
       diagram: <SvgCMS />,
       theme: "dark",
@@ -1068,21 +1068,21 @@ export function Outcomes() {
     },
     {
       n: "6",
-      kicker: "Peak resilience",
+      kicker: "Built for sales events",
       title: (
         <>
-          Spring and Black Friday – <span className="text-[var(--sw-blue)]">no patching with people</span>
+          Built to <span className="text-[var(--sw-blue)]">hold every peak</span>
         </>
       ),
       lede:
-        "Traffic doubles overnight. The ERP queue saturates. Customer service answers the same 'where is my order' question for two weeks. Every spring. Every Black Friday. The resilience stack — Magento 2.4 LTS, Hyvä frontend, Varnish and CloudFront, OpenSearch tuned for DIY catalog volumes, ERP queue with retry logic and dead-letter capture — holds peak without throwing bodies at it.",
+        "A campaign goes live or a sale lands. Traffic doubles overnight. Customer service answers the same questions for two weeks while the platform creaks. The resilience stack absorbs the spike. Long-term-support commerce engine, optimised frontend, caching layers, queue with retry logic, and load testing scripted against your real catalog.",
       results: [
-        "Magento 2.4 LTS commerce engine — long-term support, security patched, open-source, no licensing wall",
-        "Hyvä frontend — 99 PageSpeed score in published case study, mobile Lighthouse 90+ at peak",
+        "Long-term-support commerce engine. Security patched, open-source, no licensing wall",
+        "Optimised frontend tested under live peak conditions, not on a blank dev environment",
         "Horizontal scaling with split fleets for cart, catalog, and admin so a spike in one does not break the others",
         "ERP queue with retry logic, dead-letter capture, and saturation alerting before the queue locks up",
-        "Elasticsearch cluster tuned for DIY catalog volumes — 700k+ SKU and deep family hierarchies tested in production",
-        "Pre-peak hardening package — security, performance, QA bundle shipped before each peak season, scripted against the real catalog",
+        "Search infrastructure tuned for DIY catalog scale and deep family hierarchies",
+        "Pre-peak hardening package. Security, performance, QA bundle shipped before each sales event, scripted against the real catalog",
       ],
       diagram: <SvgPeak />,
       theme: "beige",
@@ -1111,7 +1111,7 @@ export function Outcomes() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
-                Every module ships as proven, production code. Not concepts. Not roadmap. Configure them against your warehouses, your supplier feeds, and your back office – that is the project.
+                Every module ships as proven, production code. Not concepts. Not roadmap. Configure them against your warehouses, your supplier feeds, and your back office. That is the project.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">
                 <div>

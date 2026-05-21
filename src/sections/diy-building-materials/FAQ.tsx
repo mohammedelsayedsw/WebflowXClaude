@@ -25,15 +25,15 @@ export function FAQ() {
   const items = [
     {
       q: "What is the tech stack, and can it be adjusted?",
-      a: "The accelerator is platform-agnostic. We layer modules onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, and custom proprietary platforms. The operating patterns – external-WMS-as-truth, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace – are platform-independent. We build on Magento 2.4 LTS and Hyvä as the strongest configuration when a replatform is the right call; otherwise the modules ship onto your existing stack. The PIM, search, personalisation, and content layers are configurable – Akeneo or your existing PIM, semantic search of your choice, headless CMS or native. We assess your stack in the diagnostic audit and recommend what fits.",
+      a: "The accelerator is platform-agnostic. We layer modules onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, and custom proprietary platforms. The operating patterns (external-WMS-as-truth, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace) are platform-independent. We build on Magento 2.4 LTS and Hyvä as the strongest configuration when a replatform is the right call. Otherwise the modules ship onto your existing stack. The PIM, search, personalisation, and content layers are configurable. Akeneo or your existing PIM, semantic search of your choice, headless CMS or native. We assess your stack in the diagnostic audit and recommend what fits.",
     },
     {
       q: "What if we are not on Magento? Does the accelerator still apply?",
-      a: "Yes. The accelerator is patterns and modules, not a forced replatform. The external-WMS-as-truth pattern, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace, and search-and-personalisation logic all layer onto Adobe Commerce, BigCommerce, or proprietary stacks. The first engagement step is normally a wedge that lives on your existing platform. The platform decision is step two – only if the existing platform is the actual blocker.",
+      a: "Yes. The accelerator is patterns and modules, not a forced replatform. The external-WMS-as-truth pattern, session-based VAT toggle, pallet-math pricing, supplier-feed exception workspace, and search-and-personalisation logic all layer onto Adobe Commerce, BigCommerce, or proprietary stacks. The first engagement step is normally a wedge that lives on your existing platform. The platform decision is step two, only if the existing platform is the actual blocker.",
     },
     {
       q: "We just acquired several brands and need to harmonise catalogs. Does the accelerator help?",
-      a: "Yes – this is one of the strongest fit signals. Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance via a custom PHP save handler. Akeneo could not do it out of the box. The pattern travels to any DIY group integrating multiple acquired catalogs with overlapping SKUs, inconsistent attribute models, and supplier mismatches.",
+      a: "Yes. This is one of the strongest fit signals. Ermitazas restructured 800 flat product families into 2000+ across a 4-level hierarchy with dynamic attribute inheritance via a custom PHP save handler. Akeneo could not do it out of the box. The pattern travels to any DIY group integrating multiple acquired catalogs with overlapping SKUs, inconsistent attribute models, and supplier mismatches.",
     },
     {
       q: "Does it work outside the Nordic markets?",
@@ -41,7 +41,7 @@ export function FAQ() {
     },
     {
       q: "What if we are on Magento 1, BigCommerce, or a custom platform?",
-      a: "We migrate from any of these. Scripted cutover, dry-run tested, zero-downtime fallback. Catalog, customers, orders, addresses, and historical transactions all migrate. Magento 1 holdouts are a particularly common starting point – the migration runbook is well-trodden.",
+      a: "We migrate from any of these. Scripted cutover, dry-run tested, zero-downtime fallback. Catalog, customers, orders, addresses, and historical transactions all migrate. Magento 1 holdouts are a particularly common starting point and the migration runbook is well-trodden.",
     },
     {
       q: "What if we have 50,000 SKUs and dozens of suppliers?",
@@ -49,11 +49,11 @@ export function FAQ() {
     },
     {
       q: "What does fourteen weeks actually deliver?",
-      a: "The first production module on the highest-value workflow – not the full programme. Realistic timeline for a full configure-and-launch programme is 6–18 months depending on platform and integration depth. Murergrej's B2B portal took 18 months zero-to-live for 200+ trade accounts. We do not promise full accelerator delivery in 14 weeks – we promise the first module in production.",
+      a: "The first production module on the highest-value workflow, not the full programme. Realistic timeline for a full configure-and-launch programme is 6 to 18 months depending on platform and integration depth. Murergrej's B2B portal took 18 months zero-to-live for 200+ trade accounts. We do not promise full accelerator delivery in 14 weeks. We promise the first module in production.",
     },
     {
       q: "What if our back office is SAP, Kerridge K8, Epicor BisTrack, or a custom WMS?",
-      a: "Integration is protocol-agnostic – REST, GraphQL, SOAP, webhooks, message queues, SFTP, CSV. Murergrej runs YouWe WMS as source of truth on inventory (Magento's reservation table is truncated; the WMS owns allocation). Byggmax runs a Poppy supplier-feed pipeline. Ermitazas runs Devoro for supplier sync. The integration pattern travels; the system you already own does not have to be replaced.",
+      a: "Integration is protocol-agnostic. REST, GraphQL, SOAP, webhooks, message queues, SFTP, CSV. Murergrej runs YouWe WMS as source of truth on inventory (Magento's reservation table is truncated, the WMS owns allocation). Byggmax runs a Poppy supplier-feed pipeline. Ermitazas runs Devoro for supplier sync. The integration pattern travels. The system you already own does not have to be replaced.",
     },
     {
       q: "How does the trade-and-DIY account model work in practice?",
@@ -61,11 +61,11 @@ export function FAQ() {
     },
     {
       q: "What happens to our existing customers, orders, and supplier feeds?",
-      a: "Scripted cutover from your legacy stack. Dry-run tested before launch. Customers, orders, addresses, payment tokens, supplier vendor records, and historical transactions all migrate. Zero-downtime fallback if cutover hits a snag. Supplier feeds connect through Devoro – we map the first two during the diagnostic, the rest during the build.",
+      a: "Scripted cutover from your legacy stack. Dry-run tested before launch. Customers, orders, addresses, payment tokens, supplier vendor records, and historical transactions all migrate. Zero-downtime fallback if cutover hits a snag. Supplier feeds connect through Devoro. We map the first two during the diagnostic, the rest during the build.",
     },
     {
       q: "Who owns the code after launch?",
-      a: "You do. Full repository and documentation handed over at launch. No lock-in. Ongoing support happens on request – many reference clients keep an SLA arrangement for the first year, then bring it in-house once their team is up to speed.",
+      a: "You do. Full repository and documentation handed over at launch. No lock-in. Ongoing support happens on request. Many reference clients keep an SLA arrangement for the first year, then bring it in-house once their team is up to speed.",
     },
     {
       q: "Can we see the accelerator working before committing?",

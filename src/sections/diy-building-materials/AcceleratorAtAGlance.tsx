@@ -22,7 +22,7 @@ export function AcceleratorAtAGlance() {
     ["Configurable layers", "PIM · search · CMS · personalisation · WMS · payments"],
     ["Built on", "Magento 2.4 LTS + Hyvä · Akeneo PIM · headless content patterns"],
     ["Integrates with", "REST · GraphQL · SOAP · webhooks · message queues · SFTP · CSV"],
-    ["WMS-ready", "External-WMS-as-truth pattern – plugs into YouWe, Manhattan, custom"],
+    ["WMS-ready", "External-WMS-as-truth pattern. Plugs into YouWe, Manhattan, or your custom system"],
     ["Proven across", "Sweden · Denmark · Lithuania · 5+ peak seasons"],
     ["You keep", "Code · runbooks · architecture docs · admin training"],
   ];
@@ -40,7 +40,7 @@ export function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">Configure it to your business</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            Production code, proven architecture, battle-tested through five Q4 peaks across Northern Europe. <span className="font-semibold">Platform-agnostic by design</span> – modules and operating patterns that layer onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, or your custom stack. The platform decision is step two, only if the existing platform is the actual blocker.
+            Production code. Proven architecture. Battle-tested through every peak season across Northern Europe. <span className="font-semibold">Platform-agnostic by design.</span> Modules and operating patterns that layer onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, or your custom stack. The platform decision is step two, only if the existing platform is the actual blocker.
           </p>
         </Reveal>
 

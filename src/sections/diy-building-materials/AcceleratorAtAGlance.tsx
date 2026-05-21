@@ -18,11 +18,11 @@ export function AcceleratorAtAGlance() {
 
   const spec: [string, string][] = [
     ["First module live in", "14 weeks · full programme 6-18 months"],
-    ["Core stack", "Magento 2.4 LTS · Hyvä storefront · ReadyMage hosting"],
-    ["Configurable layers", "PIM · search · CMS · personalisation – your choice"],
-    ["Patterns travel", "Adobe Commerce · BigCommerce · proprietary"],
+    ["Platforms we layer onto", "Adobe Commerce · BigCommerce · Shopify Plus · Bizzkit · proprietary · custom"],
+    ["Configurable layers", "PIM · search · CMS · personalisation · WMS · payments – your choice"],
+    ["Where we have deepest depth", "Magento 2.4 LTS + Hyvä (Byggmax, Murergrej) · Akeneo PIM (Ermitazas, Bradfords)"],
     ["Integrates with", "REST · GraphQL · SOAP · webhooks · message queues · SFTP · CSV"],
-    ["WMS-ready", "External-WMS-as-truth pattern (Murergrej runs YouWe)"],
+    ["WMS-ready", "External-WMS-as-truth pattern – plugs into YouWe, Manhattan, custom"],
     ["Proven across", "Sweden · Denmark · Lithuania · 5+ peak seasons"],
     ["You keep", "Code · runbooks · architecture docs · admin training"],
   ];
@@ -40,7 +40,7 @@ export function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">Configure it to your business</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            Production code, proven architecture, battle-tested through five Q4 peaks across Northern Europe. Modules and patterns that layer onto your existing stack – Adobe Commerce, BigCommerce, or proprietary. The platform does not have to change in step one.
+            Production code, proven architecture, battle-tested through five Q4 peaks across Northern Europe. <span className="font-semibold">Platform-agnostic by design</span> – modules and operating patterns that layer onto Adobe Commerce, BigCommerce, Shopify Plus, Bizzkit, or your custom stack. The platform decision is step two, only if the existing platform is the actual blocker.
           </p>
         </Reveal>
 

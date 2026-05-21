@@ -199,10 +199,10 @@ export function Outcomes() {
       lede:
         "At Murergrej, Magento became view-only on stock. The WMS (YouWe) is the source of truth. Reservations and allocations live in the WMS; the storefront shows origin per request, fjernlager flag, and reservation status. At Byggmax, 160+ stores plus the Skånska Big Water dropship feed run as dual-source inventory with a persistent store-selector.",
       results: [
-        "Magento inventory_reservation table truncated; PlaceReservationsForSalesEventInterface overridden – Murergrej runs YouWe as source of truth",
+        "Commerce platform becomes view-only on inventory – the WMS owns reservations and allocations (Murergrej runs YouWe; the pattern travels to Manhattan, custom, or your existing system)",
         "Origin tags on every PDP – customers see which warehouse or store ships their order",
         "Fjernlager (remote warehouse) flag on PDP – the pattern that dropped Murergrej refund-queue overnight",
-        "Store-selector state persists across sessions – Byggmax fixed the cache regression that was breaking it",
+        "Store-selector state that persists across sessions – the cache discipline that Byggmax discovered the hard way at 160+ stores",
         "Dual-source inventory pattern – primary stock plus supplier-direct dropship in the same cart",
         "250 stock updates per hour per location operational ceiling – Byggmax-verified at peak",
       ],
@@ -234,11 +234,11 @@ export function Outcomes() {
       lede:
         "Murergrej shipped session-based VAT toggle (ex/incl) on Hyvä, pallet-count math live on PDP, tier pricing with rule stacking, and B2B invoice email through Swiipe checkout. Built once for 200+ trade accounts. Took 18 months zero-to-live – the honest number for a real B2B portal.",
       results: [
-        "Session-based VAT toggle (ex/incl) on Hyvä – first-visit modal forces B2B vs retail choice unless arriving from Google",
+        "Session-based VAT toggle (ex/incl) – first-visit modal forces B2B vs retail choice unless arriving from Google",
         "Pallet-count math live on PDP – Math.ceil(weight / pallet_capacity), savings displayed inline as the customer adds units",
         "Tier pricing with promo-rule stacking – pallet rule plus per-unit promo (the request Byggmax had open for 2 years before we shipped it)",
-        "B2B invoice email via Swiipe checkout middleware – approved B2B accounts get invoice option at checkout",
-        "Quote-to-order workflow with status tracking – contractor configures, admin approves, ERP picks up",
+        "B2B invoice email via payment-middleware integration – approved trade accounts get invoice option at checkout (Murergrej runs Swiipe; the pattern travels)",
+        "Quote-to-order workflow with status tracking – contractor configures, admin approves, back office picks up",
         "200+ live B2B accounts at Murergrej alongside 5,000+ B2C accounts in the same storefront",
       ],
       diagram: (
@@ -376,19 +376,19 @@ export function Outcomes() {
       lede:
         "Magento 2.4 LTS, Hyvä frontend, Varnish + CloudFront, OpenSearch tuned for DIY catalog volumes. Byggmax shipped 99 PageSpeed on Hyvä. Murergrej held 99.2% uptime through Q4 first season after launch. Ermitazas got a pre-Black-Friday hardening package in 2025 after hitting an Elasticsearch memory ceiling that took an off-the-shelf cluster down (ERMI-104, ERMI-120).",
       results: [
-        "Magento 2.4 LTS commerce – long-term support, security patched, open-source, no licensing wall",
-        "Hyvä frontend at Byggmax – 99 PageSpeed score (published case study), mobile Lighthouse 90+ at peak",
-        "Murergrej 99.2% Q4 uptime first season after launch – on Magento 2.4.6 + Hyvä + OpenSearch",
+        "Commerce platform of your choice – we hold the deepest depth on Magento 2.4 LTS + Hyvä but engage across Adobe Commerce, BigCommerce, Bizzkit, and proprietary",
+        "Byggmax shipped 99 PageSpeed score on Hyvä – published case study, mobile Lighthouse 90+ at peak",
+        "Murergrej 99.2% Q4 uptime first season after launch – verified through first post-cutover peak",
         "Ermitazas Elasticsearch cluster redesigned after memory ceiling outage (ERMI-104) – tuned for 700k SKU, 2000-family hierarchy",
         "Pre-peak hardening package shipped at Ermitazas before Black Friday 2025 – security, performance, QA bundle",
         "Pre-peak load testing scripted against the real catalog – not generic JMeter benchmarks",
       ],
       diagram: (
         <SpecPanel
-          title="Resilience stack"
+          title="Resilience pattern"
           subtitle="3-CLIENT TESTED"
           rows={[
-            ["Platform", "Magento 2.4 LTS · Hyvä frontend"],
+            ["Platforms", "Adobe Commerce · BigCommerce · Bizzkit · custom"],
             ["Byggmax peak", "99 PageSpeed · mobile Lighthouse 90+"],
             ["Murergrej peak", "99.2% uptime · first Q4 post-cutover"],
             ["Ermitazas peak", "Elasticsearch cluster redesign (ERMI-104)"],

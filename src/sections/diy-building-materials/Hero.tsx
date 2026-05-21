@@ -200,7 +200,7 @@ export function Hero() {
                 A <span className="font-semibold text-white">production-ready commerce backbone</span> for multi-warehouse DIY retail. Built across Byggmax (Sweden, 6 years), Murergrej (Denmark, 5 years), and Ermitazas (Lithuania, 4 years).
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
-                <span className="font-bold text-white">99 PageSpeed</span> at Byggmax. <span className="font-bold text-white">99.2% Q4 uptime</span> first season after Murergrej went live on Magento 2.4 LTS + Hyvä. Multi-warehouse stock that does not lie, trade and DIY in one storefront, supplier-fed catalogs with exception workspace, peak resilience across spring and Black Friday.
+                <span className="font-bold text-white">99 PageSpeed</span> at Byggmax. <span className="font-bold text-white">99.2% Q4 uptime</span> first season after Murergrej went live. Multi-warehouse stock that does not lie, trade and DIY in one storefront, supplier-fed catalogs with exception workspace, peak resilience across spring and Black Friday. <span className="font-semibold text-white">Platform-agnostic</span> – we layer onto Adobe Commerce, BigCommerce, Bizzkit, Shopify Plus, or your custom stack.
               </p>
 
               <div className="mt-14 md:mt-20 flex items-center gap-3 text-white">

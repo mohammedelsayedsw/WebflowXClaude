@@ -232,7 +232,7 @@ export function Differentiator() {
       n: "3",
       title: "Supplier feeds run through a clean pipe",
       body:
-        "PIM-first or supplier-feed-first depending on where you start. Ermitazas runs Akeneo with custom attribute inheritance across 2000+ families. Byggmax runs Poppy supplier-feed pipeline. Bad CSV does not reach the storefront.",
+        "PIM-first or supplier-feed-first depending on where you start. Family hierarchies with dynamic attribute inheritance. Vendor mapping that resolves duplicate-supplier SKUs to one canonical product. Bad CSV never reaches the storefront.",
       tag: "catalog",
     },
   ];

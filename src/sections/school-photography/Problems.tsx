@@ -70,7 +70,7 @@ export function Problems() {
           ))}
         </div>
 
-        {/* Client pullquote – Head of Operations, Advanced Life */}
+        {/* Client pullquote – Head of Operations, school photography retailer */}
         <Reveal>
           <figure className="max-w-[72ch] mx-auto text-center">
             <svg aria-hidden className="mx-auto mb-6 h-8 opacity-60" viewBox="0 0 48 32" fill="none">
@@ -83,7 +83,7 @@ export function Problems() {
               We had <span className="text-[var(--sw-mint)]">40 people doing what should take 25</span>. Burning cash from all of these client service officers.
             </blockquote>
             <figcaption className="mt-7 label-code text-white/60">
-              Head of Operations · Advanced Life
+              Head of Operations · School photography retailer
             </figcaption>
           </figure>
         </Reveal>

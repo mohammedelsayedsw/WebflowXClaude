@@ -59,7 +59,7 @@ function HeroSpecCard() {
           <span className="h-px w-6 bg-white/30" />
           <span>
             <span className="text-white">Head of Operations</span>
-            <span className="text-white/55"> · Advanced Life</span>
+            <span className="text-white/55"> · School photography retailer</span>
           </span>
         </figcaption>
 
@@ -81,7 +81,7 @@ function HeroSpecCard() {
 
         <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
           <span className="text-[12px] text-white/70">
-            Read the Advanced Life case study
+            Read the reference case study
           </span>
           <ArrowUpRight className="h-5 w-5 shrink-0 text-white/70 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
         </div>

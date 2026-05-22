@@ -9,14 +9,14 @@ export function Testimonials() {
       short: "It looks great. Really slick.",
       long: "It looks great. It’s really slick. Can’t wait to get it in.",
       who: "COO",
-      role: "Reference client",
+      role: "School photography retailer",
       accent: "mint",
     },
     {
       short: "Money coming in. No phone calls. Smooth sailing.",
       long: "Money coming in. No phone calls from anybody. No upset customers. Smooth sailing.",
       who: "Head of Operations",
-      role: "Reference client",
+      role: "School photography retailer",
       accent: "blue",
     },
   ];

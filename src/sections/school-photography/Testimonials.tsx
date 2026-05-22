@@ -8,8 +8,8 @@ export function Testimonials() {
     {
       short: "It looks great. Really slick.",
       long: "It looks great. It’s really slick. Can’t wait to get it in.",
-      who: "Jon Mann",
-      role: "COO · reference client",
+      who: "COO",
+      role: "Reference client",
       accent: "mint",
     },
     {

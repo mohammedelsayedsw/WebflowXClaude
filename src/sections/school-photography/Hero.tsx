@@ -58,8 +58,8 @@ function HeroSpecCard() {
         <figcaption className="mt-5 flex items-center gap-3 text-[13px] text-white/75">
           <span className="h-px w-6 bg-white/30" />
           <span>
-            <span className="text-white">David van Gelder</span>
-            <span className="text-white/55"> · Operations · Advanced Life</span>
+            <span className="text-white">Head of Operations</span>
+            <span className="text-white/55"> · Advanced Life</span>
           </span>
         </figcaption>
 

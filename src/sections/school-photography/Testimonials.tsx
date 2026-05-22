@@ -15,8 +15,8 @@ export function Testimonials() {
     {
       short: "Money coming in. No phone calls. Smooth sailing.",
       long: "Money coming in. No phone calls from anybody. No upset customers. Smooth sailing.",
-      who: "David van Gelder",
-      role: "Operations · reference client",
+      who: "Head of Operations",
+      role: "Reference client",
       accent: "blue",
     },
   ];

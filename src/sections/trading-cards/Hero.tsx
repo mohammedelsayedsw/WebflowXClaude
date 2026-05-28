@@ -31,7 +31,7 @@ function HeroBg() {
 
 function HeroSpecCard() {
   const stats: [string, string][] = [
-    ["PSA", "vault integration live"],
+    ["Live", "with card grading integrated"],
     ["14 wk", "kickoff to production"],
     ["0", "incidents at launch"],
   ];
@@ -48,17 +48,17 @@ function HeroSpecCard() {
     >
       <div className="p-6 md:p-8">
         <blockquote className="font-head text-white text-[22px] md:text-[26px] leading-[1.2] tracking-[-0.005em]">
-          The pack openings can be{" "}
+          Our website finally{" "}
           <span className="text-[var(--sw-mint)]">
-            endless until we run out of inventory
+            generates real revenue
           </span>
-          . Replace the hit with a card of similar value and the model keeps running.
+          . Before, only the live show on Whatnot did.
         </blockquote>
 
         <figcaption className="mt-5 flex items-center gap-3 text-[13px] text-white/75">
           <span className="h-px w-6 bg-white/30" />
           <span>
-            <span className="text-white">CEO</span>
+            <span className="text-white">Founder</span>
             <span className="text-white/55"> · Reference trading card retailer</span>
           </span>
         </figcaption>
@@ -175,14 +175,14 @@ export function Hero() {
               </h1>
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                A <span className="font-semibold text-white">production-ready commerce platform</span> for trading card retailers and breakers. Already built. Already running PSA-vaulted pack purchases at scale. Configure it to your catalog, your grading partner, and your live show. You don&rsquo;t rebuild it from scratch.
+                A <span className="font-semibold text-white">production-ready commerce platform</span> for trading card retailers. Already built. Already running real card sales connected to the world&rsquo;s leading card-grading service. Configure it to your catalog, your grading partner, and your live show. You don&rsquo;t rebuild it from scratch.
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
                 <span className="font-bold text-white">14 weeks</span> kickoff
-                to live, not 14 months. Covers the pack product type, FMV-driven
-                randomization, live PSA Vault integration, the buyback loop,
-                Stripe Radar tuned for high-AOV, AEO trust content, and the
-                Whatnot-to-website bridge.
+                to live, not 14 months. Built for the live-show selling model,
+                connected to PSA card grading, with payment rules that handle
+                $5,000 transactions, a 90% buyback program, and one customer
+                file across your live show and your website.
               </p>
 
               <div className="mt-14 md:mt-20 flex items-center gap-3 text-white">

@@ -25,35 +25,35 @@ export function FAQ() {
   const items = [
     {
       q: "What is the tech stack, and can it be adjusted?",
-      a: "The reference build runs on Magento 2 + Hyva, an enterprise-grade, open-source stack with deep extensibility and no licensing fees. We chose it deliberately. SaaS platforms rarely flex to a model where inventory is created during a livestream, AOV swings from $20 to $5,000, and the chain of custody goes through PSA. We assess your stack in the diagnostic sprint and recommend what fits.",
+      a: "The reference build runs on Magento 2 + Hyva, an enterprise-grade open-source stack with deep extensibility and no licensing fees. We chose it deliberately. Off-the-shelf platforms rarely flex to a model where inventory is created during a live show, the same buyer spends $20 then $5,000 in the same hour, and the chain of custody runs through a card-grading service. We assess your stack in the diagnostic sprint and recommend what fits.",
     },
     {
-      q: "Will it replace my Whatnot show?",
-      a: "No. Whatnot is where your buyers are and your show stays there. The accelerator gives you the owned-channel and inventory layer underneath, plus a customer bridge so the whales finally get an identity outside the platform. Your Whatnot calendar, your show production, your sponsor deals stay untouched.",
+      q: "Will this replace my live show on Whatnot?",
+      a: "No. Whatnot is where your buyers are, and your show stays there. The platform gives you the owned-channel and the inventory backbone underneath, plus a customer record that finally lets you see your big buyers as named people. Your Whatnot calendar, your production, your sponsorships, all stay untouched.",
     },
     {
       q: "Do you only integrate with PSA?",
-      a: "PSA is the primary integration in the reference build because PSA owns the dominant slab base in North America. The adapter pattern extends to BGS, SGC, CGC, and Beckett. Adding a second grader is a Phase 2 configuration, not a rebuild.",
+      a: "PSA is the primary integration today because PSA holds the dominant graded-card base in North America. The same connector pattern extends to BGS, SGC, CGC, and Beckett. Adding a second grading service is a configuration step, not a rebuild.",
     },
     {
-      q: "What about chargebacks on high-AOV personals?",
-      a: "Stripe Radar comes tuned for the high-AOV, multi-transaction stream pattern. Diamond and Legend tier packs are protected with custom velocity rules and blocklists. We document the policy your team needs to defend disputes. The reference build has not had a chargeback escalation that the policy did not cover.",
+      q: "What about payment disputes on the biggest transactions?",
+      a: "The payment rules are tuned for the live-show pattern: many small purchases and one or two large ones inside a 90-minute window. The expensive purchases pass cleanly. We also document the dispute-defence policy your support team can run from. In the reference build, no dispute has escalated past the documented policy.",
     },
     {
-      q: "Can it handle multi-channel inventory across eBay and TCGplayer?",
-      a: "Yes. The customer bridge is the foundation. We sync the right product to the right channel based on PSA cert presence, condition, and price. Sold-out-after-the-fact disappears because every channel reads the same inventory truth.",
+      q: "Can it handle inventory across eBay and TCGplayer too?",
+      a: "Yes. The single customer record is the foundation. We sync each card to the right channel based on its grading status, condition, and price. Sold-out-after-the-fact disappears because every channel reads the same inventory.",
     },
     {
-      q: "What does the FMV engine actually do?",
-      a: "When an active card hits and leaves the pack, the engine pulls the closest-value card from your reserve inventory to keep the pack sellable. The math is per tier, per level, with a full audit log. Pack EV stays inside the configured band. You do not have to take packs offline to rebalance.",
+      q: "How does the automatic restocking actually work?",
+      a: "When a valuable card sells and leaves a pack, the platform finds the closest-value card in your reserve stock and slots it back in. The match is per tier, per level, with a full audit log. The pack's expected value stays inside its stated range. You never have to take packs offline to rebalance.",
     },
     {
       q: "How does the 90% buyback work?",
-      a: "Your customer can sell a vaulted card back to you at 90% of its current FMV. The card refreshes into your reserve inventory and becomes available for the next pack. The customer never leaves you to liquidate. Your platform stays the marketplace.",
+      a: "Your customer can sell a stored card back to you at 90% of its current market value, paid as store credit. The card refreshes into your reserve and becomes available for the next pack. The customer never has to leave you to cash out. Your platform stays the marketplace.",
     },
     {
-      q: "What about trust and AEO content?",
-      a: "The trading cards industry has a credibility tax. Negative Reddit threads, scepticism about live breaks, allegations across the category. The accelerator includes the trust FAQ, AEO-structured content, AI-citation tracking, and Reddit sentiment management. The point is the brand defends itself, not waits for the next thread.",
+      q: "What about trust and content?",
+      a: "The trading cards industry has a credibility tax. Negative Reddit threads, sceptical buyers, allegations across the category. The accelerator includes the trust FAQ, AI-citable content structure, AI-citation tracking, and Reddit sentiment management. The brand defends itself, not waits for the next thread.",
     },
     {
       q: "Who owns the code after launch?",
@@ -61,7 +61,7 @@ export function FAQ() {
     },
     {
       q: "Who runs it after launch?",
-      a: "Your team, with our 30-day post-launch on-call covering the first peak window. Optional managed-services arrangement available; most reference clients keep it for the first year, then bring it in-house once their team is up to speed.",
+      a: "Your team, with our 30-day post-launch on-call covering the first peak window. An optional managed-services arrangement is available, and most reference clients keep it for the first year before bringing it in-house.",
     },
     {
       q: "Can we see a live demo before committing?",

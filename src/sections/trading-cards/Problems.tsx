@@ -7,27 +7,27 @@ export function Problems() {
   const problems = [
     {
       n: "1",
-      title: "Your show and your website are two businesses",
+      title: "Your live show and your website are two businesses",
       body:
-        "Whatnot pays the bills. The owned website is supposed to. Today they share no customer file, no inventory truth, no attribution. The whales who keep your show alive are invisible to your site, and the work you put into SEO never gets credit for the GMV.",
+        "The live show on Whatnot pays the bills. The website is supposed to. Today they share no customer file, no inventory, no attribution. The biggest buyers on your show are invisible to your site, and the work you put into SEO never gets credit for the revenue.",
     },
     {
       n: "2",
-      title: "One box opens into 200 unique SKUs",
+      title: "One box of cards opens into 200 unique items",
       body:
-        "Set, parallel, condition, serial, year, player. Every card is a real product, and mainstream PIMs were never built for this. Most breakers run two parallel inventories glued together with Google Sheets and Apps Script.",
+        "Each card is a unique product with its own year, player, condition, and serial number. Standard retail systems were never built for this. Most operators end up running two inventories side by side, glued together with spreadsheets.",
     },
     {
       n: "3",
-      title: "Stripe chokes on high-AOV randoms",
+      title: "Payments get declined on the highest-value sales",
       body:
-        "A $80 spot followed by a $4,500 personal looks like fraud to default card-issuer rules. Your buyers get declined. Fanatics Live disclosed $800K a year in chargeback losses. TikTok-self-processed breakers carry it directly.",
+        "An $80 sale followed by a $4,500 sale in the same hour looks like fraud to default card-issuer rules. Buyers get blocked. Disputed payments stack up. The industry has documented millions of dollars in losses to this exact pattern.",
     },
     {
       n: "4",
-      title: "PSA, BGS, SGC, CGC do not integrate with anything",
+      title: "Card grading services do not connect to anything",
       body:
-        "Submission portals, status emails, vault transfers, eBay listings. Today every breaker tracks grading and vault state in spreadsheets. A single lost $5,000 personal can erase a week of margin.",
+        "Submitting cards for grading, tracking their status, transferring them into the buyer's secure storage, listing them back on eBay. Every operator today tracks all of this in spreadsheets. A single lost shipment can erase a week of profit.",
     },
   ];
 
@@ -46,10 +46,10 @@ export function Problems() {
           <Reveal>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
               Generic commerce platforms were not built for{" "}
-              <span className="text-[var(--sw-mint)]">breakers</span>
+              <span className="text-[var(--sw-mint)]">trading cards</span>
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[56ch] leading-relaxed">
-              Trading cards retail is not fashion retail. Inventory is created during the live show. Every card is a unique SKU. AOV swings from $20 to $5,000 in the same checkout. Grading services own the chain of custody. Every breaker we speak to recognises all four problems below.
+              Trading cards retail is not fashion retail. Inventory is created during a live show, not loaded into a warehouse. Every card is a unique product. The same buyer can spend $20 one minute and $5,000 the next. Card-grading services control the chain of custody. Every operator we speak to recognises all four problems below.
             </p>
           </Reveal>
         </div>

@@ -121,7 +121,7 @@ function SvgPackProduct() {
         <text x={110} y={102} fill="rgba(255,255,255,0.7)" fontSize="14" fontFamily="Inter" fontWeight="600" textAnchor="middle">DIA</text>
 
         <text x={12} y={194} fill="#fff" fontSize="16" fontFamily="Inter" fontWeight="700">Diamond Pack</text>
-        <text x={12} y={214} fill="rgba(255,255,255,0.55)" fontSize="11" fontFamily="Inter">PSA-vaulted · level 03</text>
+        <text x={12} y={214} fill="rgba(255,255,255,0.55)" fontSize="11" fontFamily="Inter">PSA-stored · level 3</text>
 
         <line x1={12} y1={230} x2={208} y2={230} stroke="rgba(255,255,255,0.12)" strokeWidth={1} />
 
@@ -172,9 +172,9 @@ function SvgPackProduct() {
 /* ====================================================================== */
 function SvgFMV() {
   return (
-    <svg viewBox="0 0 560 380" className="w-full h-auto" role="img" aria-label="FMV randomization engine">
+    <svg viewBox="0 0 560 380" className="w-full h-auto" role="img" aria-label="Automatic restocking by market value">
       <text x={30} y={32} fill="currentColor" opacity="0.55" fontSize="11" fontFamily="Inter" letterSpacing="2">
-        FMV ENGINE · CLOSEST VALUE MATCH
+        AUTO-RESTOCK · CLOSEST MARKET VALUE
       </text>
       <DrawnPath d="M30 46 H530" stroke="currentColor" strokeOpacity={0.18} strokeWidth={1} duration={1.2} />
 
@@ -291,7 +291,7 @@ function SvgPSAVault() {
         <path d="M72 58 V52 a8 8 0 0 1 16 0 V58" fill="none" stroke="rgba(110,247,110,0.8)" strokeWidth={1.4} />
         <circle cx={80} cy={68} r={2} fill="#6EF76E" />
         <text x={80} y={110} fill="#fff" fontSize="13" fontFamily="Inter" textAnchor="middle" fontWeight="600">ownership: buyer</text>
-        <text x={80} y={128} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Inter" textAnchor="middle">status: vaulted</text>
+        <text x={80} y={128} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="Inter" textAnchor="middle">status: stored at PSA</text>
       </g>
 
       {/* Outbound paths */}
@@ -351,7 +351,7 @@ function SvgLifecycle() {
       {/* States */}
       {node(30, 90, 120, 48, "ACTIVE", "in reserve pool")}
       {node(170, 90, 120, 48, "PURCHASED", "in pack reveal", true)}
-      {node(310, 90, 120, 48, "VAULTED", "in PSA Vault")}
+      {node(310, 90, 120, 48, "STORED", "at PSA")}
 
       {/* Flow arrows */}
       <DrawnPath d="M150 114 H170" stroke="currentColor" strokeOpacity={0.55} strokeWidth={1.2} duration={0.6} delay={0.6} />
@@ -417,7 +417,7 @@ function SvgRadar() {
   const step = cw / (txs.length - 1);
 
   return (
-    <svg viewBox="0 0 560 320" className="w-full h-auto" role="img" aria-label="Stripe Radar tuned for high-AOV stream">
+    <svg viewBox="0 0 560 320" className="w-full h-auto" role="img" aria-label="Payment rules for high-value live show transactions">
       <text x={30} y={28} fill="#6EF76E" fontSize="11" fontFamily="Inter" letterSpacing="2">
         STREAM · 90 MINUTES · 10 TRANSACTIONS
       </text>
@@ -579,32 +579,32 @@ export function Modules() {
   const modules: ModuleBlock[] = [
     {
       n: "1",
-      kicker: "PACK PRODUCT TYPE",
-      title: "Pack product type with tier, level, and odds",
+      kicker: "PURCHASABLE PACK",
+      title: "A pack the customer can buy, with tiers, levels, and odds",
       lede:
-        "A native Magento product type that models a digital pack. Each pack carries a tier, a level, a price point, and configured odds for case hits, autos, parallels, and base hits.",
+        "A real product on your site that the customer buys, with a defined price, a defined set of cards inside it, and stated odds. Three tiers from entry to premium. Every sale logged.",
       bullets: [
-        "Tiers (Diamond, Legend, Standard) with separate price points and EV bands",
-        "Levels per tier control which cards are in scope for the next reveal",
-        "Odds engine drives hit distribution with configurable case-hit guarantees",
-        "Pack Checklist popup shows the buyer what is inside before purchase",
-        "Top Pulls page persists every reveal for public transparency",
+        "Three tiers (Standard, Diamond, Legend) at separate price points",
+        "Each tier has a stated expected value range so customers know what they pay for",
+        "Stated odds for every pull type, configurable per tier",
+        "Pop-up checklist shows the customer what is inside before purchase",
+        "Public Top Pulls page logs every sale for transparency",
       ],
       diagram: <SvgPackProduct />,
       theme: "dark",
     },
     {
       n: "2",
-      kicker: "FMV ENGINE",
-      title: "FMV randomization engine with audit log",
+      kicker: "AUTO RESTOCK",
+      title: "Automatic restocking based on each card's market value",
       lede:
-        "When a card hits and leaves the active pool, the engine queries the reserve for the closest-value card and replaces it. Every event is written to an audit log that holds up to scrutiny.",
+        "When a valuable card sells, the platform finds the closest-value card in your reserve stock and slots it back in to keep the pack live. No spreadsheet rebalancing. Every move logged.",
       bullets: [
-        "Closest-value-match algorithm pulls replacements from reserve",
-        "FMV anchored to Card Ladder API, configurable per tier",
-        "Full audit log per pack reveal with timestamps and ledger entries",
-        "Configurable reserve thresholds with FMV drift alerts",
-        "Pack EV stays inside the configured band without manual rebalancing",
+        "Algorithm matches replacement cards by current market value",
+        "Market value pulled live from Card Ladder, the category's reference index",
+        "Full audit log of every replacement with timestamps",
+        "Alerts when reserve stock at a price point runs low",
+        "Each pack's value stays inside its stated range with no manual work",
       ],
       diagram: <SvgFMV />,
       theme: "beige",
@@ -612,32 +612,32 @@ export function Modules() {
     },
     {
       n: "3",
-      kicker: "PSA VAULT",
-      title: "PSA Vault integration on every purchase",
+      kicker: "CARD GRADING",
+      title: "Live connection to the leading card-grading service",
       lede:
-        "Live, two-way integration with PSA Vault. Cards transfer to the buyer's vault on the purchase event. Status, ownership records, and outbound routing to eBay or PSA Offers are all available from the customer account.",
+        "When a customer buys a card, it transfers into their secure storage account at PSA, the category's leading grading service. From there it can stay stored, list to eBay, or come back to you for the buyback.",
       bullets: [
-        "Ownership transfer fires on purchase.completed",
-        "Live vault status in the buyer's My Collection",
-        "eBay listing routed through the vault for chain-of-custody premium",
-        "PSA Offers integration for secondary sale",
-        "Bulk card assignment by PSA certificate ID for ops",
+        "Card ownership transfers to the buyer the moment the sale completes",
+        "Buyer sees their stored cards inside their account on your site",
+        "List a stored card to eBay through the same secure storage chain",
+        "Sell the card through PSA's offers system without leaving",
+        "Bulk operations team tools to import by grading certificate number",
       ],
       diagram: <SvgPSAVault />,
       theme: "dark",
     },
     {
       n: "4",
-      kicker: "LIFECYCLE",
-      title: "Card lifecycle and 90% buyback",
+      kicker: "CARD JOURNEY",
+      title: "The full card journey, end to end, with a 90% buyback",
       lede:
-        "Every card moves through a defined state machine: active in reserve, purchased in a pack reveal, vaulted in PSA, then routed to eBay, PSA Offers, withdrawal, or buyback. The 90% buyback returns the card to the active pool.",
+        "Every card moves through a clear journey: it sits in your reserve, sells in a pack, lands in the buyer's storage, then can be listed, withdrawn, or sold back to you. The buyback brings it home to your reserve.",
       bullets: [
-        "States: Active, Purchased, Vaulted, eBay, PSA Offers, Withdrawn, Bought Back",
-        "90% buyback against current FMV, paid in store credit",
-        "Bought-back cards refresh into the reserve and become available again",
-        "Automated refund flow for failed pack reveals",
-        "Card replacement flow for disputed reveals",
+        "Five clear states (Active, Sold, Stored, Listed, Bought Back) and one engine governs them",
+        "90% buyback at current market value, paid as store credit the customer can spend",
+        "Cards bought back refresh into reserve and become available for the next pack",
+        "Refunds for failed sales handled automatically with audit trail",
+        "Customer disputes routed to a card-replacement workflow, not back-and-forth email",
       ],
       diagram: <SvgLifecycle />,
       theme: "beige",
@@ -645,32 +645,32 @@ export function Modules() {
     },
     {
       n: "5",
-      kicker: "PAYMENT + RADAR",
-      title: "Stripe Radar tuned for $500 to $5,000 transactions",
+      kicker: "PAYMENT CONTROLS",
+      title: "Payment rules that handle $20 and $5,000 in the same hour",
       lede:
-        "Stripe Radar configured for the high-AOV, multi-transaction stream pattern. Diamond and Legend tier purchases pass authorization. Chargeback policy documented for the cases your support team will see.",
+        "Stripe Radar configured for the pattern your business actually has: a customer buying ten small spots and one large card in the same stream. The expensive purchases pass. The fraud gets caught.",
       bullets: [
-        "Custom velocity rules for high-AOV transaction patterns",
-        "Blocklists tuned for known fraud signatures in the category",
-        "Diamond ($500) and Legend ($1,000) tier protection",
-        "Documented chargeback defence policy your team can execute",
-        "Stripe Connect adapter for white-label payment flows",
+        "Custom rules for the small-then-large transaction pattern unique to live shows",
+        "Block-lists tuned for the fraud patterns documented in trading cards",
+        "Diamond ($500) and Legend ($1,000) tier purchases protected with extra checks",
+        "Written dispute-defence policy your support team can run from",
+        "Optional Stripe Connect setup for split payouts and white-label flows",
       ],
       diagram: <SvgRadar />,
       theme: "dark",
     },
     {
       n: "6",
-      kicker: "CUSTOMER BRIDGE",
-      title: "Whatnot, eBay, and owned-site on one customer file",
+      kicker: "ONE CUSTOMER FILE",
+      title: "One customer record across Whatnot, eBay, and your website",
       lede:
-        "A bridge that links customer activity across Whatnot, eBay, and your owned website to a single record. Klaviyo email lists tied to real buyers. Lifetime value ranking your top customers across all channels.",
+        "Today your best buyers are anonymous handles on a live-stream app. The platform matches them by email across Whatnot, eBay, and your site, so you can name your top 50 customers and run real lifecycle marketing.",
       bullets: [
-        "Whatnot handle, eBay user, and owned-site account merged on email match",
-        "Klaviyo segments for top customers across all channels",
-        "Lifetime-value ranking with manual override for known whales",
-        "Source attribution from stream to owned-site purchase",
-        "Whatnot reviews and feedback imported to the customer record",
+        "Whatnot username, eBay account, and website login matched on email",
+        "Klaviyo email segments built against the merged customer record",
+        "Lifetime-value ranking, with manual override for known big spenders",
+        "Attribution from a live show all the way to a website purchase",
+        "Customer reviews and feedback from Whatnot pulled into the record",
       ],
       diagram: <SvgCustomerBridge />,
       theme: "beige",

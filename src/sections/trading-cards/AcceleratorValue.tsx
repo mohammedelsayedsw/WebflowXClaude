@@ -18,7 +18,7 @@ export function AcceleratorValue() {
             <span className="text-[var(--sw-blue)]">discovery year</span>
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[58ch] text-[16px] md:text-[17px] leading-relaxed">
-            Pack product type, FMV randomization, PSA Vault, buyback, Stripe Radar tuned for high AOV, trust FAQ. Already built. You inherit the proven stack, configured to your catalog and your grading partner.
+            Purchasable packs, automatic restocking, card grading, buyback, payment rules for large transactions, trust content. Already built. You inherit the proven stack, configured to your catalog and your grading partner.
           </p>
         </Reveal>
 
@@ -33,11 +33,11 @@ export function AcceleratorValue() {
               </div>
               <ul className="space-y-4 text-[14px] md:text-[15px] text-[var(--sw-black)]/75 leading-relaxed">
                 {[
-                  "Agency learns what an FMV engine is on your budget",
-                  "Pack product type built from scratch, randomization audit log invented late",
-                  "PSA Vault integration negotiated by your team, not theirs",
-                  "Buyback loop discovered as a feature request after launch",
-                  "Stripe gateway gets frozen on the first $5,000 personal",
+                  "Agency learns what automatic restocking by market value is on your budget",
+                  "Purchasable pack product built from scratch, audit log invented late",
+                  "Grading-service integration negotiated by your team, not theirs",
+                  "Buyback discovered as a feature request three months after launch",
+                  "Stripe freezes the account on the first $5,000 purchase",
                   "Trust content gets written after the first negative Reddit thread",
                 ].map((t, i) => (
                   <li key={i} className="flex gap-3">
@@ -74,12 +74,12 @@ export function AcceleratorValue() {
                 </div>
                 <ul className="space-y-4 text-[14px] md:text-[15px] text-white/90 leading-relaxed">
                   {[
-                    "Pack product type, FMV engine, audit log in production from day one",
-                    "PSA Vault on every purchase, vault status live in customer account",
-                    "Buyback loop closes the lifecycle inside your platform",
-                    "Stripe Radar tuned for $500 to $5,000 ranges, Diamond and Legend pack protection",
-                    "Trust FAQ and AEO content cited by ChatGPT, Perplexity, Gemini on day one",
-                    "Whatnot to website customer bridge, your top 50 buyers finally identified",
+                    "Purchasable packs and automatic restocking, in production from day one",
+                    "Card transfers to the buyer's PSA storage the moment a sale completes",
+                    "90% buyback keeps customers inside your store instead of going to eBay",
+                    "Payment rules handle $20 to $5,000 in the same hour without false declines",
+                    "Trust content cited by ChatGPT, Perplexity, and Gemini on day one",
+                    "Top 50 buyers across Whatnot, eBay, and your website finally identified",
                   ].map((t, i) => (
                     <li key={i} className="flex gap-3">
                       <Check className="h-4 w-4 shrink-0 mt-1 text-[var(--sw-mint)]" />

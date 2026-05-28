@@ -6,27 +6,27 @@ export function Differentiator() {
   const pillars = [
     {
       n: "1",
-      title: "Built around the breaks model, not bolted on",
+      title: "Built around the live-show selling model, not bolted on",
       body:
-        "The pack product type, the FMV engine, and the randomization audit log were built for a Whatnot-anchored business, not generic retail. A pack is a first-class product with tiers, levels, and odds. Every reveal is logged. Every replacement is value-matched from reserve inventory.",
+        "The purchasable pack, the auto-restock engine, and the audit log were built for a live-streamed selling business, not generic retail. A pack is a real product with tiers, levels, and odds. Every sale is logged. Every replacement comes from your reserve at matching market value.",
     },
     {
       n: "2",
-      title: "PSA Vault and the buyback loop in one lifecycle",
+      title: "Card grading and buyback inside one journey",
       body:
-        "Card moves on purchase from your active inventory into the customer's PSA vault. From there it can stay vaulted, route to eBay through the vault, or come back to you through the 90% buyback. The customer never handles a slab unless they want to. You never lose them to an external marketplace.",
+        "On purchase, the card transfers from your active stock into the customer's secure storage at PSA. From there it can stay stored, list back to eBay through that same secure chain, or return to you through the 90% buyback. The customer never handles the card unless they want to. You never lose them to an outside marketplace.",
     },
     {
       n: "3",
-      title: "Whatnot, eBay, and your owned site on one customer file",
+      title: "Whatnot, eBay, and your own site on one customer record",
       body:
-        "The whales who keep your show alive finally get an identity outside Whatnot. You can name your top 50 customers. You can run loyalty and lifecycle email through Klaviyo against people who have actually paid you. The ROI on your owned-site SEO and content finally becomes measurable.",
+        "The buyers who drive most of your revenue finally get an identity outside Whatnot. You can name your top 50 customers. You can run loyalty and email lifecycle through Klaviyo against people who have actually paid you. The return on your SEO and content work finally becomes measurable.",
     },
     {
       n: "4",
-      title: "Trust and AEO content engineered for breakers",
+      title: "Trust content built for a sceptical category",
       body:
-        "The trading cards industry has a credibility problem. Negative Reddit threads, allegations of shill bidding, sceptical buyers. The accelerator includes the trust FAQ, the AI-citable content structure, the Reddit sentiment management, and the digital PR playbook that defends a breaker brand the way a breaker cannot do for themselves.",
+        "Trading cards has a credibility problem. Negative threads on Reddit, accusations across the category, careful buyers. The accelerator includes the trust FAQ, AI-citable content structure, Reddit sentiment management, and the digital PR playbook that defends a brand the way an operator cannot do alone.",
     },
   ];
 
@@ -50,7 +50,7 @@ export function Differentiator() {
             <span className="text-[var(--sw-mint)]">accelerator</span>, not another rebuild
           </h2>
           <p className="mt-6 text-white/75 max-w-[60ch] text-[16px] md:text-[17px] leading-relaxed">
-            Four hard things every breaker needs and no agency has shipped before. Each one is in production today, not a slide.
+            Four hard things every trading card operator needs and no agency has shipped before. Each one is in production today, not a slide.
           </p>
         </Reveal>
 

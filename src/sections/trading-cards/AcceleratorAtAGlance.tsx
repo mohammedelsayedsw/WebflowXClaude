@@ -8,22 +8,22 @@ import { btnLight } from "@/components/primitives/buttonStyles";
 
 export function AcceleratorAtAGlance() {
   const modules = [
-    { n: "1", name: "Pack product type with tiers, levels, and odds" },
-    { n: "2", name: "FMV-driven randomization with full audit log" },
-    { n: "3", name: "Live PSA Vault integration on every purchase" },
-    { n: "4", name: "Card lifecycle from active to vaulted to buyback" },
-    { n: "5", name: "Buyback and sell-back loop inside the platform" },
-    { n: "6", name: "High-AOV payment and fraud stack" },
-    { n: "7", name: "AEO trust content engine for breakers" },
-    { n: "8", name: "Whatnot show to owned website bridge" },
+    { n: "1", name: "A purchasable pack product with tiers, levels, and odds" },
+    { n: "2", name: "Automatic restocking based on each card's market value" },
+    { n: "3", name: "Live connection to PSA, the leading card-grading service" },
+    { n: "4", name: "Full card journey from active stock to customer storage to buyback" },
+    { n: "5", name: "90% buyback program keeping customers inside your store" },
+    { n: "6", name: "Payment and fraud controls built for $20 to $5,000 sales" },
+    { n: "7", name: "Trust content and reputation defence built for the category" },
+    { n: "8", name: "One customer record across Whatnot, eBay, and your website" },
   ];
 
   const spec: [string, string][] = [
     ["Live in", "14 weeks · kickoff to production"],
-    ["Connects to", "PSA Vault · Card Ladder · Whatnot · eBay · Stripe · Klaviyo"],
-    ["Grading", "PSA today · BGS, SGC, CGC adapter-ready"],
-    ["Live commerce", "Plugs into Whatnot and Fanatics Live · keeps the show running"],
-    ["Battle-tested", "Through a Backyard Breaks scale live launch"],
+    ["Connects to", "PSA · Card Ladder · Whatnot · eBay · Stripe · Klaviyo"],
+    ["Card grading", "PSA today · BGS, SGC, CGC ready to add"],
+    ["Live commerce", "Plugs into Whatnot and Fanatics Live · your show keeps running"],
+    ["Battle-tested", "Through a real launch at scale"],
     ["You keep", "Code · architecture docs · runbooks · admin training"],
   ];
 
@@ -40,7 +40,7 @@ export function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">Configure it to your business</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            Production code, proven architecture, running today through PSA-vaulted pack purchases and the buyback loop. Configure it against your catalog, your grading partner, and your live show, instead of spending a year discovering what trading card commerce actually needs.
+            Production code, proven architecture, running today through real pack purchases connected to PSA card grading and the buyback loop. Configure it against your catalog, your grading partner, and your live show, instead of spending a year discovering what trading cards commerce actually needs.
           </p>
         </Reveal>
 

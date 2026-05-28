@@ -12,35 +12,35 @@ export function WhatShips() {
       n: "1",
       name: "Migration plan",
       detail:
-        "Scripted cutover from your legacy stack (Shopify, custom, or spreadsheet glue). Dry-run tested. Inventory reconciled before go-live.",
+        "A scripted move from your current setup (Shopify, custom site, or spreadsheets) onto the platform. Tested in a dry run. Inventory reconciled before launch.",
       tag: "doc",
     },
     {
       n: "2",
       name: "Architecture documentation",
       detail:
-        "System diagram, pack data model, PSA Vault adapter, FMV engine, randomization audit log. Versioned with the code.",
+        "System diagram, pack data model, card-grading connector, restocking engine, audit log. Versioned with the code.",
       tag: "doc",
     },
     {
       n: "3",
       name: "Runbooks",
       detail:
-        "Live-show peak ops, payment-decline recovery, vault transfer failure modes, buyback dispute handling. Written for your on-call team.",
+        "Peak-show operations, payment decline recovery, card-transfer failure modes, buyback dispute handling. Written for your on-call team.",
       tag: "doc",
     },
     {
       n: "4",
       name: "Admin training",
       detail:
-        "Three sessions covering pack configuration, tier and level management, reserve pool monitoring, and Stripe Radar tuning.",
+        "Three sessions covering pack configuration, tier and level management, reserve stock monitoring, and payment-rule tuning.",
       tag: "session",
     },
     {
       n: "5",
       name: "30-day post-launch",
       detail:
-        "Joint on-call with your team through the first major release window. Fix-forward, not hand-off-and-disappear.",
+        "Joint on-call with your team through the first major release window. We stay until it is stable, not hand off and disappear.",
       tag: "support",
     },
   ];

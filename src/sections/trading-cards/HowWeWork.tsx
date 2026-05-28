@@ -10,21 +10,21 @@ export function HowWeWork() {
       length: "2 to 3 weeks",
       title: "Diagnostic sprint",
       body:
-        "We map your catalog, your live show cadence, your grading partner, and your current stack. Identify the single highest-cost workflow. You get a phased plan, including where the accelerator does not apply.",
+        "We map your catalog, your live show schedule, your grading partner, and your current systems. We pinpoint the workflow costing you the most. You get a phased plan, including where the accelerator does not apply.",
     },
     {
       n: "2",
       length: "10 to 14 weeks",
       title: "Pilot to production",
       body:
-        "Eight modules configured against your environment. PSA integration, FMV engine, pack product type, buyback, Whatnot bridge, trust content. No big-bang risk. Measurable launch by the end of the pilot.",
+        "Eight modules configured against your business: card grading, automatic restocking, purchasable packs, buyback, customer file bridge, trust content. No big-bang risk. A measurable launch by the end of the pilot.",
     },
     {
       n: "3",
       length: "Phased",
       title: "Scaled rollout",
       body:
-        "Add multi-grader support, eBay vault listing, monthly sweepstakes compliance, advanced ops admin. Each phase funded by what the previous proved. Your show keeps running throughout.",
+        "Add support for more grading services (BGS, SGC, CGC), eBay listings through secure storage, compliant monthly giveaways, deeper operations tooling. Each phase funded by what the previous one proved. Your show keeps running throughout.",
     },
   ];
   return (

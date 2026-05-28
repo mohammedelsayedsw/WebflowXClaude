@@ -7,23 +7,23 @@ export function Testimonials() {
   const quotes = [
     {
       short:
-        "The website will actually generate revenue. The show generates revenue on the app called Whatnot.",
+        "Our website will actually generate revenue. Before, only the live show on Whatnot did.",
       who: "Founder",
       role: "Reference trading card retailer",
       accent: "mint",
     },
     {
       short:
-        "When an active card leaves the pack, the logic pulls the closest card in value from our reserve inventory. They cracked it.",
+        "Every time a valuable card sells, the system pulls the closest-value card from our reserve and slots it back in. They cracked it.",
       who: "CEO",
       role: "Reference trading card retailer · build review",
       accent: "blue",
     },
     {
       short:
-        "Users would have full PSA Vault capabilities in our platform. Send to eBay, withdraw, sell through PSA Offers. It works exactly how it does with GameStop.",
+        "Our customers get full card-grading capabilities inside our own site. List on eBay, withdraw, sell through PSA. It works the way the big platforms do.",
       who: "CEO",
-      role: "Reference retailer · PSA partnership call",
+      role: "Reference retailer · partnership call",
       accent: "mint",
     },
   ];

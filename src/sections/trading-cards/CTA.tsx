@@ -32,10 +32,11 @@ export function CTA() {
 
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
               <blockquote className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] tracking-[-0.005em]">
-                &ldquo;The hard parts of breaker commerce are{" "}
+                &ldquo;The hard parts of trading cards commerce are{" "}
                 <span className="text-[var(--sw-mint)]">already solved</span>.
-                PSA Vault, FMV randomization, buyback, high-AOV payment. You
-                configure them to your show in 14 weeks.&rdquo;
+                Card grading, automatic restocking, buyback, payment rules for
+                large transactions. You configure them to your show in 14
+                weeks.&rdquo;
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
                 <img

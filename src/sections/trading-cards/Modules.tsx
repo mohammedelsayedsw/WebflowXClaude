@@ -551,7 +551,7 @@ function SvgCustomerBridge() {
 export function Modules() {
   const modules: ModuleBlock[] = [
     {
-      n: "01",
+      n: "1",
       kicker: "PACK PRODUCT TYPE",
       title: "Pack product type with tier, level, and odds",
       lede:
@@ -567,7 +567,7 @@ export function Modules() {
       theme: "dark",
     },
     {
-      n: "02",
+      n: "2",
       kicker: "FMV ENGINE",
       title: "FMV randomization engine with audit log",
       lede:
@@ -584,7 +584,7 @@ export function Modules() {
       reverse: true,
     },
     {
-      n: "03",
+      n: "3",
       kicker: "PSA VAULT",
       title: "PSA Vault integration on every purchase",
       lede:
@@ -600,7 +600,7 @@ export function Modules() {
       theme: "dark",
     },
     {
-      n: "04",
+      n: "4",
       kicker: "LIFECYCLE",
       title: "Card lifecycle and 90% buyback",
       lede:
@@ -617,7 +617,7 @@ export function Modules() {
       reverse: true,
     },
     {
-      n: "05",
+      n: "5",
       kicker: "PAYMENT + RADAR",
       title: "Stripe Radar tuned for $500 to $5,000 transactions",
       lede:
@@ -633,7 +633,7 @@ export function Modules() {
       theme: "dark",
     },
     {
-      n: "06",
+      n: "6",
       kicker: "CUSTOMER BRIDGE",
       title: "Whatnot, eBay, and owned-site on one customer file",
       lede:

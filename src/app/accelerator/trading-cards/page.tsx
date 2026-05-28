@@ -4,7 +4,7 @@ import { Hero } from "@/sections/trading-cards/Hero";
 import { AcceleratorAtAGlance } from "@/sections/trading-cards/AcceleratorAtAGlance";
 import { Problems } from "@/sections/trading-cards/Problems";
 import { Differentiator } from "@/sections/trading-cards/Differentiator";
-import { Outcomes } from "@/sections/trading-cards/Outcomes";
+import { Modules } from "@/sections/trading-cards/Modules";
 import { ReferenceCase } from "@/sections/trading-cards/ReferenceCase";
 import { AcceleratorValue } from "@/sections/trading-cards/AcceleratorValue";
 import { Testimonials } from "@/sections/trading-cards/Testimonials";
@@ -20,7 +20,7 @@ export default function Page() {
       <AcceleratorAtAGlance />
       <Problems />
       <Differentiator />
-      <Outcomes />
+      <Modules />
       <ReferenceCase />
       <AcceleratorValue />
       <Testimonials />

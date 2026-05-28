@@ -377,17 +377,17 @@ function SvgLifecycle() {
         </g>
       ))}
 
-      {/* Buyback loop back to active */}
+      {/* Buyback loop back to active — right-angle path that clears all boxes */}
       <DrawnPath
-        d="M370 138 Q 380 320 90 320 Q 60 320 60 280 V138"
+        d="M430 114 H470 V300 H60 V138"
         stroke="rgba(110,247,110,0.7)"
         strokeWidth={1.2}
-        duration={1.4}
+        duration={1.6}
         delay={2.0}
       />
       <path d="M56 142 L60 134 L64 142" fill="none" stroke="rgba(110,247,110,0.7)" strokeWidth={1.2} />
-      <text x={220} y={335} fill="#6EF76E" fontSize="11" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">
-        90% BUYBACK → REFRESH RESERVE
+      <text x={265} y={325} fill="#6EF76E" fontSize="11" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">
+        90% BUYBACK · REFRESH RESERVE
       </text>
     </svg>
   );
@@ -411,17 +411,17 @@ function SvgRadar() {
   ];
   const maxA = 5000;
   const ox = 60;
-  const oy = 260;
+  const oy = 230;
   const cw = 460;
-  const ch = 200;
+  const ch = 170;
   const step = cw / (txs.length - 1);
 
   return (
-    <svg viewBox="0 0 560 360" className="w-full h-auto" role="img" aria-label="Stripe Radar tuned for high-AOV stream">
-      <text x={30} y={32} fill="#6EF76E" fontSize="11" fontFamily="Inter" letterSpacing="2">
+    <svg viewBox="0 0 560 320" className="w-full h-auto" role="img" aria-label="Stripe Radar tuned for high-AOV stream">
+      <text x={30} y={28} fill="#6EF76E" fontSize="11" fontFamily="Inter" letterSpacing="2">
         STREAM · 90 MINUTES · 10 TRANSACTIONS
       </text>
-      <DrawnPath d="M30 46 H530" stroke="rgba(255,255,255,0.12)" strokeWidth={1} duration={1.2} />
+      <DrawnPath d="M30 42 H530" stroke="rgba(255,255,255,0.12)" strokeWidth={1} duration={1.2} />
 
       {/* gridlines */}
       {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
@@ -435,7 +435,6 @@ function SvgRadar() {
           strokeWidth={1}
         />
       ))}
-      {/* baseline */}
       <line x1={ox} x2={ox + cw} y1={oy} y2={oy} stroke="rgba(255,255,255,0.18)" strokeWidth={1} />
       <text x={ox - 6} y={oy - ch + 4} fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="Inter" textAnchor="end">$5,000</text>
       <text x={ox - 6} y={oy + 4} fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="Inter" textAnchor="end">$0</text>
@@ -459,7 +458,7 @@ function SvgRadar() {
               transition={{ duration: 0.4, delay: 0.2 + i * 0.07 }}
               viewport={{ once: true, amount: 0.3 }}
             />
-            <text x={x} y={oy + 18} fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="Inter" textAnchor="middle">${tx.a}</text>
+            <text x={x} y={oy + 14} fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="Inter" textAnchor="middle">${tx.a}</text>
             {tx.ok && (
               <motion.circle
                 cx={x}
@@ -476,19 +475,18 @@ function SvgRadar() {
         );
       })}
 
-      {/* footer summary */}
-      <g transform="translate(60, 310)">
-        <rect x={0} y={0} width={140} height={36} rx={2} fill="none" stroke="rgba(110,247,110,0.5)" />
-        <text x={70} y={14} fill="#6EF76E" fontSize="9" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">APPROVED</text>
-        <text x={70} y={28} fill="#fff" fontSize="13" fontFamily="Inter" fontWeight="600" textAnchor="middle">10 / 10</text>
+      {/* Inline summary — no card boxes, just a clear separated row */}
+      <DrawnPath d="M30 268 H530" stroke="rgba(255,255,255,0.18)" strokeWidth={1} duration={1.0} delay={1.6} />
 
-        <rect x={160} y={0} width={140} height={36} rx={2} fill="none" stroke="rgba(255,255,255,0.18)" />
-        <text x={230} y={14} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">PEAK SINGLE</text>
-        <text x={230} y={28} fill="#fff" fontSize="13" fontFamily="Inter" fontWeight="600" textAnchor="middle">$4,500</text>
+      <g transform="translate(0, 290)">
+        <text x={60} y={0} fill="rgba(110,247,110,0.95)" fontSize="9" fontFamily="Inter" letterSpacing="1.5">APPROVED</text>
+        <text x={60} y={18} fill="#fff" fontSize="15" fontFamily="Inter" fontWeight="700">10 / 10</text>
 
-        <rect x={320} y={0} width={140} height={36} rx={2} fill="none" stroke="rgba(255,255,255,0.18)" />
-        <text x={390} y={14} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">CHARGEBACKS</text>
-        <text x={390} y={28} fill="#fff" fontSize="13" fontFamily="Inter" fontWeight="600" textAnchor="middle">0</text>
+        <text x={230} y={0} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="Inter" letterSpacing="1.5">PEAK SINGLE</text>
+        <text x={230} y={18} fill="#fff" fontSize="15" fontFamily="Inter" fontWeight="700">$4,500</text>
+
+        <text x={400} y={0} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="Inter" letterSpacing="1.5">CHARGEBACKS</text>
+        <text x={400} y={18} fill="#fff" fontSize="15" fontFamily="Inter" fontWeight="700">0</text>
       </g>
     </svg>
   );
@@ -505,42 +503,71 @@ function SvgCustomerBridge() {
       </text>
       <DrawnPath d="M30 46 H530" stroke="currentColor" strokeOpacity={0.18} strokeWidth={1} duration={1.2} />
 
-      {/* Three source channels */}
+      {/* Three source channels — neutral borders, story is the convergence */}
       {[
-        { label: "WHATNOT", sub: "live show buyers", x: 30, color: "rgba(255,107,107,0.85)" },
-        { label: "EBAY", sub: "secondary marketplace", x: 220, color: "rgba(63,74,175,0.85)" },
-        { label: "OWNED SITE", sub: "direct purchases", x: 410, color: "rgba(110,247,110,0.85)" },
+        { label: "WHATNOT", sub: "live show buyers", x: 30 },
+        { label: "EBAY", sub: "secondary marketplace", x: 220 },
+        { label: "OWNED SITE", sub: "direct purchases", x: 410 },
       ].map((c, i) => (
         <g key={c.label}>
-          <rect x={c.x} y={80} width={120} height={56} rx={3} fill="rgba(255,255,255,0.04)" stroke={c.color} strokeWidth={1.2} />
+          <rect
+            x={c.x}
+            y={80}
+            width={120}
+            height={56}
+            rx={3}
+            fill="rgba(255,255,255,0.04)"
+            stroke="rgba(255,255,255,0.35)"
+            strokeWidth={1}
+          />
           <text x={c.x + 60} y={104} fill="currentColor" fontSize="13" fontFamily="Inter" fontWeight="700" textAnchor="middle" letterSpacing="1">{c.label}</text>
           <text x={c.x + 60} y={122} fill="currentColor" opacity="0.55" fontSize="10" fontFamily="Inter" textAnchor="middle">{c.sub}</text>
+          {/* Down arm */}
           <DrawnPath
-            d={`M${c.x + 60} 136 Q${c.x + 60} 180 280 200`}
+            d={`M${c.x + 60} 136 V180`}
             stroke="currentColor"
             strokeOpacity={0.35}
             strokeWidth={1}
-            duration={0.8}
-            delay={0.4 + i * 0.15}
+            duration={0.5}
+            delay={0.4 + i * 0.12}
           />
         </g>
       ))}
 
+      {/* Horizontal manifold connecting the three source arms */}
+      <DrawnPath
+        d="M90 180 H470"
+        stroke="currentColor"
+        strokeOpacity={0.35}
+        strokeWidth={1}
+        duration={0.9}
+        delay={0.9}
+      />
+
+      {/* Drop into the customer record */}
+      <DrawnPath
+        d="M280 180 V210"
+        stroke="rgba(110,247,110,0.6)"
+        strokeWidth={1.2}
+        duration={0.4}
+        delay={1.3}
+      />
+
       {/* Merged customer record */}
-      <g transform="translate(160, 200)">
+      <g transform="translate(160, 210)">
         <rect width={240} height={100} rx={4} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.55)" strokeWidth={1.2} />
         <text x={120} y={22} fill="rgba(110,247,110,0.95)" fontSize="10" fontFamily="Inter" textAnchor="middle" letterSpacing="2">SINGLE CUSTOMER</text>
         <text x={16} y={46} fill="currentColor" fontSize="14" fontFamily="Inter" fontWeight="700">Customer · user_8821</text>
-        <DrawnPath d="M16 56 H224" stroke="currentColor" strokeOpacity={0.18} strokeWidth={1} delay={1.0} />
+        <DrawnPath d="M16 56 H224" stroke="currentColor" strokeOpacity={0.18} strokeWidth={1} delay={1.6} />
         <text x={16} y={74} fill="currentColor" opacity="0.55" fontSize="10" fontFamily="Inter" letterSpacing="1">LIFETIME VALUE</text>
         <text x={224} y={74} fill="currentColor" fontSize="13" fontFamily="Inter" fontWeight="600" textAnchor="end">$48,400</text>
         <text x={16} y={91} fill="currentColor" opacity="0.55" fontSize="10" fontFamily="Inter" letterSpacing="1">TIER</text>
         <text x={224} y={91} fill="rgba(110,247,110,0.95)" fontSize="13" fontFamily="Inter" fontWeight="600" textAnchor="end">WHALE · TOP 50</text>
       </g>
 
-      {/* Outflow to Klaviyo */}
-      <DrawnPath d="M280 300 V340" stroke="rgba(110,247,110,0.5)" strokeWidth={1.2} duration={0.6} delay={1.6} />
-      <rect x={210} y={340} width={140} height={28} rx={3} fill="none" stroke="rgba(110,247,110,0.6)" strokeWidth={1} />
+      {/* Outflow to Klaviyo — wider box so LIFECYCLE fits cleanly */}
+      <DrawnPath d="M280 310 V340" stroke="rgba(110,247,110,0.5)" strokeWidth={1.2} duration={0.5} delay={1.9} />
+      <rect x={190} y={340} width={180} height={28} rx={3} fill="none" stroke="rgba(110,247,110,0.6)" strokeWidth={1} />
       <text x={280} y={358} fill="rgba(110,247,110,0.95)" fontSize="11" fontFamily="Inter" textAnchor="middle" letterSpacing="1.5">KLAVIYO · LIFECYCLE</text>
     </svg>
   );

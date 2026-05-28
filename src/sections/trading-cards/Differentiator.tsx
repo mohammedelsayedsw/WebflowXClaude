@@ -5,25 +5,25 @@ import { Reveal } from "@/components/primitives/Reveal";
 export function Differentiator() {
   const pillars = [
     {
-      n: "01",
+      n: "1",
       title: "Built around the breaks model, not bolted on",
       body:
         "The pack product type, the FMV engine, and the randomization audit log were built for a Whatnot-anchored business, not generic retail. A pack is a first-class product with tiers, levels, and odds. Every reveal is logged. Every replacement is value-matched from reserve inventory.",
     },
     {
-      n: "02",
+      n: "2",
       title: "PSA Vault and the buyback loop in one lifecycle",
       body:
         "Card moves on purchase from your active inventory into the customer's PSA vault. From there it can stay vaulted, route to eBay through the vault, or come back to you through the 90% buyback. The customer never handles a slab unless they want to. You never lose them to an external marketplace.",
     },
     {
-      n: "03",
+      n: "3",
       title: "Whatnot, eBay, and your owned site on one customer file",
       body:
         "The whales who keep your show alive finally get an identity outside Whatnot. You can name your top 50 customers. You can run loyalty and lifecycle email through Klaviyo against people who have actually paid you. The ROI on your owned-site SEO and content finally becomes measurable.",
     },
     {
-      n: "04",
+      n: "4",
       title: "Trust and AEO content engineered for breakers",
       body:
         "The trading cards industry has a credibility problem. Negative Reddit threads, allegations of shill bidding, sceptical buyers. The accelerator includes the trust FAQ, the AI-citable content structure, the Reddit sentiment management, and the digital PR playbook that defends a breaker brand the way a breaker cannot do for themselves.",

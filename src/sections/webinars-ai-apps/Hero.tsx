@@ -77,25 +77,24 @@ export function Hero() {
               <Reveal>
                 <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                    Free webinar
+                    AI commerce
                   </span>
                 </div>
               </Reveal>
 
               <Reveal delay={0.05}>
                 <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-[-0.015em] max-w-[18ch]">
-                  How to turn{" "}
-                  <span style={{ color: "var(--sw-mint)" }}>
-                    ChatGPT and Claude
-                  </span>{" "}
-                  into a sales channel
+                  $500K&ndash;$2M in year one:
                 </h1>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/85 max-w-[54ch] leading-relaxed">
-                  The App Store moment is happening inside AI. Here&apos;s how
-                  to get your business in.
+                <p
+                  className="mt-7 md:mt-8 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
+                  style={{ color: "var(--sw-mint)" }}
+                >
+                  what a $20M+ brand can realistically earn from ChatGPT +
+                  Claude
                 </p>
               </Reveal>
 

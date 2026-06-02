@@ -37,7 +37,7 @@ export function IntroParagraph() {
 
         <Reveal delay={0.15}>
           <p className="mt-5 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed">
-            In this webinar, scandiweb COO Rolands Popovs will show you exactly
+            In this webinar, scandiweb&apos;s COO Rolands Popovs will show you exactly
             what a ChatGPT and Claude App looks like for a real eCommerce
             business, how it connects to your existing systems, and what it
             takes to go live in under two weeks.

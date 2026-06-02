@@ -55,7 +55,12 @@ export function CTA() {
 
           <Reveal delay={0.2}>
             <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
-              <a href="#cta" className={btnPrimary}>
+              <a
+                href="https://us06web.zoom.us/webinar/register/WN_eYGni7vVSc-viCu0LakFiQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={btnPrimary}
+              >
                 Sign up now
                 <ArrowUpRight className="h-4 w-4" />
               </a>

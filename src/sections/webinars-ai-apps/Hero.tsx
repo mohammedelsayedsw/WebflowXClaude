@@ -100,17 +100,23 @@ export function Hero() {
 
               {/* Platform row */}
               <Reveal delay={0.15}>
-                <div className="mt-9 md:mt-10 flex items-center gap-3 flex-wrap">
+                <div className="mt-9 md:mt-10 flex items-center gap-5 md:gap-7 flex-wrap">
                   <span className="label-code text-white/55 text-[10px]">
                     Built for
                   </span>
                   <span className="h-px w-6 bg-white/15" />
-                  <span className="inline-flex items-center rounded-[2px] border border-white/20 bg-white/[0.04] px-3 py-1.5 font-head text-[13px] md:text-[14px] text-white">
-                    ChatGPT
-                  </span>
-                  <span className="inline-flex items-center rounded-[2px] border border-white/20 bg-white/[0.04] px-3 py-1.5 font-head text-[13px] md:text-[14px] text-white">
-                    Claude
-                  </span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl("/webinars/ai-apps/chatgpt.png")}
+                    alt="ChatGPT"
+                    className="h-5 md:h-6 w-auto opacity-90"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl("/webinars/ai-apps/claude.png")}
+                    alt="Claude"
+                    className="h-5 md:h-6 w-auto opacity-90"
+                  />
                 </div>
               </Reveal>
 

@@ -119,30 +119,8 @@ export function Hero() {
                 </p>
               </Reveal>
 
-              {/* Platform row */}
-              <Reveal delay={0.15}>
-                <div className="mt-9 md:mt-10 flex items-center gap-5 md:gap-7 flex-wrap">
-                  <span className="label-code text-white/55 text-[10px]">
-                    Built for
-                  </span>
-                  <span className="h-px w-6 bg-white/15" />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={assetUrl("/webinars/ai-apps/chatgpt.png")}
-                    alt="ChatGPT"
-                    className="h-5 md:h-6 w-auto opacity-90"
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={assetUrl("/webinars/ai-apps/claude.png")}
-                    alt="Claude"
-                    className="h-5 md:h-6 w-auto opacity-90"
-                  />
-                </div>
-              </Reveal>
-
               {/* Date + time block */}
-              <Reveal delay={0.2}>
+              <Reveal delay={0.15}>
                 <div className="mt-9 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-8">
                   <div>
                     <div className="label-code text-white/55 text-[10px] mb-2">
@@ -161,6 +139,24 @@ export function Hero() {
                       10:00 AM (GMT)
                     </div>
                   </div>
+                </div>
+              </Reveal>
+
+              {/* Platform row */}
+              <Reveal delay={0.2}>
+                <div className="mt-9 md:mt-10 flex items-center gap-6 md:gap-8 flex-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl("/webinars/ai-apps/chatgpt.png")}
+                    alt="ChatGPT"
+                    className="h-[26px] md:h-[31px] w-auto opacity-90"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl("/webinars/ai-apps/claude.png")}
+                    alt="Claude"
+                    className="h-5 md:h-6 w-auto opacity-90"
+                  />
                 </div>
               </Reveal>
 

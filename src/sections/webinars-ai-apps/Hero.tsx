@@ -111,7 +111,7 @@ export function Hero() {
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-7 md:mt-8 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
+                  className="mt-3 md:mt-4 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   what a $20M+ brand can realistically earn from ChatGPT +

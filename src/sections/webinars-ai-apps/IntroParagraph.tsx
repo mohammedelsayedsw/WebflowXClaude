@@ -1,7 +1,6 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 export function IntroParagraph() {
   return (
@@ -11,7 +10,11 @@ export function IntroParagraph() {
     >
       <div className="wrap max-w-[820px]">
         <Reveal>
-          <SectionLabel index="01">The shift</SectionLabel>
+          <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+            <span className="text-[var(--sw-black)]/55">01</span>
+            <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+            <span>The shift</span>
+          </div>
         </Reveal>
 
         <Reveal delay={0.05}>

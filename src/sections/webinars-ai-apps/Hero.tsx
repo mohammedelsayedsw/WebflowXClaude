@@ -5,25 +5,36 @@ import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
+const ZOOM_REGISTER_URL =
+  "https://us06web.zoom.us/webinar/register/WN_eYGni7vVSc-viCu0LakFiQ";
+
 function HeroBg() {
   return (
     <>
+      {/* Background image */}
       <div
+        className="absolute inset-0 -z-20 bg-center bg-cover"
+        style={{
+          backgroundImage: `url(${assetUrl("/webinars/ai-apps/hero-bg.png")})`,
+        }}
+      />
+      {/* Darken overlay – flat near-black wash so the image reads as ambience, not subject */}
+      <div
+        aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(900px 620px at 18% 22%, #2a3380 0%, transparent 55%)," +
-            "radial-gradient(800px 580px at 85% 82%, #070a1e 0%, transparent 52%)," +
-            "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
+            "linear-gradient(180deg, rgba(10,13,36,0.78) 0%, rgba(16,19,44,0.82) 50%, rgba(10,13,36,0.92) 100%)",
         }}
       />
+      {/* Cool radial tint to keep brand mood */}
       <div
-        className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
+        aria-hidden
+        className="absolute inset-0 -z-10 mix-blend-overlay opacity-70"
         style={{
           background:
-            "radial-gradient(620px 900px at 28% 62%, rgba(7, 10, 30, 0.85), transparent 60%)," +
-            "radial-gradient(540px 720px at 72% 28%, rgba(63, 74, 175, 0.22), transparent 60%)",
-          filter: "blur(50px)",
+            "radial-gradient(900px 620px at 18% 22%, rgba(42,51,128,0.55) 0%, transparent 55%)," +
+            "radial-gradient(800px 580px at 85% 82%, rgba(7,10,30,0.6) 0%, transparent 52%)",
         }}
       />
     </>
@@ -33,29 +44,39 @@ function HeroBg() {
 function SpeakerCard() {
   return (
     <div
-      className="relative overflow-hidden rounded-[4px] backdrop-blur"
+      className="relative overflow-hidden rounded-[4px] backdrop-blur w-full max-w-[440px] mx-auto"
       style={{
         background:
-          "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.04) 100%), rgba(16,19,44,0.55)",
+          "linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.05) 100%), rgba(16,19,44,0.55)",
         boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
+          "inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.14)",
       }}
     >
-      <div className="p-6 md:p-7 flex items-center gap-5">
-        <div className="shrink-0 h-20 w-20 md:h-24 md:w-24 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]">
+      <div className="p-7 md:p-9 flex flex-col items-center text-center">
+        <div className="label-code text-white/55 text-[10px] mb-5">
+          Speaker
+        </div>
+
+        <div
+          className="relative h-56 w-56 md:h-64 md:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
+          style={{
+            boxShadow:
+              "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
+          }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={assetUrl("/webinars/ai-apps/rolands.png")}
-            alt="Rolands Popovs"
+            alt="Rolands Popovs, COO at scandiweb"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="min-w-0">
-          <div className="label-code text-white/55 text-[10px] mb-2">Speaker</div>
-          <div className="font-head text-white text-[18px] md:text-[20px] leading-[1.2]">
+
+        <div className="mt-7">
+          <div className="font-head text-white text-[22px] md:text-[24px] leading-[1.15]">
             Rolands Popovs
           </div>
-          <div className="text-white/70 text-[13px] md:text-[14px] mt-1">
+          <div className="text-white/70 text-[14px] md:text-[15px] mt-2">
             COO at scandiweb
           </div>
         </div>
@@ -71,7 +92,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.5fr_1fr] items-start">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>
               <Reveal>
@@ -145,7 +166,12 @@ export function Hero() {
 
               <Reveal delay={0.25}>
                 <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
-                  <a href="#cta" className={btnPrimary}>
+                  <a
+                    href={ZOOM_REGISTER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={btnPrimary}
+                  >
                     Sign up now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
@@ -153,8 +179,8 @@ export function Hero() {
               </Reveal>
             </div>
 
-            {/* RIGHT · speaker card */}
-            <Reveal delay={0.15} className="lg:pt-6">
+            {/* RIGHT · speaker card – vertical, centered, larger photo */}
+            <Reveal delay={0.15} className="flex justify-center">
               <SpeakerCard />
             </Reveal>
           </div>

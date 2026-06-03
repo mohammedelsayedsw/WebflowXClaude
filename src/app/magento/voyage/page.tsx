@@ -2033,10 +2033,10 @@ function ChannelChart() {
 
   const channels = [
     { name: "SEO", color: "#3F4AAF", data: [8, 12, 18, 25, 34, 44, 56, 70, 84, 99, 114, 128] },
+    { name: "AI search", color: "#8B4F9F", data: [0, 0, 0, 2, 6, 11, 17, 24, 32, 40, 48, 56] },
     { name: "Paid acquisition", color: "#B85C3C", data: [5, 9, 14, 20, 27, 34, 42, 50, 58, 65, 71, 76] },
     { name: "Email + SMS", color: "#5C8C5C", data: [3, 5, 8, 12, 17, 22, 28, 34, 40, 45, 50, 54] },
     { name: "Marketplaces", color: "#7E6B4A", data: [0, 0, 2, 6, 12, 19, 27, 35, 42, 48, 54, 60] },
-    { name: "AI search", color: "#8B4F9F", data: [0, 0, 0, 2, 6, 11, 17, 24, 32, 40, 48, 56] },
   ];
 
   const yMax = 140;
@@ -2701,7 +2701,7 @@ function GrowthStats() {
           </EngravedPlate>
         </Reveal>
         <Reveal delay={0.24} className="h-full">
-          <EngravedPlate label="How your store shows up in AI search.">
+          <EngravedPlate label="Rank 1st on AI searches.">
             <AISearchDemo />
           </EngravedPlate>
         </Reveal>
@@ -3655,8 +3655,8 @@ function OptimizeChapter() {
                   }}
                 >
                   {[
-                    ...Array.from({ length: 11 }, (_, i) => i + 1),
-                    ...Array.from({ length: 11 }, (_, i) => i + 1),
+                    ...Array.from({ length: 12 }, (_, i) => i + 1),
+                    ...Array.from({ length: 12 }, (_, i) => i + 1),
                   ].map((n, i) => (
                     <div
                       key={`cert-${n}-${i}`}
@@ -3682,7 +3682,7 @@ function OptimizeChapter() {
                 className="hidden sm:grid mt-8 md:mt-10 mx-auto grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-10 items-center justify-items-center"
                 style={{ maxWidth: 1320 }}
               >
-                {Array.from({ length: 11 }, (_, i) => i + 1).map((n) => (
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
                   <div
                     key={n}
                     className="flex items-center justify-center"

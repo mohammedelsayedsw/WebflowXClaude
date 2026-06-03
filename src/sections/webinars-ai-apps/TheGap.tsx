@@ -106,7 +106,15 @@ function AppStoreMockup() {
       <div className="p-4 space-y-5">
         {/* Editor's pick */}
         <div>
-          <div className="label-code text-white text-[10.5px] font-bold mb-3">
+          <div
+            className="font-head font-bold uppercase mb-3"
+            style={{
+              color: "#ffffff",
+              fontSize: "11px",
+              letterSpacing: "0.18em",
+              textShadow: "0 1px 2px rgba(0,0,0,0.4)",
+            }}
+          >
             Editor&apos;s pick
           </div>
           <div
@@ -182,7 +190,15 @@ function AppStoreMockup() {
 
         {/* Top apps - single column */}
         <div>
-          <div className="label-code text-white text-[10.5px] font-bold mb-3">
+          <div
+            className="font-head font-bold uppercase mb-3"
+            style={{
+              color: "#ffffff",
+              fontSize: "11px",
+              letterSpacing: "0.18em",
+              textShadow: "0 1px 2px rgba(0,0,0,0.4)",
+            }}
+          >
             Top apps this week
           </div>
           <div className="space-y-3">
@@ -202,7 +218,7 @@ export function TheGap() {
   return (
     <section
       id="the-gap"
-      className="bg-lp-bright py-16 sm:py-20 md:py-28 lg:py-36 scroll-mt-20"
+      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
       <div className="wrap">
         <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-start">

@@ -239,6 +239,16 @@ function Hero() {
               "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.85) 100%)",
           }}
         />
+        {/* Top scrim — gives the shared site Header (white wordmark + menu) contrast against the bright clouds. */}
+        <div
+          className="absolute inset-x-0 top-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            height: 140,
+            background:
+              "linear-gradient(to bottom, rgba(6,8,15,0.55) 0%, rgba(6,8,15,0.28) 55%, rgba(6,8,15,0) 100%)",
+          }}
+        />
       </div>
 
       {/* Scroll parallax wrapper — hidden on mobile, active md+ */}
@@ -278,7 +288,7 @@ function Hero() {
                 textShadow: "0 2px 24px rgba(0,0,0,0.55)",
               }}
             >
-              Adobe Commerce, for brands and enterprises.
+              For B2C, B2B and omnichannel retailers.
             </div>
           </Reveal>
           <Reveal delay={0.08}>
@@ -331,7 +341,7 @@ function Hero() {
                 <ArrowUpRight className="h-4.5 w-4.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a
-                href="#chapters"
+                href="#support"
                 className="hover:opacity-90 transition-opacity"
                 style={{
                   fontFamily: SCRIPT,
@@ -341,7 +351,7 @@ function Hero() {
                   textShadow: "0 2px 20px rgba(0,0,0,0.55)",
                 }}
               >
-                Read the practice ↓
+                Request urgent support ↓
               </a>
             </div>
           </Reveal>
@@ -877,8 +887,8 @@ function RevenueChart() {
       />
       <text
         x={engagedX + 12}
-        y={PAD.top + 22}
-        fontSize="22"
+        y={PAD.top + 24}
+        fontSize="28"
         fill="var(--sw-black)"
         textAnchor="start"
         fontFamily="var(--font-serif), Cormorant Garamond, serif"
@@ -1154,7 +1164,7 @@ function AwardsCard() {
           style={{
             fontFamily: SERIF,
             fontStyle: "italic",
-            fontSize: "clamp(15px, 1.2vw, 18px)",
+            fontSize: "clamp(17px, 1.45vw, 21px)",
             color: INK_SOFT,
             lineHeight: 1.5,
             maxWidth: "42ch",
@@ -1475,7 +1485,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "11.5px",
+                fontSize: "13px",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: i === active ? "#ffffff" : INK,
@@ -1488,7 +1498,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontStyle: "italic",
-                fontSize: "11px",
+                fontSize: "12.5px",
                 color:
                   i === active
                     ? "rgba(255,255,255,0.72)"
@@ -1532,7 +1542,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "13.5px",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: i === active ? "#ffffff" : INK,
@@ -1545,7 +1555,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontStyle: "italic",
-                fontSize: "11.5px",
+                fontSize: "13px",
                 color:
                   i === active
                     ? "rgba(255,255,255,0.72)"
@@ -1585,7 +1595,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "10.5px",
+                  fontSize: "12px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1611,7 +1621,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontStyle: "italic",
-                    fontSize: "12.5px",
+                    fontSize: "14px",
                     color: INK_FAINT,
                   }}
                 >
@@ -1628,7 +1638,7 @@ function IntegrationsDashboard() {
                       style={{
                         fontFamily: SERIF,
                         fontStyle: "italic",
-                        fontSize: "12.5px",
+                        fontSize: "14px",
                         color: INK_FAINT,
                       }}
                     >
@@ -1637,7 +1647,7 @@ function IntegrationsDashboard() {
                     <span
                       style={{
                         fontFamily: SERIF,
-                        fontSize: "13.5px",
+                        fontSize: "15px",
                         color: INK,
                         fontWeight: 500,
                       }}
@@ -1668,7 +1678,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "10.5px",
+                  fontSize: "12px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1694,7 +1704,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "12.5px",
+                  fontSize: "14px",
                   color: INK_FAINT,
                 }}
               >
@@ -1724,7 +1734,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "11px",
+                  fontSize: "12.5px",
                   color: INK_FAINT,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
@@ -1758,7 +1768,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontWeight: 600,
-                    fontSize: "11.5px",
+                    fontSize: "13px",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                     color: INK,
@@ -1770,7 +1780,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontStyle: "italic",
-                    fontSize: "12.5px",
+                    fontSize: "14px",
                     color: INK_FAINT,
                   }}
                 >
@@ -1798,7 +1808,7 @@ function IntegrationsDashboard() {
                       style={{
                         fontFamily: SERIF,
                         fontStyle: "italic",
-                        fontSize: "12px",
+                        fontSize: "13.5px",
                         color: INK_FAINT,
                         lineHeight: 1.2,
                       }}
@@ -1827,7 +1837,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontWeight: 600,
-                    fontSize: "10.5px",
+                    fontSize: "12px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: INK_FAINT,
@@ -1857,7 +1867,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "10.5px",
+                fontSize: "12px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: INK_FAINT,
@@ -1885,7 +1895,7 @@ function IntegrationsDashboard() {
                           ? "none"
                           : "1px solid rgba(16,19,44,0.12)",
                       fontFamily: SERIF,
-                      fontSize: "12.5px",
+                      fontSize: "14px",
                       color: INK,
                       lineHeight: 1.3,
                     }}
@@ -1915,7 +1925,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "10.5px",
+                  fontSize: "12px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1930,7 +1940,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "11.5px",
+                  fontSize: "13px",
                   color: INK_FAINT,
                 }}
               >
@@ -2855,8 +2865,8 @@ function MiniTimeChart() {
         style={{
           fontFamily: SERIF,
           fontStyle: "italic",
-          fontSize: "15px",
-          color: INK_FAINT,
+          fontSize: "17px",
+          color: INK_SOFT,
           lineHeight: 1.5,
         }}
       >
@@ -3003,8 +3013,8 @@ function MiniCostChart() {
         style={{
           fontFamily: SERIF,
           fontStyle: "italic",
-          fontSize: "15px",
-          color: INK_FAINT,
+          fontSize: "17px",
+          color: INK_SOFT,
           lineHeight: 1.5,
         }}
       >
@@ -4004,7 +4014,7 @@ function GrowChapter() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.3) 38%, rgba(0,0,0,0) 70%)",
+                "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 22%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 75%)",
             }}
           />
         </div>
@@ -5270,7 +5280,7 @@ function Pricing() {
       path: "Optimize",
       offer: "50% off the first 40 hours of work.",
       fineprint:
-        "No retainer required. Use the hours for development, integration, design, monitoring, or fixes.",
+        "Use the hours for development, integration, design, monitoring, or fixes.",
       body:
         "Magento development, integration work, design changes, support, and platform care. Pull from a single block of hours, extend into a retainer when ready.",
       points: [
@@ -5286,7 +5296,7 @@ function Pricing() {
       path: "Grow",
       offer: "50% off the first 40 hours of work.",
       fineprint:
-        "Pick the stream: SEO, paid, CRO, email, marketplaces, or AI search. No retainer required.",
+        "Pick the stream: SEO, paid, CRO, email, marketplaces, or AI search.",
       body:
         "A fixed block of growth time to test the channel of your choice. Strategy, execution, and weekly reporting included.",
       points: [
@@ -6018,11 +6028,11 @@ function FinalCta() {
           viewBox="0 0 400 400"
           style={{
             top: "50%",
-            right: "-120px",
-            transform: "translateY(-50%)",
-            width: 460,
-            height: 460,
-            opacity: 0.08,
+            left: "8%",
+            transform: "translate(-50%, -50%)",
+            width: 540,
+            height: 540,
+            opacity: 0.09,
           }}
         >
           <circle cx="200" cy="200" r="180" stroke={INK} strokeWidth="1.5" fill="none" />

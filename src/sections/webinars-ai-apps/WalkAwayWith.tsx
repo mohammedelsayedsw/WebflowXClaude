@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const items = [
@@ -11,6 +11,8 @@ const items = [
 ];
 
 export function WalkAwayWith() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="walk-away-with"
@@ -33,18 +35,35 @@ export function WalkAwayWith() {
           </Reveal>
         </div>
 
-        <ul className="grid gap-5 md:gap-6 md:grid-cols-2 max-w-[88ch]">
+        {/* 2x2 numbered card grid; collapses to 1 col on mobile. */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-[920px]">
           {items.map((t, i) => (
-            <Reveal key={i} delay={i * 0.07}>
-              <li className="flex items-start gap-4 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 md:p-6">
-                <span className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-[var(--sw-black)]/15 bg-white">
-                  <Check className="h-4 w-4 text-[var(--sw-blue)]" />
+            <motion.li
+              key={t}
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={
+                reduceMotion ? undefined : { opacity: 1, y: 0 }
+              }
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.22, 1, 0.36, 1],
+                delay: i * 0.08,
+              }}
+              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:p-7 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
+            >
+              <div className="flex items-start gap-5 md:gap-6">
+                <span
+                  aria-hidden
+                  className="font-head font-bold tabular-nums text-[44px] md:text-[56px] leading-none text-[var(--sw-blue)] shrink-0 mt-[-4px]"
+                >
+                  {i + 1}
                 </span>
-                <span className="text-[var(--sw-black)]/80 text-[15px] md:text-[17px] leading-relaxed">
+                <p className="text-[var(--sw-black)]/85 text-[15px] md:text-[17px] leading-relaxed">
                   {t}
-                </span>
-              </li>
-            </Reveal>
+                </p>
+              </div>
+            </motion.li>
           ))}
         </ul>
       </div>

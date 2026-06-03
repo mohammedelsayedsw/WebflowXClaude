@@ -726,10 +726,12 @@ function EngravedPlate({
   label,
   children,
   className,
+  footnote,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
+  footnote?: string;
 }) {
   return (
     <div
@@ -773,7 +775,7 @@ function EngravedPlate({
         </span>
       </div>
       <div
-        className="flex-1 flex items-start justify-center"
+        className="flex-1 flex flex-col items-stretch"
         style={{
           padding: "32px 28px",
           backgroundImage:
@@ -782,7 +784,25 @@ function EngravedPlate({
           backgroundPosition: "0 0",
         }}
       >
-        {children}
+        <div className="flex-1 flex items-start justify-center w-full">
+          {children}
+        </div>
+        {footnote && (
+          <div
+            className="mt-5 md:mt-6"
+            style={{
+              fontFamily: SERIF,
+              fontStyle: "italic",
+              fontSize: "clamp(14px, 1.1vw, 16px)",
+              color: INK_FAINT,
+              lineHeight: 1.45,
+              textAlign: "center",
+              letterSpacing: "0.005em",
+            }}
+          >
+            {footnote}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -2028,7 +2048,10 @@ function ImpactStats() {
 
         <Reveal delay={0.1}>
           <div className="mt-12 md:mt-16">
-            <EngravedPlate label="Monthly revenue index, before and after we take over.">
+            <EngravedPlate
+              label="Monthly revenue index, before and after we take over."
+              footnote="Average lift across customers we ran for the last 12 months."
+            >
               <RevenueChart />
             </EngravedPlate>
           </div>
@@ -2036,7 +2059,10 @@ function ImpactStats() {
 
         <div className="mt-6 md:mt-8 grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           <Reveal delay={0.18} className="h-full">
-            <EngravedPlate label="Website conversion rate vs the industry average.">
+            <EngravedPlate
+              label="Website conversion rate vs the industry average."
+              footnote="Average uplift across customers we ran for the last 12 months."
+            >
               <ConversionChart />
             </EngravedPlate>
           </Reveal>
@@ -2725,7 +2751,10 @@ function GrowthStats() {
 
       <Reveal delay={0.1}>
         <div className="mt-12 md:mt-16">
-          <EngravedPlate label="We grow every channel that moves your revenue.">
+          <EngravedPlate
+            label="We grow every channel that moves your revenue."
+            footnote="Average channel mix across customers we ran for the last 12 months."
+          >
             <ChannelChart />
           </EngravedPlate>
         </div>
@@ -2733,7 +2762,10 @@ function GrowthStats() {
 
       <div className="mt-6 md:mt-8 grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
         <Reveal delay={0.18} className="h-full">
-          <EngravedPlate label="Returning customer share, against the industry.">
+          <EngravedPlate
+            label="Returning customer share, against the industry."
+            footnote="Lifecycle marketing across welcome flows, post-purchase, win-back, and VIP tiers."
+          >
             <AOVChart />
           </EngravedPlate>
         </Reveal>

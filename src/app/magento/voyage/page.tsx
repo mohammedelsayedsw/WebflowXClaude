@@ -2009,7 +2009,7 @@ function ImpactStats() {
 
         <div className="mt-6 md:mt-8 grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           <Reveal delay={0.18} className="h-full">
-            <EngravedPlate label="Conversion rate against the industry average.">
+            <EngravedPlate label="Website conversion rate vs the industry average.">
               <ConversionChart />
             </EngravedPlate>
           </Reveal>
@@ -2019,7 +2019,7 @@ function ImpactStats() {
         </div>
         <div className="mt-6 md:mt-8">
           <Reveal delay={0.3}>
-            <EngravedPlate label="Omnichannel, run from one Magento.">
+            <EngravedPlate label="Run your entire omnichannel from one Magento.">
               <IntegrationsDashboard />
             </EngravedPlate>
           </Reveal>
@@ -2698,7 +2698,7 @@ function GrowthStats() {
 
       <Reveal delay={0.1}>
         <div className="mt-12 md:mt-16">
-          <EngravedPlate label="Channel revenue mix, twelve weeks after activation.">
+          <EngravedPlate label="We grow every channel that moves your revenue.">
             <ChannelChart />
           </EngravedPlate>
         </div>
@@ -2719,7 +2719,7 @@ function GrowthStats() {
 
       <Reveal delay={0.3}>
         <div className="mt-6 md:mt-8">
-          <EngravedPlate label="Twelve months of growth, in a client&rsquo;s own words.">
+          <EngravedPlate label="Sometimes almost tripling online revenue.">
             <VideoTestimonial />
           </EngravedPlate>
         </div>
@@ -3822,7 +3822,7 @@ function MonsterMoment() {
                   }}
                 >
                   Downtime, checkout regressions, ranking drops, indexing
-                  loss after a Google core update. We handle each, on call.
+                  loss after a Google core update. We handle each.
                 </p>
                 <p
                   className="mt-6 leading-relaxed"

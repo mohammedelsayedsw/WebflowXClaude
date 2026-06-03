@@ -3,11 +3,26 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const items = [
-  "A clear picture of what an app inside ChatGPT and Claude looks like for a business like yours",
-  "The one workflow that makes the strongest first app for you",
-  "A realistic view of what connects to your systems and how long it takes",
-  "The confidence to decide whether to build now or wait",
+const items: { title: string; body: string }[] = [
+  {
+    title: "Know what it is",
+    body:
+      "A clear picture of what an app inside ChatGPT and Claude looks like for a business like yours.",
+  },
+  {
+    title: "Your strongest first app",
+    body:
+      "The one workflow that makes the best starting point for your business type.",
+  },
+  {
+    title: "A realistic timeline",
+    body:
+      "What connects to your systems, and how long it takes to go live.",
+  },
+  {
+    title: "A clear decision",
+    body: "The confidence to judge whether to build now or wait.",
+  },
 ];
 
 export function WalkAwayWith() {
@@ -35,11 +50,11 @@ export function WalkAwayWith() {
           </Reveal>
         </div>
 
-        {/* 2x2 numbered card grid; collapses to 1 col on mobile. */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-[920px]">
-          {items.map((t, i) => (
+        {/* 2x2 numbered card grid — spans the full wrap width, no max-w. */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+          {items.map((it, i) => (
             <motion.li
-              key={t}
+              key={it.title}
               initial={reduceMotion ? false : { opacity: 0, y: 16 }}
               whileInView={
                 reduceMotion ? undefined : { opacity: 1, y: 0 }
@@ -50,18 +65,23 @@ export function WalkAwayWith() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: i * 0.08,
               }}
-              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:p-7 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
+              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-9 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
             >
-              <div className="flex items-start gap-5 md:gap-6">
+              <div className="flex items-start gap-6 md:gap-8">
                 <span
                   aria-hidden
-                  className="font-head font-bold tabular-nums text-[44px] md:text-[56px] leading-none text-[var(--sw-blue)] shrink-0 mt-[-4px]"
+                  className="font-head font-bold tabular-nums text-[48px] md:text-[64px] leading-none text-[var(--sw-blue)] shrink-0 mt-[-6px]"
                 >
                   {i + 1}
                 </span>
-                <p className="text-[var(--sw-black)]/85 text-[15px] md:text-[17px] leading-relaxed">
-                  {t}
-                </p>
+                <div className="min-w-0">
+                  <div className="font-head font-bold text-[var(--sw-black)] text-[18px] md:text-[22px] leading-[1.2]">
+                    {it.title}
+                  </div>
+                  <p className="mt-2 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">
+                    {it.body}
+                  </p>
+                </div>
               </div>
             </motion.li>
           ))}

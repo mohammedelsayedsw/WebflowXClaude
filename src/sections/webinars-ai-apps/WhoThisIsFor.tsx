@@ -31,14 +31,14 @@ export function WhoThisIsFor() {
           </Reveal>
         </div>
 
-        <ul className="grid gap-5 md:gap-6 md:grid-cols-2 max-w-[88ch]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
           {items.map((t, i) => (
-            <Reveal key={i} delay={i * 0.07}>
-              <li className="flex items-start gap-4 rounded-[4px] border border-white/10 bg-white/[0.03] p-5 md:p-6">
-                <span className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.04]">
+            <Reveal key={i} delay={i * 0.07} className="contents">
+              <li className="group flex items-start gap-4 md:gap-5 rounded-[4px] border border-white/10 bg-white/[0.03] p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5">
+                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.04]">
                   <Check className="h-4 w-4 text-[var(--sw-mint)]" />
                 </span>
-                <span className="text-white/85 text-[15px] md:text-[17px] leading-relaxed">
+                <span className="text-white/90 text-[16px] md:text-[18px] leading-relaxed">
                   {t}
                 </span>
               </li>

@@ -199,7 +199,11 @@ export function Hero() {
 
               {/* Platform row */}
               <Reveal delay={0.2}>
-                <div className="mt-7 md:mt-9 flex items-center gap-5 md:gap-7 flex-wrap">
+                <div className="mt-7 md:mt-9 flex items-center gap-4 md:gap-5 flex-wrap">
+                  <span className="label-code text-white/55 text-[10px]">
+                    Official partners with
+                  </span>
+                  <span className="h-px w-5 bg-white/15" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={assetUrl("/webinars/ai-apps/chatgpt.png")}

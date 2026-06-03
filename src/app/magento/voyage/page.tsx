@@ -3661,6 +3661,18 @@ function OptimizeChapter() {
                 title: "Compliance",
                 items: ["GDPR", "EU AI Act", "WCAG accessibility"],
               },
+              {
+                title: "AI commerce",
+                featured: true,
+                items: [
+                  "Conversational commerce",
+                  "Inventory forecasting",
+                  "MCP apps",
+                  "Internal procurement & buying platforms",
+                  "Pricing & margin forecasts",
+                  "Inventory automation",
+                ],
+              },
             ]}
           />
 
@@ -4011,18 +4023,6 @@ function MonsterMoment() {
                 {
                   title: "Revenue and trust",
                   items: ["Checkout regressions", "Security incidents"],
-                },
-                {
-                  title: "AI commerce",
-                  featured: true,
-                  items: [
-                    "Conversational commerce",
-                    "Inventory forecasting",
-                    "MCP apps",
-                    "Internal procurement & buying platforms",
-                    "Pricing & margin forecasts",
-                    "Inventory automation",
-                  ],
                 },
               ]}
             />

@@ -16,25 +16,25 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
     icon: Rocket,
     lead: "You want to be first",
     body:
-      "The earlier your store is inside the ChatGPT and Claude apps, the more customers find you and buy.",
+      "The earlier your store is inside the ChatGPT and Claude apps, the more customers find you and buy",
   },
   {
     icon: ShoppingBag,
     lead: "Online retailer",
     body:
-      "Your customers browse, order, and ask for support online, and you want them served inside the chat.",
+      "Your customers browse, order, and ask for support online, and you want them served inside the chat",
   },
   {
     icon: Briefcase,
     lead: "Founders and execs",
     body:
-      "You want a clear read on whether to move now or wait before you commit.",
+      "You want a clear read on whether to move now or wait before you commit",
   },
   {
     icon: Building2,
     lead: "B2B sellers",
     body:
-      "You handle account pricing, reorders, and quotes, and want them to run inside the chat.",
+      "You handle account pricing, reorders, and quotes, and want them to run inside the chat",
   },
 ];
 

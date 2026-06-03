@@ -28,7 +28,7 @@ export function CTA() {
       />
 
       <div className="wrap relative">
-        <div className="max-w-[820px]">
+        <div className="max-w-[820px] mx-auto text-center flex flex-col items-center">
           <Reveal>
             <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8">
               <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
@@ -38,7 +38,7 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch]">
+            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
               The App Store moment is happening inside AI.{" "}
               <span style={{ color: "var(--sw-mint)" }}>
                 Will your business be there?
@@ -47,14 +47,14 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch]">
+            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
               See a working ChatGPT and Claude App for eCommerce, and the path
               to launching your first one in under two weeks.
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-3">
               <a
                 href="https://us06web.zoom.us/webinar/register/WN_eYGni7vVSc-viCu0LakFiQ"
                 target="_blank"

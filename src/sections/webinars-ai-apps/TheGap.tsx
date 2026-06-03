@@ -228,9 +228,9 @@ export function TheGap() {
 
           <Reveal delay={0.1}>
             <p className="mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-              A buyer asks ChatGPT or Claude to reorder last month&apos;s
-              order. Neither can reach your catalog or their account, so the
-              request stalls and your rep answers the email days later.
+              Buyers ask ChatGPT and Claude what to buy and who to trust.
+              Today the platforms cannot reach your catalog, stock, or prices,
+              so your brand stays out of the answer while others get named.
             </p>
           </Reveal>
 
@@ -243,8 +243,8 @@ export function TheGap() {
                 className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]"
                 style={{ color: "var(--sw-mint)" }}
               >
-                With an app inside the chat, the buyer sees their contract
-                pricing and stock, and confirms the reorder in one message.
+                An app closes the gap. Your brand gets a listing in the app
+                store and surfaces when buyers ask, next to Canva and Spotify.
               </p>
             </div>
           </Reveal>

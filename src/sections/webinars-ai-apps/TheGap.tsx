@@ -36,7 +36,7 @@ function AppRow({
         {index}
       </span>
       <span
-        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[6px] font-head font-bold text-white text-[14px]"
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] font-head font-bold text-white text-[14px]"
         style={{ background: app.bg }}
       >
         {app.letter}
@@ -59,7 +59,7 @@ function AppRow({
 function AppStoreMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-[14px] w-full max-w-[340px] mx-auto lg:mr-0 lg:ml-auto"
+      className="relative overflow-hidden rounded-[4px] w-full max-w-[340px] mx-auto lg:mr-0 lg:ml-auto"
       style={{
         background:
           "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",
@@ -118,7 +118,7 @@ function AppStoreMockup() {
             Editor&apos;s pick
           </div>
           <div
-            className="relative rounded-[8px] overflow-hidden p-3.5"
+            className="relative rounded-[4px] overflow-hidden p-3.5"
             style={{
               background:
                 "linear-gradient(120deg, rgba(110,247,110,0.18) 0%, rgba(110,247,110,0.06) 45%, rgba(255,255,255,0.03) 100%)",
@@ -127,7 +127,7 @@ function AppStoreMockup() {
           >
             <div className="flex items-start gap-3">
               <span
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[7px]"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px]"
                 style={{
                   background:
                     "linear-gradient(160deg, rgba(110,247,110,0.5) 0%, rgba(110,247,110,0.2) 100%)",

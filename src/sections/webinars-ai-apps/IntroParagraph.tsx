@@ -136,7 +136,7 @@ function ProductCarousel() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={cardIn(i)}
-          className="shrink-0 basis-0 grow rounded-[8px] border border-white/[0.10] bg-white/[0.05] p-2.5"
+          className="shrink-0 basis-0 grow rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-2.5"
         >
           {/* Clean gradient tile, no icon */}
           <div
@@ -175,7 +175,7 @@ function OrderConfirmCard() {
       initial="hidden"
       animate="shown"
       exit="exit"
-      className="rounded-[10px] border border-white/[0.10] bg-white/[0.05] p-3 flex items-center gap-3"
+      className="rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-3 flex items-center gap-3"
     >
       <span
         className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
@@ -214,7 +214,7 @@ function TrackingCard() {
       initial="hidden"
       animate="shown"
       exit="exit"
-      className="rounded-[10px] border border-white/[0.10] bg-white/[0.05] p-3.5"
+      className="rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-3.5"
     >
       <div className="relative flex items-center justify-between mb-3">
         <div className="absolute left-3 right-3 top-1/2 h-px -translate-y-1/2 bg-white/15" />
@@ -317,7 +317,7 @@ function ChatDemo() {
   return (
     <div
       ref={panelRef}
-      className="relative overflow-hidden rounded-[16px] w-full"
+      className="relative overflow-hidden rounded-[4px] w-full"
       style={{
         background:
           "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",

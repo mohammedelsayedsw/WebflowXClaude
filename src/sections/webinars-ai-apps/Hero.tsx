@@ -115,11 +115,7 @@ function SpeakerCard() {
       <div className="label-code text-white/55 text-[10px] mb-5">Speaker</div>
 
       <div
-        className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
-        style={{
-          boxShadow:
-            "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
-        }}
+        className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 rounded-[4px] overflow-hidden border border-white/15 bg-white/[0.03]"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -143,7 +139,7 @@ function SpeakerCard() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden lg:min-h-screen flex flex-col">
+    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">

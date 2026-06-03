@@ -172,8 +172,8 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-[-0.015em] max-w-[18ch]">
-                  $500K&ndash;$2M in year one:
+                <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
+                  Build your business as an app inside ChatGPT and Claude
                 </h1>
               </Reveal>
 
@@ -182,8 +182,7 @@ export function Hero() {
                   className="mt-3 md:mt-4 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
-                  what a $20M+ brand can realistically earn from ChatGPT +
-                  Claude
+                  Sell, support, operate &ndash; all inside the chat
                 </p>
               </Reveal>
 

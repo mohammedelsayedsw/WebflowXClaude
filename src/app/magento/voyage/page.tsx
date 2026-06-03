@@ -288,7 +288,7 @@ function Hero() {
                 textShadow: "0 2px 24px rgba(0,0,0,0.55)",
               }}
             >
-              For B2C, B2B and omnichannel retailers.
+              For B2C, B2B and omnichannel merchants.
             </div>
           </Reveal>
           <Reveal delay={0.08}>

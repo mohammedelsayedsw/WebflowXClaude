@@ -14,7 +14,6 @@ import { Reveal } from "@/components/primitives/Reveal";
 const STEP_MS = 1300;
 const END_PAUSE_MS = 2500;
 const TOTAL_STEPS = 9;
-const CONVO_HEIGHT = 420; // fixed chat window height (px)
 
 const bubbleIn: Variants = {
   hidden: { opacity: 0, y: 10 },
@@ -348,9 +347,8 @@ function ChatDemo() {
       {/* Conversation — fixed height, scrolls like a real chat */}
       <div
         ref={convoRef}
-        className="lp-chat-scroll px-4 py-4 space-y-3 overflow-y-auto"
+        className="lp-chat-scroll px-4 py-4 space-y-3 overflow-y-auto h-[360px] sm:h-[400px] md:h-[420px]"
         style={{
-          height: CONVO_HEIGHT,
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
@@ -410,7 +408,7 @@ export function IntroParagraph() {
 
             <Reveal delay={0.05}>
               <h2
-                className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
+                className="font-head text-[var(--sw-black)] text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
                 style={{ textWrap: "balance" }}
               >
                 Your customers now can shop, order, and get support inside{" "}

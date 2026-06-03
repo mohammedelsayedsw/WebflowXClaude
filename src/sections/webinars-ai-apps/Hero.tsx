@@ -147,7 +147,7 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-32 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 lg:pb-20 w-full">
+        <div className="wrap relative z-10 pt-24 sm:pt-28 md:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-20 w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>
@@ -160,14 +160,14 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[32px] sm:text-[40px] md:text-[48px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
+                <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
                   Build your business as an app inside ChatGPT and Claude
                 </h1>
               </Reveal>
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-3 md:mt-4 font-head text-[18px] md:text-[22px] leading-[1.3] max-w-[40ch]"
+                  className="mt-3 md:mt-4 font-head text-[16px] sm:text-[18px] md:text-[22px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   Sell, support, operate, all inside the chat
@@ -181,7 +181,7 @@ export function Hero() {
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Date
                     </div>
-                    <div className="font-head text-white text-[18px] md:text-[20px] leading-none">
+                    <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
                       June 17, 2026
                     </div>
                   </div>
@@ -190,7 +190,7 @@ export function Hero() {
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Time
                     </div>
-                    <div className="font-head text-white text-[18px] md:text-[20px] leading-none">
+                    <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
                       10:00 AM (GMT)
                     </div>
                   </div>

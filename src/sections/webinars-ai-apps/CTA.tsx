@@ -8,7 +8,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative py-28 md:py-40 overflow-hidden scroll-mt-20"
+      className="relative py-24 sm:py-28 md:py-40 overflow-hidden scroll-mt-20"
       style={{
         background:
           "radial-gradient(900px 600px at 20% 20%, #2a3380 0%, transparent 55%)," +
@@ -38,8 +38,9 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              The App Store moment is happening inside AI.{" "}
+            <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
+              The App Store moment is happening inside AI.
+              <br />
               <span style={{ color: "var(--sw-mint)" }}>
                 Will your business be there?
               </span>
@@ -48,8 +49,8 @@ export function CTA() {
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              See a working ChatGPT and Claude App for eCommerce, and the path
-              to launching your first one in under two weeks.
+              Join the webinar to see it work live, get your questions
+              answered, and decide your next move.
             </p>
           </Reveal>
 

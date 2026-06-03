@@ -28,7 +28,7 @@ export function LiveDemoTeaser() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-white text-[32px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
               A full order, placed and tracked,
               <br />
               <span style={{ color: "var(--sw-mint)" }}>
@@ -48,12 +48,12 @@ export function LiveDemoTeaser() {
         </div>
 
         {/* Horizontal stepper — light chips with dark text */}
-        <div className="mt-12 md:mt-14 flex flex-wrap items-center gap-4 md:gap-5">
+        <div className="mt-10 sm:mt-12 md:mt-14 flex flex-wrap items-center gap-2.5 sm:gap-4 md:gap-5">
           {steps.map((s, i) => (
             <Fragment key={s}>
               <Reveal delay={0.1 + i * 0.05} className="contents">
-                <div className="inline-flex items-center rounded-[2px] border border-white/15 bg-white px-5 py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
-                  <span className="font-head text-[15px] md:text-[17px] font-semibold text-[var(--sw-black)] leading-none">
+                <div className="inline-flex items-center rounded-[2px] border border-white/15 bg-white px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
+                  <span className="font-head text-[12px] sm:text-[15px] md:text-[17px] font-semibold text-[var(--sw-black)] leading-none">
                     {s}
                   </span>
                 </div>
@@ -61,7 +61,7 @@ export function LiveDemoTeaser() {
               {i < steps.length - 1 && (
                 <Reveal delay={0.12 + i * 0.05} className="contents">
                   <ArrowRight
-                    className="h-5 w-5 md:h-6 md:w-6 text-white/45 shrink-0"
+                    className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white/45 shrink-0"
                     strokeWidth={2.25}
                   />
                 </Reveal>

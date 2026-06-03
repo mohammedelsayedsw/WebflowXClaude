@@ -6,7 +6,6 @@ import { assetUrl } from "@/lib/assets";
 
 const stats: [string, string][] = [
   ["15+ years", "in digital commerce"],
-  ["700+", "brands served"],
   ["2,100+", "projects delivered"],
 ];
 
@@ -65,7 +64,7 @@ export function SpeakerBio() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <div className="mt-9 md:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="mt-9 md:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {stats.map(([k, l]) => (
                   <div
                     key={k}

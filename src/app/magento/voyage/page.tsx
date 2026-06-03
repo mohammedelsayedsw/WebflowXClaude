@@ -413,9 +413,9 @@ function Opening() {
                   lineHeight: 1.6,
                 }}
               >
-                We have delivered all three for 700 brands since Adobe
-                Commerce launched in 2008. Many of those accounts have
-                stayed with us for more than ten years.
+                We have delivered all three for 700 brands since Magento
+                launched in 2008. Many of those accounts have stayed with
+                us for more than ten years.
               </p>
             </Reveal>
             <Reveal delay={0.18}>

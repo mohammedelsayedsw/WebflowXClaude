@@ -26,7 +26,7 @@ export function WhatThisIsAbout() {
             <SectionLabel index="2">The session</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[20ch]">
+            <h2 className="font-head text-white text-[28px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.05] mt-6 lg:whitespace-nowrap">
               What this session is{" "}
               <span style={{ color: "var(--sw-mint)" }}>really about</span>
             </h2>

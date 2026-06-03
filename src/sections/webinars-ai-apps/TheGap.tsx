@@ -246,8 +246,9 @@ export function TheGap() {
                   An app closes the gap.
                 </span>{" "}
                 <span className="text-[var(--sw-black)]">
-                  Your brand gets a listing in the app store and surfaces when
-                  buyers ask, next to Canva and Spotify.
+                  Customers get accurate answers straight from your business,
+                  live stock, real prices, and order status, right inside the
+                  chat.
                 </span>
               </p>
             </div>

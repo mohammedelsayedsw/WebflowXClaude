@@ -53,7 +53,7 @@ export function WhoThisIsFor() {
             <SectionLabel index="6">Who should join</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[30px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">
               Join the webinar if{" "}
               <span style={{ color: "var(--sw-mint)" }}>
                 any of these is you
@@ -77,10 +77,10 @@ export function WhoThisIsFor() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: i * 0.08,
               }}
-              className="group rounded-[4px] border border-white/10 bg-white/[0.03] p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5"
+              className="group rounded-[4px] border border-white/10 bg-white/[0.03] p-5 sm:p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5"
             >
               <span
-                className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-white/85 mb-5"
+                className="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-white/85 mb-4 sm:mb-5"
                 aria-hidden
               >
                 <c.icon className="h-5 w-5" strokeWidth={1.75} />

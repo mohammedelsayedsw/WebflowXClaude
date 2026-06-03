@@ -22,7 +22,7 @@ const items: { title: string; body: string }[] = [
   {
     title: "The decision",
     body:
-      "Enough to judge whether to move now, pilot, or wait, and defend that call to your board",
+      "Enough clarity to choose your next step: move now, run a pilot, or wait.",
   },
 ];
 
@@ -44,7 +44,7 @@ export function WalkAwayWith() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-2 max-w-[22ch]">
+            <h2 className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-2 max-w-[22ch]">
               What you&apos;ll{" "}
               <span className="text-[var(--sw-blue)]">walk away with</span>
             </h2>
@@ -66,12 +66,12 @@ export function WalkAwayWith() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: i * 0.08,
               }}
-              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-9 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
+              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 sm:p-7 md:p-9 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
             >
-              <div className="flex items-start gap-6 md:gap-8">
+              <div className="flex items-start gap-4 sm:gap-6 md:gap-8">
                 <span
                   aria-hidden
-                  className="font-head font-bold tabular-nums text-[48px] md:text-[64px] leading-none text-[var(--sw-blue)] shrink-0 mt-[-6px]"
+                  className="font-head font-bold tabular-nums text-[40px] sm:text-[48px] md:text-[64px] leading-none text-[var(--sw-blue)] shrink-0 mt-[-4px] sm:mt-[-6px]"
                 >
                   {i + 1}
                 </span>

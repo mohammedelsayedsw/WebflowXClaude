@@ -22,7 +22,7 @@ export function SpeakerBio() {
           <Reveal>
             <div className="flex justify-center lg:justify-start">
               <div
-                className="relative h-56 w-56 md:h-72 md:w-72 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
+                className="relative h-44 w-44 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
                 style={{
                   boxShadow:
                     "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
@@ -45,7 +45,7 @@ export function SpeakerBio() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-white text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
+              <h2 className="font-head text-white text-[26px] sm:text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
                 Led by a senior strategist,
                 <br />
                 <span style={{ color: "var(--sw-mint)" }}>

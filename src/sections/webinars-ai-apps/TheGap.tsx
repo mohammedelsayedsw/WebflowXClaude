@@ -59,7 +59,7 @@ function AppRow({
 function AppStoreMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-[14px] w-full max-w-[380px] mx-auto lg:mr-0 lg:ml-auto"
+      className="relative overflow-hidden rounded-[14px] w-full max-w-[340px] mx-auto lg:mr-0 lg:ml-auto"
       style={{
         background:
           "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",
@@ -106,7 +106,7 @@ function AppStoreMockup() {
       <div className="p-4 space-y-5">
         {/* Editor's pick */}
         <div>
-          <div className="label-code text-white/45 text-[9.5px] mb-2.5">
+          <div className="label-code text-white/75 text-[10px] mb-2.5">
             Editor&apos;s pick
           </div>
           <div
@@ -182,7 +182,7 @@ function AppStoreMockup() {
 
         {/* Top apps - single column */}
         <div>
-          <div className="label-code text-white/45 text-[9.5px] mb-2.5">
+          <div className="label-code text-white/75 text-[10px] mb-2.5">
             Top apps this week
           </div>
           <div className="space-y-3">
@@ -217,7 +217,7 @@ export function TheGap() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
+              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
                 The gap:{" "}
                 <span style={{ color: "var(--sw-blue)" }}>
                   ChatGPT and Claude cannot see what you sell

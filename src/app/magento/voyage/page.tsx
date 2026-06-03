@@ -414,7 +414,7 @@ function Opening() {
                 }}
               >
                 We have delivered all three for 700 brands since Magento
-                launched in 2008. Many of those accounts have stayed with
+                launched in 2008. Many of those merchants have stayed with
                 us for more than ten years.
               </p>
             </Reveal>

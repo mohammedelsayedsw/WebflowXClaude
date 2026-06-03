@@ -548,7 +548,7 @@ function ClientLogoStrip({ onDark = false }: { onDark?: boolean }) {
 
 /* ----------------- Scope grid (categorized table) ----------------- */
 
-type ScopeGroup = { title: string; items: string[] };
+type ScopeGroup = { title: string; items: string[]; featured?: boolean };
 
 function ScopeGrid({
   label,
@@ -599,7 +599,21 @@ function ScopeGrid({
                     textTransform: "uppercase",
                   }}
                 >
-                  <span>{group.title}</span>
+                  <span className="inline-flex items-center gap-2">
+                    {group.title}
+                    {group.featured && (
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          fontSize: 13,
+                          color: "var(--sw-blue)",
+                          lineHeight: 1,
+                        }}
+                      >
+                        ★
+                      </span>
+                    )}
+                  </span>
                   <span
                     style={{
                       display: "inline-flex",
@@ -660,6 +674,7 @@ function ScopeGrid({
           {groups.map((group) => (
             <div key={group.title}>
               <div
+                className="flex items-center gap-2"
                 style={{
                   fontFamily: SERIF,
                   fontSize: "14px",
@@ -672,7 +687,19 @@ function ScopeGrid({
                   marginBottom: 14,
                 }}
               >
-                {group.title}
+                <span>{group.title}</span>
+                {group.featured && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      fontSize: 13,
+                      color: "var(--sw-blue)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    ★
+                  </span>
+                )}
               </div>
               <ul
                 style={{
@@ -3985,6 +4012,18 @@ function MonsterMoment() {
                   title: "Revenue and trust",
                   items: ["Checkout regressions", "Security incidents"],
                 },
+                {
+                  title: "AI commerce",
+                  featured: true,
+                  items: [
+                    "Conversational commerce",
+                    "Inventory forecasting",
+                    "MCP apps",
+                    "Internal procurement & buying platforms",
+                    "Pricing & margin forecasts",
+                    "Inventory automation",
+                  ],
+                },
               ]}
             />
           </div>
@@ -4143,10 +4182,6 @@ function GrowChapter() {
               {
                 title: "Market expansion",
                 items: ["New countries", "New languages", "Multi-currency", "Tax + duties", "Localization", "Cross-border logistics"],
-              },
-              {
-                title: "AI commerce",
-                items: ["Conversational commerce", "Inventory forecasting", "MCP apps", "Internal procurement & buying platforms", "Pricing & margin forecasts", "Inventory automation"],
               },
             ]}
             />

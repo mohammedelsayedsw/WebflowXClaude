@@ -5793,7 +5793,7 @@ function Closing() {
 function HubSpotForm() {
   const PORTAL_ID = "25724996";
   const FORM_GUID = "bfc21a90-021d-4a05-86be-a86fb8110793";
-  type Status = "idle" | "submitting" | "success" | "error";
+  type Status = "idle" | "submitting" | "error";
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -5847,7 +5847,9 @@ function HubSpotForm() {
       );
 
       if (res.ok) {
-        setStatus("success");
+        if (typeof window !== "undefined") {
+          window.location.href = "/success";
+        }
         return;
       }
       const body = (await res.json().catch(() => null)) as
@@ -5863,35 +5865,6 @@ function HubSpotForm() {
       setErrorMsg("Network error. Please try again.");
     }
   };
-
-  if (status === "success") {
-    return (
-      <div className="flex flex-col gap-4">
-        <div
-          style={{
-            fontFamily: SERIF,
-            fontSize: "clamp(22px, 2vw, 28px)",
-            lineHeight: 1.25,
-            fontWeight: 500,
-            color: INK,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Thanks for reaching out.
-        </div>
-        <p
-          style={{
-            fontSize: "16px",
-            color: INK_SOFT,
-            lineHeight: 1.55,
-          }}
-        >
-          A Magento engineer will reply within 24 hours with a written
-          summary. Check your inbox.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} noValidate>

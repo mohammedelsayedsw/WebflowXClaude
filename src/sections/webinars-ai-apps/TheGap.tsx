@@ -220,7 +220,7 @@ export function TheGap() {
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
               The gap:{" "}
-              <span style={{ color: "var(--sw-mint)" }}>
+              <span style={{ color: "var(--sw-orange)" }}>
                 ChatGPT and Claude cannot see what you sell
               </span>
             </h2>
@@ -239,12 +239,14 @@ export function TheGap() {
               className="mt-9 md:mt-10 pl-5 md:pl-6 border-l-2"
               style={{ borderColor: "var(--sw-mint)" }}
             >
-              <p
-                className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]"
-                style={{ color: "var(--sw-mint)" }}
-              >
-                An app closes the gap. Your brand gets a listing in the app
-                store and surfaces when buyers ask, next to Canva and Spotify.
+              <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
+                <span style={{ color: "var(--sw-mint)" }}>
+                  An app closes the gap.
+                </span>{" "}
+                <span className="text-white">
+                  Your brand gets a listing in the app store and surfaces when
+                  buyers ask, next to Canva and Spotify.
+                </span>
               </p>
             </div>
           </Reveal>

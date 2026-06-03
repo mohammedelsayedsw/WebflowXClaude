@@ -3716,6 +3716,7 @@ function MonsterMoment() {
     <>
       {/* Image with minimal overlay — eyebrow + title only */}
       <section
+        id="support"
         className="relative overflow-hidden"
         style={{ minHeight: "90vh", background: "#06080F" }}
       >
@@ -6044,7 +6045,7 @@ function FinalCta() {
           viewBox="0 0 400 400"
           style={{
             top: "50%",
-            left: "-80px",
+            right: "-120px",
             transform: "translateY(-50%)",
             width: 460,
             height: 460,
@@ -6085,7 +6086,7 @@ function FinalCta() {
         </svg>
 
         <div className="relative z-10 wrap py-20 md:py-32">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-center">
             <Reveal>
               <div>
                 <div
@@ -6121,18 +6122,6 @@ function FinalCta() {
                   30 minutes, no obligation. We listen, ask, and reply with a
                   written summary inside 24 hours.
                 </p>
-                <ul
-                  className="mt-10 space-y-3"
-                  style={{ fontSize: "15.5px", color: INK_SOFT }}
-                >
-                  {[
-                    "Live walkthrough of your store and stack",
-                    "Three priority fixes, ranked by revenue impact",
-                    "Written summary in your inbox within 24 hours",
-                  ].map((l) => (
-                    <li key={l}>{l}</li>
-                  ))}
-                </ul>
               </div>
             </Reveal>
 
@@ -6290,6 +6279,7 @@ function ScrollNav() {
                   { href: "#build", label: "Build" },
                   { href: "#optimize", label: "Optimize" },
                   { href: "#grow", label: "Grow" },
+                  { href: "#support", label: "Support" },
                   { href: "#pricing", label: "Pricing" },
                 ].map((it) => (
                   <a

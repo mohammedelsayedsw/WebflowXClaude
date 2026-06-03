@@ -1,48 +1,97 @@
 "use client";
 
-import { Check } from "lucide-react";
+import {
+  Rocket,
+  ShoppingBag,
+  Briefcase,
+  Building2,
+  type LucideIcon,
+} from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const items = [
-  "eCommerce brands that want to move early on the AI app layer",
-  "Businesses where customers browse, order, and ask for support online",
-  "Teams that want a working proof point before they commit a budget",
-  "B2B sellers with account pricing, reorders, and quotes",
+const cards: { icon: LucideIcon; lead: string; body: string }[] = [
+  {
+    icon: Rocket,
+    lead: "You want to be first",
+    body:
+      "The earlier your store is inside the ChatGPT and Claude apps, the more customers find you and buy.",
+  },
+  {
+    icon: ShoppingBag,
+    lead: "Online retail and eCommerce",
+    body:
+      "Your customers browse, order, and ask for support online, and you want them served inside the chat.",
+  },
+  {
+    icon: Briefcase,
+    lead: "Founders and execs",
+    body:
+      "You want a clear read on whether to move now or wait before you commit.",
+  },
+  {
+    icon: Building2,
+    lead: "B2B sellers",
+    body:
+      "You handle account pricing, reorders, and quotes, and want them to run inside the chat.",
+  },
 ];
 
 export function WhoThisIsFor() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
-      id="who-this-is-for"
+      id="who-should-join"
       className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="6">Audience</SectionLabel>
+            <SectionLabel index="6">Who should join</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[18ch]">
-              Who this is{" "}
-              <span style={{ color: "var(--sw-mint)" }}>for</span>
+            <h2 className="font-head text-white text-[30px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">
+              Join the webinar if{" "}
+              <span style={{ color: "var(--sw-mint)" }}>
+                any of these is you
+              </span>
             </h2>
           </Reveal>
         </div>
 
+        {/* 2x2 grid, full content width */}
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-          {items.map((t, i) => (
-            <Reveal key={i} delay={i * 0.07} className="contents">
-              <li className="group flex items-start gap-4 md:gap-5 rounded-[4px] border border-white/10 bg-white/[0.03] p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5">
-                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.04]">
-                  <Check className="h-4 w-4 text-[var(--sw-mint)]" />
-                </span>
-                <span className="text-white/90 text-[16px] md:text-[18px] leading-relaxed">
-                  {t}
-                </span>
-              </li>
-            </Reveal>
+          {cards.map((c, i) => (
+            <motion.li
+              key={c.lead}
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={
+                reduceMotion ? undefined : { opacity: 1, y: 0 }
+              }
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.22, 1, 0.36, 1],
+                delay: i * 0.08,
+              }}
+              className="group rounded-[4px] border border-white/10 bg-white/[0.03] p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5"
+            >
+              <span
+                className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-white/85 mb-5"
+                aria-hidden
+              >
+                <c.icon className="h-5 w-5" strokeWidth={1.75} />
+              </span>
+              <div className="font-head font-bold text-white text-[18px] md:text-[22px] leading-[1.2]">
+                {c.lead}
+              </div>
+              <p className="mt-2.5 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+                {c.body}
+              </p>
+            </motion.li>
           ))}
         </ul>
       </div>

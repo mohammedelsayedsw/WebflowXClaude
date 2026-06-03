@@ -198,6 +198,23 @@
     padding-top: clamp(72px, 10vw, 128px);
     padding-bottom: clamp(72px, 10vw, 128px);
   }
+
+  /* Hero must fill the *visible* viewport on every device. 100vh is wrong on
+     mobile (it ignores the dynamic browser UI); 100dvh tracks the real
+     viewport. vh first as a fallback for any engine without dvh support.
+     The +60/+75px compensates for the section's negative top margin (it is
+     pulled up under the overlay header) so the hero still reaches the bottom
+     edge instead of leaving the next section peeking through. */
+  .hero-fill {
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+  }
+  @media (min-width: 768px) {
+    .hero-fill {
+      min-height: calc(100vh + 75px);
+      min-height: calc(100dvh + 75px);
+    }
+  }
 }
 
 @keyframes pulse-green {

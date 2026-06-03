@@ -42,7 +42,12 @@ export function WhatThisIsAbout() {
                 <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.04]">
                   <Check className="h-4 w-4 text-[var(--sw-mint)]" />
                 </span>
-                <span className="text-white/85 text-[16px] md:text-[18px] leading-relaxed">
+                <span
+                  className={
+                    "text-white/85 text-[16px] md:text-[18px] leading-relaxed" +
+                    (i === 0 ? " lg:whitespace-nowrap" : "")
+                  }
+                >
                   {t}
                 </span>
               </li>

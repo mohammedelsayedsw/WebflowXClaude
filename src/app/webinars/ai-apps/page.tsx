@@ -7,7 +7,6 @@ import { CapabilitiesGrid } from "@/sections/webinars-ai-apps/CapabilitiesGrid";
 import { WithoutWith } from "@/sections/webinars-ai-apps/WithoutWith";
 import { WhatYoullLearn } from "@/sections/webinars-ai-apps/WhatYoullLearn";
 import { WhoThisIsFor } from "@/sections/webinars-ai-apps/WhoThisIsFor";
-import { BuildPath } from "@/sections/webinars-ai-apps/BuildPath";
 import { SpeakerBio } from "@/sections/webinars-ai-apps/SpeakerBio";
 import { CTA } from "@/sections/webinars-ai-apps/CTA";
 
@@ -21,7 +20,6 @@ export default function Page() {
       <WithoutWith />
       <WhatYoullLearn />
       <WhoThisIsFor />
-      <BuildPath />
       <SpeakerBio />
       <CTA />
     </main>

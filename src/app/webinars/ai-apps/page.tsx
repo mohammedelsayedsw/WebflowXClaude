@@ -3,7 +3,7 @@
 import { Hero } from "@/sections/webinars-ai-apps/Hero";
 import { IntroParagraph } from "@/sections/webinars-ai-apps/IntroParagraph";
 import { WhatThisIsAbout } from "@/sections/webinars-ai-apps/WhatThisIsAbout";
-import { CapabilitiesGrid } from "@/sections/webinars-ai-apps/CapabilitiesGrid";
+import { LiveDemoTeaser } from "@/sections/webinars-ai-apps/LiveDemoTeaser";
 import { WithoutWith } from "@/sections/webinars-ai-apps/WithoutWith";
 import { WalkAwayWith } from "@/sections/webinars-ai-apps/WalkAwayWith";
 import { WhoThisIsFor } from "@/sections/webinars-ai-apps/WhoThisIsFor";
@@ -16,7 +16,7 @@ export default function Page() {
       <Hero />
       <IntroParagraph />
       <WhatThisIsAbout />
-      <CapabilitiesGrid />
+      <LiveDemoTeaser />
       <WithoutWith />
       <WalkAwayWith />
       <WhoThisIsFor />

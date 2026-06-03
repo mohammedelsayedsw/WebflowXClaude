@@ -3,7 +3,7 @@
 import { Search, Sparkles, Star } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-/* ── App Store mockup (colors adapted for dark section) ────────── */
+/* ── Vertical ChatGPT-apps directory mockup ────────────────────── */
 
 const nav = [
   "Featured",
@@ -31,25 +31,25 @@ function AppRow({
   app: (typeof apps)[number];
 }) {
   return (
-    <div className="flex items-center gap-3 md:gap-4">
-      <span className="text-white/40 font-head text-[12px] md:text-[13px] tabular-nums w-3 shrink-0">
+    <div className="flex items-center gap-3">
+      <span className="text-white/45 font-head text-[11px] tabular-nums w-3 shrink-0">
         {index}
       </span>
       <span
-        className="inline-flex h-9 w-9 md:h-10 md:w-10 shrink-0 items-center justify-center rounded-[6px] font-head font-bold text-white text-[16px] md:text-[18px]"
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[6px] font-head font-bold text-white text-[14px]"
         style={{ background: app.bg }}
       >
         {app.letter}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-white text-[13.5px] md:text-[14.5px] font-semibold leading-tight">
+        <div className="text-white text-[12.5px] font-semibold leading-tight">
           {app.name}
         </div>
-        <div className="text-white/55 text-[11.5px] md:text-[12.5px] mt-0.5 truncate">
+        <div className="text-white/55 text-[10.5px] mt-0.5 truncate">
           {app.tag}
         </div>
       </div>
-      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-white/70 font-head text-[11.5px] md:text-[12px] shrink-0">
+      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-0.5 text-white/75 font-head text-[10.5px] shrink-0">
         Open
       </span>
     </div>
@@ -59,141 +59,136 @@ function AppRow({
 function AppStoreMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-[10px] w-full"
+      className="relative overflow-hidden rounded-[14px] w-full max-w-[380px] mx-auto lg:mr-0 lg:ml-auto"
       style={{
         background:
-          "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 60%), rgba(255,255,255,0.02)",
-        border: "1px solid rgba(255,255,255,0.10)",
+          "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        border: "1px solid rgba(255,255,255,0.18)",
         boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.10), 0 30px 60px -20px rgba(16,19,44,0.45)",
+          "inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.06), 0 30px 60px -20px rgba(16,19,44,0.35)",
       }}
     >
       {/* Browser chrome */}
-      <div className="flex items-center gap-3 px-4 py-2.5 border-b border-white/[0.08] bg-white/[0.015]">
-        <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-white/25" />
-          <span className="h-2 w-2 rounded-full bg-white/20" />
-          <span className="h-2 w-2 rounded-full bg-white/20" />
+      <div className="flex items-center gap-2.5 px-3.5 py-2.5 border-b border-white/[0.10]">
+        <div className="flex items-center gap-1">
+          <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+          <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
+          <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
         </div>
-        <div className="flex-1 flex justify-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.05] border border-white/[0.08] px-3 py-1 text-[11.5px] text-white/55">
-            <Search className="h-3 w-3 opacity-70" />
-            <span>chatgpt.com / apps</span>
-          </div>
+        <div className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-white/[0.08] border border-white/[0.10] px-2.5 py-1 text-[10.5px] text-white/70">
+          <Search className="h-2.5 w-2.5 opacity-70" />
+          <span>chatgpt.com / apps</span>
         </div>
-        <span className="text-[11.5px] text-white/55 shrink-0">Apps</span>
       </div>
 
-      {/* Body */}
-      <div className="grid grid-cols-1 md:grid-cols-[180px_1fr]">
-        {/* Sidebar */}
-        <aside className="hidden md:block border-r border-white/[0.06] p-5">
-          <div className="label-code text-white/40 mb-4">Browse</div>
-          <ul className="space-y-1.5">
-            {nav.map((n, i) => (
-              <li key={n}>
-                <div
-                  className={
-                    "rounded-[2px] px-3 py-2 text-[13px] font-head transition-colors " +
-                    (i === 0
-                      ? "bg-white/[0.06] border border-white/[0.08] text-white"
-                      : "text-white/65 hover:bg-white/[0.03]")
-                  }
-                >
-                  {n}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        {/* Main */}
-        <div className="p-5 md:p-6 space-y-7">
-          {/* Editor's pick */}
-          <div>
-            <div className="label-code text-white/40 mb-3">
-              Editor&apos;s pick
-            </div>
-            <div
-              className="relative rounded-[8px] overflow-hidden p-4 md:p-5"
-              style={{
-                background:
-                  "linear-gradient(120deg, rgba(110,247,110,0.12) 0%, rgba(110,247,110,0.04) 45%, rgba(255,255,255,0.02) 100%)",
-                border: "1px solid rgba(110,247,110,0.22)",
-              }}
+      {/* Horizontal nav (replaces left sidebar in vertical layout) */}
+      <div className="px-3.5 pt-3 pb-3 border-b border-white/[0.08]">
+        <div className="flex gap-1.5 overflow-x-auto pb-0.5 -mx-1 px-1">
+          {nav.map((n, i) => (
+            <span
+              key={n}
+              className={
+                "rounded-full px-2.5 py-1 text-[10.5px] font-head font-medium shrink-0 transition-colors " +
+                (i === 0
+                  ? "bg-white/[0.14] text-white border border-white/[0.18]"
+                  : "text-white/65 border border-white/[0.08]")
+              }
             >
-              <div className="flex items-start gap-4">
-                <span
-                  className="inline-flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-[8px]"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(110,247,110,0.45) 0%, rgba(110,247,110,0.18) 100%)",
-                    border: "1px solid rgba(110,247,110,0.45)",
-                  }}
-                >
-                  <Sparkles
-                    className="h-6 w-6 md:h-7 md:w-7"
+              {n}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 space-y-5">
+        {/* Editor's pick */}
+        <div>
+          <div className="label-code text-white/45 text-[9.5px] mb-2.5">
+            Editor&apos;s pick
+          </div>
+          <div
+            className="relative rounded-[8px] overflow-hidden p-3.5"
+            style={{
+              background:
+                "linear-gradient(120deg, rgba(110,247,110,0.18) 0%, rgba(110,247,110,0.06) 45%, rgba(255,255,255,0.03) 100%)",
+              border: "1px solid rgba(110,247,110,0.30)",
+            }}
+          >
+            <div className="flex items-start gap-3">
+              <span
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[7px]"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(110,247,110,0.5) 0%, rgba(110,247,110,0.2) 100%)",
+                  border: "1px solid rgba(110,247,110,0.5)",
+                }}
+              >
+                <Sparkles
+                  className="h-5 w-5"
+                  style={{ color: "var(--sw-mint)" }}
+                />
+              </span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span
+                    className="font-head font-bold text-[13.5px] tracking-[0.04em] uppercase"
                     style={{ color: "var(--sw-mint)" }}
-                  />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className="font-head font-bold text-[16px] md:text-[18px] tracking-[0.04em] uppercase"
-                      style={{ color: "var(--sw-mint)" }}
-                    >
-                      Your brand
-                    </span>
-                    <span className="text-white/40 text-[12.5px]">
-                      &middot; Shopping
-                    </span>
-                  </div>
-                  <p className="mt-2 text-white text-[13.5px] md:text-[15px] leading-relaxed max-w-[60ch]">
-                    Shop, search and get help &ndash; directly inside ChatGPT
-                    and Claude.
-                  </p>
-                  <div className="mt-4 flex items-center gap-4">
-                    <span className="inline-flex items-center rounded-full bg-white text-[var(--sw-black)] px-4 py-1.5 font-head font-semibold text-[12px]">
-                      Open
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-white/55 text-[12px]">
-                      <Star
-                        className="h-3 w-3"
-                        style={{
-                          color: "var(--sw-mint)",
-                          fill: "var(--sw-mint)",
-                        }}
-                      />
-                      <span className="font-head text-white">4.9</span>
-                      <span>&middot; 12k</span>
-                    </span>
-                  </div>
+                  >
+                    Your brand
+                  </span>
+                  <span className="text-white/45 text-[11px]">
+                    &middot; Shopping
+                  </span>
                 </div>
-                <span
-                  className="hidden sm:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-head text-[10px] tracking-[0.14em] uppercase font-semibold shrink-0"
-                  style={{
-                    background: "rgba(110,247,110,0.10)",
-                    border: "1px solid rgba(110,247,110,0.35)",
-                    color: "var(--sw-mint)",
-                  }}
-                >
-                  <Sparkles className="h-3 w-3" />
-                  Featured
-                </span>
+                <p className="mt-1.5 text-white text-[12.5px] leading-snug">
+                  Shop, search and get help &ndash; directly inside ChatGPT
+                  and Claude.
+                </p>
+                <div className="mt-3 flex items-center gap-3">
+                  <span className="inline-flex items-center rounded-full bg-white text-[var(--sw-black)] px-3 py-1 font-head font-semibold text-[11px]">
+                    Open
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-white/60 text-[11px]">
+                    <Star
+                      className="h-2.5 w-2.5"
+                      style={{
+                        color: "var(--sw-mint)",
+                        fill: "var(--sw-mint)",
+                      }}
+                    />
+                    <span className="font-head text-white">4.9</span>
+                    <span>&middot; 12k</span>
+                  </span>
+                </div>
               </div>
             </div>
+            {/* Featured chip — bottom-right of card so it doesn't crowd content */}
+            <span
+              className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-head text-[8.5px] tracking-[0.14em] uppercase font-semibold"
+              style={{
+                background: "rgba(110,247,110,0.10)",
+                border: "1px solid rgba(110,247,110,0.35)",
+                color: "var(--sw-mint)",
+              }}
+            >
+              <Sparkles className="h-2.5 w-2.5" />
+              Featured
+            </span>
           </div>
+        </div>
 
-          {/* Top apps this week */}
-          <div>
-            <div className="label-code text-white/40 mb-3">
-              Top apps this week
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-4">
-              {apps.map((a, i) => (
-                <AppRow key={a.name + i} index={i + 1} app={a} />
-              ))}
-            </div>
+        {/* Top apps - single column */}
+        <div>
+          <div className="label-code text-white/45 text-[9.5px] mb-2.5">
+            Top apps this week
+          </div>
+          <div className="space-y-3">
+            {apps.map((a, i) => (
+              <AppRow key={a.name + i} index={i + 1} app={a} />
+            ))}
           </div>
         </div>
       </div>
@@ -210,55 +205,62 @@ export function TheGap() {
       className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
       <div className="wrap">
-        <div className="max-w-[860px]">
-          <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">3</span>
-              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>Why it matters</span>
-            </div>
-          </Reveal>
+        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-start">
+          {/* LEFT · copy */}
+          <div className="max-w-[640px]">
+            <Reveal>
+              <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+                <span className="text-[var(--sw-black)]/55">3</span>
+                <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+                <span>Why it matters</span>
+              </div>
+            </Reveal>
 
-          <Reveal delay={0.05}>
-            <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
-              The gap:{" "}
-              <span style={{ color: "var(--sw-orange)" }}>
-                ChatGPT and Claude cannot see what you sell
-              </span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-              Buyers ask ChatGPT and Claude what to buy and who to trust.
-              Today the platforms cannot reach your catalog, stock, or prices,
-              so your brand stays out of the answer while others get named.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.18}>
-            <div
-              className="mt-9 md:mt-10 pl-5 md:pl-6 border-l-2"
-              style={{ borderColor: "var(--sw-blue)" }}
-            >
-              <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
-                <span className="text-[var(--sw-blue)]">
-                  An app closes the gap.
-                </span>{" "}
-                <span className="text-[var(--sw-black)]">
-                  Customers get accurate answers straight from your business,
-                  live stock, real prices, and order status, right inside the
-                  chat.
+            <Reveal delay={0.05}>
+              <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
+                The gap:{" "}
+                <span style={{ color: "var(--sw-orange)" }}>
+                  ChatGPT and Claude cannot see what you sell
                 </span>
-              </p>
-            </div>
-          </Reveal>
-        </div>
+              </h2>
+            </Reveal>
 
-        {/* App Store mockup — full-width visual below the copy */}
-        <Reveal delay={0.25} className="block mt-14 md:mt-20">
-          <AppStoreMockup />
-        </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
+                Buyers ask ChatGPT and Claude what to buy and who to trust.
+                Today the platforms cannot reach your catalog, stock, or
+                prices, so your brand stays out of the answer while others
+                get named.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.18}>
+              <div
+                className="mt-9 md:mt-10 pl-5 md:pl-6 border-l-2"
+                style={{ borderColor: "var(--sw-blue)" }}
+              >
+                <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
+                  <span className="text-[var(--sw-blue)]">
+                    An app closes the gap.
+                  </span>{" "}
+                  <span className="text-[var(--sw-black)]">
+                    Customers get accurate answers straight from your
+                    business, live stock, real prices, and order status, right
+                    inside the chat.
+                  </span>
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* RIGHT · vertical mockup, sticky on lg+ so it stays visible
+              while reading the copy column */}
+          <div className="lg:sticky lg:top-24">
+            <Reveal delay={0.15}>
+              <AppStoreMockup />
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );

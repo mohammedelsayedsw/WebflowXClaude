@@ -40,9 +40,9 @@ export function LiveDemoTeaser() {
           <Reveal delay={0.1}>
             <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
               AI commerce sounds abstract until you watch it run. The demo
-              walks through every step a customer can take, and shows both
-              sides: what they see in the chat, and what happens inside your
-              business.
+              will walk through every step a customer can take, and shows
+              both sides: what they see in the chat, and what happens inside
+              your business.
             </p>
           </Reveal>
         </div>

@@ -4136,7 +4136,7 @@ function GrowChapter() {
               },
               {
                 title: "AI commerce",
-                items: ["Adobe Sensei", "Custom recommendations", "AI chat + search", "Dynamic pricing", "Inventory forecasting"],
+                items: ["Conversational commerce", "Inventory forecasting", "MCP apps", "Internal procurement & buying platforms", "Pricing & margin forecasts", "Inventory automation"],
               },
             ]}
             />

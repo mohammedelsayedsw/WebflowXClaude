@@ -16,8 +16,8 @@ export default function Page() {
       <Hero />
       <IntroParagraph />
       <WhatThisIsAbout />
-      <LiveDemoTeaser />
       <TheGap />
+      <LiveDemoTeaser />
       <WalkAwayWith />
       <WhoThisIsFor />
       <SpeakerBio />

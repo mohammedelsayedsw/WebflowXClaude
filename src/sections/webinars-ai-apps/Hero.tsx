@@ -115,7 +115,7 @@ function SpeakerCard() {
       <div className="label-code text-white/55 text-[10px] mb-5">Speaker</div>
 
       <div
-        className="relative h-56 w-56 md:h-64 md:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
+        className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
         style={{
           boxShadow:
             "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
@@ -129,11 +129,11 @@ function SpeakerCard() {
         />
       </div>
 
-      <div className="mt-7">
-        <div className="font-head text-white text-[22px] md:text-[24px] leading-[1.15]">
+      <div className="mt-5 md:mt-7">
+        <div className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
           Rolands Popovs
         </div>
-        <div className="text-white/70 text-[14px] md:text-[15px] mt-2">
+        <div className="text-white/70 text-[13px] md:text-[15px] mt-1.5 md:mt-2">
           COO at scandiweb
         </div>
       </div>
@@ -143,16 +143,16 @@ function SpeakerCard() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
+    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden lg:min-h-screen flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
+        <div className="wrap relative z-10 pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 w-full">
+          <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
+                <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-6 md:mb-8">
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     Free webinar &middot; AI commerce
                   </span>
@@ -160,14 +160,14 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
+                <h1 className="font-head text-white text-[32px] sm:text-[40px] md:text-[48px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
                   Build your business as an app inside ChatGPT and Claude
                 </h1>
               </Reveal>
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-3 md:mt-4 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
+                  className="mt-3 md:mt-4 font-head text-[18px] md:text-[22px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   Sell, support, operate, all inside the chat
@@ -176,7 +176,7 @@ export function Hero() {
 
               {/* Date + time block */}
               <Reveal delay={0.15}>
-                <div className="mt-9 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-8">
+                <div className="mt-7 md:mt-9 flex flex-row gap-5 sm:gap-8 items-start">
                   <div>
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Date
@@ -185,7 +185,7 @@ export function Hero() {
                       June 17, 2026
                     </div>
                   </div>
-                  <div className="hidden sm:block w-px bg-white/15" />
+                  <div className="w-px self-stretch bg-white/15" />
                   <div>
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Time
@@ -199,7 +199,7 @@ export function Hero() {
 
               {/* Platform row */}
               <Reveal delay={0.2}>
-                <div className="mt-9 md:mt-10 flex items-center gap-6 md:gap-8 flex-wrap">
+                <div className="mt-7 md:mt-9 flex items-center gap-5 md:gap-7 flex-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={assetUrl("/webinars/ai-apps/chatgpt.png")}
@@ -216,7 +216,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.25}>
-                <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+                <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
                   <a
                     href={ZOOM_REGISTER_URL}
                     target="_blank"
@@ -231,7 +231,7 @@ export function Hero() {
 
               {/* Three-stat strip */}
               <Reveal delay={0.3}>
-                <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-[640px]">
+                <div className="mt-8 md:mt-10 grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 max-w-[640px]">
                   {[
                     ["2 weeks", "first app live"],
                     ["Both platforms", "one build"],
@@ -239,12 +239,12 @@ export function Hero() {
                   ].map(([k, l]) => (
                     <div
                       key={k}
-                      className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3"
+                      className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 sm:px-4 py-2.5 sm:py-3"
                     >
-                      <div className="font-head text-white text-[16px] md:text-[18px] leading-tight">
+                      <div className="font-head text-white text-[13px] sm:text-[15px] md:text-[17px] leading-tight">
                         {k}
                       </div>
-                      <div className="label-code text-white/55 text-[10px] mt-2 leading-snug">
+                      <div className="label-code text-white/55 text-[9px] sm:text-[10px] mt-1.5 sm:mt-2 leading-snug">
                         {l}
                       </div>
                     </div>

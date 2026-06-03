@@ -2,7 +2,6 @@
 
 import { Search, Sparkles, Star } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 /* ── App Store mockup (colors adapted for dark section) ────────── */
 
@@ -208,17 +207,20 @@ export function TheGap() {
   return (
     <section
       id="the-gap"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
-      <div className="wrap relative">
+      <div className="wrap">
         <div className="max-w-[860px]">
           <Reveal>
-            <SectionLabel index="3">Why it matters</SectionLabel>
+            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <span className="text-[var(--sw-black)]/55">3</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+              <span>Why it matters</span>
+            </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-white text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
+            <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
               The gap:{" "}
               <span style={{ color: "var(--sw-orange)" }}>
                 ChatGPT and Claude cannot see what you sell
@@ -227,7 +229,7 @@ export function TheGap() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
+            <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
               Buyers ask ChatGPT and Claude what to buy and who to trust.
               Today the platforms cannot reach your catalog, stock, or prices,
               so your brand stays out of the answer while others get named.
@@ -237,13 +239,13 @@ export function TheGap() {
           <Reveal delay={0.18}>
             <div
               className="mt-9 md:mt-10 pl-5 md:pl-6 border-l-2"
-              style={{ borderColor: "var(--sw-mint)" }}
+              style={{ borderColor: "var(--sw-blue)" }}
             >
               <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
-                <span style={{ color: "var(--sw-mint)" }}>
+                <span className="text-[var(--sw-blue)]">
                   An app closes the gap.
                 </span>{" "}
-                <span className="text-white">
+                <span className="text-[var(--sw-black)]">
                   Your brand gets a listing in the app store and surfaces when
                   buyers ask, next to Canva and Spotify.
                 </span>

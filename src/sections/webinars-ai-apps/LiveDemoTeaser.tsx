@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
+import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
@@ -47,31 +48,67 @@ export function LiveDemoTeaser() {
           </Reveal>
         </div>
 
-        {/* Horizontal stepper — light chips with dark text */}
-        <div className="mt-10 sm:mt-12 md:mt-14 flex flex-wrap items-center gap-2.5 sm:gap-4 md:gap-5">
-          {steps.map((s, i) => (
-            <Fragment key={s}>
-              <Reveal delay={0.1 + i * 0.05} className="contents">
-                <div className="inline-flex items-center rounded-[2px] border border-white/15 bg-white px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
-                  <span className="font-head text-[12px] sm:text-[15px] md:text-[17px] font-semibold text-[var(--sw-black)] leading-none">
-                    {s}
-                  </span>
-                </div>
-              </Reveal>
-              {i < steps.length - 1 && (
-                <Reveal delay={0.12 + i * 0.05} className="contents">
-                  <ArrowRight
-                    className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white/45 shrink-0"
-                    strokeWidth={2.25}
-                  />
-                </Reveal>
-              )}
-            </Fragment>
-          ))}
-        </div>
+        {/* Stepper container — dark-glass panel + status header + numbered chips */}
+        <Reveal delay={0.15}>
+          <div className="mt-10 md:mt-14 rounded-[4px] border border-white/10 bg-white/[0.025] p-5 sm:p-7 md:p-9">
+            {/* Status header */}
+            <div className="flex items-center justify-between gap-4 mb-5 md:mb-7 flex-wrap">
+              <div className="flex items-center gap-2.5">
+                <motion.span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: "var(--sw-mint)" }}
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{
+                    duration: 1.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <span
+                  className="font-head font-semibold uppercase text-white/65"
+                  style={{ fontSize: "10.5px", letterSpacing: "0.16em" }}
+                >
+                  Live customer journey
+                </span>
+              </div>
+              <span
+                className="font-head uppercase text-white/40 hidden sm:inline"
+                style={{ fontSize: "10px", letterSpacing: "0.18em" }}
+              >
+                6 steps &middot; one chat
+              </span>
+            </div>
+
+            {/* Numbered stepper chips */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 md:gap-4">
+              {steps.map((s, i) => (
+                <Fragment key={s}>
+                  <Reveal delay={0.05 + i * 0.05} className="contents">
+                    <div className="group inline-flex items-center gap-2 sm:gap-2.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
+                      <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-[2px] bg-[var(--sw-black)] text-white font-head font-bold text-[10px] sm:text-[11px] tabular-nums">
+                        {i + 1}
+                      </span>
+                      <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] font-semibold text-[var(--sw-black)] leading-none">
+                        {s}
+                      </span>
+                    </div>
+                  </Reveal>
+                  {i < steps.length - 1 && (
+                    <Reveal delay={0.07 + i * 0.05} className="contents">
+                      <ArrowRight
+                        className="h-4 w-4 sm:h-5 sm:w-5 text-white/40 shrink-0"
+                        strokeWidth={2.25}
+                      />
+                    </Reveal>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         <Reveal delay={0.4}>
-          <p className="mt-14 md:mt-16 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+          <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
             Once you see a real order placed and tracked live, you can decide
             whether this is right for your store.
           </p>

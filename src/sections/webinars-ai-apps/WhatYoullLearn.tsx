@@ -6,11 +6,11 @@ import { Reveal } from "@/components/primitives/Reveal";
 const items: { title: string; body?: string }[] = [
   { title: "Why this is the App Store moment for AI, and why timing matters" },
   {
-    title: "A live demo: a full eCommerce flow running inside ChatGPT and Claude",
-    body: "Browse, search, add to cart, place an order, request an order update, and submit a support ticket.",
+    title: "A live demo: a full eCommerce flow inside ChatGPT and Claude",
+    body: "Browse, search, add to cart, place an order, request an order update, submit a support ticket.",
   },
   { title: "Which workflows make the best first app for your business type" },
-  { title: "What systems connect, and how long it realistically takes" },
+  { title: "What systems connect, and how long it takes" },
   { title: "The three-tier build path: proof point, full launch, or enterprise suite" },
   {
     title: "Live Q&A",
@@ -28,7 +28,7 @@ export function WhatYoullLearn() {
         <div className="mb-12 md:mb-16">
           <Reveal>
             <div className="label-code text-[var(--sw-black)]/55 mb-5">
-              <span className="text-[var(--sw-black)]/55">03</span>
+              <span className="text-[var(--sw-black)]/55">5</span>
               <span className="inline-block h-px w-6 bg-[var(--sw-black)]/20 mx-3 align-middle" />
               <span>Agenda</span>
             </div>

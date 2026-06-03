@@ -5,9 +5,9 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
-  "No trend talk. This is a working demo and a clear path to your first app",
-  "Seeing a real eCommerce flow run live inside ChatGPT and Claude",
-  "Understanding what it takes to go live in under two weeks",
+  "A working demo and a clear path to your first app",
+  "A real eCommerce flow running live inside ChatGPT and Claude",
+  "What it takes to go live in under two weeks",
 ];
 
 export function WhatThisIsAbout() {
@@ -20,7 +20,7 @@ export function WhatThisIsAbout() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="02">The session</SectionLabel>
+            <SectionLabel index="2">The session</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[20ch]">

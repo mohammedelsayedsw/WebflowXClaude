@@ -154,7 +154,7 @@ export function Hero() {
               <Reveal>
                 <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                    AI commerce
+                    Free webinar &middot; AI commerce
                   </span>
                 </div>
               </Reveal>
@@ -170,7 +170,7 @@ export function Hero() {
                   className="mt-3 md:mt-4 font-head text-[20px] md:text-[24px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
-                  Sell, support, operate &ndash; all inside the chat
+                  Sell, support, operate, all inside the chat
                 </p>
               </Reveal>
 
@@ -226,6 +226,29 @@ export function Hero() {
                     Sign up now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
+                </div>
+              </Reveal>
+
+              {/* Three-stat strip */}
+              <Reveal delay={0.3}>
+                <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-[640px]">
+                  {[
+                    ["2 weeks", "first app live"],
+                    ["Both platforms", "one build"],
+                    ["Live demo", "real eCommerce flow"],
+                  ].map(([k, l]) => (
+                    <div
+                      key={k}
+                      className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3"
+                    >
+                      <div className="font-head text-white text-[16px] md:text-[18px] leading-tight">
+                        {k}
+                      </div>
+                      <div className="label-code text-white/55 text-[10px] mt-2 leading-snug">
+                        {l}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>

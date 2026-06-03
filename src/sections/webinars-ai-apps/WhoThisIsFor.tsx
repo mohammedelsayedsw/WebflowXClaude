@@ -20,7 +20,7 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   },
   {
     icon: ShoppingBag,
-    lead: "Online retail and eCommerce",
+    lead: "Online retailer",
     body:
       "Your customers browse, order, and ask for support online, and you want them served inside the chat.",
   },

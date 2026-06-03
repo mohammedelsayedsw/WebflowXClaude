@@ -111,42 +111,30 @@ function TrustLogos() {
 
 function SpeakerCard() {
   return (
-    <div
-      className="relative overflow-hidden rounded-[4px] backdrop-blur w-full max-w-[440px] mx-auto"
-      style={{
-        background:
-          "linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.05) 100%), rgba(16,19,44,0.55)",
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.14)",
-      }}
-    >
-      <div className="p-7 md:p-9 flex flex-col items-center text-center">
-        <div className="label-code text-white/55 text-[10px] mb-5">
-          Speaker
-        </div>
+    <div className="w-full max-w-[440px] mx-auto flex flex-col items-center text-center">
+      <div className="label-code text-white/55 text-[10px] mb-5">Speaker</div>
 
-        <div
-          className="relative h-56 w-56 md:h-64 md:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
-          style={{
-            boxShadow:
-              "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={assetUrl("/webinars/ai-apps/rolands.png")}
-            alt="Rolands Popovs, COO at scandiweb"
-            className="h-full w-full object-cover"
-          />
-        </div>
+      <div
+        className="relative h-56 w-56 md:h-64 md:w-64 rounded-full overflow-hidden border border-white/15 bg-white/[0.03]"
+        style={{
+          boxShadow:
+            "0 0 0 6px rgba(255,255,255,0.04), 0 30px 60px -20px rgba(0,0,0,0.65)",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/webinars/ai-apps/rolands.png")}
+          alt="Rolands Popovs, COO at scandiweb"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
-        <div className="mt-7">
-          <div className="font-head text-white text-[22px] md:text-[24px] leading-[1.15]">
-            Rolands Popovs
-          </div>
-          <div className="text-white/70 text-[14px] md:text-[15px] mt-2">
-            COO at scandiweb
-          </div>
+      <div className="mt-7">
+        <div className="font-head text-white text-[22px] md:text-[24px] leading-[1.15]">
+          Rolands Popovs
+        </div>
+        <div className="text-white/70 text-[14px] md:text-[15px] mt-2">
+          COO at scandiweb
         </div>
       </div>
     </div>

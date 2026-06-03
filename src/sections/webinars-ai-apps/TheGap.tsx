@@ -219,7 +219,7 @@ export function TheGap() {
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
                 The gap:{" "}
-                <span style={{ color: "var(--sw-orange)" }}>
+                <span style={{ color: "var(--sw-blue)" }}>
                   ChatGPT and Claude cannot see what you sell
                 </span>
               </h2>

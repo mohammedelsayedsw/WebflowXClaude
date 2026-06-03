@@ -2043,7 +2043,7 @@ function ChannelChart() {
 
   const channels = [
     { name: "SEO", color: "#3F4AAF", data: [8, 12, 18, 25, 34, 44, 56, 70, 84, 99, 114, 128] },
-    { name: "AI search", color: "#8B4F9F", data: [0, 0, 0, 2, 6, 11, 17, 24, 32, 40, 48, 56] },
+    { name: "AI search", color: "#8B4F9F", data: [0, 0, 2, 6, 14, 26, 42, 58, 72, 84, 95, 105] },
     { name: "Paid acquisition", color: "#B85C3C", data: [5, 9, 14, 20, 27, 34, 42, 50, 58, 65, 71, 76] },
     { name: "Email + SMS", color: "#5C8C5C", data: [3, 5, 8, 12, 17, 22, 28, 34, 40, 45, 50, 54] },
     { name: "Marketplaces", color: "#7E6B4A", data: [0, 0, 2, 6, 12, 19, 27, 35, 42, 48, 54, 60] },
@@ -3253,35 +3253,35 @@ function BuildChapter() {
             <div className="max-w-[48ch]">
               <Reveal>
                 <div
+                  className="flex items-baseline gap-2.5"
                   style={{
                     fontFamily: SERIF,
-                    fontStyle: "italic",
-                    fontSize: "clamp(15px, 1.15vw, 18px)",
                     color: INK_FAINT,
                   }}
                 >
-                  Chapter the First.
+                  <span
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: "clamp(15px, 1.15vw, 18px)",
+                    }}
+                  >
+                    Chapter
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "clamp(26px, 2.2vw, 36px)",
+                      color: INK,
+                      letterSpacing: "-0.01em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    I
+                  </span>
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <div
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "clamp(100px, 16vw, 220px)",
-                    lineHeight: 0.82,
-                    color: INK,
-                    fontWeight: 500,
-                    marginTop: -8,
-                    marginLeft: -8,
-                    letterSpacing: "-0.04em",
-                  }}
-                >
-                  I
-                </div>
-              </Reveal>
-              <Reveal delay={0.1}>
+              <Reveal delay={0.08}>
                 <h2
-                  className="mt-2 md:mt-4"
+                  className="mt-3 md:mt-5"
                   style={{
                     fontFamily: SERIF,
                     fontSize: "clamp(46px, 5.5vw, 88px)",
@@ -3520,35 +3520,35 @@ function OptimizeChapter() {
           >
             <Reveal>
               <div
+                className="flex items-baseline gap-2.5"
                 style={{
                   fontFamily: SERIF,
-                  fontStyle: "italic",
-                  fontSize: "clamp(15px, 1.15vw, 18px)",
                   color: INK_FAINT,
                 }}
               >
-                Chapter the Second.
+                <span
+                  style={{
+                    fontStyle: "italic",
+                    fontSize: "clamp(15px, 1.15vw, 18px)",
+                  }}
+                >
+                  Chapter
+                </span>
+                <span
+                  style={{
+                    fontSize: "clamp(26px, 2.2vw, 36px)",
+                    color: INK,
+                    letterSpacing: "-0.01em",
+                    lineHeight: 1,
+                  }}
+                >
+                  II
+                </span>
               </div>
             </Reveal>
-            <Reveal delay={0.05}>
-              <div
-                style={{
-                  fontFamily: SERIF,
-                  fontSize: "clamp(80px, 12vw, 160px)",
-                  lineHeight: 0.82,
-                  color: INK,
-                  fontWeight: 500,
-                  marginTop: -6,
-                  marginLeft: -4,
-                  letterSpacing: "-0.04em",
-                }}
-              >
-                II
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal delay={0.08}>
               <h2
-                className="mt-2 md:mt-3"
+                className="mt-3 md:mt-5"
                 style={{
                   fontFamily: SERIF,
                   fontSize: "clamp(40px, 5vw, 72px)",
@@ -3949,7 +3949,7 @@ function MonsterMoment() {
               label="Specific issues we monitor, triage, and fix."
               groups={[
                 {
-                  title: "Performance and uptime",
+                  title: "Speed and uptime",
                   items: [
                     "Downtime and outages",
                     "Slow site speed",
@@ -4024,35 +4024,35 @@ function GrowChapter() {
               <div>
                 <Reveal>
                   <div
+                    className="flex items-baseline gap-2.5"
                     style={{
                       fontFamily: SERIF,
-                      fontStyle: "italic",
-                      fontSize: "clamp(15px, 1.15vw, 18px)",
                       color: "rgba(255,255,255,0.75)",
                     }}
                   >
-                    Chapter the Third.
+                    <span
+                      style={{
+                        fontStyle: "italic",
+                        fontSize: "clamp(15px, 1.15vw, 18px)",
+                      }}
+                    >
+                      Chapter
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "clamp(26px, 2.2vw, 36px)",
+                        color: "#ffffff",
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1,
+                      }}
+                    >
+                      III
+                    </span>
                   </div>
                 </Reveal>
-                <Reveal delay={0.05}>
-                  <div
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "clamp(110px, 16vw, 220px)",
-                      lineHeight: 0.85,
-                      color: "rgba(255,255,255,0.95)",
-                      fontWeight: 500,
-                      marginTop: -6,
-                      marginLeft: -8,
-                      letterSpacing: "-0.05em",
-                    }}
-                  >
-                    III
-                  </div>
-                </Reveal>
-                <Reveal delay={0.1}>
+                <Reveal delay={0.08}>
                   <h2
-                    className="-mt-2 text-white"
+                    className="mt-3 md:mt-5 text-white"
                     style={{
                       fontFamily: SERIF,
                       fontSize: "clamp(46px, 5.5vw, 88px)",
@@ -6028,11 +6028,12 @@ function FinalCta() {
           viewBox="0 0 400 400"
           style={{
             top: "50%",
-            left: "8%",
+            left: "27%",
             transform: "translate(-50%, -50%)",
-            width: 540,
-            height: 540,
+            width: 620,
+            height: 620,
             opacity: 0.09,
+            zIndex: 1,
           }}
         >
           <circle cx="200" cy="200" r="180" stroke={INK} strokeWidth="1.5" fill="none" />

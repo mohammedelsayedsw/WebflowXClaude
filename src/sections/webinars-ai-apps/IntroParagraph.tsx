@@ -5,265 +5,229 @@ import {
   motion,
   AnimatePresence,
   type Variants,
-  type Transition,
 } from "motion/react";
-import { Check, Package, Truck, MapPin } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-/* ── Animation timings ─────────────────────────────────────────── */
-const STEP_MS = 1300;
+/* ── Timing ────────────────────────────────────────────────────── */
+const STEP_MS = 1400;
 const END_PAUSE_MS = 2500;
 const TOTAL_STEPS = 9;
 
 const bubbleIn: Variants = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 8 },
   shown: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
   exit: { opacity: 0, transition: { duration: 0.25 } },
 };
 
-const cardIn = (i: number): Transition => ({
-  duration: 0.45,
-  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-  delay: 0.15 + i * 0.12,
-});
+/* ── Subcomponents ─────────────────────────────────────────────── */
 
-/* ── Bubbles ───────────────────────────────────────────────────── */
-
-function CustomerBubble({ text }: { text: string }) {
+function TurnLabel({
+  side,
+  avatar,
+  label,
+}: {
+  side: "left" | "right";
+  avatar: string;
+  label: string;
+}) {
   return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="flex justify-end"
+    <div
+      className={
+        "flex items-center gap-2 mb-2 " +
+        (side === "right" ? "justify-end" : "")
+      }
     >
-      <div
-        className="max-w-[78%] rounded-[16px] px-3.5 py-2.5 text-[13px] leading-relaxed text-white font-medium"
-        style={{
-          background:
-            "linear-gradient(160deg, var(--sw-blue) 0%, #2f3895 100%)",
-          boxShadow: "0 1px 0 rgba(255,255,255,0.18) inset",
-        }}
-      >
-        {text}
-      </div>
-    </motion.div>
-  );
-}
-
-function AppBubble({ text }: { text: string }) {
-  return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="flex"
-    >
-      <div className="max-w-[80%] rounded-[14px] bg-white/[0.10] border border-white/[0.10] px-3.5 py-2.5 text-[13px] leading-relaxed text-white">
-        {text}
-      </div>
-    </motion.div>
-  );
-}
-
-function TypingDots() {
-  return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="flex"
-    >
-      <div className="rounded-[14px] bg-white/[0.08] border border-white/[0.10] px-3.5 py-2.5 inline-flex items-center gap-1.5">
-        {[0, 1, 2].map((i) => (
-          <motion.span
-            key={i}
-            className="h-1.5 w-1.5 rounded-full bg-white/75"
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{
-              duration: 0.9,
-              repeat: Infinity,
-              delay: i * 0.15,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
-function ProductCarousel() {
-  // Clean colored gradient tiles — no icons. Text lays out: name (truncate) → price → stock tag.
-  const products: { name: string; price: string; tile: string }[] = [
-    {
-      name: "Trail Pro 6",
-      price: "€129",
-      tile:
-        "linear-gradient(160deg, rgba(63,74,175,0.42) 0%, rgba(63,74,175,0.10) 100%)",
-    },
-    {
-      name: "FellRunner X",
-      price: "€139",
-      tile:
-        "linear-gradient(160deg, rgba(110,247,110,0.30) 0%, rgba(63,74,175,0.18) 100%)",
-    },
-    {
-      name: "Path-Lite GT",
-      price: "€149",
-      tile:
-        "linear-gradient(160deg, rgba(160,168,232,0.35) 0%, rgba(63,74,175,0.10) 100%)",
-    },
-  ];
-  return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="flex gap-2"
-    >
-      {products.map((p, i) => (
-        <motion.div
-          key={p.name}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={cardIn(i)}
-          className="shrink-0 basis-0 grow rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-2.5"
+      {side === "left" && (
+        <span
+          className="inline-flex h-5 w-5 items-center justify-center rounded-full font-head text-[10px] font-semibold text-white"
+          style={{ background: "rgba(110,247,110,0.22)" }}
         >
-          {/* Clean gradient tile, no icon */}
+          {avatar}
+        </span>
+      )}
+      <span
+        className="font-head font-semibold uppercase text-white/55"
+        style={{ fontSize: "10px", letterSpacing: "0.16em" }}
+      >
+        {label}
+      </span>
+      {side === "right" && (
+        <span
+          className="inline-flex h-5 w-5 items-center justify-center rounded-full font-head text-[10px] font-semibold text-white/85"
+          style={{ background: "rgba(255,255,255,0.08)" }}
+        >
+          {avatar}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function CustomerTurn({ text }: { text: string }) {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+    >
+      <TurnLabel side="right" avatar="U" label="Customer" />
+      <div className="flex justify-end">
+        <div className="max-w-[88%] rounded-[4px] bg-white/[0.06] border border-white/[0.08] px-3.5 py-2.5 text-[13px] leading-relaxed text-white">
+          {text}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function AppTurn({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+    >
+      <TurnLabel side="left" avatar="A" label="ai app" />
+      <div className="space-y-2">{children}</div>
+    </motion.div>
+  );
+}
+
+function AppMessage({ text }: { text: string }) {
+  return (
+    <div className="rounded-[4px] bg-white/[0.04] border border-white/[0.06] px-3.5 py-2.5 text-[13px] leading-relaxed text-white">
+      {text}
+    </div>
+  );
+}
+
+function StatusPill({ text }: { text: string }) {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+    >
+      <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/65">
+        <motion.span
+          className="h-1.5 w-1.5 rounded-full"
+          style={{ background: "var(--sw-mint)" }}
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {text}
+      </div>
+    </motion.div>
+  );
+}
+
+function ProductCard({
+  name,
+  meta,
+  cta,
+}: {
+  name: string;
+  meta: string;
+  cta?: string;
+}) {
+  return (
+    <div className="rounded-[4px] bg-white/[0.03] border border-white/[0.08] p-3 flex items-center gap-3">
+      <div
+        className="shrink-0 h-14 w-14 rounded-[4px] flex items-center justify-center"
+        style={{ background: "rgba(255,255,255,0.04)" }}
+      >
+        <span
+          className="font-head uppercase text-white/40"
+          style={{ fontSize: "9px", letterSpacing: "0.14em" }}
+        >
+          Product
+        </span>
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="font-head text-white text-[13px] leading-tight">
+          {name}
+        </div>
+        <div className="text-white/55 text-[11.5px] mt-0.5">{meta}</div>
+        {cta && (
           <div
-            className="h-14 w-full rounded-[4px] mb-2"
-            style={{ background: p.tile }}
-          />
-          {/* Name — single line, truncates */}
-          <div className="text-white text-[12px] font-semibold leading-tight truncate">
-            {p.name}
-          </div>
-          {/* Price — own line, bigger */}
-          <div className="text-white font-head text-[13px] tabular-nums mt-1">
-            {p.price}
-          </div>
-          {/* Stock tag — own line, small */}
-          <div
-            className="mt-1.5 inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
+            className="mt-1.5 text-[11.5px] font-head font-semibold"
             style={{ color: "var(--sw-mint)" }}
           >
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: "var(--sw-mint)" }}
-            />
-            In stock
+            {cta}
           </div>
-        </motion.div>
-      ))}
-    </motion.div>
+        )}
+      </div>
+    </div>
   );
 }
 
-function OrderConfirmCard() {
-  return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-3 flex items-center gap-3"
-    >
-      <span
-        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-        style={{
-          background: "rgba(110,247,110,0.18)",
-          border: "1px solid rgba(110,247,110,0.45)",
-        }}
-      >
-        <Check
-          className="h-4 w-4"
-          style={{ color: "var(--sw-mint)" }}
-          strokeWidth={3}
-        />
-      </span>
-      <div className="min-w-0">
-        <div className="text-white text-[13px] font-semibold leading-tight">
-          Order #10482 confirmed
+function StatusCard({
+  label,
+  body,
+  steps,
+}: {
+  label?: string;
+  body?: string;
+  steps?: string[];
+}) {
+  if (steps) {
+    return (
+      <div className="rounded-[4px] bg-white/[0.03] border border-white/[0.08] p-3">
+        <div className="space-y-1.5">
+          {steps.map((s, i) => (
+            <div
+              key={s}
+              className="flex items-center gap-2 text-[12px] text-white"
+            >
+              <span
+                className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full text-[8px] font-bold"
+                style={{
+                  background:
+                    i === steps.length - 1
+                      ? "var(--sw-mint)"
+                      : "rgba(110,247,110,0.22)",
+                  color:
+                    i === steps.length - 1 ? "#0a0d24" : "var(--sw-mint)",
+                }}
+              >
+                {i === steps.length - 1 ? "•" : "✓"}
+              </span>
+              <span
+                className={i === steps.length - 1 ? "" : "text-white/55"}
+              >
+                {s}
+              </span>
+            </div>
+          ))}
         </div>
-        <div className="text-white/60 text-[11.5px] mt-1">
-          Arriving Thu, Jun 19
-        </div>
+        {body && (
+          <div className="mt-2 text-white/85 text-[12px]">{body}</div>
+        )}
       </div>
-    </motion.div>
-  );
-}
-
-function TrackingCard() {
-  const stages = [
-    { Icon: Package, label: "Packed" },
-    { Icon: Truck, label: "Shipped" },
-    { Icon: MapPin, label: "Out for delivery" },
-  ];
+    );
+  }
   return (
-    <motion.div
-      variants={bubbleIn}
-      initial="hidden"
-      animate="shown"
-      exit="exit"
-      className="rounded-[4px] border border-white/[0.10] bg-white/[0.05] p-3.5"
-    >
-      <div className="relative flex items-center justify-between mb-3">
-        <div className="absolute left-3 right-3 top-1/2 h-px -translate-y-1/2 bg-white/15" />
-        <div
-          className="absolute left-3 top-1/2 h-px -translate-y-1/2"
-          style={{
-            width: "calc(100% - 1.5rem)",
-            background:
-              "linear-gradient(90deg, var(--sw-mint) 0%, var(--sw-mint) 100%)",
-          }}
-        />
-        {stages.map((s, i) => (
-          <div
-            key={s.label}
-            className="relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-full"
-            style={{
-              background:
-                i < 2 ? "rgba(110,247,110,0.2)" : "rgba(110,247,110,0.95)",
-              border:
-                i < 2
-                  ? "1px solid rgba(110,247,110,0.5)"
-                  : "1px solid var(--sw-mint)",
-              boxShadow:
-                i === 2 ? "0 0 0 4px rgba(110,247,110,0.18)" : undefined,
-            }}
-          >
-            <s.Icon
-              className="h-3.5 w-3.5"
-              style={{ color: i < 2 ? "var(--sw-mint)" : "#0a0d24" }}
-              strokeWidth={2.6}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-between text-[10px] text-white/70">
-        {stages.map((s) => (
-          <span key={s.label} className="text-center" style={{ width: "33%" }}>
-            {s.label}
-          </span>
-        ))}
-      </div>
-      <div className="mt-3 text-white text-[12.5px] font-medium">
-        Out for delivery, arriving today.
-      </div>
-    </motion.div>
+    <div className="rounded-[4px] bg-white/[0.03] border border-white/[0.08] p-3">
+      {label && (
+        <div className="text-white text-[12.5px] font-semibold leading-tight">
+          {label}
+        </div>
+      )}
+      {body && (
+        <div className="text-white/55 text-[11.5px] mt-0.5">{body}</div>
+      )}
+    </div>
   );
 }
 
-/* ── Main panel ────────────────────────────────────────────────── */
+/* ── Panel ─────────────────────────────────────────────────────── */
 
 function ChatDemo() {
   const [step, setStep] = useState(0);
@@ -271,7 +235,6 @@ function ChatDemo() {
   const panelRef = useRef<HTMLDivElement>(null);
   const convoRef = useRef<HTMLDivElement>(null);
 
-  // Start loop once panel is in view
   useEffect(() => {
     const el = panelRef.current;
     if (!el || started) return;
@@ -288,7 +251,6 @@ function ChatDemo() {
     return () => obs.disconnect();
   }, [started]);
 
-  // Step driver + loop
   useEffect(() => {
     if (!started) return;
     if (step < TOTAL_STEPS) {
@@ -299,11 +261,8 @@ function ChatDemo() {
     return () => clearTimeout(t);
   }, [step, started]);
 
-  // Auto-scroll the conversation window to the latest message
   useEffect(() => {
-    const c = convoRef.current;
-    if (!c) return;
-    // Wait a frame so new content is laid out
+    if (!convoRef.current) return;
     const id = requestAnimationFrame(() => {
       if (!convoRef.current) return;
       convoRef.current.scrollTo({
@@ -320,34 +279,29 @@ function ChatDemo() {
       className="relative overflow-hidden rounded-[4px] w-full"
       style={{
         background:
-          "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.18)",
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.06), 0 30px 60px -20px rgba(16,19,44,0.35)",
+          "linear-gradient(180deg, #0d1414 0%, #0a1110 60%, #080c0c 100%)",
+        border: "1px solid rgba(255,255,255,0.10)",
       }}
     >
-      {/* Hide scrollbar across browsers for the conversation window */}
       <style>{`.lp-chat-scroll::-webkit-scrollbar{display:none}`}</style>
 
       {/* Top bar */}
-      <div className="px-3.5 py-2.5 border-b border-white/[0.10] flex items-center gap-2">
-        <div className="flex items-center gap-1.5">
+      <div className="px-3.5 py-2.5 border-b border-white/[0.07] flex items-center gap-2.5">
+        <div className="flex items-center gap-1">
           <span className="h-2 w-2 rounded-full bg-white/30" />
           <span className="h-2 w-2 rounded-full bg-white/20" />
           <span className="h-2 w-2 rounded-full bg-white/20" />
         </div>
-        <div className="flex-1 text-center text-[10.5px] tracking-[0.14em] uppercase text-white/55 font-semibold">
-          Live conversation
-        </div>
-        <div className="w-10" />
+        <span className="font-head text-white/75 text-[11.5px] font-semibold">
+          Claude
+        </span>
+        <span className="text-white/40 text-[11px]">webinar-app</span>
       </div>
 
-      {/* Conversation — fixed height, scrolls like a real chat */}
+      {/* Conversation */}
       <div
         ref={convoRef}
-        className="lp-chat-scroll px-4 py-4 space-y-3 overflow-y-auto h-[360px] sm:h-[400px] md:h-[420px]"
+        className="lp-chat-scroll px-4 py-4 space-y-4 overflow-y-auto h-[380px] sm:h-[420px]"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -355,32 +309,67 @@ function ChatDemo() {
       >
         <AnimatePresence mode="popLayout">
           {step >= 1 && (
-            <CustomerBubble
+            <CustomerTurn
               key="c1"
               text="I need trail running shoes under €150, size 10."
             />
           )}
-          {step === 2 && <TypingDots key="t1" />}
-          {step >= 3 && (
-            <AppBubble key="a1" text="Found 3 perfect options for you." />
+          {step === 2 && (
+            <StatusPill key="s1" text="Searching catalog…" />
           )}
-          {step >= 3 && <ProductCarousel key="pc1" />}
+          {step >= 3 && (
+            <AppTurn key="a1">
+              <AppMessage text="Found 3 perfect options for you." />
+              <ProductCard
+                name="Stratos Trail GTX 4"
+                meta="€129 · Size 10 · In stock"
+                cta="Add to cart →"
+              />
+            </AppTurn>
+          )}
 
           {step >= 4 && (
-            <CustomerBubble
+            <CustomerTurn
               key="c2"
               text="Add the blue pair and check out."
             />
           )}
-          {step === 5 && <TypingDots key="t2" />}
-          {step >= 6 && <OrderConfirmCard key="a2" />}
+          {step === 5 && (
+            <StatusPill key="s2" text="Placing order…" />
+          )}
+          {step >= 6 && (
+            <AppTurn key="a2">
+              <AppMessage text="Order #10482 confirmed. Arriving Thu, Jun 19." />
+            </AppTurn>
+          )}
 
           {step >= 7 && (
-            <CustomerBubble key="c3" text="Where's my order?" />
+            <CustomerTurn key="c3" text="Where's my order?" />
           )}
-          {step === 8 && <TypingDots key="t3" />}
-          {step >= 9 && <TrackingCard key="a3" />}
+          {step === 8 && (
+            <StatusPill key="s3" text="Pulling shipment status…" />
+          )}
+          {step >= 9 && (
+            <AppTurn key="a3">
+              <StatusCard
+                steps={["Packed", "Shipped", "Out for delivery"]}
+                body="Out for delivery, arriving today."
+              />
+            </AppTurn>
+          )}
         </AnimatePresence>
+      </div>
+
+      {/* Footer */}
+      <div className="px-3.5 py-2 border-t border-white/[0.07] flex items-center justify-between">
+        <span
+          className="font-head uppercase text-white/40"
+          style={{ fontSize: "9px", letterSpacing: "0.16em" }}
+        >
+          Powered by{" "}
+          <span className="text-white/65">your AI app</span>
+        </span>
+        <span className="text-white/30 text-[10px]">v1.0 · MCP/0.4</span>
       </div>
     </div>
   );
@@ -452,7 +441,7 @@ export function IntroParagraph() {
             </Reveal>
           </div>
 
-          {/* RIGHT · looping animated chat panel */}
+          {/* RIGHT · animated chat panel */}
           <div className="w-full max-w-[420px] mx-auto lg:mr-0 lg:ml-auto">
             <ChatDemo />
           </div>

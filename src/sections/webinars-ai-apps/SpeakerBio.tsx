@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/primitives/SectionLabel";
 import { assetUrl } from "@/lib/assets";
 
 const stats: [string, string][] = [
-  ["22+ years", "in digital commerce"],
+  ["15+ years", "in digital commerce"],
   ["700+", "brands served"],
   ["2,100+", "projects delivered"],
 ];
@@ -58,7 +58,7 @@ export function SpeakerBio() {
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
                 Rolands Popovs, COO at scandiweb, leads the session and the
                 team that scopes and builds these apps. scandiweb has shipped
-                commerce work for 700+ brands across 22+ years, including
+                commerce work for 700+ brands across 15+ years, including
                 Puma, Samsung, The New York Times, and Adobe.
               </p>
             </Reveal>

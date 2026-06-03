@@ -7,21 +7,22 @@ const items: { title: string; body: string }[] = [
   {
     title: "Know what it is",
     body:
-      "A clear picture of what an app inside ChatGPT and Claude looks like for a business like yours.",
+      "A clear picture of what an app inside ChatGPT and Claude looks like for a business like yours",
   },
   {
-    title: "Your strongest first app",
+    title: "Your first move",
     body:
-      "The one workflow that makes the best starting point for your business type.",
+      "The specific workflow to start with, and the steps to get it live",
   },
   {
-    title: "A realistic timeline",
+    title: "What it really takes",
     body:
-      "What connects to your systems, and how long it takes to go live.",
+      "An honest read on the systems, effort, and time, so you can size the investment before you commit budget",
   },
   {
-    title: "A clear decision",
-    body: "The confidence to judge whether to build now or wait.",
+    title: "The decision",
+    body:
+      "Enough to judge whether to move now, pilot, or wait, and defend that call to your board",
   },
 ];
 

@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const steps = [
   "Browse",
@@ -17,42 +18,41 @@ export function LiveDemoTeaser() {
   return (
     <section
       id="the-demo"
-      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="wrap">
-        <div className="max-w-[820px]">
+      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
+      <div className="wrap relative">
+        <div className="max-w-[860px]">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">4</span>
-              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>The demo</span>
-            </div>
+            <SectionLabel index="4">The demo</SectionLabel>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-head text-white text-[32px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
               A full order, placed and tracked,
               <br />
-              <span className="text-[var(--sw-blue)]">
+              <span style={{ color: "var(--sw-mint)" }}>
                 without opening your website
               </span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-7 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
-              On the call, Rolands runs a single customer journey end to end
-              inside the chat:
+            <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
+              AI commerce sounds abstract until you watch it run. The demo
+              walks through every step a customer can take, and shows both
+              sides: what they see in the chat, and what happens inside your
+              business.
             </p>
           </Reveal>
         </div>
 
-        {/* Horizontal stepper */}
+        {/* Horizontal stepper — light chips with dark text */}
         <div className="mt-12 md:mt-14 flex flex-wrap items-center gap-4 md:gap-5">
           {steps.map((s, i) => (
             <Fragment key={s}>
               <Reveal delay={0.1 + i * 0.05} className="contents">
-                <div className="inline-flex items-center rounded-[2px] border border-[var(--sw-black)]/15 bg-white px-5 py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5">
+                <div className="inline-flex items-center rounded-[2px] border border-white/15 bg-white px-5 py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
                   <span className="font-head text-[15px] md:text-[17px] font-semibold text-[var(--sw-black)] leading-none">
                     {s}
                   </span>
@@ -61,7 +61,7 @@ export function LiveDemoTeaser() {
               {i < steps.length - 1 && (
                 <Reveal delay={0.12 + i * 0.05} className="contents">
                   <ArrowRight
-                    className="h-5 w-5 md:h-6 md:w-6 text-[var(--sw-black)]/40 shrink-0"
+                    className="h-5 w-5 md:h-6 md:w-6 text-white/45 shrink-0"
                     strokeWidth={2.25}
                   />
                 </Reveal>
@@ -71,9 +71,9 @@ export function LiveDemoTeaser() {
         </div>
 
         <Reveal delay={0.4}>
-          <p className="mt-14 md:mt-16 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">
-            You watch the full flow run live on June 17. How it connects to
-            your catalog, orders, and helpdesk gets covered on the call.
+          <p className="mt-14 md:mt-16 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+            Once you see a real order placed and tracked live, you can decide
+            whether this is right for your store.
           </p>
         </Reveal>
       </div>

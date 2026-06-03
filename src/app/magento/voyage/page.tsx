@@ -5937,6 +5937,37 @@ function HubSpotForm() {
           </div>
         ))}
 
+        <div>
+          <label
+            htmlFor="hs-field-message"
+            className="block font-head"
+            style={{
+              fontSize: "13px",
+              color: INK_FAINT,
+              letterSpacing: "0.005em",
+            }}
+          >
+            What can we help with?
+          </label>
+          <textarea
+            id="hs-field-message"
+            name="message"
+            placeholder="Build, support, growth, or a specific ticket. A sentence is fine."
+            rows={4}
+            disabled={status === "submitting"}
+            className="mt-2 w-full px-4 py-3 rounded-[2px] focus:outline-none transition-all resize-y"
+            style={{
+              background: "transparent",
+              border: `1px solid rgba(16,19,44,0.2)`,
+              color: INK,
+              fontSize: "15px",
+              fontFamily: "inherit",
+              lineHeight: 1.5,
+              minHeight: 96,
+            }}
+          />
+        </div>
+
         {status === "error" && (
           <div
             style={{

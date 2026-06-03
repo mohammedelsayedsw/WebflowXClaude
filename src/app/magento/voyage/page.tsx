@@ -424,8 +424,8 @@ function Opening() {
                 style={{ borderTop: "1px solid rgba(16,19,44,0.18)" }}
               >
                 {[
-                  { v: "2,100+", l: "Magento projects shipped" },
-                  { v: "$4B+", l: "annual client revenue powered" },
+                  { v: "2,100+", l: "projects shipped" },
+                  { v: "$4B+", l: "annual client revenue generated" },
                   { v: "99.99%", l: "uptime guarantee" },
                 ].map((s) => (
                   <div key={s.l}>

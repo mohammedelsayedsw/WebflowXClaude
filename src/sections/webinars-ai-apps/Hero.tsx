@@ -229,28 +229,6 @@ export function Hero() {
                 </div>
               </Reveal>
 
-              {/* Three-stat strip */}
-              <Reveal delay={0.3}>
-                <div className="mt-8 md:mt-10 grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 max-w-[640px]">
-                  {[
-                    ["2 weeks", "first app live"],
-                    ["Both platforms", "one build"],
-                    ["Live demo", "real eCommerce flow"],
-                  ].map(([k, l]) => (
-                    <div
-                      key={k}
-                      className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 sm:px-4 py-2.5 sm:py-3"
-                    >
-                      <div className="font-head text-white text-[13px] sm:text-[15px] md:text-[17px] leading-tight">
-                        {k}
-                      </div>
-                      <div className="label-code text-white/55 text-[9px] sm:text-[10px] mt-1.5 sm:mt-2 leading-snug">
-                        {l}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
             </div>
 
             {/* RIGHT · speaker card – vertical, centered, larger photo */}

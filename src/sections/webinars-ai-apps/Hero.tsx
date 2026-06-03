@@ -62,7 +62,7 @@ function TrustLogos() {
         borderTop: "1px solid rgba(255,255,255,0.12)",
       }}
     >
-      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+      <div className="wrap py-[clamp(14px,2.5vh,32px)] flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
         <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
           Trusted by 700+ leading brands worldwide
         </div>
@@ -139,16 +139,16 @@ function SpeakerCard() {
 
 export function Hero() {
   return (
-    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col">
+    <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
+        <div className="wrap relative z-10 pt-[clamp(80px,11vh,144px)] pb-[clamp(32px,6vh,96px)] w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6 md:mb-8">
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                     Free webinar &middot; AI commerce
                   </span>
@@ -172,7 +172,7 @@ export function Hero() {
 
               {/* Date + time block */}
               <Reveal delay={0.15}>
-                <div className="mt-7 md:mt-9 flex flex-row gap-5 sm:gap-8 items-start">
+                <div className="mt-5 md:mt-7 flex flex-row gap-5 sm:gap-8 items-start">
                   <div>
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Date
@@ -195,7 +195,7 @@ export function Hero() {
 
               {/* Platform row */}
               <Reveal delay={0.2}>
-                <div className="mt-7 md:mt-9 flex items-center gap-4 md:gap-5 flex-wrap">
+                <div className="mt-5 md:mt-7 flex items-center gap-4 md:gap-5 flex-wrap">
                   <span className="label-code text-white/55 text-[10px]">
                     Official partners with
                   </span>
@@ -216,7 +216,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.25}>
-                <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
+                <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
                   <a
                     href={ZOOM_REGISTER_URL}
                     target="_blank"

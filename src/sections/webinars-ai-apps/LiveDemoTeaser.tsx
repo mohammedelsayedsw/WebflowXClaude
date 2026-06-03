@@ -84,14 +84,23 @@ export function LiveDemoTeaser() {
               {steps.map((s, i) => (
                 <Fragment key={s}>
                   <Reveal delay={0.05 + i * 0.05} className="contents">
-                    <div className="group inline-flex shrink-0 xl:flex-1 xl:justify-center items-center gap-2 sm:gap-2.5 xl:gap-1.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 xl:px-2.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
+                    <motion.div
+                      className="group inline-flex shrink-0 xl:flex-1 xl:justify-center items-center gap-2 sm:gap-2.5 xl:gap-1.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 xl:px-2.5 transition-colors hover:border-[var(--sw-mint)]/60"
+                      animate={{ y: [0, -6, 0] }}
+                      transition={{
+                        duration: 2.6,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.22,
+                      }}
+                    >
                       <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-[2px] bg-[var(--sw-black)] text-white font-head font-bold text-[10px] sm:text-[11px] tabular-nums">
                         {i + 1}
                       </span>
                       <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] xl:text-[13.5px] font-semibold text-[var(--sw-black)] leading-none whitespace-nowrap">
                         {s}
                       </span>
-                    </div>
+                    </motion.div>
                   </Reveal>
                   {i < steps.length - 1 && (
                     <Reveal delay={0.07 + i * 0.05} className="contents">

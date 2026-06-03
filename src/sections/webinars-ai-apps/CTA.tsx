@@ -50,7 +50,9 @@ export function CTA() {
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
               Join the webinar to see it work live, get your questions
-              answered, and decide your next move.
+              answered,
+              <br />
+              and decide your next move.
             </p>
           </Reveal>
 

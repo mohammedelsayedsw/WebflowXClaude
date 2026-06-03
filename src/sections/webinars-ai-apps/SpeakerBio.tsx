@@ -56,10 +56,11 @@ export function SpeakerBio() {
 
             <Reveal delay={0.1}>
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                Rolands Popovs, COO at scandiweb, leads the session and the
-                team that scopes and builds these apps. scandiweb has shipped
-                commerce work for 700+ brands across 15+ years, including
-                Puma, Samsung, The New York Times, and Adobe.
+                Rolands Popovs is COO at scandiweb, an agency behind commerce
+                work for 700+ brands including Puma, Samsung, The New York
+                Times, and Adobe. He leads the team building ChatGPT and
+                Claude apps, so he is the best person to answer your
+                questions and share the lessons from real builds.
               </p>
             </Reveal>
 

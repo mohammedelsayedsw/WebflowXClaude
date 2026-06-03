@@ -1,41 +1,92 @@
 "use client";
 
-import { ArrowUp, Sparkles } from "lucide-react";
-import { motion, type Variants } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  type Variants,
+  type Transition,
+} from "motion/react";
+import { Check, Footprints, Package, Truck, MapPin } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-/** Sequential reveal: each turn fades + slides in on top of the prior. */
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 8 },
+/* ── Animation timings ─────────────────────────────────────────── */
+const STEP_MS = 1300; // ~1.3s per step → feels like a real conversation
+const END_PAUSE_MS = 2500; // hold at the end before looping
+const TOTAL_STEPS = 9; // 3 customer turns + 3 typing + 3 app replies
+
+const bubbleIn: Variants = {
+  hidden: { opacity: 0, y: 10 },
   shown: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
   },
+  exit: { opacity: 0, transition: { duration: 0.25 } },
 };
 
-/** Typing dots that fade out once the assistant response arrives. */
+const cardIn = (i: number): Transition => ({
+  duration: 0.45,
+  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  delay: 0.15 + i * 0.12,
+});
+
+/* ── Bubble + helper subcomponents ─────────────────────────────── */
+
+function CustomerBubble({ text }: { text: string }) {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+      className="flex justify-end"
+    >
+      <div
+        className="max-w-[78%] rounded-[16px] px-3.5 py-2.5 text-[13px] leading-relaxed text-white font-medium"
+        style={{
+          background:
+            "linear-gradient(160deg, var(--sw-blue) 0%, #2f3895 100%)",
+          boxShadow: "0 1px 0 rgba(255,255,255,0.18) inset",
+        }}
+      >
+        {text}
+      </div>
+    </motion.div>
+  );
+}
+
+function AppBubble({ text }: { text: string }) {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+      className="flex"
+    >
+      <div className="max-w-[80%] rounded-[14px] bg-white/[0.10] border border-white/[0.10] px-3.5 py-2.5 text-[13px] leading-relaxed text-white">
+        {text}
+      </div>
+    </motion.div>
+  );
+}
+
 function TypingDots() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: [0, 1, 1, 0] }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 1.2, times: [0, 0.2, 0.85, 1], delay: 0.55 }}
-      className="flex gap-3 items-start"
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+      className="flex"
     >
-      <div className="h-7 w-7 rounded-full bg-[var(--sw-mint)]/15 ring-1 ring-[var(--sw-mint)]/40 flex items-center justify-center shrink-0 mt-0.5">
-        <Sparkles
-          className="h-3.5 w-3.5 text-[var(--sw-mint)]"
-          strokeWidth={2.5}
-        />
-      </div>
-      <div className="flex items-center gap-1 px-2 py-2.5">
+      <div className="rounded-[14px] bg-white/[0.08] border border-white/[0.10] px-3.5 py-2.5 inline-flex items-center gap-1.5">
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            className="h-1.5 w-1.5 rounded-full bg-white/55"
-            animate={{ opacity: [0.25, 1, 0.25] }}
+            className="h-1.5 w-1.5 rounded-full bg-white/75"
+            animate={{ opacity: [0.3, 1, 0.3] }}
             transition={{
               duration: 0.9,
               repeat: Infinity,
@@ -49,139 +100,267 @@ function TypingDots() {
   );
 }
 
-/** ChatGPT-style conversation card with sequential reveal animation. */
-function ChatMockup() {
+function ProductCarousel() {
+  const products: { name: string; price: string; accent: string }[] = [
+    { name: "Trail Pro 6", price: "€129", accent: "#3f4aaf" },
+    { name: "FellRunner X", price: "€139", accent: "#6ef76e" },
+    { name: "Path-Lite GT", price: "€149", accent: "#a0a8e8" },
+  ];
   return (
     <motion.div
-      className="relative overflow-hidden rounded-[8px] w-full"
+      variants={bubbleIn}
       initial="hidden"
-      whileInView="shown"
-      viewport={{ once: true, amount: 0.25 }}
-      style={{
-        background: "#212121",
-        boxShadow:
-          "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 0 1px rgba(255,255,255,0.08), 0 30px 60px -20px rgba(0,0,0,0.45)",
-      }}
+      animate="shown"
+      exit="exit"
+      className="flex gap-2 overflow-hidden"
     >
-      {/* Top bar — looks like ChatGPT app chrome */}
-      <motion.div
-        variants={itemVariants}
-        transition={{ delay: 0 }}
-        className="px-3.5 py-2.5 border-b border-white/[0.07] flex items-center gap-2"
-      >
-        <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-          <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-          <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-        </div>
-        <div className="flex-1 text-center text-[11px] text-white/40 font-medium">
-          ChatGPT
-        </div>
-        <div className="w-10" />
-      </motion.div>
-
-      {/* Conversation area */}
-      <div className="px-4 md:px-5 py-5 space-y-4 min-h-[300px]">
-        {/* User turn */}
+      {products.map((p, i) => (
         <motion.div
-          variants={itemVariants}
-          transition={{ delay: 0.2 }}
-          className="flex gap-3 justify-end"
+          key={p.name}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={cardIn(i)}
+          className="shrink-0 w-[110px] rounded-[8px] border border-white/[0.10] bg-white/[0.05] p-2.5"
         >
-          <div className="rounded-[14px] bg-white/[0.08] px-3.5 py-2.5 max-w-[90%]">
-            <div className="text-white text-[13px] leading-relaxed">
-              Find me a waterproof hiking jacket under &euro;200, in stock for
-              next-day.
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Typing indicator (briefly) */}
-        <TypingDots />
-
-        {/* Assistant turn — appears after the typing indicator fades */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-            delay: 1.55,
-          }}
-          className="flex gap-3 items-start"
-        >
-          <div className="h-7 w-7 rounded-full bg-[var(--sw-mint)]/15 ring-1 ring-[var(--sw-mint)]/40 flex items-center justify-center shrink-0 mt-0.5">
-            <Sparkles
-              className="h-3.5 w-3.5 text-[var(--sw-mint)]"
-              strokeWidth={2.5}
+          <div
+            className="relative h-14 w-full rounded-[4px] mb-2 overflow-hidden flex items-end justify-end"
+            style={{
+              background:
+                "linear-gradient(160deg, " +
+                p.accent +
+                "33 0%, rgba(255,255,255,0.04) 100%)",
+            }}
+          >
+            <Footprints
+              className="h-7 w-7 mr-1 mb-0.5 opacity-80"
+              style={{ color: p.accent }}
             />
           </div>
-          <div className="flex-1 space-y-1.5">
-            {[
-              {
-                name: "North Face Resolve 2",
-                meta: "M, L · ships next-day",
-                price: "€179",
-              },
-              {
-                name: "Patagonia Torrentshell",
-                meta: "S, M, L · ships next-day",
-                price: "€189",
-              },
-              {
-                name: "Marmot PreCip Eco",
-                meta: "M · ships next-day",
-                price: "€169",
-              },
-            ].map((p, i) => (
-              <motion.div
-                key={p.name}
-                initial={{ opacity: 0, y: 6 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: 1.8 + i * 0.15,
-                }}
-                className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5 flex items-center justify-between gap-3"
-              >
-                <div>
-                  <div className="text-white text-[12.5px] font-semibold">
-                    {p.name}
-                  </div>
-                  <div className="text-white/40 text-[10.5px] mt-0.5">
-                    {p.meta}
-                  </div>
-                </div>
-                <div className="text-white font-head text-[13px] tabular-nums">
-                  {p.price}
-                </div>
-              </motion.div>
-            ))}
+          <div className="text-white text-[11.5px] font-semibold leading-tight truncate">
+            {p.name}
+          </div>
+          <div className="flex items-center justify-between mt-1">
+            <span className="text-white font-head text-[12px] tabular-nums">
+              {p.price}
+            </span>
+            <span
+              className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
+              style={{ color: "var(--sw-mint)" }}
+            >
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ background: "var(--sw-mint)" }}
+              />
+              In stock
+            </span>
           </div>
         </motion.div>
-      </div>
-
-      {/* Composer */}
-      <motion.div
-        variants={itemVariants}
-        transition={{ delay: 0.05 }}
-        className="px-4 md:px-5 pb-4"
-      >
-        <div className="flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/[0.08] pl-4 pr-1.5 py-2">
-          <span className="text-[12px] text-white/35 flex-1">
-            Message ChatGPT&hellip;
-          </span>
-          <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white">
-            <ArrowUp className="h-3 w-3 text-[#212121]" strokeWidth={3} />
-          </span>
-        </div>
-      </motion.div>
+      ))}
     </motion.div>
   );
 }
+
+function OrderConfirmCard() {
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+      className="rounded-[10px] border border-white/[0.10] bg-white/[0.05] p-3 flex items-center gap-3"
+    >
+      <span
+        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+        style={{
+          background: "rgba(110,247,110,0.18)",
+          border: "1px solid rgba(110,247,110,0.45)",
+        }}
+      >
+        <Check
+          className="h-4.5 w-4.5"
+          style={{ color: "var(--sw-mint)" }}
+          strokeWidth={3}
+        />
+      </span>
+      <div className="min-w-0">
+        <div className="text-white text-[13px] font-semibold leading-tight">
+          Order #10482 confirmed
+        </div>
+        <div className="text-white/60 text-[11.5px] mt-1">
+          Arriving Thu, Jun 19
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function TrackingCard() {
+  const stages = [
+    { Icon: Package, label: "Packed" },
+    { Icon: Truck, label: "Shipped" },
+    { Icon: MapPin, label: "Out for delivery" },
+  ];
+  return (
+    <motion.div
+      variants={bubbleIn}
+      initial="hidden"
+      animate="shown"
+      exit="exit"
+      className="rounded-[10px] border border-white/[0.10] bg-white/[0.05] p-3.5"
+    >
+      {/* Progress rail */}
+      <div className="relative flex items-center justify-between mb-3">
+        <div className="absolute left-3 right-3 top-1/2 h-px -translate-y-1/2 bg-white/15" />
+        <div
+          className="absolute left-3 top-1/2 h-px -translate-y-1/2"
+          style={{
+            width: "calc(100% - 1.5rem)",
+            background:
+              "linear-gradient(90deg, var(--sw-mint) 0%, var(--sw-mint) 100%)",
+            transformOrigin: "left",
+          }}
+        />
+        {stages.map((s, i) => (
+          <div
+            key={s.label}
+            className="relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-full"
+            style={{
+              background:
+                i < 2
+                  ? "rgba(110,247,110,0.2)"
+                  : "rgba(110,247,110,0.95)",
+              border:
+                i < 2
+                  ? "1px solid rgba(110,247,110,0.5)"
+                  : "1px solid var(--sw-mint)",
+              boxShadow:
+                i === 2
+                  ? "0 0 0 4px rgba(110,247,110,0.18)"
+                  : undefined,
+            }}
+          >
+            <s.Icon
+              className="h-3.5 w-3.5"
+              style={{ color: i < 2 ? "var(--sw-mint)" : "#0a0d24" }}
+              strokeWidth={2.6}
+            />
+          </div>
+        ))}
+      </div>
+      {/* Labels */}
+      <div className="flex justify-between text-[10px] text-white/70">
+        {stages.map((s) => (
+          <span key={s.label} className="text-center" style={{ width: "33%" }}>
+            {s.label}
+          </span>
+        ))}
+      </div>
+      {/* Caption */}
+      <div className="mt-3 text-white text-[12.5px] font-medium">
+        Out for delivery, arriving today.
+      </div>
+    </motion.div>
+  );
+}
+
+/* ── Main mockup with looping sequence ─────────────────────────── */
+
+function ChatDemo() {
+  const [step, setStep] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Start the loop once the panel is at least 25% in view
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || started) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setStarted(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [started]);
+
+  // Drive the sequence + loop
+  useEffect(() => {
+    if (!started) return;
+    if (step < TOTAL_STEPS) {
+      const t = setTimeout(() => setStep((s) => s + 1), STEP_MS);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => setStep(0), END_PAUSE_MS);
+    return () => clearTimeout(t);
+  }, [step, started]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative overflow-hidden rounded-[16px] w-full"
+      style={{
+        background:
+          "linear-gradient(155deg, rgba(63,74,175,0.42) 0%, rgba(42,51,128,0.55) 40%, rgba(16,19,44,0.62) 100%)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        border: "1px solid rgba(255,255,255,0.18)",
+        boxShadow:
+          "inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.06), 0 30px 60px -20px rgba(16,19,44,0.35)",
+      }}
+    >
+      {/* Top bar */}
+      <div className="px-3.5 py-2.5 border-b border-white/[0.10] flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2 w-2 rounded-full bg-white/30" />
+          <span className="h-2 w-2 rounded-full bg-white/20" />
+          <span className="h-2 w-2 rounded-full bg-white/20" />
+        </div>
+        <div className="flex-1 text-center text-[10.5px] tracking-[0.14em] uppercase text-white/55 font-semibold">
+          Live conversation
+        </div>
+        <div className="w-10" />
+      </div>
+
+      {/* Conversation */}
+      <div className="px-4 py-4 space-y-3 min-h-[460px]">
+        <AnimatePresence mode="popLayout">
+          {step >= 1 && (
+            <CustomerBubble
+              key="c1"
+              text="I need trail running shoes under €150, size 10."
+            />
+          )}
+          {step === 2 && <TypingDots key="t1" />}
+          {step >= 3 && (
+            <AppBubble key="a1" text="Found 3 in stock near you." />
+          )}
+          {step >= 3 && <ProductCarousel key="pc1" />}
+
+          {step >= 4 && (
+            <CustomerBubble
+              key="c2"
+              text="Add the blue pair and check out."
+            />
+          )}
+          {step === 5 && <TypingDots key="t2" />}
+          {step >= 6 && <OrderConfirmCard key="a2" />}
+
+          {step >= 7 && (
+            <CustomerBubble key="c3" text="Where's my order?" />
+          )}
+          {step === 8 && <TypingDots key="t3" />}
+          {step >= 9 && <TrackingCard key="a3" />}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+/* ── Section ───────────────────────────────────────────────────── */
 
 export function IntroParagraph() {
   return (
@@ -245,9 +424,9 @@ export function IntroParagraph() {
             </Reveal>
           </div>
 
-          {/* RIGHT · animated ChatGPT mockup, right-aligned + smaller */}
-          <div className="w-full max-w-[400px] mx-auto lg:mr-0 lg:ml-auto">
-            <ChatMockup />
+          {/* RIGHT · looping animated chat panel */}
+          <div className="w-full max-w-[420px] mx-auto lg:mr-0 lg:ml-auto">
+            <ChatDemo />
           </div>
         </div>
       </div>

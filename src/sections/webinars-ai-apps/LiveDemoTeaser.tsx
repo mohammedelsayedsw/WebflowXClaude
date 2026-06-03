@@ -47,12 +47,12 @@ export function LiveDemoTeaser() {
         </div>
 
         {/* Horizontal stepper */}
-        <div className="mt-12 md:mt-14 flex flex-wrap items-center gap-3 md:gap-4">
+        <div className="mt-12 md:mt-14 flex flex-wrap items-center gap-4 md:gap-5">
           {steps.map((s, i) => (
             <Fragment key={s}>
               <Reveal delay={0.1 + i * 0.05} className="contents">
-                <div className="inline-flex items-center rounded-[2px] border border-[var(--sw-black)]/15 bg-white px-3.5 py-2 md:px-4 md:py-2.5">
-                  <span className="font-head text-[13px] md:text-[14px] font-semibold text-[var(--sw-black)] leading-none">
+                <div className="inline-flex items-center rounded-[2px] border border-[var(--sw-black)]/15 bg-white px-5 py-3 md:px-6 md:py-3.5 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5">
+                  <span className="font-head text-[15px] md:text-[17px] font-semibold text-[var(--sw-black)] leading-none">
                     {s}
                   </span>
                 </div>
@@ -60,7 +60,7 @@ export function LiveDemoTeaser() {
               {i < steps.length - 1 && (
                 <Reveal delay={0.12 + i * 0.05} className="contents">
                   <ArrowRight
-                    className="h-4 w-4 text-[var(--sw-black)]/35 shrink-0"
+                    className="h-5 w-5 md:h-6 md:w-6 text-[var(--sw-black)]/40 shrink-0"
                     strokeWidth={2.25}
                   />
                 </Reveal>
@@ -70,7 +70,7 @@ export function LiveDemoTeaser() {
         </div>
 
         <Reveal delay={0.4}>
-          <p className="mt-14 md:mt-16 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[68ch]">
+          <p className="mt-14 md:mt-16 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">
             You watch the full flow run live on June 17. How it connects to
             your catalog, orders, and helpdesk gets covered on the call.
           </p>

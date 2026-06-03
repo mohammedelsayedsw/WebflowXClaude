@@ -46,8 +46,9 @@ export function SpeakerBio() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-white text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6 max-w-[24ch]">
-                Led by a senior strategist,{" "}
+              <h2 className="font-head text-white text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
+                Led by a senior strategist,
+                <br />
                 <span style={{ color: "var(--sw-mint)" }}>
                   not a sales rep
                 </span>

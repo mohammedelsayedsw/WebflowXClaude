@@ -30,8 +30,9 @@ export function LiveDemoTeaser() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] max-w-[22ch]">
-              A full order, placed and tracked,{" "}
+            <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
+              A full order, placed and tracked,
+              <br />
               <span className="text-[var(--sw-blue)]">
                 without opening your website
               </span>

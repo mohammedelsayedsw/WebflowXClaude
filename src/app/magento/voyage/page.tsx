@@ -2046,7 +2046,7 @@ function ImpactStats() {
         </div>
         <div className="mt-6 md:mt-8">
           <Reveal delay={0.3}>
-            <EngravedPlate label="Run your entire omnichannel from one Magento.">
+            <EngravedPlate label="We run, maintain, and grow your omnichannel.">
               <IntegrationsDashboard />
             </EngravedPlate>
           </Reveal>

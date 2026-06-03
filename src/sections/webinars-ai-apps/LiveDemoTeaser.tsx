@@ -23,7 +23,7 @@ export function LiveDemoTeaser() {
         <div className="max-w-[820px]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">3</span>
+              <span className="text-[var(--sw-black)]/55">4</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The demo</span>
             </div>

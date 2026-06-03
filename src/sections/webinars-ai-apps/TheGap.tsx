@@ -214,7 +214,7 @@ export function TheGap() {
       <div className="wrap relative">
         <div className="max-w-[860px]">
           <Reveal>
-            <SectionLabel index="4">Why it matters</SectionLabel>
+            <SectionLabel index="3">Why it matters</SectionLabel>
           </Reveal>
 
           <Reveal delay={0.05}>

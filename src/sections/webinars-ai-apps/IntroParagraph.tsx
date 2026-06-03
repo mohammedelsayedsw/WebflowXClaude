@@ -7,13 +7,14 @@ import {
   type Variants,
   type Transition,
 } from "motion/react";
-import { Check, Footprints, Package, Truck, MapPin } from "lucide-react";
+import { Check, Package, Truck, MapPin } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 /* ── Animation timings ─────────────────────────────────────────── */
-const STEP_MS = 1300; // ~1.3s per step → feels like a real conversation
-const END_PAUSE_MS = 2500; // hold at the end before looping
-const TOTAL_STEPS = 9; // 3 customer turns + 3 typing + 3 app replies
+const STEP_MS = 1300;
+const END_PAUSE_MS = 2500;
+const TOTAL_STEPS = 9;
+const CONVO_HEIGHT = 420; // fixed chat window height (px)
 
 const bubbleIn: Variants = {
   hidden: { opacity: 0, y: 10 },
@@ -31,7 +32,7 @@ const cardIn = (i: number): Transition => ({
   delay: 0.15 + i * 0.12,
 });
 
-/* ── Bubble + helper subcomponents ─────────────────────────────── */
+/* ── Bubbles ───────────────────────────────────────────────────── */
 
 function CustomerBubble({ text }: { text: string }) {
   return (
@@ -101,10 +102,26 @@ function TypingDots() {
 }
 
 function ProductCarousel() {
-  const products: { name: string; price: string; accent: string }[] = [
-    { name: "Trail Pro 6", price: "€129", accent: "#3f4aaf" },
-    { name: "FellRunner X", price: "€139", accent: "#6ef76e" },
-    { name: "Path-Lite GT", price: "€149", accent: "#a0a8e8" },
+  // Clean colored gradient tiles — no icons. Text lays out: name (truncate) → price → stock tag.
+  const products: { name: string; price: string; tile: string }[] = [
+    {
+      name: "Trail Pro 6",
+      price: "€129",
+      tile:
+        "linear-gradient(160deg, rgba(63,74,175,0.42) 0%, rgba(63,74,175,0.10) 100%)",
+    },
+    {
+      name: "FellRunner X",
+      price: "€139",
+      tile:
+        "linear-gradient(160deg, rgba(110,247,110,0.30) 0%, rgba(63,74,175,0.18) 100%)",
+    },
+    {
+      name: "Path-Lite GT",
+      price: "€149",
+      tile:
+        "linear-gradient(160deg, rgba(160,168,232,0.35) 0%, rgba(63,74,175,0.10) 100%)",
+    },
   ];
   return (
     <motion.div
@@ -112,7 +129,7 @@ function ProductCarousel() {
       initial="hidden"
       animate="shown"
       exit="exit"
-      className="flex gap-2 overflow-hidden"
+      className="flex gap-2"
     >
       {products.map((p, i) => (
         <motion.div
@@ -120,39 +137,31 @@ function ProductCarousel() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={cardIn(i)}
-          className="shrink-0 w-[110px] rounded-[8px] border border-white/[0.10] bg-white/[0.05] p-2.5"
+          className="shrink-0 basis-0 grow rounded-[8px] border border-white/[0.10] bg-white/[0.05] p-2.5"
         >
+          {/* Clean gradient tile, no icon */}
           <div
-            className="relative h-14 w-full rounded-[4px] mb-2 overflow-hidden flex items-end justify-end"
-            style={{
-              background:
-                "linear-gradient(160deg, " +
-                p.accent +
-                "33 0%, rgba(255,255,255,0.04) 100%)",
-            }}
-          >
-            <Footprints
-              className="h-7 w-7 mr-1 mb-0.5 opacity-80"
-              style={{ color: p.accent }}
-            />
-          </div>
-          <div className="text-white text-[11.5px] font-semibold leading-tight truncate">
+            className="h-14 w-full rounded-[4px] mb-2"
+            style={{ background: p.tile }}
+          />
+          {/* Name — single line, truncates */}
+          <div className="text-white text-[12px] font-semibold leading-tight truncate">
             {p.name}
           </div>
-          <div className="flex items-center justify-between mt-1">
-            <span className="text-white font-head text-[12px] tabular-nums">
-              {p.price}
-            </span>
+          {/* Price — own line, bigger */}
+          <div className="text-white font-head text-[13px] tabular-nums mt-1">
+            {p.price}
+          </div>
+          {/* Stock tag — own line, small */}
+          <div
+            className="mt-1.5 inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
+            style={{ color: "var(--sw-mint)" }}
+          >
             <span
-              className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
-              style={{ color: "var(--sw-mint)" }}
-            >
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ background: "var(--sw-mint)" }}
-              />
-              In stock
-            </span>
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ background: "var(--sw-mint)" }}
+            />
+            In stock
           </div>
         </motion.div>
       ))}
@@ -177,7 +186,7 @@ function OrderConfirmCard() {
         }}
       >
         <Check
-          className="h-4.5 w-4.5"
+          className="h-4 w-4"
           style={{ color: "var(--sw-mint)" }}
           strokeWidth={3}
         />
@@ -208,7 +217,6 @@ function TrackingCard() {
       exit="exit"
       className="rounded-[10px] border border-white/[0.10] bg-white/[0.05] p-3.5"
     >
-      {/* Progress rail */}
       <div className="relative flex items-center justify-between mb-3">
         <div className="absolute left-3 right-3 top-1/2 h-px -translate-y-1/2 bg-white/15" />
         <div
@@ -217,7 +225,6 @@ function TrackingCard() {
             width: "calc(100% - 1.5rem)",
             background:
               "linear-gradient(90deg, var(--sw-mint) 0%, var(--sw-mint) 100%)",
-            transformOrigin: "left",
           }}
         />
         {stages.map((s, i) => (
@@ -226,17 +233,13 @@ function TrackingCard() {
             className="relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-full"
             style={{
               background:
-                i < 2
-                  ? "rgba(110,247,110,0.2)"
-                  : "rgba(110,247,110,0.95)",
+                i < 2 ? "rgba(110,247,110,0.2)" : "rgba(110,247,110,0.95)",
               border:
                 i < 2
                   ? "1px solid rgba(110,247,110,0.5)"
                   : "1px solid var(--sw-mint)",
               boxShadow:
-                i === 2
-                  ? "0 0 0 4px rgba(110,247,110,0.18)"
-                  : undefined,
+                i === 2 ? "0 0 0 4px rgba(110,247,110,0.18)" : undefined,
             }}
           >
             <s.Icon
@@ -247,7 +250,6 @@ function TrackingCard() {
           </div>
         ))}
       </div>
-      {/* Labels */}
       <div className="flex justify-between text-[10px] text-white/70">
         {stages.map((s) => (
           <span key={s.label} className="text-center" style={{ width: "33%" }}>
@@ -255,7 +257,6 @@ function TrackingCard() {
           </span>
         ))}
       </div>
-      {/* Caption */}
       <div className="mt-3 text-white text-[12.5px] font-medium">
         Out for delivery, arriving today.
       </div>
@@ -263,16 +264,17 @@ function TrackingCard() {
   );
 }
 
-/* ── Main mockup with looping sequence ─────────────────────────── */
+/* ── Main panel ────────────────────────────────────────────────── */
 
 function ChatDemo() {
   const [step, setStep] = useState(0);
   const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const convoRef = useRef<HTMLDivElement>(null);
 
-  // Start the loop once the panel is at least 25% in view
+  // Start loop once panel is in view
   useEffect(() => {
-    const el = ref.current;
+    const el = panelRef.current;
     if (!el || started) return;
     const obs = new IntersectionObserver(
       (entries) => {
@@ -287,7 +289,7 @@ function ChatDemo() {
     return () => obs.disconnect();
   }, [started]);
 
-  // Drive the sequence + loop
+  // Step driver + loop
   useEffect(() => {
     if (!started) return;
     if (step < TOTAL_STEPS) {
@@ -298,9 +300,24 @@ function ChatDemo() {
     return () => clearTimeout(t);
   }, [step, started]);
 
+  // Auto-scroll the conversation window to the latest message
+  useEffect(() => {
+    const c = convoRef.current;
+    if (!c) return;
+    // Wait a frame so new content is laid out
+    const id = requestAnimationFrame(() => {
+      if (!convoRef.current) return;
+      convoRef.current.scrollTo({
+        top: step === 0 ? 0 : convoRef.current.scrollHeight,
+        behavior: step === 0 ? "auto" : "smooth",
+      });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [step]);
+
   return (
     <div
-      ref={ref}
+      ref={panelRef}
       className="relative overflow-hidden rounded-[16px] w-full"
       style={{
         background:
@@ -312,6 +329,9 @@ function ChatDemo() {
           "inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.06), 0 30px 60px -20px rgba(16,19,44,0.35)",
       }}
     >
+      {/* Hide scrollbar across browsers for the conversation window */}
+      <style>{`.lp-chat-scroll::-webkit-scrollbar{display:none}`}</style>
+
       {/* Top bar */}
       <div className="px-3.5 py-2.5 border-b border-white/[0.10] flex items-center gap-2">
         <div className="flex items-center gap-1.5">
@@ -325,8 +345,16 @@ function ChatDemo() {
         <div className="w-10" />
       </div>
 
-      {/* Conversation */}
-      <div className="px-4 py-4 space-y-3 min-h-[460px]">
+      {/* Conversation — fixed height, scrolls like a real chat */}
+      <div
+        ref={convoRef}
+        className="lp-chat-scroll px-4 py-4 space-y-3 overflow-y-auto"
+        style={{
+          height: CONVO_HEIGHT,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
         <AnimatePresence mode="popLayout">
           {step >= 1 && (
             <CustomerBubble
@@ -336,7 +364,7 @@ function ChatDemo() {
           )}
           {step === 2 && <TypingDots key="t1" />}
           {step >= 3 && (
-            <AppBubble key="a1" text="Found 3 in stock near you." />
+            <AppBubble key="a1" text="Found 3 perfect options for you." />
           )}
           {step >= 3 && <ProductCarousel key="pc1" />}
 

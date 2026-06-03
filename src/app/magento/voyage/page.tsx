@@ -5798,10 +5798,10 @@ function HubSpotForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const fields = [
-    { name: "firstname", label: "Name", placeholder: "Your full name", type: "text", required: true },
-    { name: "company", label: "Company", placeholder: "Where you work", type: "text", required: false },
-    { name: "website", label: "Store URL", placeholder: "https://your-store.com", type: "url", required: false },
+    { name: "firstname", label: "First name", placeholder: "Your first name", type: "text", required: true },
     { name: "email", label: "Work email", placeholder: "you@company.com", type: "email", required: true },
+    { name: "website", label: "Company website", placeholder: "https://your-store.com", type: "url", required: false },
+    { name: "phone", label: "Phone number", placeholder: "+1 555 000 0000", type: "tel", required: false },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -5921,10 +5921,10 @@ function HubSpotForm() {
                   ? "email"
                   : f.name === "firstname"
                   ? "given-name"
-                  : f.name === "company"
-                  ? "organization"
                   : f.name === "website"
                   ? "url"
+                  : f.name === "phone"
+                  ? "tel"
                   : "off"
               }
               className="mt-2 w-full px-4 py-3 rounded-[2px] focus:outline-none transition-all"

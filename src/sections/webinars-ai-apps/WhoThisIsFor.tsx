@@ -5,10 +5,10 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
-  "eCommerce brands that want to be early to the AI app layer",
-  "Businesses where customers browse, order, and request support online",
-  "Teams looking for a distribution advantage before competitors move",
-  "Brands that want a working proof point, not a theory",
+  "eCommerce brands that want to move early on the AI app layer",
+  "Businesses where customers browse, order, and ask for support online",
+  "Teams that want a working proof point before they commit a budget",
+  "B2B sellers with account pricing, reorders, and quotes",
 ];
 
 export function WhoThisIsFor() {
@@ -21,7 +21,7 @@ export function WhoThisIsFor() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="04">Audience</SectionLabel>
+            <SectionLabel index="6">Audience</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] mt-6 max-w-[18ch]">

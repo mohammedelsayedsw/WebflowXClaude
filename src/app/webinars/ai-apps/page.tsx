@@ -4,7 +4,7 @@ import { Hero } from "@/sections/webinars-ai-apps/Hero";
 import { IntroParagraph } from "@/sections/webinars-ai-apps/IntroParagraph";
 import { WhatThisIsAbout } from "@/sections/webinars-ai-apps/WhatThisIsAbout";
 import { LiveDemoTeaser } from "@/sections/webinars-ai-apps/LiveDemoTeaser";
-import { WithoutWith } from "@/sections/webinars-ai-apps/WithoutWith";
+import { TheGap } from "@/sections/webinars-ai-apps/TheGap";
 import { WalkAwayWith } from "@/sections/webinars-ai-apps/WalkAwayWith";
 import { WhoThisIsFor } from "@/sections/webinars-ai-apps/WhoThisIsFor";
 import { SpeakerBio } from "@/sections/webinars-ai-apps/SpeakerBio";
@@ -17,7 +17,7 @@ export default function Page() {
       <IntroParagraph />
       <WhatThisIsAbout />
       <LiveDemoTeaser />
-      <WithoutWith />
+      <TheGap />
       <WalkAwayWith />
       <WhoThisIsFor />
       <SpeakerBio />

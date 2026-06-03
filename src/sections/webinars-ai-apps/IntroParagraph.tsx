@@ -1,13 +1,62 @@
 "use client";
 
 import { ArrowUp, Sparkles } from "lucide-react";
+import { motion, type Variants } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-/** ChatGPT-style conversation card — header chrome, chat turns, composer. Ported from chatgpt-app-agency Hero. */
+/** Sequential reveal: each turn fades + slides in on top of the prior. */
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  shown: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Typing dots that fade out once the assistant response arrives. */
+function TypingDots() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: [0, 1, 1, 0] }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1.2, times: [0, 0.2, 0.85, 1], delay: 0.55 }}
+      className="flex gap-3 items-start"
+    >
+      <div className="h-7 w-7 rounded-full bg-[var(--sw-mint)]/15 ring-1 ring-[var(--sw-mint)]/40 flex items-center justify-center shrink-0 mt-0.5">
+        <Sparkles
+          className="h-3.5 w-3.5 text-[var(--sw-mint)]"
+          strokeWidth={2.5}
+        />
+      </div>
+      <div className="flex items-center gap-1 px-2 py-2.5">
+        {[0, 1, 2].map((i) => (
+          <motion.span
+            key={i}
+            className="h-1.5 w-1.5 rounded-full bg-white/55"
+            animate={{ opacity: [0.25, 1, 0.25] }}
+            transition={{
+              duration: 0.9,
+              repeat: Infinity,
+              delay: i * 0.15,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+/** ChatGPT-style conversation card with sequential reveal animation. */
 function ChatMockup() {
   return (
-    <div
-      className="relative overflow-hidden rounded-[8px]"
+    <motion.div
+      className="relative overflow-hidden rounded-[8px] w-full"
+      initial="hidden"
+      whileInView="shown"
+      viewport={{ once: true, amount: 0.25 }}
       style={{
         background: "#212121",
         boxShadow:
@@ -15,94 +64,122 @@ function ChatMockup() {
       }}
     >
       {/* Top bar — looks like ChatGPT app chrome */}
-      <div className="px-4 py-3 border-b border-white/[0.07] flex items-center gap-2">
+      <motion.div
+        variants={itemVariants}
+        transition={{ delay: 0 }}
+        className="px-3.5 py-2.5 border-b border-white/[0.07] flex items-center gap-2"
+      >
         <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+          <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+          <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+          <span className="h-2 w-2 rounded-full bg-[#28c840]" />
         </div>
-        <div className="flex-1 text-center text-[12px] text-white/40 font-medium">
+        <div className="flex-1 text-center text-[11px] text-white/40 font-medium">
           ChatGPT
         </div>
-        <div className="w-12" />
-      </div>
+        <div className="w-10" />
+      </motion.div>
 
       {/* Conversation area */}
-      <div className="px-5 md:px-6 py-6 space-y-6">
+      <div className="px-4 md:px-5 py-5 space-y-4 min-h-[300px]">
         {/* User turn */}
-        <div className="flex gap-3 justify-end">
-          <div className="rounded-[18px] bg-white/[0.08] px-4 py-3 max-w-[90%]">
-            <div className="text-white text-[15px] leading-relaxed">
+        <motion.div
+          variants={itemVariants}
+          transition={{ delay: 0.2 }}
+          className="flex gap-3 justify-end"
+        >
+          <div className="rounded-[14px] bg-white/[0.08] px-3.5 py-2.5 max-w-[90%]">
+            <div className="text-white text-[13px] leading-relaxed">
               Find me a waterproof hiking jacket under &euro;200, in stock for
               next-day.
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Assistant turn */}
-        <div className="flex gap-3 items-start">
+        {/* Typing indicator (briefly) */}
+        <TypingDots />
+
+        {/* Assistant turn — appears after the typing indicator fades */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 1.55,
+          }}
+          className="flex gap-3 items-start"
+        >
           <div className="h-7 w-7 rounded-full bg-[var(--sw-mint)]/15 ring-1 ring-[var(--sw-mint)]/40 flex items-center justify-center shrink-0 mt-0.5">
             <Sparkles
               className="h-3.5 w-3.5 text-[var(--sw-mint)]"
               strokeWidth={2.5}
             />
           </div>
-          <div className="flex-1 space-y-2">
-            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-white text-[14px] font-semibold">
-                  North Face Resolve 2
+          <div className="flex-1 space-y-1.5">
+            {[
+              {
+                name: "North Face Resolve 2",
+                meta: "M, L · ships next-day",
+                price: "€179",
+              },
+              {
+                name: "Patagonia Torrentshell",
+                meta: "S, M, L · ships next-day",
+                price: "€189",
+              },
+              {
+                name: "Marmot PreCip Eco",
+                meta: "M · ships next-day",
+                price: "€169",
+              },
+            ].map((p, i) => (
+              <motion.div
+                key={p.name}
+                initial={{ opacity: 0, y: 6 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 1.8 + i * 0.15,
+                }}
+                className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5 flex items-center justify-between gap-3"
+              >
+                <div>
+                  <div className="text-white text-[12.5px] font-semibold">
+                    {p.name}
+                  </div>
+                  <div className="text-white/40 text-[10.5px] mt-0.5">
+                    {p.meta}
+                  </div>
                 </div>
-                <div className="text-white/40 text-[12px] mt-0.5">
-                  M, L &middot; ships next-day
+                <div className="text-white font-head text-[13px] tabular-nums">
+                  {p.price}
                 </div>
-              </div>
-              <div className="text-white font-head text-[15px] tabular-nums">
-                &euro;179
-              </div>
-            </div>
-            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-white text-[14px] font-semibold">
-                  Patagonia Torrentshell
-                </div>
-                <div className="text-white/40 text-[12px] mt-0.5">
-                  S, M, L &middot; ships next-day
-                </div>
-              </div>
-              <div className="text-white font-head text-[15px] tabular-nums">
-                &euro;189
-              </div>
-            </div>
-            <div className="rounded-[6px] border border-white/[0.07] bg-white/[0.02] px-4 py-3 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-white text-[14px] font-semibold">
-                  Marmot PreCip Eco
-                </div>
-                <div className="text-white/40 text-[12px] mt-0.5">
-                  M &middot; ships next-day
-                </div>
-              </div>
-              <div className="text-white font-head text-[15px] tabular-nums">
-                &euro;169
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Input row at bottom — looks like ChatGPT's composer */}
-      <div className="px-5 md:px-6 pb-5">
-        <div className="flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/[0.08] pl-5 pr-2 py-2.5">
-          <span className="text-[13px] text-white/35 flex-1">
+      {/* Composer */}
+      <motion.div
+        variants={itemVariants}
+        transition={{ delay: 0.05 }}
+        className="px-4 md:px-5 pb-4"
+      >
+        <div className="flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/[0.08] pl-4 pr-1.5 py-2">
+          <span className="text-[12px] text-white/35 flex-1">
             Message ChatGPT&hellip;
           </span>
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white">
-            <ArrowUp className="h-3.5 w-3.5 text-[#212121]" strokeWidth={3} />
+          <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white">
+            <ArrowUp className="h-3 w-3 text-[#212121]" strokeWidth={3} />
           </span>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -113,7 +190,7 @@ export function IntroParagraph() {
       className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
       <div className="wrap">
-        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-center">
           {/* LEFT · copy */}
           <div className="max-w-[640px]">
             <Reveal>
@@ -168,10 +245,10 @@ export function IntroParagraph() {
             </Reveal>
           </div>
 
-          {/* RIGHT · animated ChatGPT mockup */}
-          <Reveal delay={0.15} className="lg:sticky lg:top-24">
+          {/* RIGHT · animated ChatGPT mockup, right-aligned + smaller */}
+          <div className="w-full max-w-[400px] mx-auto lg:mr-0 lg:ml-auto">
             <ChatMockup />
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

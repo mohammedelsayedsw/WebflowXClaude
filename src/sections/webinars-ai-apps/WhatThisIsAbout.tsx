@@ -5,9 +5,10 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
-  "A working demo and a clear path to your first app",
-  "A real eCommerce flow running live inside ChatGPT and Claude",
-  "What it takes to go live in under two weeks",
+  "What an app inside ChatGPT and Claude actually is",
+  "A live demo of a real eCommerce flow",
+  "How you get one, and what it takes to go live in under two weeks",
+  "Live Q&A: bring your use case and we'll map it on the call",
 ];
 
 export function WhatThisIsAbout() {

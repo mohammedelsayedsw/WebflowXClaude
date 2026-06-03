@@ -147,13 +147,13 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 w-full">
+        <div className="wrap relative z-10 pt-32 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 lg:pb-20 w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-6 md:mb-8">
-                  <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6 md:mb-8">
+                  <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                     Free webinar &middot; AI commerce
                   </span>
                 </div>

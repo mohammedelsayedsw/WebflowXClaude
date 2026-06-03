@@ -124,13 +124,13 @@ function AppStoreMockup() {
               <span
                 className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px]"
                 style={{
-                  background: "rgba(110,247,110,0.10)",
-                  border: "1px solid rgba(110,247,110,0.28)",
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.10)",
                 }}
               >
                 <Sparkles
                   className="h-5 w-5"
-                  style={{ color: "var(--sw-mint)" }}
+                  style={{ color: "rgba(255,255,255,0.70)" }}
                 />
               </span>
               <div className="min-w-0 flex-1">
@@ -141,9 +141,6 @@ function AppStoreMockup() {
                   >
                     Your brand
                   </span>
-                  <span className="text-white/45 text-[11px]">
-                    &middot; Shopping
-                  </span>
                 </div>
                 <p className="mt-1.5 text-white text-[12.5px] leading-snug">
                   Shop, search and get help &ndash; directly inside ChatGPT
@@ -153,9 +150,9 @@ function AppStoreMockup() {
                   <span className="inline-flex items-center rounded-full bg-white text-[var(--sw-black)] px-3 py-1 font-head font-semibold text-[11px]">
                     Open
                   </span>
-                  <span className="inline-flex items-center gap-1 text-white/60 text-[11px]">
+                  <span className="inline-flex items-center gap-1 text-white/60 text-[11px] whitespace-nowrap shrink-0">
                     <Star
-                      className="h-2.5 w-2.5"
+                      className="h-2.5 w-2.5 shrink-0"
                       style={{
                         color: "var(--sw-mint)",
                         fill: "var(--sw-mint)",

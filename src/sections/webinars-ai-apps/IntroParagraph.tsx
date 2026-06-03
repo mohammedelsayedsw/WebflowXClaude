@@ -131,10 +131,12 @@ function StatusPill({ text }: { text: string }) {
 function ProductCard({
   name,
   meta,
+  colors,
   cta,
 }: {
   name: string;
   meta: string;
+  colors?: { name: string; hex: string }[];
   cta?: string;
 }) {
   return (
@@ -155,6 +157,25 @@ function ProductCard({
           {name}
         </div>
         <div className="text-white/55 text-[11.5px] mt-0.5">{meta}</div>
+        {colors && (
+          <div className="mt-2 flex items-center gap-1.5">
+            {colors.map((c, i) => (
+              <span
+                key={c.name}
+                title={c.name}
+                aria-label={c.name}
+                className="h-3.5 w-3.5 rounded-full"
+                style={{
+                  background: c.hex,
+                  boxShadow:
+                    i === 0
+                      ? "inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 0 1.5px rgba(255,255,255,0.55)"
+                      : "inset 0 0 0 1px rgba(255,255,255,0.2)",
+                }}
+              />
+            ))}
+          </div>
+        )}
         {cta && (
           <div
             className="mt-1.5 text-[11.5px] font-head font-semibold"
@@ -319,10 +340,16 @@ function ChatDemo() {
           )}
           {step >= 3 && (
             <AppTurn key="a1">
-              <AppMessage text="Found 3 perfect options for you." />
+              <AppMessage text="Found a perfect option for you." />
               <ProductCard
                 name="Stratos Trail GTX 4"
                 meta="€129 · Size 10 · In stock"
+                colors={[
+                  { name: "Blue", hex: "#2b4a6f" },
+                  { name: "White", hex: "#d6d9df" },
+                  { name: "Red", hex: "#7e2d33" },
+                  { name: "Green", hex: "#2c5141" },
+                ]}
                 cta="Add to cart →"
               />
             </AppTurn>

@@ -80,15 +80,15 @@ export function LiveDemoTeaser() {
             </div>
 
             {/* Numbered stepper chips */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 md:gap-4">
+            <div className="flex flex-wrap xl:flex-nowrap items-center gap-2.5 sm:gap-3.5 md:gap-4 xl:gap-2">
               {steps.map((s, i) => (
                 <Fragment key={s}>
                   <Reveal delay={0.05 + i * 0.05} className="contents">
-                    <div className="group inline-flex items-center gap-2 sm:gap-2.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
+                    <div className="group inline-flex shrink-0 xl:flex-1 xl:justify-center items-center gap-2 sm:gap-2.5 xl:gap-1.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 xl:px-2.5 transition-all hover:border-[var(--sw-mint)]/60 hover:-translate-y-0.5">
                       <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-[2px] bg-[var(--sw-black)] text-white font-head font-bold text-[10px] sm:text-[11px] tabular-nums">
                         {i + 1}
                       </span>
-                      <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] font-semibold text-[var(--sw-black)] leading-none">
+                      <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] xl:text-[13.5px] font-semibold text-[var(--sw-black)] leading-none whitespace-nowrap">
                         {s}
                       </span>
                     </div>
@@ -96,7 +96,7 @@ export function LiveDemoTeaser() {
                   {i < steps.length - 1 && (
                     <Reveal delay={0.07 + i * 0.05} className="contents">
                       <ArrowRight
-                        className="h-4 w-4 sm:h-5 sm:w-5 text-white/40 shrink-0"
+                        className="h-4 w-4 sm:h-5 sm:w-5 xl:h-4 xl:w-4 text-white/40 shrink-0"
                         strokeWidth={2.25}
                       />
                     </Reveal>

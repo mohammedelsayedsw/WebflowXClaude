@@ -44,7 +44,7 @@ export function WhoThisIsFor() {
   return (
     <section
       id="who-should-join"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-16 sm:py-20 md:py-28 lg:py-36 overflow-hidden scroll-mt-20"
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">

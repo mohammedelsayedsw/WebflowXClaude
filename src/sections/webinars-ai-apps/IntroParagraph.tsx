@@ -409,12 +409,14 @@ export function IntroParagraph() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[32px] sm:text-[36px] md:text-[44px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] max-w-[24ch]">
-                Buyers now ask{" "}
+              <h2
+                className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
+                style={{ textWrap: "balance" }}
+              >
+                Your customers now can shop, order, and get support inside{" "}
                 <span className="text-[var(--sw-blue)]">
                   ChatGPT and Claude
-                </span>{" "}
-                what your website used to answer
+                </span>
               </h2>
             </Reveal>
 

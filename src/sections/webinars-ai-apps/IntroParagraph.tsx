@@ -414,7 +414,7 @@ export function IntroParagraph() {
                 <span className="text-[var(--sw-blue)]">
                   ChatGPT and Claude
                 </span>{" "}
-                what your business used to answer
+                what your website used to answer
               </h2>
             </Reveal>
 
@@ -438,10 +438,10 @@ export function IntroParagraph() {
 
             <Reveal delay={0.2}>
               <p className="mt-5 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed">
-                In this webinar, scandiweb&apos;s COO Rolands Popovs walks you
-                through a working ChatGPT and Claude app for a real eCommerce
-                business, shows how it connects to your systems, and explains
-                what it takes to go live in under two weeks.
+                On June 17, scandiweb COO Rolands Popovs shows why you need
+                to be among the first stores inside ChatGPT and Claude, then
+                maps your first app live: where to start and how to launch in
+                under two weeks.
               </p>
             </Reveal>
 

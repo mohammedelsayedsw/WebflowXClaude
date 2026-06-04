@@ -49,7 +49,6 @@ const INK_FAINT = "rgba(16,19,44,0.55)";
 const CREAM = "var(--sw-beige)";
 const MINT = "var(--sw-mint)";
 const SERIF = "var(--font-serif), 'Cormorant Garamond', Garamond, Georgia, serif";
-const SCRIPT = "var(--font-script), 'Italianno', 'Snell Roundhand', cursive";
 
 /* ----------------- Serif accent + tiny ornaments ----------------- */
 

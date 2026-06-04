@@ -1,5 +1,6 @@
-/* scandiweb brand fonts (Golos Text headings + Inter body) are loaded via
-   next/font/google in src/app/layout.tsx. No CDN font imports here. */
+/* scandiweb brand font — Golos Text — is loaded via next/font/google in
+   src/app/layout.tsx and applied for both headings and body. No CDN font
+   imports here. */
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -103,10 +104,10 @@
   --color-lp-dim: var(--lp-dim);
 
   --font-head: var(--font-golos);
-  --font-body: var(--font-inter);
-  /* No mono font — scandiweb brand uses Golos Text + Inter only. Code and
-     mono-styled labels render in Inter at a smaller weight / spacing. */
-  --font-mono: var(--font-inter);
+  --font-body: var(--font-golos);
+  /* No mono font — Golos Text covers everything. Code and mono-styled
+     labels render in Golos at a smaller weight / spacing. */
+  --font-mono: var(--font-golos);
 
   --radius-sm: 2px;
   --radius-md: 4px;
@@ -118,7 +119,7 @@
   body {
     background: var(--lp-bg);
     color: var(--lp-fg);
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -134,7 +135,7 @@
   }
   p, blockquote { text-wrap: pretty; }
   code, kbd, samp, pre {
-    font-family: var(--font-inter), ui-monospace, monospace;
+    font-family: var(--font-golos), ui-monospace, monospace;
   }
   ::selection {
     background: var(--sw-red);
@@ -144,7 +145,7 @@
 
 @layer utilities {
   .label-code {
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.14em;
@@ -279,7 +280,7 @@
 .hubspot-form-wrapper fieldset > div > label {
   display: block !important;
   color: rgba(255, 255, 255, 0.55) !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
   font-size: 11px !important;
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;
@@ -318,7 +319,7 @@
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 2px !important;
   color: #ffffff !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
   font-size: 14px !important;
   line-height: 1.45 !important;
   font-weight: 400 !important;
@@ -344,7 +345,7 @@
 .hubspot-form-wrapper textarea {
   min-height: 110px !important;
   resize: vertical !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
 }
 .hubspot-form-wrapper select {
   background-image:
@@ -365,7 +366,7 @@
 .hubspot-form-wrapper .hs-error-msgs label,
 .hubspot-form-wrapper .hs-error-msgs li label {
   color: var(--sw-red) !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
   font-size: 12px !important;
   font-weight: 400 !important;
   text-transform: none !important;
@@ -377,7 +378,7 @@
 .hubspot-form-wrapper .legal-consent-container,
 .hubspot-form-wrapper .legal-consent-container * {
   color: rgba(255, 255, 255, 0.55) !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
   font-size: 12px !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
@@ -397,7 +398,7 @@
 .hubspot-form-wrapper .hs-fieldtype-booleancheckbox > label,
 .hubspot-form-wrapper .hs-fieldtype-checkbox > label {
   color: rgba(255, 255, 255, 0.75) !important;
-  font-family: var(--font-inter), Inter, sans-serif !important;
+  font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
   font-size: 13px !important;
   font-weight: 400 !important;
   text-transform: none !important;

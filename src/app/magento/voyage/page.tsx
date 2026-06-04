@@ -6301,23 +6301,63 @@ function FinalCta() {
 /* ----------------- Sticky CTA ----------------- */
 
 function ScrollNav() {
+  const NAV_ITEMS = [
+    { href: "#build", id: "build", label: "Build" },
+    { href: "#optimize", id: "optimize", label: "Optimize" },
+    { href: "#grow", id: "grow", label: "Grow" },
+    { href: "#support", id: "support", label: "Support" },
+    { href: "#pricing", id: "pricing", label: "Pricing" },
+  ] as const;
+
   const [show, setShow] = useState(false);
+  const [progress, setProgress] = useState<number[]>(
+    () => NAV_ITEMS.map(() => 0),
+  );
+
   useEffect(() => {
+    const clamp = (n: number) => Math.max(0, Math.min(1, n));
     const handle = () => {
       const y = window.scrollY;
       const h = window.innerHeight;
       const doc = document.documentElement.scrollHeight;
-      // Appear after first viewport, hide near footer / start form
+
       const startEl = document.getElementById("start");
       const startTop = startEl
         ? startEl.getBoundingClientRect().top + window.scrollY
         : doc;
       setShow(y > h * 0.6 && y < startTop - 80);
+
+      // Per-section progress: how much of each section's height has passed
+      // the viewport's bottom edge. Treats each chapter as a "filled" tab once
+      // you've scrolled past it.
+      const viewportBottom = y + h;
+      setProgress(
+        NAV_ITEMS.map((item) => {
+          const el = document.getElementById(item.id);
+          if (!el) return 0;
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          const height = el.offsetHeight || 1;
+          return clamp((viewportBottom - top) / height);
+        }),
+      );
     };
     window.addEventListener("scroll", handle, { passive: true });
     handle();
     return () => window.removeEventListener("scroll", handle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // The active item is the last one whose progress is between 0 and 1 (or, if
+  // none is active, the last fully-passed one).
+  const activeIndex = (() => {
+    for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+      if (progress[i] > 0 && progress[i] < 1) return i;
+    }
+    for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+      if (progress[i] >= 1) return i;
+    }
+    return -1;
+  })();
 
   return (
     <AnimatePresence>
@@ -6347,29 +6387,49 @@ function ScrollNav() {
                 />
               </a>
 
-              {/* Navigation pills — desktop only */}
+              {/* Navigation pills — desktop only, each with a scroll progress bar */}
               <nav className="hidden lg:flex items-center gap-1">
-                {[
-                  { href: "#build", label: "Build" },
-                  { href: "#optimize", label: "Optimize" },
-                  { href: "#grow", label: "Grow" },
-                  { href: "#support", label: "Support" },
-                  { href: "#pricing", label: "Pricing" },
-                ].map((it) => (
-                  <a
-                    key={it.href}
-                    href={it.href}
-                    className="font-head px-4 py-2 transition-colors hover:bg-[rgba(16,19,44,0.06)]"
-                    style={{
-                      fontSize: "13.5px",
-                      fontWeight: 500,
-                      color: INK,
-                      letterSpacing: "0.005em",
-                    }}
-                  >
-                    {it.label}
-                  </a>
-                ))}
+                {NAV_ITEMS.map((it, i) => {
+                  const p = progress[i] ?? 0;
+                  const isActive = i === activeIndex;
+                  return (
+                    <a
+                      key={it.href}
+                      href={it.href}
+                      className="font-head px-4 pt-2 pb-2.5 transition-colors hover:bg-[rgba(16,19,44,0.06)] relative"
+                      style={{
+                        fontSize: "13.5px",
+                        fontWeight: isActive ? 600 : 500,
+                        color: INK,
+                        letterSpacing: "0.005em",
+                      }}
+                    >
+                      {it.label}
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          position: "absolute",
+                          left: 16,
+                          right: 16,
+                          bottom: 4,
+                          height: 2,
+                          background: "rgba(16,19,44,0.12)",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "block",
+                            width: `${p * 100}%`,
+                            height: "100%",
+                            background: "var(--sw-blue)",
+                            transition: "width 0.15s linear",
+                          }}
+                        />
+                      </span>
+                    </a>
+                  );
+                })}
               </nav>
 
               {/* CTA */}

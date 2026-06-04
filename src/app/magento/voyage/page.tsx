@@ -5238,7 +5238,7 @@ function Cases() {
                 letterSpacing: "-0.015em",
               }}
             >
-              Some voyages scandiweb helped happen
+              Successful voyages with scandiweb
             </h2>
           </Reveal>
 

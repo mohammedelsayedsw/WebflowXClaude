@@ -13,6 +13,7 @@ import {
 import {
   ArrowUpRight,
   ArrowRight,
+  ArrowDown,
   Plus,
   Minus,
   Code,
@@ -278,22 +279,8 @@ function Hero() {
       <div className="relative z-10 flex-1 flex items-end pb-28 md:pb-16 lg:pb-20">
         <div className="wrap w-full">
           <Reveal>
-            <div
-              style={{
-                fontFamily: SCRIPT,
-                fontSize: "clamp(26px, 2.6vw, 42px)",
-                lineHeight: 1,
-                color: "#ffffff",
-                letterSpacing: "0.005em",
-                textShadow: "0 2px 24px rgba(0,0,0,0.55)",
-              }}
-            >
-              For B2C, B2B and omnichannel merchants.
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
             <h1
-              className="text-white mt-2 md:mt-3"
+              className="text-white"
               style={{
                 fontFamily: SERIF,
                 fontSize: "clamp(46px, 7.5vw, 116px)",
@@ -307,9 +294,9 @@ function Hero() {
               Build, run, and grow your Magento store.
             </h1>
           </Reveal>
-          <Reveal delay={0.16}>
+          <Reveal delay={0.08}>
             <p
-              className="mt-6 md:mt-7 text-white max-w-[44ch]"
+              className="mt-6 md:mt-7 text-white max-w-[58ch]"
               style={{
                 fontFamily: SERIF,
                 fontStyle: "italic",
@@ -321,11 +308,11 @@ function Hero() {
               }}
             >
               Start your journey with the world&rsquo;s most-certified Magento
-              and Hyvä agency.
+              and Hyvä agency for B2C, B2B, and omnichannel merchants.
             </p>
           </Reveal>
-          <Reveal delay={0.24}>
-            <div className="mt-9 md:mt-12 flex flex-wrap items-center gap-6">
+          <Reveal delay={0.16}>
+            <div className="mt-9 md:mt-12 flex flex-wrap items-center gap-5 md:gap-6">
               <a
                 href="#start"
                 className="inline-flex items-center gap-3 px-7 py-4 rounded-[2px] text-white font-head font-medium group transition-all"
@@ -342,16 +329,16 @@ function Hero() {
               </a>
               <a
                 href="#support"
-                className="hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 font-head font-medium hover:opacity-80 transition-opacity"
                 style={{
-                  fontFamily: SCRIPT,
-                  fontSize: "clamp(20px, 1.7vw, 28px)",
-                  lineHeight: 1,
                   color: "#ffffff",
-                  textShadow: "0 2px 20px rgba(0,0,0,0.55)",
+                  fontSize: "15.5px",
+                  letterSpacing: "0.005em",
+                  textShadow: "0 2px 18px rgba(0,0,0,0.55)",
                 }}
               >
-                Request urgent support ↓
+                Request urgent support
+                <ArrowDown className="h-4 w-4" />
               </a>
             </div>
           </Reveal>
@@ -564,15 +551,33 @@ function ScopeGrid({
     <Reveal delay={0.12}>
       <div className="mt-14 md:mt-20">
         <div
+          className="flex items-center gap-3"
           style={{
-            fontFamily: SERIF,
-            fontStyle: "italic",
-            fontSize: "clamp(16px, 1.3vw, 22px)",
-            color: INK_FAINT,
-            marginBottom: 22,
+            marginBottom: 26,
           }}
         >
-          {label}
+          <span
+            style={{
+              width: 9,
+              height: 9,
+              background: "var(--sw-blue)",
+              display: "inline-block",
+              flexShrink: 0,
+              transform: "rotate(45deg)",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: SERIF,
+              fontSize: "clamp(20px, 1.7vw, 28px)",
+              fontWeight: 600,
+              color: INK,
+              letterSpacing: "-0.005em",
+              lineHeight: 1.3,
+            }}
+          >
+            {label}
+          </span>
         </div>
 
         {/* Mobile: accordion */}
@@ -664,56 +669,66 @@ function ScopeGrid({
           })}
         </div>
 
-        {/* Desktop: existing grid layout */}
+        {/* Desktop: card-style grid with stronger column heads */}
         <div
-          className="hidden md:grid gap-x-8 gap-y-10 md:gap-y-12"
+          className="hidden md:block"
           style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            border: "1px solid rgba(16,19,44,0.18)",
+            background: "rgba(255,253,247,0.5)",
+            padding: "32px 32px 28px",
           }}
         >
-          {groups.map((group) => (
-            <div key={group.title}>
-              <div
-                className="flex items-center gap-2"
-                style={{
-                  fontFamily: SERIF,
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  color: INK,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  borderBottom: "1px solid rgba(16,19,44,0.2)",
-                  paddingBottom: 10,
-                  marginBottom: 14,
-                }}
-              >
-                <span>{group.title}</span>
-                {group.featured && (
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      fontSize: 13,
-                      color: "var(--sw-blue)",
-                      lineHeight: 1,
-                    }}
-                  >
-                    ★
-                  </span>
-                )}
+          <div
+            className="grid gap-x-10 gap-y-10 md:gap-y-12"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            }}
+          >
+            {groups.map((group) => (
+              <div key={group.title}>
+                <div
+                  className="flex items-center gap-2"
+                  style={{
+                    fontFamily: SERIF,
+                    fontSize: "15px",
+                    fontWeight: 700,
+                    color: INK,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    paddingBottom: 12,
+                    marginBottom: 16,
+                    borderBottom: "2px solid rgba(16,19,44,0.32)",
+                  }}
+                >
+                  <span>{group.title}</span>
+                  {group.featured && (
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        fontSize: 14,
+                        color: "var(--sw-blue)",
+                        lineHeight: 1,
+                      }}
+                    >
+                      ★
+                    </span>
+                  )}
+                </div>
+                <ul
+                  style={{
+                    fontSize: "16px",
+                    color: INK,
+                    lineHeight: 1.85,
+                    fontWeight: 400,
+                  }}
+                >
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </div>
-              <ul
-                style={{
-                  fontSize: "14.5px",
-                  color: INK_SOFT,
-                  lineHeight: 1.8,
-                }}
-              >
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </Reveal>
@@ -1466,12 +1481,19 @@ function IntegrationsDashboard() {
   ];
 
   const [active, setActive] = useState(0);
+  const [userPaused, setUserPaused] = useState(false);
   useEffect(() => {
+    if (userPaused) return;
     const id = window.setInterval(() => {
       setActive((a) => (a + 1) % integrations.length);
     }, 4000);
     return () => window.clearInterval(id);
-  }, [integrations.length]);
+  }, [integrations.length, userPaused]);
+
+  const pickTab = (i: number) => {
+    setActive(i);
+    setUserPaused(true);
+  };
 
   const current = integrations[active];
 
@@ -1516,7 +1538,7 @@ function IntegrationsDashboard() {
           <button
             key={it.name}
             type="button"
-            onClick={() => setActive(i)}
+            onClick={() => pickTab(i)}
             className="text-left transition-all"
             style={{
               padding: "10px 12px",
@@ -1532,7 +1554,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "13px",
+                fontSize: "14.5px",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: i === active ? "#ffffff" : INK,
@@ -1545,7 +1567,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontStyle: "italic",
-                fontSize: "12.5px",
+                fontSize: "14px",
                 color:
                   i === active
                     ? "rgba(255,255,255,0.72)"
@@ -1572,7 +1594,7 @@ function IntegrationsDashboard() {
           <button
             key={it.name}
             type="button"
-            onClick={() => setActive(i)}
+            onClick={() => pickTab(i)}
             className="text-left transition-all shrink-0"
             style={{
               padding: "10px 14px",
@@ -1589,7 +1611,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "13.5px",
+                fontSize: "15px",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: i === active ? "#ffffff" : INK,
@@ -1602,7 +1624,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontStyle: "italic",
-                fontSize: "13px",
+                fontSize: "14.5px",
                 color:
                   i === active
                     ? "rgba(255,255,255,0.72)"
@@ -1642,7 +1664,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "12px",
+                  fontSize: "13.5px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1668,7 +1690,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontStyle: "italic",
-                    fontSize: "14px",
+                    fontSize: "15.5px",
                     color: INK_FAINT,
                   }}
                 >
@@ -1685,7 +1707,7 @@ function IntegrationsDashboard() {
                       style={{
                         fontFamily: SERIF,
                         fontStyle: "italic",
-                        fontSize: "14px",
+                        fontSize: "15.5px",
                         color: INK_FAINT,
                       }}
                     >
@@ -1694,7 +1716,7 @@ function IntegrationsDashboard() {
                     <span
                       style={{
                         fontFamily: SERIF,
-                        fontSize: "15px",
+                        fontSize: "16.5px",
                         color: INK,
                         fontWeight: 500,
                       }}
@@ -1725,7 +1747,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "12px",
+                  fontSize: "13.5px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1751,7 +1773,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "14px",
+                  fontSize: "15.5px",
                   color: INK_FAINT,
                 }}
               >
@@ -1781,7 +1803,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "12.5px",
+                  fontSize: "14px",
                   color: INK_FAINT,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
@@ -1815,7 +1837,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontWeight: 600,
-                    fontSize: "13px",
+                    fontSize: "14.5px",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                     color: INK,
@@ -1827,7 +1849,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontStyle: "italic",
-                    fontSize: "14px",
+                    fontSize: "15.5px",
                     color: INK_FAINT,
                   }}
                 >
@@ -1855,7 +1877,7 @@ function IntegrationsDashboard() {
                       style={{
                         fontFamily: SERIF,
                         fontStyle: "italic",
-                        fontSize: "13.5px",
+                        fontSize: "15px",
                         color: INK_FAINT,
                         lineHeight: 1.2,
                       }}
@@ -1884,7 +1906,7 @@ function IntegrationsDashboard() {
                   style={{
                     fontFamily: SERIF,
                     fontWeight: 600,
-                    fontSize: "12px",
+                    fontSize: "13.5px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: INK_FAINT,
@@ -1914,7 +1936,7 @@ function IntegrationsDashboard() {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "13.5px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: INK_FAINT,
@@ -1942,7 +1964,7 @@ function IntegrationsDashboard() {
                           ? "none"
                           : "1px solid rgba(16,19,44,0.12)",
                       fontFamily: SERIF,
-                      fontSize: "14px",
+                      fontSize: "15.5px",
                       color: INK,
                       lineHeight: 1.3,
                     }}
@@ -1972,7 +1994,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "12px",
+                  fontSize: "13.5px",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: INK_FAINT,
@@ -1987,7 +2009,7 @@ function IntegrationsDashboard() {
                 style={{
                   fontFamily: SERIF,
                   fontStyle: "italic",
-                  fontSize: "13px",
+                  fontSize: "14.5px",
                   color: INK_FAINT,
                 }}
               >
@@ -2831,8 +2853,8 @@ function MiniTimeChart() {
           style={{
             fontFamily: SERIF,
             fontStyle: "italic",
-            fontSize: "clamp(18px, 1.5vw, 24px)",
-            color: INK_FAINT,
+            fontSize: "clamp(19px, 1.6vw, 25px)",
+            color: INK_SOFT,
             lineHeight: 1.3,
             maxWidth: "26ch",
           }}
@@ -2847,7 +2869,7 @@ function MiniTimeChart() {
             <span
               style={{
                 fontFamily: SERIF,
-                fontSize: "17.5px",
+                fontSize: "19px",
                 color: INK,
                 fontWeight: r.accent ? 600 : 500,
               }}
@@ -2858,8 +2880,8 @@ function MiniTimeChart() {
               style={{
                 fontFamily: SERIF,
                 fontStyle: r.accent ? "normal" : "italic",
-                fontSize: "15.5px",
-                color: r.accent ? INK : INK_FAINT,
+                fontSize: "17px",
+                color: r.accent ? INK : INK_SOFT,
                 fontWeight: r.accent ? 600 : 400,
                 whiteSpace: "nowrap",
               }}
@@ -2909,8 +2931,8 @@ function MiniTimeChart() {
               textAlign: i === 0 ? "left" : i === 4 ? "right" : "center",
               fontFamily: SERIF,
               fontStyle: "italic",
-              fontSize: "12.5px",
-              color: INK_FAINT,
+              fontSize: "14px",
+              color: INK_SOFT,
               letterSpacing: "0.04em",
             }}
           >
@@ -2924,7 +2946,7 @@ function MiniTimeChart() {
         style={{
           fontFamily: SERIF,
           fontStyle: "italic",
-          fontSize: "17px",
+          fontSize: "18.5px",
           color: INK_SOFT,
           lineHeight: 1.5,
         }}
@@ -2977,8 +2999,8 @@ function MiniCostChart() {
           style={{
             fontFamily: SERIF,
             fontStyle: "italic",
-            fontSize: "clamp(18px, 1.5vw, 24px)",
-            color: INK_FAINT,
+            fontSize: "clamp(19px, 1.6vw, 25px)",
+            color: INK_SOFT,
             lineHeight: 1.3,
             maxWidth: "26ch",
           }}
@@ -3014,8 +3036,8 @@ function MiniCostChart() {
                     bottom: barHeight + 8,
                     fontFamily: SERIF,
                     fontStyle: c.accent ? "normal" : "italic",
-                    fontSize: "15.5px",
-                    color: c.accent ? INK : INK_FAINT,
+                    fontSize: "17px",
+                    color: c.accent ? INK : INK_SOFT,
                     fontWeight: c.accent ? 600 : 400,
                     whiteSpace: "nowrap",
                   }}
@@ -3057,7 +3079,7 @@ function MiniCostChart() {
             className="text-center"
             style={{
               fontFamily: SERIF,
-              fontSize: "17.5px",
+              fontSize: "19px",
               color: INK,
               fontWeight: c.accent ? 600 : 500,
             }}
@@ -3072,7 +3094,7 @@ function MiniCostChart() {
         style={{
           fontFamily: SERIF,
           fontStyle: "italic",
-          fontSize: "17px",
+          fontSize: "18.5px",
           color: INK_SOFT,
           lineHeight: 1.5,
         }}
@@ -4380,7 +4402,7 @@ function Footprint() {
                   textShadow: "0 2px 16px rgba(0,0,0,0.55)",
                 }}
               >
-                Merchants on Magento we have launched.
+                Magento merchants we have built and grown.
               </div>
             </Reveal>
           </div>
@@ -4528,6 +4550,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
         className="relative overflow-hidden aspect-[4/5] md:aspect-[16/9]"
         style={{
           background: cs.bgColor,
+          maxHeight: "min(620px, 62vh)",
         }}
       >
         {cs.keyword && <Plate keyword={cs.keyword} alt={cs.alt} />}
@@ -4557,11 +4580,11 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           style={{
             fontFamily: SERIF,
             fontWeight: 600,
-            fontSize: "clamp(14px, 1.2vw, 17px)",
-            color: "rgba(255,255,255,0.96)",
+            fontSize: "clamp(15.5px, 1.35vw, 19px)",
+            color: "rgba(255,255,255,0.98)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+            textShadow: "0 1px 6px rgba(0,0,0,0.55)",
           }}
         >
           <span className="flex items-center gap-3">
@@ -4585,11 +4608,11 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "11.5px",
+                  fontSize: "13px",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.95)",
-                  padding: "5px 11px 5px 9px",
+                  color: "rgba(255,255,255,0.96)",
+                  padding: "6px 12px 6px 10px",
                   border: "1px solid rgba(255,255,255,0.5)",
                   background: "rgba(255,255,255,0.1)",
                   backdropFilter: "blur(6px)",
@@ -4617,7 +4640,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           <span
             className="flex items-center gap-2.5"
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
             }}
@@ -4635,10 +4658,10 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           </span>
           <span
             style={{
-              fontSize: "11px",
+              fontSize: "12.5px",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.82)",
+              color: "rgba(255,255,255,0.88)",
             }}
           >
             {cs.industry}
@@ -4649,7 +4672,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "10.5px",
+                fontSize: "12px",
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.95)",
@@ -4719,7 +4742,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                 <div
                   style={{
                     fontFamily: SERIF,
-                    fontSize: "clamp(26px, 2.4vw, 34px)",
+                    fontSize: "clamp(28px, 2.6vw, 36px)",
                     fontWeight: 500,
                     color: "rgba(255,255,255,0.98)",
                     lineHeight: 1,
@@ -4733,11 +4756,11 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                   style={{
                     fontFamily: SERIF,
                     fontStyle: "italic",
-                    fontSize: "16px",
-                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "17.5px",
+                    color: "rgba(255,255,255,0.92)",
                     letterSpacing: "0.01em",
-                    marginTop: 12,
-                    lineHeight: 1.25,
+                    marginTop: 10,
+                    lineHeight: 1.3,
                     minHeight: "2.5em",
                   }}
                 >
@@ -4756,7 +4779,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           background: "rgba(255,253,247,0.65)",
           border: "1px solid rgba(16,19,44,0.12)",
           borderTop: "none",
-          minHeight: "clamp(520px, 42vw, 640px)",
+          minHeight: "clamp(440px, 36vw, 560px)",
         }}
       >
         <div
@@ -6218,7 +6241,7 @@ function FinalCta() {
         </div>
 
         <div className="relative z-10 flex items-center justify-center text-center px-6 py-24 md:py-32 lg:py-40">
-          <div className="max-w-[44ch]">
+          <div className="max-w-[64ch] md:max-w-[72ch]">
             <Reveal>
               <div
                 style={{

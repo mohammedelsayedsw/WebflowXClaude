@@ -535,7 +535,12 @@ function ClientLogoStrip({ onDark = false }: { onDark?: boolean }) {
 
 /* ----------------- Scope grid (categorized table) ----------------- */
 
-type ScopeGroup = { title: string; items: string[]; featured?: boolean };
+type ScopeGroup = {
+  title: string;
+  description?: string;
+  items: string[];
+  featured?: boolean;
+};
 
 function ScopeGrid({
   label,
@@ -674,12 +679,11 @@ function ScopeGrid({
 
         {/* Desktop: left-rail categories + right-panel items */}
         <div
-          className="hidden md:grid"
+          className="hidden md:grid items-stretch"
           style={{
             gridTemplateColumns: "minmax(220px, 280px) 1fr",
             border: "1px solid rgba(16,19,44,0.18)",
             background: "rgba(255,253,247,0.5)",
-            minHeight: 360,
           }}
         >
           {/* Left rail */}
@@ -759,73 +763,95 @@ function ScopeGrid({
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.22, ease }}
               >
+                {/* Top row: counter on the left, title + description on the right */}
                 <div
-                  className="flex items-baseline gap-3"
+                  className="flex items-start gap-6"
                   style={{
-                    marginBottom: 18,
-                    paddingBottom: 14,
+                    paddingBottom: 18,
+                    marginBottom: 22,
                     borderBottom: "1px solid rgba(16,19,44,0.18)",
                   }}
                 >
-                  <span
+                  <div
                     style={{
                       fontFamily: SERIF,
                       fontStyle: "italic",
-                      fontSize: "13px",
+                      fontSize: "clamp(20px, 1.7vw, 28px)",
                       color: INK_FAINT,
-                      letterSpacing: "0.04em",
+                      letterSpacing: "0.01em",
+                      lineHeight: 1,
+                      whiteSpace: "nowrap",
+                      paddingTop: 4,
                     }}
                   >
-                    {String(activeIdx + 1).padStart(2, "0")} of{" "}
-                    {String(groups.length).padStart(2, "0")}
-                  </span>
-                  <span
-                    className="inline-flex items-center gap-2"
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "20px",
-                      fontWeight: 600,
-                      color: INK,
-                      letterSpacing: "-0.005em",
-                    }}
-                  >
-                    {activeGroup?.title}
-                    {activeGroup?.featured && (
-                      <span
-                        aria-hidden="true"
+                    {activeIdx + 1} / {groups.length}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className="inline-flex items-center gap-2.5"
+                      style={{
+                        fontFamily: SERIF,
+                        fontSize: "clamp(26px, 2.4vw, 36px)",
+                        fontWeight: 600,
+                        color: INK,
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {activeGroup?.title}
+                      {activeGroup?.featured && (
+                        <span
+                          aria-hidden="true"
+                          style={{
+                            fontSize: 22,
+                            color: "var(--sw-blue)",
+                            lineHeight: 1,
+                          }}
+                        >
+                          ★
+                        </span>
+                      )}
+                    </div>
+                    {activeGroup?.description && (
+                      <p
+                        className="mt-3"
                         style={{
-                          fontSize: 16,
-                          color: "var(--sw-blue)",
-                          lineHeight: 1,
+                          fontFamily: SERIF,
+                          fontStyle: "italic",
+                          fontSize: "17px",
+                          color: INK_SOFT,
+                          lineHeight: 1.5,
+                          maxWidth: "62ch",
                         }}
                       >
-                        ★
-                      </span>
+                        {activeGroup.description}
+                      </p>
                     )}
-                  </span>
+                  </div>
                 </div>
+
                 <ul
-                  className="grid gap-x-8 gap-y-2"
+                  className="grid gap-x-10 gap-y-2.5"
                   style={{
                     gridTemplateColumns: `repeat(${
-                      (activeGroup?.items.length ?? 0) > 5 ? 2 : 1
+                      (activeGroup?.items.length ?? 0) > 4 ? 2 : 1
                     }, minmax(0, 1fr))`,
-                    fontSize: "16.5px",
+                    fontSize: "17px",
                     color: INK,
-                    lineHeight: 1.85,
+                    lineHeight: 1.65,
                     fontWeight: 400,
                   }}
                 >
                   {activeGroup?.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-baseline gap-2.5"
+                      className="flex items-baseline gap-3"
                     >
                       <span
                         aria-hidden="true"
                         style={{
-                          width: 5,
-                          height: 5,
+                          width: 6,
+                          height: 6,
                           background: "var(--sw-blue)",
                           display: "inline-block",
                           flexShrink: 0,
@@ -3526,6 +3552,8 @@ function BuildChapter() {
         expandedScope={[
           {
             title: "Store types",
+            description:
+              "The customer model we set up on Magento, from direct retail to wholesale and subscription.",
             items: [
               "B2C storefronts",
               "B2B portals",
@@ -3538,6 +3566,8 @@ function BuildChapter() {
           },
           {
             title: "Storefronts",
+            description:
+              "The presentation layer — Hyvä, headless, mobile, composable, or classic Magento.",
             items: [
               "Standard Magento",
               "Hyvä Themes",
@@ -3550,6 +3580,8 @@ function BuildChapter() {
           },
           {
             title: "Replatforms",
+            description:
+              "Migrations onto Magento from older Magento, other commerce platforms, or legacy custom builds.",
             items: [
               "Magento 1 → Magento 2",
               "Shopify → Magento",
@@ -3561,6 +3593,8 @@ function BuildChapter() {
           },
           {
             title: "Markets",
+            description:
+              "How we configure Magento for multi-region, multi-currency, and multi-brand commerce.",
             items: [
               "Multi-region",
               "Multi-currency",
@@ -3796,39 +3830,57 @@ function OptimizeChapter() {
             groups={[
               {
                 title: "ERP",
+                description:
+                  "Systems of record we wire into Magento for inventory, accounting, and operations.",
                 items: ["SAP", "NetSuite", "Microsoft Dynamics", "Oracle", "Infor", "Sage", "Acumatica"],
               },
               {
                 title: "PIM",
+                description:
+                  "Product information platforms that feed Magento attributes, copy, assets, and translations.",
                 items: ["Akeneo", "Pimcore", "inRiver", "Salsify", "Plytix", "Bluestone PIM"],
               },
               {
                 title: "CRM + CDP",
+                description:
+                  "Customer data platforms we sync with Magento for segmentation, personalization, and CX.",
                 items: ["Salesforce", "HubSpot", "Microsoft Dynamics 365", "Segment", "Adobe Experience Platform", "Klaviyo"],
               },
               {
                 title: "Search",
+                description:
+                  "Site search and merchandising engines that sit in front of Magento's catalog.",
                 items: ["Algolia", "Klevu", "Coveo", "Elasticsuite", "Searchanise"],
               },
               {
                 title: "Payments",
+                description:
+                  "Gateways and wallets certified for live use on our Magento builds.",
                 items: ["Adyen", "Stripe", "Braintree", "Klarna", "Affirm", "PayPal", "Apple Pay"],
               },
               {
                 title: "Marketing + reviews",
+                description:
+                  "Email, SMS, and review platforms we connect into the customer journey.",
                 items: ["Klaviyo", "Mailchimp", "Bloomreach", "ActiveCampaign", "Yotpo", "Trustpilot", "Bazaarvoice"],
               },
               {
                 title: "Performance + UX",
+                description:
+                  "How we measure and improve speed, accessibility, and conversion on every build.",
                 items: ["Core Web Vitals", "LCP, INP, CLS budgets", "UX research", "A/B testing", "Heatmaps", "Session recording"],
               },
               {
                 title: "Compliance",
+                description:
+                  "Regulatory work we handle for stores serving the EU, US, and Asia.",
                 items: ["GDPR", "EU AI Act", "WCAG accessibility"],
               },
               {
                 title: "AI commerce",
                 featured: true,
+                description:
+                  "Where AI does real operational work — forecasting, automation, internal tooling — on top of Magento.",
                 items: [
                   "Conversational commerce",
                   "Inventory forecasting",
@@ -4154,6 +4206,8 @@ function MonsterMoment() {
               groups={[
                 {
                   title: "Speed and uptime",
+                  description:
+                    "Things that take the store down or slow it past the point where it converts.",
                   items: [
                     "Downtime and outages",
                     "Slow site speed",
@@ -4164,6 +4218,8 @@ function MonsterMoment() {
                 },
                 {
                   title: "Code and dependencies",
+                  description:
+                    "Drift, conflicts, and runtime errors that creep in between releases.",
                   items: [
                     "Code errors and runtime exceptions",
                     "Extension conflicts",
@@ -4172,6 +4228,8 @@ function MonsterMoment() {
                 },
                 {
                   title: "SEO and visibility",
+                  description:
+                    "Search-traffic risks that show up after Google updates, redirects, or content changes.",
                   items: [
                     "Organic traffic drops",
                     "Indexing loss after core updates",
@@ -4180,6 +4238,8 @@ function MonsterMoment() {
                 },
                 {
                   title: "Integrations and data",
+                  description:
+                    "Sync failures between Magento and the rest of the stack — ERP, CRM, analytics.",
                   items: [
                     "Integration failures (ERP, CRM, PIM)",
                     "Analytics, GA4, and GTM breaks",
@@ -4187,6 +4247,8 @@ function MonsterMoment() {
                 },
                 {
                   title: "Revenue and trust",
+                  description:
+                    "Bugs at checkout and security events that cost orders directly.",
                   items: ["Checkout regressions", "Security incidents"],
                 },
               ]}
@@ -4322,30 +4384,44 @@ function GrowChapter() {
             groups={[
               {
                 title: "SEO",
+                description:
+                  "Organic and AI-search work to win the queries your buyers actually use.",
                 items: ["Organic SEO", "Technical SEO", "AEO + AI search", "Content strategy", "Schema + structured data"],
               },
               {
                 title: "Paid",
+                description:
+                  "Paid media we plan, buy, and optimize across Google, Meta, programmatic, and affiliate.",
                 items: ["Google Ads", "Meta Ads", "Programmatic", "Affiliate", "Influencer", "Display + retargeting"],
               },
               {
                 title: "CRO + UX",
+                description:
+                  "Conversion testing and UX research that lift revenue without buying more traffic.",
                 items: ["A/B testing", "UX research", "Heatmaps", "Session recording", "Funnel analytics", "Personalization"],
               },
               {
                 title: "Email + SMS",
+                description:
+                  "Lifecycle marketing across welcome, post-purchase, win-back, and VIP tiers.",
                 items: ["Klaviyo", "Mailchimp", "Omnisend", "ActiveCampaign", "Attentive", "Listrak"],
               },
               {
                 title: "Loyalty + reviews",
+                description:
+                  "Repeat-purchase programs and review pipelines that compound over time.",
                 items: ["Yotpo", "Smile", "LoyaltyLion", "Annex Cloud", "Trustpilot", "Bazaarvoice"],
               },
               {
                 title: "Marketplaces",
+                description:
+                  "Selling on Amazon, eBay, TikTok Shop, and the other big buyer destinations.",
                 items: ["Amazon", "eBay", "Walmart", "Etsy", "ManoMano", "TikTok Shop", "Instagram Shopping"],
               },
               {
                 title: "Market expansion",
+                description:
+                  "Standing up new countries, currencies, and languages without forking the codebase.",
                 items: ["New countries", "New languages", "Multi-currency", "Tax + duties", "Localization", "Cross-border logistics"],
               },
             ]}

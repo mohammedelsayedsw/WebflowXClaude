@@ -134,6 +134,46 @@ export default function AcceleratorsHubPage() {
         </div>
       </section>
 
+      {/* ----------------- Proof strip ----------------- */}
+      <section className="relative" style={{ background: INK }}>
+        <div
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: "rgba(255,255,255,0.12)" }}
+        />
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-12 md:py-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
+            {[
+              { v: "4", l: "verticals in production" },
+              { v: "8–14 wks", l: "from kickoff to live" },
+              { v: "700+", l: "Magento brands shipped since 2008" },
+              { v: "99.99%", l: "production uptime" },
+            ].map((s) => (
+              <div key={s.l}>
+                <div
+                  className="text-white font-medium tabular-nums"
+                  style={{
+                    fontSize: "clamp(34px, 3vw, 44px)",
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {s.v}
+                </div>
+                <div
+                  className="text-white/65 mt-3 max-w-[26ch]"
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {s.l}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ----------------- What an accelerator is ----------------- */}
       <section className="relative" style={{ background: INK }}>
         <div
@@ -183,6 +223,109 @@ export default function AcceleratorsHubPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ----------------- How we ship ----------------- */}
+      <section className="relative" style={{ background: INK }}>
+        <div
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: "rgba(255,255,255,0.08)" }}
+        />
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-20 md:py-28">
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
+            <div>
+              <div
+                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+                style={{ color: MINT }}
+              >
+                How we ship
+              </div>
+              <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
+                Three phases. Eight to fourteen weeks.
+              </h2>
+            </div>
+            <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed self-end max-w-[58ch]">
+              The accelerator is a working backbone on day one. We spend the time differently. Less of it on writing code that already exists, more on the vertical workflows, integrations, and data your team will rely on after we hand over.
+            </p>
+          </div>
+
+          <ol className="grid md:grid-cols-3 gap-6 md:gap-7">
+            {[
+              {
+                step: "01",
+                k: "Discovery",
+                weeks: "Weeks 1–2",
+                v: "Audit your data, integrations, and team. Map the accelerator against your operational gaps. Lock the scope and the success metric before any build starts.",
+              },
+              {
+                step: "02",
+                k: "Build",
+                weeks: "Weeks 3–10",
+                v: "Stand up the accelerator on Adobe Commerce. Configure vertical workflows. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top of the accelerator core.",
+              },
+              {
+                step: "03",
+                k: "Launch + handover",
+                weeks: "Weeks 10–14",
+                v: "Load test, security audit, content freeze, and go-live. Your team trains on the live system, owns the codebase, and runs it from day one. We stay on call for the first 90 days.",
+              },
+            ].map((p) => (
+              <li
+                key={p.step}
+                className="rounded-[4px] p-6 md:p-7"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
+                }}
+              >
+                <div className="flex items-baseline justify-between mb-5">
+                  <span
+                    className="font-medium tabular-nums"
+                    style={{
+                      color: MINT,
+                      fontSize: "13px",
+                      letterSpacing: "0.16em",
+                    }}
+                  >
+                    {p.step}
+                  </span>
+                  <span
+                    className="text-white/55"
+                    style={{
+                      fontSize: "12px",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {p.weeks}
+                  </span>
+                </div>
+                <h3
+                  className="text-white font-medium mb-3"
+                  style={{
+                    fontSize: "22px",
+                    letterSpacing: "-0.005em",
+                    lineHeight: 1.15,
+                  }}
+                >
+                  {p.k}
+                </h3>
+                <p
+                  className="text-white/70"
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {p.v}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -303,7 +446,7 @@ export default function AcceleratorsHubPage() {
             </div>
             <div className="flex flex-col gap-4 lg:items-end">
               <a
-                href="https://scandiweb.com/contact"
+                href="/solutions/magento/voyage#start"
                 className="inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
                 style={{
                   background: MINT,

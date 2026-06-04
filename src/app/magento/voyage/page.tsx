@@ -544,8 +544,11 @@ function ScopeGrid({
   label: string;
   groups: ScopeGroup[];
 }) {
-  // First group open by default on mobile, rest closed
+  // Mobile accordion: 0 by default, -1 = all closed.
   const [openIdx, setOpenIdx] = useState<number>(0);
+  // Desktop left-rail picker: which category's items are shown on the right.
+  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const activeGroup = groups[activeIdx] ?? groups[0];
 
   return (
     <Reveal delay={0.12}>
@@ -669,65 +672,173 @@ function ScopeGrid({
           })}
         </div>
 
-        {/* Desktop: card-style grid with stronger column heads */}
+        {/* Desktop: left-rail categories + right-panel items */}
         <div
-          className="hidden md:block"
+          className="hidden md:grid"
           style={{
+            gridTemplateColumns: "minmax(220px, 280px) 1fr",
             border: "1px solid rgba(16,19,44,0.18)",
             background: "rgba(255,253,247,0.5)",
-            padding: "32px 32px 28px",
+            minHeight: 360,
           }}
         >
+          {/* Left rail */}
           <div
-            className="grid gap-x-10 gap-y-10 md:gap-y-12"
             style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              borderRight: "1px solid rgba(16,19,44,0.16)",
+              padding: "16px 0",
             }}
           >
-            {groups.map((group) => (
-              <div key={group.title}>
-                <div
-                  className="flex items-center gap-2"
+            {groups.map((group, i) => {
+              const isActive = i === activeIdx;
+              return (
+                <button
+                  key={group.title}
+                  type="button"
+                  onClick={() => setActiveIdx(i)}
+                  className="w-full text-left flex items-center justify-between gap-3 transition-colors"
                   style={{
+                    padding: "14px 24px",
                     fontFamily: SERIF,
                     fontSize: "15px",
                     fontWeight: 700,
                     color: INK,
                     letterSpacing: "0.09em",
                     textTransform: "uppercase",
-                    paddingBottom: 12,
-                    marginBottom: 16,
-                    borderBottom: "2px solid rgba(16,19,44,0.32)",
+                    background: isActive
+                      ? "rgba(16,19,44,0.06)"
+                      : "transparent",
+                    borderLeft: `3px solid ${
+                      isActive ? "var(--sw-blue)" : "transparent"
+                    }`,
+                    cursor: "pointer",
                   }}
                 >
-                  <span>{group.title}</span>
-                  {group.featured && (
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        fontSize: 14,
-                        color: "var(--sw-blue)",
-                        lineHeight: 1,
-                      }}
-                    >
-                      ★
-                    </span>
-                  )}
+                  <span className="inline-flex items-center gap-2">
+                    {group.title}
+                    {group.featured && (
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          fontSize: 13,
+                          color: "var(--sw-blue)",
+                          lineHeight: 1,
+                        }}
+                      >
+                        ★
+                      </span>
+                    )}
+                  </span>
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-opacity"
+                    style={{
+                      opacity: isActive ? 0.7 : 0,
+                      color: INK,
+                    }}
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right panel */}
+          <div
+            style={{
+              padding: "32px 36px 32px",
+              backgroundImage:
+                "radial-gradient(circle, rgba(16,19,44,0.06) 1px, transparent 1px)",
+              backgroundSize: "18px 18px",
+              backgroundPosition: "0 0",
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeGroup?.title}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.22, ease }}
+              >
+                <div
+                  className="flex items-baseline gap-3"
+                  style={{
+                    marginBottom: 18,
+                    paddingBottom: 14,
+                    borderBottom: "1px solid rgba(16,19,44,0.18)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: SERIF,
+                      fontStyle: "italic",
+                      fontSize: "13px",
+                      color: INK_FAINT,
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {String(activeIdx + 1).padStart(2, "0")} of{" "}
+                    {String(groups.length).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="inline-flex items-center gap-2"
+                    style={{
+                      fontFamily: SERIF,
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: INK,
+                      letterSpacing: "-0.005em",
+                    }}
+                  >
+                    {activeGroup?.title}
+                    {activeGroup?.featured && (
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          fontSize: 16,
+                          color: "var(--sw-blue)",
+                          lineHeight: 1,
+                        }}
+                      >
+                        ★
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <ul
+                  className="grid gap-x-8 gap-y-2"
                   style={{
-                    fontSize: "16px",
+                    gridTemplateColumns: `repeat(${
+                      (activeGroup?.items.length ?? 0) > 5 ? 2 : 1
+                    }, minmax(0, 1fr))`,
+                    fontSize: "16.5px",
                     color: INK,
                     lineHeight: 1.85,
                     fontWeight: 400,
                   }}
                 >
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
+                  {activeGroup?.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-baseline gap-2.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          width: 5,
+                          height: 5,
+                          background: "var(--sw-blue)",
+                          display: "inline-block",
+                          flexShrink: 0,
+                          transform: "rotate(45deg)",
+                          marginTop: 9,
+                        }}
+                      />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -6269,8 +6380,9 @@ function FinalCta() {
                   textShadow: "0 2px 32px rgba(0,0,0,0.55)",
                 }}
               >
-                700 brands trust us with their Magento. Talk to us about
-                yours.
+                700 brands trust us with their Magento.
+                <br className="hidden md:inline" />{" "}
+                Talk to us about yours.
               </h2>
             </Reveal>
             <Reveal delay={0.16}>

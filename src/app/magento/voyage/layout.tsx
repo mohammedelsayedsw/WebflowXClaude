@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Italianno } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 
 // Period serif used throughout the Voyage LP (Roman numerals, italic labels,
 // engraved-plate aesthetic). Pairs with Golos Text from the root layout.
@@ -8,14 +8,6 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  display: "swap",
-});
-
-// Copperplate script for ornamental flourishes — the hero eyebrow.
-const italianno = Italianno({
-  variable: "--font-script",
-  subsets: ["latin"],
-  weight: ["400"],
   display: "swap",
 });
 
@@ -46,8 +38,6 @@ export default function VoyageLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className={`${cormorant.variable} ${italianno.variable}`}>
-      {children}
-    </div>
+    <div className={cormorant.variable}>{children}</div>
   );
 }

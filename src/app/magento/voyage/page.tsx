@@ -660,9 +660,11 @@ function ScopeGrid({
                       <ul
                         className="pb-5"
                         style={{
-                          fontSize: "15px",
-                          color: INK_SOFT,
+                          fontFamily: SERIF,
+                          fontSize: "17px",
+                          color: INK,
                           lineHeight: 1.85,
+                          fontWeight: 500,
                         }}
                       >
                         {group.items.map((item) => (
@@ -817,10 +819,9 @@ function ScopeGrid({
                         className="mt-3"
                         style={{
                           fontFamily: SERIF,
-                          fontStyle: "italic",
-                          fontSize: "17px",
+                          fontSize: "clamp(18px, 1.5vw, 22px)",
                           color: INK_SOFT,
-                          lineHeight: 1.5,
+                          lineHeight: 1.45,
                           maxWidth: "62ch",
                         }}
                       >
@@ -836,10 +837,11 @@ function ScopeGrid({
                     gridTemplateColumns: `repeat(${
                       (activeGroup?.items.length ?? 0) > 4 ? 2 : 1
                     }, minmax(0, 1fr))`,
-                    fontSize: "17px",
+                    fontFamily: SERIF,
+                    fontSize: "18.5px",
                     color: INK,
                     lineHeight: 1.65,
-                    fontWeight: 400,
+                    fontWeight: 500,
                   }}
                 >
                   {activeGroup?.items.map((item) => (
@@ -2866,7 +2868,7 @@ function VideoTestimonial() {
               paddingLeft: 16,
             }}
           >
-            — FELCO, Global Finance Director
+            FELCO, Global Finance Director
           </div>
         </div>
       </div>
@@ -3553,7 +3555,7 @@ function BuildChapter() {
           {
             title: "Store types",
             description:
-              "The customer model we set up on Magento, from direct retail to wholesale and subscription.",
+              "Every commerce model Magento supports, in production.",
             items: [
               "B2C storefronts",
               "B2B portals",
@@ -3567,7 +3569,7 @@ function BuildChapter() {
           {
             title: "Storefronts",
             description:
-              "The presentation layer — Hyvä, headless, mobile, composable, or classic Magento.",
+              "We pick the storefront tech that fits your speed targets and team.",
             items: [
               "Standard Magento",
               "Hyvä Themes",
@@ -3581,7 +3583,7 @@ function BuildChapter() {
           {
             title: "Replatforms",
             description:
-              "Migrations onto Magento from older Magento, other commerce platforms, or legacy custom builds.",
+              "Migrations onto Magento from any other commerce platform.",
             items: [
               "Magento 1 → Magento 2",
               "Shopify → Magento",
@@ -3594,7 +3596,7 @@ function BuildChapter() {
           {
             title: "Markets",
             description:
-              "How we configure Magento for multi-region, multi-currency, and multi-brand commerce.",
+              "Magento configured for multiple countries, currencies, and brands.",
             items: [
               "Multi-region",
               "Multi-currency",
@@ -3831,56 +3833,56 @@ function OptimizeChapter() {
               {
                 title: "ERP",
                 description:
-                  "Systems of record we wire into Magento for inventory, accounting, and operations.",
+                  "Connect Magento to your inventory, accounting, and operations system.",
                 items: ["SAP", "NetSuite", "Microsoft Dynamics", "Oracle", "Infor", "Sage", "Acumatica"],
               },
               {
                 title: "PIM",
                 description:
-                  "Product information platforms that feed Magento attributes, copy, assets, and translations.",
+                  "Feed Magento product data from any modern PIM.",
                 items: ["Akeneo", "Pimcore", "inRiver", "Salsify", "Plytix", "Bluestone PIM"],
               },
               {
                 title: "CRM + CDP",
                 description:
-                  "Customer data platforms we sync with Magento for segmentation, personalization, and CX.",
+                  "Two-way customer data sync for segmentation, personalization, and CX.",
                 items: ["Salesforce", "HubSpot", "Microsoft Dynamics 365", "Segment", "Adobe Experience Platform", "Klaviyo"],
               },
               {
                 title: "Search",
                 description:
-                  "Site search and merchandising engines that sit in front of Magento's catalog.",
+                  "Site search that converts better than the Magento default.",
                 items: ["Algolia", "Klevu", "Coveo", "Elasticsuite", "Searchanise"],
               },
               {
                 title: "Payments",
                 description:
-                  "Gateways and wallets certified for live use on our Magento builds.",
+                  "Any gateway or wallet, certified for live traffic.",
                 items: ["Adyen", "Stripe", "Braintree", "Klarna", "Affirm", "PayPal", "Apple Pay"],
               },
               {
                 title: "Marketing + reviews",
                 description:
-                  "Email, SMS, and review platforms we connect into the customer journey.",
+                  "Connect Magento to your email, SMS, and review platforms.",
                 items: ["Klaviyo", "Mailchimp", "Bloomreach", "ActiveCampaign", "Yotpo", "Trustpilot", "Bazaarvoice"],
               },
               {
                 title: "Performance + UX",
                 description:
-                  "How we measure and improve speed, accessibility, and conversion on every build.",
+                  "Speed and conversion work, measured on every build.",
                 items: ["Core Web Vitals", "LCP, INP, CLS budgets", "UX research", "A/B testing", "Heatmaps", "Session recording"],
               },
               {
                 title: "Compliance",
                 description:
-                  "Regulatory work we handle for stores serving the EU, US, and Asia.",
+                  "Keep the store legal in every market you sell into.",
                 items: ["GDPR", "EU AI Act", "WCAG accessibility"],
               },
               {
                 title: "AI commerce",
                 featured: true,
                 description:
-                  "Where AI does real operational work — forecasting, automation, internal tooling — on top of Magento.",
+                  "AI doing real operational work on top of Magento. Forecasting, automation, internal tools.",
                 items: [
                   "Conversational commerce",
                   "Inventory forecasting",
@@ -4207,7 +4209,7 @@ function MonsterMoment() {
                 {
                   title: "Speed and uptime",
                   description:
-                    "Things that take the store down or slow it past the point where it converts.",
+                    "What takes the store down or slows it past the point where it converts.",
                   items: [
                     "Downtime and outages",
                     "Slow site speed",
@@ -4219,7 +4221,7 @@ function MonsterMoment() {
                 {
                   title: "Code and dependencies",
                   description:
-                    "Drift, conflicts, and runtime errors that creep in between releases.",
+                    "Drift, conflicts, and runtime errors between releases.",
                   items: [
                     "Code errors and runtime exceptions",
                     "Extension conflicts",
@@ -4229,7 +4231,7 @@ function MonsterMoment() {
                 {
                   title: "SEO and visibility",
                   description:
-                    "Search-traffic risks that show up after Google updates, redirects, or content changes.",
+                    "Search risks after Google updates, redirects, or content changes.",
                   items: [
                     "Organic traffic drops",
                     "Indexing loss after core updates",
@@ -4239,7 +4241,7 @@ function MonsterMoment() {
                 {
                   title: "Integrations and data",
                   description:
-                    "Sync failures between Magento and the rest of the stack — ERP, CRM, analytics.",
+                    "Sync failures between Magento, ERP, CRM, and analytics.",
                   items: [
                     "Integration failures (ERP, CRM, PIM)",
                     "Analytics, GA4, and GTM breaks",
@@ -4248,7 +4250,7 @@ function MonsterMoment() {
                 {
                   title: "Revenue and trust",
                   description:
-                    "Bugs at checkout and security events that cost orders directly.",
+                    "Checkout bugs and security events that cost orders directly.",
                   items: ["Checkout regressions", "Security incidents"],
                 },
               ]}
@@ -4385,43 +4387,43 @@ function GrowChapter() {
               {
                 title: "SEO",
                 description:
-                  "Organic and AI-search work to win the queries your buyers actually use.",
+                  "Win the queries your buyers actually use.",
                 items: ["Organic SEO", "Technical SEO", "AEO + AI search", "Content strategy", "Schema + structured data"],
               },
               {
                 title: "Paid",
                 description:
-                  "Paid media we plan, buy, and optimize across Google, Meta, programmatic, and affiliate.",
+                  "Google, Meta, programmatic, affiliate. Planned, bought, optimized.",
                 items: ["Google Ads", "Meta Ads", "Programmatic", "Affiliate", "Influencer", "Display + retargeting"],
               },
               {
                 title: "CRO + UX",
                 description:
-                  "Conversion testing and UX research that lift revenue without buying more traffic.",
+                  "Lift revenue without buying more traffic.",
                 items: ["A/B testing", "UX research", "Heatmaps", "Session recording", "Funnel analytics", "Personalization"],
               },
               {
                 title: "Email + SMS",
                 description:
-                  "Lifecycle marketing across welcome, post-purchase, win-back, and VIP tiers.",
+                  "Welcome, post-purchase, win-back, VIP.",
                 items: ["Klaviyo", "Mailchimp", "Omnisend", "ActiveCampaign", "Attentive", "Listrak"],
               },
               {
                 title: "Loyalty + reviews",
                 description:
-                  "Repeat-purchase programs and review pipelines that compound over time.",
+                  "Programs and pipelines that compound over time.",
                 items: ["Yotpo", "Smile", "LoyaltyLion", "Annex Cloud", "Trustpilot", "Bazaarvoice"],
               },
               {
                 title: "Marketplaces",
                 description:
-                  "Selling on Amazon, eBay, TikTok Shop, and the other big buyer destinations.",
+                  "Sell on Amazon, eBay, TikTok Shop, and the rest.",
                 items: ["Amazon", "eBay", "Walmart", "Etsy", "ManoMano", "TikTok Shop", "Instagram Shopping"],
               },
               {
                 title: "Market expansion",
                 description:
-                  "Standing up new countries, currencies, and languages without forking the codebase.",
+                  "New countries, currencies, and languages. Without forking the codebase.",
                 items: ["New countries", "New languages", "Multi-currency", "Tax + duties", "Localization", "Cross-border logistics"],
               },
             ]}
@@ -4767,11 +4769,11 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           style={{
             fontFamily: SERIF,
             fontWeight: 600,
-            fontSize: "clamp(15.5px, 1.35vw, 19px)",
-            color: "rgba(255,255,255,0.98)",
+            fontSize: "clamp(19px, 1.7vw, 24px)",
+            color: "rgba(255,255,255,1)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            textShadow: "0 1px 6px rgba(0,0,0,0.55)",
+            textShadow: "0 1px 6px rgba(0,0,0,0.6)",
           }}
         >
           <span className="flex items-center gap-3">
@@ -4795,11 +4797,11 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: "13px",
+                  fontSize: "16px",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.96)",
-                  padding: "6px 12px 6px 10px",
+                  color: "rgba(255,255,255,1)",
+                  padding: "8px 14px 8px 12px",
                   border: "1px solid rgba(255,255,255,0.5)",
                   background: "rgba(255,255,255,0.1)",
                   backdropFilter: "blur(6px)",
@@ -4827,7 +4829,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           <span
             className="flex items-center gap-2.5"
             style={{
-              fontSize: "14px",
+              fontSize: "17px",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
             }}
@@ -4845,10 +4847,10 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           </span>
           <span
             style={{
-              fontSize: "12.5px",
+              fontSize: "15px",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.88)",
+              color: "rgba(255,255,255,0.95)",
             }}
           >
             {cs.industry}
@@ -4859,7 +4861,7 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
               style={{
                 fontFamily: SERIF,
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "14px",
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.95)",
@@ -4929,9 +4931,9 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                 <div
                   style={{
                     fontFamily: SERIF,
-                    fontSize: "clamp(28px, 2.6vw, 36px)",
+                    fontSize: "clamp(34px, 3vw, 44px)",
                     fontWeight: 500,
-                    color: "rgba(255,255,255,0.98)",
+                    color: "rgba(255,255,255,1)",
                     lineHeight: 1,
                     letterSpacing: "-0.015em",
                     whiteSpace: "nowrap",
@@ -4942,11 +4944,10 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
                 <div
                   style={{
                     fontFamily: SERIF,
-                    fontStyle: "italic",
-                    fontSize: "17.5px",
-                    color: "rgba(255,255,255,0.92)",
-                    letterSpacing: "0.01em",
-                    marginTop: 10,
+                    fontSize: "clamp(18px, 1.4vw, 21px)",
+                    color: "rgba(255,255,255,0.95)",
+                    letterSpacing: "0.005em",
+                    marginTop: 12,
                     lineHeight: 1.3,
                     minHeight: "2.5em",
                   }}
@@ -4973,9 +4974,9 @@ function CaseCard({ cs, index }: { cs: Case; index: number }) {
           style={{
             fontFamily: SERIF,
             fontWeight: 600,
-            fontSize: "14px",
-            color: INK_FAINT,
-            letterSpacing: "0.1em",
+            fontSize: "18px",
+            color: INK,
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
           }}
         >
@@ -5247,11 +5248,10 @@ function Cases() {
                 style={{
                   fontFamily: SERIF,
                   fontWeight: 600,
-                  fontSize: 14,
-                  color: INK_FAINT,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  minWidth: 56,
+                  fontSize: 22,
+                  color: INK,
+                  letterSpacing: "0.06em",
+                  minWidth: 64,
                 }}
               >
                 {activeIndex + 1} / {CASES.length}

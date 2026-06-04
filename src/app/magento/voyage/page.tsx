@@ -400,7 +400,7 @@ function Opening() {
                   lineHeight: 1.6,
                 }}
               >
-                We have delivered all three for 700 brands since Magento
+                We have delivered all three for 700+ brands since Magento
                 launched in 2008. Many of those merchants have stayed with
                 us for more than ten years.
               </p>
@@ -3828,7 +3828,7 @@ function OptimizeChapter() {
       <section style={{ background: CREAM }}>
         <div className="wrap pt-4 pb-20 md:pb-28">
           <ScopeGrid
-            label="Integrations and technologies we run"
+            label="Integrations and technologies"
             groups={[
               {
                 title: "ERP",
@@ -4204,7 +4204,7 @@ function MonsterMoment() {
           {/* Support coverage grid — categorized like ScopeGrid */}
           <div className="mt-20 md:mt-28">
             <ScopeGrid
-              label="Specific issues we monitor, triage, and fix"
+              label="Specific issues we monitor and fix"
               groups={[
                 {
                   title: "Speed and uptime",
@@ -4347,7 +4347,7 @@ function GrowChapter() {
                   >
                     Once Magento is stable and fast, the work shifts to
                     revenue. SEO, paid, CRO, email, retention, marketplaces,
-                    and new markets. We run all of it on the same team that
+                    and new markets. We manage all of it on the same team that
                     keeps the store running.
                   </p>
                 </Reveal>
@@ -4382,7 +4382,7 @@ function GrowChapter() {
 
           <div className="mt-20 md:mt-28">
             <ScopeGrid
-              label="Growth channels we run"
+              label="Growth channels"
             groups={[
               {
                 title: "SEO",
@@ -4564,7 +4564,7 @@ function Footprint() {
                   whiteSpace: "nowrap",
                 }}
               >
-                <span className="block">700 merchants.</span>
+                <span className="block">700+ merchants.</span>
                 <span className="block">Six continents.</span>
               </h2>
             </Reveal>
@@ -4591,7 +4591,7 @@ function Footprint() {
                   textShadow: "0 2px 16px rgba(0,0,0,0.55)",
                 }}
               >
-                Magento merchants we have built and grown.
+                Magento merchants we have helped stabilize and grow.
               </div>
             </Reveal>
           </div>
@@ -5694,10 +5694,22 @@ function Pricing() {
                   {t.points.map((p) => (
                     <li
                       key={p}
-                      className="leading-snug"
+                      className="leading-snug flex items-baseline gap-2.5"
                       style={{ color: "rgba(16,19,44,0.8)" }}
                     >
-                      {p}
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          width: 6,
+                          height: 6,
+                          background: "var(--sw-blue)",
+                          display: "inline-block",
+                          flexShrink: 0,
+                          transform: "rotate(45deg)",
+                          marginTop: 7,
+                        }}
+                      />
+                      <span>{p}</span>
                     </li>
                   ))}
                 </ul>
@@ -6380,8 +6392,8 @@ function FinalCta() {
                   className="mt-7 max-w-[50ch] leading-relaxed"
                   style={{ fontSize: "18px", color: INK_SOFT, lineHeight: 1.6 }}
                 >
-                  30 minutes, no obligation. We listen, ask, and reply with a
-                  written summary inside 24 hours.
+                  There&rsquo;s no obligation. We listen, ask, and reply with
+                  a written summary within 24 hours.
                 </p>
               </div>
             </Reveal>
@@ -6456,7 +6468,7 @@ function FinalCta() {
                   textShadow: "0 2px 32px rgba(0,0,0,0.55)",
                 }}
               >
-                700 brands trust us with their Magento
+                700+ brands trust us with their Magento
                 <br className="hidden md:inline" />{" "}
                 Talk to us about yours
               </h2>

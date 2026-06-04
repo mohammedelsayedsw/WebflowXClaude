@@ -291,7 +291,7 @@ function Hero() {
                 textShadow: "0 2px 32px rgba(0,0,0,0.55)",
               }}
             >
-              Build, run, and grow your Magento store.
+              Build, run, and grow your Magento store
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -2189,7 +2189,7 @@ function ImpactStats() {
               maxWidth: "20ch",
             }}
           >
-            What changes after we take over.
+            What changes after we take over
           </h3>
         </Reveal>
         <Reveal delay={0.05}>
@@ -2210,7 +2210,7 @@ function ImpactStats() {
         <Reveal delay={0.1}>
           <div className="mt-12 md:mt-16">
             <EngravedPlate
-              label="Monthly revenue index, before and after we take over."
+              label="Monthly revenue index, before and after we take over"
               footnote="Average lift across customers we ran for the last 12 months."
             >
               <RevenueChart />
@@ -2221,7 +2221,7 @@ function ImpactStats() {
         <div className="mt-6 md:mt-8 grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           <Reveal delay={0.18} className="h-full">
             <EngravedPlate
-              label="Website conversion rate vs the industry average."
+              label="Website conversion rate vs the industry average"
               footnote="Average uplift across customers we ran for the last 12 months."
             >
               <ConversionChart />
@@ -2233,7 +2233,7 @@ function ImpactStats() {
         </div>
         <div className="mt-6 md:mt-8">
           <Reveal delay={0.3}>
-            <EngravedPlate label="We run, maintain, and grow your omnichannel.">
+            <EngravedPlate label="We run, maintain, and grow your omnichannel">
               <IntegrationsDashboard />
             </EngravedPlate>
           </Reveal>
@@ -2891,7 +2891,7 @@ function GrowthStats() {
             maxWidth: "22ch",
           }}
         >
-          We make Magento stores grow.
+          We make Magento stores grow
         </h3>
       </Reveal>
       <Reveal delay={0.05}>
@@ -2913,7 +2913,7 @@ function GrowthStats() {
       <Reveal delay={0.1}>
         <div className="mt-12 md:mt-16">
           <EngravedPlate
-            label="We grow every channel that moves your revenue."
+            label="We grow every channel that moves your revenue"
             footnote="Average channel mix across customers we ran for the last 12 months."
           >
             <ChannelChart />
@@ -2924,14 +2924,14 @@ function GrowthStats() {
       <div className="mt-6 md:mt-8 grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
         <Reveal delay={0.18} className="h-full">
           <EngravedPlate
-            label="Returning customer share, against the industry."
+            label="Returning customer share, against the industry"
             footnote="Lifecycle marketing across welcome flows, post-purchase, win-back, and VIP tiers."
           >
             <AOVChart />
           </EngravedPlate>
         </Reveal>
         <Reveal delay={0.24} className="h-full">
-          <EngravedPlate label="Rank 1st on AI searches.">
+          <EngravedPlate label="Rank 1st on AI searches">
             <AISearchDemo />
           </EngravedPlate>
         </Reveal>
@@ -2939,7 +2939,7 @@ function GrowthStats() {
 
       <Reveal delay={0.3}>
         <div className="mt-6 md:mt-8">
-          <EngravedPlate label="Sometimes almost tripling online revenue.">
+          <EngravedPlate label="Sometimes almost tripling online revenue">
             <VideoTestimonial />
           </EngravedPlate>
         </div>
@@ -3511,7 +3511,7 @@ function BuildChapter() {
                     letterSpacing: "-0.015em",
                   }}
                 >
-                  Build.
+                  Build
                 </h2>
               </Reveal>
               <Reveal delay={0.15}>
@@ -3607,7 +3607,7 @@ function BuildChapter() {
             ],
           },
         ]}
-        expandedScopeLabel="What we build, for whom."
+        expandedScopeLabel="What we build, for whom"
         chart={
           <div className="max-w-[1080px]">
             <Reveal>
@@ -3622,7 +3622,7 @@ function BuildChapter() {
                   maxWidth: "26ch",
                 }}
               >
-                Magento delivered in weeks, not multi-year programs.
+                Magento delivered in weeks, replacing multi-year programs
               </h3>
             </Reveal>
             <Reveal delay={0.06}>
@@ -3639,10 +3639,10 @@ function BuildChapter() {
               </p>
             </Reveal>
             <div className="mt-10 md:mt-12 grid md:grid-cols-2 gap-6 lg:gap-8">
-              <EngravedPlate label="Time to build a Magento store.">
+              <EngravedPlate label="Time to build a Magento store">
                 <MiniTimeChart />
               </EngravedPlate>
-              <EngravedPlate label="Cost to build a Magento store.">
+              <EngravedPlate label="Cost to build a Magento store">
                 <MiniCostChart />
               </EngravedPlate>
             </div>
@@ -3786,7 +3786,7 @@ function OptimizeChapter() {
                   letterSpacing: "-0.015em",
                 }}
               >
-                Optimize.
+                Optimize
               </h2>
             </Reveal>
             <Reveal delay={0.15}>
@@ -3799,7 +3799,7 @@ function OptimizeChapter() {
                 }}
               >
                 A live Magento store needs constant care to stay stable,
-                secure, and fast. Adobe ships Magento patches every few
+                secure, and fast. Adobe sends Magento patches every few
                 months. Composer dependencies drift. Integrations break
                 under traffic peaks. PCI requirements change every year.
                 None of this stops on its own.
@@ -3828,7 +3828,7 @@ function OptimizeChapter() {
       <section style={{ background: CREAM }}>
         <div className="wrap pt-4 pb-20 md:pb-28">
           <ScopeGrid
-            label="Integrations and technologies we run."
+            label="Integrations and technologies we run"
             groups={[
               {
                 title: "ERP",
@@ -4036,7 +4036,7 @@ function MonsterMoment() {
                   maxWidth: "18ch",
                 }}
               >
-                When the kraken comes.
+                When the kraken comes
               </h2>
             </Reveal>
           </div>
@@ -4204,7 +4204,7 @@ function MonsterMoment() {
           {/* Support coverage grid — categorized like ScopeGrid */}
           <div className="mt-20 md:mt-28">
             <ScopeGrid
-              label="Specific issues we monitor, triage, and fix."
+              label="Specific issues we monitor, triage, and fix"
               groups={[
                 {
                   title: "Speed and uptime",
@@ -4329,7 +4329,7 @@ function GrowChapter() {
                       letterSpacing: "-0.015em",
                     }}
                   >
-                    Grow.
+                    Grow
                   </h2>
                 </Reveal>
               </div>
@@ -4382,7 +4382,7 @@ function GrowChapter() {
 
           <div className="mt-20 md:mt-28">
             <ScopeGrid
-              label="Growth channels we run."
+              label="Growth channels we run"
             groups={[
               {
                 title: "SEO",
@@ -5238,7 +5238,7 @@ function Cases() {
                 letterSpacing: "-0.015em",
               }}
             >
-              Some voyages scandiweb helped happen.
+              Some voyages scandiweb helped happen
             </h2>
           </Reveal>
 
@@ -5386,7 +5386,7 @@ function Team() {
                   letterSpacing: "-0.015em",
                 }}
               >
-                The same humans in week one as month twelve.
+                The same humans in week one as month twelve
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -5496,7 +5496,7 @@ function Heritage() {
                   maxWidth: "22ch",
                 }}
               >
-                Where the practice was built.
+                Where the practice was built
               </h2>
             </Reveal>
             <Reveal delay={0.16}>
@@ -5601,7 +5601,7 @@ function Pricing() {
               maxWidth: "22ch",
             }}
           >
-            One offer per path.
+            One offer per path
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
@@ -5996,7 +5996,7 @@ function Faq() {
                   maxWidth: "16ch",
                 }}
               >
-                Specific questions, specific answers.
+                Specific questions, specific answers
               </h2>
             </Reveal>
           </div>
@@ -6374,7 +6374,7 @@ function FinalCta() {
                     maxWidth: "18ch",
                   }}
                 >
-                  Book a 30-minute discovery call.
+                  Book a 30-minute discovery call
                 </h2>
                 <p
                   className="mt-7 max-w-[50ch] leading-relaxed"
@@ -6456,9 +6456,9 @@ function FinalCta() {
                   textShadow: "0 2px 32px rgba(0,0,0,0.55)",
                 }}
               >
-                700 brands trust us with their Magento.
+                700 brands trust us with their Magento
                 <br className="hidden md:inline" />{" "}
-                Talk to us about yours.
+                Talk to us about yours
               </h2>
             </Reveal>
             <Reveal delay={0.16}>

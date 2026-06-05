@@ -362,7 +362,7 @@ export default function AcceleratorsHubPage() {
             {ACCELERATORS.map((a) => (
               <Link
                 key={a.slug}
-                href={`/solutions/accelerator/${a.slug}`}
+                href={`/accelerator/${a.slug}`}
                 className="group block rounded-[4px] p-7 md:p-9 transition-all hover:-translate-y-0.5"
                 style={{
                   background:
@@ -446,7 +446,7 @@ export default function AcceleratorsHubPage() {
             </div>
             <div className="flex flex-col gap-4 lg:items-end">
               <a
-                href="/solutions/magento/voyage#start"
+                href="/magento/voyage#start"
                 className="inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
                 style={{
                   background: MINT,

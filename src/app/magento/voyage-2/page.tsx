@@ -5460,7 +5460,7 @@ function Pricing() {
       path: "Build",
       offer: "$5,000 off any new Magento build.",
       fineprint:
-        "Up to 25% discount per invoice. We back more Magento stores.",
+        "Applied as a credit on your first build invoice.",
       body:
         "A new Adobe Commerce store, a replatform, or a Hyvä storefront on an existing one. Discovery, architecture, build, and handover under one engagement.",
       points: [
@@ -5489,18 +5489,18 @@ function Pricing() {
     },
     {
       path: "Grow",
-      offer: "50% off the first 40 hours of work.",
+      offer: "Free 5-day Magento growth audit.",
       fineprint:
-        "Pick the stream: SEO, paid, CRO, email, marketplaces, or AI search.",
+        "Channel-by-channel gap analysis, prioritized roadmap, first experiment scoped.",
       body:
-        "A fixed block of growth time to test the channel of your choice. Strategy, execution, and weekly reporting included.",
+        "Five days, real data. Pulled from your store, analytics, ad accounts, and CRM. You leave with a roadmap that says exactly which channel to fund first and what it will lift.",
       points: [
-        "Pick any one channel to test",
-        "Weekly experiments and reporting",
-        "Full data and reporting access",
-        "Extendable into a retainer",
+        "GA4, channel, and funnel audit",
+        "Six-month prioritized roadmap",
+        "First experiment scoped and ready to run",
+        "No commitment to continue",
       ],
-      cta: "Get 50% off",
+      cta: "Get the audit",
     },
   ];
 

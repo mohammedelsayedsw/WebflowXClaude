@@ -227,10 +227,10 @@ function Hero() {
     >
       <div className="absolute inset-0">
         <Plate
-          keyword="hero"
-          alt="An eighteenth century merchant ship sailing on bright turquoise ocean past distant islands at sunrise"
+          keyword="grow"
+          alt="A bustling eighteenth century harbour market at golden hour with merchants unloading goods from tall ships"
           priority
-          className="object-[72%_center] md:object-center"
+          className="object-[60%_center] md:object-center"
         />
         <div
           className="absolute inset-0"

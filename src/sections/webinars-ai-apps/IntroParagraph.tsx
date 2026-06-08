@@ -445,7 +445,7 @@ export function IntroParagraph() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <p className="mt-5 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed">
+              <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
                 Both platforms opened a new app layer. People use brand apps
                 inside the chat to search products, place orders, get quotes,
                 and manage their accounts. The first brands went live already.
@@ -453,7 +453,7 @@ export function IntroParagraph() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="mt-5 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed">
+              <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
                 On June 17, scandiweb COO Rolands Popovs shows why you need
                 to be among the first stores inside ChatGPT and Claude, then
                 maps your first app live: where to start and how to launch in

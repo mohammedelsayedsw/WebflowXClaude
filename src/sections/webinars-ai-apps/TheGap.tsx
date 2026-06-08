@@ -5,14 +5,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 /* ── Vertical ChatGPT-apps directory mockup ────────────────────── */
 
-const nav = [
-  "Featured",
-  "Top picks",
-  "Productivity",
-  "Shopping",
-  "Travel",
-  "Learning",
-];
+const nav = ["Featured", "Top picks", "Productivity", "Shopping"];
 
 const apps: { letter: string; name: string; tag: string; bg: string }[] = [
   { letter: "C", name: "Canva", tag: "Design anything", bg: "#7cc4ff" },
@@ -81,7 +74,7 @@ function AppStoreMockup() {
 
       {/* Horizontal nav (replaces left sidebar in vertical layout) */}
       <div className="px-3.5 pt-3 pb-3 border-b border-white/[0.08]">
-        <div className="flex gap-1.5 overflow-x-auto pb-0.5 -mx-1 px-1">
+        <div className="flex flex-wrap gap-1.5 pb-0.5 -mx-1 px-1">
           {nav.map((n, i) => (
             <span
               key={n}

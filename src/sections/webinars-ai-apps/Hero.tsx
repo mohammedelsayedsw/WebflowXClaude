@@ -163,7 +163,7 @@ export function Hero() {
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-3 md:mt-4 font-head text-[16px] sm:text-[18px] md:text-[22px] leading-[1.3] max-w-[40ch]"
+                  className="mt-3 md:mt-4 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.3] max-w-[40ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   Sell, support, operate, all inside the chat

@@ -6,7 +6,7 @@ import { assetUrl } from "@/lib/assets";
 
 const stats: [string, string][] = [
   ["15+ years", "in digital commerce"],
-  ["2,100+", "projects delivered"],
+  ["100+", "projects delivered"],
 ];
 
 export function SpeakerBio() {

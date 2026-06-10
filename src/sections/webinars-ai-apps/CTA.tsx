@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -56,17 +55,15 @@ export function CTA() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="https://us06web.zoom.us/webinar/register/WN_eYGni7vVSc-viCu0LakFiQ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={btnPrimary}
-              >
-                Sign up now
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+          <Reveal delay={0.2} className="w-full">
+            <div className="mt-10 md:mt-12 mx-auto w-full max-w-[560px] text-left">
+              <HubSpotForm
+                portalId="25724996"
+                formId="595a3980-b650-43a4-8d4a-8c1ca0e12c67"
+              />
+              <p className="mt-4 text-center text-white/55 text-[13px] tracking-wide">
+                Register and your personal Zoom join link arrives by email.
+              </p>
             </div>
           </Reveal>
         </div>

@@ -5,9 +5,6 @@ import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
-const ZOOM_REGISTER_URL =
-  "https://us06web.zoom.us/webinar/register/WN_eYGni7vVSc-viCu0LakFiQ";
-
 function HeroBg() {
   return (
     <>
@@ -217,12 +214,7 @@ export function Hero() {
 
               <Reveal delay={0.25}>
                 <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
-                  <a
-                    href={ZOOM_REGISTER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnPrimary}
-                  >
+                  <a href="#cta" className={btnPrimary}>
                     Sign up now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>

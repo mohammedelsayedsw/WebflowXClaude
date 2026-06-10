@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/accelerators",
+        destination: "/accelerator",
+        permanent: true,
+      },
+      {
+        source: "/accelerators/:path*",
+        destination: "/accelerator/:path*",
+        permanent: true,
+      },
+      {
         source: "/pages/:slug",
         destination: "/accelerator/:slug",
         permanent: true,

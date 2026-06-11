@@ -102,7 +102,11 @@ export default function AcceleratorHubPage() {
   return (
     <main className="font-head" style={{ background: INK, color: "#ffffff" }}>
       {/* ----------------- Hero ----------------- */}
-      <section className="relative overflow-hidden min-h-[100svh] flex items-center">
+      {/* min-h-screen (100vh) is the fallback; dvh tracks mobile browser chrome */}
+      <section
+        className="relative overflow-hidden min-h-screen flex items-center"
+        style={{ minHeight: "100dvh" }}
+      >
         <div
           className="absolute inset-0 -z-10"
           style={{

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
+import { assetUrl } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "Magento accelerators for vertical commerce | scandiweb",
@@ -107,23 +108,31 @@ export default function AcceleratorHubPage() {
         className="relative overflow-hidden min-h-screen flex items-center"
         style={{ minHeight: "100dvh" }}
       >
+        {/* Background photo – blurred and scaled so blur edges stay off-canvas */}
+        <div
+          className="absolute inset-0 -z-20 bg-center bg-cover"
+          style={{
+            backgroundImage: `url(${assetUrl("/accelerator/hero-bg.jpg")})`,
+            filter: "blur(7px) brightness(0.9)",
+            transform: "scale(1.06)",
+          }}
+        />
+        {/* Dark navy wash – image reads as ambience, text stays legible */}
         <div
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(1000px 700px at 18% 20%, #2f3a91 0%, transparent 56%)," +
-              "radial-gradient(700px 520px at 88% 12%, rgba(110,247,110,0.10) 0%, transparent 50%)," +
-              "radial-gradient(800px 580px at 82% 85%, #070a1e 0%, transparent 52%)," +
-              "radial-gradient(1400px 900px at 50% 50%, #1d2468 0%, #161c4e 35%, #10132c 70%, #0a0d24 100%)",
+              "linear-gradient(180deg, rgba(10,13,36,0.88) 0%, rgba(16,19,44,0.84) 45%, rgba(10,13,36,0.94) 100%)",
           }}
         />
+        {/* Cool radial tint to keep brand mood */}
         <div
           className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
           style={{
             background:
-              "radial-gradient(620px 900px at 30% 60%, rgba(7, 10, 30, 0.85), transparent 60%)," +
-              "radial-gradient(540px 720px at 70% 30%, rgba(63, 74, 175, 0.28), transparent 60%)",
-            filter: "blur(50px)",
+              "radial-gradient(900px 620px at 18% 22%, rgba(47,58,145,0.6) 0%, transparent 55%)," +
+              "radial-gradient(700px 520px at 88% 12%, rgba(110,247,110,0.10) 0%, transparent 50%)," +
+              "radial-gradient(800px 580px at 85% 82%, rgba(7,10,30,0.6) 0%, transparent 52%)",
           }}
         />
 
@@ -136,11 +145,11 @@ export default function AcceleratorHubPage() {
             <span style={{ color: MINT }}>live in weeks</span>
           </h1>
           <p className="mt-7 md:mt-9 text-white/80 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
-            Every school photographer needs the same ordering logic. Every
-            uniform retailer survives the same September. Every card shop
-            fights the same drop-day traffic. We got tired of rebuilding it
-            from scratch, so we built each store once, properly. Yours starts
-            at 80% done.
+            Most of an online store is not unique to your business. Your
+            whole industry shares the same catalog logic, account structures,
+            and seasonal peaks. We build that core once per industry and
+            harden it in production, so your store starts at 80% done instead
+            of a blank page.
           </p>
 
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4 md:gap-5">
@@ -170,9 +179,21 @@ export default function AcceleratorHubPage() {
           </div>
 
           <div className="mt-12 md:mt-14 text-white/55 text-[13.5px] md:text-[14px] tracking-wide">
-            700+ Magento brands shipped since 2008 · 99.99% production uptime
+            Fixed scope · Fixed price · Full code ownership
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <a
+          href="#accelerators"
+          aria-label="Scroll down to the accelerators"
+          className="absolute bottom-5 md:bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/55 hover:text-white transition-colors"
+        >
+          <span className="text-[10px] tracking-[0.22em] uppercase">
+            Scroll
+          </span>
+          <ChevronDown className="h-5 w-5 animate-bounce" />
+        </a>
       </section>
 
       {/* ----------------- Accelerator cards ----------------- */}
@@ -494,9 +515,9 @@ export default function AcceleratorHubPage() {
         <div className="wrap py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {[
-              { v: "700+", l: "Magento brands shipped since 2008" },
-              { v: "99.99%", l: "production uptime" },
+              { v: "80%", l: "of the store pre-built before kickoff" },
               { v: "8-14 wks", l: "from kickoff to live" },
+              { v: "1 price", l: "fixed scope, fixed price, no surprises" },
               { v: "90 days", l: "on call after every launch" },
             ].map((s) => (
               <div key={s.l}>

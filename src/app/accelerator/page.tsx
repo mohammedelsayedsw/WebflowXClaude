@@ -27,6 +27,8 @@ export const metadata: Metadata = {
 
 const INK = "#10132c";
 const MINT = "#6ef76e";
+const BEIGE = "var(--sw-beige)";
+const BLUE = "var(--sw-blue)";
 
 type Accelerator = {
   slug: string;
@@ -34,6 +36,7 @@ type Accelerator = {
   forWhom: string;
   weeks: string;
   capabilities: string[];
+  accent: string;
 };
 
 const ACCELERATORS: Accelerator[] = [
@@ -43,6 +46,7 @@ const ACCELERATORS: Accelerator[] = [
     forWhom:
       "Photographers shooting hundreds of schools each season, selling packages back to parents.",
     weeks: "8 to 12 weeks",
+    accent: "var(--sw-mint)",
     capabilities: [
       "Subject-based ordering and album logic",
       "Class and school code workflows",
@@ -56,6 +60,7 @@ const ACCELERATORS: Accelerator[] = [
     forWhom:
       "Uniform retailers serving named schools with strict approved-product lists and term peaks.",
     weeks: "8 to 12 weeks",
+    accent: "var(--sw-light-grey)",
     capabilities: [
       "School-by-school approved catalogs",
       "Sibling and tax-exempt accounts",
@@ -69,6 +74,7 @@ const ACCELERATORS: Accelerator[] = [
     forWhom:
       "Multi-warehouse DIY and trade retail with peak seasons, supplier-fed catalogs, and dual buyer types.",
     weeks: "12 to 14 weeks",
+    accent: "var(--sw-orange)",
     capabilities: [
       "Multi-warehouse stock and reservations",
       "Trade-and-DIY account split",
@@ -82,6 +88,7 @@ const ACCELERATORS: Accelerator[] = [
     forWhom:
       "Card resellers running set-based catalogs, condition grading, and rapid release drops.",
     weeks: "8 to 12 weeks",
+    accent: "var(--sw-red)",
     capabilities: [
       "Set, rarity, and grade catalogs",
       "Condition-aware product data",
@@ -90,14 +97,6 @@ const ACCELERATORS: Accelerator[] = [
     ],
   },
 ];
-
-const CARD_SURFACE = {
-  background:
-    "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  boxShadow:
-    "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
-};
 
 export default function AcceleratorHubPage() {
   return (
@@ -108,9 +107,10 @@ export default function AcceleratorHubPage() {
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(900px 620px at 20% 22%, #2a3380 0%, transparent 55%)," +
-              "radial-gradient(800px 580px at 82% 80%, #070a1e 0%, transparent 52%)," +
-              "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
+              "radial-gradient(1000px 700px at 18% 20%, #2f3a91 0%, transparent 56%)," +
+              "radial-gradient(700px 520px at 88% 12%, rgba(110,247,110,0.10) 0%, transparent 50%)," +
+              "radial-gradient(800px 580px at 82% 85%, #070a1e 0%, transparent 52%)," +
+              "radial-gradient(1400px 900px at 50% 50%, #1d2468 0%, #161c4e 35%, #10132c 70%, #0a0d24 100%)",
           }}
         />
         <div
@@ -118,12 +118,12 @@ export default function AcceleratorHubPage() {
           style={{
             background:
               "radial-gradient(620px 900px at 30% 60%, rgba(7, 10, 30, 0.85), transparent 60%)," +
-              "radial-gradient(540px 720px at 70% 30%, rgba(63, 74, 175, 0.22), transparent 60%)",
+              "radial-gradient(540px 720px at 70% 30%, rgba(63, 74, 175, 0.28), transparent 60%)",
             filter: "blur(50px)",
           }}
         />
 
-        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10 lg:px-12 pt-24 md:pt-28 pb-14 md:pb-16">
+        <div className="wrap w-full pt-24 md:pt-28 pb-14 md:pb-16">
           <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
             Magento accelerators
           </div>
@@ -132,10 +132,11 @@ export default function AcceleratorHubPage() {
             <span style={{ color: MINT }}>live in weeks</span>
           </h1>
           <p className="mt-7 md:mt-9 text-white/80 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
-            Productized Magento builds for retail verticals where the same
-            problems show up across every merchant. Pre-built backbone,
-            vertical-aware workflows, audited by scandiweb. Replace
-            multi-quarter custom programs with a launch in 8 to 14 weeks.
+            Every school photographer needs the same ordering logic. Every
+            uniform retailer survives the same September. Every card shop
+            fights the same drop-day traffic. We got tired of rebuilding it
+            from scratch, so we built each store once, properly. Yours starts
+            at 80% done.
           </p>
 
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4 md:gap-5">
@@ -180,7 +181,7 @@ export default function AcceleratorHubPage() {
           className="absolute inset-x-0 top-0 h-px"
           style={{ background: "rgba(255,255,255,0.12)" }}
         />
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-20 md:py-28">
+        <div className="wrap py-20 md:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10 md:mb-14">
             <div>
               <div
@@ -193,9 +194,10 @@ export default function AcceleratorHubPage() {
                 Pick your vertical
               </h2>
               <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch]">
-                {ACCELERATORS.length} accelerators in production. Each one is a
-                working store for its industry, ready to carry your catalog,
-                accounts, and integrations.
+                {ACCELERATORS.length} accelerators in production, each grown
+                out of stores we already ship for that industry. Every one is
+                a working store, ready to carry your catalog, accounts, and
+                integrations.
               </p>
             </div>
             <a
@@ -208,32 +210,51 @@ export default function AcceleratorHubPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-7">
-            {ACCELERATORS.map((a) => (
+            {ACCELERATORS.map((a, i) => (
               <Link
                 key={a.slug}
                 href={`/accelerator/${a.slug}`}
-                className="group block rounded-[4px] p-7 md:p-9 transition-all hover:-translate-y-0.5"
-                style={CARD_SURFACE}
+                className="group relative block overflow-hidden rounded-[4px] p-7 md:p-9 transition-all hover:-translate-y-0.5"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
+                }}
               >
-                <div className="flex items-center justify-between gap-4 mb-5">
+                {/* Accent bar – each vertical gets its own color */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[3px]"
+                  style={{ background: a.accent, opacity: 0.85 }}
+                />
+                {/* Accent glow on hover */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-24 -right-24 h-56 w-56 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: a.accent, filter: "blur(110px)" }}
+                />
+
+                <div className="relative flex items-center justify-between gap-4 mb-5">
                   <span
                     className="text-[11px] tracking-[0.16em] uppercase font-semibold"
-                    style={{ color: MINT }}
+                    style={{ color: a.accent }}
                   >
-                    Live in {a.weeks}
+                    {i + 1} · Live in {a.weeks}
                   </span>
                   <ArrowUpRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
 
-                <h3 className="text-white text-[26px] md:text-[30px] leading-[1.1] tracking-[-0.005em] font-medium mb-4 max-w-[22ch]">
+                <h3 className="relative text-white text-[26px] md:text-[30px] leading-[1.1] tracking-[-0.005em] font-medium mb-4 max-w-[22ch]">
                   {a.vertical}
                 </h3>
 
-                <p className="text-white/65 text-[15px] md:text-[16px] leading-relaxed mb-7 max-w-[44ch]">
+                <p className="relative text-white/65 text-[15px] md:text-[16px] leading-relaxed mb-7 max-w-[44ch]">
                   {a.forWhom}
                 </p>
 
-                <ul className="space-y-2.5 mb-7">
+                <ul className="relative space-y-2.5 mb-7">
                   {a.capabilities.map((c) => (
                     <li
                       key={c}
@@ -242,7 +263,7 @@ export default function AcceleratorHubPage() {
                       <span
                         aria-hidden="true"
                         className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[7px]"
-                        style={{ background: MINT }}
+                        style={{ background: a.accent }}
                       />
                       <span>{c}</span>
                     </li>
@@ -250,7 +271,7 @@ export default function AcceleratorHubPage() {
                 </ul>
 
                 <div
-                  className="inline-flex items-center gap-2 text-white text-[14px] font-medium pt-5"
+                  className="relative inline-flex items-center gap-2 text-white text-[14px] font-medium pt-5"
                   style={{
                     borderTop: "1px solid rgba(255,255,255,0.1)",
                     width: "100%",
@@ -265,22 +286,25 @@ export default function AcceleratorHubPage() {
         </div>
       </section>
 
-      {/* ----------------- What an accelerator is ----------------- */}
-      <section id="what-it-is" className="relative" style={{ background: INK }}>
-        <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{ background: "rgba(255,255,255,0.08)" }}
-        />
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-20 md:py-28">
+      {/* ----------------- What an accelerator is (light) ----------------- */}
+      <section
+        id="what-it-is"
+        className="relative"
+        style={{ background: BEIGE, color: "var(--sw-black)" }}
+      >
+        <div className="wrap py-20 md:py-28">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
             <div>
-              <div className="text-[12px] tracking-[0.18em] uppercase font-medium text-white/55 mb-5">
+              <div
+                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+                style={{ color: BLUE }}
+              >
                 What an accelerator is
               </div>
-              <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
+              <h2 className="text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 A backbone that already knows your vertical
               </h2>
-              <p className="mt-6 text-white/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
+              <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
                 Roughly 80% of a vertical store is identical for every merchant
                 in that industry. The accelerator is that 80%, built once and
                 hardened in production. Your project pays for the 20% that is
@@ -311,10 +335,10 @@ export default function AcceleratorHubPage() {
                 <div key={col.k}>
                   <div
                     className="w-2 h-2 rotate-45 mb-5"
-                    style={{ background: MINT }}
+                    style={{ background: BLUE }}
                   />
                   <div
-                    className="text-white font-medium text-[18px] md:text-[20px] mb-4"
+                    className="text-[var(--sw-black)] font-medium text-[18px] md:text-[20px] mb-4"
                     style={{ letterSpacing: "-0.005em" }}
                   >
                     {col.k}
@@ -323,12 +347,12 @@ export default function AcceleratorHubPage() {
                     {col.items.map((it) => (
                       <li
                         key={it}
-                        className="flex items-baseline gap-3 text-white/70 text-[15px] md:text-[16px] leading-relaxed"
+                        className="flex items-baseline gap-3 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed"
                       >
                         <span
                           aria-hidden="true"
                           className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[7px]"
-                          style={{ background: MINT, opacity: 0.7 }}
+                          style={{ background: BLUE, opacity: 0.6 }}
                         />
                         <span>{it}</span>
                       </li>
@@ -343,11 +367,7 @@ export default function AcceleratorHubPage() {
 
       {/* ----------------- How we ship ----------------- */}
       <section id="how-we-ship" className="relative" style={{ background: INK }}>
-        <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{ background: "rgba(255,255,255,0.08)" }}
-        />
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-20 md:py-28">
+        <div className="wrap py-20 md:py-28">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
             <div>
               <div
@@ -395,7 +415,13 @@ export default function AcceleratorHubPage() {
               <li
                 key={p.step}
                 className="rounded-[4px] p-6 md:p-7"
-                style={CARD_SURFACE}
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
+                }}
               >
                 <div className="flex items-baseline justify-between mb-5">
                   <span
@@ -455,13 +481,13 @@ export default function AcceleratorHubPage() {
         </div>
       </section>
 
-      {/* ----------------- Proof strip ----------------- */}
-      <section id="proof" className="relative" style={{ background: INK }}>
-        <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{ background: "rgba(255,255,255,0.12)" }}
-        />
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-12 md:py-16">
+      {/* ----------------- Proof strip (light) ----------------- */}
+      <section
+        id="proof"
+        className="relative"
+        style={{ background: BEIGE, color: "var(--sw-black)" }}
+      >
+        <div className="wrap py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {[
               { v: "700+", l: "Magento brands shipped since 2008" },
@@ -471,7 +497,7 @@ export default function AcceleratorHubPage() {
             ].map((s) => (
               <div key={s.l}>
                 <div
-                  className="text-white font-medium tabular-nums"
+                  className="text-[var(--sw-black)] font-medium tabular-nums"
                   style={{
                     fontSize: "clamp(34px, 3vw, 44px)",
                     lineHeight: 1,
@@ -481,7 +507,7 @@ export default function AcceleratorHubPage() {
                   {s.v}
                 </div>
                 <div
-                  className="text-white/65 mt-3 max-w-[26ch]"
+                  className="text-[var(--sw-black)]/65 mt-3 max-w-[26ch]"
                   style={{
                     fontSize: "14px",
                     lineHeight: 1.4,
@@ -496,12 +522,16 @@ export default function AcceleratorHubPage() {
       </section>
 
       {/* ----------------- Closing CTA ----------------- */}
-      <section id="cta" className="relative" style={{ background: INK }}>
+      <section id="cta" className="relative overflow-hidden" style={{ background: INK }}>
         <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{ background: "rgba(255,255,255,0.08)" }}
+          className="absolute inset-0 -z-10"
+          style={{
+            background:
+              "radial-gradient(900px 600px at 80% 20%, #2a3380 0%, transparent 55%)," +
+              "radial-gradient(700px 500px at 12% 90%, rgba(110,247,110,0.07) 0%, transparent 50%)",
+          }}
         />
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 py-24 md:py-32">
+        <div className="wrap py-24 md:py-32">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-end">
             <div>
               <div
@@ -534,7 +564,8 @@ export default function AcceleratorHubPage() {
                 <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <span className="text-white/55 text-[13px] tracking-wide">
-                30-minute call. Written summary inside 24 hours.
+                30 minutes with the team that builds these. Written summary
+                inside 24 hours.
               </span>
             </div>
           </div>

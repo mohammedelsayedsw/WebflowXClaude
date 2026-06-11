@@ -103,9 +103,11 @@ export default function AcceleratorHubPage() {
   return (
     <main className="font-head" style={{ background: INK, color: "#ffffff" }}>
       {/* ----------------- Hero ----------------- */}
-      {/* min-h-screen (100vh) is the fallback; dvh tracks mobile browser chrome */}
+      {/* min-h-screen (100vh) is the fallback; dvh tracks mobile browser chrome.
+          `isolate` creates a stacking context so the -z layers paint above
+          <main>'s opaque background instead of behind it. */}
       <section
-        className="relative overflow-hidden min-h-screen flex items-center"
+        className="relative isolate overflow-hidden min-h-screen flex items-center"
         style={{ minHeight: "100dvh" }}
       >
         {/* Background photo – blurred and scaled so blur edges stay off-canvas */}
@@ -122,7 +124,7 @@ export default function AcceleratorHubPage() {
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,13,36,0.88) 0%, rgba(16,19,44,0.84) 45%, rgba(10,13,36,0.94) 100%)",
+              "linear-gradient(180deg, rgba(10,13,36,0.80) 0%, rgba(16,19,44,0.76) 45%, rgba(10,13,36,0.90) 100%)",
           }}
         />
         {/* Cool radial tint to keep brand mood */}

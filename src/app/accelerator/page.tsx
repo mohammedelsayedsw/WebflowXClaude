@@ -103,7 +103,7 @@ export default function AcceleratorHubPage() {
   return (
     <main className="font-head" style={{ background: INK, color: "#ffffff" }}>
       {/* ----------------- Hero ----------------- */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[100svh] flex items-center">
         <div
           className="absolute inset-0 -z-10"
           style={{
@@ -123,7 +123,7 @@ export default function AcceleratorHubPage() {
           }}
         />
 
-        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 pt-28 md:pt-36 pb-16 md:pb-20">
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10 lg:px-12 pt-24 md:pt-28 pb-14 md:pb-16">
           <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
             Magento accelerators
           </div>
@@ -280,36 +280,60 @@ export default function AcceleratorHubPage() {
               <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 A backbone that already knows your vertical
               </h2>
+              <p className="mt-6 text-white/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
+                Roughly 80% of a vertical store is identical for every merchant
+                in that industry. The accelerator is that 80%, built once and
+                hardened in production. Your project pays for the 20% that is
+                actually yours.
+              </p>
             </div>
-            <div className="grid sm:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
               {[
                 {
-                  k: "Vertical-aware",
-                  v: "The data model, workflows, and integrations are pre-built for the way your industry actually sells.",
+                  k: "Pre-built in the core",
+                  items: [
+                    "Industry data model: school codes, approved catalogs, set and grade data, trade accounts",
+                    "Vertical checkout flows: parent reorder, bulk account ordering, release drops, dual retail",
+                    "Integration adapters for ERP, PIM, payments, tax, and shipping",
+                    "Multi-warehouse, multi-account, peak-resilient infrastructure",
+                  ],
                 },
                 {
-                  k: "Production-ready",
-                  v: "Live on Adobe Commerce in 8 to 14 weeks. Multi-warehouse, multi-account, multi-channel from day one.",
+                  k: "Built for you on top",
+                  items: [
+                    "Your brand and design system, applied to the storefront",
+                    "Your one-off workflows and business rules",
+                    "Your data, migrated and validated",
+                    "Full code ownership after handover. No license fee, no lock-in",
+                  ],
                 },
-                {
-                  k: "Extensible",
-                  v: "Your team owns it after handover. Brand, design, and one-off workflows layer on top of the accelerator core.",
-                },
-              ].map((b) => (
-                <div key={b.k}>
+              ].map((col) => (
+                <div key={col.k}>
                   <div
                     className="w-2 h-2 rotate-45 mb-5"
                     style={{ background: MINT }}
                   />
                   <div
-                    className="text-white font-medium text-[18px] md:text-[20px] mb-2.5"
+                    className="text-white font-medium text-[18px] md:text-[20px] mb-4"
                     style={{ letterSpacing: "-0.005em" }}
                   >
-                    {b.k}
+                    {col.k}
                   </div>
-                  <p className="text-white/70 text-[15px] md:text-[16px] leading-relaxed">
-                    {b.v}
-                  </p>
+                  <ul className="space-y-3">
+                    {col.items.map((it) => (
+                      <li
+                        key={it}
+                        className="flex items-baseline gap-3 text-white/70 text-[15px] md:text-[16px] leading-relaxed"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[7px]"
+                          style={{ background: MINT, opacity: 0.7 }}
+                        />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -337,10 +361,10 @@ export default function AcceleratorHubPage() {
               </h2>
             </div>
             <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed self-end max-w-[58ch]">
-              The accelerator is a working backbone on day one. We spend the
-              time differently. Less of it on writing code that already exists,
-              more on the vertical workflows, integrations, and data your team
-              will rely on after we hand over.
+              A custom build spends its first two quarters writing code the
+              accelerator already has. We start from a working store, so the
+              weeks go into your integrations, your data, and your workflows.
+              Every phase ends with something you can hold us to.
             </p>
           </div>
 
@@ -350,19 +374,22 @@ export default function AcceleratorHubPage() {
                 step: "1",
                 k: "Discovery",
                 weeks: "Weeks 1-2",
-                v: "Audit your data, integrations, and team. Map the accelerator against your operational gaps. Lock the scope and the success metric before any build starts.",
+                v: "Audit your data, integrations, and team. Map the accelerator against your operational gaps.",
+                ends: "Ends with: fixed scope, fixed price, and the success metric we will be measured on.",
               },
               {
                 step: "2",
                 k: "Build",
                 weeks: "Weeks 3-10",
-                v: "Stand up the accelerator on Adobe Commerce. Configure vertical workflows. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top of the accelerator core.",
+                v: "Stand up the accelerator on Adobe Commerce. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top.",
+                ends: "Ends with: a staging store you click through every week, not a slide deck.",
               },
               {
                 step: "3",
                 k: "Launch + handover",
                 weeks: "Weeks 10-14",
-                v: "Load test, security audit, content freeze, and go-live. Your team trains on the live system, owns the codebase, and runs it from day one. We stay on call for the first 90 days.",
+                v: "Load test, security audit, content freeze, and go-live. Your team trains on the live system and owns the codebase.",
+                ends: "Ends with: your team running the store. We stay on call for the first 90 days.",
               },
             ].map((p) => (
               <li
@@ -410,6 +437,17 @@ export default function AcceleratorHubPage() {
                   }}
                 >
                   {p.v}
+                </p>
+                <p
+                  className="mt-4 pt-4 text-white/85"
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                    borderTop: "1px solid rgba(255,255,255,0.1)",
+                  }}
+                >
+                  <span style={{ color: MINT }}>{p.ends.split(":")[0]}:</span>
+                  {p.ends.split(":").slice(1).join(":")}
                 </p>
               </li>
             ))}

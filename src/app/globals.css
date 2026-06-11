@@ -104,9 +104,8 @@
   --color-lp-dim: var(--lp-dim);
 
   --font-head: var(--font-golos);
-  --font-body: var(--font-golos);
-  /* No mono font — Golos Text covers everything. Code and mono-styled
-     labels render in Golos at a smaller weight / spacing. */
+  /* Design system: Golos Text heads + Inter body */
+  --font-body: var(--font-inter);
   --font-mono: var(--font-golos);
 
   --radius-sm: 2px;

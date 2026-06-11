@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Golos_Text } from "next/font/google";
+import { Golos_Text, Inter } from "next/font/google";
 import "./globals.css";
 import { DevLinkProvider } from "@/webflow/DevLinkProvider";
 import { Footer as WebflowFooter } from "@/webflow/v7Layout/Footer";
@@ -15,6 +15,16 @@ const golos = Golos_Text({
   variable: "--font-golos",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Design-system body font (Golos Text heads + Inter body). Components
+// referenced var(--font-inter) before this was loaded, silently falling
+// back to Golos/system.
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -33,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${golos.variable} antialiased`}
+      className={`${golos.variable} ${inter.variable} antialiased`}
     >
       <head>
         <Script id="gtm-init" strategy="afterInteractive">

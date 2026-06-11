@@ -4,25 +4,25 @@ import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 export const metadata: Metadata = {
-  title: "Magento accelerators for vertical commerce | scandiweb",
+  title: "eCommerce accelerators for vertical commerce | scandiweb",
   description:
-    "Productized Magento builds for specific verticals: school photography, school uniform, DIY and building materials, trading cards. Live in 8 to 14 weeks. Replace multi-quarter custom builds with a vertical-aware backbone, audited by scandiweb.",
+    "Pre-built vertical stores for school photography, school uniform, DIY and building materials, trading cards. Your new store live in 8 to 14 weeks, 80% built before kickoff.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/accelerator",
   },
   openGraph: {
-    title: "Magento accelerators for vertical commerce | scandiweb",
+    title: "eCommerce accelerators for vertical commerce | scandiweb",
     description:
-      "Productized Magento builds for specific verticals. Live in 8 to 14 weeks. School photography, school uniform, DIY and building materials, trading cards.",
+      "Pre-built vertical stores. Live in 8 to 14 weeks. School photography, school uniform, DIY and building materials, trading cards.",
     url: "https://scandiweb.com/solutions/accelerator",
     siteName: "scandiweb",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Magento accelerators for vertical commerce | scandiweb",
+    title: "eCommerce accelerators for vertical commerce | scandiweb",
     description:
-      "Productized Magento builds for specific verticals. Live in 8 to 14 weeks.",
+      "Pre-built vertical stores. Your new store live in 8 to 14 weeks.",
   },
 };
 
@@ -101,7 +101,7 @@ const ACCELERATORS: Accelerator[] = [
 
 export default function AcceleratorHubPage() {
   return (
-    <main className="font-head" style={{ background: INK, color: "#ffffff" }}>
+    <main className="font-body" style={{ background: INK, color: "#ffffff" }}>
       {/* ----------------- Hero ----------------- */}
       {/* min-h-screen (100vh) is the fallback; dvh tracks mobile browser chrome.
           `isolate` creates a stacking context so the -z layers paint above
@@ -110,43 +110,34 @@ export default function AcceleratorHubPage() {
         className="relative isolate overflow-hidden min-h-screen flex items-center"
         style={{ minHeight: "100dvh" }}
       >
-        {/* Background photo – blurred and scaled so blur edges stay off-canvas */}
+        {/* Background photo – light blur, scaled so blur edges stay off-canvas */}
         <div
           className="absolute inset-0 -z-20 bg-center bg-cover"
           style={{
             backgroundImage: `url(${assetUrl("/accelerator/hero-bg.jpg")})`,
-            filter: "blur(7px) brightness(0.9)",
-            transform: "scale(1.06)",
+            filter: "blur(3px)",
+            transform: "scale(1.04)",
           }}
         />
-        {/* Dark navy wash – image reads as ambience, text stays legible */}
+        {/* Navy wash – stronger behind the text column, lighter on the right */}
         <div
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,13,36,0.80) 0%, rgba(16,19,44,0.76) 45%, rgba(10,13,36,0.90) 100%)",
-          }}
-        />
-        {/* Cool radial tint to keep brand mood */}
-        <div
-          className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
-          style={{
-            background:
-              "radial-gradient(900px 620px at 18% 22%, rgba(47,58,145,0.6) 0%, transparent 55%)," +
-              "radial-gradient(700px 520px at 88% 12%, rgba(110,247,110,0.10) 0%, transparent 50%)," +
-              "radial-gradient(800px 580px at 85% 82%, rgba(7,10,30,0.6) 0%, transparent 52%)",
+              "linear-gradient(90deg, rgba(10,13,36,0.86) 0%, rgba(13,16,40,0.66) 45%, rgba(10,13,36,0.42) 100%)," +
+              "linear-gradient(180deg, rgba(10,13,36,0.30) 0%, rgba(10,13,36,0.10) 50%, rgba(10,13,36,0.55) 100%)",
           }}
         />
 
         <div className="wrap w-full pt-24 md:pt-28 pb-14 md:pb-16">
-          <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
-            Magento accelerators
+          <div className="font-head text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
+            eCommerce accelerators
           </div>
-          <h1 className="text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[18ch] font-medium">
-            Vertical commerce,{" "}
-            <span style={{ color: MINT }}>live in weeks</span>
+          <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch] font-medium">
+            Your new store,{" "}
+            <span style={{ color: MINT }}>live in 12 weeks</span>
           </h1>
-          <p className="mt-7 md:mt-9 text-white/80 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
+          <p className="mt-7 md:mt-9 text-white/85 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
             Most of an online store is not unique to your business. Your
             whole industry shares the same catalog logic, account structures,
             and seasonal peaks. We build that core once per industry and
@@ -157,7 +148,7 @@ export default function AcceleratorHubPage() {
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4 md:gap-5">
             <a
               href="#accelerators"
-              className="inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
+              className="font-head inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
               style={{
                 background: MINT,
                 color: INK,
@@ -169,10 +160,11 @@ export default function AcceleratorHubPage() {
             </a>
             <a
               href="#cta"
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-[2px] text-white font-medium hover:opacity-80 transition-opacity"
+              className="font-head inline-flex items-center gap-2 px-5 py-3.5 rounded-[2px] text-white font-medium hover:opacity-80 transition-opacity"
               style={{
                 fontSize: "15.5px",
                 border: "1px solid rgba(255,255,255,0.4)",
+                background: "rgba(10,13,36,0.35)",
               }}
             >
               Talk to us about your vertical
@@ -212,12 +204,12 @@ export default function AcceleratorHubPage() {
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10 md:mb-14">
             <div>
               <div
-                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
                 style={{ color: MINT }}
               >
                 Available accelerators
               </div>
-              <h2 className="text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
+              <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 Pick your vertical
               </h2>
               <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch]">
@@ -236,12 +228,12 @@ export default function AcceleratorHubPage() {
             </a>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-7">
-            {ACCELERATORS.map((a, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {ACCELERATORS.map((a) => (
               <Link
                 key={a.slug}
                 href={`/accelerator/${a.slug}`}
-                className="group relative block overflow-hidden rounded-[4px] p-7 md:p-9 transition-all hover:-translate-y-0.5"
+                className="group relative flex flex-col overflow-hidden rounded-[4px] p-6 md:p-7 transition-all hover:-translate-y-0.5"
                 style={{
                   background:
                     "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
@@ -263,33 +255,33 @@ export default function AcceleratorHubPage() {
                   style={{ background: a.accent, filter: "blur(110px)" }}
                 />
 
-                <div className="relative flex items-center justify-between gap-4 mb-5">
+                <div className="relative flex items-center justify-between gap-4 mb-4">
                   <span
-                    className="text-[11px] tracking-[0.16em] uppercase font-semibold"
+                    className="font-head text-[11px] tracking-[0.14em] uppercase font-semibold"
                     style={{ color: a.accent }}
                   >
-                    {i + 1} · Live in {a.weeks}
+                    {a.weeks}
                   </span>
                   <ArrowUpRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
 
-                <h3 className="relative text-white text-[26px] md:text-[30px] leading-[1.1] tracking-[-0.005em] font-medium mb-4 max-w-[22ch]">
+                <h3 className="font-head relative text-white text-[21px] md:text-[23px] leading-[1.12] tracking-[-0.005em] font-medium mb-3">
                   {a.vertical}
                 </h3>
 
-                <p className="relative text-white/65 text-[15px] md:text-[16px] leading-relaxed mb-7 max-w-[44ch]">
+                <p className="relative text-white/65 text-[14px] md:text-[14.5px] leading-relaxed mb-5">
                   {a.forWhom}
                 </p>
 
-                <ul className="relative space-y-2.5 mb-7">
+                <ul className="relative space-y-2.5 mb-6">
                   {a.capabilities.map((c) => (
                     <li
                       key={c}
-                      className="flex items-baseline gap-3 text-white/80 text-[14.5px] md:text-[15px]"
+                      className="flex items-baseline gap-2.5 text-white/80 text-[13.5px] md:text-[14px]"
                     >
                       <span
                         aria-hidden="true"
-                        className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[7px]"
+                        className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[6px]"
                         style={{ background: a.accent }}
                       />
                       <span>{c}</span>
@@ -298,7 +290,7 @@ export default function AcceleratorHubPage() {
                 </ul>
 
                 <div
-                  className="relative inline-flex items-center gap-2 text-white text-[14px] font-medium pt-5"
+                  className="font-head relative mt-auto inline-flex items-center gap-2 text-white text-[14px] font-medium pt-4"
                   style={{
                     borderTop: "1px solid rgba(255,255,255,0.1)",
                     width: "100%",
@@ -323,7 +315,7 @@ export default function AcceleratorHubPage() {
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
             <div>
               <div
-                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
                 style={{ color: BLUE }}
               >
                 What an accelerator is
@@ -361,11 +353,7 @@ export default function AcceleratorHubPage() {
               ].map((col) => (
                 <div key={col.k}>
                   <div
-                    className="w-2 h-2 rotate-45 mb-5"
-                    style={{ background: BLUE }}
-                  />
-                  <div
-                    className="text-[var(--sw-black)] font-medium text-[18px] md:text-[20px] mb-4"
+                    className="font-head text-[var(--sw-black)] font-medium text-[18px] md:text-[20px] mb-4"
                     style={{ letterSpacing: "-0.005em" }}
                   >
                     {col.k}
@@ -398,7 +386,7 @@ export default function AcceleratorHubPage() {
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
             <div>
               <div
-                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
                 style={{ color: MINT }}
               >
                 How we ship
@@ -428,7 +416,7 @@ export default function AcceleratorHubPage() {
                 step: "2",
                 k: "Build",
                 weeks: "Weeks 3-10",
-                v: "Stand up the accelerator on Adobe Commerce. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top.",
+                v: "Stand up the accelerator core. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top.",
                 ends: "Ends with: a staging store you click through every week, not a slide deck.",
               },
               {
@@ -517,16 +505,28 @@ export default function AcceleratorHubPage() {
         <div className="wrap py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {[
-              { v: "80%", l: "of the store pre-built before kickoff" },
-              { v: "8-14 wks", l: "from kickoff to live" },
-              { v: "1 price", l: "fixed scope, fixed price, no surprises" },
-              { v: "90 days", l: "on call after every launch" },
+              {
+                v: "Weeks 1-2",
+                l: "you get a fixed price and a success metric in writing",
+              },
+              {
+                v: "Every Friday",
+                l: "a staging store you click through, not a slide deck",
+              },
+              {
+                v: "Week 12",
+                l: "your store is live and your team owns the code",
+              },
+              {
+                v: "Day 90",
+                l: "we are still on call after launch, included",
+              },
             ].map((s) => (
               <div key={s.l}>
                 <div
-                  className="text-[var(--sw-black)] font-medium tabular-nums"
+                  className="font-head text-[var(--sw-black)] font-medium tabular-nums"
                   style={{
-                    fontSize: "clamp(34px, 3vw, 44px)",
+                    fontSize: "clamp(24px, 2.4vw, 34px)",
                     lineHeight: 1,
                     letterSpacing: "-0.02em",
                   }}
@@ -559,28 +559,26 @@ export default function AcceleratorHubPage() {
           }}
         />
         <div className="wrap py-24 md:py-32">
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-end">
-            <div>
-              <div
-                className="text-[12px] tracking-[0.18em] uppercase font-medium mb-6"
-                style={{ color: MINT }}
-              >
-                New vertical
-              </div>
-              <h2 className="text-white text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.015em] font-medium max-w-[22ch]">
-                Don&rsquo;t see your vertical? Let&rsquo;s build the next one
-              </h2>
-              <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
-                If you sell in a category where the same workflows repeat
-                across most merchants, it probably belongs in the accelerator
-                family. We will audit your stack, scope a new accelerator, and
-                tell you honestly whether your vertical is ready.
-              </p>
+          <div className="max-w-[820px]">
+            <div
+              className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-6"
+              style={{ color: MINT }}
+            >
+              New vertical
             </div>
-            <div className="flex flex-col gap-4 lg:items-end">
+            <h2 className="font-head text-white text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.015em] font-medium max-w-[22ch]">
+              Don&rsquo;t see your vertical? Let&rsquo;s build the next one
+            </h2>
+            <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
+              If you sell in a category where the same workflows repeat
+              across most merchants, it probably belongs in the accelerator
+              family. We will audit your stack, scope a new accelerator, and
+              tell you honestly whether your vertical is ready.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
               <a
-                href="/magento/voyage#start"
-                className="inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
+                href="https://scandiweb.com/contact"
+                className="font-head inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
                 style={{
                   background: MINT,
                   color: INK,
@@ -590,7 +588,7 @@ export default function AcceleratorHubPage() {
                 Book a discovery call
                 <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
-              <span className="text-white/55 text-[13px] tracking-wide">
+              <span className="text-white/55 text-[13px] tracking-wide max-w-[36ch]">
                 30 minutes with the team that builds these. Written summary
                 inside 24 hours.
               </span>

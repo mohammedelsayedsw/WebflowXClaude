@@ -265,6 +265,41 @@ export function AssemblyStep({
   );
 }
 
+/**
+ * Instruction plate — a small plate styled like a step in a construction-kit
+ * instruction sheet: dashed border with solid corner registration ticks.
+ * e.g. "PART 1 OF 5 · ASSEMBLY TIME: 12 WEEKS".
+ */
+export function InstructionPlate({
+  children,
+  tone = "dark",
+  className = "",
+}: {
+  children: React.ReactNode;
+  tone?: Tone;
+  className?: string;
+}) {
+  const dark = tone === "dark";
+  const color = dark ? "var(--sw-mint)" : "var(--sw-blue)";
+  const tick = dark ? "rgba(110,247,110,0.75)" : "rgba(63,74,175,0.65)";
+  return (
+    <span
+      className={`relative inline-flex items-center gap-2 px-4 py-2.5 label-code leading-none ${className}`}
+      style={{
+        color,
+        background: dark ? "rgba(110,247,110,0.05)" : "rgba(63,74,175,0.04)",
+        border: `1px dashed ${dark ? "rgba(110,247,110,0.4)" : "rgba(63,74,175,0.35)"}`,
+      }}
+    >
+      <span aria-hidden className="absolute -top-px -left-px h-2 w-2 border-t border-l" style={{ borderColor: tick }} />
+      <span aria-hidden className="absolute -top-px -right-px h-2 w-2 border-t border-r" style={{ borderColor: tick }} />
+      <span aria-hidden className="absolute -bottom-px -left-px h-2 w-2 border-b border-l" style={{ borderColor: tick }} />
+      <span aria-hidden className="absolute -bottom-px -right-px h-2 w-2 border-b border-r" style={{ borderColor: tick }} />
+      {children}
+    </span>
+  );
+}
+
 /** Small right-pointing assembly arrow between numbered steps. */
 export function AssemblyArrow({ tone = "light" }: { tone?: Tone }) {
   const color = accentFor(tone);

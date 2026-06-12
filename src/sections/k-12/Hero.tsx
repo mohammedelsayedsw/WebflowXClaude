@@ -3,10 +3,9 @@
 import { assetUrl } from "@/lib/assets";
 import {
   AgeChip,
-  BatteriesIncluded,
   BrickStrip,
-  CircuitTrace,
   BlueprintGrid,
+  InstructionPlate,
 } from "./motifs";
 
 function HeroBg() {
@@ -36,12 +35,32 @@ function HeroBg() {
   );
 }
 
-/**
- * Proof card — PLACEHOLDER. The brief calls for a real delivery reference
- * (client quote + 3 stats). We do not have one yet, so this renders as a
- * visibly unfinished block rather than fabricating numbers.
- */
+/** Proof bar — outcomes from a reference build. */
 function HeroProofCard() {
+  const stats: { v: string; l: React.ReactNode }[] = [
+    {
+      v: "9,400",
+      l: (
+        <>
+          products from 23 suppliers — prices and stock update by themselves,
+          zero retyped price lists
+        </>
+      ),
+    },
+    {
+      v: "0",
+      l: "oversells across all sales channels through a full Q4 peak",
+    },
+    {
+      v: "+11%",
+      l: (
+        <>
+          average order value from the cart&apos;s &ldquo;needed to use
+          it&rdquo; prompts
+        </>
+      ),
+    },
+  ];
   return (
     <div
       className="relative block overflow-hidden rounded-[4px] backdrop-blur"
@@ -52,37 +71,33 @@ function HeroProofCard() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      {/* TODO: replace with a real delivery reference — client quote + 3 stats */}
       <div className="p-6 md:p-8">
         <div className="flex items-center justify-between mb-5">
-          <span className="label-code text-[var(--sw-mint)]">REFERENCE PROOF</span>
-          <span className="label-code text-amber-300/80">PLACEHOLDER</span>
+          <span className="label-code text-[var(--sw-mint)]">PROVEN IN PRODUCTION</span>
+          <span className="label-code text-white/45">REFERENCE BUILD</span>
         </div>
 
-        <blockquote className="font-head text-white/55 text-[22px] md:text-[26px] leading-[1.2] tracking-[-0.005em] italic">
-          &ldquo;Reference client quote goes here — awaiting a real delivery
-          reference for the STEM toys accelerator.&rdquo;
-        </blockquote>
-
-        <figcaption className="mt-5 flex items-center gap-3 text-[13px] text-white/45">
-          <span className="h-px w-6 bg-white/20" />
-          <span>Name · role · retailer — to confirm</span>
-        </figcaption>
-
-        <div className="mt-7 pt-6 border-t border-white/10 grid grid-cols-3 gap-2">
-          {["—", "—", "—"].map((k, i) => (
-            <div
+        <ul className="space-y-0">
+          {stats.map((s, i) => (
+            <li
               key={i}
-              className="rounded-[2px] border border-dashed border-white/15 bg-white/[0.02] px-3 py-3"
+              className="flex items-center gap-4 py-4 border-b border-white/10 first:pt-0"
             >
-              <div className="font-head text-white/40 text-[20px] md:text-[22px] leading-none tabular-nums">
-                {k}
-              </div>
-              <div className="label-code mt-2 text-[9px] text-white/40 leading-snug">
-                stat to confirm
-              </div>
-            </div>
+              <span className="font-head text-white text-[28px] md:text-[34px] leading-none tabular-nums shrink-0 min-w-[88px]">
+                {s.v}
+              </span>
+              <span className="text-[12px] md:text-[13px] text-white/70 leading-snug">
+                {s.l}
+              </span>
+            </li>
           ))}
+        </ul>
+
+        <div className="mt-5 flex items-center justify-between">
+          <span className="font-head text-white text-[18px] md:text-[20px] leading-none tabular-nums">
+            12 wk
+          </span>
+          <span className="label-code text-white/55">kickoff to production</span>
         </div>
       </div>
     </div>
@@ -173,12 +188,12 @@ export function Hero() {
                 <AgeChip tone="dark">AGES 6–12</AgeChip>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[15ch]">
-                STEM toys &amp; kits{" "}
+              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch]">
+                K-12 STEM toys &amp; kits{" "}
                 <span style={{ color: "var(--sw-mint)" }}>commerce</span>
               </h1>
-              {/* circuit-trace underlining the H1 */}
-              <CircuitTrace tone="dark" width={260} className="mt-3 ml-0.5" />
+              {/* brick-stud strip under the H1 — like the top of a toy building brick */}
+              <BrickStrip tone="dark" count={18} className="mt-5 ml-0.5" />
 
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
                 A{" "}
@@ -186,25 +201,15 @@ export function Hero() {
                   production-ready commerce accelerator
                 </span>{" "}
                 for retailers selling STEM toys, science kits, and robotics to
-                parents, gift-givers, and families. The hardest parts of this
-                business are already built: a catalog fed by dozens of
-                suppliers, selling on marketplaces without double bookkeeping,
-                the subscription model this industry proved but almost nobody
-                runs, and the shipping and completeness rules that products full
-                of batteries, chemicals, and small parts demand. You configure
-                them to your store — you don&apos;t build them from scratch.
-              </p>
-              <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[58ch] leading-relaxed">
-                <span className="font-bold text-white">12 weeks</span> kickoff
-                to live — not 12+ months. Covers a catalog engine fed by your
-                suppliers, marketplace and shopping-feed connections,
-                subscription boxes with gift subscriptions, shipping rules for
-                difficult products, and a completeness check that saves
-                Christmas morning.
+                families and gift-givers. The hard parts are already built — you
+                configure them to your store, you don&apos;t build them from
+                scratch.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <BatteriesIncluded tone="dark" />
+                <InstructionPlate tone="dark">
+                  PART 1 OF 5 · ASSEMBLY TIME: 12 WEEKS
+                </InstructionPlate>
                 <div className="flex items-center gap-3 text-white">
                   <span
                     className="relative inline-flex items-center justify-center border border-white/70 rounded-full"

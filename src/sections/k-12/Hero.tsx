@@ -104,6 +104,88 @@ function HeroProofCard() {
   );
 }
 
+/**
+ * Module strip — five periodic-table-style element tiles, one per module.
+ * Each links to its module section; on hover the tile lifts and reveals a
+ * one-line description. On mobile the five tiles wrap into two rows (3 + 2).
+ */
+function ModuleStrip() {
+  const tiles: { sym: string; n: string; name: string; line: string; href: string }[] = [
+    {
+      sym: "Ca",
+      n: "1",
+      name: "Catalog from your suppliers",
+      line: "Supplier feeds in, clean catalog out — no retyping.",
+      href: "#outcome-1",
+    },
+    {
+      sym: "Mk",
+      n: "2",
+      name: "Marketplace connections",
+      line: "Amazon, eBay, Google Shopping from one catalog.",
+      href: "#outcome-2",
+    },
+    {
+      sym: "Su",
+      n: "3",
+      name: "Subscription boxes",
+      line: "Monthly boxes and gift subscriptions that bill themselves.",
+      href: "#outcome-3",
+    },
+    {
+      sym: "Sh",
+      n: "4",
+      name: "Shipping rules for difficult products",
+      line: "Battery, chemical and magnet flags enforced at checkout.",
+      href: "#outcome-4",
+    },
+    {
+      sym: "Cc",
+      n: "5",
+      name: "Christmas-morning completeness check",
+      line: "Batteries not included? The cart says so.",
+      href: "#outcome-5",
+    },
+  ];
+  return (
+    <div className="mt-7">
+      <p className="font-head font-semibold text-white text-[15px] md:text-[16px]">
+        Live in 12 weeks, not 12+ months. Five modules:
+      </p>
+      <div className="mt-4 grid grid-cols-3 md:grid-cols-5 gap-2.5 max-w-[560px]">
+        {tiles.map((t) => (
+          <a
+            key={t.sym}
+            href={t.href}
+            className="group relative flex flex-col rounded-[4px] p-3 transition-all duration-200 hover:-translate-y-1"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(110,247,110,0.22)",
+            }}
+          >
+            <span className="absolute top-2 right-2.5 label-code text-[10px] text-white/40 group-hover:text-[var(--sw-mint)] transition-colors tabular-nums">
+              {t.n}
+            </span>
+            <span className="font-head text-white text-[26px] md:text-[30px] leading-none tracking-[-0.01em] group-hover:text-[var(--sw-mint)] transition-colors">
+              {t.sym}
+            </span>
+            <span className="mt-2 text-[10.5px] md:text-[11px] text-white/65 leading-snug">
+              {t.name}
+            </span>
+            <span className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-200">
+              <span className="overflow-hidden">
+                <span className="block mt-1.5 text-[10px] md:text-[10.5px] text-[var(--sw-mint)]/80 leading-snug">
+                  {t.line}
+                </span>
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TrustLogos() {
   const logos: { src: string; alt: string; h: number }[] = [
     { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 30 },
@@ -205,6 +287,8 @@ export function Hero() {
                 configure them to your store, you don&apos;t build them from
                 scratch.
               </p>
+
+              <ModuleStrip />
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <InstructionPlate tone="dark">

@@ -672,19 +672,18 @@ export function Outcomes() {
       icon: "math-operations",
       title: (
         <>
-          Batteries not included —{" "}
-          <span className="text-[var(--sw-mint)]">unless your store thinks of it</span>
+          Batteries, goggles, chargers: the cart offers{" "}
+          <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
         </>
       ),
       lede:
-        "The classic gift disaster: the robot arrives, the batteries didn’t. The chemistry set is under the tree, the safety goggles aren’t. Products in this industry need things to work — batteries, goggles, SD cards, chargers — and the gift buyer has no way to know. The store does. This module makes it say so at exactly the right moment.",
+        "Many products don't include everything they need: batteries, goggles, SD cards, chargers. The gift buyer has no way to know that, and finds out when the box is already open. The store knows, and this module makes the cart say so and offer the missing item right away.",
       results: [
-        "Each product carries a short “needed to use it” list — battery type and count, goggles, SD card, charger — filled once by your team, often straight from supplier specs",
-        "The cart checks it quietly: “this kit needs 4 AA batteries — add them?” One tap to add",
-        "Works for every product type: electronics need batteries, chemistry sets need goggles, microscopes need slides",
-        "Higher average order value from helpful, honest add-ons — advice, not pushy upselling",
-        "Fewer one-star January reviews and fewer support emails that start with “it didn’t work on Christmas morning”",
-        "Pure admin-managed data — no developers after launch, no AI, no third-party tools",
+        "Each product carries a short “needed to use it” list, filled once by your team from supplier specs",
+        "The cart checks the list and offers what's not included, one tap to add",
+        "Works for every product type: electronics, chemistry sets, microscopes, anything with extras",
+        "Higher order value from helpful add-ons, and fewer angry January reviews",
+        "Data lives in admin: no developers after launch, no AI, no third-party tools",
       ],
       diagram: <SvgCompleteness />,
       theme: "dark",

@@ -3,7 +3,7 @@
 import { ArrowUpRight, Check, X } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnLight } from "@/components/primitives/buttonStyles";
-import { BrickStrip } from "./motifs";
+import { BrickStrip, SectionIcon } from "./motifs";
 
 export function AcceleratorValue() {
   const rows: [string, string][] = [
@@ -41,6 +41,10 @@ export function AcceleratorValue() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/15" />
       <div className="wrap relative">
         <Reveal>
+          <div className="flex items-center gap-2.5 mb-5">
+            <SectionIcon name="abacus" tone="light" />
+            <span className="label-code text-[var(--sw-black)]/55">BUILD VS CONFIGURE</span>
+          </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[20ch]">
             Fifteen months to build it, or{" "}
             <span className="text-[var(--sw-blue)]">twelve weeks to set it up</span>

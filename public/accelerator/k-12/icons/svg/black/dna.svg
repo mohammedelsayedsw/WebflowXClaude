@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M76 24 C76 48 124 60 124 84 C124 108 76 120 76 144 C76 168 124 180 124 196"/>
+    <path d="M124 24 C124 48 76 60 76 84 C76 108 124 120 124 144 C124 168 76 180 76 196"/>
+    <line x1="82" y1="36" x2="118" y2="36"/>
+    <line x1="84" y1="84" x2="116" y2="84"/>
+    <line x1="84" y1="144" x2="116" y2="144"/>
+    <line x1="82" y1="188" x2="118" y2="188"/>
+    <text x="40" y="62" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="bold" fill="#000000" stroke="none">G</text>
+    <text x="144" y="90" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="bold" fill="#000000" stroke="none">T</text>
+    <text x="40" y="148" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="bold" fill="#000000" stroke="none">C</text>
+    <text x="144" y="176" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="bold" fill="#000000" stroke="none">A</text></svg>

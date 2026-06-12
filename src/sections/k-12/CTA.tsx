@@ -3,7 +3,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { BatteriesIncluded, BrickStrip } from "./motifs";
+import { BatteriesIncluded, BrickStrip, SectionIcon } from "./motifs";
 
 export function CTA() {
   return (
@@ -21,6 +21,10 @@ export function CTA() {
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
+            <div className="flex items-center gap-2.5 mb-5">
+              <SectionIcon name="telescope" tone="dark" />
+              <span className="label-code text-[var(--sw-mint)]">SEE IF IT FITS</span>
+            </div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[18ch]">
               See if the accelerator{" "}
               <span className="text-[var(--sw-mint)]">fits your business</span>

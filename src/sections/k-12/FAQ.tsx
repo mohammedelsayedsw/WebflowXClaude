@@ -2,6 +2,7 @@
 
 import { Plus, Minus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SectionIcon } from "./motifs";
 
 function FAQItem({ q, a, i }: { q: string; a: string; i: number }) {
   return (
@@ -64,6 +65,10 @@ export function FAQ() {
       <div className="wrap">
         <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20">
           <Reveal>
+            <div className="flex items-center gap-2.5 mb-5">
+              <SectionIcon name="lesson-window" tone="dark" />
+              <span className="label-code text-white/60">QUESTIONS &amp; ANSWERS</span>
+            </div>
             <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
               The questions that actually <span className="text-[var(--sw-mint)]">come up</span>
             </h2>

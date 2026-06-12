@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
-import { AssemblyStep, AssemblyArrow, BatteryTag } from "./motifs";
+import { AssemblyStep, AssemblyArrow, SectionIcon } from "./motifs";
 
 export function HowWeWork() {
   const steps = [
@@ -34,7 +34,10 @@ export function HowWeWork() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
         <Reveal>
-          <BatteryTag tone="light" label="ASSEMBLY · 3 STEPS" className="mb-5" />
+          <div className="flex items-center gap-2.5 mb-5">
+            <SectionIcon name="ruler-pencil" tone="light" />
+            <span className="label-code text-[var(--sw-black)]/55">ASSEMBLY · 3 STEPS</span>
+          </div>
           <h2 className="font-head text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[20ch] text-[var(--sw-black)]">
             A simple{" "}
             <span className="text-[var(--sw-blue)]">three-step plan</span>

@@ -623,18 +623,18 @@ export function Outcomes() {
       icon: "robot-head",
       title: (
         <>
-          The repeat-revenue model this industry proved —{" "}
-          <span className="text-[var(--sw-mint)]">that almost nobody runs</span>
+          Turn one-time buyers into{" "}
+          <span className="text-[var(--sw-mint)]">monthly subscribers</span>
         </>
       ),
       lede:
-        "KiwiCo and CrunchLabs built subscription businesses with over 100,000 subscribers on STEM boxes for kids. Yet of the 14 retail stores we checked, exactly one sells any subscription. A retailer doesn’t need to manufacture anything to run this model: you curate a monthly box from the catalog you already carry — picking the products is a merchandising decision your team makes, not a development task. The technology to sell, bill, and manage it is this module.",
+        "KiwiCo and CrunchLabs built businesses with over 100,000 subscribers on STEM boxes for kids. Yet only 7 of 100 STEM stores sell any subscription. You don't need to manufacture anything: your team picks a monthly box from the catalog you already carry, and this module sells it, bills it, and manages it.",
       results: [
-        "Subscription per child and age group: the box grows with the kid, set up once by the parent",
-        "Gift subscriptions — 3 or 6 months, bought as a present: one of the strongest Christmas products a STEM store can have",
-        "Customers manage everything in the account: pause, skip a month, change address, cancel — no support emails, no calls",
-        "Billing handled correctly: recurring charges, failed-payment retries, prepaid plans — the unglamorous machinery that makes subscriptions actually work",
-        "Honest note: your team picks next month’s box from the catalog — ongoing merchandising on your side, zero ongoing development",
+        "Subscription per child and age group, so the box grows with the kid",
+        "Gift subscriptions for 3 or 6 months, one of the strongest Christmas products a STEM store can have",
+        "Customers pause, skip, or cancel in their account, not through support",
+        "Billing runs itself: recurring charges, failed-payment retries, prepaid plans",
+        "Your team's only job is picking next month's box; no ongoing development",
       ],
       diagram: <SvgSubscription />,
       theme: "dark",

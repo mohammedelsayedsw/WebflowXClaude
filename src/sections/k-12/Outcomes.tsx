@@ -647,18 +647,18 @@ export function Outcomes() {
       icon: "flask-gear",
       title: (
         <>
-          No more surprises{" "}
-          <span className="text-[var(--sw-blue)]">at the courier desk</span>
+          The checkout knows{" "}
+          <span className="text-[var(--sw-blue)]">what can ship where</span>
         </>
       ),
       lede:
-        "STEM retail ships things normal toy stores don’t: lithium batteries (banned on many routes and on air freight — sellers in this industry publicly document not being able to ship them overseas), chemistry-set chemicals with postal limits, strong magnets. Today retailers find out at the courier desk, or oversell to a country they can’t ship to. This module teaches the checkout the rules, so the problem is caught before the order exists.",
+        "STEM stores ship things normal toy stores don't: lithium batteries, chemicals with postal limits, strong magnets. Some of it can't fly or cross borders, and today that surfaces at the courier desk, after the customer has paid. This module teaches the checkout the rules, so the problem is caught before the order exists.",
       results: [
-        "Each product carries flags — battery, chemical, magnet — set in admin or imported automatically with the supplier feed",
-        "The checkout enforces the rules: this parcel only by ground, this item not available abroad, this one needs a declaration on the label",
-        "Shipping methods filter themselves per cart — if one item can’t fly, the air options simply don’t appear",
-        "Carrier label notes and declarations generated where required — no manual paperwork at the packing desk",
-        "Rules live in the admin: when a carrier changes its policy, your team updates a rule — not code, not a developer ticket",
+        "Every product carries flags (battery, chemical, magnet), set in admin or arriving with the supplier feed",
+        "The checkout applies the rules: ground only, not abroad, declaration needed on the label",
+        "If one item in the cart can't fly, air shipping simply isn't offered",
+        "Label notes and declarations print automatically at the packing desk",
+        "When a carrier changes its policy, your team updates a rule in admin, not code",
       ],
       diagram: <SvgShipping />,
       theme: "beige",

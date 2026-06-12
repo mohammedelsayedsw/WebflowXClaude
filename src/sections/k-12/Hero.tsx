@@ -1,13 +1,7 @@
 "use client";
 
 import { assetUrl } from "@/lib/assets";
-import {
-  AgeChip,
-  BrickStrip,
-  BlueprintGrid,
-  InstructionPlate,
-  SectionIcon,
-} from "./motifs";
+import { AgeChip, BlueprintGrid, SectionIcon } from "./motifs";
 
 function HeroBg() {
   return (
@@ -75,7 +69,7 @@ function HeroProofCard() {
       <div className="p-6 md:p-8">
         <div className="flex items-center justify-between mb-5">
           <span className="flex items-center gap-2">
-            <SectionIcon name="microscope" tone="dark" size={15} />
+            <SectionIcon name="dna" tone="dark" size={18} />
             <span className="label-code text-[var(--sw-mint)]">PROVEN IN PRODUCTION</span>
           </span>
           <span className="label-code text-white/45">REFERENCE BUILD</span>
@@ -127,8 +121,6 @@ function TrustLogos() {
         borderTop: "1px solid rgba(255,255,255,0.12)",
       }}
     >
-      {/* brick-stud strip riding the top edge of the trust bar */}
-      <BrickStrip tone="dark" count={28} className="wrap pt-5 -mb-1 opacity-90" />
       <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
         <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
           Trusted by 700+ leading brands worldwide
@@ -185,7 +177,7 @@ export function Hero() {
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-8 md:mb-10">
                 <div className="inline-flex items-center gap-2 rounded-[2px] border border-white/70 px-3 py-1.5">
-                  <SectionIcon name="rocket" tone="dark" size={14} />
+                  <SectionIcon name="rocket" tone="dark" size={16} />
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     scandiweb industry solution
                   </span>
@@ -210,9 +202,6 @@ export function Hero() {
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <InstructionPlate tone="dark">
-                  PART 1 OF 5 · ASSEMBLY TIME: 12 WEEKS
-                </InstructionPlate>
                 <div className="flex items-center gap-3 text-white">
                   <span
                     className="relative inline-flex items-center justify-center border border-white/70 rounded-full"

@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
-import { BatteryTag } from "./motifs";
+import { SectionIcon } from "./motifs";
 
 export function Problems() {
   const problems = [
@@ -53,7 +53,10 @@ export function Problems() {
       <div className="wrap relative">
         <div className="max-w-[66ch] mb-14 md:mb-20">
           <Reveal>
-            <BatteryTag tone="dark" label="64 COMPANIES · 14 STORES CHECKED" className="mb-5" />
+            <div className="flex items-center gap-2.5 mb-5">
+              <SectionIcon name="head-gear" tone="dark" />
+              <span className="label-code text-white/60">64 COMPANIES · 14 STORES CHECKED</span>
+            </div>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
               Four problems every{" "}
               <span className="text-[var(--sw-mint)]">STEM toy retailer</span> recognises

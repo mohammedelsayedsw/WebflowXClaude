@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { SectionIcon } from "./motifs";
 
 export function WhatShips() {
   const deliverables = [
@@ -57,6 +58,10 @@ export function WhatShips() {
       <div className="wrap relative">
         <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] items-start">
           <Reveal>
+            <div className="flex items-center gap-2.5 mb-5">
+              <SectionIcon name="code-window" tone="dark" />
+              <span className="label-code text-white/60">YOURS AFTER LAUNCH</span>
+            </div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[16ch]">
               Not just the build.{" "}
               <span className="text-[var(--sw-mint)]">Everything to run it</span>

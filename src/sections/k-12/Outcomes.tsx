@@ -5,12 +5,13 @@ import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
 import { btnLight } from "@/components/primitives/buttonStyles";
-import { AgeChip } from "./motifs";
+import { AgeChip, SectionIcon } from "./motifs";
 
 type OutcomeBlock = {
   n: string;
   kicker: string;
   age: string;
+  icon: string;
   title: React.ReactNode;
   lede: string;
   results: string[];
@@ -376,7 +377,7 @@ function SvgCompleteness() {
 // ============================================================
 // OutcomeBlockRow — layout shell (adds the age-chip motif)
 // ============================================================
-function OutcomeBlockRow({ n, kicker, age, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
+function OutcomeBlockRow({ n, kicker, age, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
   const dark = theme === "dark";
   const diagramOnDark = diagramDark ?? dark;
   const textColor = dark ? "text-white" : "text-[var(--sw-black)]";
@@ -408,6 +409,7 @@ function OutcomeBlockRow({ n, kicker, age, title, lede, results, diagram, theme,
         <div className="grid gap-12 lg:gap-16 md:grid-cols-2 items-center">
           <Reveal className={`min-w-0 ${reverse ? "md:order-2" : "md:order-1"}`}>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
+              <SectionIcon name={icon} tone={dark ? "dark" : "light"} />
               <span className={`label-code ${labelColor}`}>MODULE · {n}</span>
               <span className={`h-px w-6 hidden sm:block ${dark ? "bg-white/15" : "bg-[var(--sw-black)]/15"}`} />
               <AgeChip tone={dark ? "dark" : "light"}>{age}</AgeChip>
@@ -452,6 +454,7 @@ export function Outcomes() {
       n: "1",
       kicker: "Catalog & supplier feed engine",
       age: "AGES: ALL",
+      icon: "flowchart",
       title: (
         <>
           Thousands of products from many suppliers —{" "}
@@ -476,6 +479,7 @@ export function Outcomes() {
       n: "2",
       kicker: "Marketplaces & shopping feeds",
       age: "AGES: ALL",
+      icon: "circuit-board",
       title: (
         <>
           Sell everywhere your buyers search —{" "}
@@ -501,6 +505,7 @@ export function Outcomes() {
       n: "3",
       kicker: "Subscription boxes & gift subscriptions",
       age: "AGES 3–14",
+      icon: "molecule-hand",
       title: (
         <>
           The repeat-revenue model this industry proved —{" "}
@@ -524,6 +529,7 @@ export function Outcomes() {
       n: "4",
       kicker: "Shipping rules for “difficult” products",
       age: "HANDLE WITH CARE",
+      icon: "flask-gear",
       title: (
         <>
           No more surprises{" "}
@@ -548,6 +554,7 @@ export function Outcomes() {
       n: "5",
       kicker: "Batteries & extras reminder",
       age: "BATTERIES? CHECK",
+      icon: "math-operations",
       title: (
         <>
           Batteries not included —{" "}

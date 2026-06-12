@@ -6,6 +6,7 @@ import {
   BrickStrip,
   BlueprintGrid,
   InstructionPlate,
+  SectionIcon,
 } from "./motifs";
 
 function HeroBg() {
@@ -73,7 +74,10 @@ function HeroProofCard() {
     >
       <div className="p-6 md:p-8">
         <div className="flex items-center justify-between mb-5">
-          <span className="label-code text-[var(--sw-mint)]">PROVEN IN PRODUCTION</span>
+          <span className="flex items-center gap-2">
+            <SectionIcon name="microscope" tone="dark" size={15} />
+            <span className="label-code text-[var(--sw-mint)]">PROVEN IN PRODUCTION</span>
+          </span>
           <span className="label-code text-white/45">REFERENCE BUILD</span>
         </div>
 
@@ -98,98 +102,6 @@ function HeroProofCard() {
             12 wk
           </span>
           <span className="label-code text-white/55">kickoff to production</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Module strip — a single full-width element holding a left-edge label and
- * five periodic-table-style element tiles, one per module. The label
- * ("FIVE MODULES · LIVE IN 12 WEEKS") is built into the strip so the
- * text-to-tiles connection can't be lost. Each tile links to its module
- * section; on hover it lifts and reveals a one-line description. On mobile the
- * five tiles wrap into two rows (3 + 2).
- */
-function ModuleStrip() {
-  const tiles: { sym: string; n: string; name: string; line: string; href: string }[] = [
-    {
-      sym: "Ca",
-      n: "1",
-      name: "Catalog from your suppliers",
-      line: "Supplier feeds in, clean catalog out — no retyping.",
-      href: "#outcome-1",
-    },
-    {
-      sym: "Mk",
-      n: "2",
-      name: "Marketplace connections",
-      line: "Amazon, eBay, Google Shopping from one catalog.",
-      href: "#outcome-2",
-    },
-    {
-      sym: "Su",
-      n: "3",
-      name: "Subscription boxes",
-      line: "Monthly boxes and gift subscriptions that bill themselves.",
-      href: "#outcome-3",
-    },
-    {
-      sym: "Sh",
-      n: "4",
-      name: "Shipping rules for difficult products",
-      line: "Battery, chemical and magnet flags enforced at checkout.",
-      href: "#outcome-4",
-    },
-    {
-      sym: "Ba",
-      n: "5",
-      name: "Batteries & extras reminder",
-      line: "Batteries not included? The cart says so.",
-      href: "#outcome-5",
-    },
-  ];
-  return (
-    <div className="mt-12 md:mt-16">
-      <div className="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-5 rounded-[4px] border border-white/12 bg-white/[0.02] p-3 md:p-4">
-        {/* left-edge label — part of the same element as the tiles */}
-        <div className="flex items-center shrink-0 md:w-[132px] pb-3 md:pb-0 md:pr-5 border-b md:border-b-0 md:border-r border-white/10">
-          <span className="label-code text-[var(--sw-mint)] leading-[1.6]">
-            FIVE MODULES · LIVE IN 12 WEEKS
-          </span>
-        </div>
-
-        {/* five equal tiles */}
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-2.5 md:gap-3 flex-1">
-          {tiles.map((t) => (
-            <a
-              key={t.sym}
-              href={t.href}
-              className="group relative flex flex-col rounded-[4px] p-4 md:p-5 transition-all duration-200 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.025)",
-                border: "1px solid rgba(110,247,110,0.22)",
-              }}
-            >
-              <span className="absolute top-2.5 right-3 label-code text-[10px] text-white/40 group-hover:text-[var(--sw-mint)] transition-colors tabular-nums">
-                {t.n}
-              </span>
-              <span className="font-head text-white text-[28px] md:text-[34px] leading-none tracking-[-0.01em] group-hover:text-[var(--sw-mint)] transition-colors">
-                {t.sym}
-              </span>
-              <span className="mt-2.5 text-[11px] md:text-[11.5px] text-white/65 leading-snug">
-                {t.name}
-              </span>
-              <span className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-200">
-                <span className="overflow-hidden">
-                  <span className="block mt-1.5 text-[10px] md:text-[10.5px] text-[var(--sw-mint)]/80 leading-snug">
-                    {t.line}
-                  </span>
-                </span>
-              </span>
-            </a>
-          ))}
         </div>
       </div>
     </div>
@@ -272,7 +184,8 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-8 md:mb-10">
-                <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5">
+                <div className="inline-flex items-center gap-2 rounded-[2px] border border-white/70 px-3 py-1.5">
+                  <SectionIcon name="rocket" tone="dark" size={14} />
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     scandiweb industry solution
                   </span>
@@ -318,9 +231,6 @@ export function Hero() {
               <HeroProofCard />
             </div>
           </div>
-
-          {/* full-width module strip, spanning under both columns */}
-          <ModuleStrip />
         </div>
       </div>
 

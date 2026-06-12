@@ -1,5 +1,7 @@
 "use client";
 
+import { assetUrl } from "@/lib/assets";
+
 /**
  * STEM motif system — the industry-specific visual language for the k-12 page.
  *
@@ -16,6 +18,36 @@
 type Tone = "dark" | "light";
 
 const accentFor = (tone: Tone) => (tone === "dark" ? "var(--sw-mint)" : "var(--sw-blue)");
+
+/* ------------------------------------------------------------------ *
+ * Section icon — one line icon sitting next to a section's small
+ * uppercase label, at roughly label-text height. White variant on dark
+ * sections, black variant on light sections (the colour is baked into the
+ * SVG file). Decorative — paired with a text label, so aria-hidden.
+ * ------------------------------------------------------------------ */
+export function SectionIcon({
+  name,
+  tone = "dark",
+  size = 16,
+  className = "",
+}: {
+  name: string;
+  tone?: Tone;
+  size?: number;
+  className?: string;
+}) {
+  const variant = tone === "dark" ? "white" : "black";
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={assetUrl(`/accelerator/k-12/icons/svg/${variant}/${name}.svg`)}
+      alt=""
+      aria-hidden
+      className={`inline-block shrink-0 ${className}`}
+      style={{ width: size, height: size }}
+    />
+  );
+}
 
 /* ------------------------------------------------------------------ *
  * Brick-stud strip — a horizontal row of small rounded squares, like

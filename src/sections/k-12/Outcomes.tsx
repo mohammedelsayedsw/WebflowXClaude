@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowUpRight, Check, X } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
@@ -25,7 +24,7 @@ type OutcomeBlock = {
 const INK = "Inter";
 
 // ============================================================
-// Module 1 — Catalog & supplier feed engine
+// Module 1 – Catalog & supplier feed engine
 // Excel/feed files → mapping hub → clean store PDP
 // ============================================================
 function SvgSupplierFeed() {
@@ -125,7 +124,7 @@ function SvgSupplierFeed() {
 }
 
 // ============================================================
-// Module 2 — Marketplaces & shopping feeds
+// Module 2 – Marketplaces & shopping feeds
 // One catalog → fans out to channels → orders return to one screen
 // ============================================================
 function SvgChannels() {
@@ -198,7 +197,7 @@ function SvgChannels() {
 }
 
 // ============================================================
-// Module 3 — Subscription boxes & gift subscriptions
+// Module 3 – Subscription boxes & gift subscriptions
 // Monthly cycle of boxes + a gift tag
 // ============================================================
 function SvgSubscription() {
@@ -254,7 +253,7 @@ function SvgSubscription() {
 }
 
 // ============================================================
-// Module 4 — Shipping rules for difficult products
+// Module 4 – Shipping rules for difficult products
 // Parcel with flags + blocked-plane / ground-only logic
 // ============================================================
 function SvgShipping() {
@@ -295,7 +294,7 @@ function SvgShipping() {
           {/* plane glyph */}
           <path d="M366 178 l16 -6 -4 6 4 6 -16 -6z" fill="rgba(255,90,49,0.8)" />
           <line x1={360} y1={172} x2={388} y2={184} stroke="#FF5A31" strokeWidth={1.6} />
-          <text x={400} y={182} fill="#fff" fontFamily={INK} fontSize="11" fontWeight="600">Air freight — removed (lithium battery)</text>
+          <text x={400} y={182} fill="#fff" fontFamily={INK} fontSize="11" fontWeight="600">Air freight – removed (lithium battery)</text>
         </g>
 
         {/* ground allowed */}
@@ -303,7 +302,7 @@ function SvgShipping() {
           <rect x={350} y={206} width={290} height={40} rx={3} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.5)" />
           <circle cx={372} cy={226} r={9} fill="none" stroke="#6EF76E" />
           <path d="M368 226 l3 3 6 -7" stroke="#6EF76E" strokeWidth={1.6} fill="none" />
-          <text x={392} y={230} fill="#fff" fontFamily={INK} fontSize="11" fontWeight="600">Ground — available</text>
+          <text x={392} y={230} fill="#fff" fontFamily={INK} fontSize="11" fontWeight="600">Ground – available</text>
         </g>
 
         {/* abroad blocked */}
@@ -320,8 +319,8 @@ function SvgShipping() {
 }
 
 // ============================================================
-// Module 5 — Batteries & extras reminder
-// Cart line + "needs 4 AA batteries — add?" prompt
+// Module 5 – Batteries & extras reminder
+// Cart line + "needs 4 AA batteries – add?" prompt
 // ============================================================
 function SvgCompleteness() {
   const W = 700;
@@ -347,8 +346,8 @@ function SvgCompleteness() {
         <rect x={104} y={222} width={34} height={18} rx={2} fill="none" stroke="#6EF76E" />
         <rect x={138} y={227} width={3} height={8} rx={1} fill="#6EF76E" />
         <rect x={107} y={225} width={24} height={12} rx={1} fill="#6EF76E" fillOpacity={0.85} />
-        <text x={158} y={228} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700">This kit needs 4 AA batteries — add them?</text>
-        <text x={158} y={248} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="11">helpful, honest add-on — not a pushy upsell</text>
+        <text x={158} y={228} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700">This kit needs 4 AA batteries – add them?</text>
+        <text x={158} y={248} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="11">helpful, honest add-on – not a pushy upsell</text>
         <rect x={508} y={216} width={92} height={32} rx={3} fill="#6EF76E" fillOpacity={0.85} />
         <text x={554} y={237} fill="#10132c" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">Add · €4.90</text>
       </motion.g>
@@ -376,7 +375,7 @@ function SvgCompleteness() {
 }
 
 // ============================================================
-// OutcomeBlockRow — layout shell (adds the age-chip motif)
+// OutcomeBlockRow – layout shell (adds the age-chip motif)
 // ============================================================
 function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
   const dark = theme === "dark";
@@ -407,7 +406,11 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
       {!dark && <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />}
 
       <div className="wrap relative py-24 md:py-32">
-        <div className="grid gap-12 lg:gap-16 md:grid-cols-2 items-center">
+        <div
+          className={`grid gap-12 lg:gap-16 md:grid-cols-2 items-center ${
+            reverse ? "lg:grid-cols-[1.8fr_1fr]" : "lg:grid-cols-[1fr_1.8fr]"
+          }`}
+        >
           <Reveal className={`min-w-0 ${reverse ? "md:order-2" : "md:order-1"}`}>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
               <SectionIcon name={icon} tone={dark ? "dark" : "light"} />
@@ -445,7 +448,7 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
 }
 
 // ============================================================
-// Module tiles — periodic-table-style, open-as-card in place
+// Module tiles – periodic-table-style, open-as-card in place
 // (dark section styling). No links, no scroll.
 // ============================================================
 const TILES: { n: string; sym: string; name: string; line: string; desc: string }[] = [
@@ -453,117 +456,71 @@ const TILES: { n: string; sym: string; name: string; line: string; desc: string 
     n: "1",
     sym: "Ca",
     name: "Catalog & supplier feed engine",
-    line: "Supplier feeds in, clean catalog out — no retyping.",
-    desc: "Connect supplier price lists and feeds so prices and stock update automatically — whether the supplier sends an API feed or an Excel file — and get fast tools to make product pages your own, instead of copies of every other shop’s.",
+    line: "Supplier feeds in, clean catalog out – no retyping.",
+    desc: "Connect supplier price lists and feeds so prices and stock update automatically – whether the supplier sends an API feed or an Excel file – and get fast tools to make product pages your own, instead of copies of every other shop’s.",
   },
   {
     n: "2",
     sym: "Mk",
     name: "Marketplaces & shopping feeds",
     line: "Sell on Amazon and Google Shopping from one catalog.",
-    desc: "List on Amazon, eBay, local marketplaces and Google Shopping from the catalog you already have. Stock and prices stay synced, and every order lands in one screen — no double bookkeeping.",
+    desc: "List on Amazon, eBay, local marketplaces and Google Shopping from the catalog you already have. Stock and prices stay synced, and every order lands in one screen – no double bookkeeping.",
   },
   {
     n: "3",
     sym: "Su",
     name: "Subscription boxes & gift subscriptions",
     line: "Monthly boxes and gift subscriptions that bill themselves.",
-    desc: "Curate a monthly box from the catalog you already carry. Subscriptions per child and age group, 3- and 6-month gift subscriptions, and self-serve pause, skip and cancel — the billing runs itself.",
+    desc: "Curate a monthly box from the catalog you already carry. Subscriptions per child and age group, 3- and 6-month gift subscriptions, and self-serve pause, skip and cancel – the billing runs itself.",
   },
   {
     n: "4",
     sym: "Sh",
     name: "Shipping rules for difficult products",
     line: "Battery, chemical and magnet rules enforced at checkout.",
-    desc: "Flag products as battery, chemical or magnet and the checkout enforces the rules — ground-only, no air freight, not shipped abroad, declarations where required. The problem is caught before the order exists.",
+    desc: "Flag products as battery, chemical or magnet and the checkout enforces the rules – ground-only, no air freight, not shipped abroad, declarations where required. The problem is caught before the order exists.",
   },
   {
     n: "5",
     sym: "Ba",
     name: "Batteries & extras reminder",
     line: "The cart reminds buyers what the kit needs to work.",
-    desc: "Each product carries a short “needed to use it” list. The cart checks it quietly — “this kit needs 4 AA batteries — add them?” Higher order value, and fewer ruined gift mornings.",
+    desc: "Each product carries a short “needed to use it” list. The cart checks it quietly – “this kit needs 4 AA batteries – add them?” Higher order value, and fewer ruined gift mornings.",
   },
 ];
 
 function ModuleTiles() {
-  const [open, setOpen] = useState<string | null>(null);
-
   return (
     <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 items-start">
-      {TILES.map((m) => {
-        const isOpen = open === m.n;
-
-        if (isOpen) {
-          return (
-            <div
-              key={m.n}
-              className="col-span-2 md:col-span-2 flex flex-col rounded-[4px] p-5 md:p-6"
-              style={{
-                background: "rgba(110,247,110,0.06)",
-                border: "1px solid rgba(110,247,110,0.5)",
-              }}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <span className="font-head text-[var(--sw-mint)] text-[26px] md:text-[30px] leading-none tracking-[-0.01em]">
-                  {m.sym}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setOpen(null)}
-                  aria-label={`Close ${m.name}`}
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-[2px] border border-white/15 text-white/60 hover:bg-white/5 transition"
-                >
-                  <X className="h-3.5 w-3.5" />
-                </button>
-              </div>
-              <h3 className="font-head text-white text-[16px] md:text-[18px] leading-snug mt-3">
-                {m.name}
-              </h3>
-              <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed mt-2">
-                {m.desc}
-              </p>
-            </div>
-          );
-        }
-
-        return (
-          <button
-            key={m.n}
-            type="button"
-            onClick={() => setOpen(m.n)}
-            aria-expanded={false}
-            className="group relative h-full text-left rounded-[4px] p-5 md:p-6 transition-all duration-200 hover:-translate-y-0.5"
-            style={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(110,247,110,0.22)",
-            }}
-          >
-            <span className="absolute top-3 right-3.5 label-code text-[10px] text-white/40 tabular-nums">
-              {m.n}
-            </span>
-            <span className="block font-head text-white text-[30px] md:text-[38px] leading-none tracking-[-0.01em] group-hover:text-[var(--sw-mint)] transition-colors">
-              {m.sym}
-            </span>
-            <span className="block font-head text-white text-[13px] md:text-[14px] leading-snug mt-3">
-              {m.name}
-            </span>
-            <span className="block text-[11px] md:text-[12px] text-white/55 leading-snug mt-1.5">
-              {m.line}
-            </span>
-            <span className="mt-3 inline-flex items-center gap-1 label-code text-[9px] text-[var(--sw-mint)]/70 group-hover:text-[var(--sw-mint)] transition-colors">
-              Open
-              <ArrowUpRight className="h-3 w-3" />
-            </span>
-          </button>
-        );
-      })}
+      {TILES.map((m) => (
+        <div
+          key={m.n}
+          className="relative h-full rounded-[4px] p-5 md:p-6"
+          style={{
+            background: "rgba(255,255,255,0.025)",
+            border: "1px solid rgba(110,247,110,0.22)",
+          }}
+        >
+          <span className="absolute top-3 right-3.5 label-code text-[10px] text-white/40 tabular-nums">
+            {m.n}
+          </span>
+          <span className="block font-head text-white text-[30px] md:text-[38px] leading-none tracking-[-0.01em]">
+            {m.sym}
+          </span>
+          <span className="block font-head text-white text-[13px] md:text-[14px] leading-snug mt-3">
+            {m.name}
+          </span>
+          <span className="block text-[11px] md:text-[12px] text-white/55 leading-snug mt-1.5">
+            {m.line}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
 
 // ============================================================
-// Outcomes — main export
+// Outcomes – main export
 // ============================================================
 export function Outcomes() {
   const items: OutcomeBlock[] = [
@@ -598,7 +555,7 @@ export function Outcomes() {
       icon: "circuit-board",
       title: (
         <>
-          Sell everywhere your buyers search —{" "}
+          Sell everywhere your buyers search –{" "}
           <span className="text-[var(--sw-blue)]">from one catalog</span>
         </>
       ),
@@ -672,19 +629,18 @@ export function Outcomes() {
       icon: "math-operations",
       title: (
         <>
-          Batteries not included —{" "}
-          <span className="text-[var(--sw-mint)]">unless your store thinks of it</span>
+          Batteries, goggles, chargers: the cart offers{" "}
+          <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
         </>
       ),
       lede:
-        "The classic gift disaster: the robot arrives, the batteries didn’t. The chemistry set is under the tree, the safety goggles aren’t. Products in this industry need things to work — batteries, goggles, SD cards, chargers — and the gift buyer has no way to know. The store does. This module makes it say so at exactly the right moment.",
+        "Many products don't include everything they need: batteries, goggles, SD cards, chargers. The gift buyer has no way to know that, and finds out when the box is already open. The store knows, and this module makes the cart say so and offer the missing item right away.",
       results: [
-        "Each product carries a short “needed to use it” list — battery type and count, goggles, SD card, charger — filled once by your team, often straight from supplier specs",
-        "The cart checks it quietly: “this kit needs 4 AA batteries — add them?” One tap to add",
-        "Works for every product type: electronics need batteries, chemistry sets need goggles, microscopes need slides",
-        "Higher average order value from helpful, honest add-ons — advice, not pushy upselling",
-        "Fewer one-star January reviews and fewer support emails that start with “it didn’t work on Christmas morning”",
-        "Pure admin-managed data — no developers after launch, no AI, no third-party tools",
+        "Each product carries a short “needed to use it” list, filled once by your team from supplier specs",
+        "The cart checks the list and offers what's not included, one tap to add",
+        "Works for every product type: electronics, chemistry sets, microscopes, anything with extras",
+        "Higher order value from helpful add-ons, and fewer angry January reviews",
+        "Data lives in admin: no developers after launch, no AI, no third-party tools",
       ],
       diagram: <SvgCompleteness />,
       theme: "dark",
@@ -713,7 +669,7 @@ export function Outcomes() {
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
                 Configure them against your catalog, your suppliers, and your
-                buyers — that&apos;s the project. Start with the one that costs
+                buyers – that&apos;s the project. Start with the one that costs
                 you the most.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">

@@ -15,7 +15,7 @@ function HeroBg() {
             "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
         }}
       />
-      {/* faint blueprint / graph-paper grid — STEM motif, barely visible */}
+      {/* faint blueprint / graph-paper grid – STEM motif, barely visible */}
       <BlueprintGrid />
       <div
         className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
@@ -30,14 +30,14 @@ function HeroBg() {
   );
 }
 
-/** Proof bar — outcomes from a reference build. */
+/** Proof bar – outcomes from a reference build. */
 function HeroProofCard() {
   const stats: { v: string; l: React.ReactNode }[] = [
     {
       v: "9,400",
       l: (
         <>
-          products from 23 suppliers — prices and stock update by themselves,
+          products from 23 suppliers – prices and stock update by themselves,
           zero retyped price lists
         </>
       ),
@@ -176,8 +176,7 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-8 md:mb-10">
-                <div className="inline-flex items-center gap-2 rounded-[2px] border border-white/70 px-3 py-1.5">
-                  <SectionIcon name="rocket" tone="dark" size={18} />
+                <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5">
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     scandiweb industry solution
                   </span>
@@ -196,7 +195,7 @@ export function Hero() {
                   production-ready commerce accelerator
                 </span>{" "}
                 for retailers selling STEM toys, science kits, and robotics to
-                families and gift-givers. The hard parts are already built — you
+                families and gift-givers. The hard parts are already built – you
                 configure them to your store, you don&apos;t build them from
                 scratch.
               </p>

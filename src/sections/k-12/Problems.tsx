@@ -52,10 +52,10 @@ export function Problems() {
         <div className="max-w-[66ch] mb-14 md:mb-20">
           <Reveal>
             <div className="flex items-center gap-2.5 mb-5">
-              <SectionIcon name="head-gear" tone="dark" />
+              <SectionIcon name="code-window" tone="dark" />
               <span className="label-code text-white/60">THE INDUSTRY, CHECKED STORE BY STORE</span>
             </div>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
+            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[30ch]">
               Five problems every{" "}
               <span className="text-[var(--sw-mint)]">STEM toy retailer</span> recognises
             </h2>

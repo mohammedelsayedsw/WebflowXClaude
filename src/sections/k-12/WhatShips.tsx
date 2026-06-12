@@ -68,7 +68,7 @@ export function WhatShips() {
             </h2>
             <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
               The engagement hands over everything your team needs to run the
-              store on its own — code, documentation, runbooks, training. No
+              store on its own – code, documentation, runbooks, training. No
               black box, no vendor lock-in, no post-launch silence.
             </p>
           </Reveal>

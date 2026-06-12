@@ -21,7 +21,7 @@ export function AcceleratorAtAGlance() {
       "Supplier feeds (API, Excel/CSV, SFTP) · marketplaces · Google Shopping · your ERP or warehouse software",
     ],
     ["Peak season", "Sized for the Q4 gift rush and the January exchange wave"],
-    ["After launch", "Your admin team runs every module — no monthly developer dependency"],
+    ["After launch", "Your admin team runs every module – no monthly developer dependency"],
     ["You keep", "Runbooks · architecture docs · admin training · full code ownership"],
   ];
 
@@ -42,10 +42,10 @@ export function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">Configure it to your business</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[62ch]">
-            These modules sit on top of your existing commerce platform —
+            These modules sit on top of your existing commerce platform –
             Shopify, Magento / Adobe Commerce, BigCommerce, WooCommerce, or
             custom. Not instead of it. You keep everything your store already
-            does well. You add the parts a STEM toy retailer actually needs —
+            does well. You add the parts a STEM toy retailer actually needs –
             instead of spending 18 months discovering them on your own budget.
             Every module is a one-time build: after launch your own team runs it
             from the admin, with no monthly developer dependency.
@@ -57,7 +57,7 @@ export function AcceleratorAtAGlance() {
           <p className="mt-12 md:mt-16 text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[80ch] italic">
             Always included, not a module: speed, analytics, accessibility,
             privacy fit for a children&apos;s audience, documentation, and
-            training ship with every delivery as the baseline — never billed as
+            training ship with every delivery as the baseline – never billed as
             extras.
           </p>
         </Reveal>

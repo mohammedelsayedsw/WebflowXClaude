@@ -35,7 +35,7 @@ export function Problems() {
       title: "Surprises: at the courier desk and under the tree",
       body:
         "STEM products are physically difficult: lithium batteries banned on many shipping routes, chemicals with postal limits, strong magnets with their own rules. And they’re difficult on arrival too — the robot needs batteries that aren’t in the box, the chemistry set needs goggles nobody mentioned. Both stories end the same way: a cancelled order, a ruined gift morning, a one-star review in January.",
-      solved: "Solved by Module 4 · Shipping rules + Module 5 · Completeness check",
+      solved: "Solved by Module 4 · Shipping rules + Module 5 · Batteries & extras reminder",
       href: "#outcome-4",
     },
   ];

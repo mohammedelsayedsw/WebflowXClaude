@@ -116,7 +116,7 @@ function SvgSupplierFeed() {
         <text x={pdpX + 16} y={pdpY + 132} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="11">Copy</text>
         <text x={pdpX + pdpW - 16} y={pdpY + 132} fill="#fff" fontFamily={INK} fontSize="11" textAnchor="end">your own</text>
         <rect x={pdpX + 16} y={pdpY + 158} width={pdpW - 32} height={26} rx={2} fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.55)" />
-        <text x={pdpX + pdpW / 2} y={pdpY + 175} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">NO RETYPING</text>
+        <text x={pdpX + pdpW / 2} y={pdpY + 175} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">ALWAYS CURRENT</text>
       </motion.g>
 
       <text x={W / 2} y={H - 12} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">FEEDS IN · CLEAN CATALOG OUT · YOUR TEAM IN CONTROL</text>
@@ -574,19 +574,18 @@ export function Outcomes() {
       icon: "flowchart",
       title: (
         <>
-          Thousands of products from many suppliers —{" "}
-          <span className="text-[var(--sw-mint)]">kept fresh without retyping</span>
+          New products live in hours. Prices and stock{" "}
+          <span className="text-[var(--sw-mint)]">always current</span>.
         </>
       ),
       lede:
-        "Resellers in this industry run catalogs of 5,000–10,000 products bought from dozens of brands. We saw what that does to stores: prices updated by retyping supplier Excel files, items sold while already out of stock at the supplier, and product pages showing the exact same manufacturer description as every competitor selling the identical kit — which gives Google no reason to rank yours. This module is the machinery that keeps a bought-in catalog correct, and makes it yours.",
+        "Retailers in this industry run catalogs of 5,000–10,000 products from dozens of suppliers, each sending data in their own format. Keeping all of it correct, and getting new lines online fast, is the daily work this module takes over.",
       results: [
-        "Supplier price lists and feeds connected: prices and stock update automatically — whether the supplier sends an API feed or an Excel file",
-        "Self-serve mapping screen: when a supplier changes their file format or a new supplier joins, your admin adjusts the column mapping in the interface — no developer ticket, no agency invoice",
-        "Out of stock at the supplier shows correctly in your store, before a customer orders something that can’t ship",
-        "Fast enrichment tools: your own descriptions, photos, and age and difficulty attributes added at scale — so your pages stop being copies of every other shop’s",
-        "New products from a supplier’s list go live in hours, not weeks",
-        "Margin guard: when a supplier raises prices, your prices follow rules you set — instead of silently losing money",
+        "Supplier feeds connected: prices and stock update automatically, whatever format the supplier sends",
+        "New products from a supplier's list go live in hours, not weeks",
+        "Out of stock at the supplier shows in your store before a customer orders it",
+        "Your team adjusts feed mappings in the interface, no developer needed",
+        "When a supplier raises prices, your prices follow rules you set, so margin doesn't quietly disappear",
       ],
       diagram: <SvgSupplierFeed />,
       theme: "dark",

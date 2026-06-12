@@ -318,14 +318,14 @@ function SvgShipping() {
 }
 
 // ============================================================
-// Module 5 — Completeness check
+// Module 5 — Batteries & extras reminder
 // Cart line + "needs 4 AA batteries — add?" prompt
 // ============================================================
 function SvgCompleteness() {
   const W = 700;
   const H = 440;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Cart completeness check prompts for needed items">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Cart batteries and extras reminder prompts for needed items">
       <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
         {/* cart frame */}
         <rect x={60} y={60} width={580} height={320} rx={6} fill="rgba(63,74,175,0.06)" stroke="rgba(63,74,175,0.35)" />
@@ -546,7 +546,7 @@ export function Outcomes() {
     },
     {
       n: "5",
-      kicker: "“Works on Christmas morning” completeness check",
+      kicker: "Batteries & extras reminder",
       age: "BATTERIES? CHECK",
       title: (
         <>

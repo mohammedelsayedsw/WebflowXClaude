@@ -13,7 +13,7 @@ export function AcceleratorAtAGlance() {
     { n: "2", name: "Marketplaces & shopping feeds" },
     { n: "3", name: "Subscription boxes & gift subscriptions" },
     { n: "4", name: "Shipping rules for “difficult” products" },
-    { n: "5", name: "“Works on Christmas morning” completeness check" },
+    { n: "5", name: "Batteries & extras reminder" },
   ];
 
   const spec: [string, React.ReactNode][] = [

@@ -25,7 +25,7 @@ export function AcceleratorValue() {
     ],
     [
       "“Batteries not included” ruins gift mornings and reviews",
-      "Completeness check at the cart included",
+      "Batteries & extras reminder at the cart included",
     ],
     [
       "Q4 peak survived on luck",

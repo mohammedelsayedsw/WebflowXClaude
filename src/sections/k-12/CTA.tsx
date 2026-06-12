@@ -3,7 +3,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { BatteriesIncluded, BrickStrip, SectionIcon } from "./motifs";
+import { BatteriesIncluded, SectionIcon } from "./motifs";
 
 export function CTA() {
   return (
@@ -17,7 +17,6 @@ export function CTA() {
           "radial-gradient(1200px 800px at 50% 50%, #1a2060 0%, #141a48 40%, #10132c 80%, #0a0d24 100%)",
       }}
     >
-      <BrickStrip tone="dark" count={36} className="wrap mb-12 md:mb-16 opacity-90" />
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>

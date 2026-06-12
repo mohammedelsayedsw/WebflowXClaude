@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowUpRight, Check } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
 import { btnLight } from "@/components/primitives/buttonStyles";
-import { AgeChip, SectionIcon } from "./motifs";
+import { SectionIcon } from "./motifs";
 
 type OutcomeBlock = {
   n: string;
@@ -115,7 +116,7 @@ function SvgSupplierFeed() {
         <text x={pdpX + 16} y={pdpY + 132} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="11">Copy</text>
         <text x={pdpX + pdpW - 16} y={pdpY + 132} fill="#fff" fontFamily={INK} fontSize="11" textAnchor="end">your own</text>
         <rect x={pdpX + 16} y={pdpY + 158} width={pdpW - 32} height={26} rx={2} fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.55)" />
-        <text x={pdpX + pdpW / 2} y={pdpY + 175} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">NO RETYPING</text>
+        <text x={pdpX + pdpW / 2} y={pdpY + 175} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">ALWAYS CURRENT</text>
       </motion.g>
 
       <text x={W / 2} y={H - 12} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">FEEDS IN · CLEAN CATALOG OUT · YOUR TEAM IN CONTROL</text>
@@ -377,7 +378,7 @@ function SvgCompleteness() {
 // ============================================================
 // OutcomeBlockRow — layout shell (adds the age-chip motif)
 // ============================================================
-function OutcomeBlockRow({ n, kicker, age, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
+function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
   const dark = theme === "dark";
   const diagramOnDark = diagramDark ?? dark;
   const textColor = dark ? "text-white" : "text-[var(--sw-black)]";
@@ -411,8 +412,6 @@ function OutcomeBlockRow({ n, kicker, age, icon, title, lede, results, diagram, 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
               <SectionIcon name={icon} tone={dark ? "dark" : "light"} />
               <span className={`label-code ${labelColor}`}>MODULE · {n}</span>
-              <span className={`h-px w-6 hidden sm:block ${dark ? "bg-white/15" : "bg-[var(--sw-black)]/15"}`} />
-              <AgeChip tone={dark ? "dark" : "light"}>{age}</AgeChip>
             </div>
             <div className={`label-code ${dark ? "text-[var(--sw-mint)]" : "text-[var(--sw-blue)]"} mb-4`}>
               {kicker}
@@ -446,6 +445,124 @@ function OutcomeBlockRow({ n, kicker, age, icon, title, lede, results, diagram, 
 }
 
 // ============================================================
+// Module tiles — periodic-table-style, open-as-card in place
+// (dark section styling). No links, no scroll.
+// ============================================================
+const TILES: { n: string; sym: string; name: string; line: string; desc: string }[] = [
+  {
+    n: "1",
+    sym: "Ca",
+    name: "Catalog & supplier feed engine",
+    line: "Supplier feeds in, clean catalog out — no retyping.",
+    desc: "Connect supplier price lists and feeds so prices and stock update automatically — whether the supplier sends an API feed or an Excel file — and get fast tools to make product pages your own, instead of copies of every other shop’s.",
+  },
+  {
+    n: "2",
+    sym: "Mk",
+    name: "Marketplaces & shopping feeds",
+    line: "Sell on Amazon and Google Shopping from one catalog.",
+    desc: "List on Amazon, eBay, local marketplaces and Google Shopping from the catalog you already have. Stock and prices stay synced, and every order lands in one screen — no double bookkeeping.",
+  },
+  {
+    n: "3",
+    sym: "Su",
+    name: "Subscription boxes & gift subscriptions",
+    line: "Monthly boxes and gift subscriptions that bill themselves.",
+    desc: "Curate a monthly box from the catalog you already carry. Subscriptions per child and age group, 3- and 6-month gift subscriptions, and self-serve pause, skip and cancel — the billing runs itself.",
+  },
+  {
+    n: "4",
+    sym: "Sh",
+    name: "Shipping rules for difficult products",
+    line: "Battery, chemical and magnet rules enforced at checkout.",
+    desc: "Flag products as battery, chemical or magnet and the checkout enforces the rules — ground-only, no air freight, not shipped abroad, declarations where required. The problem is caught before the order exists.",
+  },
+  {
+    n: "5",
+    sym: "Ba",
+    name: "Batteries & extras reminder",
+    line: "The cart reminds buyers what the kit needs to work.",
+    desc: "Each product carries a short “needed to use it” list. The cart checks it quietly — “this kit needs 4 AA batteries — add them?” Higher order value, and fewer ruined gift mornings.",
+  },
+];
+
+function ModuleTiles() {
+  const [open, setOpen] = useState<string | null>(null);
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 items-start">
+      {TILES.map((m) => {
+        const isOpen = open === m.n;
+
+        if (isOpen) {
+          return (
+            <div
+              key={m.n}
+              className="col-span-2 md:col-span-2 flex flex-col rounded-[4px] p-5 md:p-6"
+              style={{
+                background: "rgba(110,247,110,0.06)",
+                border: "1px solid rgba(110,247,110,0.5)",
+              }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <span className="font-head text-[var(--sw-mint)] text-[26px] md:text-[30px] leading-none tracking-[-0.01em]">
+                  {m.sym}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setOpen(null)}
+                  aria-label={`Close ${m.name}`}
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-[2px] border border-white/15 text-white/60 hover:bg-white/5 transition"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <h3 className="font-head text-white text-[16px] md:text-[18px] leading-snug mt-3">
+                {m.name}
+              </h3>
+              <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed mt-2">
+                {m.desc}
+              </p>
+            </div>
+          );
+        }
+
+        return (
+          <button
+            key={m.n}
+            type="button"
+            onClick={() => setOpen(m.n)}
+            aria-expanded={false}
+            className="group relative h-full text-left rounded-[4px] p-5 md:p-6 transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(110,247,110,0.22)",
+            }}
+          >
+            <span className="absolute top-3 right-3.5 label-code text-[10px] text-white/40 tabular-nums">
+              {m.n}
+            </span>
+            <span className="block font-head text-white text-[30px] md:text-[38px] leading-none tracking-[-0.01em] group-hover:text-[var(--sw-mint)] transition-colors">
+              {m.sym}
+            </span>
+            <span className="block font-head text-white text-[13px] md:text-[14px] leading-snug mt-3">
+              {m.name}
+            </span>
+            <span className="block text-[11px] md:text-[12px] text-white/55 leading-snug mt-1.5">
+              {m.line}
+            </span>
+            <span className="mt-3 inline-flex items-center gap-1 label-code text-[9px] text-[var(--sw-mint)]/70 group-hover:text-[var(--sw-mint)] transition-colors">
+              Open
+              <ArrowUpRight className="h-3 w-3" />
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ============================================================
 // Outcomes — main export
 // ============================================================
 export function Outcomes() {
@@ -457,19 +574,18 @@ export function Outcomes() {
       icon: "flowchart",
       title: (
         <>
-          Thousands of products from many suppliers —{" "}
-          <span className="text-[var(--sw-mint)]">kept fresh without retyping</span>
+          New products live in hours. Prices and stock{" "}
+          <span className="text-[var(--sw-mint)]">always current</span>.
         </>
       ),
       lede:
-        "Resellers in this industry run catalogs of 5,000–10,000 products bought from dozens of brands. We saw what that does to stores: prices updated by retyping supplier Excel files, items sold while already out of stock at the supplier, and product pages showing the exact same manufacturer description as every competitor selling the identical kit — which gives Google no reason to rank yours. This module is the machinery that keeps a bought-in catalog correct, and makes it yours.",
+        "Retailers in this industry run catalogs of 5,000–10,000 products from dozens of suppliers, each sending data in their own format. Keeping all of it correct, and getting new lines online fast, is the daily work this module takes over.",
       results: [
-        "Supplier price lists and feeds connected: prices and stock update automatically — whether the supplier sends an API feed or an Excel file",
-        "Self-serve mapping screen: when a supplier changes their file format or a new supplier joins, your admin adjusts the column mapping in the interface — no developer ticket, no agency invoice",
-        "Out of stock at the supplier shows correctly in your store, before a customer orders something that can’t ship",
-        "Fast enrichment tools: your own descriptions, photos, and age and difficulty attributes added at scale — so your pages stop being copies of every other shop’s",
-        "New products from a supplier’s list go live in hours, not weeks",
-        "Margin guard: when a supplier raises prices, your prices follow rules you set — instead of silently losing money",
+        "Supplier feeds connected: prices and stock update automatically, whatever format the supplier sends",
+        "New products from a supplier's list go live in hours, not weeks",
+        "Out of stock at the supplier shows in your store before a customer orders it",
+        "Your team adjusts feed mappings in the interface, no developer needed",
+        "When a supplier raises prices, your prices follow rules you set, so margin doesn't quietly disappear",
       ],
       diagram: <SvgSupplierFeed />,
       theme: "dark",
@@ -505,7 +621,7 @@ export function Outcomes() {
       n: "3",
       kicker: "Subscription boxes & gift subscriptions",
       age: "AGES 3–14",
-      icon: "molecule-hand",
+      icon: "robot-head",
       title: (
         <>
           The repeat-revenue model this industry proved —{" "}
@@ -618,22 +734,8 @@ export function Outcomes() {
             </Reveal>
           </div>
 
-          <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
-            {items.map((it, i) => (
-              <Reveal key={it.n} delay={i * 0.05}>
-                <a
-                  href={`#outcome-${it.n}`}
-                  className="group flex flex-col gap-2 p-4 md:p-5 rounded-[3px] border border-white/10 hover:border-white/25 hover:bg-white/[0.03] transition-colors h-full"
-                >
-                  <span className="label-code text-white/45 group-hover:text-[var(--sw-mint)] transition-colors">
-                    {it.n}
-                  </span>
-                  <span className="font-head text-white text-[14px] md:text-[15px] leading-[1.25]">
-                    {it.kicker}
-                  </span>
-                </a>
-              </Reveal>
-            ))}
+          <div className="mt-14 md:mt-20">
+            <ModuleTiles />
           </div>
         </div>
       </section>

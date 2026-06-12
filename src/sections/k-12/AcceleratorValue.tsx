@@ -3,7 +3,7 @@
 import { ArrowUpRight, Check, X } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnLight } from "@/components/primitives/buttonStyles";
-import { BrickStrip, SectionIcon } from "./motifs";
+import { SectionIcon } from "./motifs";
 
 export function AcceleratorValue() {
   const rows: [string, string][] = [
@@ -104,7 +104,6 @@ export function AcceleratorValue() {
         {/* Supporting rows: without → with */}
         <Reveal>
           <div className="mt-12 md:mt-16">
-            <BrickStrip tone="light" count={24} className="mb-6" />
             <div className="rounded-[4px] border border-[var(--sw-black)]/12 overflow-hidden">
               <div className="hidden md:grid grid-cols-2 bg-[var(--sw-black)]/[0.03]">
                 <div className="label-code text-[var(--sw-black)]/50 px-6 py-4">Without</div>

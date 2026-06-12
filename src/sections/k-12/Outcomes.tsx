@@ -390,15 +390,15 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
   let diagramWrapClass = "";
   let diagramWrapStyle: React.CSSProperties | undefined;
   if (diagramOnDark && !dark) {
-    diagramWrapClass = "rounded-[4px] p-6 md:p-8 text-white";
+    diagramWrapClass = "rounded-[4px] p-3 md:p-4 text-white";
     diagramWrapStyle = {
       background: "linear-gradient(180deg, rgba(16,19,44,1) 0%, rgba(23,26,56,1) 100%)",
       border: "1px solid rgba(230,231,239,0.08)",
     };
   } else if (dark) {
-    diagramWrapClass = "p-4 md:p-6 text-white";
+    diagramWrapClass = "p-1.5 md:p-2 text-white";
   } else {
-    diagramWrapClass = "bracket-frame p-5 md:p-7 text-[var(--sw-black)]";
+    diagramWrapClass = "bracket-frame p-2 md:p-3 text-[var(--sw-black)]";
   }
 
   return (
@@ -406,11 +406,7 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
       {!dark && <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />}
 
       <div className="wrap relative py-24 md:py-32">
-        <div
-          className={`grid gap-12 lg:gap-16 md:grid-cols-2 items-center ${
-            reverse ? "lg:grid-cols-[1.8fr_1fr]" : "lg:grid-cols-[1fr_1.8fr]"
-          }`}
-        >
+        <div className="grid gap-12 lg:gap-16 md:grid-cols-2 items-center">
           <Reveal className={`min-w-0 ${reverse ? "md:order-2" : "md:order-1"}`}>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
               <SectionIcon name={icon} tone={dark ? "dark" : "light"} />

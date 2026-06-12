@@ -11,14 +11,14 @@ export function HowWeWork() {
       length: "2 to 4 weeks",
       label: "First review",
       body:
-        "We look at your catalog, your suppliers, your sales channels, and your season calendar — and agree which manual job takes the most of your team’s time.",
+        "We look at your catalog, your suppliers, your sales channels, and your season calendar – and agree which manual job takes the most of your team’s time.",
     },
     {
       n: "2",
       length: "2 to 12 weeks",
       label: "Modules set up, live",
       body:
-        "We set up what you chose — one module or the full accelerator — connect it to your systems, and put it into real use, with no risky overnight switch.",
+        "We set up what you chose – one module or the full accelerator – connect it to your systems, and put it into real use, with no risky overnight switch.",
     },
     {
       n: "3",
@@ -44,7 +44,7 @@ export function HowWeWork() {
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[56ch] text-[16px] md:text-[17px] leading-relaxed">
             Like the numbered steps in a construction-kit instruction sheet:
-            review, set up, run. Start with one module or the full accelerator —
+            review, set up, run. Start with one module or the full accelerator –
             either way, no risky overnight switch.
           </p>
         </Reveal>

@@ -62,7 +62,7 @@ export function AcceleratorValue() {
               </div>
               <p className="text-[14px] md:text-[15px] text-[var(--sw-black)]/75 leading-relaxed">
                 A team has to learn how STEM toy retail works first, while you
-                pay for it — supplier feed chaos, marketplace sync, subscription
+                pay for it – supplier feed chaos, marketplace sync, subscription
                 billing, battery shipping rules, all of it gets worked out the
                 hard way, and the first real test is your own Christmas season.
               </p>
@@ -94,7 +94,7 @@ export function AcceleratorValue() {
                 <p className="text-[14px] md:text-[15px] text-white/90 leading-relaxed">
                   The modules are already built and proven in real use. The 12
                   weeks go into fitting them to your suppliers and your systems
-                  — not into building.
+                  – not into building.
                 </p>
               </div>
             </div>

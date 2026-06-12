@@ -3,11 +3,11 @@
 import { assetUrl } from "@/lib/assets";
 
 /**
- * STEM motif system — the industry-specific visual language for the k-12 page.
+ * STEM motif system – the industry-specific visual language for the k-12 page.
  *
  * Small, quiet, recurring. The direct equivalent of the school-photography
  * page's film-perforation / ●REC / AF-bracket motifs, translated for a STEM
- * toy retailer audience. These read as wit, not as a toy store — no childish
+ * toy retailer audience. These read as wit, not as a toy store – no childish
  * illustrations, no bright toy colors. Palette stays on the brand tokens
  * (mint #6EF76E on dark, blue #3F4AAF on light).
  *
@@ -20,10 +20,10 @@ type Tone = "dark" | "light";
 const accentFor = (tone: Tone) => (tone === "dark" ? "var(--sw-mint)" : "var(--sw-blue)");
 
 /* ------------------------------------------------------------------ *
- * Section icon — one line icon sitting next to a section's small
+ * Section icon – one line icon sitting next to a section's small
  * uppercase label, at roughly label-text height. White variant on dark
  * sections, black variant on light sections (the colour is baked into the
- * SVG file). Decorative — paired with a text label, so aria-hidden.
+ * SVG file). Decorative – paired with a text label, so aria-hidden.
  * ------------------------------------------------------------------ */
 export function SectionIcon({
   name,
@@ -50,7 +50,7 @@ export function SectionIcon({
 }
 
 /* ------------------------------------------------------------------ *
- * Brick-stud strip — a horizontal row of small rounded squares, like
+ * Brick-stud strip – a horizontal row of small rounded squares, like
  * the top of a building brick. The page's section-divider accent
  * (equivalent of the film-perforation strip).
  * ------------------------------------------------------------------ */
@@ -84,7 +84,7 @@ export function BrickStrip({
 }
 
 /* ------------------------------------------------------------------ *
- * Age chip — a small "AGES 6–12" style pill, like on toy packaging.
+ * Age chip – a small "AGES 6–12" style pill, like on toy packaging.
  * Decorative tag for the hero and module labels.
  * ------------------------------------------------------------------ */
 export function AgeChip({
@@ -116,7 +116,7 @@ export function AgeChip({
 }
 
 /* ------------------------------------------------------------------ *
- * Battery indicator — a tiny battery icon at ~80% charge, the quiet
+ * Battery indicator – a tiny battery icon at ~80% charge, the quiet
  * equivalent of the photography page's ●REC marker. Sits next to
  * section labels.
  * ------------------------------------------------------------------ */
@@ -163,7 +163,7 @@ export function BatteryTag({
   );
 }
 
-/** Playful inversion — a "BATTERIES INCLUDED ✓" chip (a wink at module 5). */
+/** Playful inversion – a "BATTERIES INCLUDED ✓" chip (a wink at module 5). */
 export function BatteriesIncluded({
   tone = "dark",
   className = "",
@@ -192,7 +192,7 @@ export function BatteriesIncluded({
 }
 
 /* ------------------------------------------------------------------ *
- * Circuit trace — a thin PCB-style line (right angles, small solder-pad
+ * Circuit trace – a thin PCB-style line (right angles, small solder-pad
  * dots). Used sparingly to underline the H1 / connect hero elements.
  * ------------------------------------------------------------------ */
 export function CircuitTrace({
@@ -236,7 +236,7 @@ export function CircuitTrace({
 }
 
 /* ------------------------------------------------------------------ *
- * Blueprint grid — a very faint graph-paper / blueprint grid overlay
+ * Blueprint grid – a very faint graph-paper / blueprint grid overlay
  * for the dark hero background. Barely visible.
  * ------------------------------------------------------------------ */
 export function BlueprintGrid({ className = "" }: { className?: string }) {
@@ -259,7 +259,7 @@ export function BlueprintGrid({ className = "" }: { className?: string }) {
 }
 
 /* ------------------------------------------------------------------ *
- * Assembly step glyph — a numbered step drawn like a construction-kit
+ * Assembly step glyph – a numbered step drawn like a construction-kit
  * instruction sheet (1 → 2 → 3). Used in the three-step plan.
  * ------------------------------------------------------------------ */
 export function AssemblyStep({
@@ -298,7 +298,7 @@ export function AssemblyStep({
 }
 
 /**
- * Instruction plate — a small plate styled like a step in a construction-kit
+ * Instruction plate – a small plate styled like a step in a construction-kit
  * instruction sheet: dashed border with solid corner registration ticks.
  * e.g. "PART 1 OF 5 · ASSEMBLY TIME: 12 WEEKS".
  */

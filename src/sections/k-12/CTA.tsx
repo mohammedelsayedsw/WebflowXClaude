@@ -3,7 +3,8 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { BatteriesIncluded, SectionIcon } from "./motifs";
+import { assetUrl } from "@/lib/assets";
+import { SectionIcon } from "./motifs";
 
 export function CTA() {
   return (
@@ -37,28 +38,24 @@ export function CTA() {
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
               <blockquote className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] tracking-[-0.005em]">
                 &ldquo;You don&apos;t pay us to learn STEM toy retail. We already
-                did. Supplier feeds, marketplaces, subscriptions —{" "}
+                did. Supplier feeds, marketplaces, subscriptions –{" "}
                 <span className="text-[var(--sw-mint)]">
                   configure the proven modules to your stack in 12 weeks, not 18
                   months
                 </span>
                 .&rdquo;
               </blockquote>
-              {/* TODO: replace with the real spokesperson — name, role, photo */}
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
-                <div
-                  className="h-11 w-11 rounded-full flex items-center justify-center shrink-0 text-white/40 text-[15px] font-head"
-                  style={{ border: "1px dashed rgba(230,231,239,0.3)" }}
-                >
-                  ?
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+                  alt="Aigars Pavlovics"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                  style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+                />
                 <div>
-                  <div className="text-white/55 text-[14px] font-medium">
-                    Name · role · scandiweb
-                  </div>
-                  <div className="label-code text-amber-300/80 mt-0.5">
-                    SPOKESPERSON — PLACEHOLDER
-                  </div>
+                  <div className="text-white text-[14px] font-medium">Aigars Pavlovics</div>
+                  <div className="label-code text-white/55 mt-0.5">Executive Board · scandiweb</div>
                 </div>
               </div>
             </div>
@@ -77,9 +74,6 @@ export function CTA() {
               ))}
             </ul>
 
-            <div className="mt-10">
-              <BatteriesIncluded tone="dark" />
-            </div>
           </Reveal>
 
           <Reveal delay={0.15}>

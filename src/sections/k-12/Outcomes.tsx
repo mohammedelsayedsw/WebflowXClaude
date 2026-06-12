@@ -603,14 +603,13 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Many parents don’t start on your website — they start on Amazon or Google Shopping. Retailers who list there often manage it by hand: separate listings per channel, stock counted twice, overselling when the Christmas rush hits, prices out of sync. And retailers who aren’t there simply miss the buyers. This module connects the catalog you already have (kept fresh by module 1) to the channels where buyers already are — without creating a second job for your team.",
+        "Many parents start their search on Amazon or Google Shopping, not on your website. This module sells your existing catalog on those channels, without giving your team a second job.",
       results: [
-        "Product listings generated from your catalog data for Amazon, eBay, and the local marketplaces of your markets (bol, Kaufland, Cdiscount, and similar)",
-        "Stock synced across all channels in near-real time — no overselling during peak weeks",
-        "Prices managed by rules per channel, with marketplace fees taken into account — not adjusted by hand",
-        "Google Shopping and price-comparison feeds set up correctly and kept valid",
-        "All orders land in one screen and one fulfillment process, whichever channel they came from",
-        "Channel profitability visible: see which marketplace actually earns money after fees — and which only looks busy",
+        "Listings created from your catalog data for Amazon, eBay, Google Shopping, and your markets' local marketplaces",
+        "Stock synced across all channels, so peak weeks can't oversell you",
+        "Prices follow rules per channel, with marketplace fees counted in",
+        "All orders land in one screen, whichever channel they came from",
+        "Profit per channel visible after fees, so you see which marketplace actually earns",
       ],
       diagram: <SvgChannels />,
       theme: "beige",

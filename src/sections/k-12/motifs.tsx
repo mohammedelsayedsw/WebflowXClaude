@@ -28,7 +28,7 @@ const accentFor = (tone: Tone) => (tone === "dark" ? "var(--sw-mint)" : "var(--s
 export function SectionIcon({
   name,
   tone = "dark",
-  size = 20,
+  size = 24,
   className = "",
 }: {
   name: string;

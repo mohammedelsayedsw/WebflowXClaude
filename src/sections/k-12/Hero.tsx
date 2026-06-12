@@ -69,7 +69,7 @@ function HeroProofCard() {
       <div className="p-6 md:p-8">
         <div className="flex items-center justify-between mb-5">
           <span className="flex items-center gap-2">
-            <SectionIcon name="dna" tone="dark" size={18} />
+            <SectionIcon name="dna" tone="dark" size={20} />
             <span className="label-code text-[var(--sw-mint)]">PROVEN IN PRODUCTION</span>
           </span>
           <span className="label-code text-white/45">REFERENCE BUILD</span>
@@ -177,7 +177,7 @@ export function Hero() {
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-8 md:mb-10">
                 <div className="inline-flex items-center gap-2 rounded-[2px] border border-white/70 px-3 py-1.5">
-                  <SectionIcon name="rocket" tone="dark" size={16} />
+                  <SectionIcon name="rocket" tone="dark" size={18} />
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     scandiweb industry solution
                   </span>

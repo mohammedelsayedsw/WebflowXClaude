@@ -412,7 +412,7 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
             <div className={`label-code ${dark ? "text-[var(--sw-mint)]" : "text-[var(--sw-blue)]"} mb-4`}>
               {kicker}
             </div>
-            <h3 className={`font-head ${textColor} text-[28px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] mb-5 max-w-[24ch]`}>
+            <h3 className={`font-head ${textColor} text-[28px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] mb-5 max-w-[28ch]`}>
               {title}
             </h3>
             <p className={`${mutedColor} text-[15px] md:text-[17px] leading-relaxed max-w-[50ch] mb-7`}>
@@ -622,7 +622,10 @@ export function Outcomes() {
       icon: "math-operations",
       title: (
         <>
-          Batteries, goggles, chargers: the cart offers{" "}
+          Batteries, goggles, chargers:{" "}
+          <br className="hidden lg:block" />
+          the cart offers{" "}
+          <br className="hidden lg:block" />
           <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
         </>
       ),

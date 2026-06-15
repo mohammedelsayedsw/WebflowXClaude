@@ -49,14 +49,15 @@ export function Problems() {
       </svg>
 
       <div className="wrap relative">
-        <div className="max-w-[66ch] mb-14 md:mb-20">
+        <div className="max-w-[52rem] mb-14 md:mb-20">
           <Reveal>
             <div className="flex items-center gap-2.5 mb-5">
               <SectionIcon name="code-window" tone="dark" />
               <span className="label-code text-white/60">THE INDUSTRY, CHECKED STORE BY STORE</span>
             </div>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[30ch]">
+            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
               Five problems every{" "}
+              <br className="hidden md:block" />
               <span className="text-[var(--sw-mint)]">STEM toy retailer</span> recognises
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[60ch] leading-relaxed">

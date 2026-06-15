@@ -311,8 +311,6 @@ function SvgShipping() {
           <text x={628} y={276} fill="#FF5A31" fontFamily={INK} fontSize="11" fontWeight="700" textAnchor="end">blocked for this item</text>
         </g>
       </motion.g>
-
-      <text x={W / 2} y={H - 18} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">CAUGHT BEFORE THE ORDER EXISTS · NOT AT THE COURIER DESK</text>
     </svg>
   );
 }
@@ -368,7 +366,7 @@ function SvgCompleteness() {
         ))}
       </motion.g>
 
-      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">ADMIN-MANAGED DATA · NO DEVELOPERS · NO AI · NO THIRD-PARTY TOOLS</text>
+      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">ADMIN-MANAGED DATA · NO DEVELOPERS · NO THIRD-PARTY TOOLS</text>
     </svg>
   );
 }
@@ -464,15 +462,15 @@ const TILES: { n: string; sym: string; name: string; line: string; desc: string 
   {
     n: "3",
     sym: "Su",
-    name: "Subscription boxes & gift subscriptions",
+    name: "Subscription & gift boxes",
     line: "Monthly boxes and gift subscriptions that bill themselves.",
     desc: "Curate a monthly box from the catalog you already carry. Subscriptions per child and age group, 3- and 6-month gift subscriptions, and self-serve pause, skip and cancel – the billing runs itself.",
   },
   {
     n: "4",
     sym: "Sh",
-    name: "Shipping rules for difficult products",
-    line: "Battery, chemical and magnet rules enforced at checkout.",
+    name: "Shipping rules for hard-to-ship items",
+    line: "The checkout applies the right shipping limits for batteries, chemicals, and magnets.",
     desc: "Flag products as battery, chemical or magnet and the checkout enforces the rules – ground-only, no air freight, not shipped abroad, declarations where required. The problem is caught before the order exists.",
   },
   {

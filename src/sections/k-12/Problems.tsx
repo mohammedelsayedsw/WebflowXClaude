@@ -60,7 +60,7 @@ export function Problems() {
               <br className="hidden md:block" />
               <span className="text-[var(--sw-mint)]">STEM toy retailer</span> recognises
             </h2>
-            <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[60ch] leading-relaxed">
+            <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[78ch] leading-relaxed">
               We mapped the STEM toys market across the US, UK, and Europe, and
               checked the leading stores feature by feature. The same problems
               came up everywhere.

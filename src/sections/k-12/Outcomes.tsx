@@ -201,7 +201,7 @@ function SvgChannels() {
 // ============================================================
 function SvgSubscription() {
   const W = 720;
-  const H = 500;
+  const H = 360;
   const cardW = 150;
   const cardH = 92;
   const rowY = 84;
@@ -274,21 +274,6 @@ function SvgSubscription() {
         </g>
       ))}
 
-      {/* ZONE 4 — gift (highlighted) */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={24} y={372} width={672} height={100} rx={6} fill="rgba(110,247,110,0.08)" stroke="#6EF76E" strokeOpacity={0.55} />
-        {/* gift icon */}
-        <g transform="translate(52, 404)">
-          <rect x={0} y={10} width={28} height={20} rx={2} fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
-          <rect x={0} y={10} width={28} height={6} fill="#6EF76E" fillOpacity={0.2} />
-          <path d="M14 10 V30" stroke="#6EF76E" strokeOpacity={0.7} />
-          <path d="M14 10 C 8 2, 2 6, 14 10" fill="none" stroke="#6EF76E" strokeOpacity={0.85} />
-          <path d="M14 10 C 20 2, 26 6, 14 10" fill="none" stroke="#6EF76E" strokeOpacity={0.85} />
-        </g>
-        <text x={104} y={428} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="700">Give it as a gift</text>
-        <rect x={536} y={406} width={136} height={32} rx={16} fill="rgba(110,247,110,0.16)" stroke="#6EF76E" strokeOpacity={0.6} />
-        <text x={604} y={427} fill="#6EF76E" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">3 or 6 months</text>
-      </motion.g>
     </svg>
   );
 }
@@ -416,7 +401,7 @@ function SvgCompleteness() {
 // ============================================================
 // OutcomeBlockRow – layout shell (adds the age-chip motif)
 // ============================================================
-function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
+function OutcomeBlockRow({ n, icon, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
   const dark = theme === "dark";
   const diagramOnDark = diagramDark ?? dark;
   const textColor = dark ? "text-white" : "text-[var(--sw-black)]";
@@ -451,10 +436,7 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
               <SectionIcon name={icon} tone={dark ? "dark" : "light"} />
               <span className={`label-code ${labelColor}`}>MODULE · {n}</span>
             </div>
-            <div className={`label-code ${dark ? "text-[var(--sw-mint)]" : "text-[var(--sw-blue)]"} mb-4`}>
-              {kicker}
-            </div>
-            <h3 className={`font-head ${textColor} text-[28px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] mb-5 max-w-[28ch]`}>
+            <h3 className={`font-head ${textColor} text-[28px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] mb-5`}>
               {title}
             </h3>
             <p className={`${mutedColor} text-[15px] md:text-[17px] leading-relaxed max-w-[50ch] mb-7`}>
@@ -590,8 +572,8 @@ export function Outcomes() {
       icon: "circuit-board",
       title: (
         <>
-          Sell everywhere your buyers search –{" "}
-          <span className="text-[var(--sw-blue)]">from one catalog</span>
+          Sell everywhere your buyers search{" "}
+          <span className="text-[var(--sw-blue)]">– from one catalog</span>
         </>
       ),
       lede:
@@ -663,13 +645,11 @@ export function Outcomes() {
       age: "BATTERIES? CHECK",
       icon: "math-operations",
       title: (
-        <>
-          Batteries, goggles, chargers:{" "}
-          <br className="hidden lg:block" />
-          the cart offers{" "}
-          <br className="hidden lg:block" />
-          <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
-        </>
+        <span className="text-[22px] md:text-[28px] lg:text-[32px] leading-[1.12]">
+          Batteries, goggles, chargers: the cart{" "}
+          <br className="hidden md:block" />
+          offers <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
+        </span>
       ),
       lede:
         "Many products don't include everything they need: batteries, goggles, SD cards, chargers. The gift buyer has no way to know that, and finds out when the box is already open. The store knows, and this module makes the cart say so and offer the missing item right away.",
@@ -701,7 +681,7 @@ export function Outcomes() {
             <Reveal>
               <h2 className="font-head text-white text-[36px] md:text-[58px] lg:text-[72px] leading-[1.0] tracking-[-0.015em] max-w-[18ch]">
                 Five modules.{" "}
-                <span className="text-[var(--sw-mint)]">Each one saves real work or brings in real revenue.</span>
+                <span className="text-[var(--sw-mint)]">Each one saves real work or brings in real revenue</span>.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>

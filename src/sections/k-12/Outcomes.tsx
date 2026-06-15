@@ -464,7 +464,7 @@ const TILES: { n: string; sym: string; name: string; line: string; desc: string 
   {
     n: "3",
     sym: "Su",
-    name: "Subscription boxes & gift subscriptions",
+    name: "Subscription & gift boxes",
     line: "Monthly boxes and gift subscriptions that bill themselves.",
     desc: "Curate a monthly box from the catalog you already carry. Subscriptions per child and age group, 3- and 6-month gift subscriptions, and self-serve pause, skip and cancel – the billing runs itself.",
   },

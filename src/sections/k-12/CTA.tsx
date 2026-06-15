@@ -30,9 +30,9 @@ export function CTA() {
               <span className="text-[var(--sw-mint)]">fits your business</span>
             </h2>
             <p className="mt-6 text-white/80 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
-              Thirty minutes. We map your stack, find your highest-friction
-              workflow, and tell you whether the accelerator fits. If it does
-              not, we will say so.
+              Thirty minutes. We look at how your store runs, find where you
+              could save time and sell more, and tell you whether the
+              accelerator fits. If it does not, we will say so.
             </p>
 
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">

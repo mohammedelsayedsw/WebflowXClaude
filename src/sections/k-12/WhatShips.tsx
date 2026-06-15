@@ -11,32 +11,26 @@ export function WhatShips() {
   const deliverables = [
     {
       n: "1",
-      name: "Migration plan",
-      detail: "Scripted cutover from your current setup, dry-run tested, zero-downtime fallback.",
+      name: "Go-live",
+      detail: "Your modules turned on in the live store step by step, tested first, with a safe fallback so shoppers never see a broken page.",
       tag: "doc",
     },
     {
       n: "2",
-      name: "Architecture documentation",
-      detail: "System diagram, data model, feed connections, versioned with the code.",
+      name: "How it's set up",
+      detail: "A clear map of your modules, feeds, and connections, kept with the code so any developer can pick it up later.",
       tag: "doc",
     },
     {
       n: "3",
-      name: "Runbooks",
-      detail: "Peak-season ops, recovery procedures, known-issue registry, written for your team.",
-      tag: "doc",
+      name: "Run it yourself",
+      detail: "Short admin guides plus hands-on sessions, so your team can run the modules themselves with no developer needed.",
+      tag: "guide",
     },
     {
       n: "4",
-      name: "Admin training",
-      detail: "Hands-on sessions covering the catalog engine, channels, subscriptions, shipping rules, and completeness data.",
-      tag: "session",
-    },
-    {
-      n: "5",
-      name: "30-day post-launch",
-      detail: "Joint on-call through your first peak window; fix-forward, not hand-off-and-disappear.",
+      name: "First season",
+      detail: "We stay with you through your first peak season, on hand for questions and quick changes, not gone the day after launch.",
       tag: "support",
     },
   ];

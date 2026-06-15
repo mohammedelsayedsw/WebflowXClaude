@@ -42,7 +42,7 @@ export function HowWeWork() {
             A simple{" "}
             <span className="text-[var(--sw-blue)]">three-step plan</span>
           </h2>
-          <p className="mt-6 text-[var(--sw-black)]/75 max-w-[56ch] text-[16px] md:text-[17px] leading-relaxed">
+          <p className="mt-6 text-[var(--sw-black)]/75 max-w-[92ch] text-[16px] md:text-[17px] leading-relaxed">
             Like the numbered steps in a construction-kit instruction sheet:
             review, set up, run.
           </p>

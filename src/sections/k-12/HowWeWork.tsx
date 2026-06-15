@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
-import { AssemblyStep, AssemblyArrow, SectionIcon } from "./motifs";
+import { AssemblyStep, SectionIcon } from "./motifs";
 
 export function HowWeWork() {
   const steps = [
@@ -44,8 +44,7 @@ export function HowWeWork() {
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[56ch] text-[16px] md:text-[17px] leading-relaxed">
             Like the numbered steps in a construction-kit instruction sheet:
-            review, set up, run. Start with one module or the full accelerator –
-            either way, no risky overnight switch.
+            review, set up, run.
           </p>
         </Reveal>
 
@@ -54,14 +53,7 @@ export function HowWeWork() {
             <Reveal key={s.n} delay={i * 0.1}>
               <div className="relative h-full rounded-[4px] border border-[var(--sw-black)]/12 bg-white/60 p-7 md:p-9 overflow-hidden">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <AssemblyStep n={s.n} tone="light" />
-                    {i < steps.length - 1 && (
-                      <span className="hidden md:block">
-                        <AssemblyArrow tone="light" />
-                      </span>
-                    )}
-                  </div>
+                  <AssemblyStep n={s.n} tone="light" />
                   <span
                     className="label-code px-2.5 py-1 rounded-[2px]"
                     style={{

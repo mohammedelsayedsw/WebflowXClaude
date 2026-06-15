@@ -11,7 +11,7 @@ export function HowWeWork() {
       length: "2 to 4 weeks",
       label: "First review",
       body:
-        "We look at your catalog, your suppliers, your sales channels, and your season calendar – and agree which manual job takes the most of your team’s time.",
+        "We look at your catalog, suppliers, sales channels, and season calendar, then agree where the accelerator can help your team most.",
     },
     {
       n: "2",

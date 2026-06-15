@@ -65,7 +65,6 @@ export function CTA() {
                 "Response within one business day",
                 "30 minutes · fit assessment, no sales pitch",
                 "Full reference case study on request",
-                "If we are not the right fit, we will tell you",
               ].map((t, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-[var(--sw-mint)]" />

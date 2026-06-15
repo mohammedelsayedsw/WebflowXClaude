@@ -8,7 +8,7 @@ export function HowWeWork() {
   const steps = [
     {
       n: "1",
-      length: "2 to 4 weeks",
+      length: "1 to 2 weeks",
       label: "First review",
       body:
         "We look at your catalog, suppliers, sales channels, and season calendar, then agree where the accelerator can help your team most.",

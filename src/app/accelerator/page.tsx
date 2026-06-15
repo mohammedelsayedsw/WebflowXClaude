@@ -181,7 +181,7 @@ export default function AcceleratorHubPage() {
                 background: "rgba(10,13,36,0.35)",
               }}
             >
-              Talk to us about your vertical
+              Talk to us about your industry
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
@@ -221,10 +221,10 @@ export default function AcceleratorHubPage() {
                 className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
                 style={{ color: MINT }}
               >
-                Available accelerators
+                Accelerators by industry
               </div>
               <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
-                Pick your vertical
+                Pick your industry
               </h2>
               <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch]">
                 {ACCELERATORS.length} accelerators in production, each grown
@@ -256,7 +256,7 @@ export default function AcceleratorHubPage() {
                     "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
                 }}
               >
-                {/* Accent bar – each vertical gets its own color */}
+                {/* Accent bar – each industry gets its own color */}
                 <div
                   aria-hidden="true"
                   className="absolute inset-x-0 top-0 h-[3px]"
@@ -335,10 +335,10 @@ export default function AcceleratorHubPage() {
                 What an accelerator is
               </div>
               <h2 className="text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
-                A backbone that already knows your vertical
+                A backbone that already knows your industry
               </h2>
               <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
-                Roughly 80% of a vertical store is identical for every merchant
+                Roughly 80% of an industry store is identical for every merchant
                 in that industry. The accelerator is that 80%, built once and
                 hardened in production. Your project pays for the 20% that is
                 actually yours.
@@ -350,7 +350,7 @@ export default function AcceleratorHubPage() {
                   k: "Pre-built in the core",
                   items: [
                     "Industry data model: school codes, approved catalogs, set and grade data, trade accounts",
-                    "Vertical checkout flows: parent reorder, bulk account ordering, release drops, dual retail",
+                    "Industry checkout flows: parent reorder, bulk account ordering, release drops, dual retail",
                     "Integration adapters for ERP, PIM, payments, tax, and shipping",
                     "Multi-warehouse, multi-account, peak-resilient infrastructure",
                   ],
@@ -578,16 +578,16 @@ export default function AcceleratorHubPage() {
               className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-6"
               style={{ color: MINT }}
             >
-              New vertical
+              New industry
             </div>
             <h2 className="font-head text-white text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.015em] font-medium max-w-[22ch]">
-              Don&rsquo;t see your vertical? Let&rsquo;s build the next one
+              Don&rsquo;t see your industry? Let&rsquo;s build the next one
             </h2>
             <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
               If you sell in a category where the same workflows repeat
               across most merchants, it probably belongs in the accelerator
               family. We will audit your stack, scope a new accelerator, and
-              tell you honestly whether your vertical is ready.
+              tell you honestly whether your industry is ready.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
               <a

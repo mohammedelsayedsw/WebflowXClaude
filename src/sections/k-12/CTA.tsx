@@ -84,7 +84,7 @@ export function CTA() {
               region="eu1"
             />
             <p className="label-code text-white/45 mt-3 px-1">
-              We respond within one business day.
+              We respond within one business day
             </p>
           </Reveal>
         </div>

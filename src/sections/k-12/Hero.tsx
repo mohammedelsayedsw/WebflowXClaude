@@ -1,7 +1,7 @@
 "use client";
 
 import { assetUrl } from "@/lib/assets";
-import { AgeChip, BlueprintGrid, SectionIcon } from "./motifs";
+import { BlueprintGrid, SectionIcon } from "./motifs";
 
 function HeroBg() {
   return (
@@ -181,7 +181,6 @@ export function Hero() {
                     scandiweb industry solution
                   </span>
                 </div>
-                <AgeChip tone="dark">AGES 6–12</AgeChip>
               </div>
 
               <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch]">

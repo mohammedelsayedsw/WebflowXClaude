@@ -659,14 +659,13 @@ export function Outcomes() {
             <Reveal>
               <h2 className="font-head text-white text-[36px] md:text-[58px] lg:text-[72px] leading-[1.0] tracking-[-0.015em] max-w-[18ch]">
                 Five modules.{" "}
-                <span className="text-[var(--sw-mint)]">Each one removes a real cost or opens real revenue.</span>
+                <span className="text-[var(--sw-mint)]">Each one saves real work or brings in real revenue.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
-                Configure them against your catalog, your suppliers, and your
-                buyers – that&apos;s the project. Start with the one that costs
-                you the most.
+                Already built and proven. We shape them around your catalog,
+                your suppliers, and your buyers.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">
                 <div>

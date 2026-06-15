@@ -8,19 +8,13 @@ import { SectionIcon } from "./motifs";
 
 export function AcceleratorAtAGlance() {
   const spec: [string, React.ReactNode][] = [
-    [
-      "Live in",
-      <>
-        12 weeks · kickoff to production{" "}
-        <span className="text-amber-600/90">[confirm against reference delivery]</span>
-      </>,
-    ],
+    ["Live in", "12 weeks · kickoff to production"],
     ["Works on", "Shopify · Magento / Adobe Commerce · BigCommerce · WooCommerce · custom"],
     [
       "Connects to",
       "Supplier feeds (API, Excel/CSV, SFTP) · marketplaces · Google Shopping · your ERP or warehouse software",
     ],
-    ["Peak season", "Sized for the Q4 gift rush and the January exchange wave"],
+    ["Peak season", "Sized for your busiest weeks, from holiday gifting to back-to-school"],
     ["After launch", "Your admin team runs every module, no monthly developer dependency"],
     ["You keep", "Runbooks · architecture docs · admin training · full code ownership"],
   ];
@@ -32,7 +26,7 @@ export function AcceleratorAtAGlance() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* LEFT — intro text */}
           <Reveal>
             <div className="flex items-center gap-2.5 mb-5">
@@ -40,8 +34,8 @@ export function AcceleratorAtAGlance() {
               <span className="label-code text-[var(--sw-black)]/55">ACCELERATOR · CHARGED</span>
             </div>
             <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.04] max-w-[26ch]">
-              The accelerator is already built.{" "}
-              <span className="text-[var(--sw-blue)]">Configure it to your business</span>
+              Everything your STEM store needs to run easier and sell more.{" "}
+              <span className="text-[var(--sw-blue)]">Live on your store in 12 weeks.</span>
             </h2>
             <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[60ch]">
               We have spent years building commerce for STEM brands and learned

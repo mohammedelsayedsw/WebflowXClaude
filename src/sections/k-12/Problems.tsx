@@ -80,7 +80,7 @@ export function Problems() {
                 </p>
                 <a
                   href={`#outcome-${f.n}`}
-                  className="mt-6 inline-flex items-center gap-1.5 label-code text-[10px] tracking-[0.1em] whitespace-nowrap text-[var(--sw-mint)] hover:opacity-80 transition"
+                  className="mt-auto pt-6 inline-flex items-center gap-1.5 label-code text-[10px] tracking-[0.1em] whitespace-nowrap text-[var(--sw-mint)] hover:opacity-80 transition"
                 >
                   <span className="h-px w-4 bg-[var(--sw-mint)]/70 shrink-0" />
                   SOLVED BY MODULE {f.n}

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 type Accelerator = {
   slug: string;
@@ -16,22 +16,27 @@ type Accelerator = {
 export function AcceleratorCards({ accelerators }: { accelerators: Accelerator[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  const scrollRight = () => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    // If we are at (or near) the end, loop back to the start; otherwise advance.
-    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
-    el.scrollBy({ left: atEnd ? -el.scrollWidth : 340, behavior: "smooth" });
+  const scroll = (dir: number) => {
+    scrollerRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
   };
 
   return (
     <div>
-      {/* Scroll control — circular arrow button above the row */}
-      <div className="flex justify-end mb-5">
+      {/* Scroll controls — circular arrow buttons above the row */}
+      <div className="flex justify-end gap-3 mb-5">
         <button
           type="button"
-          onClick={scrollRight}
-          aria-label="Scroll accelerators"
+          onClick={() => scroll(-1)}
+          aria-label="Scroll left"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-all hover:bg-white/10"
+          style={{ border: "1px solid rgba(255,255,255,0.3)" }}
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scroll(1)}
+          aria-label="Scroll right"
           className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-all hover:bg-white/10"
           style={{ border: "1px solid rgba(255,255,255,0.3)" }}
         >

@@ -90,7 +90,7 @@ function SvgSupplierFeed() {
       <motion.g initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
         <rect x={hubX} y={hubY} width={hubW} height={hubH} rx={4} fill="url(#feedHub)" stroke="#6EF76E" strokeOpacity={0.5} />
         <text x={hubX + hubW / 2} y={hubY + 34} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="middle">Mapping engine</text>
-        <text x={hubX + hubW / 2} y={hubY + 52} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10" letterSpacing="1" textAnchor="middle">SELF-SERVE · NO DEV TICKET</text>
+        <text x={hubX + hubW / 2} y={hubY + 52} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="8.5" letterSpacing="0.4" textAnchor="middle">SELF-SERVE · NO DEV TICKET</text>
         <line x1={hubX + 18} x2={hubX + hubW - 18} y1={hubY + 68} y2={hubY + 68} stroke="rgba(230,231,239,0.14)" />
         {["Column mapping", "Margin guard", "Stock = supplier truth", "Enrichment queue"].map((label, i) => (
           <g key={label}>
@@ -421,11 +421,11 @@ function OutcomeBlockRow({ n, kicker, icon, title, lede, results, diagram, theme
             <p className={`${mutedColor} text-[15px] md:text-[17px] leading-relaxed max-w-[50ch] mb-7`}>
               {lede}
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-3 max-w-[48ch]">
               {results.map((r, i) => (
-                <li key={i} className={`flex gap-3 ${bulletColor} text-[14px] md:text-[15px] leading-relaxed`}>
+                <li key={i} className={`flex gap-3 min-w-0 ${bulletColor} text-[14px] md:text-[15px] leading-relaxed`}>
                   <Check className="h-4 w-4 shrink-0 mt-1" style={{ color: accentColor }} />
-                  <span className="min-w-0">{r}</span>
+                  <span className="min-w-0 break-words">{r}</span>
                 </li>
               ))}
             </ul>

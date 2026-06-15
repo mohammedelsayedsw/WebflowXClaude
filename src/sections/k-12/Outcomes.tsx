@@ -698,8 +698,7 @@ export function Outcomes() {
       <section className="relative bg-lp-bright overflow-hidden">
         <div className="wrap py-16 md:py-20 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[46ch]">
-            Cut 18 months off your roadmap. Start with the workflow costing you
-            the most.
+            Like the modules? You can have them live in 12 weeks, not months.
           </p>
           <a href="#cta" className={btnLight}>
             See if it fits your store

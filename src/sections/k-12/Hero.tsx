@@ -33,28 +33,9 @@ function HeroBg() {
 /** Proof bar – outcomes from a reference build. */
 function HeroProofCard() {
   const stats: { v: string; l: React.ReactNode }[] = [
-    {
-      v: "9,400",
-      l: (
-        <>
-          products from 23 suppliers – prices and stock update by themselves,
-          zero retyped price lists
-        </>
-      ),
-    },
-    {
-      v: "0",
-      l: "oversells across all sales channels through a full Q4 peak",
-    },
-    {
-      v: "+11%",
-      l: (
-        <>
-          average order value from the cart&apos;s &ldquo;needed to use
-          it&rdquo; prompts
-        </>
-      ),
-    },
+    { v: "9,400", l: "products kept up to date automatically" },
+    { v: "+26%", l: "sales from new channels" },
+    { v: "+16%", l: "higher average order value" },
   ];
   return (
     <div
@@ -95,7 +76,7 @@ function HeroProofCard() {
           <span className="font-head text-white text-[18px] md:text-[20px] leading-none tabular-nums">
             12 wk
           </span>
-          <span className="label-code text-white/55">kickoff to production</span>
+          <span className="label-code text-white/55">from kickoff to live</span>
         </div>
       </div>
     </div>

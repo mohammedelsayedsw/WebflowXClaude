@@ -45,14 +45,9 @@ export function AcceleratorAtAGlance() {
               instead of open-ended agency work.
             </p>
             <p className="mt-4 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[60ch]">
-              These modules sit on top of your existing commerce platform,
-              whether that is Shopify, Magento / Adobe Commerce, BigCommerce,
-              WooCommerce, or custom. Not instead of it. You keep everything
-              your store already does well. You add the parts a STEM toy
-              retailer actually needs, instead of spending 18 months discovering
-              them on your own budget. Every module is a one-time build: after
-              launch your own team runs it from the admin, with no monthly
-              developer dependency.
+              The modules sit on top of the store you already have, not in
+              place of it. You keep what already works and add the parts a STEM
+              toy retailer actually needs.
             </p>
           </Reveal>
 

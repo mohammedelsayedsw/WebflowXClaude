@@ -45,9 +45,9 @@ export function AcceleratorValue() {
             <span className="label-code text-[var(--sw-black)]/55">BUILD VS CONFIGURE</span>
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[34ch]">
-            Fifteen months to build it, or{" "}
+            Fifteen months to build it,{" "}
             <br className="hidden md:block" />
-            <span className="text-[var(--sw-blue)]">twelve weeks to set it up</span>
+            or <span className="text-[var(--sw-blue)]">twelve weeks to set it up</span>
           </h2>
         </Reveal>
 
@@ -107,12 +107,12 @@ export function AcceleratorValue() {
                 key={i}
                 className="grid md:grid-cols-2 border-t border-[var(--sw-black)]/10"
               >
-                <div className="flex gap-3 px-6 py-5 text-[14px] md:text-[15px] text-[var(--sw-black)]/65 leading-relaxed">
-                  <X className="h-4 w-4 shrink-0 mt-0.5 text-[var(--sw-black)]/30" />
+                <div className="flex items-center gap-3 px-6 py-5 text-[14px] md:text-[15px] text-[var(--sw-black)]/65 leading-relaxed">
+                  <X className="h-4 w-4 shrink-0 text-[var(--sw-black)]/30" />
                   <span>{without}</span>
                 </div>
-                <div className="flex gap-3 px-6 py-5 text-[14px] md:text-[15px] text-[var(--sw-black)]/85 leading-relaxed border-t md:border-t-0 md:border-l border-[var(--sw-black)]/10 bg-[var(--sw-blue)]/[0.03]">
-                  <Check className="h-4 w-4 shrink-0 mt-0.5 text-[var(--sw-blue)]" />
+                <div className="flex items-center gap-3 px-6 py-5 text-[14px] md:text-[15px] text-[var(--sw-black)]/85 leading-relaxed border-t md:border-t-0 md:border-l border-[var(--sw-black)]/10 bg-[var(--sw-blue)]/[0.03]">
+                  <Check className="h-4 w-4 shrink-0 text-[var(--sw-blue)]" />
                   <span>{withIt}</span>
                 </div>
               </div>

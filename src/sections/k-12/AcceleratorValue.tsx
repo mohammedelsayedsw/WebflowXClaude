@@ -44,8 +44,9 @@ export function AcceleratorValue() {
             <SectionIcon name="abacus" tone="light" />
             <span className="label-code text-[var(--sw-black)]/55">BUILD VS CONFIGURE</span>
           </div>
-          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[20ch]">
+          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[34ch]">
             Fifteen months to build it, or{" "}
+            <br className="hidden md:block" />
             <span className="text-[var(--sw-blue)]">twelve weeks to set it up</span>
           </h2>
         </Reveal>

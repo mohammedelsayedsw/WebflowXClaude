@@ -33,6 +33,7 @@ export function AcceleratorAtAGlance() {
             </div>
             <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.04] max-w-[26ch]">
               Everything your STEM store needs{" "}
+              <br className="hidden md:block" />
               <span className="text-[var(--sw-blue)]">to run easier and sell more</span>. Live
               on your store in 12 weeks.
             </h2>

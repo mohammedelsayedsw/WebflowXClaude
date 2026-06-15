@@ -58,7 +58,7 @@ export function WhatShips() {
             </div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[16ch]">
               Not just the build.{" "}
-              <span className="text-[var(--sw-mint)]">Everything to run it</span>
+              <span className="text-[var(--sw-mint)]">Everything to run it</span>.
             </h2>
             <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
               The engagement hands over everything your team needs to run the

@@ -335,7 +335,7 @@ function SvgCompleteness() {
 
         {/* line item */}
         <text x={84} y={146} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="600">Robotics starter kit</text>
-        <text x={616} y={146} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">€ 59.00</text>
+        <text x={616} y={146} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">$ 59.00</text>
         <text x={84} y={166} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="10">needed to use it: 4× AA battery</text>
       </motion.g>
 
@@ -349,7 +349,7 @@ function SvgCompleteness() {
         <text x={158} y={228} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700">This kit needs 4 AA batteries – add them?</text>
         <text x={158} y={248} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="11">helpful, honest add-on – not a pushy upsell</text>
         <rect x={508} y={216} width={92} height={32} rx={3} fill="#6EF76E" fillOpacity={0.85} />
-        <text x={554} y={237} fill="#10132c" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">Add · €4.90</text>
+        <text x={554} y={237} fill="#10132c" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">Add · $4.90</text>
       </motion.g>
 
       {/* checklist of product types */}

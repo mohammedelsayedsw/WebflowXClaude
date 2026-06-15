@@ -21,7 +21,7 @@ export function AcceleratorAtAGlance() {
       "Supplier feeds (API, Excel/CSV, SFTP) · marketplaces · Google Shopping · your ERP or warehouse software",
     ],
     ["Peak season", "Sized for the Q4 gift rush and the January exchange wave"],
-    ["After launch", "Your admin team runs every module – no monthly developer dependency"],
+    ["After launch", "Your admin team runs every module, no monthly developer dependency"],
     ["You keep", "Runbooks · architecture docs · admin training · full code ownership"],
   ];
 
@@ -32,69 +32,70 @@ export function AcceleratorAtAGlance() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
-        <Reveal>
-          <div className="flex items-center gap-2.5 mb-5">
-            <SectionIcon name="atom" tone="light" />
-            <span className="label-code text-[var(--sw-black)]/55">ACCELERATOR · CHARGED</span>
-          </div>
-          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[60px] leading-[1.04] max-w-[26ch]">
-            The accelerator is already built.{" "}
-            <span className="text-[var(--sw-blue)]">Configure it to your business</span>
-          </h2>
-          <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[62ch]">
-            These modules sit on top of your existing commerce platform –
-            Shopify, Magento / Adobe Commerce, BigCommerce, WooCommerce, or
-            custom. Not instead of it. You keep everything your store already
-            does well. You add the parts a STEM toy retailer actually needs –
-            instead of spending 18 months discovering them on your own budget.
-            Every module is a one-time build: after launch your own team runs it
-            from the admin, with no monthly developer dependency.
-          </p>
-        </Reveal>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          {/* LEFT — intro text */}
+          <Reveal>
+            <div className="flex items-center gap-2.5 mb-5">
+              <SectionIcon name="atom" tone="light" />
+              <span className="label-code text-[var(--sw-black)]/55">ACCELERATOR · CHARGED</span>
+            </div>
+            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.04] max-w-[26ch]">
+              The accelerator is already built.{" "}
+              <span className="text-[var(--sw-blue)]">Configure it to your business</span>
+            </h2>
+            <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[60ch]">
+              We have spent years building commerce for STEM brands and learned
+              what actually lifts their sales and lightens their daily work. We
+              packaged the pieces that performed best into ready-made modules
+              you add to your store, so you get proven, fixed improvements
+              instead of open-ended agency work.
+            </p>
+            <p className="mt-4 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[60ch]">
+              These modules sit on top of your existing commerce platform,
+              whether that is Shopify, Magento / Adobe Commerce, BigCommerce,
+              WooCommerce, or custom. Not instead of it. You keep everything
+              your store already does well. You add the parts a STEM toy
+              retailer actually needs, instead of spending 18 months discovering
+              them on your own budget. Every module is a one-time build: after
+              launch your own team runs it from the admin, with no monthly
+              developer dependency.
+            </p>
+          </Reveal>
 
-        {/* Always included, not a module */}
-        <Reveal>
-          <p className="mt-12 md:mt-16 text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[80ch] italic">
-            Always included, not a module: speed, analytics, accessibility,
-            privacy fit for a children&apos;s audience, documentation, and
-            training ship with every delivery as the baseline – never billed as
-            extras.
-          </p>
-        </Reveal>
-
-        {/* What you get on day one */}
-        <Reveal delay={0.1}>
-          <div
-            className="relative rounded-[4px] p-6 md:p-8 text-white overflow-hidden mt-12 md:mt-16"
-            style={{
-              background: "linear-gradient(180deg, #171a38 0%, #10132c 100%)",
-              border: "1px solid rgba(230,231,239,0.08)",
-            }}
-          >
-            <span
-              className="absolute top-0 left-0 h-[3px] w-20"
-              style={{ background: "var(--sw-mint)" }}
-            />
-            <h3 className="font-head text-white text-[18px] md:text-[20px] leading-tight mb-7">
-              What you get on day one
-            </h3>
-            <dl className="grid md:grid-cols-2 gap-x-10 gap-y-0">
-              {spec.map(([k, v], i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 6 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05, duration: 0.35 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  className="grid grid-cols-[110px_1fr] gap-4 py-3 border-b border-white/10"
-                >
-                  <dt className="label-code text-white/55">{k}</dt>
-                  <dd className="text-[13px] md:text-[14px] text-white/90 leading-snug">{v}</dd>
-                </motion.div>
-              ))}
-            </dl>
-          </div>
-        </Reveal>
+          {/* RIGHT — What you get on day one */}
+          <Reveal delay={0.1}>
+            <div
+              className="relative rounded-[4px] p-6 md:p-8 text-white overflow-hidden"
+              style={{
+                background: "linear-gradient(180deg, #171a38 0%, #10132c 100%)",
+                border: "1px solid rgba(230,231,239,0.08)",
+              }}
+            >
+              <span
+                className="absolute top-0 left-0 h-[3px] w-20"
+                style={{ background: "var(--sw-mint)" }}
+              />
+              <h3 className="font-head text-white text-[18px] md:text-[20px] leading-tight mb-7">
+                What you get on day one
+              </h3>
+              <dl className="space-y-0">
+                {spec.map(([k, v], i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05, duration: 0.35 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    className="grid grid-cols-[110px_1fr] gap-4 py-3 border-b border-white/10 last:border-b-0"
+                  >
+                    <dt className="label-code text-white/55">{k}</dt>
+                    <dd className="text-[13px] md:text-[14px] text-white/90 leading-snug">{v}</dd>
+                  </motion.div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </div>
 
         {/* mid-page CTA */}
         <Reveal>

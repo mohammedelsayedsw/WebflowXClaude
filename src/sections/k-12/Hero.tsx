@@ -171,11 +171,11 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
+        <div className="wrap relative z-10 pt-24 md:pt-28 pb-10 md:pb-14 w-full">
+          <div className="grid gap-8 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
             {/* LEFT · copy */}
             <div>
-              <div className="flex flex-wrap items-center gap-3 mb-8 md:mb-10">
+              <div className="flex flex-wrap items-center gap-3 mb-5 md:mb-7">
                 <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5">
                   <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                     scandiweb industry solution
@@ -183,12 +183,12 @@ export function Hero() {
                 </div>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch]">
+              <h1 className="font-head text-white text-[40px] sm:text-[52px] md:text-[60px] lg:text-[76px] leading-[1.03] tracking-[-0.015em] max-w-[16ch]">
                 K-12 STEM toys &amp; kits{" "}
                 <span style={{ color: "var(--sw-mint)" }}>commerce</span>
               </h1>
 
-              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
+              <p className="mt-5 md:mt-6 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
                 A{" "}
                 <span className="font-semibold text-white">
                   production-ready commerce accelerator
@@ -199,7 +199,7 @@ export function Hero() {
                 scratch.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-7 md:mt-8 flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-3 text-white">
                   <span
                     className="relative inline-flex items-center justify-center border border-white/70 rounded-full"

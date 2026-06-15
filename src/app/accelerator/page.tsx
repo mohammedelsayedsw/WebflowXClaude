@@ -163,7 +163,7 @@ export default function AcceleratorHubPage() {
             <br className="hidden sm:block" />
             <span style={{ color: MINT }}>live on your store in weeks</span>
           </h1>
-          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[84ch]">
+          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed text-balance max-w-[84ch]">
             In over 20 years building commerce for retailers across many
             industries, we learned what each one actually needs. We turned our
             best work into industry-specific accelerators: ready-made modules,

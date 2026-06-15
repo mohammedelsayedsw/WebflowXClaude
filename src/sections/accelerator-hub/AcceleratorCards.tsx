@@ -86,6 +86,10 @@ export function AcceleratorCards({ accelerators }: { accelerators: Accelerator[]
               {a.vertical}
             </h3>
 
+            <div className="font-head relative text-[11px] tracking-[0.14em] uppercase font-semibold text-white/40 mb-3">
+              What it handles
+            </div>
+
             <ul className="relative space-y-2.5 mb-6">
               {a.capabilities.map((c) => (
                 <li

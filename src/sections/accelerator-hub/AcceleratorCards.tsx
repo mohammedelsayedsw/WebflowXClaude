@@ -82,13 +82,9 @@ export function AcceleratorCards({ accelerators }: { accelerators: Accelerator[]
               <ArrowUpRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
             </div>
 
-            <h3 className="font-head relative text-white text-[21px] md:text-[23px] leading-[1.12] tracking-[-0.005em] font-medium mb-3">
+            <h3 className="font-head relative text-white text-[21px] md:text-[23px] leading-[1.12] tracking-[-0.005em] font-medium mb-4">
               {a.vertical}
             </h3>
-
-            <p className="relative text-white/65 text-[14px] md:text-[14.5px] leading-relaxed mb-5">
-              {a.forWhom}
-            </p>
 
             <ul className="relative space-y-2.5 mb-6">
               {a.capabilities.map((c) => (

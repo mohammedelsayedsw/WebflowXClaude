@@ -105,11 +105,11 @@ export function WhatShips() {
         <Reveal>
           <div className="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <p className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] max-w-[42ch]">
-              Code, docs, runbooks, training, post-launch on-call. The whole
-              package.
+              Your busiest season running smoothly, with less strain on the team
+              and 2x sales.
             </p>
             <a href="#cta" className={btnPrimary}>
-              See if it fits your store
+              Book a 30-minute fit check
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

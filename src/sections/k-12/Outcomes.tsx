@@ -265,12 +265,12 @@ function SvgSubscription() {
         <text x={446} y={216} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="600">Billed automatically</text>
       </g>
 
-      {/* ZONE 3 — customer controls */}
-      <text x={24} y={284} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="12" fontWeight="600">Customer controls it anytime</text>
+      {/* ZONE 3 — customer controls (centered) */}
+      <text x={W / 2} y={284} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="12" fontWeight="600" textAnchor="middle">Customer controls it anytime</text>
       {["Pause", "Skip", "Cancel"].map((c, i) => (
         <g key={c}>
-          <rect x={24 + i * 120} y={300} width={104} height={36} rx={18} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.22)" />
-          <text x={24 + i * 120 + 52} y={323} fill="#fff" fontFamily={INK} fontSize="12" fontWeight="600" textAnchor="middle">{c}</text>
+          <rect x={188 + i * 120} y={300} width={104} height={36} rx={18} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.22)" />
+          <text x={188 + i * 120 + 52} y={323} fill="#fff" fontFamily={INK} fontSize="12" fontWeight="600" textAnchor="middle">{c}</text>
         </g>
       ))}
 
@@ -572,8 +572,8 @@ export function Outcomes() {
       icon: "circuit-board",
       title: (
         <>
-          Sell everywhere your buyers search{" "}
-          <span className="text-[var(--sw-blue)]">– from one catalog</span>
+          Sell everywhere your buyers search&nbsp;–{" "}
+          <span className="text-[var(--sw-blue)]">from one catalog</span>
         </>
       ),
       lede:
@@ -645,7 +645,7 @@ export function Outcomes() {
       age: "BATTERIES? CHECK",
       icon: "math-operations",
       title: (
-        <span className="text-[22px] md:text-[28px] lg:text-[32px] leading-[1.12]">
+        <span className="text-[18px] md:text-[22px] lg:text-[26px] leading-[1.15]">
           Batteries, goggles, chargers: the cart{" "}
           <br className="hidden md:block" />
           offers <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>

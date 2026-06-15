@@ -200,52 +200,94 @@ function SvgChannels() {
 // Monthly cycle of boxes + a gift tag
 // ============================================================
 function SvgSubscription() {
-  const W = 700;
-  const H = 440;
+  const W = 720;
+  const H = 500;
+  const cardW = 150;
+  const cardH = 92;
+  const rowY = 84;
+  const midY = rowY + cardH / 2;
   const months = [
-    { x: 60, label: "Month 1" },
-    { x: 270, label: "Month 2" },
-    { x: 480, label: "Month 3" },
+    { x: 20, label: "Month 1" },
+    { x: 236, label: "Month 2" },
+    { x: 452, label: "Month 3" },
   ];
-  const boxY = 120;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Monthly subscription box cycle with gift subscription">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Monthly subscription that ships and bills automatically, with customer controls and a gift option">
+      {/* ZONE 1 — recurrence row */}
+      {/* loop back to Month 1 */}
+      <DrawnPath d={`M 628 ${rowY} C 628 22, 95 22, 95 ${rowY}`} stroke="#6EF76E" strokeOpacity={0.65} strokeWidth={1.5} strokeDasharray="5 5" duration={1.2} delay={0.7} />
+      <path d={`M 90 ${rowY - 9} L 95 ${rowY - 1} L 100 ${rowY - 9}`} fill="none" stroke="#6EF76E" strokeOpacity={0.9} strokeWidth={1.5} />
+      <text x={361} y={16} fill="#6EF76E" fontFamily={INK} fontSize="11" textAnchor="middle">repeats every month</text>
+
       {months.map((m, i) => (
-        <motion.g key={m.label} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.12, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-          {/* box */}
-          <rect x={m.x} y={boxY} width={150} height={120} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
-          <path d={`M ${m.x} ${boxY + 34} H ${m.x + 150}`} stroke="rgba(255,255,255,0.18)" />
-          <path d={`M ${m.x + 75} ${boxY} V ${boxY + 34}`} stroke="rgba(255,255,255,0.18)" />
-          {/* lid ribbon */}
-          <rect x={m.x + 64} y={boxY + 34} width={22} height={86} fill="rgba(110,247,110,0.16)" />
-          <text x={m.x + 75} y={boxY + 22} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="10" letterSpacing="1" textAnchor="middle">{m.label.toUpperCase()}</text>
-          <text x={m.x + 75} y={boxY + 80} fill="#fff" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">STEM box</text>
-          <text x={m.x + 75} y={boxY + 98} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9.5" textAnchor="middle">curated · age-fit</text>
-          {i < months.length - 1 && (
-            <DrawnPath d={`M ${m.x + 150} ${boxY + 60} H ${m.x + 210}`} stroke="#6EF76E" strokeOpacity={0.6} strokeWidth={1.4} duration={0.6} delay={0.5 + i * 0.1} />
-          )}
+        <motion.g key={m.label} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.12, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
+          <rect x={m.x} y={rowY} width={cardW} height={cardH} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
+          {/* box icon */}
+          <g transform={`translate(${m.x + 18}, ${rowY + 16})`}>
+            <rect x={0} y={6} width={28} height={20} rx={2} fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
+            <path d="M0 13 H28" stroke="#6EF76E" strokeOpacity={0.5} />
+            <path d="M14 6 V26" stroke="#6EF76E" strokeOpacity={0.5} />
+          </g>
+          <text x={m.x + 18} y={rowY + 58} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700">{m.label}</text>
+          <text x={m.x + 18} y={rowY + 76} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="11">STEM box</text>
         </motion.g>
       ))}
 
-      {/* recurring loop arrow */}
-      <DrawnPath d={`M 540 ${boxY + 130} C 540 320, 120 320, 120 ${boxY + 130}`} stroke="#6EF76E" strokeOpacity={0.45} strokeWidth={1.3} strokeDasharray="5 6" duration={1.2} delay={0.9} />
-      <text x={330} y={332} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="11" letterSpacing="1" textAnchor="middle">RECURRING · BILLED AUTOMATICALLY · PAUSE / SKIP / CANCEL</text>
-
-      {/* account controls */}
-      <motion.g initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.0, duration: 0.5 }} viewport={{ once: true, amount: 0.2 }}>
-        {["Pause", "Skip", "Gift 3–6 mo"].map((c, i) => (
-          <g key={c}>
-            <rect x={60 + i * 160} y={360} width={140} height={40} rx={3} fill="rgba(230,231,239,0.04)" stroke={i === 2 ? "#6EF76E" : "rgba(230,231,239,0.18)"} strokeOpacity={i === 2 ? 0.6 : 1} />
-            <text x={130 + i * 160} y={385} fill={i === 2 ? "#6EF76E" : "#fff"} fontFamily={INK} fontSize="12" fontWeight={i === 2 ? 700 : 600} textAnchor="middle">{c}</text>
+      {/* arrows between cards */}
+      {[0, 1].map((i) => {
+        const x1 = months[i].x + cardW + 8;
+        const x2 = months[i + 1].x - 6;
+        return (
+          <g key={i}>
+            <line x1={x1} x2={x2 - 6} y1={midY} y2={midY} stroke="#6EF76E" strokeOpacity={0.7} strokeWidth={1.6} />
+            <path d={`M ${x2 - 11} ${midY - 5} L ${x2} ${midY} L ${x2 - 11} ${midY + 5}`} fill="none" stroke="#6EF76E" strokeOpacity={0.9} strokeWidth={1.6} />
           </g>
-        ))}
-      </motion.g>
+        );
+      })}
+      {/* continues */}
+      <text x={628} y={midY + 6} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="22" fontWeight="700" textAnchor="middle">...</text>
 
-      {/* gift tag on month 3 */}
-      <motion.g initial={{ opacity: 0, rotate: -6 }} whileInView={{ opacity: 1, rotate: -6 }} transition={{ delay: 0.7, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={560} y={60} width={96} height={40} rx={4} fill="rgba(110,247,110,0.14)" stroke="#6EF76E" strokeOpacity={0.6} />
-        <circle cx={568} cy={70} r={3} fill="none" stroke="#6EF76E" />
-        <text x={612} y={85} fill="#6EF76E" fontFamily={INK} fontSize="11" fontWeight="700" textAnchor="middle">GIFT BOX</text>
+      {/* ZONE 2 — automatic labels */}
+      <g>
+        {/* truck */}
+        <g transform="translate(120, 202)">
+          <rect x={0} y={0} width={22} height={14} rx={1.5} fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
+          <path d="M22 4 H30 L34 8 V14 H22 Z" fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
+          <circle cx={7} cy={17} r={2.6} fill="none" stroke="#6EF76E" />
+          <circle cx={28} cy={17} r={2.6} fill="none" stroke="#6EF76E" />
+        </g>
+        <text x={166} y={216} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="600">Ships automatically</text>
+        {/* card */}
+        <g transform="translate(404, 203)">
+          <rect x={0} y={0} width={30} height={19} rx={2} fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
+          <rect x={0} y={5} width={30} height={4} fill="#6EF76E" fillOpacity={0.5} />
+        </g>
+        <text x={446} y={216} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="600">Billed automatically</text>
+      </g>
+
+      {/* ZONE 3 — customer controls */}
+      <text x={24} y={284} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="12" fontWeight="600">Customer controls it anytime</text>
+      {["Pause", "Skip", "Cancel"].map((c, i) => (
+        <g key={c}>
+          <rect x={24 + i * 120} y={300} width={104} height={36} rx={18} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.22)" />
+          <text x={24 + i * 120 + 52} y={323} fill="#fff" fontFamily={INK} fontSize="12" fontWeight="600" textAnchor="middle">{c}</text>
+        </g>
+      ))}
+
+      {/* ZONE 4 — gift (highlighted) */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
+        <rect x={24} y={372} width={672} height={100} rx={6} fill="rgba(110,247,110,0.08)" stroke="#6EF76E" strokeOpacity={0.55} />
+        {/* gift icon */}
+        <g transform="translate(52, 404)">
+          <rect x={0} y={10} width={28} height={20} rx={2} fill="none" stroke="#6EF76E" strokeOpacity={0.9} />
+          <rect x={0} y={10} width={28} height={6} fill="#6EF76E" fillOpacity={0.2} />
+          <path d="M14 10 V30" stroke="#6EF76E" strokeOpacity={0.7} />
+          <path d="M14 10 C 8 2, 2 6, 14 10" fill="none" stroke="#6EF76E" strokeOpacity={0.85} />
+          <path d="M14 10 C 20 2, 26 6, 14 10" fill="none" stroke="#6EF76E" strokeOpacity={0.85} />
+        </g>
+        <text x={104} y={428} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="700">Give it as a gift</text>
+        <rect x={536} y={406} width={136} height={32} rx={16} fill="rgba(110,247,110,0.16)" stroke="#6EF76E" strokeOpacity={0.6} />
+        <text x={604} y={427} fill="#6EF76E" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">3 or 6 months</text>
       </motion.g>
     </svg>
   );

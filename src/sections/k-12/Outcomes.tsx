@@ -664,9 +664,8 @@ export function Outcomes() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
-                Configure them against your catalog, your suppliers, and your
-                buyers – that&apos;s the project. Start with the one that costs
-                you the most.
+                Already built and proven. We shape them around your catalog,
+                your suppliers, and your buyers.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">
                 <div>

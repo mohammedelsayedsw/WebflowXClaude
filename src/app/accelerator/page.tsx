@@ -163,10 +163,11 @@ export default function AcceleratorHubPage() {
             <br className="hidden sm:block" />
             <span style={{ color: MINT }}>live on your store in weeks</span>
           </h1>
-          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed text-balance max-w-[84ch]">
-            In over 20 years building commerce for retailers across many
-            industries, we learned what each one actually needs. We turned our
-            best work into industry-specific accelerators: ready-made modules,
+          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[112ch]">
+            In over 20 years building commerce for retailers across many industries, we learned what{" "}
+            <br className="hidden md:block" />
+            each one actually needs. We turned our best work into industry-specific accelerators: ready-made modules,{" "}
+            <br className="hidden md:block" />
             proven in real stores, that you add to your own.
           </p>
 
@@ -266,23 +267,26 @@ export default function AcceleratorHubPage() {
           style={{ background: "rgba(255,255,255,0.12)" }}
         />
         <div className="wrap py-20 md:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10 md:mb-14">
-            <div>
-              <div
-                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
-                style={{ color: MINT }}
-              >
-                Accelerators by industry
-              </div>
-              <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
-                Pick your industry
-              </h2>
-              <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[88ch]">
-                Each accelerator is built from the best of what we have
-                delivered for clients in that industry. We fit it to your
-                store, your catalog, accounts, and integrations.
-              </p>
+          <div className="mb-10 md:mb-14">
+            <div
+              className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+              style={{ color: MINT }}
+            >
+              Accelerators by industry
             </div>
+            <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
+              Pick your industry
+            </h2>
+            <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[88ch]">
+              Each accelerator is built from the best of what we have
+              delivered for clients in that industry. We fit it to your
+              store, your catalog, accounts, and integrations.
+            </p>
+          </div>
+
+          <AcceleratorCards accelerators={ACCELERATORS} />
+
+          <div className="mt-10 md:mt-12">
             <a
               href="#cta"
               className="text-white/80 hover:text-white text-[14px] inline-flex items-center gap-2 transition-colors"
@@ -291,8 +295,6 @@ export default function AcceleratorHubPage() {
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
-
-          <AcceleratorCards accelerators={ACCELERATORS} />
         </div>
       </section>
 

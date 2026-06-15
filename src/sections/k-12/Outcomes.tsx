@@ -187,7 +187,6 @@ function SvgChannels() {
         {[0, 1, 2].map((r) => (
           <rect key={r} x={540} y={222 + r * 18} width={110} height={10} rx={2} fill="rgba(255,255,255,0.12)" />
         ))}
-        <text x={595} y={H - 70} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">NO DOUBLE BOOKKEEPING</text>
       </motion.g>
       {channels.map((c, i) => (
         <DrawnPath key={i} d={`M ${chX + chW} ${c.y + 24} C ${chX + chW + 20} ${c.y + 24}, ${500} 220, ${520} 220`} stroke="#6EF76E" strokeOpacity={0.4} strokeWidth={1} duration={0.6} delay={1.0 + i * 0.05} />

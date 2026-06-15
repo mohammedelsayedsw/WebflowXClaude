@@ -1,9 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnLight } from "@/components/primitives/buttonStyles";
 import { SectionIcon } from "./motifs";
 
 export function AcceleratorAtAGlance() {
@@ -34,8 +32,9 @@ export function AcceleratorAtAGlance() {
               <span className="label-code text-[var(--sw-black)]/55">ACCELERATOR · CHARGED</span>
             </div>
             <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.04] max-w-[26ch]">
-              Everything your STEM store needs to run easier and sell more.{" "}
-              <span className="text-[var(--sw-blue)]">Live on your store in 12 weeks.</span>
+              Everything your STEM store needs{" "}
+              <span className="text-[var(--sw-blue)]">to run easier and sell more</span>. Live
+              on your store in 12 weeks.
             </h2>
             <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[60ch]">
               We have spent years building commerce for STEM brands and learned
@@ -91,19 +90,6 @@ export function AcceleratorAtAGlance() {
           </Reveal>
         </div>
 
-        {/* mid-page CTA */}
-        <Reveal>
-          <div className="mt-14 md:mt-16 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[46ch]">
-              12 weeks kickoff to live. Layered onto the platform you already
-              run, not a forced replatform.
-            </p>
-            <a href="#cta" className={btnLight}>
-              See if it fits your store
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

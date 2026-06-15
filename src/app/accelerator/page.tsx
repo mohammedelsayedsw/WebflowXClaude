@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
+import { AcceleratorCards } from "@/sections/accelerator-hub/AcceleratorCards";
 
 export const metadata: Metadata = {
   title: "eCommerce accelerators for vertical commerce | scandiweb",
@@ -49,10 +49,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-mint)",
     capabilities: [
-      "Subject-based ordering and album logic",
-      "Class and school code workflows",
-      "Bulk pre-order and parent reorder",
-      "Studio + retail dual checkout",
+      "Order by student, class, or package",
+      "Parents find photos with a class or school code",
+      "Bulk pre-orders for schools, easy reorders for parents",
+      "One store for studio and retail buyers",
     ],
   },
   {
@@ -63,10 +63,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-light-grey)",
     capabilities: [
-      "School-by-school approved catalogs",
-      "Sibling and tax-exempt accounts",
-      "Term-time stock and pickup logic",
-      "Bulk school account ordering",
+      "Each school sees only its approved list",
+      "Family accounts for siblings, plus school accounts",
+      "Stock and pickup built for term-start rushes",
+      "Bulk ordering for school accounts",
     ],
   },
   {
@@ -77,10 +77,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "12 to 14 weeks",
     accent: "var(--sw-orange)",
     capabilities: [
-      "Multi-warehouse stock and reservations",
-      "Trade-and-DIY account split",
-      "Supplier-fed catalog ingestion",
-      "Peak-resilient infrastructure",
+      "Stock and reservations across multiple warehouses",
+      "Separate pricing for trade and DIY buyers",
+      "Catalog kept current from supplier feeds",
+      "Holds up under peak-season load",
     ],
   },
   {
@@ -91,10 +91,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-red)",
     capabilities: [
-      "Set, rarity, and grade catalogs",
-      "Condition-aware product data",
-      "Pre-order and release-drop flows",
-      "Single-copy stock control",
+      "Catalogs by set, rarity, and grade",
+      "Product pages that capture card condition",
+      "Pre-orders and timed release drops",
+      "Stock control for one-of-a-kind cards",
     ],
   },
   {
@@ -114,6 +114,16 @@ const ACCELERATORS: Accelerator[] = [
 ];
 
 export default function AcceleratorHubPage() {
+  const trustLogos: { src: string; alt: string; h: number }[] = [
+    { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 30 },
+    { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 24 },
+    { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
+    { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
+    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
+    { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
+    { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
+  ];
+  const trustLoop = [...trustLogos, ...trustLogos];
   return (
     <main className="font-body" style={{ background: INK, color: "#ffffff" }}>
       {/* ----------------- Hero ----------------- */}
@@ -121,7 +131,7 @@ export default function AcceleratorHubPage() {
           `isolate` creates a stacking context so the -z layers paint above
           <main>'s opaque background instead of behind it. */}
       <section
-        className="relative isolate overflow-hidden min-h-screen flex items-center"
+        className="relative isolate overflow-hidden min-h-screen flex flex-col"
         style={{ minHeight: "100dvh" }}
       >
         {/* Background photo – light blur, scaled so blur edges stay off-canvas */}
@@ -143,16 +153,17 @@ export default function AcceleratorHubPage() {
           }}
         />
 
+        <div className="relative z-10 flex-1 flex items-center w-full">
         <div className="wrap w-full pt-24 md:pt-28 pb-14 md:pb-16">
           <div className="font-head text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
             eCommerce accelerators
           </div>
-          <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[26ch] font-medium">
+          <h1 className="font-head text-white text-[34px] sm:text-[44px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-[-0.015em] max-w-[26ch] font-medium">
             Built for your industry,{" "}
             <br className="hidden sm:block" />
             <span style={{ color: MINT }}>live on your store in weeks</span>
           </h1>
-          <p className="mt-7 md:mt-9 text-white/85 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
+          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch]">
             In over 20 years building commerce for retailers across many
             industries, we learned what each one actually needs. We turned our
             best work into industry-specific accelerators: ready-made modules,
@@ -190,18 +201,58 @@ export default function AcceleratorHubPage() {
             Fixed scope · Fixed price · Full code ownership
           </div>
         </div>
+        </div>
 
-        {/* Scroll indicator */}
-        <a
-          href="#accelerators"
-          aria-label="Scroll down to the accelerators"
-          className="absolute bottom-5 md:bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/55 hover:text-white transition-colors"
+        {/* Trust logos */}
+        <div
+          className="relative z-10"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,0.55) 100%)",
+            borderTop: "1px solid rgba(255,255,255,0.12)",
+          }}
         >
-          <span className="text-[10px] tracking-[0.22em] uppercase">
-            Scroll
-          </span>
-          <ChevronDown className="h-5 w-5 animate-bounce" />
-        </a>
+          <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+            <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+              Trusted by 700+ leading brands worldwide
+            </div>
+            <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
+              <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">
+                {trustLoop.map((l, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={i}
+                    src={assetUrl(l.src)}
+                    alt={i < trustLogos.length ? l.alt : ""}
+                    aria-hidden={i >= trustLogos.length}
+                    className="w-auto opacity-80 shrink-0"
+                    style={{
+                      maxHeight: `${l.h}px`,
+                      height: "auto",
+                      filter: "brightness(0) invert(1)",
+                    }}
+                  />
+                ))}
+              </div>
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
+                }}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20"
+                style={{
+                  background:
+                    "linear-gradient(270deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ----------------- Accelerator cards ----------------- */}
@@ -227,10 +278,9 @@ export default function AcceleratorHubPage() {
                 Pick your industry
               </h2>
               <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch]">
-                {ACCELERATORS.length} accelerators in production, each grown
-                out of stores we already ship for that industry. Every one is
-                a working store, ready to carry your catalog, accounts, and
-                integrations.
+                Each accelerator is built from the best of what we have
+                delivered for clients in that industry. We fit it to your
+                store, your catalog, accounts, and integrations.
               </p>
             </div>
             <a
@@ -242,80 +292,7 @@ export default function AcceleratorHubPage() {
             </a>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-            {ACCELERATORS.map((a) => (
-              <Link
-                key={a.slug}
-                href={`/accelerator/${a.slug}`}
-                className="group relative flex flex-col overflow-hidden rounded-[4px] p-6 md:p-7 transition-all hover:-translate-y-0.5"
-                style={{
-                  background:
-                    "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  boxShadow:
-                    "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
-                }}
-              >
-                {/* Accent bar – each industry gets its own color */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-[3px]"
-                  style={{ background: a.accent, opacity: 0.85 }}
-                />
-                {/* Accent glow on hover */}
-                <div
-                  aria-hidden="true"
-                  className="absolute -top-24 -right-24 h-56 w-56 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: a.accent, filter: "blur(110px)" }}
-                />
-
-                <div className="relative flex items-center justify-between gap-4 mb-4">
-                  <span
-                    className="font-head text-[11px] tracking-[0.14em] uppercase font-semibold"
-                    style={{ color: a.accent }}
-                  >
-                    {a.weeks}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
-                </div>
-
-                <h3 className="font-head relative text-white text-[21px] md:text-[23px] leading-[1.12] tracking-[-0.005em] font-medium mb-3">
-                  {a.vertical}
-                </h3>
-
-                <p className="relative text-white/65 text-[14px] md:text-[14.5px] leading-relaxed mb-5">
-                  {a.forWhom}
-                </p>
-
-                <ul className="relative space-y-2.5 mb-6">
-                  {a.capabilities.map((c) => (
-                    <li
-                      key={c}
-                      className="flex items-baseline gap-2.5 text-white/80 text-[13.5px] md:text-[14px]"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[6px]"
-                        style={{ background: a.accent }}
-                      />
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div
-                  className="font-head relative mt-auto inline-flex items-center gap-2 text-white text-[14px] font-medium pt-4"
-                  style={{
-                    borderTop: "1px solid rgba(255,255,255,0.1)",
-                    width: "100%",
-                  }}
-                >
-                  See accelerator
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
+          <AcceleratorCards accelerators={ACCELERATORS} />
         </div>
       </section>
 

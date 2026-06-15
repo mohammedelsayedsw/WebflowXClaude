@@ -80,7 +80,7 @@ export function CTA() {
             {/* Reuses the shared accelerator fit-assessment form (same as sibling pages) */}
             <HubSpotForm
               portalId="25724996"
-              formId="e0c4052e-523c-4d24-a008-feb45b6b85dd"
+              formId="3eabce3f-c4d9-41d7-8d66-59080f1c09ed"
               region="eu1"
             />
             <p className="label-code text-white/45 mt-3 px-1">

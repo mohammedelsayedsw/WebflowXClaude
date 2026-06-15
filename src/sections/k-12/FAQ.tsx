@@ -44,10 +44,6 @@ export function FAQ() {
       a: "This accelerator focuses on families and gift buyers. School and institutional buying (quotes, purchase orders, invoice payment, teacher accounts) is available as a separate add-on – we’ve built those flows for education businesses before. If schools matter to you, we scope the add-on in the diagnostic sprint.",
     },
     {
-      q: "What about SEO and AI search visibility?",
-      a: "Important – but honestly, that isn’t a module you install once. It’s ongoing specialist work, month by month. We offer it as a separate growth service alongside the accelerator (SEO, AI search optimization, analytics), the same way we run it for other education and consumer brands. The accelerator makes sure the store’s technical base doesn’t hold that work back.",
-    },
-    {
       q: "We want to sell to other countries – is that covered?",
       a: "Not as a standard module – for most retailers it’s a later step. When it becomes your priority, we add it per market: properly translated storefronts, correct VAT setup, and the EU product-safety requirements (GPSR). We’ll tell you honestly which markets pay off and which don’t.",
     },

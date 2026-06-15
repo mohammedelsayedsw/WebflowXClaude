@@ -163,7 +163,7 @@ export default function AcceleratorHubPage() {
             <br className="hidden sm:block" />
             <span style={{ color: MINT }}>live on your store in weeks</span>
           </h1>
-          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch]">
+          <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[84ch]">
             In over 20 years building commerce for retailers across many
             industries, we learned what each one actually needs. We turned our
             best work into industry-specific accelerators: ready-made modules,
@@ -277,7 +277,7 @@ export default function AcceleratorHubPage() {
               <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 Pick your industry
               </h2>
-              <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch]">
+              <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[88ch]">
                 Each accelerator is built from the best of what we have
                 delivered for clients in that industry. We fit it to your
                 store, your catalog, accounts, and integrations.

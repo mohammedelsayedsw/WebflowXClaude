@@ -63,10 +63,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-light-grey)",
     capabilities: [
-      "Each school sees only its approved list",
-      "Family accounts for siblings, plus school accounts",
-      "Stock and pickup built for term-start rushes",
-      "Bulk ordering for school accounts",
+      "Win and launch new schools faster",
+      "Your busiest weeks run themselves",
+      "Parents self-serve fittings, orders, and returns",
+      "Right uniform, right school, every time",
     ],
   },
   {

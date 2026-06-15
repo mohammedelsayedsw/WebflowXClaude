@@ -97,6 +97,20 @@ const ACCELERATORS: Accelerator[] = [
       "Single-copy stock control",
     ],
   },
+  {
+    slug: "k-12",
+    vertical: "STEM toys & kits commerce",
+    forWhom:
+      "Retailers selling STEM toys, science kits, and robotics to families and gift-givers.",
+    weeks: "12 weeks",
+    accent: "var(--sw-blue)",
+    capabilities: [
+      "Supplier-fed catalog, kept current",
+      "Marketplace and shopping-feed sync",
+      "Subscription and gift boxes",
+      "Shipping rules for hard-to-ship items",
+    ],
+  },
 ];
 
 export default function AcceleratorHubPage() {
@@ -133,16 +147,16 @@ export default function AcceleratorHubPage() {
           <div className="font-head text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-medium text-white/70 mb-6">
             eCommerce accelerators
           </div>
-          <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch] font-medium">
-            Your new store,{" "}
-            <span style={{ color: MINT }}>live in 12 weeks</span>
+          <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[26ch] font-medium">
+            Built for your industry,{" "}
+            <br className="hidden sm:block" />
+            <span style={{ color: MINT }}>live on your store in weeks</span>
           </h1>
           <p className="mt-7 md:mt-9 text-white/85 text-[18px] md:text-[21px] leading-relaxed max-w-[58ch]">
-            Most of an online store is not unique to your business. Your
-            whole industry shares the same catalog logic, account structures,
-            and seasonal peaks. We build that core once per industry and
-            harden it in production, so your store starts at 80% done instead
-            of a blank page.
+            In over 20 years building commerce for retailers across many
+            industries, we learned what each one actually needs. We turned our
+            best work into industry-specific accelerators: ready-made modules,
+            proven in real stores, that you add to your own.
           </p>
 
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4 md:gap-5">

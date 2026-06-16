@@ -2,109 +2,109 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
-type Layer = { n: number; name: string; badge: string; body: string };
+type Row = { n: number; headline: string; body: string; tag: string };
 
-const layers: Layer[] = [
+const rows: Row[] = [
   {
     n: 1,
-    name: "OperaLayer Commerce Hub",
-    badge: "Foundational",
-    body: "One operational layer across the whole setup. It surfaces order value, fulfillment status, stock and product differences, app costs, failed syncs, and recent changes, so every other layer plugs into a shared view.",
+    headline: "One live view of every store, in one place",
+    body: "Orders, stock, product gaps, app costs, failed syncs, and recent changes, all in a single shared view that everything else plugs into.",
+    tag: "the foundation",
   },
   {
     n: 2,
-    name: "Data Control Center",
-    badge: "Critical",
-    body: "One performance view across stores. Revenue, conversion, margin, channels, search, retention, and alerts as scorecards with drilldowns.",
+    headline: "Know how every store is actually performing",
+    body: "Revenue, conversion, margin, channels, and retention shown as clear scorecards you can drill into, not four separate reports.",
+    tag: "reporting",
   },
   {
     n: 3,
-    name: "ERP Connector Accelerator",
-    badge: "Operational",
-    body: "A stable, fast way to connect new ERPs. Validated connectors link Shopify to ERP, OMS, WMS, pricing, inventory, and fulfillment.",
+    headline: "Connect your back-office systems without the usual pain",
+    body: "Ready-made connections link Shopify to your ERP, order, warehouse, pricing, and stock systems, so they stay in agreement.",
+    tag: "systems",
   },
   {
     n: 4,
-    name: "CMS Connector Accelerator",
-    badge: "Operational",
-    body: "Sanity, Storyblok, Contentful, Prismic, Strapi, Builder.io, and WordPress connected with release and localization governance.",
+    headline: "Publish content to every market the same way",
+    body: "Your content tools (Sanity, Storyblok, Contentful, WordPress and more) plug in once, with control over what goes live where, and in which language.",
+    tag: "content",
   },
   {
     n: 5,
-    name: "Multi-Store Monitoring Suite",
-    badge: "Critical",
-    body: "Core Web Vitals, app impact, SEO, product feeds, webhooks, ERP / OMS / WMS sync, cart-to-checkout, payment, shipping, and release risk watched across every store.",
+    headline: "Catch problems before your customers do",
+    body: "Site speed, app impact, SEO, product feeds, checkout, payments, shipping, and risky releases watched across every store, around the clock.",
+    tag: "monitoring",
   },
   {
     n: 6,
-    name: "Custom App Space",
-    badge: "Management",
-    body: "A controlled place for Shopify-specific business rules. Custom pricing, B2B flows, account catalogs, approval logic, and dashboards. You decide what stays an app and what becomes shared logic.",
+    headline: "Build the rules your business actually runs on",
+    body: "A safe place for the custom bits. Special pricing, B2B flows, account catalogs, and approvals live in one shared place instead of scattered across stores.",
+    tag: "custom rules",
   },
   {
     n: 7,
-    name: "Mobile Commerce Accelerator",
-    badge: "Extension",
-    body: "Launch mobile apps for customers, B2B, sales reps, warehouse, loyalty, reorder, and ops on the same data layer and business rules.",
+    headline: "Add mobile apps later without starting over",
+    body: "Launch apps for customers, sales reps, or warehouse teams on the same data and rules you already have, so it is an add-on, not a rebuild.",
+    tag: "mobile",
   },
 ];
 
 export function SevenLayers() {
   return (
     <section
-      id="layers"
+      id="connect"
       className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
     >
       <div className="wrap relative">
         <Reveal>
           <div className="label-code text-white/55 mb-5">
-            what scandiweb connects and supports
+            what we connect for you
           </div>
-          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[26ch]">
-            Seven layers that give you{" "}
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
+            Everything you finally{" "}
             <span style={{ color: "var(--sw-mint)" }}>
-              visibility across the setup
+              get to see and control
             </span>
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
-            Each layer covers a different part of your setup. Together they help
-            the team see what is happening across stores, systems, and
-            workflows, and add the pieces that are missing.
+            Each part covers a different piece of your setup. Together they give
+            your team one place to see what is happening, and fix what is
+            missing.
           </p>
         </Reveal>
 
         <div className="mt-14 md:mt-20 space-y-3 md:space-y-4">
-          {layers.map((l, i) => {
-            const foundational = l.n === 1;
+          {rows.map((r, i) => {
+            const foundational = r.n === 1;
             return (
-              <Reveal key={l.n} delay={i * 0.06}>
+              <Reveal key={r.n} delay={i * 0.05}>
                 <article
-                  className="rounded-[4px] border border-white/10 p-6 md:p-7"
+                  className="rounded-[4px] border border-white/10 p-6 md:p-8"
                   style={{
                     background: foundational
                       ? "linear-gradient(160deg, rgba(110,247,110,0.06) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)"
-                      : "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.45)",
+                      : "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.4)",
                     borderLeft: foundational
                       ? "2px solid var(--sw-mint)"
                       : undefined,
-                    marginLeft: foundational ? 0 : "clamp(0px, 2vw, 24px)",
+                    marginLeft: foundational ? 0 : "clamp(0px, 2.5vw, 28px)",
                   }}
                 >
                   <div className="flex items-start gap-5 md:gap-7">
-                    <div className="font-head text-white/25 text-[32px] md:text-[40px] leading-none tabular-nums shrink-0 w-[1.4ch]">
-                      {l.n}
+                    <div className="font-head text-white/20 text-[28px] md:text-[36px] leading-none tabular-nums shrink-0 w-[1.4ch] pt-0.5">
+                      {r.n}
                     </div>
                     <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                        <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
-                          {l.name}
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+                        <h3 className="font-head text-white text-[19px] md:text-[23px] leading-[1.2]">
+                          {r.headline}
                         </h3>
-                        <span className="label-code inline-flex items-center rounded-[2px] border border-white/20 px-2.5 py-1 text-white/65 text-[9px]">
-                          {l.badge}
+                        <span className="label-code text-white/45 text-[10px]">
+                          {r.tag}
                         </span>
                       </div>
-                      <p className="mt-3 text-[14px] md:text-[15px] text-white/75 leading-relaxed max-w-[78ch]">
-                        {l.body}
+                      <p className="mt-3 text-[14px] md:text-[15px] text-white/75 leading-relaxed max-w-[80ch]">
+                        {r.body}
                       </p>
                     </div>
                   </div>

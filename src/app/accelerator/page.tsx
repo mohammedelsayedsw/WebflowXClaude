@@ -170,9 +170,9 @@ export default function AcceleratorHubPage() {
           <p className="mt-7 md:mt-9 text-white/85 text-[16px] md:text-[18px] leading-relaxed max-w-[112ch]">
             In over 20 years building commerce for retailers across many industries, we learned what{" "}
             <br className="hidden md:block" />
-            each one actually needs. We turned our best work into industry-specific accelerators: ready-made modules,{" "}
+            each one actually needs. We turned our best work into industry-specific accelerators:{" "}
             <br className="hidden md:block" />
-            proven in real stores, that you add to your own.
+            ready-made modules, proven in real stores, that you add to your own.
           </p>
 
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4 md:gap-5">
@@ -207,58 +207,54 @@ export default function AcceleratorHubPage() {
           </div>
         </div>
         </div>
+      </section>
 
-        {/* Trust logos */}
-        <div
-          className="relative z-10"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,0.55) 100%)",
-            borderTop: "1px solid rgba(255,255,255,0.12)",
-          }}
-        >
-          <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-            <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
-              Trusted by 700+ leading brands worldwide
+      {/* Trust logos — own band under the hero so the marquee is never cropped */}
+      <div
+        className="relative z-10"
+        style={{ background: INK, borderTop: "1px solid rgba(255,255,255,0.12)" }}
+      >
+        <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+          <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+            Trusted by 700+ leading brands worldwide
+          </div>
+          <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
+            <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">
+              {trustLoop.map((l, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={i}
+                  src={assetUrl(l.src)}
+                  alt={i < trustLogos.length ? l.alt : ""}
+                  aria-hidden={i >= trustLogos.length}
+                  className="w-auto opacity-80 shrink-0"
+                  style={{
+                    maxHeight: `${l.h}px`,
+                    height: "auto",
+                    filter: "brightness(0) invert(1)",
+                  }}
+                />
+              ))}
             </div>
-            <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
-              <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">
-                {trustLoop.map((l, i) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={i}
-                    src={assetUrl(l.src)}
-                    alt={i < trustLogos.length ? l.alt : ""}
-                    aria-hidden={i >= trustLogos.length}
-                    className="w-auto opacity-80 shrink-0"
-                    style={{
-                      maxHeight: `${l.h}px`,
-                      height: "auto",
-                      filter: "brightness(0) invert(1)",
-                    }}
-                  />
-                ))}
-              </div>
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
-                }}
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20"
-                style={{
-                  background:
-                    "linear-gradient(270deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
-                }}
-              />
-            </div>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(16,19,44,0.85) 0%, rgba(16,19,44,0) 100%)",
+              }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20"
+              style={{
+                background:
+                  "linear-gradient(270deg, rgba(16,19,44,0.85) 0%, rgba(16,19,44,0) 100%)",
+              }}
+            />
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ----------------- Accelerator cards ----------------- */}
       <section

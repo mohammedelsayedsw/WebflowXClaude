@@ -533,10 +533,10 @@ export default function AcceleratorHubPage() {
                 Don&rsquo;t see your industry? Let&rsquo;s build the next one
               </h2>
               <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
-                If you sell in a category where most stores run the same way, we
-                can probably build an accelerator for it. We will look at how your
-                store works today, plan what a new accelerator would cover, and
-                tell you honestly whether your industry is ready.
+                Most industries share the same core problems, and chances are we
+                have already solved yours. Tell us how your store works, and we
+                will show you what a new accelerator would cover and how fast it
+                could go live.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <a

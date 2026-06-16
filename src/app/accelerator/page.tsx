@@ -101,7 +101,7 @@ const ACCELERATORS: Accelerator[] = [
   },
   {
     slug: "k-12",
-    vertical: "STEM toys & kits commerce",
+    vertical: "K-12 STEM toys & kits commerce",
     forWhom:
       "Retailers selling STEM toys, science kits, and robotics to families and gift-givers.",
     weeks: "12 weeks",

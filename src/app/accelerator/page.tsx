@@ -93,11 +93,12 @@ const ACCELERATORS: Accelerator[] = [
       "Card resellers running set-based catalogs, condition grading, and rapid release drops.",
     weeks: "8 to 12 weeks",
     accent: "var(--sw-red)",
+    label: "Why it wins",
     capabilities: [
-      "Catalogs by set, rarity, and grade",
-      "Product pages that capture card condition",
-      "Pre-orders and timed release drops",
-      "Stock control for one-of-a-kind cards",
+      "Your website sells packs, not just the live show",
+      "Packs restock themselves at the right value",
+      "90% buyback keeps customers in your store",
+      "One customer across Whatnot, eBay, and your site",
     ],
   },
   {

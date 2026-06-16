@@ -38,6 +38,7 @@ type Accelerator = {
   weeks: string;
   capabilities: string[];
   accent: string;
+  label?: string;
 };
 
 const ACCELERATORS: Accelerator[] = [
@@ -48,11 +49,12 @@ const ACCELERATORS: Accelerator[] = [
       "Photographers shooting hundreds of schools each season, selling packages back to parents.",
     weeks: "8 to 12 weeks",
     accent: "var(--sw-mint)",
+    label: "Why it wins",
     capabilities: [
-      "Order by student, class, or package",
-      "Parents find photos with a class or school code",
-      "Bulk pre-orders for schools, easy reorders for parents",
-      "One store for studio and retail buyers",
+      "Take on more schools without more staff",
+      "Picture Day season runs itself",
+      "Schools fix their own data and pull their own photos",
+      "Right photo, right student, siblings together",
     ],
   },
   {

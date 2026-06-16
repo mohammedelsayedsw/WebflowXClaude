@@ -3,21 +3,6 @@
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 
-const lookAt: { label: string; body: string }[] = [
-  {
-    label: "Stores & apps",
-    body: "How many stores, which apps, where they overlap, and what they cost.",
-  },
-  {
-    label: "Systems & data",
-    body: "ERP, OMS, WMS, CMS, PIM, BI, and where the data disagrees.",
-  },
-  {
-    label: "Releases & monitoring",
-    body: "How changes ship, what gets watched, and what slips through.",
-  },
-];
-
 export function CTA() {
   return (
     <section
@@ -31,45 +16,27 @@ export function CTA() {
       }}
     >
       <div className="wrap relative">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <Reveal>
             <div className="label-code text-white/55 mb-5">the first step</div>
-            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[20ch]">
-              Let&apos;s talk Shopify{" "}
-              <span className="text-[var(--sw-mint)]">multi-store support</span>
+            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[15ch]">
+              Book a call about your{" "}
+              <span className="text-[var(--sw-mint)]">Shopify stores</span>
             </h2>
-            <p className="mt-6 text-white/80 max-w-[54ch] text-[16px] md:text-[17px] leading-relaxed">
-              We start by reviewing the setup together. Stores, apps, ERP, CMS,
-              custom apps, releases, monitoring, app costs, and the issues that
-              keep coming back. No full system access is needed for the first
-              conversation. A store and system map plus a few examples of
-              recurring issues is enough.
+            <p className="mt-6 text-white/75 max-w-[48ch] text-[16px] md:text-[18px] leading-relaxed">
+              A short call to look at your setup together. Your stores, the apps and
+              systems behind them, and what keeps going wrong. You do not need to
+              give us access to start, just a rough picture of how things are set up.
             </p>
-
-            <div className="mt-10 grid sm:grid-cols-3 gap-4">
-              {lookAt.map((l) => (
-                <div
-                  key={l.label}
-                  className="rounded-[4px] border border-white/12 bg-white/[0.03] p-5"
-                >
-                  <div className="label-code text-white/55 mb-2.5">
-                    {l.label}
-                  </div>
-                  <p className="text-[13px] md:text-[14px] text-white/75 leading-relaxed">
-                    {l.body}
-                  </p>
-                </div>
-              ))}
-            </div>
           </Reveal>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.12}>
             <HubSpotForm
               portalId="25724996"
               formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6"
               region="eu1"
             />
-            <p className="label-code text-white/60 mt-3 px-1">
+            <p className="label-code text-white/55 mt-3 px-1">
               We respond within one business day
             </p>
           </Reveal>

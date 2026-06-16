@@ -1,7 +1,7 @@
 "use client";
 
 import { Hero } from "@/sections/shopify-multi-store/Hero";
-import { ProofStats } from "@/sections/shopify-multi-store/ProofStats";
+import { OperatingSystem } from "@/sections/shopify-multi-store/OperatingSystem";
 import { WhatWeConnect } from "@/sections/shopify-multi-store/WhatWeConnect";
 import { WhyHard } from "@/sections/shopify-multi-store/WhyHard";
 import { WhatBreaks } from "@/sections/shopify-multi-store/WhatBreaks";
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <ProofStats />
+      <OperatingSystem />
       <WhatWeConnect />
       <WhyHard />
       <WhatBreaks />

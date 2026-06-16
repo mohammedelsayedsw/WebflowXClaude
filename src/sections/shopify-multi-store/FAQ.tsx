@@ -1,83 +1,66 @@
 "use client";
 
+import { Plus, Minus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-type Q = { q: string; a: string };
-
-const faqs: Q[] = [
-  {
-    q: "Do you need full access to our stores to start?",
-    a: "No. The first conversation works from a store and system map plus a few examples of recurring issues. Deeper access comes later, only if we move forward.",
-  },
-  {
-    q: "Is OperaLayer a replacement for Shopify?",
-    a: "No. Your storefronts stay on Shopify. OperaLayer is the operating layer underneath that connects the systems your stores share.",
-  },
-  {
-    q: "We run B2B and D2C on separate stores. Does that work?",
-    a: "Yes. Separate stores for B2B and D2C is one of the most common setups this is built for.",
-  },
-  {
-    q: "Can you connect our ERP and CMS?",
-    a: "Yes. Validated ERP, OMS, WMS, and CMS connectors are part of the layer, with release and localization governance.",
-  },
-  {
-    q: "Will this cut our app costs?",
-    a: "It gives you the visibility to see duplicated apps and per-store cost first. From there the savings decisions are yours, made with real numbers.",
-  },
-  {
-    q: "Can we add mobile apps later?",
-    a: "Yes. The Mobile Commerce Accelerator runs on the same data layer and business rules, so mobile is an extension, not a rebuild.",
-  },
-];
+function FAQItem({ q, a, i }: { q: string; a: string; i: number }) {
+  return (
+    <Reveal delay={i * 0.04}>
+      <details className="group border-b border-white/10 py-5 md:py-6 [&_summary]:list-none [&_summary::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer items-start justify-between gap-6 font-head text-white text-[17px] md:text-[20px] leading-[1.3]">
+          <span>{q}</span>
+          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.02] group-open:bg-[var(--sw-mint)]/15 group-open:border-[var(--sw-mint)]/50 transition">
+            <Plus className="h-4 w-4 text-white group-open:hidden" />
+            <Minus className="h-4 w-4 text-[var(--sw-mint)] hidden group-open:block" />
+          </span>
+        </summary>
+        <div className="pt-4 pr-12 text-white/75 text-[14px] md:text-[16px] leading-relaxed">{a}</div>
+      </details>
+    </Reveal>
+  );
+}
 
 export function FAQ() {
+  const items = [
+    {
+      q: "Do you need full access to our stores to start?",
+      a: "No. The first conversation works from a simple map of your stores and systems, plus a few examples of issues that keep coming back. Deeper access only comes later, if we move forward.",
+    },
+    {
+      q: "Is OperaLayer a replacement for Shopify?",
+      a: "No. Your stores stay on Shopify exactly as they are. OperaLayer is the operating layer underneath that connects the systems your stores share. We do not replace your storefronts.",
+    },
+    {
+      q: "We run B2B and D2C on separate stores. Does that work?",
+      a: "Yes. Separate B2B and D2C stores is one of the most common setups this is built for, alongside separate countries, currencies, and brands.",
+    },
+    {
+      q: "Can you connect our ERP and CMS?",
+      a: "Yes. Validated connectors link Shopify to your ERP, OMS, WMS, and CMS (Sanity, Storyblok, Contentful, WordPress and more), with control over what goes live where and in which language.",
+    },
+    {
+      q: "Will this cut our app costs?",
+      a: "First it shows you the duplicated apps and the cost per store. The savings decisions are then yours, made with real numbers in front of you.",
+    },
+    {
+      q: "Can we add mobile apps later?",
+      a: "Yes. Customer, sales-rep, and warehouse apps run on the same data and business rules you already have, so mobile is an add-on, not a rebuild.",
+    },
+  ];
   return (
-    <section
-      id="faq"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
-    >
-      <div className="wrap relative">
-        <div className="grid gap-12 md:gap-16 lg:grid-cols-[1fr_2fr] items-start">
+    <section id="faq" className="bg-[var(--sw-black)] py-28 md:py-40">
+      <div className="wrap">
+        <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">
-              before you book the call
-            </div>
-            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch]">
-              The questions{" "}
-              <span style={{ color: "var(--sw-mint)" }}>merchants ask first</span>
+            <div className="label-code text-white/55 mb-5">before you book the call</div>
+            <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
+              The questions merchants{" "}
+              <span className="text-[var(--sw-mint)]">ask first</span>
             </h2>
-            <p className="mt-7 text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-[44ch]">
-              If yours is not here, bring it to the call. We will answer it then.
-            </p>
           </Reveal>
-
-          <div className="space-y-3 md:space-y-4">
-            {faqs.map((f, i) => (
-              <Reveal key={f.q} delay={i * 0.05}>
-                <details
-                  className="group rounded-[4px] border border-white/10 px-6 py-5 md:px-7 md:py-6 open:bg-white/[0.03]"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.45)",
-                  }}
-                >
-                  <summary className="cursor-pointer list-none flex items-start justify-between gap-4">
-                    <span className="font-head text-white text-[16px] md:text-[18px] leading-[1.3]">
-                      {f.q}
-                    </span>
-                    <span
-                      aria-hidden
-                      className="shrink-0 mt-1 h-5 w-5 rounded-full border border-white/40 grid place-items-center text-white/70 group-open:rotate-45 transition"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <div className="mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
-                    {f.a}
-                  </div>
-                </details>
-              </Reveal>
+          <div>
+            {items.map((it, i) => (
+              <FAQItem key={i} q={it.q} a={it.a} i={i} />
             ))}
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
-const grows: string[] = [
+const grows = [
   "app stack",
   "theme",
   "product setup",
@@ -19,49 +19,42 @@ export function WhyHard() {
   return (
     <section className="bg-lp-bright py-28 md:py-36">
       <div className="wrap">
-        <div className="grid gap-12 md:gap-16 lg:grid-cols-[1.2fr_1fr] items-start">
+        <div className="grid gap-12 md:gap-20 lg:grid-cols-[1.1fr_1fr] items-start">
           <Reveal>
-            <div className="label-code text-[var(--sw-black)]/55 mb-5">
-              why this gets hard
-            </div>
-            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[20ch]">
+            <div className="label-code text-[var(--sw-black)]/55 mb-5">why this gets hard</div>
+            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
               The real challenge is{" "}
-              <span className="text-[var(--sw-blue)]">
-                visibility across every store
-              </span>
+              <span className="text-[var(--sw-blue)]">visibility across every store</span>
             </h2>
-            <p className="mt-7 text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70 max-w-[60ch]">
-              Stores get separated for valid reasons. Currencies, payment
-              providers, legal entities, tax, warehouses, regional teams,
-              catalogs, B2B versus D2C, CMS choices, ERP and OMS constraints,
-              custom workflows, and history.
+            <p className="mt-7 text-[16px] md:text-[18px] leading-relaxed text-[var(--sw-black)]/70 max-w-[56ch]">
+              Stores get separated for good reasons. Currencies, payment providers,
+              tax, warehouses, regional teams, B2B versus D2C, and years of history.
             </p>
-            <p className="mt-5 text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70 max-w-[60ch]">
-              The difficulty starts later. Each store grows its own app stack,
-              theme, product setup, pricing, stock, CMS, release history, and
-              integrations. Costs multiply. Without one view, teams find out
-              something is wrong only when it breaks.
+            <p className="mt-5 text-[16px] md:text-[18px] leading-relaxed text-[var(--sw-black)]/70 max-w-[56ch]">
+              The difficulty starts later. Each store quietly grows its own version
+              of everything, costs multiply, and you only find out something is
+              wrong when it breaks.
             </p>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="bracket-frame relative rounded-[4px] border border-[var(--sw-black)]/12 bg-white/60 p-6 md:p-8">
-              <span className="bracket-bl" />
-              <span className="bracket-br" />
-              <div className="label-code text-[var(--sw-black)]/55 mb-5">
-                each store quietly grows its own
+          <Reveal delay={0.1}>
+            <div className="lg:pt-4">
+              <div className="label-code text-[var(--sw-black)]/45 mb-6">
+                what every store grows its own of
               </div>
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {grows.map((g) => (
-                  <li
+              <div className="grid grid-cols-2 gap-x-10">
+                {grows.map((g, i) => (
+                  <div
                     key={g}
-                    className="flex items-center gap-2.5 text-[14px] md:text-[15px] text-[var(--sw-black)]/80"
+                    className={`flex items-center gap-3 py-3.5 border-b border-[var(--sw-black)]/10 ${
+                      i < 2 ? "border-t" : ""
+                    }`}
                   >
-                    <span aria-hidden className="text-[var(--sw-blue)] shrink-0">→</span>
-                    <span>{g}</span>
-                  </li>
+                    <span className="h-1 w-1 rounded-full bg-[var(--sw-blue)]/40 shrink-0" />
+                    <span className="text-[15px] md:text-[16px] text-[var(--sw-black)]/80">{g}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </Reveal>
         </div>

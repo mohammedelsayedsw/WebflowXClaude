@@ -374,7 +374,7 @@ export default function AcceleratorHubPage() {
         </div>
       </section>
 
-      {/* ----------------- How we ship ----------------- */}
+      {/* ----------------- How we work ----------------- */}
       <section id="how-we-ship" className="relative" style={{ background: INK }}>
         <div className="wrap py-20 md:py-28">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
@@ -383,15 +383,15 @@ export default function AcceleratorHubPage() {
                 className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
                 style={{ color: MINT }}
               >
-                How we ship
+                How we work
               </div>
               <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 Three phases. Eight to fourteen weeks.
               </h2>
             </div>
             <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed self-end max-w-[58ch]">
-              A custom build spends its first two quarters writing code the
-              accelerator already has. We start from a working store, so the
+              A custom build spends its first six months writing code the
+              accelerator already has. We start from modules that already work, so the
               weeks go into your integrations, your data, and your workflows.
               Every phase ends with something you can hold us to.
             </p>
@@ -403,22 +403,22 @@ export default function AcceleratorHubPage() {
                 step: "1",
                 k: "Discovery",
                 weeks: "Weeks 1-2",
-                v: "Audit your data, integrations, and team. Map the accelerator against your operational gaps.",
-                ends: "Ends with: fixed scope, fixed price, and the success metric we will be measured on.",
+                v: "We review your data, systems, and team, and find the gaps in how you work today.",
+                ends: "Ends with: fixed scope, fixed price, and the goal we will be measured on.",
               },
               {
                 step: "2",
                 k: "Build",
                 weeks: "Weeks 3-10",
-                v: "Stand up the accelerator core. Wire in your ERP, PIM, payments, and tax. Migrate the data that has to move. Brand and design layer on top.",
-                ends: "Ends with: a staging store you click through every week, not a slide deck.",
+                v: "We set up the accelerator and connect it to your systems for stock, payments, and tax. We move the data that has to move, then apply your brand and design.",
+                ends: "Ends with: a working test store you click through every week, not a slide deck.",
               },
               {
                 step: "3",
                 k: "Launch + handover",
-                weeks: "Weeks 10-14",
-                v: "Load test, security audit, content freeze, and go-live. Your team trains on the live system and owns the codebase.",
-                ends: "Ends with: your team running the store. We stay on call for the first 90 days.",
+                weeks: "Weeks 11-14",
+                v: "We test it under load, run a security check, and go live. Your team trains on the live store and takes over the code.",
+                ends: "Ends with: your team running the store, with us on call for the first 90 days.",
               },
             ].map((p) => (
               <li

@@ -78,11 +78,12 @@ const ACCELERATORS: Accelerator[] = [
       "Multi-warehouse DIY and trade retail with peak seasons, supplier-fed catalogs, and dual buyer types.",
     weeks: "12 to 14 weeks",
     accent: "var(--sw-orange)",
+    label: "Why it wins",
     capabilities: [
-      "Stock and reservations across multiple warehouses",
-      "Separate pricing for trade and DIY buyers",
-      "Catalog kept current from supplier feeds",
-      "Holds up under peak-season load",
+      "Sell to trade and DIY from one store",
+      "Accurate stock across every warehouse and store",
+      "Bad supplier data never reaches your store",
+      "Holds up through every big sale",
     ],
   },
   {

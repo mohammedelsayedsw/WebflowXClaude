@@ -329,10 +329,10 @@ export default function AcceleratorHubPage() {
                 {
                   k: "Pre-built in the core",
                   items: [
-                    "The data your industry runs on: school codes, approved catalogs, card sets and grades, trade accounts",
-                    "The ways your industry buys: parent reorders, bulk account orders, release drops, trade and retail in one store",
-                    "Connections to the systems you already use for stock, payments, tax, and shipping",
-                    "Built to handle many warehouses, many account types, and peak-season traffic",
+                    "The buyer accounts and pricing your industry needs",
+                    "The selling and ordering flows your industry runs on",
+                    "Catalog and stock built for your scale and peak season",
+                    "Connections to the systems you already use",
                   ],
                 },
                 {

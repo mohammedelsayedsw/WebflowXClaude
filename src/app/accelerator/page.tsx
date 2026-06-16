@@ -95,9 +95,9 @@ const ACCELERATORS: Accelerator[] = [
     accent: "var(--sw-red)",
     label: "Why it wins",
     capabilities: [
-      "Your website sells packs, not just the live show",
+      "Packs customers can buy, with tiers, levels, and odds",
       "Packs restock themselves at the right value",
-      "90% buyback keeps customers in your store",
+      "Trade-in built in: customers swap cards for store credit",
       "One customer across Whatnot, eBay, and your site",
     ],
   },

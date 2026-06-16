@@ -49,10 +49,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-mint)",
     capabilities: [
-      "Order by student, class, or package",
+      "Order by student, class, or package",
       "Parents find photos with a class or school code",
       "Bulk pre-orders for schools, easy reorders for parents",
-      "One store for studio and retail buyers",
+      "One store for studio and retail buyers",
     ],
   },
   {

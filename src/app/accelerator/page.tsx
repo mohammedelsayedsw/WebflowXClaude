@@ -423,7 +423,7 @@ export default function AcceleratorHubPage() {
             ].map((p) => (
               <li
                 key={p.step}
-                className="rounded-[4px] p-6 md:p-7"
+                className="rounded-[4px] p-6 md:p-7 flex flex-col h-full"
                 style={{
                   background:
                     "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.03) 100%), rgba(16,19,44,0.55)",
@@ -465,7 +465,7 @@ export default function AcceleratorHubPage() {
                   {p.k}
                 </h3>
                 <p
-                  className="text-white/70"
+                  className="text-white/70 grow"
                   style={{
                     fontSize: "15px",
                     lineHeight: 1.55,
@@ -552,6 +552,12 @@ export default function AcceleratorHubPage() {
               "radial-gradient(700px 500px at 12% 90%, rgba(110,247,110,0.07) 0%, transparent 50%)",
           }}
         />
+        {/* soft accent glow in the corner (same blur treatment as the accelerator pages) */}
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full -z-10 pointer-events-none"
+          style={{ background: MINT, opacity: 0.1, filter: "blur(160px)" }}
+        />
         <div className="wrap py-24 md:py-32">
           <div className="max-w-[820px]">
             <div
@@ -564,9 +570,9 @@ export default function AcceleratorHubPage() {
               Don&rsquo;t see your industry? Let&rsquo;s build the next one
             </h2>
             <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
-              If you sell in a category where the same workflows repeat
-              across most merchants, it probably belongs in the accelerator
-              family. We will audit your stack, scope a new accelerator, and
+              If you sell in a category where most stores run the same way, we
+              can probably build an accelerator for it. We will look at how your
+              store works today, plan what a new accelerator would cover, and
               tell you honestly whether your industry is ready.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">

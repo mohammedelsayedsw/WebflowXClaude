@@ -278,7 +278,7 @@ export default function AcceleratorHubPage() {
             >
               Accelerators by industry
             </div>
-            <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
+            <h2 className="font-head text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
               Pick your industry
             </h2>
             <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[100ch]">
@@ -310,7 +310,7 @@ export default function AcceleratorHubPage() {
         style={{ background: BEIGE, color: "var(--sw-black)" }}
       >
         <div className="wrap py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
+          <div className="grid lg:grid-cols-[1.9fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
             <div>
               <div
                 className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
@@ -321,56 +321,79 @@ export default function AcceleratorHubPage() {
               <h2 className="text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
                 The growth parts most stores go without
               </h2>
-              <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
-                These modules are the hard parts, the ones most stores in your industry never build because they take too long. Yet they are exactly what brings in more revenue and room to grow. We already built them, proved them in real stores, and made them ready to add to yours.
-              </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
-              {[
-                {
-                  k: "Pre-built in the core",
-                  items: [
-                    "The buyer accounts and pricing your industry needs",
-                    "The selling and ordering flows your industry runs on",
-                    "Catalog and stock built for your scale and peak season",
-                    "Connections to the systems you already use",
-                  ],
-                },
-                {
-                  k: "Built for you on top",
-                  items: [
-                    "Your brand and design, applied to the store",
-                    "Your own workflows and business rules",
-                    "Your data, moved over and checked",
-                    "You own all the code after handover. No license fee, no lock-in",
-                  ],
-                },
-              ].map((col) => (
-                <div key={col.k}>
-                  <div
-                    className="font-head text-[var(--sw-black)] font-medium text-[18px] md:text-[20px] mb-4"
-                    style={{ letterSpacing: "-0.005em" }}
-                  >
-                    {col.k}
-                  </div>
-                  <ul className="space-y-3">
-                    {col.items.map((it) => (
-                      <li
-                        key={it}
-                        className="flex items-baseline gap-3 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="w-1.5 h-1.5 rotate-45 inline-block flex-shrink-0 mt-[7px]"
-                          style={{ background: BLUE, opacity: 0.6 }}
-                        />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
+            <p className="text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed self-end max-w-[54ch]">
+              These modules are the hard parts, the ones most stores in your industry never build because they take too long. Yet they are exactly what brings in more revenue and room to grow. We already built them, proved them in real stores, and made them ready to add to yours.
+            </p>
+          </div>
+
+          <div
+            className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+            style={{ color: BLUE }}
+          >
+            Built around your business
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {[
+              {
+                text: "Your brand and design, applied to the store",
+                icon: (
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                  </svg>
+                ),
+              },
+              {
+                text: "Your own workflows and business rules",
+                icon: (
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="8" height="8" rx="2" />
+                    <rect x="13" y="13" width="8" height="8" rx="2" />
+                    <path d="M7 11v3a2 2 0 0 0 2 2h4" />
+                  </svg>
+                ),
+              },
+              {
+                text: "Your data, moved over and checked",
+                icon: (
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <ellipse cx="12" cy="5" rx="9" ry="3" />
+                    <path d="M21 5v6c0 1.66-4.03 3-9 3s-9-1.34-9-3V5" />
+                    <path d="M3 11v6c0 1.51 3.36 2.77 7.74 2.97" />
+                    <path d="m15 18 2 2 4-4" />
+                  </svg>
+                ),
+              },
+              {
+                text: "You own all the code after handover. No license fee, no lock-in",
+                icon: (
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="7.5" cy="15.5" r="5.5" />
+                    <path d="M21 2 11.4 11.6" />
+                    <path d="m15.5 7.5 3 3L22 7l-3-3" />
+                  </svg>
+                ),
+              },
+            ].map((c) => (
+              <div
+                key={c.text}
+                className="rounded-[4px] p-6 md:p-7 h-full"
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid rgba(16,19,44,0.10)",
+                  boxShadow: "0 1px 2px rgba(16,19,44,0.04)",
+                }}
+              >
+                <div className="mb-4" style={{ color: BLUE }}>
+                  {c.icon}
                 </div>
-              ))}
-            </div>
+                <p className="text-[var(--sw-black)]/80 text-[15px] md:text-[16px] leading-relaxed">
+                  {c.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -378,7 +401,7 @@ export default function AcceleratorHubPage() {
       {/* ----------------- How we work ----------------- */}
       <section id="how-we-ship" className="relative" style={{ background: INK }}>
         <div className="wrap py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1.4fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
+          <div className="grid lg:grid-cols-[1.9fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
             <div>
               <div
                 className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
@@ -386,7 +409,7 @@ export default function AcceleratorHubPage() {
               >
                 How we work
               </div>
-              <h2 className="text-white text-[32px] md:text-[40px] lg:text-[40px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[30ch]">
+              <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[30ch]">
                 Three phases.{" "}
                 <br className="hidden sm:block" />
                 Eight to fourteen weeks.
@@ -420,7 +443,7 @@ export default function AcceleratorHubPage() {
                 step: "3",
                 k: "Launch + handover",
                 weeks: "Weeks 11-14",
-                v: "We test it under load, run a security check, and go live. Your team trains on the live store and takes over the code.",
+                v: "We test it under load, run a security check, and go live. We train your team to run the new modules, and you take it over.",
                 ends: "Ends with: your team running the store, with us on call for the first 90 days.",
               },
             ].map((p) => (
@@ -490,58 +513,6 @@ export default function AcceleratorHubPage() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* ----------------- Proof strip (light) ----------------- */}
-      <section
-        id="proof"
-        className="relative"
-        style={{ background: BEIGE, color: "var(--sw-black)" }}
-      >
-        <div className="wrap py-12 md:py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
-            {[
-              {
-                v: "Weeks 1-2",
-                l: "you get a fixed price and a success metric in writing",
-              },
-              {
-                v: "Every Friday",
-                l: "a staging store you click through, not a slide deck",
-              },
-              {
-                v: "Week 12",
-                l: "your store is live and your team owns the code",
-              },
-              {
-                v: "Day 90",
-                l: "we are still on call after launch, included",
-              },
-            ].map((s) => (
-              <div key={s.l}>
-                <div
-                  className="font-head text-[var(--sw-black)] font-medium tabular-nums"
-                  style={{
-                    fontSize: "clamp(24px, 2.4vw, 34px)",
-                    lineHeight: 1,
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {s.v}
-                </div>
-                <div
-                  className="text-[var(--sw-black)]/65 mt-3 max-w-[26ch]"
-                  style={{
-                    fontSize: "14px",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {s.l}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

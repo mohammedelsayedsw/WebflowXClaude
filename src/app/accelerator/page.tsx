@@ -281,10 +281,11 @@ export default function AcceleratorHubPage() {
             <h2 className="font-head text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
               Pick your industry
             </h2>
-            <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[88ch]">
+            <p className="mt-5 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[100ch]">
               Each accelerator is built from the best of what we have
-              delivered for clients in that industry. We fit it to your
-              store, your catalog, accounts, and integrations.
+              delivered for clients in that industry.{" "}
+              <br className="hidden lg:block" />
+              We fit it to your store, your catalog, accounts, and integrations.
             </p>
           </div>
 
@@ -377,7 +378,7 @@ export default function AcceleratorHubPage() {
       {/* ----------------- How we work ----------------- */}
       <section id="how-we-ship" className="relative" style={{ background: INK }}>
         <div className="wrap py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
+          <div className="grid lg:grid-cols-[1.4fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
             <div>
               <div
                 className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
@@ -385,8 +386,10 @@ export default function AcceleratorHubPage() {
               >
                 How we work
               </div>
-              <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
-                Three phases. Eight to fourteen weeks.
+              <h2 className="text-white text-[32px] md:text-[40px] lg:text-[40px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[30ch]">
+                Three phases.{" "}
+                <br className="hidden sm:block" />
+                Eight to fourteen weeks.
               </h2>
             </div>
             <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed self-end max-w-[58ch]">

@@ -318,13 +318,10 @@ export default function AcceleratorHubPage() {
                 What an accelerator is
               </div>
               <h2 className="text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[18ch]">
-                A backbone that already knows your industry
+                The growth parts most stores go without
               </h2>
               <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
-                Roughly 80% of an industry store is identical for every merchant
-                in that industry. The accelerator is that 80%, built once and
-                hardened in production. Your project pays for the 20% that is
-                actually yours.
+                These modules are the hard parts, the ones most stores in your industry never build because they take too long. Yet they are exactly what brings in more revenue and room to grow. We already built them, proved them in real stores, and made them ready to add to yours.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
@@ -332,19 +329,19 @@ export default function AcceleratorHubPage() {
                 {
                   k: "Pre-built in the core",
                   items: [
-                    "Industry data model: school codes, approved catalogs, set and grade data, trade accounts",
-                    "Industry checkout flows: parent reorder, bulk account ordering, release drops, dual retail",
-                    "Integration adapters for ERP, PIM, payments, tax, and shipping",
-                    "Multi-warehouse, multi-account, peak-resilient infrastructure",
+                    "The data your industry runs on: school codes, approved catalogs, card sets and grades, trade accounts",
+                    "The ways your industry buys: parent reorders, bulk account orders, release drops, trade and retail in one store",
+                    "Connections to the systems you already use for stock, payments, tax, and shipping",
+                    "Built to handle many warehouses, many account types, and peak-season traffic",
                   ],
                 },
                 {
                   k: "Built for you on top",
                   items: [
-                    "Your brand and design system, applied to the storefront",
-                    "Your one-off workflows and business rules",
-                    "Your data, migrated and validated",
-                    "Full code ownership after handover. No license fee, no lock-in",
+                    "Your brand and design, applied to the store",
+                    "Your own workflows and business rules",
+                    "Your data, moved over and checked",
+                    "You own all the code after handover. No license fee, no lock-in",
                   ],
                 },
               ].map((col) => (

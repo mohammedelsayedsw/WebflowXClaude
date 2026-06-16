@@ -11,6 +11,7 @@ type Accelerator = {
   weeks: string;
   capabilities: string[];
   accent: string;
+  label?: string;
 };
 
 export function AcceleratorCards({ accelerators }: { accelerators: Accelerator[] }) {
@@ -87,7 +88,7 @@ export function AcceleratorCards({ accelerators }: { accelerators: Accelerator[]
             </h3>
 
             <div className="font-head relative text-[11px] tracking-[0.14em] uppercase font-semibold text-white/40 mb-3">
-              What it handles
+              {a.label ?? "What it handles"}
             </div>
 
             <ul className="relative space-y-2.5 mb-6">

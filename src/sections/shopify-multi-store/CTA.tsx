@@ -5,15 +5,15 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 const lookAt: { label: string; body: string }[] = [
   {
-    label: "Stores and apps",
-    body: "How many stores, which apps overlap, and what they cost.",
+    label: "Stores & apps",
+    body: "How many stores, which apps, where they overlap, and what they cost.",
   },
   {
-    label: "Systems and data",
-    body: "Your ERP, orders, warehouse, and content, and where the numbers disagree.",
+    label: "Systems & data",
+    body: "ERP, OMS, WMS, CMS, PIM, BI, and where the data disagrees.",
   },
   {
-    label: "Releases and monitoring",
+    label: "Releases & monitoring",
     body: "How changes ship, what gets watched, and what slips through.",
   },
 ];
@@ -34,14 +34,16 @@ export function CTA() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
             <div className="label-code text-white/55 mb-5">the first step</div>
-            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[18ch]">
-              Let&apos;s talk through your{" "}
-              <span className="text-[var(--sw-mint)]">Shopify stores</span>
+            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[20ch]">
+              Let&apos;s talk Shopify{" "}
+              <span className="text-[var(--sw-mint)]">multi-store support</span>
             </h2>
             <p className="mt-6 text-white/80 max-w-[54ch] text-[16px] md:text-[17px] leading-relaxed">
-              We start by walking through your setup together. The first
-              conversation needs no system access, just a rough map of your
-              stores and a few examples of what keeps going wrong.
+              We start by reviewing the setup together. Stores, apps, ERP, CMS,
+              custom apps, releases, monitoring, app costs, and the issues that
+              keep coming back. No full system access is needed for the first
+              conversation. A store and system map plus a few examples of
+              recurring issues is enough.
             </p>
 
             <div className="mt-10 grid sm:grid-cols-3 gap-4">
@@ -50,7 +52,7 @@ export function CTA() {
                   key={l.label}
                   className="rounded-[4px] border border-white/12 bg-white/[0.03] p-5"
                 >
-                  <div className="label-code text-white/60 mb-2.5">
+                  <div className="label-code text-white/55 mb-2.5">
                     {l.label}
                   </div>
                   <p className="text-[13px] md:text-[14px] text-white/75 leading-relaxed">

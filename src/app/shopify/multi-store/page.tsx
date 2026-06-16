@@ -1,10 +1,11 @@
 "use client";
 
 import { Hero } from "@/sections/shopify-multi-store/Hero";
-import { OneConnectedView } from "@/sections/shopify-multi-store/OneConnectedView";
-import { WhyHard } from "@/sections/shopify-multi-store/WhyHard";
-import { WhatBreaks } from "@/sections/shopify-multi-store/WhatBreaks";
+import { SystemOverview } from "@/sections/shopify-multi-store/SystemOverview";
 import { SevenLayers } from "@/sections/shopify-multi-store/SevenLayers";
+import { EcosystemMap } from "@/sections/shopify-multi-store/EcosystemMap";
+import { WhatBreaks } from "@/sections/shopify-multi-store/WhatBreaks";
+import { WhyHard } from "@/sections/shopify-multi-store/WhyHard";
 import { WhatChanges } from "@/sections/shopify-multi-store/WhatChanges";
 import { GoodFit } from "@/sections/shopify-multi-store/GoodFit";
 import { FAQ } from "@/sections/shopify-multi-store/FAQ";
@@ -14,10 +15,11 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <OneConnectedView />
-      <WhyHard />
-      <WhatBreaks />
+      <SystemOverview />
       <SevenLayers />
+      <EcosystemMap />
+      <WhatBreaks />
+      <WhyHard />
       <WhatChanges />
       <GoodFit />
       <FAQ />

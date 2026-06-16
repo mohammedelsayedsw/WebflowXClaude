@@ -1,80 +1,85 @@
 "use client";
 
-import { Eye, LifeBuoy, UserCheck, Wallet, Wrench, FileBarChart } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-type Item = { Icon: React.ComponentType<{ className?: string }>; label: string; body: string };
+type Benefit = { n: number; title: string; body: string };
 
-const items: Item[] = [
+const benefits: Benefit[] = [
   {
-    Icon: Eye,
-    label: "One place to see what needs attention",
-    body: "Recurring issues, rising app costs, failed syncs, and mismatched data surface in one view.",
+    n: 1,
+    title: "One place to see what needs attention",
+    body: "A single view across stores. It surfaces recurring issues, app cost and performance problems, failed integrations, and data inconsistencies, so the next action is obvious.",
   },
   {
-    Icon: LifeBuoy,
-    label: "Support that sees the whole picture",
-    body: "Issues get read against your full setup, not patched one store at a time.",
+    n: 2,
+    title: "Support with context, not only tickets",
+    body: "Issues are read against the whole setup, not handled store by store.",
   },
   {
-    Icon: UserCheck,
-    label: "Clear ownership",
-    body: "Everyone knows who owns what, so nothing slips between teams or systems.",
+    n: 3,
+    title: "Clearer ownership",
+    body: "Defined responsibility between teams and systems, so nothing falls through the gap.",
   },
   {
-    Icon: Wallet,
-    label: "Control over app cost and risk",
-    body: "You can finally see what each app costs and what it touches across every store.",
+    n: 4,
+    title: "Better control of app cost and app risk",
+    body: "Visibility into what each app costs and what it touches across stores.",
   },
   {
-    Icon: Wrench,
-    label: "Fixes that stick",
-    body: "Root causes get solved once and shared, instead of reappearing store by store.",
+    n: 5,
+    title: "Fewer repeated fixes",
+    body: "Root causes are solved once and shared, instead of patched per store.",
   },
   {
-    Icon: FileBarChart,
-    label: "A report leadership can use",
-    body: "One monthly readout, not a stack of separate ones.",
+    n: 6,
+    title: "Practical monthly reporting",
+    body: "One readout leadership can actually use.",
   },
 ];
 
 export function WhatChanges() {
   return (
-    <section id="what-changes" className="bg-lp-bright py-28 md:py-36">
-      <div className="wrap">
+    <section
+      id="what-changes"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
+    >
+      <div className="wrap relative">
         <Reveal>
-          <div className="label-code text-[var(--sw-black)]/55 mb-5">
+          <div className="label-code text-white/55 mb-5">
             what changes with scandiweb
           </div>
-          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
-            What it feels like once your stores{" "}
-            <span className="text-[var(--sw-blue)]">run as one setup</span>
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[26ch]">
+            What changes when scandiweb supports your{" "}
+            <span style={{ color: "var(--sw-mint)" }}>
+              multi-store Shopify setup
+            </span>
           </h2>
-          <p className="mt-7 max-w-[60ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
-            Real changes across stores, apps, data, and reporting.
+          <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
+            Practical outcomes across stores, apps, integrations, releases, data,
+            and reporting.
           </p>
         </Reveal>
 
-        <div className="mt-14 md:mt-20 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it, i) => (
-            <Reveal key={it.label} delay={(i % 3) * 0.06}>
-              <div>
-                <div
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] mb-5"
-                  style={{
-                    border: "1px solid rgba(63,74,175,0.30)",
-                    background: "rgba(63,74,175,0.06)",
-                  }}
-                >
-                  <it.Icon className="h-5 w-5 text-[var(--sw-blue)]" />
+        <div className="mt-14 md:mt-20 grid gap-5 md:gap-6 md:grid-cols-2">
+          {benefits.map((b, i) => (
+            <Reveal key={b.n} delay={(i % 2) * 0.07}>
+              <article
+                className="h-full rounded-[4px] border border-white/10 p-7 md:p-8"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)",
+                }}
+              >
+                <div className="font-head text-white/25 text-[36px] md:text-[44px] leading-none tabular-nums mb-5">
+                  {b.n}
                 </div>
-                <h3 className="font-head text-[var(--sw-black)] text-[18px] md:text-[20px] leading-[1.2]">
-                  {it.label}
+                <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
+                  {b.title}
                 </h3>
-                <p className="mt-2.5 text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed">
-                  {it.body}
+                <p className="mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
+                  {b.body}
                 </p>
-              </div>
+              </article>
             </Reveal>
           ))}
         </div>

@@ -401,25 +401,23 @@ export default function AcceleratorHubPage() {
       {/* ----------------- How we work ----------------- */}
       <section id="how-we-ship" className="relative" style={{ background: INK }}>
         <div className="wrap py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1.9fr_2fr] gap-12 lg:gap-20 mb-12 md:mb-16">
-            <div>
-              <div
-                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
-                style={{ color: MINT }}
-              >
-                How we work
-              </div>
-              <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium max-w-[30ch]">
-                Three phases.{" "}
-                <br className="hidden sm:block" />
-                Eight to fourteen weeks.
-              </h2>
+          <div className="mb-12 md:mb-16">
+            <div
+              className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-5"
+              style={{ color: MINT }}
+            >
+              How we work
             </div>
-            <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed self-end max-w-[58ch]">
+            <h2 className="text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] tracking-[-0.015em] font-medium">
+              Three phases.{" "}
+              <br className="hidden sm:block" />
+              Eight to fourteen weeks.
+            </h2>
+            <p className="mt-6 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[72ch]">
               A custom build spends its first six months writing code the
-              accelerator already has. We start from modules that already work, so the
-              weeks go into your integrations, your data, and your workflows.
-              Every phase ends with something you can hold us to.
+              accelerator already has. We start from modules that already work,
+              so the weeks go into your integrations, your data, and your
+              workflows. Every phase ends with something you can hold us to.
             </p>
           </div>
 
@@ -444,7 +442,7 @@ export default function AcceleratorHubPage() {
                 k: "Launch + handover",
                 weeks: "Weeks 11-14",
                 v: "We test it under load, run a security check, and go live. We train your team to run the new modules, and you take it over.",
-                ends: "Ends with: your team running the store, with us on call for the first 90 days.",
+                ends: "Ends with: your team running the store, with our team available for support and any questions for the first 90 days.",
               },
             ].map((p) => (
               <li
@@ -458,7 +456,7 @@ export default function AcceleratorHubPage() {
                     "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.04)",
                 }}
               >
-                <div className="flex items-baseline justify-between mb-5">
+                <div className="mb-5">
                   <span
                     className="font-medium tabular-nums"
                     style={{
@@ -468,16 +466,6 @@ export default function AcceleratorHubPage() {
                     }}
                   >
                     {p.step}
-                  </span>
-                  <span
-                    className="text-white/55"
-                    style={{
-                      fontSize: "12px",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {p.weeks}
                   </span>
                 </div>
                 <h3

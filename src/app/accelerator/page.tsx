@@ -533,39 +533,62 @@ export default function AcceleratorHubPage() {
           style={{ background: MINT, opacity: 0.1, filter: "blur(160px)" }}
         />
         <div className="wrap py-24 md:py-32">
-          <div className="max-w-[820px]">
-            <div
-              className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-6"
-              style={{ color: MINT }}
-            >
-              New industry
-            </div>
-            <h2 className="font-head text-white text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.015em] font-medium max-w-[22ch]">
-              Don&rsquo;t see your industry? Let&rsquo;s build the next one
-            </h2>
-            <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
-              If you sell in a category where most stores run the same way, we
-              can probably build an accelerator for it. We will look at how your
-              store works today, plan what a new accelerator would cover, and
-              tell you honestly whether your industry is ready.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <a
-                href="https://scandiweb.com/contact"
-                className="font-head inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
-                style={{
-                  background: MINT,
-                  color: INK,
-                  fontSize: "15.5px",
-                }}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="max-w-[820px]">
+              <div
+                className="font-head text-[12px] tracking-[0.18em] uppercase font-medium mb-6"
+                style={{ color: MINT }}
               >
-                Book a discovery call
-                <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-              <span className="text-white/55 text-[13px] tracking-wide max-w-[36ch]">
-                30 minutes with the team that builds these. Written summary
-                inside 24 hours.
-              </span>
+                New industry
+              </div>
+              <h2 className="font-head text-white text-[40px] md:text-[56px] lg:text-[68px] leading-[1.02] tracking-[-0.015em] font-medium max-w-[22ch]">
+                Don&rsquo;t see your industry? Let&rsquo;s build the next one
+              </h2>
+              <p className="mt-7 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[58ch]">
+                If you sell in a category where most stores run the same way, we
+                can probably build an accelerator for it. We will look at how your
+                store works today, plan what a new accelerator would cover, and
+                tell you honestly whether your industry is ready.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <a
+                  href="https://scandiweb.com/contact"
+                  className="font-head inline-flex items-center gap-3 px-7 py-4 rounded-[2px] font-medium transition-all group"
+                  style={{
+                    background: MINT,
+                    color: INK,
+                    fontSize: "15.5px",
+                  }}
+                >
+                  Book a discovery call
+                  <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <span className="text-white/55 text-[13px] tracking-wide max-w-[36ch]">
+                  30 minutes with the team that builds these. Written summary
+                  inside 24 hours.
+                </span>
+              </div>
+            </div>
+
+            {/* Quote card — same style as the school-uniform card */}
+            <div className="rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
+              <blockquote className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] tracking-[-0.005em]">
+                &ldquo;We do not start from a blank page. Every accelerator is made of modules{" "}
+                <span className="text-[var(--sw-mint)]">already proven in real stores</span>. Even if your industry is not shown here, we have probably already built most of what it needs.&rdquo;
+              </blockquote>
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+                  alt="Aigars Pavlovics"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                  style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+                />
+                <div>
+                  <div className="text-white text-[14px] font-medium">Aigars Pavlovics</div>
+                  <div className="label-code text-white/55 mt-0.5">Executive Board · Scandiweb</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

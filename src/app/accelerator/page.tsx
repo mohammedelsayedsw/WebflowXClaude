@@ -110,9 +110,9 @@ const ACCELERATORS: Accelerator[] = [
     accent: "var(--sw-blue)",
     capabilities: [
       "Sell on Amazon and Google from one catalog",
-      "Prices and stock stay current on their own",
+      "Supplier prices and new products update on your store automatically",
       "Turn one-time buyers into monthly subscribers",
-      "Bigger orders, fewer post-holiday returns",
+      "The cart reminds buyers to add what the kit needs to work",
     ],
   },
 ];

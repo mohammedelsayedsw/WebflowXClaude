@@ -65,9 +65,9 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "8 to 12 weeks",
     accent: "var(--sw-light-grey)",
     capabilities: [
-      "Win and launch new schools faster",
+      "Win and launch new schools faster",
       "Your busiest weeks run themselves",
-      "Parents self-serve fittings, orders, and returns",
+      "Parents self-serve fittings, orders, and returns",
       "Right uniform, right school, every time",
     ],
   },
@@ -80,7 +80,7 @@ const ACCELERATORS: Accelerator[] = [
     accent: "var(--sw-orange)",
     label: "Why it wins",
     capabilities: [
-      "Sell to trade and DIY from one store",
+      "Sell to trade and DIY from one store",
       "Accurate stock across every warehouse and store",
       "Bad supplier data never reaches your store",
       "Holds up through every big sale",
@@ -109,10 +109,10 @@ const ACCELERATORS: Accelerator[] = [
     weeks: "12 weeks",
     accent: "var(--sw-blue)",
     capabilities: [
-      "Supplier-fed catalog, kept current",
-      "Marketplace and shopping-feed sync",
-      "Subscription and gift boxes",
-      "Shipping rules for hard-to-ship items",
+      "Sell on Amazon and Google from one catalog",
+      "Prices and stock stay current on their own",
+      "Turn one-time buyers into monthly subscribers",
+      "Bigger orders, fewer post-holiday returns",
     ],
   },
 ];

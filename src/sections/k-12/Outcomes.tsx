@@ -645,11 +645,10 @@ export function Outcomes() {
       age: "BATTERIES? CHECK",
       icon: "math-operations",
       title: (
-        <>
-          Batteries, goggles, chargers: the cart{" "}
-          <br className="hidden md:block" />
-          offers <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
-        </>
+        <span className="lg:text-[40px]">
+          Batteries, goggles, chargers: the cart offers{" "}
+          <span className="text-[var(--sw-mint)]">what the box doesn&apos;t include</span>
+        </span>
       ),
       lede:
         "Many products don't include everything they need: batteries, goggles, SD cards, chargers. The gift buyer has no way to know that, and finds out when the box is already open. The store knows, and this module makes the cart say so and offer the missing item right away.",

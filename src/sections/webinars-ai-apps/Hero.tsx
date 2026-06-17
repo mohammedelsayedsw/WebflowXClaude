@@ -214,8 +214,13 @@ export function Hero() {
 
               <Reveal delay={0.25}>
                 <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
-                  <a href="#cta" className={btnPrimary}>
-                    Sign up now
+                  <a
+                    href="https://youtu.be/y3m7gOxumpI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={btnPrimary}
+                  >
+                    Watch now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>

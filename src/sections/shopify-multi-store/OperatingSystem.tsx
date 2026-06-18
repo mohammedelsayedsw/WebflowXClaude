@@ -20,6 +20,21 @@ const systems = [
   "product feeds",
 ];
 
+/* Vertical connector between the stacked bands. A single centered spine,
+   capped with a filled node at each junction so it reads as a deliberate
+   connection (and any sub-pixel gap is hidden), instead of a floating
+   hairline. Self-contained and centered, so it never misaligns across
+   breakpoints. */
+function Connector() {
+  return (
+    <div className="relative h-12 md:h-14" aria-hidden>
+      <span className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[var(--sw-blue)]/35" />
+      <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--sw-blue)]/60" />
+      <span className="absolute left-1/2 bottom-0 h-1.5 w-1.5 -translate-x-1/2 translate-y-1/2 rounded-full bg-[var(--sw-blue)]/60" />
+    </div>
+  );
+}
+
 export function OperatingSystem() {
   return (
     <section id="system" className="bg-lp-bright py-28 md:py-36">
@@ -56,9 +71,7 @@ export function OperatingSystem() {
               ))}
             </div>
 
-            <div className="relative h-10 md:h-12" aria-hidden>
-              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[var(--sw-blue)]/30" />
-            </div>
+            <Connector />
 
             {/* operating layer */}
             <div
@@ -71,9 +84,7 @@ export function OperatingSystem() {
               </div>
             </div>
 
-            <div className="relative h-10 md:h-12" aria-hidden>
-              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[var(--sw-blue)]/30" />
-            </div>
+            <Connector />
 
             {/* systems */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">

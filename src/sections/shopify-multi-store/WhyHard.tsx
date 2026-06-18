@@ -40,7 +40,7 @@ export function WhyHard() {
           <Reveal delay={0.1}>
             <div className="lg:pt-4">
               <div className="label-code text-[var(--sw-black)]/45 mb-6">
-                what every store grows its own of
+                where stores drift apart
               </div>
               <div className="grid grid-cols-2 gap-x-10">
                 {grows.map((g, i) => (

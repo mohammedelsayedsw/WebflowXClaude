@@ -18,8 +18,8 @@ export default function Page() {
       <WhyHard />
       <WhatBreaks />
       <GoodFit />
-      <FAQ />
       <CTA />
+      <FAQ />
     </main>
   );
 }

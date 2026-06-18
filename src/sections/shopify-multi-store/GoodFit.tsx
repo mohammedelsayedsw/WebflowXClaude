@@ -30,7 +30,7 @@ export function GoodFit() {
         <Reveal>
           <div className="label-code text-[var(--sw-black)]/55 mb-5">is this for you</div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch]">
-            Where this fits,{" "}
+            Where OperaLayer fits,{" "}
             <span className="text-[var(--sw-blue)]">and where it does not</span>
           </h2>
         </Reveal>

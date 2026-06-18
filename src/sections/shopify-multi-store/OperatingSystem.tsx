@@ -20,17 +20,21 @@ const systems = [
   "product feeds",
 ];
 
-/* Vertical connector between the stacked bands. A single centered spine,
-   capped with a filled node at each junction so it reads as a deliberate
-   connection (and any sub-pixel gap is hidden), instead of a floating
-   hairline. Self-contained and centered, so it never misaligns across
-   breakpoints. */
-function Connector() {
+/* Connector between the stacked bands. A horizontal rail sits flush against
+   the card row it links (so every card in the row visibly connects), and a
+   centered vertical stem runs into the OperaLayer box. Full-width rail +
+   centered stem can't misalign across breakpoints.
+   rail="top"    -> rail hugs the row above (stores -> OperaLayer)
+   rail="bottom" -> rail hugs the row below (OperaLayer -> systems) */
+function Connector({ rail }: { rail: "top" | "bottom" }) {
   return (
-    <div className="relative h-12 md:h-14" aria-hidden>
-      <span className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[var(--sw-blue)]/35" />
-      <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--sw-blue)]/60" />
-      <span className="absolute left-1/2 bottom-0 h-1.5 w-1.5 -translate-x-1/2 translate-y-1/2 rounded-full bg-[var(--sw-blue)]/60" />
+    <div className="relative h-10 md:h-12" aria-hidden>
+      <span className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[var(--sw-blue)]/45" />
+      <span
+        className={`absolute inset-x-0 h-px bg-[var(--sw-blue)]/40 ${
+          rail === "top" ? "top-0" : "bottom-0"
+        }`}
+      />
     </div>
   );
 }
@@ -71,7 +75,7 @@ export function OperatingSystem() {
               ))}
             </div>
 
-            <Connector />
+            <Connector rail="top" />
 
             {/* operating layer */}
             <div
@@ -84,7 +88,7 @@ export function OperatingSystem() {
               </div>
             </div>
 
-            <Connector />
+            <Connector rail="bottom" />
 
             {/* systems */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">

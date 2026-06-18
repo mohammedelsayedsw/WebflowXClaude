@@ -33,18 +33,17 @@ const steps: Step[] = [
 
 export function HowItWorks() {
   return (
-    <section
-      id="how"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
-    >
-      <div className="wrap relative">
+    <section id="how" className="bg-lp-bright py-28 md:py-36">
+      <div className="wrap">
         <Reveal>
-          <div className="label-code text-white/55 mb-5">how it works</div>
-          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
+          <div className="label-code text-[var(--sw-black)]/55 mb-5">
+            how it works
+          </div>
+          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
             From your store to a fixed price in{" "}
-            <span style={{ color: "var(--sw-mint)" }}>48 hours</span>.
+            <span className="text-[var(--sw-blue)]">48 hours</span>.
           </h2>
-          <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
+          <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
             The estimate is the whole entry point. No call needed to get a
             number, no access to your store, no commitment. The scan is
             automated, and a senior engineer reviews every result before it
@@ -55,25 +54,19 @@ export function HowItWorks() {
         <div className="mt-14 md:mt-20 grid gap-5 md:gap-6 md:grid-cols-2">
           {steps.map((s, i) => (
             <Reveal key={s.number} delay={i * 0.07}>
-              <article
-                className="h-full rounded-[4px] border border-white/10 p-7 md:p-8"
-                style={{
-                  background:
-                    "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)",
-                }}
-              >
+              <article className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8">
                 <div className="flex items-start justify-between gap-4 mb-5">
-                  <div className="font-head text-[var(--sw-mint)] text-[40px] md:text-[48px] leading-none tabular-nums">
+                  <div className="font-head text-[var(--sw-black)]/25 text-[40px] md:text-[48px] leading-none tabular-nums">
                     {s.number}
                   </div>
-                  <div className="label-code text-white/55 text-right">
+                  <div className="label-code text-[var(--sw-black)]/55 text-right">
                     {s.duration}
                   </div>
                 </div>
-                <h3 className="font-head text-white text-[22px] md:text-[26px] leading-[1.15]">
+                <h3 className="font-head text-[var(--sw-black)] text-[22px] md:text-[26px] leading-[1.15]">
                   {s.title}
                 </h3>
-                <p className="mt-4 text-[14px] md:text-[15px] text-white/80 leading-relaxed">
+                <p className="mt-4 text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed">
                   {s.body}
                 </p>
               </article>

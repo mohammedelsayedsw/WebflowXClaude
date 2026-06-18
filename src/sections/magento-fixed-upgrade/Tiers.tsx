@@ -9,6 +9,7 @@ type Tier = {
   timeline: string;
   scope: string;
   tag?: string;
+  tm?: string;
 };
 
 const tiers: Tier[] = [
@@ -28,6 +29,7 @@ const tiers: Tier[] = [
     scope:
       "Everything in Express, plus theme refactor, custom-module compatibility, third-party patch coordination, and a performance audit.",
     tag: "most common",
+    tm: "$15,000-$30,000",
   },
   {
     name: "Advanced",
@@ -37,6 +39,7 @@ const tiers: Tier[] = [
     scope:
       "Everything in Standard, plus ERP validation, B2B flow regression, multi-store testing, and a solution-architect review.",
     tag: "B2B & ERP",
+    tm: "$25,000-$50,000",
   },
   {
     name: "Enterprise",
@@ -45,6 +48,7 @@ const tiers: Tier[] = [
     timeline: "4 to 8 weeks",
     scope:
       "Everything in Advanced, plus a dedicated engineer and PM, multi-store and multi-currency, PIM, ERP and POS integrations, and a 30-day post-launch retainer.",
+    tm: "$60,000-$150,000",
   },
 ];
 
@@ -68,23 +72,28 @@ export function Tiers() {
           </p>
         </Reveal>
 
-        <div className="mt-14 md:mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 md:mt-20 grid gap-6 md:grid-cols-2">
           {tiers.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.07}>
-              <article className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:p-7 flex flex-col">
+              <article className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:p-8 flex flex-col">
                 <div className="flex items-center justify-between gap-3 mb-1">
                   <h3 className="font-head text-[var(--sw-black)] text-[20px] md:text-[22px] leading-tight">
                     {t.name}
                   </h3>
                   {t.tag && (
-                    <span className="label-code text-[var(--sw-blue)] text-[9px] rounded-[2px] border border-[var(--sw-blue)]/30 bg-[var(--sw-blue)]/[0.06] px-2 py-1">
+                    <span className="label-code text-[var(--sw-blue)] text-[9px] whitespace-nowrap shrink-0 rounded-[2px] border border-[var(--sw-blue)]/30 bg-[var(--sw-blue)]/[0.06] px-2 py-1">
                       {t.tag}
                     </span>
                   )}
                 </div>
-                <div className="mt-5 font-head text-[var(--sw-black)] text-[30px] md:text-[34px] leading-none tabular-nums">
+                <div className="mt-5 font-head text-[var(--sw-black)] text-[30px] md:text-[36px] leading-none tabular-nums">
                   {t.price}
                 </div>
+                {t.tm && (
+                  <div className="mt-2.5 text-[12px] md:text-[13px] text-[var(--sw-black)]/45">
+                    vs <span className="line-through">{t.tm}</span> typical agency
+                  </div>
+                )}
                 <div className="mt-2 label-code text-[var(--sw-black)]/55">
                   {t.timeline}
                 </div>

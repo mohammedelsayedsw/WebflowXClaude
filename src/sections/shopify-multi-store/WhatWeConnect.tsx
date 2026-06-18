@@ -34,7 +34,7 @@ function Card({ title, sub, children }: { title: string; sub?: string; children:
       className="w-full rounded-[14px] bg-white text-[var(--sw-black)] overflow-hidden"
       style={{ boxShadow: "0 40px 90px -30px rgba(7,10,30,0.85)" }}
     >
-      <div className="px-6 py-5 border-b border-[var(--sw-black)]/8">
+      <div className="px-6 py-6 border-b border-[var(--sw-black)]/8">
         <div className="font-head font-semibold text-[16px] leading-none">{title}</div>
         {sub && <div className="text-[12px] text-[var(--sw-black)]/45 mt-1.5">{sub}</div>}
       </div>
@@ -44,7 +44,7 @@ function Card({ title, sub, children }: { title: string; sub?: string; children:
 }
 
 function Line({ children }: { children: React.ReactNode }) {
-  return <div className="flex items-center justify-between py-3.5 border-b border-[var(--sw-black)]/[0.06] last:border-0">{children}</div>;
+  return <div className="flex items-center justify-between py-[18px] border-b border-[var(--sw-black)]/[0.06] last:border-0">{children}</div>;
 }
 
 function MockOneView() {
@@ -69,7 +69,7 @@ function MockOneView() {
       ))}
       <div className="grid grid-cols-3 -mx-6 border-t border-[var(--sw-black)]/8">
         {[["Orders today", "1,284"], ["Revenue", "$47.5k"], ["Failed syncs", "0"]].map((k, i) => (
-          <div key={k[0]} className={`px-6 py-4 ${i > 0 ? "border-l border-[var(--sw-black)]/8" : ""}`}>
+          <div key={k[0]} className={`px-6 py-5 ${i > 0 ? "border-l border-[var(--sw-black)]/8" : ""}`}>
             <div className="text-[10px] text-[var(--sw-black)]/45">{k[0]}</div>
             <div className="font-head font-semibold text-[17px] mt-1 tabular-nums">{k[1]}</div>
           </div>
@@ -232,13 +232,13 @@ export function WhatWeConnect() {
 
           {/* right: single product card, no outer box */}
           <Reveal delay={0.1}>
-            <div className="flex items-center justify-center min-h-[420px]">
+            <div className="flex items-center justify-center min-h-[480px] lg:min-h-[520px]">
               <motion.div
                 key={active}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full max-w-[460px]"
+                className="w-full max-w-[480px]"
               >
                 {visuals[active]}
               </motion.div>

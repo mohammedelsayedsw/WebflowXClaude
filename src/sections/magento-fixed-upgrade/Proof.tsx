@@ -6,7 +6,7 @@ type Stat = { value: string; label: string };
 
 const stats: Stat[] = [
   { value: "3,000+", label: "Magento upgrades delivered" },
-  { value: "Premier", label: "Adobe Solution Partner" },
+  { value: "Gold", label: "Adobe Solution Partner" },
   { value: "700+", label: "brands supported worldwide" },
   { value: "Senior", label: "engineers on every upgrade, never juniors" },
 ];

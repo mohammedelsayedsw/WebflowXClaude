@@ -3,7 +3,6 @@
 import { Hero } from "@/sections/magento-fixed-upgrade/Hero";
 import { Tiers } from "@/sections/magento-fixed-upgrade/Tiers";
 import { Problems } from "@/sections/magento-fixed-upgrade/Problems";
-import { Savings } from "@/sections/magento-fixed-upgrade/Savings";
 import { HowItWorks } from "@/sections/magento-fixed-upgrade/HowItWorks";
 import { Proof } from "@/sections/magento-fixed-upgrade/Proof";
 import { FAQ } from "@/sections/magento-fixed-upgrade/FAQ";
@@ -15,7 +14,6 @@ export default function Page() {
       <Hero />
       <Tiers />
       <Problems />
-      <Savings />
       <HowItWorks />
       <Proof />
       <FAQ />

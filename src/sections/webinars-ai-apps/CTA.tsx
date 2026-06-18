@@ -63,9 +63,6 @@ export function CTA() {
                 portalId="25724996"
                 formId="595a3980-b650-43a4-8d4a-8c1ca0e12c67"
               />
-              <p className="mt-4 text-center text-white/55 text-[13px] tracking-wide">
-                Register and your personal Zoom join link arrives by email.
-              </p>
             </div>
           </Reveal>
 

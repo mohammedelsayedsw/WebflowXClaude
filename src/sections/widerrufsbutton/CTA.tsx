@@ -38,6 +38,19 @@ export function CTA({ t }: { t: Content["cta"] }) {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-10 flex items-center gap-4">
+              <div className="h-14 w-14 rounded-full overflow-hidden bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                {/* TODO: replace the initials avatar with a real photo of Aigars */}
+                <span className="font-head font-bold text-white/80 text-[20px]">A</span>
+              </div>
+              <div>
+                <div className="font-head font-semibold text-white text-[15px]">
+                  Aigars
+                </div>
+                <div className="text-white/55 text-[13px]">{t.contactRole}</div>
+              </div>
+            </div>
           </Reveal>
 
           <Reveal delay={0.15}>
@@ -47,9 +60,6 @@ export function CTA({ t }: { t: Content["cta"] }) {
               region="eu1"
             />
             <p className="label-code text-white/45 mt-3 px-1">{t.formNote}</p>
-            <p className="text-[11px] text-white/35 mt-2 px-1 leading-relaxed">
-              {t.disclaimer}
-            </p>
           </Reveal>
         </div>
       </div>

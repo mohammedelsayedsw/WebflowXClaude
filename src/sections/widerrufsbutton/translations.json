@@ -116,7 +116,7 @@
       ],
       "formNote": "Wir antworten innerhalb eines Werktags.",
       "disclaimer": "Dies ist keine Rechtsberatung. Die abschließende Freigabe Ihrer Widerrufsbelehrung bleibt bei Ihrem Anwalt.",
-      "contactRole": "Ihr Ansprechpartner bei scandiweb"
+      "contactRole": "Mitgründer, scandiweb"
     }
   },
   "fr": {
@@ -236,7 +236,7 @@
       ],
       "formNote": "Nous répondons sous un jour ouvré.",
       "disclaimer": "Ceci ne constitue pas un conseil juridique. La validation finale de vos informations sur la rétractation reste du ressort de votre conseil.",
-      "contactRole": "Votre contact chez scandiweb"
+      "contactRole": "Cofondateur, scandiweb"
     }
   },
   "it": {
@@ -356,7 +356,7 @@
       ],
       "formNote": "Rispondiamo entro un giorno lavorativo.",
       "disclaimer": "Questo non è un parere legale. L'approvazione finale delle vostre istruzioni di recesso resta in capo ai vostri consulenti.",
-      "contactRole": "Il vostro referente in scandiweb"
+      "contactRole": "Cofondatore, scandiweb"
     }
   },
   "es": {
@@ -476,7 +476,7 @@
       ],
       "formNote": "Respondemos en un día laborable.",
       "disclaimer": "Esto no constituye asesoramiento jurídico. La validación final de su información sobre el desistimiento corresponde a sus asesores.",
-      "contactRole": "Su contacto en scandiweb"
+      "contactRole": "Cofundador, scandiweb"
     }
   }
 }

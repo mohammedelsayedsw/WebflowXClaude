@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { assetUrl } from "@/lib/assets";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import type { Content } from "@/sections/widerrufsbutton/content";
@@ -40,13 +41,15 @@ export function CTA({ t }: { t: Content["cta"] }) {
             </ul>
 
             <div className="mt-10 flex items-center gap-4">
-              <div className="h-14 w-14 rounded-full overflow-hidden bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-                {/* TODO: replace the initials avatar with a real photo of Aigars */}
-                <span className="font-head font-bold text-white/80 text-[20px]">A</span>
-              </div>
+              <img
+                src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+                alt="Aigars Pavlovics"
+                className="h-14 w-14 rounded-full object-cover shrink-0"
+                style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+              />
               <div>
                 <div className="font-head font-semibold text-white text-[15px]">
-                  Aigars
+                  Aigars Pavlovics
                 </div>
                 <div className="text-white/55 text-[13px]">{t.contactRole}</div>
               </div>

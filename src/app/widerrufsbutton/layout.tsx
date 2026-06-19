@@ -1,23 +1,33 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/site/Header";
 
-const title = "German Widerrufsbutton (§ 356a BGB) Compliance | scandiweb";
+const title = "German Widerrufsbutton (§ 356a BGB) Compliance";
 const description =
-  "Since 19 June 2026, § 356a BGB requires online shops selling to German consumers to offer a withdrawal button, a two-step confirmation flow, and an automatic confirmation of receipt wherever a right of withdrawal applies. scandiweb makes your Shopify or Magento store compliant in days.";
+  "The German Widerrufsbutton (§ 356a BGB) is mandatory from 19 June 2026. scandiweb adds a compliant withdrawal button to your store, live in a day.";
 
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: { title, description, type: "website" },
+  alternates: { canonical: "https://scandiweb.com/solutions/widerrufsbutton" },
+  openGraph: {
+    title: `${title} | scandiweb`,
+    description,
+    type: "website",
+  },
   twitter: {
     card: "summary_large_image",
-    title,
-    description:
-      "The German Widerrufsbutton is now required under § 356a BGB wherever a right of withdrawal applies. scandiweb adds the compliant withdrawal button, two-step flow, confirmation, and legal updates to your Shopify or Magento store in days.",
+    title: `${title} | scandiweb`,
+    description,
   },
 };
 
 export default function WiderrufsbuttonLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

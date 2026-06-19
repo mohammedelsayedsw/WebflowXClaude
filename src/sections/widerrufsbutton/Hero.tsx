@@ -2,6 +2,8 @@
 
 import { ArrowDown, Check } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
+import { LangToggle } from "@/sections/widerrufsbutton/LangToggle";
+import type { Content, Lang } from "@/sections/widerrufsbutton/content";
 
 function HeroBg() {
   return (
@@ -17,13 +19,7 @@ function HeroBg() {
   );
 }
 
-const assurances = [
-  "Shopify and Magento",
-  "Works for guest orders",
-  "You keep control of refunds",
-];
-
-function TrustLogos() {
+function TrustLogos({ label }: { label: string }) {
   const logos: { src: string; alt: string; h: number }[] = [
     { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 28 },
     { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 22 },
@@ -36,9 +32,7 @@ function TrustLogos() {
   return (
     <div className="relative z-10 border-t border-white/10">
       <div className="wrap py-7 md:py-8">
-        <div className="text-center label-code text-white/45 mb-5">
-          trusted by 700+ leading brands worldwide
-        </div>
+        <div className="text-center label-code text-white/45 mb-5">{label}</div>
         <div className="relative overflow-hidden" aria-label="Client logos">
           <div className="sw-marquee-track flex items-center justify-center gap-x-12 md:gap-x-16">
             {loop.map((l, i) => (
@@ -60,30 +54,38 @@ function TrustLogos() {
   );
 }
 
-export function Hero() {
+export function Hero({
+  t,
+  lang,
+  onLang,
+}: {
+  t: Content["hero"];
+  lang: Lang;
+  onLang: (l: Lang) => void;
+}) {
   return (
     <section className="relative overflow-hidden min-h-screen flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-28 md:pt-36 pb-14 md:pb-20 text-center flex flex-col items-center">
+          <div className="mb-7">
+            <LangToggle lang={lang} onLang={onLang} />
+          </div>
+
           <div className="inline-flex items-center rounded-[2px] border border-[var(--sw-mint)]/50 bg-[var(--sw-mint)]/[0.06] px-3 py-1.5 mb-8">
             <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.12em] text-[var(--sw-mint)] uppercase">
-              § 356a BGB · in force 19 June 2026
+              {t.badge}
             </span>
           </div>
 
-          <h1 className="font-head text-white text-[34px] sm:text-[46px] md:text-[66px] lg:text-[78px] leading-[1.03] tracking-[-0.02em] max-w-[19ch] text-balance break-words">
-            The German Widerrufsbutton, live on your store{" "}
-            <span style={{ color: "var(--sw-mint)" }}>in days</span>
+          <h1 lang={lang} className="font-head text-white text-[34px] sm:text-[46px] md:text-[66px] lg:text-[78px] leading-[1.03] tracking-[-0.02em] max-w-[20ch] text-balance break-words hyphens-auto">
+            {t.h1}{" "}
+            <span style={{ color: "var(--sw-mint)" }}>{t.h1accent}</span>
           </h1>
 
           <p className="mt-7 text-[17px] md:text-[19px] text-white/85 max-w-[64ch] leading-relaxed">
-            German law now requires online shops selling to German consumers to
-            offer a withdrawal button, a two-step confirmation flow, and an
-            automatic confirmation of receipt, wherever a right of withdrawal
-            applies. We add all three to your Shopify or Magento store so you are
-            compliant without pulling your team off other work.
+            {t.sub}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
@@ -91,19 +93,19 @@ export function Hero() {
               href="#cta"
               className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--sw-beige)] px-7 py-3.5 text-[var(--sw-beige)] hover:bg-[var(--sw-beige)] hover:text-[var(--sw-black)] transition font-head font-semibold text-[15px]"
             >
-              <span>Get compliant</span>
+              <span>{t.ctaPrimary}</span>
               <ArrowDown className="h-4 w-4" />
             </a>
             <a
               href="#requirements"
               className="inline-flex items-center gap-2 text-white/80 hover:text-white transition font-head font-semibold text-[15px]"
             >
-              What the law requires
+              {t.ctaSecondary}
             </a>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
-            {assurances.map((a) => (
+            {t.assurances.map((a) => (
               <span key={a} className="inline-flex items-center gap-2 text-white/75 text-[13px] md:text-[14px]">
                 <Check className="h-4 w-4 text-[var(--sw-mint)] shrink-0" />
                 {a}
@@ -113,7 +115,7 @@ export function Hero() {
         </div>
       </div>
 
-      <TrustLogos />
+      <TrustLogos label={t.logosLabel} />
     </section>
   );
 }

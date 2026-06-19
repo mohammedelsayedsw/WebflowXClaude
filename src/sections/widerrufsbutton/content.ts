@@ -80,7 +80,7 @@ const en: Content = {
     badge: "EU Directive 2023/2673 · in force 19 June 2026",
     h1: "The withdrawal button, live on your store",
     h1accent: "in days",
-    sub: "From 19 June 2026, EU law requires online shops selling to consumers anywhere in the EU to offer a withdrawal button, a two-step confirmation, and an automatic confirmation of receipt, wherever a right of withdrawal applies. We add all three to your store, whatever platform it runs on. A standard setup can go live in a single day.",
+    sub: "From 19 June 2026, EU law requires online shops to add a compliant withdrawal button. We add it to your store on any platform, live in as little as a day.",
     ctaPrimary: "Get compliant",
     ctaSecondary: "What the law requires",
     assurances: [

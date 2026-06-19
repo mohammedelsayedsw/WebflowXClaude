@@ -51,13 +51,13 @@
       "h2": "Eine EU-Regel,",
       "h2accent": "27 Märkte",
       "h2tail": ".",
-      "intro": "Das ist nicht nur eine deutsche Regel. Die Richtlinie 2023/2673 gilt ab dem 19. Juni 2026 in jedem EU-Mitgliedstaat. Deutschland hat sie als § 356a BGB umgesetzt, andere Länder über ihre eigenen Gesetze, doch die Pflicht ist überall dieselbe, wo Sie an EU-Verbraucher verkaufen.",
+      "intro": "Die Richtlinie 2023/2673 gilt ab dem 19. Juni 2026 in jedem EU-Mitgliedstaat. Deutschland hat sie als § 356a BGB umgesetzt, andere Länder über ihre eigenen Gesetze, doch die Pflicht ist überall dieselbe, wo Sie an EU-Verbraucher verkaufen.",
       "countriesLabel": "Gilt in allen 27 EU-Mitgliedstaaten ab dem 19. Juni 2026",
       "stakesLabel": "was es kostet, es zu ignorieren",
       "stakes": [
         {
           "title": "Ein 12-monatiges Rückgabefenster",
-          "body": "Das automatische. Ohne eine konforme Widerrufsfunktion verlängert sich die 14-tägige Widerrufsfrist um bis zu 12 Monate, sodass Kunden Bestellungen länger als ein Jahr widerrufen können."
+          "body": "Ohne eine konforme Widerrufsfunktion verlängert sich die 14-tägige Widerrufsfrist um bis zu 12 Monate, sodass Kunden Bestellungen länger als ein Jahr widerrufen können."
         },
         {
           "title": "Abmahnungen",
@@ -115,7 +115,8 @@
         "Live in nur einem Tag"
       ],
       "formNote": "Wir antworten innerhalb eines Werktags.",
-      "disclaimer": "Dies ist keine Rechtsberatung. Die abschließende Freigabe Ihrer Widerrufsbelehrung bleibt bei Ihrem Anwalt."
+      "disclaimer": "Dies ist keine Rechtsberatung. Die abschließende Freigabe Ihrer Widerrufsbelehrung bleibt bei Ihrem Anwalt.",
+      "contactRole": "Ihr Ansprechpartner bei scandiweb"
     }
   },
   "fr": {
@@ -170,13 +171,13 @@
       "h2": "Une règle européenne,",
       "h2accent": "27 marchés",
       "h2tail": ".",
-      "intro": "Ce n'est pas seulement une règle allemande. La Directive 2023/2673 s'applique dans chaque État membre de l'UE à partir du 19 juin 2026. L'Allemagne l'a transposée sous le § 356a BGB, d'autres pays via leurs propres textes, mais l'obligation est la même partout où vous vendez à des consommateurs de l'UE.",
+      "intro": "La Directive 2023/2673 s'applique dans chaque État membre de l'UE à partir du 19 juin 2026. L'Allemagne l'a transposée sous le § 356a BGB, d'autres pays via leurs propres textes, mais l'obligation est la même partout où vous vendez à des consommateurs de l'UE.",
       "countriesLabel": "S'applique dans les 27 États membres de l'UE à compter du 19 juin 2026",
       "stakesLabel": "ce que coûte le fait de l'ignorer",
       "stakes": [
         {
           "title": "Un délai de retour de 12 mois",
-          "body": "Le délai automatique. Sans fonction de rétractation conforme, le délai de réflexion de 14 jours est prolongé de 12 mois maximum : les clients peuvent donc se rétracter de leurs commandes pendant plus d'un an."
+          "body": "Sans fonction de rétractation conforme, le délai de réflexion de 14 jours est prolongé de 12 mois maximum : les clients peuvent donc se rétracter de leurs commandes pendant plus d'un an."
         },
         {
           "title": "Mises en demeure",
@@ -234,7 +235,8 @@
         "En ligne en une journée seulement"
       ],
       "formNote": "Nous répondons sous un jour ouvré.",
-      "disclaimer": "Ceci ne constitue pas un conseil juridique. La validation finale de vos informations sur la rétractation reste du ressort de votre conseil."
+      "disclaimer": "Ceci ne constitue pas un conseil juridique. La validation finale de vos informations sur la rétractation reste du ressort de votre conseil.",
+      "contactRole": "Votre contact chez scandiweb"
     }
   },
   "it": {
@@ -289,13 +291,13 @@
       "h2": "Un'unica regola UE,",
       "h2accent": "27 mercati",
       "h2tail": ".",
-      "intro": "Non è solo una regola tedesca. La Direttiva 2023/2673 si applica in ogni Stato membro dell'UE dal 19 giugno 2026. La Germania l'ha recepita come § 356a BGB, altri Paesi con le proprie leggi, ma l'obbligo è lo stesso ovunque vendiate a consumatori dell'UE.",
+      "intro": "La Direttiva 2023/2673 si applica in ogni Stato membro dell'UE dal 19 giugno 2026. La Germania l'ha recepita come § 356a BGB, altri Paesi con le proprie leggi, ma l'obbligo è lo stesso ovunque vendiate a consumatori dell'UE.",
       "countriesLabel": "Si applica in tutti i 27 Stati membri dell'UE dal 19 giugno 2026",
       "stakesLabel": "quanto costa ignorarla",
       "stakes": [
         {
           "title": "Una finestra di reso di 12 mesi",
-          "body": "Quella automatica. Senza una funzione di recesso conforme, il periodo di ripensamento di 14 giorni si estende fino a 12 mesi, quindi i clienti possono recedere dagli ordini per oltre un anno."
+          "body": "Senza una funzione di recesso conforme, il periodo di ripensamento di 14 giorni si estende fino a 12 mesi, quindi i clienti possono recedere dagli ordini per oltre un anno."
         },
         {
           "title": "Diffide",
@@ -353,7 +355,8 @@
         "Online in appena un giorno"
       ],
       "formNote": "Rispondiamo entro un giorno lavorativo.",
-      "disclaimer": "Questo non è un parere legale. L'approvazione finale delle vostre istruzioni di recesso resta in capo ai vostri consulenti."
+      "disclaimer": "Questo non è un parere legale. L'approvazione finale delle vostre istruzioni di recesso resta in capo ai vostri consulenti.",
+      "contactRole": "Il vostro referente in scandiweb"
     }
   },
   "es": {
@@ -408,13 +411,13 @@
       "h2": "Una sola norma de la UE,",
       "h2accent": "27 mercados",
       "h2tail": ".",
-      "intro": "No es solo una norma alemana. La Directiva 2023/2673 se aplica en todos los Estados miembros de la UE a partir del 19 de junio de 2026. Alemania la transpuso como § 356a BGB, y otros países bajo sus propias leyes, pero la obligación es la misma dondequiera que venda a consumidores de la UE.",
+      "intro": "La Directiva 2023/2673 se aplica en todos los Estados miembros de la UE a partir del 19 de junio de 2026. Alemania la transpuso como § 356a BGB, y otros países bajo sus propias leyes, pero la obligación es la misma dondequiera que venda a consumidores de la UE.",
       "countriesLabel": "Se aplica en los 27 Estados miembros de la UE desde el 19 de junio de 2026",
       "stakesLabel": "lo que cuesta no hacerlo",
       "stakes": [
         {
           "title": "Un plazo de devolución de 12 meses",
-          "body": "El automático. Sin una función de desistimiento conforme, el plazo de reflexión de 14 días se amplía hasta 12 meses, de modo que los clientes pueden desistir de sus pedidos durante más de un año."
+          "body": "Sin una función de desistimiento conforme, el plazo de reflexión de 14 días se amplía hasta 12 meses, de modo que los clientes pueden desistir de sus pedidos durante más de un año."
         },
         {
           "title": "Requerimientos legales",
@@ -472,7 +475,8 @@
         "Activo en tan solo un día"
       ],
       "formNote": "Respondemos en un día laborable.",
-      "disclaimer": "Esto no constituye asesoramiento jurídico. La validación final de su información sobre el desistimiento corresponde a sus asesores."
+      "disclaimer": "Esto no constituye asesoramiento jurídico. La validación final de su información sobre el desistimiento corresponde a sus asesores.",
+      "contactRole": "Su contacto en scandiweb"
     }
   }
 }

@@ -21,7 +21,7 @@ export function Coverage({ t }: { t: Content["coverage"] }) {
             <span style={{ color: "var(--sw-mint)" }}>{t.h2accent}</span>
             {t.h2tail}
           </h2>
-          <p className="mt-7 max-w-[68ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
+          <p className="mt-7 max-w-[90ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
             {t.intro}
           </p>
         </Reveal>
@@ -35,10 +35,11 @@ export function Coverage({ t }: { t: Content["coverage"] }) {
             <div className="flex flex-wrap gap-2">
               {EU_COUNTRIES.map((c) => (
                 <span
-                  key={c}
-                  className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[12px] md:text-[13px] text-white/70"
+                  key={c.name}
+                  className="inline-flex items-center gap-1.5 rounded-[2px] border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[12px] md:text-[13px] text-white/70"
                 >
-                  {c}
+                  <span aria-hidden className="text-[14px] leading-none">{c.flag}</span>
+                  {c.name}
                 </span>
               ))}
             </div>

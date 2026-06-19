@@ -19,7 +19,7 @@ export function Requirements({ t }: { t: Content["requirements"] }) {
             <span className="text-[var(--sw-blue)]">{t.h2accent}</span>
             {t.h2tail}
           </h2>
-          <p className="mt-7 max-w-[66ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
+          <p className="mt-7 max-w-[90ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
             {t.intro}
           </p>
         </Reveal>

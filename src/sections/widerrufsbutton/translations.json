@@ -1,0 +1,478 @@
+{
+  "de": {
+    "nav": {
+      "cta": "Jetzt rechtssicher werden"
+    },
+    "hero": {
+      "badge": "EU-Richtlinie 2023/2673 · in Kraft ab 19. Juni 2026",
+      "h1": "Der Widerrufsbutton, live in Ihrem Shop",
+      "h1accent": "in wenigen Tagen",
+      "sub": "Ab dem 19. Juni 2026 verpflichtet das EU-Recht Onlineshops, die an Verbraucher irgendwo in der EU verkaufen, einen Widerrufsbutton, eine zweistufige Bestätigung und eine automatische Eingangsbestätigung bereitzustellen, überall dort, wo ein Widerrufsrecht gilt. Wir ergänzen alle drei in Ihrem Shop, gleich auf welcher Plattform er läuft. Ein Standard-Setup kann an einem einzigen Tag live gehen.",
+      "ctaPrimary": "Jetzt rechtssicher werden",
+      "ctaSecondary": "Was das Gesetz verlangt",
+      "assurances": [
+        "Jeder EU-Markt",
+        "Jede eCommerce-Plattform",
+        "Sie behalten die Kontrolle über Rückerstattungen"
+      ],
+      "logosLabel": "vertraut von über 700 führenden Marken weltweit"
+    },
+    "requirements": {
+      "eyebrow": "was das Gesetz verlangt",
+      "h2": "Widerrufen muss",
+      "h2accent": "so einfach sein wie Bestellen",
+      "h2tail": ".",
+      "intro": "Die Vorgabe stammt aus der EU-Richtlinie 2023/2673, die Artikel 11a in die Verbraucherrechte-Richtlinie einfügt. Sie ist vollharmonisiert, also gelten dieselben vier Dinge in jedem EU-Land, auf jeder Plattform. Ein Link im Footer erfüllt keines davon.",
+      "items": [
+        {
+          "tag": "der Button",
+          "title": "Ein sichtbarer Widerrufsbutton",
+          "body": "Klar mit „Vertrag widerrufen“ beschriftet, gut sichtbar und während der gesamten Widerrufsfrist durchgehend erreichbar, ohne dass der Kunde Sie kontaktieren muss. Eine versteckte E-Mail-Adresse oder ein PDF-Formular zählen nicht."
+        },
+        {
+          "tag": "der Ablauf",
+          "title": "Ein zweistufiger Ablauf",
+          "body": "Der Kunde trägt seine Bestelldaten ein und schließt den Vorgang in einem separaten Schritt „Widerruf bestätigen“ ab. Sie dürfen keinen Grund erzwingen, und der erste Klick darf den Widerruf nicht abschließen."
+        },
+        {
+          "tag": "die Bestätigung",
+          "title": "Eine automatische Bestätigung",
+          "body": "In dem Moment, in dem ein Widerruf abgeschickt wird, erhält der Kunde eine Eingangsbestätigung auf einem dauerhaften Datenträger, mit dem Inhalt sowie dem genauen Datum und der genauen Uhrzeit des Eingangs."
+        },
+        {
+          "tag": "die Rechtstexte",
+          "title": "Aktualisierte Widerrufsbelehrung",
+          "body": "Ihre Widerrufsbelehrung muss auf den neuen Button verweisen und zum neuen Ablauf passen, damit Rechtstext und Shop tatsächlich übereinstimmen."
+        }
+      ]
+    },
+    "coverage": {
+      "eyebrow": "wo es gilt",
+      "h2": "Eine EU-Regel,",
+      "h2accent": "27 Märkte",
+      "h2tail": ".",
+      "intro": "Das ist nicht nur eine deutsche Regel. Die Richtlinie 2023/2673 gilt ab dem 19. Juni 2026 in jedem EU-Mitgliedstaat. Deutschland hat sie als § 356a BGB umgesetzt, andere Länder über ihre eigenen Gesetze, doch die Pflicht ist überall dieselbe, wo Sie an EU-Verbraucher verkaufen.",
+      "countriesLabel": "Gilt in allen 27 EU-Mitgliedstaaten ab dem 19. Juni 2026",
+      "stakesLabel": "was es kostet, es zu ignorieren",
+      "stakes": [
+        {
+          "title": "Ein 12-monatiges Rückgabefenster",
+          "body": "Das automatische. Ohne eine konforme Widerrufsfunktion verlängert sich die 14-tägige Widerrufsfrist um bis zu 12 Monate, sodass Kunden Bestellungen länger als ein Jahr widerrufen können."
+        },
+        {
+          "title": "Abmahnungen",
+          "body": "Wettbewerber und Verbraucherverbände können eine Unterlassungserklärung verlangen und vor Gericht ziehen. In Deutschland sind solche Abmahnungen schon wenige Tage nach Ablauf der Frist zu erwarten."
+        },
+        {
+          "title": "Bußgelder",
+          "body": "Die nationalen Bußgelder fallen unterschiedlich aus, von bis zu 50.000 € in Deutschland und 75.000 € in Frankreich. In Italien, wo der Verstoß als unlautere Geschäftspraktik gewertet wird, können die Bußgelder bis zu 10 Millionen € erreichen. Bei schweren grenzüberschreitenden Verstößen erlauben die EU-Regeln Bußgelder von bis zu 4 % des Jahresumsatzes."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "die Lösung",
+      "h2": "Wir machen Ihren Shop rechtssicher,",
+      "h2accent": "in wenigen Tagen",
+      "h2tail": ".",
+      "intro": "Ein Standard-Setup geht an einem einzigen Tag live, und die meisten Shops sind innerhalb weniger Tage vollständig konform. Wir arbeiten auf jeder Plattform, ob Shopify, Magento / Adobe Commerce, WooCommerce, BigCommerce, Salesforce Commerce oder einem individuellen beziehungsweise headless aufgebauten Shop, und ergänzen den Button, den zweistufigen Ablauf, die Bestätigung und die aktualisierte Widerrufsbelehrung und prüfen anschließend alles anhand der Richtlinie. Headless- oder Multi-Markt-Projekte dauern etwas länger.",
+      "disclaimer": "Dies ist keine Rechtsberatung. Wir setzen die funktionalen Anforderungen der EU-Richtlinie 2023/2673 um. Die abschließende rechtliche Freigabe Ihrer Widerrufsbelehrung bleibt bei Ihrem Anwalt.",
+      "items": [
+        {
+          "title": "Widerrufsbutton direkt auf der Seite",
+          "body": "In der von der Richtlinie geforderten Landessprache, auf jeder Seite, erreichbar ohne Login."
+        },
+        {
+          "title": "Zweistufige Bestätigung",
+          "body": "Erst die Bestelldaten, dann ein separater Bestätigungsschritt. Kein erzwungenes Begründungsfeld."
+        },
+        {
+          "title": "Sofortige Eingangsbestätigung",
+          "body": "Auf einem dauerhaften Datenträger verschickt, mit Zeitstempel, in dem Moment, in dem ein Widerruf abgeschickt wird."
+        },
+        {
+          "title": "Gastbestellungen abgedeckt",
+          "body": "Angemeldete Kunden und Gäste, ohne neue Passwörter für Ihre Käufer."
+        },
+        {
+          "title": "Vollständiges Audit-Log",
+          "body": "Jeder Widerruf wird protokolliert, sodass Sie auf Nachfrage belegen können, dass Sie konform sind."
+        },
+        {
+          "title": "Sie behalten die Kontrolle über Rückerstattungen",
+          "body": "Nichts wird automatisch erstattet. Ihr Team prüft und priorisiert alles in einer einzigen Warteschlange."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "jetzt rechtssicher werden",
+      "h2": "Bringen Sie Ihren",
+      "h2accent": "Widerrufsbutton",
+      "h2tail": " live.",
+      "body": "Sagen Sie uns Ihre Plattform, Ihre Märkte und wo Ihr Shop heute steht. Wir definieren den Umfang, geben Ihnen einen Zeitplan und machen Sie EU-weit konform. Die Regel ist bereits in Kraft, und Shops ohne konformen Button drohen ein verlängertes Rückgabefenster und Abmahnungen.",
+      "points": [
+        "Jeder EU-Markt, jede Plattform, auch individuell und headless",
+        "Button, zweistufiger Ablauf, Bestätigung und Rechtstexte",
+        "Live in nur einem Tag"
+      ],
+      "formNote": "Wir antworten innerhalb eines Werktags.",
+      "disclaimer": "Dies ist keine Rechtsberatung. Die abschließende Freigabe Ihrer Widerrufsbelehrung bleibt bei Ihrem Anwalt."
+    }
+  },
+  "fr": {
+    "nav": {
+      "cta": "Se mettre en conformité"
+    },
+    "hero": {
+      "badge": "Directive UE 2023/2673 · en vigueur le 19 juin 2026",
+      "h1": "Le bouton de rétractation, en ligne sur votre boutique",
+      "h1accent": "en quelques jours",
+      "sub": "À compter du 19 juin 2026, la législation de l'UE impose à toute boutique en ligne vendant à des consommateurs dans l'Union de proposer un bouton de rétractation, une confirmation en deux étapes et un accusé de réception automatique, dès lors qu'un droit de rétractation s'applique. Nous ajoutons ces trois éléments à votre boutique, quelle que soit la plateforme utilisée. Une mise en place standard peut être en ligne en une seule journée.",
+      "ctaPrimary": "Se mettre en conformité",
+      "ctaSecondary": "Ce qu'exige la loi",
+      "assurances": [
+        "Tous les marchés de l'UE",
+        "Toute plateforme eCommerce",
+        "Vous gardez la maîtrise des remboursements"
+      ],
+      "logosLabel": "la confiance de plus de 700 grandes marques dans le monde"
+    },
+    "requirements": {
+      "eyebrow": "ce qu'exige la loi",
+      "h2": "Se rétracter doit être",
+      "h2accent": "aussi simple que commander",
+      "h2tail": ".",
+      "intro": "Cette obligation découle de la Directive UE 2023/2673, qui ajoute l'Article 11a à la directive relative aux droits des consommateurs. Elle est pleinement harmonisée : les quatre mêmes exigences s'appliquent donc dans chaque pays de l'UE, sur toute plateforme, et un simple lien en pied de page n'en satisfait aucune.",
+      "items": [
+        {
+          "tag": "le bouton",
+          "title": "Un bouton de rétractation visible",
+          "body": "Clairement intitulé « Rétractation du contrat », bien en évidence et disponible en permanence pendant toute la durée du délai de rétractation, accessible sans avoir à vous contacter. Une adresse e-mail enfouie ou un formulaire PDF ne suffit pas."
+        },
+        {
+          "tag": "le parcours",
+          "title": "Un processus en deux étapes",
+          "body": "Le client renseigne les informations de sa commande, puis valide à une étape distincte « confirmer la rétractation ». Vous ne pouvez ni imposer de motif, ni faire en sorte que le premier clic finalise la rétractation."
+        },
+        {
+          "tag": "l'accusé de réception",
+          "title": "Un accusé de réception automatique",
+          "body": "Dès qu'une rétractation est soumise, le client reçoit un accusé de réception sur un support durable, avec son contenu ainsi que la date et l'heure exactes de réception."
+        },
+        {
+          "tag": "les pages légales",
+          "title": "Une politique de rétractation actualisée",
+          "body": "Vos informations sur la rétractation doivent renvoyer vers le nouveau bouton et correspondre au nouveau parcours, afin que la politique et la boutique soient réellement cohérentes."
+        }
+      ]
+    },
+    "coverage": {
+      "eyebrow": "où elle s'applique",
+      "h2": "Une règle européenne,",
+      "h2accent": "27 marchés",
+      "h2tail": ".",
+      "intro": "Ce n'est pas seulement une règle allemande. La Directive 2023/2673 s'applique dans chaque État membre de l'UE à partir du 19 juin 2026. L'Allemagne l'a transposée sous le § 356a BGB, d'autres pays via leurs propres textes, mais l'obligation est la même partout où vous vendez à des consommateurs de l'UE.",
+      "countriesLabel": "S'applique dans les 27 États membres de l'UE à compter du 19 juin 2026",
+      "stakesLabel": "ce que coûte le fait de l'ignorer",
+      "stakes": [
+        {
+          "title": "Un délai de retour de 12 mois",
+          "body": "Le délai automatique. Sans fonction de rétractation conforme, le délai de réflexion de 14 jours est prolongé de 12 mois maximum : les clients peuvent donc se rétracter de leurs commandes pendant plus d'un an."
+        },
+        {
+          "title": "Mises en demeure",
+          "body": "Concurrents et associations de consommateurs peuvent exiger une cessation et saisir la justice. En Allemagne, ces Abmahnungen sont attendues dans les jours suivant l'échéance."
+        },
+        {
+          "title": "Amendes",
+          "body": "Les amendes nationales varient, de 50 000 € maximum en Allemagne et 75 000 € en France. En Italie, lorsque le manquement est traité comme une pratique commerciale déloyale, les amendes peuvent atteindre 10 millions d'euros. Pour les manquements transfrontaliers graves, les règles de l'UE autorisent des amendes pouvant atteindre 4 % du chiffre d'affaires annuel."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "la solution",
+      "h2": "Nous rendons votre boutique conforme,",
+      "h2accent": "en quelques jours",
+      "h2tail": ".",
+      "intro": "Une mise en place standard est en ligne en une seule journée, et la plupart des boutiques sont pleinement conformes en quelques jours. Nous intervenons sur toute plateforme, Shopify, Magento / Adobe Commerce, WooCommerce, BigCommerce, Salesforce Commerce, ou une solution sur mesure ou headless, et nous ajoutons le bouton, le parcours en deux étapes, l'accusé de réception et les informations sur la rétractation actualisées, puis nous les testons au regard de la directive. Les architectures headless ou multimarchés demandent un peu plus de temps.",
+      "disclaimer": "Ceci ne constitue pas un conseil juridique. Nous développons selon les exigences fonctionnelles de la Directive UE 2023/2673. La validation juridique finale de vos informations sur la rétractation reste du ressort de votre conseil.",
+      "items": [
+        {
+          "title": "Bouton de rétractation sur la page",
+          "body": "Dans la langue locale exigée par la directive, sur chaque page, accessible sans connexion."
+        },
+        {
+          "title": "Confirmation en deux étapes",
+          "body": "Les informations de la commande, puis une étape de confirmation distincte. Aucun champ de motif imposé."
+        },
+        {
+          "title": "Accusé de réception immédiat",
+          "body": "Envoyé sur un support durable, horodaté, dès qu'une rétractation est soumise."
+        },
+        {
+          "title": "Commandes invités prises en charge",
+          "body": "Clients connectés et invités, sans nouveau mot de passe pour vos acheteurs."
+        },
+        {
+          "title": "Journal d'audit complet",
+          "body": "Chaque rétractation est enregistrée, vous pouvez ainsi prouver votre conformité en cas de demande."
+        },
+        {
+          "title": "Vous gardez la maîtrise des remboursements",
+          "body": "Aucun remboursement automatique. Votre équipe valide et trie tout dans une seule file."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "se mettre en conformité",
+      "h2": "Mettez votre",
+      "h2accent": "bouton de rétractation",
+      "h2tail": " en ligne.",
+      "body": "Indiquez-nous votre plateforme, vos marchés et l'état actuel de votre boutique. Nous cadrerons le projet, vous fournirons un calendrier et vous mettrons en conformité dans toute l'UE. La règle est déjà en vigueur, et les boutiques sans bouton conforme s'exposent à un délai de retour prolongé et à des mises en demeure.",
+      "points": [
+        "Tous les marchés de l'UE, toute plateforme, y compris sur mesure et headless",
+        "Bouton, parcours en deux étapes, accusé de réception et pages légales",
+        "En ligne en une journée seulement"
+      ],
+      "formNote": "Nous répondons sous un jour ouvré.",
+      "disclaimer": "Ceci ne constitue pas un conseil juridique. La validation finale de vos informations sur la rétractation reste du ressort de votre conseil."
+    }
+  },
+  "it": {
+    "nav": {
+      "cta": "Mettetevi in regola"
+    },
+    "hero": {
+      "badge": "Direttiva UE 2023/2673 · in vigore dal 19 giugno 2026",
+      "h1": "Il pulsante di recesso, attivo sul vostro store",
+      "h1accent": "in pochi giorni",
+      "sub": "Dal 19 giugno 2026, la normativa UE impone agli shop online che vendono ai consumatori in qualsiasi Paese dell'UE di offrire un pulsante di recesso, una conferma in due passaggi e una conferma automatica di ricezione, ovunque si applichi un diritto di recesso. Aggiungiamo tutti e tre al vostro store, qualunque sia la piattaforma su cui gira. Una configurazione standard può andare online in un solo giorno.",
+      "ctaPrimary": "Mettetevi in regola",
+      "ctaSecondary": "Cosa richiede la legge",
+      "assurances": [
+        "Ogni mercato dell'UE",
+        "Qualsiasi piattaforma eCommerce",
+        "Il controllo dei rimborsi resta a voi"
+      ],
+      "logosLabel": "scelto da oltre 700 brand leader nel mondo"
+    },
+    "requirements": {
+      "eyebrow": "cosa richiede la legge",
+      "h2": "Recedere deve essere",
+      "h2accent": "semplice quanto ordinare",
+      "h2tail": ".",
+      "intro": "La regola nasce dalla Direttiva UE 2023/2673, che introduce l'articolo 11a nella Direttiva sui diritti dei consumatori. È pienamente armonizzata, quindi gli stessi quattro requisiti valgono in ogni Paese dell'UE, su qualsiasi piattaforma, e un link nel footer non ne soddisfa nemmeno uno.",
+      "items": [
+        {
+          "tag": "il pulsante",
+          "title": "Un pulsante di recesso visibile",
+          "body": "Etichettato chiaramente «recedere dal contratto», ben visibile e disponibile in modo continuativo per tutto il periodo di recesso, raggiungibile senza dovervi contattare. Un indirizzo email nascosto o un modulo PDF non basta."
+        },
+        {
+          "tag": "il percorso",
+          "title": "Una procedura in due passaggi",
+          "body": "Il cliente inserisce i dati del proprio ordine, poi conferma in un passaggio separato «Conferma del recesso». Non potete imporre una motivazione e il primo clic non può concludere il recesso."
+        },
+        {
+          "tag": "la conferma",
+          "title": "Una conferma automatica",
+          "body": "Nel momento in cui un recesso viene inviato, il cliente riceve una conferma di ricezione su un supporto durevole, con il contenuto e la data e l'ora esatte in cui è arrivata."
+        },
+        {
+          "tag": "le pagine legali",
+          "title": "Informazioni sul recesso aggiornate",
+          "body": "Le vostre istruzioni di recesso devono rimandare al nuovo pulsante e rispecchiare il nuovo percorso, così che le informazioni sul recesso e lo store dicano davvero la stessa cosa."
+        }
+      ]
+    },
+    "coverage": {
+      "eyebrow": "dove si applica",
+      "h2": "Un'unica regola UE,",
+      "h2accent": "27 mercati",
+      "h2tail": ".",
+      "intro": "Non è solo una regola tedesca. La Direttiva 2023/2673 si applica in ogni Stato membro dell'UE dal 19 giugno 2026. La Germania l'ha recepita come § 356a BGB, altri Paesi con le proprie leggi, ma l'obbligo è lo stesso ovunque vendiate a consumatori dell'UE.",
+      "countriesLabel": "Si applica in tutti i 27 Stati membri dell'UE dal 19 giugno 2026",
+      "stakesLabel": "quanto costa ignorarla",
+      "stakes": [
+        {
+          "title": "Una finestra di reso di 12 mesi",
+          "body": "Quella automatica. Senza una funzione di recesso conforme, il periodo di ripensamento di 14 giorni si estende fino a 12 mesi, quindi i clienti possono recedere dagli ordini per oltre un anno."
+        },
+        {
+          "title": "Diffide",
+          "body": "Concorrenti e associazioni dei consumatori possono richiedere una cessazione dell'attività e adire le vie legali. In Germania queste Abmahnungen sono attese entro pochi giorni dalla scadenza."
+        },
+        {
+          "title": "Sanzioni",
+          "body": "Le sanzioni nazionali variano, da un massimo di 50.000 € in Germania e 75.000 € in Francia. In Italia, dove la violazione è trattata come pratica commerciale scorretta, le sanzioni possono raggiungere 10 milioni di euro. Per violazioni transfrontaliere gravi, le norme UE consentono sanzioni fino al 4 % del fatturato annuo."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "la soluzione",
+      "h2": "Rendiamo conforme il vostro store,",
+      "h2accent": "in pochi giorni",
+      "h2tail": ".",
+      "intro": "Una configurazione standard va online in un solo giorno e la maggior parte degli store è pienamente conforme nel giro di pochi giorni. Lavoriamo su qualsiasi piattaforma, Shopify, Magento / Adobe Commerce, WooCommerce, BigCommerce, Salesforce Commerce, o un progetto custom o headless, e aggiungiamo il pulsante, il percorso in due passaggi, la conferma e le istruzioni di recesso aggiornate, poi testiamo il tutto rispetto alla direttiva. I progetti headless o multi-mercato richiedono un po' più di tempo.",
+      "disclaimer": "Questo non è un parere legale. Sviluppiamo secondo i requisiti funzionali della Direttiva UE 2023/2673. L'approvazione legale finale delle vostre istruzioni di recesso resta in capo ai vostri consulenti.",
+      "items": [
+        {
+          "title": "Pulsante di recesso sulla pagina",
+          "body": "Nella lingua locale richiesta dalla direttiva, su ogni pagina, raggiungibile senza login."
+        },
+        {
+          "title": "Conferma in due passaggi",
+          "body": "Dati dell'ordine, poi un passaggio di conferma separato. Nessun campo motivazione obbligatorio."
+        },
+        {
+          "title": "Conferma di ricezione immediata",
+          "body": "Inviata su un supporto durevole, con marca temporale, nel momento in cui un recesso viene inviato."
+        },
+        {
+          "title": "Ordini ospite inclusi",
+          "body": "Clienti registrati e ospiti, senza nuove password per chi acquista da voi."
+        },
+        {
+          "title": "Registro completo verificabile",
+          "body": "Ogni recesso registrato, così potete dimostrare di esservi messi in regola se qualcuno lo chiede."
+        },
+        {
+          "title": "Il controllo dei rimborsi resta a voi",
+          "body": "Nessun rimborso automatico. Il vostro team approva e smista tutto in un'unica coda."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "mettetevi in regola",
+      "h2": "Attivate il vostro",
+      "h2accent": "pulsante di recesso",
+      "h2tail": ".",
+      "body": "Diteci la vostra piattaforma, i vostri mercati e a che punto è oggi il vostro store. Definiremo l'ambito del lavoro, vi daremo una tempistica e vi metteremo in regola in tutta l'UE. La regola è già in vigore e gli store senza un pulsante conforme rischiano una finestra di reso estesa e diffide.",
+      "points": [
+        "Ogni mercato dell'UE, qualsiasi piattaforma, custom e headless inclusi",
+        "Pulsante, percorso in due passaggi, conferma e pagine legali",
+        "Online in appena un giorno"
+      ],
+      "formNote": "Rispondiamo entro un giorno lavorativo.",
+      "disclaimer": "Questo non è un parere legale. L'approvazione finale delle vostre istruzioni di recesso resta in capo ai vostri consulenti."
+    }
+  },
+  "es": {
+    "nav": {
+      "cta": "Cumplir la normativa"
+    },
+    "hero": {
+      "badge": "Directiva UE 2023/2673 · en vigor el 19 de junio de 2026",
+      "h1": "El botón de desistimiento, activo en su tienda",
+      "h1accent": "en días",
+      "sub": "A partir del 19 de junio de 2026, la normativa de la UE obliga a las tiendas online que venden a consumidores en cualquier país de la UE a ofrecer un botón de desistimiento, una confirmación en dos pasos y un acuse de recibo automático, siempre que exista derecho de desistimiento. Añadimos los tres elementos a su tienda, sea cual sea la plataforma sobre la que funcione. Una configuración estándar puede activarse en un solo día.",
+      "ctaPrimary": "Cumplir la normativa",
+      "ctaSecondary": "Qué exige la ley",
+      "assurances": [
+        "Todos los mercados de la UE",
+        "Cualquier plataforma de eCommerce",
+        "Usted mantiene el control de los reembolsos"
+      ],
+      "logosLabel": "la confianza de más de 700 marcas líderes en todo el mundo"
+    },
+    "requirements": {
+      "eyebrow": "qué exige la ley",
+      "h2": "Cancelar tiene que ser",
+      "h2accent": "tan sencillo como comprar",
+      "h2tail": ".",
+      "intro": "La obligación procede de la Directiva UE 2023/2673, que añade el artículo 11a a la Directiva sobre derechos de los consumidores. Es de armonización plena, por lo que los mismos cuatro requisitos se aplican en todos los países de la UE, en cualquier plataforma, y un enlace en el pie de página no cumple ninguno de ellos.",
+      "items": [
+        {
+          "tag": "el botón",
+          "title": "Un botón de desistimiento visible",
+          "body": "Claramente etiquetado como «desistir del contrato», destacado y disponible de forma continua durante todo el plazo de desistimiento, accesible sin tener que contactar con usted. Una dirección de correo escondida o un formulario en PDF no son suficientes."
+        },
+        {
+          "tag": "el proceso",
+          "title": "Un proceso en dos pasos",
+          "body": "El cliente rellena los datos de su pedido y, a continuación, lo envía en un paso aparte de «confirmar el desistimiento». No puede exigir un motivo, y el primer clic no puede completar el desistimiento."
+        },
+        {
+          "tag": "la confirmación",
+          "title": "Un acuse de recibo automático",
+          "body": "En el momento en que se envía un desistimiento, el cliente recibe un acuse de recibo en un soporte duradero, con el contenido y la fecha y hora exactas en que llegó."
+        },
+        {
+          "tag": "las páginas legales",
+          "title": "Política de desistimiento actualizada",
+          "body": "Su información sobre el desistimiento debe remitir al nuevo botón y coincidir con el nuevo proceso, de modo que la política y la tienda concuerden realmente."
+        }
+      ]
+    },
+    "coverage": {
+      "eyebrow": "dónde se aplica",
+      "h2": "Una sola norma de la UE,",
+      "h2accent": "27 mercados",
+      "h2tail": ".",
+      "intro": "No es solo una norma alemana. La Directiva 2023/2673 se aplica en todos los Estados miembros de la UE a partir del 19 de junio de 2026. Alemania la transpuso como § 356a BGB, y otros países bajo sus propias leyes, pero la obligación es la misma dondequiera que venda a consumidores de la UE.",
+      "countriesLabel": "Se aplica en los 27 Estados miembros de la UE desde el 19 de junio de 2026",
+      "stakesLabel": "lo que cuesta no hacerlo",
+      "stakes": [
+        {
+          "title": "Un plazo de devolución de 12 meses",
+          "body": "El automático. Sin una función de desistimiento conforme, el plazo de reflexión de 14 días se amplía hasta 12 meses, de modo que los clientes pueden desistir de sus pedidos durante más de un año."
+        },
+        {
+          "title": "Requerimientos legales",
+          "body": "Los competidores y las asociaciones de consumidores pueden exigir el cese de la conducta y acudir a los tribunales. En Alemania se prevén estas Abmahnungen a los pocos días del plazo límite."
+        },
+        {
+          "title": "Multas",
+          "body": "Las multas nacionales varían, desde un máximo de 50.000 € en Alemania y 75.000 € en Francia. En Italia, cuando el incumplimiento se considera una práctica comercial desleal, las multas pueden alcanzar los 10 millones de euros. En infracciones transfronterizas graves, las normas de la UE permiten multas de hasta el 4 % de la facturación anual."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "la solución",
+      "h2": "Hacemos que su tienda cumpla la normativa,",
+      "h2accent": "en días",
+      "h2tail": ".",
+      "intro": "Una configuración estándar se activa en un solo día, y la mayoría de las tiendas cumplen por completo la normativa en cuestión de días. Trabajamos en cualquier plataforma: Shopify, Magento / Adobe Commerce, WooCommerce, BigCommerce, Salesforce Commerce o un desarrollo a medida o headless. Añadimos el botón, el proceso en dos pasos, la confirmación y la información sobre el desistimiento actualizada, y lo probamos conforme a la directiva. Los desarrollos headless o multimercado requieren algo más de tiempo.",
+      "disclaimer": "Esto no constituye asesoramiento jurídico. Desarrollamos conforme a los requisitos funcionales de la Directiva UE 2023/2673. La validación legal final de su información sobre el desistimiento corresponde a sus asesores.",
+      "items": [
+        {
+          "title": "Botón de desistimiento en la página",
+          "body": "En el idioma local que exige la directiva, en todas las páginas y accesible sin necesidad de iniciar sesión."
+        },
+        {
+          "title": "Confirmación en dos pasos",
+          "body": "Datos del pedido y, después, un paso de confirmación aparte. Sin campo de motivo obligatorio."
+        },
+        {
+          "title": "Acuse de recibo inmediato",
+          "body": "Enviado en un soporte duradero, con marca de tiempo, en el momento en que se envía un desistimiento."
+        },
+        {
+          "title": "Pedidos de invitados incluidos",
+          "body": "Clientes registrados e invitados, sin nuevas contraseñas para sus compradores."
+        },
+        {
+          "title": "Registro de auditoría completo",
+          "body": "Cada desistimiento queda registrado, de modo que pueda demostrar que cumplió la normativa si alguien se lo pide."
+        },
+        {
+          "title": "Usted mantiene el control de los reembolsos",
+          "body": "Nada se reembolsa de forma automática. Su equipo aprueba y gestiona todo en una sola cola."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "cumpla la normativa",
+      "h2": "Active su",
+      "h2accent": "botón de desistimiento",
+      "h2tail": ".",
+      "body": "Indíquenos su plataforma, sus mercados y la situación actual de su tienda. Definiremos el alcance del trabajo, le daremos un calendario y haremos que cumpla la normativa en toda la UE. La norma ya está en vigor, y las tiendas sin un botón conforme se exponen a un plazo de devolución ampliado y a requerimientos legales.",
+      "points": [
+        "Todos los mercados de la UE, cualquier plataforma, incluido a medida y headless",
+        "Botón, proceso en dos pasos, confirmación y páginas legales",
+        "Activo en tan solo un día"
+      ],
+      "formNote": "Respondemos en un día laborable.",
+      "disclaimer": "Esto no constituye asesoramiento jurídico. La validación final de su información sobre el desistimiento corresponde a sus asesores."
+    }
+  }
+}

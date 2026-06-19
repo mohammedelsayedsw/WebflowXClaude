@@ -55,7 +55,7 @@ function TrustLogos({ label }: { label: string }) {
 
 export function Hero({ t, lang }: { t: Content["hero"]; lang: Lang }) {
   return (
-    <section className="relative overflow-hidden flex flex-col">
+    <section className="relative overflow-hidden flex flex-col min-h-screen">
       <HeroBg />
 
       <div className="flex-1 flex items-center">

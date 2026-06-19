@@ -14,7 +14,7 @@ export function Nav({
   ctaLabel: string;
 }) {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0d24]/85 backdrop-blur-md">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#0a0d24]/85 backdrop-blur-md">
       <div className="wrap flex items-center justify-between h-[58px] md:h-[66px]">
         <a
           href="https://scandiweb.com/"

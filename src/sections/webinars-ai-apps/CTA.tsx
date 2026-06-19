@@ -3,7 +3,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -57,17 +56,8 @@ export function CTA() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.2} className="w-full">
-            <div className="mt-10 md:mt-12 mx-auto w-full max-w-[560px] text-left">
-              <HubSpotForm
-                portalId="25724996"
-                formId="595a3980-b650-43a4-8d4a-8c1ca0e12c67"
-              />
-            </div>
-          </Reveal>
-
           <Reveal delay={0.25}>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-10 md:mt-12 flex justify-center">
               <a
                 href="https://youtu.be/kY-MZtjSi9c"
                 target="_blank"

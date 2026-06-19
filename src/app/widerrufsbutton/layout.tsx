@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/site/Header";
 
-const title = "German Widerrufsbutton (§ 356a BGB) Compliance";
+const title = "EU Withdrawal Button Compliance (Directive 2023/2673)";
 const description =
-  "The German Widerrufsbutton (§ 356a BGB) is mandatory from 19 June 2026. scandiweb adds a compliant withdrawal button to your store, live in a day.";
+  "From 19 June 2026, EU law requires online shops to add a withdrawal button. scandiweb makes your store compliant across every EU market, live in as little as a day.";
 
 export const metadata: Metadata = {
   title,
@@ -24,10 +23,5 @@ export const metadata: Metadata = {
 export default function WiderrufsbuttonLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <>
-      <Header />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

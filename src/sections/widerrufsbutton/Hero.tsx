@@ -2,7 +2,6 @@
 
 import { ArrowDown, Check } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
-import { LangToggle } from "@/sections/widerrufsbutton/LangToggle";
 import type { Content, Lang } from "@/sections/widerrufsbutton/content";
 
 function HeroBg() {
@@ -54,32 +53,23 @@ function TrustLogos({ label }: { label: string }) {
   );
 }
 
-export function Hero({
-  t,
-  lang,
-  onLang,
-}: {
-  t: Content["hero"];
-  lang: Lang;
-  onLang: (l: Lang) => void;
-}) {
+export function Hero({ t, lang }: { t: Content["hero"]; lang: Lang }) {
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-28 md:pt-36 pb-14 md:pb-20 text-center flex flex-col items-center">
-          <div className="mb-7">
-            <LangToggle lang={lang} onLang={onLang} />
-          </div>
-
+        <div className="wrap relative z-10 pt-20 md:pt-28 pb-14 md:pb-20 text-center flex flex-col items-center">
           <div className="inline-flex items-center rounded-[2px] border border-[var(--sw-mint)]/50 bg-[var(--sw-mint)]/[0.06] px-3 py-1.5 mb-8">
             <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.12em] text-[var(--sw-mint)] uppercase">
               {t.badge}
             </span>
           </div>
 
-          <h1 lang={lang} className="font-head text-white text-[34px] sm:text-[46px] md:text-[66px] lg:text-[78px] leading-[1.03] tracking-[-0.02em] max-w-[20ch] text-balance break-words hyphens-auto">
+          <h1
+            lang={lang}
+            className="font-head text-white text-[34px] sm:text-[46px] md:text-[66px] lg:text-[78px] leading-[1.03] tracking-[-0.02em] max-w-[20ch] text-balance break-words hyphens-auto"
+          >
             {t.h1}{" "}
             <span style={{ color: "var(--sw-mint)" }}>{t.h1accent}</span>
           </h1>

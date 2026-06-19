@@ -22,19 +22,18 @@ const icons = [
 
 export function Solution({ t }: { t: Content["solution"] }) {
   return (
-    <section
-      id="solution"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
-    >
-      <div className="wrap relative">
+    <section id="solution" className="bg-lp-bright py-28 md:py-36">
+      <div className="wrap">
         <Reveal>
-          <div className="label-code text-white/55 mb-5">{t.eyebrow}</div>
-          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
+          <div className="label-code text-[var(--sw-black)]/55 mb-5">
+            {t.eyebrow}
+          </div>
+          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
             {t.h2}{" "}
-            <span style={{ color: "var(--sw-mint)" }}>{t.h2accent}</span>
+            <span className="text-[var(--sw-blue)]">{t.h2accent}</span>
             {t.h2tail}
           </h2>
-          <p className="mt-7 max-w-[68ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
+          <p className="mt-7 max-w-[68ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
             {t.intro}
           </p>
         </Reveal>
@@ -44,20 +43,14 @@ export function Solution({ t }: { t: Content["solution"] }) {
             const Icon = icons[i] ?? MousePointerClick;
             return (
               <Reveal key={it.title} delay={(i % 3) * 0.07}>
-                <article
-                  className="h-full rounded-[4px] border border-white/10 p-7 md:p-8"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)",
-                  }}
-                >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-[2px] bg-[var(--sw-mint)]/12 mb-5">
-                    <Icon className="h-5 w-5 text-[var(--sw-mint)]" />
+                <article className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-[2px] bg-[var(--sw-blue)]/10 mb-5">
+                    <Icon className="h-5 w-5 text-[var(--sw-blue)]" />
                   </span>
-                  <h3 className="font-head text-white text-[18px] md:text-[20px] leading-[1.2]">
+                  <h3 className="font-head text-[var(--sw-black)] text-[18px] md:text-[20px] leading-[1.2]">
                     {it.title}
                   </h3>
-                  <p className="mt-3 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
+                  <p className="mt-3 text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed">
                     {it.body}
                   </p>
                 </article>
@@ -67,7 +60,7 @@ export function Solution({ t }: { t: Content["solution"] }) {
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-12 text-[12px] md:text-[13px] text-white/45 leading-relaxed max-w-[78ch]">
+          <p className="mt-12 text-[12px] md:text-[13px] text-[var(--sw-black)]/45 leading-relaxed max-w-[78ch]">
             {t.disclaimer}
           </p>
         </Reveal>

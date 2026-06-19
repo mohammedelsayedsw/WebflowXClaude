@@ -3,13 +3,9 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import type { Content } from "@/sections/widerrufsbutton/content";
 
-export function CTA() {
-  const points = [
-    "Shopify and Magento / Adobe Commerce",
-    "Button, two-step flow, confirmation, and legal pages",
-    "We respond within one business day",
-  ];
+export function CTA({ t }: { t: Content["cta"] }) {
   return (
     <section
       id="cta"
@@ -24,25 +20,21 @@ export function CTA() {
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">get compliant</div>
+            <div className="label-code text-white/55 mb-5">{t.eyebrow}</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[16ch]">
-              Get your{" "}
-              <span className="text-[var(--sw-mint)]">withdrawal button</span>{" "}
-              live.
+              {t.h2}{" "}
+              <span className="text-[var(--sw-mint)]">{t.h2accent}</span>
+              {t.h2tail}
             </h2>
             <p className="mt-6 text-white/80 max-w-[50ch] text-[16px] md:text-[17px] leading-relaxed">
-              Tell us your platform and where your store is today. We will scope
-              the work, give you a timeline, and get you compliant with § 356a
-              BGB. The rule is already in force, and stores without a compliant
-              button are exposed to Abmahnungen, the formal warning letters that
-              competitors and consumer-protection groups can send.
+              {t.body}
             </p>
 
             <ul className="mt-10 space-y-2.5 text-[13px] md:text-[14px] text-white/80">
-              {points.map((t) => (
-                <li key={t} className="flex items-center gap-2">
+              {t.points.map((p) => (
+                <li key={p} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-[var(--sw-mint)] shrink-0" />
-                  <span>{t}</span>
+                  <span>{p}</span>
                 </li>
               ))}
             </ul>
@@ -51,15 +43,12 @@ export function CTA() {
           <Reveal delay={0.15}>
             <HubSpotForm
               portalId="25724996"
-              formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6"
+              formId="65eb4cb9-1c45-499c-86bc-f97a690a38d2"
               region="eu1"
             />
-            <p className="label-code text-white/45 mt-3 px-1">
-              We respond within one business day.
-            </p>
+            <p className="label-code text-white/45 mt-3 px-1">{t.formNote}</p>
             <p className="text-[11px] text-white/35 mt-2 px-1 leading-relaxed">
-              This is not legal advice. Final sign-off on your cancellation
-              policy stays with your counsel.
+              {t.disclaimer}
             </p>
           </Reveal>
         </div>

@@ -214,7 +214,7 @@ const en: Content = {
       "Button, two-step flow, confirmation, and legal pages",
       "Live in as little as one day",
     ],
-    contactRole: "Your contact at scandiweb",
+    contactRole: "Co-founder, scandiweb",
     formNote: "We respond within one business day.",
     disclaimer:
       "This is not legal advice. Final sign-off on your withdrawal instructions stays with your counsel.",

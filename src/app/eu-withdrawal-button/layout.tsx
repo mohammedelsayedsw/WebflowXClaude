@@ -7,7 +7,7 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "https://scandiweb.com/solutions/widerrufsbutton" },
+  alternates: { canonical: "https://scandiweb.com/solutions/eu-withdrawal-button" },
   openGraph: {
     title: `${title} | scandiweb`,
     description,

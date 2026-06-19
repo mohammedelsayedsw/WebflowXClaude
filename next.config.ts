@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // EU-wide reframe: /widerrufsbutton -> /eu-withdrawal-button (renamed 2026-06-19).
+        source: "/widerrufsbutton",
+        destination: "/eu-withdrawal-button",
+        permanent: true,
+      },
+      {
         source: "/accelerators",
         destination: "/accelerator",
         permanent: true,

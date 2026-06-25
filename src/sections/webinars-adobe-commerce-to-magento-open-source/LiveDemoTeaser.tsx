@@ -40,10 +40,10 @@ export function LiveDemoTeaser() {
 
           <Reveal delay={0.1}>
             <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
-              Migration sounds risky until you see how it runs. We build and
-              validate your Open Source store in parallel with your live site,
-              then cut over only once both sides confirm the handover is clean.
-              The webinar walks through every step.
+              Migration sounds risky, until you watch one run end to end. In
+              the webinar we take a real store through the full journey live, so
+              you can see exactly where the risk hides and how each step removes
+              it.
             </p>
           </Reveal>
         </div>
@@ -118,9 +118,8 @@ export function LiveDemoTeaser() {
 
         <Reveal delay={0.4}>
           <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-            Most stores complete the move in 6 to 12 weeks. Once you see the
-            path laid out end to end, you can decide whether it&apos;s right
-            for your store.
+            Six steps, start to finish, walked through live, then open Q&amp;A
+            for your store&apos;s specifics.
           </p>
         </Reveal>
       </div>

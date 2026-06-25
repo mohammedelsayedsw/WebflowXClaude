@@ -228,7 +228,7 @@ export function Hero() {
             <Reveal delay={0.15} className="flex flex-col items-center gap-7 md:gap-9">
               <SpeakerCard />
               {/* Partner badges — single row under the speaker (assets are already white) */}
-              <div className="w-full max-w-[480px] flex items-center justify-center gap-2 sm:gap-2.5 flex-nowrap">
+              <div className="w-full max-w-[480px] flex items-center justify-center gap-2 sm:gap-2.5 flex-nowrap md:translate-x-[-15px] md:translate-y-[10px]">
                 {[
                   {
                     src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",

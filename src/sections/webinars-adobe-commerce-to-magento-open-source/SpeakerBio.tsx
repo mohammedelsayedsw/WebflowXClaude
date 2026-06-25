@@ -116,7 +116,11 @@ export function SpeakerBio() {
                   <img
                     src={assetUrl(b.src)}
                     alt={b.alt}
-                    className="h-7 sm:h-8 md:h-9 w-auto opacity-90"
+                    className={
+                      (i === 1
+                        ? "h-8 sm:h-[37px] md:h-[41px]"
+                        : "h-7 sm:h-8 md:h-9") + " w-auto opacity-90"
+                    }
                   />
                 </Fragment>
               ))}

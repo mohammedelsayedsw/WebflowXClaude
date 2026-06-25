@@ -7,9 +7,9 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const steps = [
-  "Audit",
+  "Review",
   "Plan",
-  "Migrate",
+  "Move",
   "Test",
   "Go live",
   "Support",
@@ -25,7 +25,7 @@ export function LiveDemoTeaser() {
       <div className="wrap relative">
         <div className="max-w-[860px]">
           <Reveal>
-            <SectionLabel index="4">The process</SectionLabel>
+            <SectionLabel index="3">The process</SectionLabel>
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -33,17 +33,16 @@ export function LiveDemoTeaser() {
               Your store moves across,
               <br />
               <span style={{ color: "var(--sw-mint)" }}>
-                without a gap in trading
+                without ever going offline
               </span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
-              Migration sounds risky, until you watch one run end to end. In
-              the webinar we take a real store through the full journey live, so
-              you can see exactly where the risk hides and how each step removes
-              it.
+              Moving sounds risky &mdash; until you watch it happen. In the
+              webinar, we take a real store through the full move, step by step,
+              so you can see where the risk is and how each step takes it away.
             </p>
           </Reveal>
         </div>
@@ -118,8 +117,8 @@ export function LiveDemoTeaser() {
 
         <Reveal delay={0.4}>
           <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-            Six steps, start to finish, walked through live, then open Q&amp;A
-            for your store&apos;s specifics.
+            Six steps, start to finish, shown live &mdash; then open Q&amp;A for
+            your store.
           </p>
         </Reveal>
       </div>

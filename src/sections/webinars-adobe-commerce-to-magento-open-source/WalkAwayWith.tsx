@@ -5,24 +5,20 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const items: { title: string; body: string }[] = [
   {
-    title: "Your license saving",
-    body:
-      "A clear read on what dropping the Adobe Commerce license saves you this year, and every year after",
+    title: "A clear picture",
+    body: "What the move really looks like for a store like yours.",
   },
   {
-    title: "Your migration map",
-    body:
-      "What carries over untouched, what gets rebuilt as owned solutions, and in what order",
+    title: "Your first step",
+    body: "The simplest way to start, with nothing to commit.",
   },
   {
-    title: "What it really takes",
-    body:
-      "An honest read on timeline, systems, and effort, so you can size the move before you commit budget",
+    title: "The real effort",
+    body: "An honest read on the work, the risk, and the cost.",
   },
   {
-    title: "The decision",
-    body:
-      "Enough clarity to choose your next step: migrate now, run a paid demo first, or wait.",
+    title: "Your decision",
+    body: "Enough to choose your next move: now, later, or not yet.",
   },
 ];
 
@@ -38,7 +34,7 @@ export function WalkAwayWith() {
         <div className="mb-12 md:mb-16">
           <Reveal>
             <div className="label-code text-[var(--sw-black)]/55 mb-5">
-              <span className="text-[var(--sw-black)]/55">5</span>
+              <span className="text-[var(--sw-black)]/55">4</span>
               <span className="inline-block h-px w-6 bg-[var(--sw-black)]/20 mx-3 align-middle" />
               <span>The takeaway</span>
             </div>

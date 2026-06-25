@@ -6,8 +6,8 @@ import { assetUrl } from "@/lib/assets";
 import { SPEAKER } from "./details";
 
 const stats: [string, string][] = [
-  ["15+ years", "in Magento & commerce"],
-  ["2,100+", "Magento projects delivered"],
+  ["#1 certified", "Magento team since 2009"],
+  ["600+", "migrations"],
 ];
 
 export function SpeakerBio() {
@@ -39,7 +39,7 @@ export function SpeakerBio() {
           {/* RIGHT · copy */}
           <div>
             <Reveal>
-              <SectionLabel index="7">The speaker</SectionLabel>
+              <SectionLabel index="6">The speaker</SectionLabel>
             </Reveal>
 
             <Reveal delay={0.05}>
@@ -55,12 +55,8 @@ export function SpeakerBio() {
             <Reveal delay={0.1}>
               {/* TODO(announce): swap in the real speaker bio once confirmed. */}
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                Your session is led by a {SPEAKER.title}, part of the team
-                behind commerce work for 700+ brands including Puma, Samsung,
-                The New York Times, and Adobe. They have run Adobe Commerce to
-                Magento Open Source migrations end to end, so they are the best
-                person to answer your questions and share the lessons from real
-                moves.
+                Someone who has helped teams make this move many times, sharing
+                what works and what to watch for &mdash; not a pitch.
               </p>
             </Reveal>
 

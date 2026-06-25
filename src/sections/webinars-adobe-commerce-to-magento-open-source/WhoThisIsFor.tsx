@@ -2,9 +2,9 @@
 
 import {
   Coins,
-  ShoppingBag,
+  Search,
   ShieldCheck,
-  Building2,
+  Clock,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -14,27 +14,27 @@ import { SectionLabel } from "@/components/primitives/SectionLabel";
 const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   {
     icon: Coins,
-    lead: "On Adobe Commerce, questioning the bill",
+    lead: "Questioning the bill",
     body:
-      "Your license rises at every renewal and you're paying for enterprise features you don't use",
+      "Your license goes up every renewal, and you're paying for features you don't use.",
   },
   {
-    icon: ShoppingBag,
-    lead: "Evaluating Open Source",
+    icon: Search,
+    lead: "Curious about Open Source",
     body:
-      "You want to know if the same store really runs without the license, and exactly what it takes to move",
+      "You want to know if the same store really runs without the license, and what it takes to move.",
   },
   {
     icon: ShieldCheck,
-    lead: "Need proof before you trust it",
+    lead: "Need proof first",
     body:
-      "You think dropping the license means losing features or breaking your custom setup, and you want it proven on your own store before you believe it.",
+      "You think moving means losing features or breaking your setup, and you want to see it work before you believe it.",
   },
   {
-    icon: Building2,
-    lead: "Running a complex setup",
+    icon: Clock,
+    lead: "Tired of waiting on developers",
     body:
-      "Big catalog, multiple storefronts, or B2B and B2C in one stack, and you assume a store like yours is too complex to move.",
+      "Every change is a ticket, and your team moves slower than you'd like.",
   },
 ];
 
@@ -50,7 +50,7 @@ export function WhoThisIsFor() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="6">Who should join</SectionLabel>
+            <SectionLabel index="5">Who should join</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">

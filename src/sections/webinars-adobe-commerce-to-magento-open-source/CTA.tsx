@@ -32,27 +32,26 @@ export function CTA() {
         <div className="max-w-[820px] mx-auto text-center flex flex-col items-center">
           <Reveal>
             <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8">
-              {/* TODO(announce): date/time come from WEBINAR in details.ts */}
+              {/* TODO(announce): date comes from WEBINAR in details.ts */}
               <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                Free webinar &middot; {WEBINAR.date} &middot; {WEBINAR.time}
+                Free webinar &middot; {WEBINAR.date}
               </span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              Same platform. No license fee.
-              <br />
+              Same platform,{" "}
               <span style={{ color: "var(--sw-mint)" }}>
-                Will you keep renting?
+                without the license.
               </span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              Join the webinar to see what carries over, what it saves, and how
-              the cutover works, then decide your next move.
+              Come see exactly how the move works, and what it means for your
+              store.
             </p>
           </Reveal>
 
@@ -81,6 +80,12 @@ export function CTA() {
                 </button>
               )}
             </div>
+          </Reveal>
+
+          <Reveal delay={0.35}>
+            <p className="mt-16 md:mt-20 font-head text-white/90 text-[18px] md:text-[22px] leading-snug">
+              Let&apos;s build something great together.
+            </p>
           </Reveal>
         </div>
       </div>

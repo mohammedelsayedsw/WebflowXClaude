@@ -3,7 +3,6 @@
 import { Hero } from "@/sections/webinars-adobe-commerce-to-magento-open-source/Hero";
 import { IntroParagraph } from "@/sections/webinars-adobe-commerce-to-magento-open-source/IntroParagraph";
 import { WhatThisIsAbout } from "@/sections/webinars-adobe-commerce-to-magento-open-source/WhatThisIsAbout";
-import { TheGap } from "@/sections/webinars-adobe-commerce-to-magento-open-source/TheGap";
 import { LiveDemoTeaser } from "@/sections/webinars-adobe-commerce-to-magento-open-source/LiveDemoTeaser";
 import { WalkAwayWith } from "@/sections/webinars-adobe-commerce-to-magento-open-source/WalkAwayWith";
 import { WhoThisIsFor } from "@/sections/webinars-adobe-commerce-to-magento-open-source/WhoThisIsFor";
@@ -15,7 +14,6 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <IntroParagraph />
-      <TheGap />
       <WhatThisIsAbout />
       <LiveDemoTeaser />
       <WalkAwayWith />

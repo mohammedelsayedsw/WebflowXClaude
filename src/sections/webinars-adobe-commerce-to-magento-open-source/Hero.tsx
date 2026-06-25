@@ -195,9 +195,36 @@ export function Hero() {
                 </div>
               </Reveal>
 
-              {/* Partner badges — single row (assets are already white) */}
               <Reveal delay={0.2}>
-                <div className="mt-5 md:mt-7 flex items-center gap-3 sm:gap-4 md:gap-5 flex-nowrap">
+                <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
+                  {/* TODO(announce): re-enable via REGISTER_ENABLED in details.ts once the link is shared. */}
+                  {REGISTER_ENABLED ? (
+                    <a
+                      href={REGISTER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={btnPrimary}
+                    >
+                      Register
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                      className={`${btnPrimary} cursor-not-allowed opacity-60`}
+                    >
+                      Register
+                      <ArrowUpRight className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+              </Reveal>
+
+              {/* Partner badges — single row, under the CTA (assets are already white) */}
+              <Reveal delay={0.25}>
+                <div className="mt-6 md:mt-8 flex items-center gap-3 sm:gap-4 md:gap-5 flex-nowrap">
                   {[
                     {
                       src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
@@ -224,33 +251,6 @@ export function Hero() {
                       />
                     </Fragment>
                   ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.25}>
-                <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
-                  {/* TODO(announce): re-enable via REGISTER_ENABLED in details.ts once the link is shared. */}
-                  {REGISTER_ENABLED ? (
-                    <a
-                      href={REGISTER_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={btnPrimary}
-                    >
-                      Register
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      className={`${btnPrimary} cursor-not-allowed opacity-60`}
-                    >
-                      Register
-                      <ArrowUpRight className="h-4 w-4" />
-                    </button>
-                  )}
                 </div>
               </Reveal>
 

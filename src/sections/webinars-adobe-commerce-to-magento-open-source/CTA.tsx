@@ -3,7 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { WEBINAR, REGISTER_URL } from "./details";
+import { WEBINAR, REGISTER_URL, REGISTER_ENABLED } from "./details";
 
 export function CTA() {
   return (
@@ -60,15 +60,28 @@ export function CTA() {
 
           <Reveal delay={0.25}>
             <div className="mt-10 md:mt-12 flex justify-center">
-              <a
-                href={REGISTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={btnPrimary}
-              >
-                Register
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+              {/* TODO(announce): re-enable via REGISTER_ENABLED in details.ts once the link is shared. */}
+              {REGISTER_ENABLED ? (
+                <a
+                  href={REGISTER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnPrimary}
+                >
+                  Register
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className={`${btnPrimary} cursor-not-allowed opacity-60`}
+                >
+                  Register
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              )}
             </div>
           </Reveal>
         </div>

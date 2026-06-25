@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
-import { WEBINAR, SPEAKER, REGISTER_URL } from "./details";
+import { WEBINAR, SPEAKER, REGISTER_URL, REGISTER_ENABLED } from "./details";
 
 function HeroBg() {
   return (
@@ -155,7 +155,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
+                <h1 className="font-head text-white text-[23px] sm:text-[30px] md:text-[38px] lg:text-[48px] leading-[1.06] tracking-[-0.015em] max-w-[22ch]">
                   Stop paying the Adobe Commerce license. Move to{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
                     Magento Open Source
@@ -165,7 +165,7 @@ export function Hero() {
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-3 md:mt-4 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.3] max-w-[42ch]"
+                  className="mt-3 md:mt-4 font-body text-[14px] sm:text-[16px] md:text-[18px] leading-[1.35] max-w-[44ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   Same platform, same store, without the annual license fee
@@ -214,15 +214,28 @@ export function Hero() {
 
               <Reveal delay={0.25}>
                 <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
-                  <a
-                    href={REGISTER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={btnPrimary}
-                  >
-                    Register
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                  {/* TODO(announce): re-enable via REGISTER_ENABLED in details.ts once the link is shared. */}
+                  {REGISTER_ENABLED ? (
+                    <a
+                      href={REGISTER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={btnPrimary}
+                    >
+                      Register
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                      className={`${btnPrimary} cursor-not-allowed opacity-60`}
+                    >
+                      Register
+                      <ArrowUpRight className="h-4 w-4" />
+                    </button>
+                  )}
                 </div>
               </Reveal>
 

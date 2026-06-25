@@ -22,7 +22,9 @@ export const SPEAKER = {
   alt: "Webinar speaker placeholder",
 } as const;
 
-// TODO(announce): point this at the real registration form / webinar link.
-// Until then it links to the migration solutions page.
+// TODO(announce): when the registration / webinar link is ready, paste it into
+// REGISTER_URL and flip REGISTER_ENABLED to true. While disabled, the Register
+// buttons render as inert (non-clickable) placeholders.
+export const REGISTER_ENABLED = false;
 export const REGISTER_URL =
   "https://scandiweb.com/solutions/magento/adobe-commerce-to-magento-open-source";

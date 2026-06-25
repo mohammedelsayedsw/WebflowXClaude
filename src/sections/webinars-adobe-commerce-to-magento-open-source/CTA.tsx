@@ -43,7 +43,7 @@ export function CTA() {
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
               Same platform,{" "}
               <span style={{ color: "var(--sw-mint)" }}>
-                without the license.
+                without the license
               </span>
             </h2>
           </Reveal>

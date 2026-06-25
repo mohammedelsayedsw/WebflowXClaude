@@ -137,7 +137,7 @@ export function IntroParagraph() {
                 <span className="text-[var(--sw-blue)]">
                   license-free way
                 </span>{" "}
-                to run the exact store you have today
+                to run the exact Adobe Commerce store you have today
               </h2>
             </Reveal>
 

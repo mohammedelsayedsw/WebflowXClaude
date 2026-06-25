@@ -147,10 +147,23 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mt-[25px] mb-5 md:mb-6">
-                  <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                    Free webinar &middot; Magento / e-commerce
-                  </span>
+                <div className="mt-[25px] mb-5 md:mb-6 flex flex-wrap items-center gap-2">
+                  <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1">
+                    <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
+                      Free webinar
+                    </span>
+                  </div>
+                  <div
+                    className="inline-flex items-center rounded-[2px] border px-2.5 py-1"
+                    style={{ borderColor: "var(--sw-mint)" }}
+                  >
+                    <span
+                      className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] uppercase"
+                      style={{ color: "var(--sw-mint)" }}
+                    >
+                      Adobe Commerce to Magento Open Source
+                    </span>
+                  </div>
                 </div>
               </Reveal>
 

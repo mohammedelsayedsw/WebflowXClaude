@@ -133,10 +133,11 @@ export function IntroParagraph() {
                 className="font-head text-[var(--sw-black)] text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
                 style={{ textWrap: "balance" }}
               >
-                You&apos;re paying for an enterprise edition{" "}
+                There&apos;s a{" "}
                 <span className="text-[var(--sw-blue)]">
-                  you don&apos;t fully use
-                </span>
+                  license-free way
+                </span>{" "}
+                to run the exact store you have today
               </h2>
             </Reveal>
 

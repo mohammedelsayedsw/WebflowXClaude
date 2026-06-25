@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const steps = [
   "Review",
@@ -19,27 +18,30 @@ export function LiveDemoTeaser() {
   return (
     <section
       id="the-process"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
-      <div className="wrap relative">
+      <div className="wrap">
         <div className="max-w-[860px]">
           <Reveal>
-            <SectionLabel index="3">The process</SectionLabel>
+            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <span className="text-[var(--sw-black)]/55">3</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+              <span>The process</span>
+            </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
               Live Demo:
               <br />
-              <span style={{ color: "var(--sw-mint)" }}>
+              <span style={{ color: "var(--sw-blue)" }}>
                 How a store moves to Open Source
               </span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[860px]">
+            <p className="mt-7 text-[var(--sw-black)]/80 text-[15px] md:text-[17px] leading-relaxed max-w-[860px]">
               Moving sounds risky - until you watch it happen. In the
               webinar, we take a real store through the full move, step by step,
               so you can see where the risk is and how each step takes it away.
@@ -47,15 +49,15 @@ export function LiveDemoTeaser() {
           </Reveal>
         </div>
 
-        {/* Stepper container — dark-glass panel + status header + numbered chips */}
+        {/* Stepper container — light panel + status header + numbered chips */}
         <Reveal delay={0.15}>
-          <div className="mt-10 md:mt-14 rounded-[4px] border border-white/10 bg-white/[0.025] p-5 sm:p-7 md:p-9">
+          <div className="mt-10 md:mt-14 rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-black)]/[0.02] p-5 sm:p-7 md:p-9">
             {/* Status header */}
             <div className="flex items-center justify-between gap-4 mb-5 md:mb-7 flex-wrap">
               <div className="flex items-center gap-2.5">
                 <motion.span
                   className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: "var(--sw-mint)" }}
+                  style={{ background: "var(--sw-blue)" }}
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{
                     duration: 1.4,
@@ -64,14 +66,14 @@ export function LiveDemoTeaser() {
                   }}
                 />
                 <span
-                  className="font-head font-semibold uppercase text-white/65"
+                  className="font-head font-semibold uppercase text-[var(--sw-black)]/65"
                   style={{ fontSize: "10.5px", letterSpacing: "0.16em" }}
                 >
                   The move journey
                 </span>
               </div>
               <span
-                className="font-head uppercase text-white/40 hidden sm:inline"
+                className="font-head uppercase text-[var(--sw-black)]/40 hidden sm:inline"
                 style={{ fontSize: "10px", letterSpacing: "0.18em" }}
               >
                 6 steps &middot; zero downtime
@@ -84,7 +86,7 @@ export function LiveDemoTeaser() {
                 <Fragment key={s}>
                   <Reveal delay={0.05 + i * 0.05} className="contents">
                     <motion.div
-                      className="group inline-flex shrink-0 xl:flex-1 xl:justify-center items-center gap-2 sm:gap-2.5 xl:gap-1.5 rounded-[2px] border border-white/15 bg-white pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 xl:px-2.5 transition-colors hover:border-[var(--sw-mint)]/60"
+                      className="group inline-flex shrink-0 xl:flex-1 xl:justify-center items-center gap-2 sm:gap-2.5 xl:gap-1.5 rounded-[2px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)] pl-1.5 pr-3 py-1.5 sm:pl-2 sm:pr-4 sm:py-2 md:pl-2.5 md:pr-5 md:py-2.5 xl:px-2.5 transition-colors hover:border-[var(--sw-blue)]/60"
                       animate={{ y: [0, -6, 0] }}
                       transition={{
                         duration: 2.6,
@@ -93,10 +95,10 @@ export function LiveDemoTeaser() {
                         delay: i * 0.22,
                       }}
                     >
-                      <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-[2px] bg-[var(--sw-black)] text-white font-head font-bold text-[10px] sm:text-[11px] tabular-nums">
+                      <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-[2px] bg-white text-[var(--sw-black)] font-head font-bold text-[10px] sm:text-[11px] tabular-nums">
                         {i + 1}
                       </span>
-                      <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] xl:text-[13.5px] font-semibold text-[var(--sw-black)] leading-none whitespace-nowrap">
+                      <span className="font-head text-[12px] sm:text-[14px] md:text-[15.5px] xl:text-[13.5px] font-semibold text-white leading-none whitespace-nowrap">
                         {s}
                       </span>
                     </motion.div>
@@ -104,7 +106,7 @@ export function LiveDemoTeaser() {
                   {i < steps.length - 1 && (
                     <Reveal delay={0.07 + i * 0.05} className="contents">
                       <ArrowRight
-                        className="h-4 w-4 sm:h-5 sm:w-5 xl:h-4 xl:w-4 text-white/40 shrink-0"
+                        className="h-4 w-4 sm:h-5 sm:w-5 xl:h-4 xl:w-4 text-[var(--sw-black)]/40 shrink-0"
                         strokeWidth={2.25}
                       />
                     </Reveal>
@@ -116,7 +118,7 @@ export function LiveDemoTeaser() {
         </Reveal>
 
         <Reveal delay={0.4}>
-          <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+          <p className="mt-10 md:mt-12 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">
             Watch the full move live, start to finish - then a Q&amp;A, so come
             with your questions ready.
           </p>

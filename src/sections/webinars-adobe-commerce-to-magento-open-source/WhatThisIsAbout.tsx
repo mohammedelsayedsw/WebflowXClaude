@@ -2,54 +2,49 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
-  "The true cost of Adobe Commerce licensing, and why it climbs at every renewal",
-  "What you keep vs. what gets rebuilt when you move to Magento Open Source",
-  "The migration path, the risks involved, and how to keep the switch safe",
-  "A realistic timeline: how long a migration actually takes and how we avoid downtime",
-  "Life after migration: self-hosting, full ownership, and ongoing support",
-  "Live Q&A: bring your store and we map your migration live",
+  "Why teams are leaving Adobe Commerce, and how to tell if it's right for you",
+  "What stays exactly the same, and what gets rebuilt",
+  "The move itself: the steps, the risks, and how we keep it safe",
+  "How long it really takes, and how we keep your store running the whole time",
+  "What changes for your team when you're not waiting on developers for every change",
+  "What it takes to be ready for AI shopping, and where most stores fall short",
+  "What the move costs, and how it pays for itself",
+  "Live Q&A about your own store",
 ];
 
 export function WhatThisIsAbout() {
   return (
     <section
       id="what-this-is-about"
-      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="wrap">
+      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
+      <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">3</span>
-              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>The session</span>
-            </div>
+            <SectionLabel index="2">What we&apos;ll cover</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.05] mt-6 lg:whitespace-nowrap">
+            <h2 className="font-head text-white text-[28px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.05] mt-6">
               What will be covered{" "}
-              <span style={{ color: "var(--sw-blue)" }}>
+              <span style={{ color: "var(--sw-mint)" }}>
                 during the webinar
               </span>
             </h2>
           </Reveal>
         </div>
 
-        <ul className="space-y-5 md:space-y-6 max-w-[72ch]">
+        <ul className="space-y-5 md:space-y-6 max-w-[78ch]">
           {items.map((t, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <li className="flex items-center gap-4">
-                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.03]">
-                  <Check className="h-4 w-4 text-[var(--sw-blue)]" />
+                <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-white/15 bg-white/[0.04]">
+                  <Check className="h-4 w-4 text-[var(--sw-mint)]" />
                 </span>
-                <span
-                  className={
-                    "text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed" +
-                    (i === 0 ? " lg:whitespace-nowrap" : "")
-                  }
-                >
+                <span className="text-white/85 text-[16px] md:text-[18px] leading-relaxed">
                   {t}
                 </span>
               </li>

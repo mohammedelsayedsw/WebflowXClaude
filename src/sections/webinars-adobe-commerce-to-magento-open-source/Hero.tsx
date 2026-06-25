@@ -155,20 +155,24 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[23px] sm:text-[30px] md:text-[38px] lg:text-[48px] leading-[1.06] tracking-[-0.015em] max-w-[22ch]">
-                  Stop paying the Adobe Commerce license. Move to{" "}
+                <h1 className="font-head text-white text-[26px] sm:text-[34px] md:text-[44px] lg:text-[54px] leading-[1.06] tracking-[-0.015em] max-w-[18ch]">
+                  Keep your store.{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
-                    Magento Open Source
+                    Drop the Adobe license.
                   </span>
                 </h1>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <p
-                  className="mt-3 md:mt-4 font-body text-[14px] sm:text-[16px] md:text-[18px] leading-[1.35] max-w-[44ch]"
-                  style={{ color: "var(--sw-mint)" }}
-                >
-                  Same platform, same store, without the annual license fee
+                <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[52ch]">
+                  <span style={{ color: "var(--sw-mint)" }}>
+                    Magento Open Source is the same platform as Adobe Commerce,
+                    without the license.
+                  </span>{" "}
+                  <span className="text-white/75">
+                    In this webinar, see why teams switch, how the move works,
+                    and what it really takes.
+                  </span>
                 </p>
               </Reveal>
 

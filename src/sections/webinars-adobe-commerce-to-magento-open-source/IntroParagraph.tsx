@@ -17,16 +17,16 @@ const years: { label: string; bill: string; pct: number }[] = [
 
 const problems: { title: string; body: string }[] = [
   {
-    title: "The license goes up every year",
-    body: "Adobe raises the price at every renewal.",
+    title: "The bill goes up every year",
+    body: "The price climbs at every renewal.",
   },
   {
     title: "You pay for features you don't use",
-    body: "Enterprise tools you're billed for but rarely touch.",
+    body: "Big tools you were never going to touch.",
   },
   {
-    title: "You're not sure what leaving costs",
-    body: "You suspect there's a way off, but not what you'd lose to take it.",
+    title: "You feel tied in",
+    body: "Leaving feels risky, and you're not sure what it would cost you.",
   },
 ];
 
@@ -157,10 +157,10 @@ export function IntroParagraph() {
 
             <Reveal delay={0.1}>
               <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                The Adobe Commerce license rises at every renewal, and much of
-                what it covers is enterprise tooling your store never actually
-                uses. The bill keeps growing while what you rely on
-                doesn&apos;t.
+                The Adobe Commerce license goes up every time you renew. And a
+                lot of what you pay for are big features your store was never
+                going to use. The bill keeps growing. What you actually need
+                from it doesn&apos;t.
               </p>
             </Reveal>
 
@@ -184,10 +184,10 @@ export function IntroParagraph() {
 
             <Reveal delay={0.2}>
               <p className="mt-8 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                So the questions stack up: is there really a way to keep your
-                store without the license? What would you lose? How risky is the
-                move, and how long does it take? This webinar answers all of it
-                &mdash; live, on a real store.
+                So the questions pile up. Is there a way to keep your store
+                without the license? What would you lose? How hard is it, and
+                how long does it take? This webinar answers all of it
+                &mdash; live.
               </p>
             </Reveal>
 

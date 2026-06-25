@@ -4,7 +4,7 @@ import {
   Coins,
   Search,
   ShieldCheck,
-  Clock,
+  CalendarClock,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -28,13 +28,13 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
     icon: ShieldCheck,
     lead: "Need proof first",
     body:
-      "You think moving means losing features or breaking your setup, and you want to see it work before you believe it.",
+      "You think moving means losing features or breaking your setup, and you want to see how it works before deciding.",
   },
   {
-    icon: Clock,
-    lead: "Tired of waiting on developers",
+    icon: CalendarClock,
+    lead: "Renewal coming up",
     body:
-      "Every change is a ticket, and your team moves slower than you'd like.",
+      "Your next Adobe Commerce renewal is near, and you want to weigh your options before you sign.",
   },
 ];
 

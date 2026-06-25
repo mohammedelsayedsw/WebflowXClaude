@@ -147,7 +147,7 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mt-2.5 mb-5 md:mb-6">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                     Free webinar &middot; Magento / e-commerce
                   </span>
@@ -156,7 +156,8 @@ export function Hero() {
 
               <Reveal delay={0.05}>
                 <h1 className="font-head text-white text-[26px] sm:text-[34px] md:text-[44px] lg:text-[54px] leading-[1.06] tracking-[-0.015em] max-w-[18ch]">
-                  Keep your store.{" "}
+                  Keep your store.
+                  <br />
                   <span style={{ color: "var(--sw-mint)" }}>
                     Drop the Adobe license.
                   </span>
@@ -236,7 +237,7 @@ export function Hero() {
 
           {/* Partner badges — bottom-left of the hero (assets are already white) */}
           <Reveal delay={0.3}>
-            <div className="mt-12 md:mt-16 translate-y-[10px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
+            <div className="mt-12 md:mt-16 translate-y-[30px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
               {[
                 {
                   src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",

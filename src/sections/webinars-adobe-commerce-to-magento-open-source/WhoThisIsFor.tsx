@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   {
@@ -44,18 +43,21 @@ export function WhoThisIsFor() {
   return (
     <section
       id="who-should-join"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
-      <div className="wrap relative">
+      <div className="wrap">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="5">Who should join</SectionLabel>
+            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <span className="text-[var(--sw-black)]/55">5</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+              <span>Who should join</span>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">
+            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[26ch]">
               Join the webinar if{" "}
-              <span style={{ color: "var(--sw-mint)" }}>
+              <span style={{ color: "var(--sw-blue)" }}>
                 any of these is you
               </span>
             </h2>
@@ -77,18 +79,18 @@ export function WhoThisIsFor() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: i * 0.08,
               }}
-              className="group rounded-[4px] border border-white/10 bg-white/[0.03] p-5 sm:p-7 md:p-9 transition-all hover:border-white/25 hover:-translate-y-0.5"
+              className="group rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 sm:p-7 md:p-9 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5"
             >
               <span
-                className="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-white/85 mb-4 sm:mb-5"
+                className="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/15 bg-[var(--sw-black)]/[0.03] text-[var(--sw-black)]/80 mb-4 sm:mb-5"
                 aria-hidden
               >
                 <c.icon className="h-5 w-5" strokeWidth={1.75} />
               </span>
-              <div className="font-head font-bold text-white text-[18px] md:text-[22px] leading-[1.2]">
+              <div className="font-head font-bold text-[var(--sw-black)] text-[18px] md:text-[22px] leading-[1.2]">
                 {c.lead}
               </div>
-              <p className="mt-2.5 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+              <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">
                 {c.body}
               </p>
             </motion.li>

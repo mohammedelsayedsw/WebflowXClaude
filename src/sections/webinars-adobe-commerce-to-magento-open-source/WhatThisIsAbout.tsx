@@ -5,9 +5,9 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
-  "Why teams are leaving Adobe Commerce, and how to tell if it's right for you",
-  "What stays exactly the same, and what gets rebuilt",
-  "The move itself: the steps, the risks, and how we keep it safe",
+  "Why merchants are leaving Adobe Commerce, and how to tell if it's right for you",
+  "Which parts of your store carry over to Open Source, and which get rebuilt",
+  "The move to Open Source: the steps, the risks, and how we keep it safe",
   "How long it really takes, and how we keep your store running the whole time",
   "What changes for your team when you're not waiting on developers for every change",
   "What it takes to be ready for AI shopping, and where most stores fall short",

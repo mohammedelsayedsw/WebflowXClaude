@@ -222,43 +222,40 @@ export function Hero() {
                 </div>
               </Reveal>
 
-              {/* Partner badges — single row, under the CTA (assets are already white) */}
-              <Reveal delay={0.25}>
-                <div className="mt-6 md:mt-8 flex items-center gap-3 sm:gap-4 md:gap-5 flex-nowrap">
-                  {[
-                    {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
-                      alt: "Adobe Certified",
-                    },
-                    {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.png",
-                      alt: "Magento Association Gold Member",
-                    },
-                    {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/structure-logos.png",
-                      alt: "scandiweb partner badge",
-                    },
-                  ].map((b, i) => (
-                    <Fragment key={b.src}>
-                      {i > 0 && (
-                        <span className="h-7 w-px bg-white/15 hidden sm:block shrink-0" />
-                      )}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={assetUrl(b.src)}
-                        alt={b.alt}
-                        className="h-6 sm:h-7 md:h-9 w-auto opacity-90 shrink"
-                      />
-                    </Fragment>
-                  ))}
-                </div>
-              </Reveal>
-
             </div>
 
-            {/* RIGHT · speaker card – vertical, centered, larger photo */}
-            <Reveal delay={0.15} className="flex justify-center">
+            {/* RIGHT · speaker card + partner badges below it */}
+            <Reveal delay={0.15} className="flex flex-col items-center gap-7 md:gap-9">
               <SpeakerCard />
+              {/* Partner badges — single row under the speaker (assets are already white) */}
+              <div className="w-full max-w-[440px] flex items-center justify-center gap-2.5 sm:gap-3.5 flex-nowrap">
+                {[
+                  {
+                    src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
+                    alt: "Adobe Certified",
+                  },
+                  {
+                    src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.png",
+                    alt: "Magento Association Gold Member",
+                  },
+                  {
+                    src: "/webinars/adobe-commerce-to-magento-open-source/badges/structure-logos.png",
+                    alt: "scandiweb partner badge",
+                  },
+                ].map((b, i) => (
+                  <Fragment key={b.src}>
+                    {i > 0 && (
+                      <span className="h-6 w-px bg-white/15 hidden sm:block shrink-0" />
+                    )}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={assetUrl(b.src)}
+                      alt={b.alt}
+                      className="h-5 sm:h-6 md:h-7 w-auto opacity-90 shrink"
+                    />
+                  </Fragment>
+                ))}
+              </div>
             </Reveal>
           </div>
         </div>

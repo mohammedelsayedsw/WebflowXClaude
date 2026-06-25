@@ -44,7 +44,7 @@ export function CTA() {
               Same platform. No license fee.
               <br />
               <span style={{ color: "var(--sw-mint)" }}>
-                Will you keep renting it?
+                Will you keep renting?
               </span>
             </h2>
           </Reveal>
@@ -52,9 +52,7 @@ export function CTA() {
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
               Join the webinar to see what carries over, what it saves, and how
-              the cutover works,
-              <br />
-              then decide your next move.
+              the cutover works, then decide your next move.
             </p>
           </Reveal>
 

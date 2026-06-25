@@ -133,30 +133,28 @@ export function IntroParagraph() {
                 className="font-head text-[var(--sw-black)] text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
                 style={{ textWrap: "balance" }}
               >
-                You&apos;re paying an enterprise license for a{" "}
+                You&apos;re paying for an enterprise edition{" "}
                 <span className="text-[var(--sw-blue)]">
-                  mid-market store
+                  you don&apos;t fully use
                 </span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                Adobe Commerce licensing costs keep climbing, and many teams
-                are paying for more than they actually use. That&apos;s why
-                more and more merchants are asking the same questions: is it
-                worth switching to Magento Open Source, how does the migration
-                work, and what does it really take?
+                The Adobe Commerce license rises at every renewal, and much of
+                what it covers is enterprise tooling your store never actually
+                uses. The bill keeps growing while what you rely on
+                doesn&apos;t.
               </p>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                In this webinar we walk through why teams make the switch, what
-                carries over untouched, what gets rebuilt as owned solutions,
-                and what the move actually takes, including how it can pay for
-                itself within the first year and save the license cost every
-                year after.
+                It raises the obvious question: can you keep the exact same
+                store without paying for the edition? In the webinar we answer
+                it live &mdash; why teams switch, how the move works, and what
+                it really takes.
               </p>
             </Reveal>
 

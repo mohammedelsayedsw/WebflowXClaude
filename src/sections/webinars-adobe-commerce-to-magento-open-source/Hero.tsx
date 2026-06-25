@@ -180,7 +180,7 @@ export function Hero() {
                 <p className="mt-5 md:mt-7 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[52ch]">
                   <span style={{ color: "var(--sw-mint)" }}>
                     Magento Open Source is the same platform as Adobe Commerce,
-                    without the license.
+                    but without the license.
                   </span>{" "}
                   <span className="text-white/75">
                     In this webinar, see why teams switch, how the move works,

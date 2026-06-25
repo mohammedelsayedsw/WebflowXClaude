@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 import { assetUrl } from "@/lib/assets";
@@ -8,6 +9,21 @@ import { SPEAKER } from "./details";
 const stats: [string, string][] = [
   ["15+ years", "in digital commerce"],
   ["100+", "migrations completed"],
+];
+
+const badges: { src: string; alt: string }[] = [
+  {
+    src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
+    alt: "Adobe Certified",
+  },
+  {
+    src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.png",
+    alt: "Magento Association Gold Member",
+  },
+  {
+    src: "/webinars/adobe-commerce-to-magento-open-source/badges/structure-logos.png",
+    alt: "scandiweb partner badge",
+  },
 ];
 
 export function SpeakerBio() {
@@ -83,6 +99,30 @@ export function SpeakerBio() {
             </Reveal>
           </div>
         </div>
+
+        {/* Partner badges — recognition strip (assets are already white) */}
+        <Reveal delay={0.2}>
+          <div className="mt-14 md:mt-20 pt-10 md:pt-12 border-t border-white/10 flex flex-col items-center gap-6">
+            <span className="label-code text-white/45 text-[10px]">
+              Certified &amp; recognized
+            </span>
+            <div className="flex items-center justify-center gap-5 sm:gap-8 flex-wrap">
+              {badges.map((b, i) => (
+                <Fragment key={b.src}>
+                  {i > 0 && (
+                    <span className="h-8 w-px bg-white/15 hidden sm:block shrink-0" />
+                  )}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl(b.src)}
+                    alt={b.alt}
+                    className="h-7 sm:h-8 md:h-9 w-auto opacity-90"
+                  />
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

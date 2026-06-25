@@ -32,9 +32,9 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   },
   {
     icon: Building2,
-    lead: "B2B and multi-store sellers",
+    lead: "Running a complex setup",
     body:
-      "You run account pricing, quotes, or many storefronts and need them to carry across cleanly",
+      "Big catalog, multiple storefronts, or B2B and B2C in one stack, and you assume a store like yours is too complex to move.",
   },
 ];
 

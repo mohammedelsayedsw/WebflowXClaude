@@ -155,7 +155,7 @@ export function IntroParagraph() {
                 So the questions pile up. Is there a way to keep your store
                 without the license? What would you lose? How hard is it, and
                 how long does it take? This webinar answers all of it
-                &mdash; live.
+                - live.
               </p>
             </Reveal>
 

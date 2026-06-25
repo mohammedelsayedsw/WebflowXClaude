@@ -81,12 +81,6 @@ export function CTA() {
               )}
             </div>
           </Reveal>
-
-          <Reveal delay={0.35}>
-            <p className="mt-16 md:mt-20 font-head text-white/90 text-[18px] md:text-[22px] leading-snug">
-              Let&apos;s build something great together.
-            </p>
-          </Reveal>
         </div>
       </div>
     </section>

@@ -6,8 +6,8 @@ import { assetUrl } from "@/lib/assets";
 import { SPEAKER } from "./details";
 
 const stats: [string, string][] = [
-  ["#1 certified", "Magento team since 2009"],
-  ["600+", "migrations"],
+  ["15+ years", "in digital commerce"],
+  ["100+", "migrations completed"],
 ];
 
 export function SpeakerBio() {
@@ -55,8 +55,12 @@ export function SpeakerBio() {
             <Reveal delay={0.1}>
               {/* TODO(announce): swap in the real speaker bio once confirmed. */}
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                Someone who has helped teams make this move many times, sharing
-                what works and what to watch for &mdash; not a pitch.
+                [Speaker Name] is [Position] at scandiweb, which is behind
+                commerce work for 700+ brands including Puma, Samsung, The New
+                York Times, and Adobe. [He/She] leads the team that moves stores
+                from Adobe Commerce to Magento Open Source, so [he/she] is the
+                best person to answer your questions and share the lessons from
+                real migrations.
               </p>
             </Reveal>
 

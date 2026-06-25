@@ -40,7 +40,7 @@ export function LiveDemoTeaser() {
 
           <Reveal delay={0.1}>
             <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
-              Moving sounds risky &mdash; until you watch it happen. In the
+              Moving sounds risky - until you watch it happen. In the
               webinar, we take a real store through the full move, step by step,
               so you can see where the risk is and how each step takes it away.
             </p>
@@ -117,7 +117,7 @@ export function LiveDemoTeaser() {
 
         <Reveal delay={0.4}>
           <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-            Six steps, start to finish, shown live &mdash; then open Q&amp;A for
+            Six steps, start to finish, shown live - then open Q&amp;A for
             your store.
           </p>
         </Reveal>

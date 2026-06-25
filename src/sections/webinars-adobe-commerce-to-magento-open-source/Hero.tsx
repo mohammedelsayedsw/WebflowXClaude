@@ -195,33 +195,32 @@ export function Hero() {
                 </div>
               </Reveal>
 
-              {/* Partner badges */}
+              {/* Partner badges — single row (assets are already white) */}
               <Reveal delay={0.2}>
-                <div className="mt-5 md:mt-7 flex items-center gap-4 md:gap-6 flex-wrap">
+                <div className="mt-5 md:mt-7 flex items-center gap-3 sm:gap-4 md:gap-5 flex-nowrap">
                   {[
                     {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-solution-partner-gold.svg",
-                      alt: "Adobe Solution Partner — Gold",
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
+                      alt: "Adobe Certified",
                     },
                     {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.svg",
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.png",
                       alt: "Magento Association Gold Member",
                     },
                     {
-                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-most-certified.png",
-                      alt: "Adobe Commerce #1 Most Certified Agency",
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/structure-logos.png",
+                      alt: "scandiweb partner badge",
                     },
                   ].map((b, i) => (
                     <Fragment key={b.src}>
                       {i > 0 && (
-                        <span className="h-7 w-px bg-white/15 hidden sm:block" />
+                        <span className="h-7 w-px bg-white/15 hidden sm:block shrink-0" />
                       )}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={assetUrl(b.src)}
                         alt={b.alt}
-                        className="h-8 md:h-9 w-auto opacity-90"
-                        style={{ filter: "brightness(0) invert(1)" }}
+                        className="h-6 sm:h-7 md:h-9 w-auto opacity-90 shrink"
                       />
                     </Fragment>
                   ))}

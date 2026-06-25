@@ -22,7 +22,7 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
     icon: Search,
     lead: "Curious about Open Source",
     body:
-      "You want to know if the same store really runs without the license, and what it takes to move.",
+      "You want to know if your store would run just the same without the license, and what it takes to move.",
   },
   {
     icon: ShieldCheck,

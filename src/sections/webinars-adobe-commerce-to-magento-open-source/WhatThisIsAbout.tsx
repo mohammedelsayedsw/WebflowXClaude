@@ -7,11 +7,8 @@ import { SectionLabel } from "@/components/primitives/SectionLabel";
 const items = [
   "Why merchants are leaving Adobe Commerce, and how to tell if it's right for you",
   "Which parts of your store carry over to Open Source, and which get rebuilt",
-  "The move to Open Source: the steps, the risks, and how we keep it safe",
-  "How long it really takes, and how we keep your store running the whole time",
-  "What changes for your team when you're not waiting on developers for every change",
-  "What it takes to be ready for AI shopping, and where most stores fall short",
-  "What the move costs, and how it pays for itself",
+  "The move to Open Source: the steps, the risks, and how the switch stays safe",
+  "How long the move really takes, and what to expect along the way",
   "Live Q&A about your own store",
 ];
 

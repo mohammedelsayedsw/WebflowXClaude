@@ -117,8 +117,8 @@ export function LiveDemoTeaser() {
 
         <Reveal delay={0.4}>
           <p className="mt-10 md:mt-12 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-            Six steps, start to finish, shown live - then open Q&amp;A for
-            your store.
+            Watch the full move live, start to finish - then a Q&amp;A, so come
+            with your questions ready.
           </p>
         </Reveal>
       </div>

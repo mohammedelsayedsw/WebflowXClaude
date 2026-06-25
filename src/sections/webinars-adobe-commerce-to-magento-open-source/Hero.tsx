@@ -1,6 +1,5 @@
 "use client";
 
-import { Fragment } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -178,7 +177,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.1}>
-                <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[52ch]">
+                <p className="mt-5 md:mt-7 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[52ch]">
                   <span style={{ color: "var(--sw-mint)" }}>
                     Magento Open Source is the same platform as Adobe Commerce,
                     without the license.
@@ -192,7 +191,7 @@ export function Hero() {
 
               {/* Date + time block — TODO(announce): values come from WEBINAR in details.ts */}
               <Reveal delay={0.15}>
-                <div className="mt-5 md:mt-7 flex flex-row gap-5 sm:gap-8 items-start">
+                <div className="mt-7 md:mt-9 flex flex-row gap-5 sm:gap-8 items-start">
                   <div>
                     <div className="label-code text-white/55 text-[10px] mb-2">
                       Date
@@ -214,7 +213,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
+                <div className="mt-8 md:mt-11 flex flex-wrap items-center gap-3">
                   {/* TODO(announce): re-enable via REGISTER_ENABLED in details.ts once the link is shared. */}
                   {REGISTER_ENABLED ? (
                     <a
@@ -247,38 +246,6 @@ export function Hero() {
               <SpeakerCard />
             </Reveal>
           </div>
-
-          {/* Partner badges — bottom-left of the hero (assets are already white) */}
-          <Reveal delay={0.3}>
-            <div className="mt-12 md:mt-16 translate-y-[40px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
-              {[
-                {
-                  src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
-                  alt: "Adobe Certified",
-                },
-                {
-                  src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.png",
-                  alt: "Magento Association Gold Member",
-                },
-                {
-                  src: "/webinars/adobe-commerce-to-magento-open-source/badges/structure-logos.png",
-                  alt: "scandiweb partner badge",
-                },
-              ].map((b, i) => (
-                <Fragment key={b.src}>
-                  {i > 0 && (
-                    <span className="h-7 w-px bg-white/15 hidden sm:block shrink-0" />
-                  )}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={assetUrl(b.src)}
-                    alt={b.alt}
-                    className="h-6 sm:h-7 md:h-[32px] w-auto opacity-90 shrink"
-                  />
-                </Fragment>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </div>
 

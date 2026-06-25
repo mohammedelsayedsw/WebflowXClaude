@@ -15,21 +15,6 @@ const years: { label: string; bill: string; pct: number }[] = [
   { label: "Year 4", bill: "$138K", pct: 100 },
 ];
 
-const problems: { title: string; body: string }[] = [
-  {
-    title: "The bill goes up every year",
-    body: "The price climbs at every renewal.",
-  },
-  {
-    title: "You pay for features you don't use",
-    body: "Big tools you were never going to touch.",
-  },
-  {
-    title: "You feel tied in",
-    body: "Leaving feels risky, and you're not sure what it would cost you.",
-  },
-];
-
 function LicenseCostPanel() {
   return (
     <div
@@ -162,24 +147,6 @@ export function IntroParagraph() {
                 going to use. The bill keeps growing. What you actually need
                 from it doesn&apos;t.
               </p>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <div className="mt-8 grid gap-3">
-                {problems.map((pr) => (
-                  <div
-                    key={pr.title}
-                    className="rounded-[4px] border border-[var(--sw-black)]/10 bg-white/60 px-4 py-3.5"
-                  >
-                    <div className="font-head font-semibold text-[var(--sw-black)] text-[15px] md:text-[16px] leading-tight">
-                      {pr.title}
-                    </div>
-                    <div className="mt-1 text-[var(--sw-black)]/65 text-[14px] md:text-[15px] leading-snug">
-                      {pr.body}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </Reveal>
 
             <Reveal delay={0.2}>

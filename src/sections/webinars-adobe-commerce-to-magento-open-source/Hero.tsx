@@ -228,7 +228,7 @@ export function Hero() {
             <Reveal delay={0.15} className="flex flex-col items-center gap-7 md:gap-9">
               <SpeakerCard />
               {/* Partner badges — single row under the speaker (assets are already white) */}
-              <div className="w-full max-w-[440px] flex items-center justify-center gap-2.5 sm:gap-3.5 flex-nowrap">
+              <div className="w-full max-w-[480px] flex items-center justify-center gap-2 sm:gap-2.5 flex-nowrap">
                 {[
                   {
                     src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",
@@ -251,7 +251,7 @@ export function Hero() {
                     <img
                       src={assetUrl(b.src)}
                       alt={b.alt}
-                      className="h-5 sm:h-6 md:h-7 w-auto opacity-90 shrink"
+                      className="h-[23px] sm:h-[28px] md:h-[32px] w-auto opacity-90 shrink"
                     />
                   </Fragment>
                 ))}

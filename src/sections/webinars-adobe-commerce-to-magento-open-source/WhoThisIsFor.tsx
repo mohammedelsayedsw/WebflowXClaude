@@ -3,7 +3,7 @@
 import {
   Coins,
   ShoppingBag,
-  Briefcase,
+  ShieldCheck,
   Building2,
   type LucideIcon,
 } from "lucide-react";
@@ -25,10 +25,10 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
       "You want to know if the same store really runs without the license, and exactly what it takes to move",
   },
   {
-    icon: Briefcase,
-    lead: "Founders and execs",
+    icon: ShieldCheck,
+    lead: "Need proof before you trust it",
     body:
-      "You want a clear read on the saving and the risk before you commit budget to a migration",
+      "You think dropping the license means losing features or breaking your custom setup, and you want it proven on your own store before you believe it.",
   },
   {
     icon: Building2,

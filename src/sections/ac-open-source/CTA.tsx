@@ -66,10 +66,9 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            {/* TODO: swap for a dedicated HubSpot form for this campaign. Reusing the Magento support form for now. */}
             <HubSpotForm
               portalId="25724996"
-              formId="a2a9bbba-140b-49a2-b20c-8990b1d85a41"
+              formId="097a15ac-beeb-4993-ab0f-21fdcd398119"
               region="eu1"
             />
             <p className="label-code text-white/45 mt-3 px-1">

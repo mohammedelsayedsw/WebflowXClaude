@@ -9,7 +9,6 @@ type Case = {
   metric: string;
 };
 
-/* TODO: confirm scope figures and metrics with delivery before publish. */
 const cases: Case[] = [
   {
     brand: "Läderach",
@@ -51,7 +50,6 @@ const cases: Case[] = [
 
 type Stat = { value: string; label: string };
 
-/* TODO: confirm current numbers against the scandiweb.com fact sheet. */
 const stats: Stat[] = [
   { value: "2,100+", label: "Magento projects delivered" },
   { value: "894+", label: "Magento and Adobe Commerce certifications" },

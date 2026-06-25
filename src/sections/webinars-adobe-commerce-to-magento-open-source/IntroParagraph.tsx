@@ -15,6 +15,21 @@ const years: { label: string; bill: string; pct: number }[] = [
   { label: "Year 4", bill: "$138K", pct: 100 },
 ];
 
+const problems: { title: string; body: string }[] = [
+  {
+    title: "The license goes up every year",
+    body: "Adobe raises the price at every renewal.",
+  },
+  {
+    title: "You pay for features you don't use",
+    body: "Enterprise tools you're billed for but rarely touch.",
+  },
+  {
+    title: "You're not sure what leaving costs",
+    body: "You suspect there's a way off, but not what you'd lose to take it.",
+  },
+];
+
 function LicenseCostPanel() {
   return (
     <div
@@ -149,12 +164,30 @@ export function IntroParagraph() {
               </p>
             </Reveal>
 
+            <Reveal delay={0.15}>
+              <div className="mt-8 grid gap-3">
+                {problems.map((pr) => (
+                  <div
+                    key={pr.title}
+                    className="rounded-[4px] border border-[var(--sw-black)]/10 bg-white/60 px-4 py-3.5"
+                  >
+                    <div className="font-head font-semibold text-[var(--sw-black)] text-[15px] md:text-[16px] leading-tight">
+                      {pr.title}
+                    </div>
+                    <div className="mt-1 text-[var(--sw-black)]/65 text-[14px] md:text-[15px] leading-snug">
+                      {pr.body}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
             <Reveal delay={0.2}>
-              <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                It raises the obvious question: can you keep the exact same
-                store without paying for the edition? In the webinar we answer
-                it live &mdash; why teams switch, how the move works, and what
-                it really takes.
+              <p className="mt-8 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
+                So the questions stack up: is there really a way to keep your
+                store without the license? What would you lose? How risky is the
+                move, and how long does it take? This webinar answers all of it
+                &mdash; live, on a real store.
               </p>
             </Reveal>
 

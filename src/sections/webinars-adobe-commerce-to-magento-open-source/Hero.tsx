@@ -147,7 +147,7 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mt-2.5 mb-5 md:mb-6">
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mt-[25px] mb-5 md:mb-6">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                     Free webinar &middot; Magento / e-commerce
                   </span>
@@ -237,7 +237,7 @@ export function Hero() {
 
           {/* Partner badges — bottom-left of the hero (assets are already white) */}
           <Reveal delay={0.3}>
-            <div className="mt-12 md:mt-16 translate-y-[30px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
+            <div className="mt-12 md:mt-16 translate-y-[40px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
               {[
                 {
                   src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",

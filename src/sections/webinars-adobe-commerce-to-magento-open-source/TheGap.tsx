@@ -2,6 +2,7 @@
 
 import { Check, RefreshCw } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 /* ── "What stays / what's rebuilt" panel ───────────────────────────
    Mirrors the ai-apps mockup card styling. Left story: moving to Open
@@ -127,31 +128,28 @@ export function TheGap() {
   return (
     <section
       id="why-it-matters"
-      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="wrap">
+      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
+      <div className="wrap relative">
         <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-start">
           {/* LEFT · copy */}
           <div className="max-w-[640px]">
             <Reveal>
-              <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-                <span className="text-[var(--sw-black)]/55">3</span>
-                <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-                <span>Why it matters</span>
-              </div>
+              <SectionLabel index="2">What most merchants miss</SectionLabel>
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
-                The gap:{" "}
-                <span style={{ color: "var(--sw-blue)" }}>
-                  you&apos;re renting a platform you could own
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[24ch]">
+                Same Magento core,{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  without the license
                 </span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
+              <p className="mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
                 Adobe Commerce is Magento Open Source plus a layer of licensed
                 enterprise modules. The platform, admin, data model, and
                 developer experience are identical, so your catalog, checkout,
@@ -162,14 +160,14 @@ export function TheGap() {
             <Reveal delay={0.18}>
               <div
                 className="mt-9 md:mt-10 pl-5 md:pl-6 border-l-2"
-                style={{ borderColor: "var(--sw-blue)" }}
+                style={{ borderColor: "var(--sw-mint)" }}
               >
                 <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
-                  <span className="text-[var(--sw-blue)]">
+                  <span style={{ color: "var(--sw-mint)" }}>
                     Same platform, no license fee.
                   </span>{" "}
-                  <span className="text-[var(--sw-black)]">
-                    You keep what you built and stop renting it, self-hosted on
+                  <span className="text-white">
+                    You keep everything you&apos;ve built, self-hosted on
                     infrastructure you control, with no vendor lock-in.
                   </span>
                 </p>

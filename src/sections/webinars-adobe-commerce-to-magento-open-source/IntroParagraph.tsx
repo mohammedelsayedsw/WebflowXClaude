@@ -142,10 +142,11 @@ export function IntroParagraph() {
 
             <Reveal delay={0.1}>
               <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                The Adobe Commerce license goes up at every renewal, and most
-                of what you pay for was built for stores far bigger than yours.
-                You end up renting an enterprise platform to run a mid-market
-                business.
+                Adobe Commerce licensing costs keep climbing, and many teams
+                are paying for more than they actually use. That&apos;s why
+                more and more merchants are asking the same questions: is it
+                worth switching to Magento Open Source, how does the migration
+                work, and what does it really take?
               </p>
             </Reveal>
 

@@ -3,6 +3,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { assetUrl } from "@/lib/assets";
 
 export function CTA() {
   return (
@@ -42,11 +43,21 @@ export function CTA() {
                 <span className="text-[var(--sw-mint)]">stop renting it</span>
                 .&rdquo;
               </blockquote>
-              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
-                <span className="h-px w-6 bg-white/30" />
-                <span className="text-white/75 text-[13px]">
-                  scandiweb, Adobe Commerce migration specialists
-                </span>
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
+                <img
+                  src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+                  alt="Aigars Pavlovics"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                  style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+                />
+                <div>
+                  <div className="text-white text-[14px] font-medium">
+                    Aigars Pavlovics
+                  </div>
+                  <div className="label-code text-white/55 mt-0.5">
+                    Executive Board · scandiweb
+                  </div>
+                </div>
               </div>
             </div>
 

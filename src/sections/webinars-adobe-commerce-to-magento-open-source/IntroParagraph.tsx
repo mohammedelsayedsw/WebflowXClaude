@@ -85,6 +85,10 @@ function LicenseCostPanel() {
             style={{ color: "var(--sw-mint)" }}
           >
             $0
+            <span className="text-[12px] font-medium text-white/55">
+              {" "}
+              / yr
+            </span>
           </span>
         </div>
       </div>

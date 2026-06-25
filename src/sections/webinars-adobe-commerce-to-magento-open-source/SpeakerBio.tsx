@@ -104,7 +104,7 @@ export function SpeakerBio() {
         <Reveal delay={0.2}>
           <div className="mt-14 md:mt-20 pt-10 md:pt-12 border-t border-white/10 flex flex-col items-center gap-6">
             <span className="label-code text-white/45 text-[10px]">
-              Certified &amp; recognized
+              scandiweb - certified &amp; recognized
             </span>
             <div className="flex items-center justify-center gap-5 sm:gap-8 flex-wrap">
               {badges.map((b, i) => (

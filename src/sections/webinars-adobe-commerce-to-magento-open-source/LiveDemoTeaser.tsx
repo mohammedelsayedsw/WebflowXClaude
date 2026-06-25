@@ -39,7 +39,7 @@ export function LiveDemoTeaser() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[64ch]">
+            <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[860px]">
               Moving sounds risky - until you watch it happen. In the
               webinar, we take a real store through the full move, step by step,
               so you can see where the risk is and how each step takes it away.
@@ -67,7 +67,7 @@ export function LiveDemoTeaser() {
                   className="font-head font-semibold uppercase text-white/65"
                   style={{ fontSize: "10.5px", letterSpacing: "0.16em" }}
                 >
-                  The migration journey
+                  The move journey
                 </span>
               </div>
               <span

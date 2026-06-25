@@ -152,19 +152,20 @@ export function IntroParagraph() {
 
             <Reveal delay={0.15}>
               <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                Here is what most merchants miss: Magento Open Source is the
-                same Magento core as Adobe Commerce. Same admin, same data
-                model, same developer experience. The difference is the layer
-                of licensed enterprise modules, and most stores only use a few
-                of them.
+                Here&apos;s what often gets overlooked: Magento Open Source
+                runs on the same Magento core as Adobe Commerce. Same admin,
+                same data model, same developer experience. The main difference
+                is the layer of licensed enterprise modules, and most stores
+                actively use only a handful of them.
               </p>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="mt-5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                In this webinar we show what carries over untouched, what gets
-                rebuilt as owned solutions, and how the move pays for itself
-                inside the first year, then saves you the full license every
+                In this webinar we walk through why teams make the switch, what
+                carries over untouched, what gets rebuilt as owned solutions,
+                and what the move actually takes, including how it can pay for
+                itself within the first year and save the license cost every
                 year after.
               </p>
             </Reveal>

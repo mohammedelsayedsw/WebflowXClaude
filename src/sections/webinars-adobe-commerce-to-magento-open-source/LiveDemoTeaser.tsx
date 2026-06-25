@@ -30,10 +30,10 @@ export function LiveDemoTeaser() {
 
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.01em]">
-              Your store moves across,
+              Live Demo:
               <br />
               <span style={{ color: "var(--sw-mint)" }}>
-                without ever going offline
+                How a store moves to Open Source
               </span>
             </h2>
           </Reveal>

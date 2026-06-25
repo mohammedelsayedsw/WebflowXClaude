@@ -10,7 +10,7 @@ const items: { title: string; body: string }[] = [
   },
   {
     title: "Your first step",
-    body: "The simplest way to start, with nothing to commit.",
+    body: "A clear idea of how the move begins, and where you'd start.",
   },
   {
     title: "The real effort",

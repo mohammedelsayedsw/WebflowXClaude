@@ -236,7 +236,7 @@ export function Hero() {
 
           {/* Partner badges — bottom-left of the hero (assets are already white) */}
           <Reveal delay={0.3}>
-            <div className="mt-12 md:mt-16 flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
+            <div className="mt-12 md:mt-16 translate-y-[10px] flex items-center gap-3 sm:gap-4 flex-nowrap max-w-[560px]">
               {[
                 {
                   src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-certified.png",

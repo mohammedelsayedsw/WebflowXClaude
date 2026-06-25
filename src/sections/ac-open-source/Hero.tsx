@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
@@ -28,12 +28,11 @@ function HeroBg() {
   );
 }
 
-function LicenseCard() {
-  const rows: { label: string; before: string; after: string }[] = [
-    { label: "Annual license", before: "rising every renewal", after: "$0" },
-    { label: "Platform & admin", before: "Adobe Commerce", after: "identical" },
-    { label: "Catalog & checkout", before: "your store today", after: "preserved" },
-    { label: "Custom code", before: "modules & integrations", after: "carried over" },
+function MigrationCheckCard() {
+  const bullets = [
+    "What breaks, and what's safe to keep",
+    "What gets rebuilt, and what it costs",
+    "Your license saving, on paper",
   ];
   return (
     <div
@@ -45,35 +44,40 @@ function LicenseCard() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      <div className="p-6 md:p-8">
-        <div className="label-code text-white/55 mb-4">what moves, what stays</div>
-        <div className="space-y-3">
-          {rows.map((r) => (
-            <div
-              key={r.label}
-              className="rounded-[2px] border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between gap-4"
+      <div className="p-7 md:p-8">
+        <span className="inline-block rounded-[2px] bg-[var(--sw-mint)] px-3 py-1 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sw-black)]">
+          First step, no commitment
+        </span>
+        <h2 className="mt-5 font-head text-white text-[34px] md:text-[40px] leading-[1.05]">
+          <span style={{ color: "var(--sw-mint)" }}>$0</span> migration check
+        </h2>
+        <p className="mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
+          See exactly what moving to Open Source takes for your store, before
+          you commit anything.
+        </p>
+        <ul className="mt-6 space-y-3">
+          {bullets.map((b) => (
+            <li
+              key={b}
+              className="flex items-start gap-3 text-[14px] md:text-[15px] text-white leading-snug"
             >
-              <div>
-                <div className="text-white text-[14px] md:text-[15px] leading-tight">
-                  {r.label}
-                </div>
-                <div className="label-code text-white/55 mt-1 text-[9px]">
-                  {r.before}
-                </div>
-              </div>
-              <div
-                className="font-head text-[20px] md:text-[24px] leading-none shrink-0"
-                style={{ color: "var(--sw-mint)" }}
-              >
-                {r.after}
-              </div>
-            </div>
+              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-[2px] bg-[var(--sw-mint)]">
+                <Check className="h-3 w-3 text-[var(--sw-black)]" strokeWidth={3} />
+              </span>
+              {b}
+            </li>
           ))}
-        </div>
-        <div className="mt-6 pt-5 border-t border-white/10 text-[12px] md:text-[13px] text-white/70 leading-relaxed">
-          The platform you run today, minus the annual Adobe Commerce license.
-          Rented enterprise features rebuilt as features you own.
-        </div>
+        </ul>
+        <a
+          href="#cta"
+          className="mt-7 flex items-center justify-center gap-2 rounded-[2px] border border-[var(--sw-mint)] px-5 py-3 text-white hover:bg-[var(--sw-mint)]/10 transition"
+        >
+          <span className="font-head text-[15px]">Claim your free check</span>
+          <ArrowRight className="h-4 w-4" />
+        </a>
+        <p className="label-code text-white/45 mt-4 text-center">
+          We reply in 24 hours
+        </p>
       </div>
     </div>
   );
@@ -86,7 +90,6 @@ function TrustLogos() {
     { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
     { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
     { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
-    { src: "/shared/logos/clients/mercedes.svg", alt: "Mercedes-Benz", h: 28 },
     { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
   ];
   const loop = [...logos, ...logos];
@@ -143,52 +146,55 @@ function TrustLogos() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden min-h-[100svh] flex flex-col">
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-28 md:pt-36 pb-16 md:pb-24 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
+        <div className="wrap relative z-10 pt-24 md:pt-28 pb-12 md:pb-16 w-full">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
-              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8 md:mb-10">
+              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-7 md:mb-9">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                   Adobe Commerce to Magento Open Source
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[15ch]">
-                Same platform.{" "}
-                <span style={{ color: "var(--sw-mint)" }}>No license fee</span>.
+              <h1 className="font-head text-white text-[34px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.04] tracking-[-0.015em] max-w-[20ch]">
+                Stop paying the Adobe Commerce license.{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  Move to Magento Open Source.
+                </span>
               </h1>
 
-              <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[58ch] leading-relaxed">
-                Magento Open Source is the same Magento codebase under Adobe
-                Commerce, without the annual license. Move your catalog,
-                checkout, custom modules, and storefront across. Keep what you
-                built. Stop renting what you can own.
+              <p className="mt-6 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[60ch] leading-relaxed">
+                Magento Open Source is the same platform as Adobe Commerce,
+                without the license. You keep your catalog, checkout, and
+                storefront. The enterprise features you actually use get rebuilt
+                once, not rented every year, and your store stays live the whole
+                time.
               </p>
 
-              <div className="mt-12 md:mt-16 flex flex-wrap items-center gap-4">
-                <a
-                  href="#cta"
-                  className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--sw-mint)] px-5 py-2.5 text-white hover:bg-[var(--sw-mint)]/10 transition"
-                >
-                  <span className="font-head text-[14px] md:text-[15px]">
-                    Claim your free migration check
-                  </span>
-                  <ArrowDown className="h-4 w-4" />
-                </a>
+              <div className="mt-9 md:mt-10 flex flex-wrap items-center gap-5">
                 <a
                   href="#offer"
+                  className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--sw-mint)] px-6 py-3 text-white hover:bg-[var(--sw-mint)]/10 transition"
+                >
+                  <span className="font-head text-[15px] md:text-[16px]">
+                    See how it works
+                  </span>
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#cta"
                   className="inline-flex items-center gap-2 text-white/80 hover:text-white transition text-[14px] md:text-[15px]"
                 >
-                  See the three ways to start
+                  Speak with a migration expert
                 </a>
               </div>
             </div>
 
-            <div className="lg:pt-12">
-              <LicenseCard />
+            <div className="hidden lg:block">
+              <MigrationCheckCard />
             </div>
           </div>
         </div>

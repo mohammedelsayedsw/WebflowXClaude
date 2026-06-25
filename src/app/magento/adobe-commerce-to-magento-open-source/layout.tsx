@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Adobe Commerce to Magento Open Source migration | scandiweb",
+  title: "Adobe Commerce to Magento Open Source migration",
   description:
     "Same platform. No license fee. Move from Adobe Commerce to Magento Open Source with scandiweb. Keep your catalog, checkout, and storefront, drop the annual license. Start with a free migration check.",
   alternates: {

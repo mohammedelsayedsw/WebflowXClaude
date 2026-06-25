@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -45,7 +46,6 @@ function TrustLogos() {
     { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 24 },
     { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
     { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
-    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
     { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
     { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
   ];
@@ -195,20 +195,36 @@ export function Hero() {
                 </div>
               </Reveal>
 
-              {/* Partner row */}
+              {/* Partner badges */}
               <Reveal delay={0.2}>
-                <div className="mt-5 md:mt-7 flex items-center gap-4 md:gap-5 flex-wrap">
-                  <span className="label-code text-white/55 text-[10px]">
-                    Adobe Solution Partner
-                  </span>
-                  <span className="h-px w-5 bg-white/15" />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={assetUrl("/shared/logos/clients/adobe.svg")}
-                    alt="Adobe"
-                    className="h-5 md:h-6 w-auto opacity-90"
-                    style={{ filter: "brightness(0) invert(1)" }}
-                  />
+                <div className="mt-5 md:mt-7 flex items-center gap-4 md:gap-6 flex-wrap">
+                  {[
+                    {
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-solution-partner-gold.svg",
+                      alt: "Adobe Solution Partner — Gold",
+                    },
+                    {
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/magento-association-gold.svg",
+                      alt: "Magento Association Gold Member",
+                    },
+                    {
+                      src: "/webinars/adobe-commerce-to-magento-open-source/badges/adobe-most-certified.png",
+                      alt: "Adobe Commerce #1 Most Certified Agency",
+                    },
+                  ].map((b, i) => (
+                    <Fragment key={b.src}>
+                      {i > 0 && (
+                        <span className="h-7 w-px bg-white/15 hidden sm:block" />
+                      )}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={assetUrl(b.src)}
+                        alt={b.alt}
+                        className="h-8 md:h-9 w-auto opacity-90"
+                        style={{ filter: "brightness(0) invert(1)" }}
+                      />
+                    </Fragment>
+                  ))}
                 </div>
               </Reveal>
 

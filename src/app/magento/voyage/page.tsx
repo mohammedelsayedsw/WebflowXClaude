@@ -178,7 +178,7 @@ function Plate({
   }
   return (
     <img
-      src={`/solutions/magento/voyage/${keyword}.png`}
+      src={`/solutions/magento/voyage/${keyword}.webp`}
       alt={alt}
       onError={() => setErrored(true)}
       loading={priority ? "eager" : "lazy"}
@@ -263,7 +263,7 @@ function Hero() {
       >
         {/* Mouse parallax (desktop) + responsive sizing */}
         <motion.img
-          src="/solutions/magento/voyage/clouds.png"
+          src="/solutions/magento/voyage/clouds.webp"
           alt=""
           className="absolute top-0 -left-[50%] w-[200%] sm:-left-[25%] sm:w-[150%] md:-left-[6%] md:w-[112%] h-auto pointer-events-none select-none"
           style={{
@@ -3994,7 +3994,7 @@ function MonsterMoment() {
             muted
             playsInline
             preload="auto"
-            poster="/solutions/magento/voyage/monster.png"
+            poster="/solutions/magento/voyage/monster.webp"
             className="absolute inset-0 w-full h-full object-cover"
             aria-label="A dramatic moonlit night at sea with a sea creature emerging beside a tall ship, the crew tending the rigging calmly by lantern light"
           >
@@ -4048,7 +4048,7 @@ function MonsterMoment() {
           <div className="grid lg:grid-cols-[0.85fr_1fr] gap-12 lg:gap-20 items-center">
             <Reveal>
               <img
-                src="/solutions/magento/voyage/monster-map.png"
+                src="/solutions/magento/voyage/monster-map.webp"
                 alt="An engraved chart titled 'Magento store in troubled waters', labelling the hazards facing a Magento eCommerce store — downtime, security issues, broken checkout, slow site speed, code errors, database issues, extension conflicts, organic traffic drop, poor conversions — with a recovery route, safe harbour, and monitoring outposts"
                 className="hidden md:block mx-auto w-full h-auto"
                 style={{ maxWidth: 520 }}
@@ -6420,7 +6420,7 @@ function FinalCta() {
       >
         <div className="absolute inset-0">
           <img
-            src="/solutions/magento/voyage/finalcta.png"
+            src="/solutions/magento/voyage/finalcta.webp"
             alt=""
             className="absolute inset-0 w-full h-full"
             style={{

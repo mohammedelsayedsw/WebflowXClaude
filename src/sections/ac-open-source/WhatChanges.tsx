@@ -5,58 +5,57 @@ import { Reveal } from "@/components/primitives/Reveal";
 type Column = {
   tag: string;
   title: string;
-  blurb: string;
   items: string[];
+  note: string;
   accent: "stay" | "rebuild" | "optional";
 };
 
 const columns: Column[] = [
   {
     tag: "no change",
-    title: "Stays identical",
-    blurb: "The parts you would never want touched. They move across untouched.",
+    title: "Stays exactly the same",
     accent: "stay",
     items: [
-      "Platform and admin interface",
-      "All data and catalog",
-      "Checkout and payments",
-      "Custom modules and code",
-      "Extensions and integrations",
-      "Your storefront and theme",
+      "Same platform and admin",
+      "All your data and catalog",
+      "Your checkout and payments",
+      "Your frontend stays the same",
+      "Your store stays live throughout",
     ],
+    note: "The parts you would never want touched move across untouched.",
   },
   {
     tag: "rebuilt to own",
-    title: "Rebuilt with extensions",
-    blurb: "Licensed enterprise features, rebuilt once on Open Source as features you own.",
+    title: "Rebuilt once, with extensions",
     accent: "rebuild",
     items: [
-      "B2B suite: companies, quotes, requisitions",
-      "Page builder and content staging",
+      "Native B2B suite (companies, quotes, requisitions)",
+      "Page Builder and content staging",
       "Visual merchandiser and segmentation",
-      "Gift cards, rewards, and RMA",
-      "Advanced and AI-driven search",
+      "Gift cards, rewards, RMA",
+      "AI search",
     ],
+    note: "A one-time build, using extension providers or custom-built for your modules. Not a yearly license.",
   },
   {
-    tag: "if you want it",
-    title: "Optional upgrades",
-    blurb: "Worth doing while the store is open. None of it is required to move.",
+    tag: "worth adding",
+    title: "Worth adding along the way",
     accent: "optional",
     items: [
-      "Mobile redesign",
-      "Checkout optimization",
-      "Core Web Vitals work",
-      "Hyvä theme migration",
-      "AI search implementation",
+      "A mobile-first redesign to increase conversions",
+      "A smoother checkout to cut bounce rates",
+      "100% Core Web Vitals",
+      "Move to a Hyvä theme and redesign your storefront",
+      "Start leading in AI search",
     ],
+    note: "While we are already in there. Small extra cost, real revenue upside.",
   },
 ];
 
 function dot(accent: Column["accent"]) {
   if (accent === "stay") return "var(--sw-mint)";
   if (accent === "rebuild") return "var(--sw-blue)";
-  return "var(--sw-dark-grey)";
+  return "var(--sw-orange)";
 }
 
 export function WhatChanges() {
@@ -91,10 +90,7 @@ export function WhatChanges() {
                 <h3 className="font-head text-[var(--sw-black)] text-[22px] md:text-[26px] leading-[1.15]">
                   {c.title}
                 </h3>
-                <p className="mt-3 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
-                  {c.blurb}
-                </p>
-                <ul className="mt-6 pt-5 border-t border-[var(--sw-black)]/10 space-y-3 flex-1">
+                <ul className="mt-6 space-y-3 flex-1">
                   {c.items.map((it) => (
                     <li
                       key={it}
@@ -109,6 +105,9 @@ export function WhatChanges() {
                     </li>
                   ))}
                 </ul>
+                <p className="mt-6 pt-5 border-t border-[var(--sw-black)]/10 text-[13px] md:text-[14px] text-[var(--sw-black)]/60 leading-relaxed">
+                  {c.note}
+                </p>
               </article>
             </Reveal>
           ))}

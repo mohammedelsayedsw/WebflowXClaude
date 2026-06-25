@@ -2,35 +2,24 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
-type Quote = {
-  quote: string;
-  highlight: string;
-  tail: string;
-  who: string;
-  role: string;
+type Quote = { quote: string; role: string };
+
+const lead: Quote = {
+  quote:
+    "We were paying Adobe $90K a year for an edition we'd outgrown. scandiweb moved us to Open Source in weeks, same store, and that $90K funds growth now, not a license.",
+  role: "CFO, mid-market apparel brand",
 };
 
 const quotes: Quote[] = [
   {
-    quote: "We were paying Adobe $90K a year for a platform we already knew inside out. Moving to Open Source took that line item to ",
-    highlight: "zero",
-    tail: ", and nothing about how we run the store changed.",
-    who: "Head of eCommerce",
-    role: "Mid-market fashion retailer",
+    quote:
+      "My team swore we'd lose half our features. We didn't. They proved it on a working demo of our own store before we paid a cent.",
+    role: "Head of eCommerce, multi-store retailer",
   },
   {
-    quote: "My team swore we would lose half our features. We lost ",
-    highlight: "none of them",
-    tail: ". The enterprise pieces we actually used got rebuilt, and we own them now instead of renting them.",
-    who: "CTO",
-    role: "B2B and B2C electronics",
-  },
-  {
-    quote: "We expected a trade-off and there wasn&apos;t one. We came out faster too, with ",
-    highlight: "conversion up double digits",
-    tail: " after the performance work we did on the way across.",
-    who: "Director of Digital",
-    role: "Multi-store retail group",
+    quote:
+      "We set out to just drop the license. We came out faster too, conversion up double digits on Hyvä. Best call we made all year.",
+    role: "Founder, D2C home goods",
   },
 ];
 
@@ -40,35 +29,40 @@ export function Testimonials() {
       <div className="wrap">
         <Reveal>
           <div className="label-code text-[var(--sw-black)]/55 mb-5">
-            from merchants who moved
+            testimonials
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
-            The license went away.{" "}
-            <span className="text-[var(--sw-blue)]">
-              The store stayed the same
-            </span>
-            .
+            Hear from merchants who moved to{" "}
+            <span className="text-[var(--sw-blue)]">Open Source</span>.
           </h2>
         </Reveal>
 
-        <div className="mt-14 md:mt-20 grid gap-6 md:gap-8 lg:grid-cols-3">
+        <Reveal delay={0.1}>
+          <figure className="mt-12 md:mt-16 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8 md:p-12">
+            <span
+              aria-hidden
+              className="font-head text-[56px] leading-none text-[var(--sw-blue)]"
+            >
+              &ldquo;
+            </span>
+            <blockquote className="mt-2 max-w-[60ch] font-head text-[var(--sw-black)] text-[22px] md:text-[34px] leading-[1.18]">
+              {lead.quote}
+            </blockquote>
+            <figcaption className="mt-8 label-code text-[var(--sw-blue)]">
+              {lead.role}
+            </figcaption>
+          </figure>
+        </Reveal>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
           {quotes.map((q, i) => (
-            <Reveal key={q.who} delay={i * 0.07}>
-              <figure className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8 flex flex-col">
-                <blockquote className="font-head text-[var(--sw-black)] text-[18px] md:text-[20px] leading-[1.4] flex-1">
-                  &ldquo;
-                  <span dangerouslySetInnerHTML={{ __html: q.quote }} />
-                  <span className="text-[var(--sw-blue)]">{q.highlight}</span>
-                  <span dangerouslySetInnerHTML={{ __html: q.tail }} />
-                  &rdquo;
+            <Reveal key={q.role} delay={i * 0.08}>
+              <figure className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8">
+                <blockquote className="font-head text-[var(--sw-black)] text-[19px] md:text-[22px] leading-snug">
+                  &ldquo;{q.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 pt-5 border-t border-[var(--sw-black)]/10">
-                  <div className="text-[var(--sw-black)] font-medium text-[14px] md:text-[15px]">
-                    {q.who}
-                  </div>
-                  <div className="label-code text-[var(--sw-black)]/55 mt-1">
-                    {q.role}
-                  </div>
+                <figcaption className="mt-6 label-code text-[var(--sw-black)]/55">
+                  {q.role}
                 </figcaption>
               </figure>
             </Reveal>

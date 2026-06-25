@@ -3,55 +3,42 @@
 import { Reveal } from "@/components/primitives/Reveal";
 
 type Tier = {
+  option: string;
   name: string;
   price: string;
-  unit: string;
-  deliverable: string;
-  pitch: string;
-  bullets: string[];
+  desc: string;
+  note?: string;
+  youGet: string;
+  cta: string;
   featured?: boolean;
 };
 
 const tiers: Tier[] = [
   {
-    name: "Migration check",
+    option: "Option 1",
+    name: "Migration Check",
     price: "Free",
-    unit: "no commitment",
-    deliverable: "A risk, effort, and cost map",
-    pitch:
-      "We look at your store and tell you what breaks, what carries over untouched, and what the move actually costs. Your license saving on paper before you spend a thing.",
-    bullets: [
-      "What breaks, and what is safe to keep",
-      "What gets rebuilt, and what it costs",
-      "Your license saving, in writing",
-    ],
+    desc: "We map your move: what breaks, what gets rebuilt, the effort, and your saving, on paper.",
+    youGet: "A risk, effort, and cost map for your exact store.",
+    cta: "Get the free check",
   },
   {
-    name: "Live demo",
+    option: "Option 2",
+    name: "Live Demo",
     price: "$1,500",
-    unit: "fixed",
-    deliverable: "Your store, running on Open Source",
-    pitch:
-      "A working demo of your own store on Magento Open Source. Click through your catalog, checkout, and key flows on the platform you would move to. Fee credited toward a full migration.",
-    bullets: [
-      "Real catalog and checkout, not a template",
-      "Proof the parity holds before you commit",
-      "Credited against the full migration",
-    ],
+    desc: "We set up your store on a fresh Open Source install, your catalog on a default Hyvä theme, so you can see it run.",
+    note: "Your custom features and unique styling aren't part of the demo.",
+    youGet: "A working demo of your own store in a new environment.",
+    cta: "Request a live demo",
     featured: true,
   },
   {
-    name: "Full migration",
+    option: "Option 3",
+    name: "Full Migration",
     price: "From $15,000",
-    unit: "scoped to your store",
-    deliverable: "The complete move, done for you",
-    pitch:
-      "Catalog, data, custom code, extensions, and storefront moved across and validated. Enterprise features you relied on rebuilt as owned solutions. Live with no gap in trading.",
-    bullets: [
-      "Data, code, and integrations carried over",
-      "Enterprise features rebuilt, not lost",
-      "Validated and live, pays for itself in year one",
-    ],
+    desc: "We move your whole store to Open Source, end to end, with a concrete timeline.",
+    youGet: "Your store live on Open Source, the license gone for good.",
+    cta: "Plan my migration",
   },
 ];
 
@@ -61,19 +48,17 @@ export function Offer() {
       <div className="wrap">
         <Reveal>
           <div className="label-code text-[var(--sw-black)]/55 mb-5">
-            first step, no commitment
+            three ways to start
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
-            Three ways to start,{" "}
-            <span className="text-[var(--sw-blue)]">
-              beginning with a free check
-            </span>
-            .
+            Drop the Adobe license and{" "}
+            <span className="text-[var(--sw-blue)]">keep your exact store</span>.
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
-            You do not have to commit to a migration to find out what it costs.
-            Start with the free check, see your store running on Open Source for
-            a fixed fee, then move the whole thing when the numbers make sense.
+            Start with a free check, see your store running on Open Source, then
+            move the whole thing when you&apos;re ready. The move pays for itself
+            within the first year, and saves you the full license every year
+            after.
           </p>
         </Reveal>
 
@@ -87,47 +72,42 @@ export function Offer() {
                     : "border-[var(--sw-black)]/10 bg-white"
                 }`}
               >
-                <div className="label-code text-[var(--sw-black)]/55 mb-4">
-                  {t.unit}
+                <div className="flex items-start justify-between gap-3">
+                  <div className="label-code text-[var(--sw-black)]/55">
+                    {t.option}
+                  </div>
+                  <span className="rounded-[2px] bg-[var(--sw-black)] px-3 py-1.5 font-head text-[13px] font-bold text-white">
+                    {t.price}
+                  </span>
                 </div>
-                <h3 className="font-head text-[var(--sw-black)] text-[22px] md:text-[26px] leading-[1.15]">
+                <h3 className="mt-6 font-head text-[var(--sw-black)] text-[24px] md:text-[28px] leading-[1.15]">
                   {t.name}
                 </h3>
-                <div className="mt-6 pt-5 border-t border-[var(--sw-black)]/10 flex items-baseline gap-3">
-                  <div className="font-head text-[var(--sw-black)] text-[40px] md:text-[48px] leading-none tabular-nums">
-                    {t.price}
-                  </div>
-                </div>
-                <div className="mt-5 text-[var(--sw-black)] font-medium text-[15px] md:text-[16px]">
-                  {t.deliverable}
-                </div>
-                <p className="mt-3 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
-                  {t.pitch}
+                <p className="mt-4 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+                  {t.desc}
                 </p>
-                <ul className="mt-6 pt-5 border-t border-[var(--sw-black)]/10 space-y-2.5 flex-1">
-                  {t.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className="flex items-start gap-2.5 text-[13px] md:text-[14px] text-[var(--sw-black)]/70 leading-relaxed"
-                    >
-                      <span
-                        aria-hidden
-                        className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0"
-                        style={{ background: "var(--sw-blue)" }}
-                      />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                {t.note && (
+                  <p className="mt-3 text-[var(--sw-black)]/50 text-[13px] md:text-[14px] leading-relaxed italic">
+                    {t.note}
+                  </p>
+                )}
+                <div className="mt-auto pt-6 border-t border-[var(--sw-black)]/10">
+                  <div className="label-code text-[var(--sw-black)]/55 mb-2">
+                    what you get
+                  </div>
+                  <p className="text-[var(--sw-black)] font-medium text-[15px] md:text-[16px] leading-relaxed">
+                    {t.youGet}
+                  </p>
+                </div>
                 <a
                   href="#cta"
-                  className={`mt-7 inline-flex items-center justify-center rounded-[2px] border px-5 py-2.5 font-head text-[14px] md:text-[15px] transition ${
+                  className={`mt-6 inline-flex items-center justify-center rounded-[2px] border px-5 py-2.5 font-head text-[14px] md:text-[15px] transition ${
                     t.featured
                       ? "border-[var(--sw-blue)] text-[var(--sw-blue)] hover:bg-[var(--sw-blue)]/5"
                       : "border-[var(--sw-black)]/30 text-[var(--sw-black)] hover:bg-[var(--sw-black)]/5"
                   }`}
                 >
-                  {t.price === "Free" ? "Claim your free check" : "Start here"}
+                  {t.cta}
                 </a>
               </article>
             </Reveal>

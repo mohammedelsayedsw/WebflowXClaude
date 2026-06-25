@@ -9,30 +9,27 @@ import { WEBINAR, SPEAKER, REGISTER_URL, REGISTER_ENABLED } from "./details";
 function HeroBg() {
   return (
     <>
-      {/* Background image */}
+      {/* Brand gradient background — same family as the migration page hero,
+          but with the highlight positions moved so it isn't a 1:1 copy
+          (blue glow → top-right, deep shadow → bottom-left). */}
       <div
-        className="absolute inset-0 -z-20 bg-center bg-cover"
-        style={{
-          backgroundImage: `url(${assetUrl("/webinars/adobe-commerce-to-magento-open-source/hero-bg.png")})`,
-        }}
-      />
-      {/* Darken overlay – flat near-black wash so the image reads as ambience, not subject */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-20"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,13,36,0.78) 0%, rgba(16,19,44,0.82) 50%, rgba(10,13,36,0.92) 100%)",
+            "radial-gradient(900px 620px at 80% 24%, #2a3380 0%, transparent 55%)," +
+            "radial-gradient(800px 580px at 16% 84%, #070a1e 0%, transparent 52%)," +
+            "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
         }}
       />
-      {/* Cool radial tint to keep brand mood */}
+      {/* Soft blurred tint layer — highlights also repositioned vs. the source */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 mix-blend-overlay opacity-70"
+        className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
         style={{
           background:
-            "radial-gradient(900px 620px at 18% 22%, rgba(42,51,128,0.55) 0%, transparent 55%)," +
-            "radial-gradient(800px 580px at 85% 82%, rgba(7,10,30,0.6) 0%, transparent 52%)",
+            "radial-gradient(620px 900px at 74% 60%, rgba(7, 10, 30, 0.85), transparent 60%)," +
+            "radial-gradient(540px 720px at 26% 30%, rgba(63, 74, 175, 0.22), transparent 60%)",
+          filter: "blur(50px)",
         }}
       />
     </>

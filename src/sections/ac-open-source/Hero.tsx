@@ -159,19 +159,17 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[34px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.04] tracking-[-0.015em] max-w-[20ch]">
-                Stop paying the Adobe Commerce license.{" "}
+              <h1 className="font-head text-white text-[40px] sm:text-[52px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-[-0.015em] max-w-[14ch]">
+                Keep your store.{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Move to Magento Open Source.
+                  Drop the Adobe license.
                 </span>
               </h1>
 
-              <p className="mt-6 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[60ch] leading-relaxed">
+              <p className="mt-6 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
                 Magento Open Source is the same platform as Adobe Commerce,
-                without the license. You keep your catalog, checkout, and
-                storefront. The enterprise features you actually use get rebuilt
-                once, not rented every year, and your store stays live the whole
-                time.
+                without the license. Keep your catalog, checkout, and storefront,
+                and rebuild only the enterprise features you actually use.
               </p>
 
               <div className="mt-9 md:mt-10 flex flex-wrap items-center gap-5">

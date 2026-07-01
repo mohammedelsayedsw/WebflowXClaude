@@ -41,13 +41,12 @@ export function HowWeWork() {
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
             Four steps.{" "}
-            <span className="text-[var(--sw-blue)]">No gap in trading</span>. No
-            replatform.
+            <span className="text-[var(--sw-blue)]">Stop after any of them</span>.
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
-            You see the cost before you commit, prove the parity on your own
-            store, then move the whole thing. Each step earns the next one. You
-            can stop after any of them.
+            See the exact cost before you commit. See your own store running on
+            Open Source. Move the whole thing when you are ready. If it stops
+            making sense at any point, you stop, and nothing is locked in.
           </p>
         </Reveal>
 

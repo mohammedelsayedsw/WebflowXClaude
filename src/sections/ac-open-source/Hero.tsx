@@ -75,9 +75,22 @@ function MigrationCheckCard() {
           <span className="font-head text-[15px]">Claim your free check</span>
           <ArrowRight className="h-4 w-4" />
         </a>
-        <p className="label-code text-white/45 mt-4 text-center">
-          We reply in 24 hours
-        </p>
+        <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+          <img
+            src={assetUrl("/magento/adobe-commerce-to-magento-open-source/team/aigars.png")}
+            alt="Aigars Pavlovics"
+            className="h-10 w-10 rounded-full object-cover shrink-0"
+            style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+          />
+          <div>
+            <div className="text-white text-[13px] font-medium">
+              Aigars Pavlovics
+            </div>
+            <div className="label-code text-white/55 mt-0.5">
+              Your migration lead · replies in 24h
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -159,10 +172,10 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[40px] sm:text-[52px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-[-0.015em] max-w-[14ch]">
-                Keep your store.{" "}
+              <h1 className="font-head text-white text-[40px] sm:text-[52px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-[-0.015em] max-w-[15ch]">
+                Keep your store. Drop the license.{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Drop the Adobe license.
+                  Reinvest the savings.
                 </span>
               </h1>
 
@@ -172,26 +185,6 @@ export function Hero() {
                 rebuild only the enterprise features you actually use, and put
                 the license budget back into growth.
               </p>
-
-              <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
-                {[
-                  { v: "+62%", l: "organic revenue, PUMA" },
-                  { v: "+32%", l: "revenue post-migration, Beauty Works" },
-                  { v: "$0", l: "license, from year one" },
-                ].map((s) => (
-                  <div key={s.l} className="flex items-baseline gap-2">
-                    <span
-                      className="font-head text-[22px] md:text-[26px] leading-none"
-                      style={{ color: "var(--sw-mint)" }}
-                    >
-                      {s.v}
-                    </span>
-                    <span className="text-[12px] md:text-[13px] text-white/70 max-w-[16ch] leading-tight">
-                      {s.l}
-                    </span>
-                  </div>
-                ))}
-              </div>
 
               <div className="mt-9 md:mt-10 flex flex-wrap items-center gap-5">
                 <a

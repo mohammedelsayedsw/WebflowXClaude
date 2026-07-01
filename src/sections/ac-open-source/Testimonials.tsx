@@ -1,27 +1,62 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
-type Quote = { quote: string; role: string };
+const base = "/magento/adobe-commerce-to-magento-open-source/team";
+
+type Quote = {
+  quote: string;
+  name: string;
+  title: string;
+  photo?: string;
+};
 
 const lead: Quote = {
   quote:
-    "Partnering with scandiweb's team allowed us to bring a site to market that has 3 to 4 times better performance than any other site in the client's portfolio.",
-  role: "Jason Barney, Technical Consultant, PUMA",
+    "Partnering with scandiweb's team allowed us to bring a site to market that has 3 to 4 times better performance than any other site.",
+  name: "Jason Barney",
+  title: "eCommerce Technology Consultant, PUMA",
+  photo: `${base}/jason-barney.png`,
 };
 
 const quotes: Quote[] = [
   {
     quote:
-      "For almost 10 years scandiweb has partnered with us on complete site redesigns and integrations across our CRM, ERP, and PLM systems, always providing their best and brightest talent to help us reach our strategic goals and drive revenue.",
-    role: "Jonathan Chan, Head of Global IT, Lafayette 148 NY",
+      "Our first Magento migration with another partner failed. scandiweb stepped in, rebuilt the site, and has kept it secure and high-performing ever since. We have worked together for more than ten years and have many ideas and plans for the future.",
+    name: "Jonathan Chan",
+    title: "Head of Global IT, Lafayette 148 NY",
+    photo: `${base}/jonathan-chan.png`,
   },
   {
     quote:
       "I have nothing but praise for the entire scandiweb team. They understood our issues right away, and the dedication to coming up with solutions quickly is admirable.",
-    role: "Niyas Noormohammed, eCommerce Manager, JYSK UAE",
+    name: "Niyas Noormohammed",
+    title: "eCommerce Manager, JYSK UAE",
   },
 ];
+
+function Avatar({ photo, name }: { photo?: string; name: string }) {
+  if (!photo) {
+    return (
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--sw-blue)]/10 font-head text-[15px] text-[var(--sw-blue)]">
+        {name
+          .split(" ")
+          .map((w) => w[0])
+          .slice(0, 2)
+          .join("")}
+      </div>
+    );
+  }
+  return (
+    <img
+      src={assetUrl(photo)}
+      alt={name}
+      className="h-11 w-11 rounded-full object-cover shrink-0"
+      style={{ border: "1px solid rgba(11,12,26,0.12)" }}
+    />
+  );
+}
 
 export function Testimonials() {
   return (
@@ -32,8 +67,8 @@ export function Testimonials() {
             testimonials
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
-            Hear from merchants who moved to{" "}
-            <span className="text-[var(--sw-blue)]">Open Source</span>.
+            The brands who moved{" "}
+            <span className="text-[var(--sw-blue)]">stayed with us</span>.
           </h2>
         </Reveal>
 
@@ -48,21 +83,37 @@ export function Testimonials() {
             <blockquote className="mt-2 max-w-[60ch] font-head text-[var(--sw-black)] text-[22px] md:text-[34px] leading-[1.18]">
               {lead.quote}
             </blockquote>
-            <figcaption className="mt-8 label-code text-[var(--sw-blue)]">
-              {lead.role}
+            <figcaption className="mt-8 flex items-center gap-4">
+              <Avatar photo={lead.photo} name={lead.name} />
+              <div>
+                <div className="font-head text-[var(--sw-black)] text-[16px]">
+                  {lead.name}
+                </div>
+                <div className="label-code text-[var(--sw-black)]/55 mt-0.5">
+                  {lead.title}
+                </div>
+              </div>
             </figcaption>
           </figure>
         </Reveal>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {quotes.map((q, i) => (
-            <Reveal key={q.role} delay={i * 0.08}>
-              <figure className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8">
-                <blockquote className="font-head text-[var(--sw-black)] text-[19px] md:text-[22px] leading-snug">
+            <Reveal key={q.name} delay={i * 0.08}>
+              <figure className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8 flex flex-col">
+                <blockquote className="font-head text-[var(--sw-black)] text-[19px] md:text-[22px] leading-snug flex-1">
                   &ldquo;{q.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 label-code text-[var(--sw-black)]/55">
-                  {q.role}
+                <figcaption className="mt-6 pt-6 border-t border-[var(--sw-black)]/10 flex items-center gap-4">
+                  <Avatar photo={q.photo} name={q.name} />
+                  <div>
+                    <div className="font-head text-[var(--sw-black)] text-[15px]">
+                      {q.name}
+                    </div>
+                    <div className="label-code text-[var(--sw-black)]/55 mt-0.5">
+                      {q.title}
+                    </div>
+                  </div>
                 </figcaption>
               </figure>
             </Reveal>

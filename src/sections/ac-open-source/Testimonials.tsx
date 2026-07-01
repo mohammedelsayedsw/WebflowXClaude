@@ -6,20 +6,20 @@ type Quote = { quote: string; role: string };
 
 const lead: Quote = {
   quote:
-    "We were paying Adobe $90K a year for an edition we'd outgrown. scandiweb moved us to Open Source in weeks, same store, and that $90K funds growth now, not a license.",
-  role: "CFO, mid-market apparel brand",
+    "Partnering with scandiweb's team allowed us to bring a site to market that has 3 to 4 times better performance than any other site in the client's portfolio.",
+  role: "Jason Barney, Technical Consultant, PUMA",
 };
 
 const quotes: Quote[] = [
   {
     quote:
-      "My team swore we'd lose half our features. We didn't. They proved it on a working demo of our own store before we paid a cent.",
-    role: "Head of eCommerce, multi-store retailer",
+      "For almost 10 years scandiweb has partnered with us on complete site redesigns and integrations across our CRM, ERP, and PLM systems, always providing their best and brightest talent to help us reach our strategic goals and drive revenue.",
+    role: "Jonathan Chan, Head of Global IT, Lafayette 148 NY",
   },
   {
     quote:
-      "We set out to just drop the license. We came out faster too, conversion up double digits on Hyvä. Best call we made all year.",
-    role: "Founder, D2C home goods",
+      "I have nothing but praise for the entire scandiweb team. They understood our issues right away, and the dedication to coming up with solutions quickly is admirable.",
+    role: "Niyas Noormohammed, eCommerce Manager, JYSK UAE",
   },
 ];
 

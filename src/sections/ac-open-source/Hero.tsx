@@ -169,8 +169,29 @@ export function Hero() {
               <p className="mt-6 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
                 Magento Open Source is the same platform as Adobe Commerce,
                 without the license. Keep your catalog, checkout, and storefront,
-                and rebuild only the enterprise features you actually use.
+                rebuild only the enterprise features you actually use, and put
+                the license budget back into growth.
               </p>
+
+              <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
+                {[
+                  { v: "+62%", l: "organic revenue, PUMA" },
+                  { v: "+32%", l: "revenue post-migration, Beauty Works" },
+                  { v: "$0", l: "license, from year one" },
+                ].map((s) => (
+                  <div key={s.l} className="flex items-baseline gap-2">
+                    <span
+                      className="font-head text-[22px] md:text-[26px] leading-none"
+                      style={{ color: "var(--sw-mint)" }}
+                    >
+                      {s.v}
+                    </span>
+                    <span className="text-[12px] md:text-[13px] text-white/70 max-w-[16ch] leading-tight">
+                      {s.l}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
               <div className="mt-9 md:mt-10 flex flex-wrap items-center gap-5">
                 <a

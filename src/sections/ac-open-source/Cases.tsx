@@ -6,45 +6,45 @@ type Case = {
   brand: string;
   sector: string;
   scope: string;
-  metric: string;
+  result: string;
 };
 
 const cases: Case[] = [
   {
-    brand: "Läderach",
-    sector: "Swiss luxury chocolate",
-    scope: "134 stores, 6 custom modules",
-    metric: "8 weeks",
-  },
-  {
     brand: "PUMA",
     sector: "Sportswear",
-    scope: "4 markets, multi-store setup",
-    metric: "95 days",
-  },
-  {
-    brand: "Beauty Works",
-    sector: "B2C and B2B beauty",
-    scope: "Custom checkout, B2B suite",
-    metric: "10 weeks",
-  },
-  {
-    brand: "Umniah",
-    sector: "Telecom",
-    scope: "Legacy frontend replaced",
-    metric: "12 weeks",
+    scope: "4 markets live in 95 days",
+    result: "+62% organic revenue YoY, around $3.9M added",
   },
   {
     brand: "Gear-Up",
     sector: "Electronics",
-    scope: "Magento 1 to 2 upgrade",
-    metric: "6 weeks",
+    scope: "Magento 1 to 2, 8-hour cutover",
+    result: "+110.9% revenue YoY, +47.7% orders",
+  },
+  {
+    brand: "Beauty Works",
+    sector: "B2C and B2B beauty",
+    scope: "PWA replatform, 4x faster launches",
+    result: "+32% revenue YoY, +41% sessions",
+  },
+  {
+    brand: "Läderach",
+    sector: "Swiss luxury chocolate",
+    scope: "ERP-integrated, all-green Core Web Vitals",
+    result: "+25.5% revenue, +47.8% AOV",
+  },
+  {
+    brand: "Umniah",
+    sector: "Telecom, Jordan",
+    scope: "Magento and Hyvä rebuild",
+    result: "+71.2% purchase-to-view, +72.1% organic sessions",
   },
   {
     brand: "Byggmax",
-    sector: "DIY retail",
-    scope: "160+ stores, 55k SKUs",
-    metric: "9 weeks",
+    sector: "DIY retail, Nordics",
+    scope: "160+ stores, 55k SKUs, page-by-page Hyvä",
+    result: "PageSpeed 85 to 99, zero checkout downtime",
   },
 ];
 
@@ -68,14 +68,17 @@ export function Cases() {
           <div className="label-code text-white/55 mb-5">
             migrations we have already run
           </div>
-          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
-            The move is{" "}
-            <span style={{ color: "var(--sw-mint)" }}>well-travelled</span>.
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
+            The move is well-travelled.{" "}
+            <span style={{ color: "var(--sw-mint)" }}>
+              Here is what it returned
+            </span>
+            .
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
             Complex catalogs, multi-store estates, B2B and B2C in one stack,
             legacy frontends. The kinds of stores people assume cannot move are
-            the ones we move most.
+            the ones we move most, and here is what they gained.
           </p>
         </Reveal>
 
@@ -93,14 +96,16 @@ export function Cases() {
                   <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
                     {c.brand}
                   </h3>
-                  <span
-                    className="font-head text-[16px] md:text-[18px] leading-none shrink-0"
-                    style={{ color: "var(--sw-mint)" }}
-                  >
-                    {c.metric}
+                  <span className="label-code text-white/55 shrink-0">
+                    {c.sector}
                   </span>
                 </div>
-                <div className="label-code text-white/55 mt-3">{c.sector}</div>
+                <p
+                  className="mt-4 font-head text-[18px] md:text-[20px] leading-snug"
+                  style={{ color: "var(--sw-mint)" }}
+                >
+                  {c.result}
+                </p>
                 <p className="mt-4 pt-4 border-t border-white/10 text-[14px] md:text-[15px] text-white/80 leading-relaxed">
                   {c.scope}
                 </p>

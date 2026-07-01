@@ -17,6 +17,10 @@ const pains: Pain[] = [
     title: "You rent what you could own for free",
     body: "Open Source is the same platform, with no license.",
   },
+  {
+    title: "Every renewal is budget you can't reinvest",
+    body: "That fee could fund the campaigns and launches your competitors already run on open platforms.",
+  },
 ];
 
 export function Problems() {
@@ -34,7 +38,7 @@ export function Problems() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 md:mt-20 grid gap-5 md:gap-6 md:grid-cols-3">
+        <div className="mt-14 md:mt-20 grid gap-5 md:gap-6 sm:grid-cols-2">
           {pains.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.07}>
               <article
@@ -73,8 +77,9 @@ export function Problems() {
                 </div>
               </div>
               <p className="font-head text-white text-[24px] md:text-[32px] leading-snug">
-                The move pays for itself within the first year, and saves you the
-                full license every year after.
+                Every dollar freed from the license is a dollar for growth. The
+                move pays for itself within the first year, and funds what comes
+                next in every year after.
               </p>
             </div>
           </div>

@@ -24,17 +24,17 @@ export function CTA() {
               free check · no commitment
             </div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[20ch]">
-              Start your move.{" "}
+              See what your store could do{" "}
               <span className="text-[var(--sw-mint)]">
-                Same platform, no license fee
+                with the license budget back
               </span>
               .
             </h2>
             <p className="mt-6 text-white/80 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
               Tell us your store and your objective. We come back with a
               migration check: what breaks, what carries over, what it costs,
-              and your license saving in writing. If the move does not make
-              sense for you, we will say so.
+              and the license saving you could put toward growth, in writing. If
+              the move does not make sense for you, we will say so.
             </p>
 
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">

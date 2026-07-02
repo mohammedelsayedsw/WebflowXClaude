@@ -38,17 +38,17 @@ const columns: Column[] = [
     note: "A one-time build, using extension providers or custom-built for your modules. Not a yearly license.",
   },
   {
-    tag: "worth adding",
-    title: "Worth adding along the way",
+    tag: "what you unlock",
+    title: "Worth unlocking, not just saving",
     accent: "optional",
     items: [
-      "A mobile-first redesign to increase conversions",
-      "A smoother checkout to cut bounce rates",
-      "100% Core Web Vitals",
-      "Move to a Hyvä theme and redesign your storefront",
-      "Start leading in AI search",
+      "A mobile-first redesign that lifts conversion",
+      "A faster checkout that recovers lost carts",
+      "All-green Core Web Vitals",
+      "A Hyvä storefront your team controls",
+      "Visibility in AI search, on your own data",
     ],
-    note: "While we are already in there. Small extra cost, real revenue upside.",
+    note: "These are not upsells. They are the growth the freed license budget pays for.",
   },
 ];
 

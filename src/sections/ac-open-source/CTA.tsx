@@ -3,6 +3,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { TrustLogos } from "@/sections/ac-open-source/TrustLogos";
 import { assetUrl } from "@/lib/assets";
 
 export function CTA() {
@@ -87,6 +88,10 @@ export function CTA() {
             </p>
           </Reveal>
         </div>
+      </div>
+
+      <div className="mt-16 md:mt-24">
+        <TrustLogos />
       </div>
     </section>
   );

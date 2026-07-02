@@ -1,7 +1,6 @@
 "use client";
 
 import { Hero } from "@/sections/ac-open-source/Hero";
-import { MigratedBrands } from "@/sections/ac-open-source/MigratedBrands";
 import { Offer } from "@/sections/ac-open-source/Offer";
 import { Problems } from "@/sections/ac-open-source/Problems";
 import { WhatChanges } from "@/sections/ac-open-source/WhatChanges";
@@ -16,7 +15,6 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <MigratedBrands />
       <Problems />
       <Offer />
       <WhatChanges />

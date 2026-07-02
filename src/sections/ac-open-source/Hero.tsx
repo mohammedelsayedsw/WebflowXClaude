@@ -80,15 +80,15 @@ function MigrationCheckCard() {
           <img
             src={assetUrl("/magento/adobe-commerce-to-magento-open-source/team/aigars.png")}
             alt="Aigars Pavlovics"
-            className="h-10 w-10 rounded-full object-cover shrink-0"
+            className="h-12 w-12 rounded-full object-cover shrink-0"
             style={{ border: "1px solid rgba(230,231,239,0.2)" }}
           />
           <div>
-            <div className="text-white text-[13px] font-medium">
+            <div className="text-white text-[14px] font-medium">
               Aigars Pavlovics
             </div>
             <div className="label-code text-white/55 mt-0.5">
-              Your migration lead · replies in 24h
+              Co-Founder, scandiweb
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@ export function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[40px] sm:text-[52px] md:text-[64px] lg:text-[76px] leading-[1.02] tracking-[-0.015em] max-w-[15ch]">
+              <h1 className="font-head text-white text-[32px] sm:text-[40px] md:text-[50px] lg:text-[58px] leading-[1.05] tracking-[-0.015em] max-w-[16ch]">
                 Keep your store. Drop the license.{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
                   Reinvest the savings.

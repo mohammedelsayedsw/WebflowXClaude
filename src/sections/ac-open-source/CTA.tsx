@@ -10,7 +10,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative py-28 md:py-40 overflow-hidden"
+      className="relative pt-28 md:pt-40 pb-10 md:pb-12 overflow-hidden"
       style={{
         background:
           "radial-gradient(900px 600px at 20% 20%, #2a3380 0%, transparent 55%)," +
@@ -46,17 +46,17 @@ export function CTA() {
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
                 <img
-                  src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+                  src={assetUrl("/magento/adobe-commerce-to-magento-open-source/team/aigars.png")}
                   alt="Aigars Pavlovics"
-                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                  className="h-14 w-14 rounded-full object-cover shrink-0"
                   style={{ border: "1px solid rgba(230,231,239,0.2)" }}
                 />
                 <div>
-                  <div className="text-white text-[14px] font-medium">
+                  <div className="text-white text-[15px] font-medium">
                     Aigars Pavlovics
                   </div>
                   <div className="label-code text-white/55 mt-0.5">
-                    Executive Board · scandiweb
+                    Co-Founder, scandiweb
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export function CTA() {
         </div>
       </div>
 
-      <div className="mt-16 md:mt-24">
+      <div className="mt-12 md:mt-16">
         <TrustLogos />
       </div>
     </section>

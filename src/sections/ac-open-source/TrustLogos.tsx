@@ -13,14 +13,8 @@ export function TrustLogos() {
   ];
   const loop = [...logos, ...logos];
   return (
-    <div
-      className="relative z-10"
-      style={{
-        background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,0.55) 100%)",
-        borderTop: "1px solid rgba(255,255,255,0.12)",
-      }}
-    >
-      <div className="wrap py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+    <div className="relative z-10">
+      <div className="wrap py-3 md:py-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
         <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
           Trusted by 700+ leading brands worldwide
         </div>

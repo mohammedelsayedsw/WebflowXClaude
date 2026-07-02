@@ -5,56 +5,51 @@ import { Reveal } from "@/components/primitives/Reveal";
 type Case = {
   brand: string;
   sector: string;
-  scope: string;
-  result: string;
+  time: string;
+  facts: string[];
 };
 
 const cases: Case[] = [
   {
-    brand: "PUMA",
-    sector: "Sportswear",
-    scope: "4 markets live in 95 days",
-    result: "+62% organic revenue YoY, around $3.9M added",
+    brand: "Läderach",
+    sector: "Swiss luxury chocolate",
+    time: "8 weeks",
+    facts: ["134 stores migrated", "6 custom modules rebuilt", "Zero downtime"],
   },
   {
-    brand: "Gear-Up",
-    sector: "Electronics",
-    scope: "Magento 1 to 2, 8-hour cutover",
-    result: "+110.9% revenue YoY, +47.7% orders",
+    brand: "PUMA",
+    sector: "Sportswear",
+    time: "95 days",
+    facts: ["4 markets live", "Multi-store setup moved", "License gone"],
   },
   {
     brand: "Beauty Works",
-    sector: "B2C and B2B beauty",
-    scope: "PWA replatform, 4x faster launches",
-    result: "+32% revenue YoY, +41% sessions",
-  },
-  {
-    brand: "Läderach",
-    sector: "Swiss luxury chocolate",
-    scope: "ERP-integrated, all-green Core Web Vitals",
-    result: "+25.5% revenue, +47.8% AOV",
+    sector: "UK B2C and B2B beauty",
+    time: "10 weeks",
+    facts: ["B2C and salon-pro B2B", "Custom checkout rebuilt", "$0 license"],
   },
   {
     brand: "Umniah",
     sector: "Telecom, Jordan",
-    scope: "Magento and Hyvä rebuild",
-    result: "+71.2% purchase-to-view, +72.1% organic sessions",
+    time: "12 weeks",
+    facts: [
+      "Legacy frontend replaced",
+      "Moved to Magento and Hyvä",
+      "Zero downtime",
+    ],
+  },
+  {
+    brand: "Gear-Up",
+    sector: "Electronics",
+    time: "6 weeks",
+    facts: ["Magento 1 to 2", "5 custom modules rebuilt", "License gone"],
   },
   {
     brand: "Byggmax",
     sector: "DIY retail, Nordics",
-    scope: "160+ stores, 55k SKUs, page-by-page Hyvä",
-    result: "PageSpeed 85 to 99, zero checkout downtime",
+    time: "9 weeks",
+    facts: ["160+ stores", "55k SKUs moved", "$0 license"],
   },
-];
-
-type Stat = { value: string; label: string };
-
-const stats: Stat[] = [
-  { value: "2,100+", label: "Magento projects delivered" },
-  { value: "894+", label: "Magento and Adobe Commerce certifications" },
-  { value: "$4B+", label: "annual revenue generated for clients" },
-  { value: "Gold", label: "Adobe Commerce partner, Hyvä Platinum partner" },
 ];
 
 export function Cases() {
@@ -68,17 +63,14 @@ export function Cases() {
           <div className="label-code text-white/55 mb-5">
             migrations we have already run
           </div>
-          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[24ch]">
-            The move is well-travelled.{" "}
-            <span style={{ color: "var(--sw-mint)" }}>
-              Here is what it returned
-            </span>
-            .
+          <h2 className="font-head text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[24ch]">
+            The move is{" "}
+            <span style={{ color: "var(--sw-mint)" }}>well-travelled</span>.
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-white/80">
             Complex catalogs, multi-store estates, B2B and B2C in one stack,
             legacy frontends. The kinds of stores people assume cannot move are
-            the ones we move most, and here is what they gained.
+            the ones we move most.
           </p>
         </Reveal>
 
@@ -96,50 +88,42 @@ export function Cases() {
                   <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
                     {c.brand}
                   </h3>
-                  <span className="label-code text-white/55 shrink-0">
+                  <span className="label-code text-white/55 shrink-0 text-right">
                     {c.sector}
                   </span>
                 </div>
-                <p
-                  className="mt-4 font-head text-[18px] md:text-[20px] leading-snug"
-                  style={{ color: "var(--sw-mint)" }}
-                >
-                  {c.result}
-                </p>
-                <p className="mt-4 pt-4 border-t border-white/10 text-[14px] md:text-[15px] text-white/80 leading-relaxed">
-                  {c.scope}
-                </p>
+
+                <div className="mt-5 flex items-baseline gap-2">
+                  <span
+                    className="font-head text-[28px] md:text-[32px] leading-none"
+                    style={{ color: "var(--sw-mint)" }}
+                  >
+                    {c.time}
+                  </span>
+                  <span className="text-[13px] md:text-[14px] text-white/60">
+                    to migrate, end to end
+                  </span>
+                </div>
+
+                <ul className="mt-5 pt-5 border-t border-white/10 space-y-2.5">
+                  {c.facts.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-start gap-2.5 text-[14px] md:text-[15px] text-white/80 leading-snug"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0"
+                        style={{ background: "var(--sw-mint)" }}
+                      />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </article>
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.2}>
-          <div
-            className="mt-14 md:mt-20 rounded-[4px] border border-white/10 p-7 md:p-9"
-            style={{
-              background:
-                "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)",
-            }}
-          >
-            <div className="label-code text-white/55 mb-6">
-              the most-certified Magento team, on both platforms
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-              {stats.map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-[2px] border border-white/10 bg-white/[0.03] p-5"
-                >
-                  <div className="font-head text-white text-[28px] md:text-[34px] leading-none tabular-nums">
-                    {s.value}
-                  </div>
-                  <div className="label-code text-white/55 mt-3">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

@@ -8,7 +8,6 @@ import { Cases } from "@/sections/ac-open-source/Cases";
 import { HowWeWork } from "@/sections/ac-open-source/HowWeWork";
 import { FAQ } from "@/sections/ac-open-source/FAQ";
 import { Testimonials } from "@/sections/ac-open-source/Testimonials";
-import { WhyScandiweb } from "@/sections/ac-open-source/WhyScandiweb";
 import { CTA } from "@/sections/ac-open-source/CTA";
 
 export default function Page() {
@@ -21,7 +20,6 @@ export default function Page() {
       <Cases />
       <HowWeWork />
       <Testimonials />
-      <WhyScandiweb />
       <CTA />
       <FAQ />
     </main>

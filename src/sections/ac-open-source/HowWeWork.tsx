@@ -39,14 +39,14 @@ export function HowWeWork() {
           <div className="label-code text-[var(--sw-black)]/55 mb-5">
             how the move actually runs
           </div>
-          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[22ch]">
-            Four steps.{" "}
-            <span className="text-[var(--sw-blue)]">Stop after any of them</span>.
+          <h2 className="font-head text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[24ch]">
+            The whole move runs in{" "}
+            <span className="text-[var(--sw-blue)]">four steps</span>.
           </h2>
           <p className="mt-7 max-w-[64ch] text-[15px] md:text-[17px] leading-relaxed text-[var(--sw-black)]/70">
-            See the exact cost before you commit. See your own store running on
-            Open Source. Move the whole thing when you are ready. If it stops
-            making sense at any point, you stop, and nothing is locked in.
+            You start with a free check, see your own store running on Open
+            Source, then migrate everything when you are ready. Every step is
+            optional, so you only continue when it makes sense to.
           </p>
         </Reveal>
 

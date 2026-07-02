@@ -33,6 +33,7 @@ const quotes: Quote[] = [
       "scandiweb helped us understand and implement our eCommerce platform on Magento. They repeatedly went above and beyond on design and process decisions, and I would not hesitate to recommend them to any organization that wants an eCommerce solution done quickly and correctly.",
     name: "Erik Klepper",
     title: "Head of News Agency Applications, Thomson Reuters",
+    photo: `${base}/erik-klepper.jpg`,
   },
 ];
 

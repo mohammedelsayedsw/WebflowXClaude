@@ -30,9 +30,9 @@ const quotes: Quote[] = [
   },
   {
     quote:
-      "I have nothing but praise for the entire scandiweb team. They understood our issues right away, and the dedication to coming up with solutions quickly is admirable.",
-    name: "Niyas Noormohammed",
-    title: "eCommerce Manager, JYSK UAE",
+      "scandiweb helped us understand and implement our eCommerce platform on Magento. They repeatedly went above and beyond on design and process decisions, and I would not hesitate to recommend them to any organization that wants an eCommerce solution done quickly and correctly.",
+    name: "Erik Klepper",
+    title: "Head of News Agency Applications, Thomson Reuters",
   },
 ];
 

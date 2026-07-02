@@ -1,9 +1,13 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
+
+const logoBase = "/magento/adobe-commerce-to-magento-open-source/logos/cases";
 
 type Case = {
   brand: string;
+  logo: string;
   sector: string;
   time: string;
   facts: string[];
@@ -12,24 +16,28 @@ type Case = {
 const cases: Case[] = [
   {
     brand: "Läderach",
+    logo: "laderach.svg",
     sector: "Swiss luxury chocolate",
     time: "8 weeks",
     facts: ["134 stores migrated", "6 custom modules rebuilt", "Zero downtime"],
   },
   {
     brand: "PUMA",
+    logo: "puma.svg",
     sector: "Sportswear",
     time: "95 days",
     facts: ["4 markets live", "Multi-store setup moved", "License gone"],
   },
   {
     brand: "Beauty Works",
+    logo: "beauty-works.svg",
     sector: "UK B2C and B2B beauty",
     time: "10 weeks",
     facts: ["B2C and salon-pro B2B", "Custom checkout rebuilt", "$0 license"],
   },
   {
     brand: "Umniah",
+    logo: "umniah.svg",
     sector: "Telecom, Jordan",
     time: "12 weeks",
     facts: [
@@ -40,12 +48,14 @@ const cases: Case[] = [
   },
   {
     brand: "Gear-Up",
+    logo: "gear-up.svg",
     sector: "Electronics",
     time: "6 weeks",
     facts: ["Magento 1 to 2", "5 custom modules rebuilt", "License gone"],
   },
   {
     brand: "Byggmax",
+    logo: "byggmax.svg",
     sector: "DIY retail, Nordics",
     time: "9 weeks",
     facts: ["160+ stores", "55k SKUs moved", "$0 license"],
@@ -84,10 +94,13 @@ export function Cases() {
                     "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.55)",
                 }}
               >
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
-                    {c.brand}
-                  </h3>
+                <div className="flex items-center justify-between gap-3">
+                  <img
+                    src={assetUrl(`${logoBase}/${c.logo}`)}
+                    alt={c.brand}
+                    className="h-6 md:h-7 w-auto max-w-[130px] object-contain"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                  />
                   <span className="label-code text-white/55 shrink-0 text-right">
                     {c.sector}
                   </span>

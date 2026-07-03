@@ -115,17 +115,17 @@ export function Hero() {
               </div>
 
               <h1 className="font-head text-white text-[28px] sm:text-[40px] md:text-[50px] lg:text-[56px] leading-[1.05] tracking-[-0.015em] max-w-[18ch]">
-                One flaw. Log in as any customer.{" "}
+                Find your store&apos;s exposures{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  31,000 records exposed.
+                  before an attacker does.
                 </span>
               </h1>
 
               <p className="hidden sm:block mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[56ch] leading-relaxed">
-                That is not a worst case. It is a single missed patch on a live
-                Magento store. We find the exposures an attacker would use
-                first, then hand you exactly what to fix, before it becomes a
-                breach and a fine.
+                Every eCommerce store carries risk it cannot see: account
+                takeover, exposed customer data, unpatched flaws. We test yours
+                the way a real attacker would, then hand you exactly what to fix,
+                before it becomes a breach and a fine.
               </p>
 
               <div className="mt-9 md:mt-10 hidden lg:flex flex-wrap items-center gap-5">

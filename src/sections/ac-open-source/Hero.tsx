@@ -45,18 +45,18 @@ function MigrationCheckCard() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      <div className="p-7 md:p-8">
+      <div className="p-6 md:p-8">
         <span className="inline-block rounded-[2px] bg-[var(--sw-mint)] px-3 py-1 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sw-black)]">
           First step, no commitment
         </span>
-        <h2 className="mt-5 font-head text-white text-[34px] md:text-[40px] leading-[1.05]">
+        <h2 className="mt-4 md:mt-5 font-head text-white text-[30px] md:text-[40px] leading-[1.05]">
           <span style={{ color: "var(--sw-mint)" }}>$0</span> migration check
         </h2>
-        <p className="mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
+        <p className="mt-3 md:mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
           See exactly what moving to Open Source takes for your store, before
           you commit anything.
         </p>
-        <ul className="mt-6 space-y-3">
+        <ul className="mt-5 md:mt-6 space-y-3">
           {bullets.map((b) => (
             <li
               key={b}
@@ -104,7 +104,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-24 md:pt-28 pb-12 md:pb-16 w-full">
-          <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+          <div className="grid gap-7 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
               <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-7 md:mb-9">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
@@ -119,14 +119,17 @@ export function Hero() {
                 </span>
               </h1>
 
-              <p className="mt-6 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
+              <p className="mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
                 Magento Open Source is the same platform as Adobe Commerce,
-                without the license. Keep your catalog, checkout, and storefront,
-                rebuild only the enterprise features you actually use, and put
-                the license budget back into growth.
+                without the license.{" "}
+                <span className="hidden sm:inline">
+                  Keep your catalog, checkout, and storefront, rebuild only the
+                  enterprise features you actually use, and put the license
+                  budget back into growth.
+                </span>
               </p>
 
-              <div className="mt-9 md:mt-10 flex flex-wrap items-center gap-5">
+              <div className="mt-9 md:mt-10 hidden lg:flex flex-wrap items-center gap-5">
                 <a
                   href="#offer"
                   className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--sw-mint)] px-6 py-3 text-white hover:bg-[var(--sw-mint)]/10 transition"
@@ -145,7 +148,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="hidden lg:block">
+            <div className="mt-2 lg:mt-0">
               <MigrationCheckCard />
             </div>
           </div>

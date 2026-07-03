@@ -51,7 +51,7 @@ function EstimateCard() {
         <span className="inline-block rounded-[2px] bg-[var(--sw-mint)] px-3 py-1 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sw-black)]">
           Free, no commitment
         </span>
-        <h2 className="mt-4 md:mt-5 font-head text-white text-[28px] md:text-[36px] leading-[1.08]">
+        <h2 className="mt-4 md:mt-5 font-head text-white text-[24px] md:text-[36px] leading-[1.08]">
           Free upgrade <span style={{ color: "var(--sw-mint)" }}>estimate</span>
         </h2>
         <p className="mt-3 md:mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
@@ -104,28 +104,26 @@ export function Hero() {
     <section className="relative overflow-hidden min-h-[100svh] flex flex-col">
       <HeroBg />
 
-      <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-24 md:pt-28 pb-12 md:pb-16 w-full">
-          <div className="grid gap-7 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <div className="flex-1 flex items-start lg:items-center">
+        <div className="wrap relative z-10 pt-20 md:pt-28 pb-12 md:pb-16 w-full">
+          <div className="grid gap-6 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
-              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-7 md:mb-9">
+              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-5 md:mb-9">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                   Magento / Adobe Commerce upgrade
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[32px] sm:text-[40px] md:text-[50px] lg:text-[58px] leading-[1.05] tracking-[-0.015em] max-w-[16ch]">
+              <h1 className="font-head text-white text-[28px] sm:text-[40px] md:text-[50px] lg:text-[58px] leading-[1.05] tracking-[-0.015em] max-w-[16ch]">
                 Fixed-price Magento upgrade,{" "}
                 <span style={{ color: "var(--sw-mint)" }}>from $990.</span>
               </h1>
 
-              <p className="mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[54ch] leading-relaxed">
+              <p className="hidden sm:block mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[54ch] leading-relaxed">
                 Senior Magento engineers and AI-assisted analysis upgrade your
-                store on a locked scope and timeline.{" "}
-                <span className="hidden sm:inline">
-                  Start with a free estimate that gives you your exact fixed
-                  price in 48 hours, no live changes, no admin access.
-                </span>
+                store on a locked scope and timeline. Start with a free estimate
+                that gives you your exact fixed price in 48 hours, no live
+                changes, no admin access.
               </p>
 
               <div className="mt-9 md:mt-10 hidden lg:flex flex-wrap items-center gap-5">

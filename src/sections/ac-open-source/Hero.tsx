@@ -49,7 +49,7 @@ function MigrationCheckCard() {
         <span className="inline-block rounded-[2px] bg-[var(--sw-mint)] px-3 py-1 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--sw-black)]">
           First step, no commitment
         </span>
-        <h2 className="mt-4 md:mt-5 font-head text-white text-[30px] md:text-[40px] leading-[1.05]">
+        <h2 className="mt-4 md:mt-5 font-head text-white text-[26px] md:text-[40px] leading-[1.05]">
           <span style={{ color: "var(--sw-mint)" }}>$0</span> migration check
         </h2>
         <p className="mt-3 md:mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
@@ -102,31 +102,28 @@ export function Hero() {
     <section className="relative overflow-hidden min-h-[100svh] flex flex-col">
       <HeroBg />
 
-      <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-24 md:pt-28 pb-12 md:pb-16 w-full">
-          <div className="grid gap-7 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <div className="flex-1 flex items-start lg:items-center">
+        <div className="wrap relative z-10 pt-20 md:pt-28 pb-12 md:pb-16 w-full">
+          <div className="grid gap-6 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
-              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-7 md:mb-9">
+              <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-5 md:mb-9">
                 <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
                   Adobe Commerce to Magento Open Source
                 </span>
               </div>
 
-              <h1 className="font-head text-white text-[32px] sm:text-[40px] md:text-[50px] lg:text-[58px] leading-[1.05] tracking-[-0.015em] max-w-[16ch]">
+              <h1 className="font-head text-white text-[28px] sm:text-[40px] md:text-[50px] lg:text-[58px] leading-[1.05] tracking-[-0.015em] max-w-[16ch]">
                 Keep your store. Drop the license.{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
                   Reinvest the savings.
                 </span>
               </h1>
 
-              <p className="mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
+              <p className="hidden sm:block mt-5 md:mt-7 text-[16px] md:text-[18px] text-white/85 max-w-[52ch] leading-relaxed">
                 Magento Open Source is the same platform as Adobe Commerce,
-                without the license.{" "}
-                <span className="hidden sm:inline">
-                  Keep your catalog, checkout, and storefront, rebuild only the
-                  enterprise features you actually use, and put the license
-                  budget back into growth.
-                </span>
+                without the license. Keep your catalog, checkout, and storefront,
+                rebuild only the enterprise features you actually use, and put
+                the license budget back into growth.
               </p>
 
               <div className="mt-9 md:mt-10 hidden lg:flex flex-wrap items-center gap-5">

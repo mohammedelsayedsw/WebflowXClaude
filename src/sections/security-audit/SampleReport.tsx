@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SevBadge } from "@/sections/security-audit/severity";
 
 export function SampleReport() {
   return (
@@ -46,9 +47,7 @@ export function SampleReport() {
                 <span className="label-code text-white/55">
                   Finding 01 of 14
                 </span>
-                <span className="rounded-[2px] bg-[#e04f4f] px-3 py-1 font-head text-[11px] font-bold uppercase tracking-[0.1em] text-white">
-                  Critical
-                </span>
+                <SevBadge level="critical" />
               </div>
               <div className="p-6 md:p-8">
                 <h3 className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">

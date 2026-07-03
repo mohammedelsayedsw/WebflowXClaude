@@ -1,21 +1,25 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { SevBadge, type Sev } from "@/sections/security-audit/severity";
 
-type Threat = { title: string; body: string; stat: string };
+type Threat = { level: Sev; title: string; body: string; stat: string };
 
 const threats: Threat[] = [
   {
+    level: "critical",
     title: "Account takeover",
     body: "A single unpatched flaw can let an attacker log in as any customer through the store API, then read orders, addresses, and personal data at will.",
     stat: "62% of Magento stores were still exposed six weeks after the last critical fix shipped",
   },
   {
+    level: "high",
     title: "Card skimming",
     body: "Injected JavaScript quietly reads card numbers and personal details at checkout and sends them to attackers. The store looks and works normally.",
     stat: "Skimming campaigns often run for months on a live checkout before anyone notices",
   },
   {
+    level: "high",
     title: "Broken access control",
     body: "When one customer can reach another customer's orders and data by changing a value in a request. Invisible in normal use, until someone scripts it across the whole database.",
     stat: "Customer PII is the most-stolen data type, involved in 53% of breaches",
@@ -45,6 +49,9 @@ export function Exposure() {
           {threats.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.07}>
               <article className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8 flex flex-col">
+                <div className="mb-4">
+                  <SevBadge level={t.level} />
+                </div>
                 <h3 className="font-head text-[var(--sw-black)] text-[22px] md:text-[26px] leading-[1.15]">
                   {t.title}
                 </h3>

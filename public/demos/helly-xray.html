@@ -5,158 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Helly Hansen · Store X-ray by scandiweb</title>
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#070a1a;--ground-2:#0b1030;--panel:#111634;--panel-2:#161d44;--panel-3:#0d1330;
-    --line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.15);
-    --ink:#edeff8;--muted:#969cc4;--faint:#646aa0;
-    --mint:#5ef08f;--blue:#6f7bf5;--crit:#f0555a;--warn:#f2a24f;--hh-red:#e1000f;
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+    --ground:#06070f;--ground-2:#0a0c1c;--panel:#10132c;--panel-2:#141834;--panel-3:#0e1128;
+    --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
+    --ink:#eef0f8;--muted:#9298bd;--faint:#5a6094;
+    --mint:#5ef08f;--blue:#5b6ef5;--crit:#f0555a;--warn:#f2a24f;--hh-red:#e1000f;
+    --head:"Golos Text",-apple-system,system-ui,sans-serif;
+    --sans:"Inter",-apple-system,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   }
-  *{box-sizing:border-box}html,body{margin:0;scroll-behavior:smooth}
-  body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .x{background:radial-gradient(1200px 720px at 12% -8%,rgba(111,123,245,.13),transparent 55%),radial-gradient(1000px 640px at 100% 4%,rgba(94,240,143,.07),transparent 55%),linear-gradient(180deg,var(--ground),var(--ground-2))}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .x{background:radial-gradient(1200px 720px at 12% -8%,rgba(91,110,245,.14),transparent 55%),radial-gradient(1000px 640px at 100% 3%,rgba(94,240,143,.07),transparent 55%),linear-gradient(180deg,var(--ground),var(--ground-2))}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(18px,4vw,34px)}
   .mono{font-family:var(--mono)}.tnum{font-variant-numeric:tabular-nums}
-  h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.022em;text-wrap:balance}
-  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  h1,h2,h3,h4{margin:0;font-family:var(--head);font-weight:800;letter-spacing:-.02em;text-wrap:balance;line-height:1.05}
   .accent{color:var(--mint)}a{color:inherit}
+  .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
   /* nav */
-  .nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:8px;padding:11px 22px;border-bottom:1px solid var(--line);background:rgba(7,10,26,.92);backdrop-filter:blur(9px);overflow-x:auto}
-  .nav .brand{font-weight:800;font-size:14px;white-space:nowrap}.nav .brand b{color:var(--mint)}
+  .nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:6px;padding:12px clamp(18px,4vw,34px);border-bottom:1px solid var(--line);background:rgba(6,7,15,.9);backdrop-filter:blur(10px)}
+  .nav .brand{font-family:var(--head);font-weight:800;font-size:15px;white-space:nowrap}.nav .brand b{color:var(--mint)}
   .nav .sp{flex:1}
-  .nav a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:5px 9px;border-radius:4px;text-decoration:none}
-  .nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
-  .nav a.g{color:var(--mint)}
-  @media(max-width:760px){.nav .hideM{display:none}}
+  .nav a{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:6px 10px;border-radius:2px;text-decoration:none}
+  .nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}.nav a.g{color:var(--mint)}
+  @media(max-width:820px){.nav a.hm{display:none}}
 
-  /* hero */
-  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-  .hero .bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,26,.98) 36%,rgba(7,10,26,.55)),url(assets/hero.jpg) center 30%/cover;opacity:.4}
-  #rain{position:absolute;inset:0;width:100%;height:100%;opacity:.38;pointer-events:none}
-  .hero .wrap{position:relative;z-index:2;padding:60px 22px 44px}
-  .hero .kick{font-family:var(--mono);color:var(--mint);font-size:12.5px}
-  .hero h1{font-size:clamp(32px,5.7vw,66px);line-height:1.0;margin-top:16px;max-width:17ch}
+  /* hero full viewport */
+  .hero{position:relative;overflow:hidden;min-height:calc(100svh - 49px);display:flex;align-items:center;border-bottom:1px solid var(--line)}
+  .hero .bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,7,15,.98) 30%,rgba(6,7,15,.5)),url(assets/hero.jpg) center 34%/cover;opacity:.44}
+  #rain{position:absolute;inset:0;width:100%;height:100%;opacity:.4;pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;padding-top:40px;padding-bottom:40px;width:100%}
+  .hero h1{font-size:clamp(38px,7vw,84px);font-weight:900;max-width:16ch}
   .hero h1 .big{color:var(--mint)}
-  .hero .sub{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:56ch;margin-top:18px}
-  .hero .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--faint)}.hero .meta b{color:var(--ink)}
+  .hero .sub{color:var(--muted);font-size:clamp(16px,2.1vw,21px);max-width:58ch;margin-top:24px}.hero .sub b{color:var(--ink);font-weight:600}
+  .hero .meta{display:flex;gap:clamp(16px,3vw,30px);flex-wrap:wrap;margin-top:34px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}.hero .meta b{color:var(--ink);font-weight:500}
+  .hero .cue{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.14em}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
-  .stat{background:var(--ground-2);padding:22px}
-  .stat .v{font-size:clamp(22px,3vw,32px);font-weight:800}.stat .v.g{color:var(--mint)}
-  .stat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+  .stat{background:var(--ground-2);padding:clamp(18px,3vw,28px)}
+  .stat .v{font-family:var(--head);font-size:clamp(24px,3.4vw,38px);font-weight:900}.stat .v.g{color:var(--mint)}
+  .stat .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:8px}
   @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
 
-  section{padding:56px 0;border-bottom:1px solid var(--line)}
-  .sh h2{font-size:clamp(23px,3.2vw,34px);margin-top:8px}
-  .lead{color:var(--muted);max-width:74ch;margin-top:11px;font-size:15px}
+  section{padding:clamp(48px,7vw,80px) 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(26px,3.8vw,44px);font-weight:900}
+  .lead{color:var(--muted);max-width:72ch;margin-top:14px;font-size:clamp(15px,1.7vw,17px)}
 
-  /* diagnosis split */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+  /* real metrics strip */
+  .real{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+  @media(max-width:720px){.real{grid-template-columns:repeat(2,1fr)}}
+  .rm{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:18px}
+  .rm .v{font-family:var(--head);font-size:26px;font-weight:800}.rm .k{font-family:var(--mono);font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em;margin-top:6px}
+  .rm .s{font-size:11px;color:var(--muted);margin-top:4px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
   @media(max-width:780px){.split{grid-template-columns:1fr}}
-  .card{background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,0) 60%),var(--panel);border:1px solid var(--line);border-radius:9px;padding:20px}
-  .card h4{font-size:15px;margin-bottom:8px}
-  .card .kv{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}.card .kv:last-child{border-bottom:none}.card .kv b{font-family:var(--mono)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:22px}
+  .card h4{font-family:var(--head);font-size:17px;margin-bottom:10px}
+  .card .kv{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.card .kv:last-child{border-bottom:none}.card .kv b{font-family:var(--mono)}
   .win{color:var(--mint)}.lose{color:var(--crit)}
 
   /* TABS */
-  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:26px;position:sticky;top:47px;z-index:20;background:linear-gradient(180deg,var(--ground) 60%,transparent);padding:10px 0}
-  .tab{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:8px 13px;cursor:pointer;white-space:nowrap}
-  .tab .c{color:var(--faint);margin-left:5px}
-  .tab.on{color:var(--ground);background:var(--mint);border-color:var(--mint);font-weight:700}
-  .tab.on .c{color:rgba(7,10,26,.6)}
-  .panel{display:none;flex-direction:column;gap:14px;margin-top:16px}
-  .panel.on{display:flex}
+  .tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:30px;position:sticky;top:49px;z-index:30;background:linear-gradient(180deg,var(--ground) 62%,transparent);padding:12px 0}
+  .tab{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:10px 15px;cursor:pointer;white-space:nowrap}
+  .tab .c{color:var(--faint);margin-left:6px}
+  .tab.on{color:var(--ground);background:var(--mint);border-color:var(--mint);font-weight:700}.tab.on .c{color:rgba(6,7,15,.55)}
+  .panel{display:none;flex-direction:column;gap:22px;margin-top:20px}.panel.on{display:flex}
 
-  /* example card */
-  .ex{background:var(--panel-3);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-  .ex-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .ex-num{font-family:var(--mono);font-size:12px;color:var(--faint);font-weight:700}
-  .ex-t{font-size:15px;font-weight:700}
-  .ex-cap{color:var(--muted);font-size:12.5px;margin-left:2px}
-  .ex-lift{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--mint);border:1px solid rgba(94,240,143,.4);border-radius:4px;padding:3px 9px;white-space:nowrap}
-  .ex-ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media(max-width:640px){.ex-ba{grid-template-columns:1fr}}
-  .snap{position:relative;background:#fff;color:#10233b;border-radius:8px;padding:15px;min-height:132px;border:1px solid rgba(0,0,0,.05);overflow:hidden;font-size:12.5px}
-  .snap.dark{background:#0c1a2b;color:#e8eef7;border-color:rgba(255,255,255,.08)}
-  .snap.after{box-shadow:0 0 0 1.5px rgba(94,240,143,.5)}
-  .snap .flag{position:absolute;top:9px;right:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#9aa7b8}
-  .snap.after .flag{color:#2ba55d}
-  .snap.img{background:url(assets/hero.jpg) center 32%/cover;color:#fff;padding:0;display:flex;flex-direction:column;justify-content:flex-end}
-  .snap.imgp{background:url(assets/pdp.jpg) center 20%/cover}
-  .snap .ov{background:linear-gradient(180deg,rgba(6,14,26,.15),rgba(6,14,26,.78));padding:14px;display:flex;flex-direction:column;gap:5px}
+  /* example — BIG */
+  .ex{background:var(--panel-3);border:1px solid var(--line);border-radius:6px;padding:clamp(18px,2.5vw,26px)}
+  .ex-top{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .ex-num{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:700}
+  .ex-t{font-family:var(--head);font-size:clamp(17px,2vw,21px);font-weight:800}
+  .ex-cap{color:var(--muted);font-size:14px}
+  .ex-lift{margin-left:auto;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--mint);border:1px solid rgba(94,240,143,.4);border-radius:3px;padding:4px 11px;white-space:nowrap}
+  .ex-ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.ex-ba{grid-template-columns:1fr}}
+  .snap{position:relative;background:#fff;color:#0d1f33;border-radius:5px;padding:20px;min-height:230px;border:1px solid rgba(0,0,0,.05);overflow:hidden;font-size:14px;display:flex;flex-direction:column}
+  .snap.after{box-shadow:0 0 0 2px rgba(94,240,143,.55)}
+  .snap .flag{position:absolute;top:11px;right:13px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#9aa7b8}
+  .snap.after .flag{color:#28a35c}
+  .snap.img{padding:0;color:#fff;background:url(assets/hero.jpg) center 32%/cover;justify-content:flex-end}
+  .snap.imgp{background:url(assets/pdp.jpg) center 18%/cover}
+  .snap .ov{background:linear-gradient(180deg,rgba(6,14,26,.15),rgba(6,14,26,.82));padding:20px;display:flex;flex-direction:column;gap:8px;min-height:100%}
+  .empty{margin:auto;color:#93a1b4;text-align:center;font-size:13.5px;max-width:26ch}
 
-  /* storefront ui atoms */
-  .u-brand{font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#7f8ea3}
-  .u-name{font-weight:700;font-size:13px;line-height:1.15}
-  .u-price{font-weight:800;font-size:15px}
-  .u-stars{color:#f2a516;letter-spacing:.5px}
-  .u-rate{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#4a5a70}
-  .u-sw{display:flex;gap:5px}.u-sw i{width:15px;height:15px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.12)}
-  .u-sizes{display:flex;gap:4px;flex-wrap:wrap}.u-sizes b{border:1px solid #cfd6df;border-radius:3px;font-size:10px;font-weight:600;padding:4px 7px;color:#33465e}
-  .u-btn{background:#10233b;color:#fff;font-weight:700;font-size:11.5px;text-align:center;padding:9px;border-radius:3px}
-  .u-btn.red{background:var(--hh-red)}.u-btn.gh{background:transparent;border:1.4px solid #10233b;color:#10233b}.u-btn.dark{background:#111}
-  .u-chip{display:inline-flex;align-items:center;gap:4px;background:#eef2f7;border:1px solid #dbe2ea;border-radius:20px;font-size:10.5px;color:#33465e;padding:4px 9px}
-  .u-chip.on{background:#10233b;color:#fff;border-color:#10233b}
-  .u-ck{color:#2ba55d;font-weight:800}
-  .u-fin{background:#eef6ef;border:1px solid #cfe6d3;border-radius:5px;font-size:10.5px;color:#20603a;padding:6px 9px}
-  .u-tech{display:inline-flex;gap:5px;background:#10233b;color:#fff;font-family:var(--mono);font-size:7.5px;letter-spacing:.08em;padding:3px 7px;border-radius:3px;width:max-content}
-  .u-row{display:flex;align-items:center;gap:8px}
-  .u-bar{height:6px;border-radius:4px;background:#e6ebf1;overflow:hidden}.u-bar i{display:block;height:100%;background:var(--mint)}
-  .u-muted{color:#8493a6}
-  .u-searchbar{border:1px solid #d6dde6;border-radius:6px;padding:8px 10px;color:#8493a6;font-size:11.5px}
-  .u-sugg{border:1px solid #e5eaf0;border-radius:6px;margin-top:6px;overflow:hidden}
-  .u-sugg div{padding:6px 9px;font-size:11px;border-bottom:1px solid #eef2f7}.u-sugg div:last-child{border-bottom:none}
-  .u-prodmini{display:flex;gap:7px;align-items:center}.u-prodmini .th{width:26px;height:30px;border-radius:3px;background:#c9d3df center/cover}
-  .stack{display:flex;flex-direction:column;gap:8px;height:100%}
-  .sticky-cta{position:absolute;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e5eaf0;padding:8px 12px;display:flex;gap:8px;align-items:center}
+  /* store ui atoms (bigger) */
+  .u-brand{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#7f8ea3}
+  .u-name{font-family:var(--head);font-weight:700;font-size:16px;line-height:1.15}
+  .u-price{font-family:var(--head);font-weight:800;font-size:19px}
+  .u-stars{color:#f2a516;letter-spacing:1px}
+  .u-rate{display:flex;align-items:center;gap:7px;font-size:13px;color:#48597a}
+  .u-sw{display:flex;gap:6px}.u-sw i{width:19px;height:19px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.14)}
+  .u-sizes{display:flex;gap:6px;flex-wrap:wrap}.u-sizes b{border:1px solid #cdd6e0;border-radius:3px;font-size:12px;font-weight:600;padding:6px 11px;color:#2f455f}
+  .u-btn{background:#0d1f33;color:#fff;font-family:var(--head);font-weight:700;font-size:13px;text-align:center;padding:12px;border-radius:3px}
+  .u-btn.red{background:var(--hh-red)}.u-btn.gh{background:transparent;border:1.5px solid #0d1f33;color:#0d1f33}.u-btn.dark{background:#111}
+  .u-chip{display:inline-flex;align-items:center;gap:5px;background:#eef2f7;border:1px solid #dbe2ea;border-radius:20px;font-size:12px;color:#33465e;padding:6px 12px}
+  .u-chip.on{background:#0d1f33;color:#fff;border-color:#0d1f33}
+  .u-ck{color:#28a35c;font-weight:800}
+  .u-fin{background:#eef7ef;border:1px solid #cfe6d3;border-radius:5px;font-size:12.5px;color:#1c6038;padding:9px 12px}
+  .u-tech{display:inline-flex;gap:6px;background:#0d1f33;color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:5px 10px;border-radius:3px;width:max-content}
+  .u-row{display:flex;align-items:center;gap:10px}
+  .u-bar{height:8px;border-radius:5px;background:#e6ebf1;overflow:hidden}.u-bar i{display:block;height:100%;background:var(--mint)}
+  .u-muted{color:#7a8aa0}
+  .u-search{border:1.5px solid #d6dde6;border-radius:6px;padding:11px 13px;color:#8493a6;font-size:13px}
+  .u-sugg{border:1px solid #e5eaf0;border-radius:6px;margin-top:8px;overflow:hidden}.u-sugg>div{padding:9px 12px;font-size:12.5px;border-bottom:1px solid #eef2f7;display:flex;align-items:center;gap:8px}.u-sugg>div:last-child{border-bottom:none}
+  .u-th{width:34px;height:40px;border-radius:3px;background:#c9d3df;background-size:cover;background-position:center;flex:none}
+  .stk{display:flex;flex-direction:column;gap:11px;flex:1}
+  .sticky-cta{position:absolute;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e5eaf0;padding:11px 16px;display:flex;gap:10px;align-items:center}
+  .phone{width:150px;margin:auto;border:6px solid #0d1f33;border-radius:22px;overflow:hidden;background:#fff}
+  .phone .ph-img{height:120px;background:url(assets/pdp.jpg) center/cover}
 
-  /* seo table */
-  .kwbox{margin-top:22px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
-  .kwbar{display:flex;justify-content:space-between;padding:11px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)}
-  .kwscroll{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:600px}
-  th,td{text-align:left;padding:10px 16px;font-size:13px}
-  th{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)}
-  td{border-bottom:1px solid rgba(255,255,255,.05)}td.kw{font-weight:600}.td-r{text-align:right;font-family:var(--mono)}
+  /* country + tables */
+  .tblwrap{margin-top:26px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+  .tblbar{display:flex;justify-content:space-between;padding:13px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)}
+  .tblscroll{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:640px}
+  th,td{text-align:left;padding:12px 18px;font-size:13.5px}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);font-weight:500}
+  td{border-bottom:1px solid rgba(255,255,255,.05)}tbody tr:hover{background:rgba(255,255,255,.02)}
+  td.c1{font-weight:600}.td-r{text-align:right;font-family:var(--mono)}
   .pos{font-family:var(--mono);font-weight:700;padding:2px 7px;border-radius:3px;font-size:12px;color:var(--warn);background:rgba(242,162,79,.13)}.miss{color:var(--crit)}
-  .kwnote{padding:11px 18px;font-family:var(--mono);font-size:11.5px;color:var(--muted);border-top:1px solid var(--line)}.kwnote b{color:var(--mint)}
+  .rd{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:3px;white-space:nowrap}
+  .rd.ppc{color:var(--crit);background:rgba(240,85,90,.1)}.rd.thin{color:var(--warn);background:rgba(242,162,79,.1)}.rd.ok{color:var(--mint);background:rgba(94,240,143,.1)}
+  .tblnote{padding:13px 20px;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line)}.tblnote b{color:var(--mint)}
 
-  .cmp{margin-top:22px;display:flex;flex-direction:column;gap:9px}
-  .crow{display:grid;grid-template-columns:140px 1fr 84px;gap:12px;align-items:center}
-  .crow .c{font-size:13px}.crow .c.you{color:var(--mint);font-weight:700}
-  .crow .track{height:11px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
-  .crow .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#4a5296,#7a86e6)}.crow.you .fill{background:linear-gradient(90deg,var(--mint),#37c96b)}
-  .crow .val{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+  .cmp{margin-top:26px;display:flex;flex-direction:column;gap:11px}
+  .crow{display:grid;grid-template-columns:150px 1fr 88px;gap:14px;align-items:center}
+  .crow .c{font-size:14px}.crow .c.you{color:var(--mint);font-weight:700}
+  .crow .track{height:12px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+  .crow .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#3d4590,#6f7be6)}.crow.you .fill{background:linear-gradient(90deg,var(--mint),#32c266)}
+  .crow .val{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right}
 
-  .funnel{margin-top:22px;display:flex;flex-direction:column;gap:7px}
-  .fstep{display:grid;grid-template-columns:130px 1fr 130px;gap:12px;align-items:center}
-  .fstep .c{font-size:12.5px}
-  .fstep .bar{height:30px;border-radius:5px;background:linear-gradient(90deg,var(--blue),rgba(111,123,245,.35));display:flex;align-items:center;padding-left:11px;font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600}
-  .fstep .drop{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right}
-  .fstep.win .bar{background:linear-gradient(90deg,var(--mint),rgba(94,240,143,.35));color:#06210f}
+  .funnel{margin-top:26px;display:flex;flex-direction:column;gap:8px}
+  .fstep{display:grid;grid-template-columns:150px 1fr 150px;gap:14px;align-items:center}
+  .fstep .c{font-size:13.5px}
+  .fstep .bar{height:34px;border-radius:4px;background:linear-gradient(90deg,var(--blue),rgba(91,110,245,.3));display:flex;align-items:center;padding-left:13px;font-family:var(--mono);font-size:12.5px;color:#fff;font-weight:600}
+  .fstep .drop{font-family:var(--mono);font-size:11.5px;color:var(--faint);text-align:right}
+  .fstep.win .bar{background:linear-gradient(90deg,var(--mint),rgba(94,240,143,.3));color:#052312}
+  @media(max-width:640px){.fstep{grid-template-columns:96px 1fr;gap:8px}.fstep .drop{display:none}}
 
-  .road{margin-top:22px;display:flex;flex-direction:column;gap:8px}
-  .rr{display:grid;grid-template-columns:30px 1fr auto auto;gap:12px;align-items:center;background:var(--panel-3);border:1px solid var(--line);border-radius:7px;padding:11px 15px}
+  /* forecast chart */
+  .chart{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px}
+  .chart svg{width:100%;height:auto;display:block}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .legend i{display:inline-block;width:12px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+
+  .road{margin-top:26px;display:flex;flex-direction:column;gap:9px}
+  .rr{display:grid;grid-template-columns:30px 1fr auto auto;gap:14px;align-items:center;background:var(--panel-3);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
   .rr .num{font-family:var(--mono);font-weight:800;color:var(--mint)}
-  .rr .nm{font-size:13.5px;font-weight:600}.rr .nm small{display:block;color:var(--faint);font-weight:400;font-size:11.5px;margin-top:2px}
-  .rr .eff{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
-  .rr .imp{font-family:var(--mono);font-weight:700;color:var(--mint);white-space:nowrap;font-size:12.5px}
+  .rr .nm{font-size:14.5px;font-weight:600}.rr .nm small{display:block;color:var(--faint);font-weight:400;font-size:12.5px;margin-top:2px}
+  .rr .eff{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+  .rr .imp{font-family:var(--mono);font-weight:700;color:var(--mint);white-space:nowrap;font-size:13px}
+  @media(max-width:640px){.rr{grid-template-columns:26px 1fr;gap:10px}.rr .eff,.rr .imp{display:none}}
 
-  .inv{margin-top:22px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,0)),var(--panel-2);border:1px solid var(--line-2);border-radius:10px;padding:4px 24px}
-  .irow{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line)}.irow:last-child{border-bottom:none}
-  .irow .l{font-size:14px}.irow .l small{display:block;color:var(--faint);font-family:var(--mono);font-size:10.5px;margin-top:2px}
-  .irow .a{font-family:var(--mono);font-weight:700;font-size:15px;white-space:nowrap;color:var(--mint)}.irow .a.tbd{color:var(--faint)}
-  .irow.tot .l{font-weight:800;font-size:16px}.irow.tot .a{font-size:24px}
+  .inv{margin-top:26px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:6px;padding:6px 26px}
+  .irow{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:16px 0;border-bottom:1px dashed var(--line)}.irow:last-child{border-bottom:none}
+  .irow .l{font-size:15px}.irow .l small{display:block;color:var(--faint);font-family:var(--mono);font-size:11px;margin-top:3px}
+  .irow .a{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap;color:var(--mint)}.irow .a.tbd{color:var(--faint)}
+  .irow.tot .l{font-family:var(--head);font-weight:800;font-size:18px}.irow.tot .a{font-size:27px}
 
-  .cta{background:linear-gradient(160deg,rgba(94,240,143,.13),rgba(111,123,245,.08));border:1px solid rgba(94,240,143,.32);border-radius:12px;padding:34px 30px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:26px}
-  .cta h3{font-size:23px;max-width:22ch}.cta p{color:var(--muted);margin:8px 0 0;max-width:48ch;font-size:14px}
-  .btn{font-weight:700;font-size:15px;color:var(--ground);background:var(--mint);border:none;border-radius:4px;padding:14px 24px;text-decoration:none;white-space:nowrap;display:inline-block}
+  .cta{background:linear-gradient(150deg,rgba(94,240,143,.14),rgba(91,110,245,.09));border:1px solid rgba(94,240,143,.3);border-radius:8px;padding:clamp(26px,4vw,40px);display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:30px}
+  .cta h3{font-family:var(--head);font-size:clamp(21px,2.6vw,27px);max-width:22ch}.cta p{color:var(--muted);margin:10px 0 0;max-width:50ch;font-size:14.5px}
+  .btn{font-family:var(--head);font-weight:700;font-size:15px;color:var(--ground);background:var(--mint);border:none;border-radius:3px;padding:15px 26px;text-decoration:none;white-space:nowrap;display:inline-block}
   .btn:hover{filter:brightness(1.06)}.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
-  .foot{padding:38px 0 80px}
-  .disc{font-family:var(--mono);font-size:11px;color:var(--faint);line-height:1.7;max-width:100ch}.disc b{color:var(--muted)}
+  .foot{padding:40px 0 84px}
+  .disc{font-family:var(--mono);font-size:11px;color:var(--faint);line-height:1.75;max-width:104ch}.disc b{color:var(--muted)}
   @media(prefers-reduced-motion:no-preference){.rise{opacity:0;transform:translateY(10px);animation:r .6s ease forwards}@keyframes r{to{opacity:1;transform:none}}}
 </style>
 </head>
@@ -164,45 +183,45 @@
 <div class="x">
 
   <div class="nav">
-    <span class="brand"><b>scandiweb</b> · Store X-ray</span>
-    <span class="sp"></span>
-    <a href="#diag" class="hideM">Diagnosis</a>
-    <a href="#fixes">20 fixes</a>
-    <a href="#seo" class="hideM">Search</a>
-    <a href="#comp" class="hideM">Rivals</a>
-    <a href="#plan">Plan</a>
-    <a href="#money" class="g">$20M</a>
+    <span class="brand"><b>scandiweb</b> · Store X-ray</span><span class="sp"></span>
+    <a href="#diag" class="hm">Diagnosis</a><a href="#fixes">Redesign</a><a href="#markets" class="hm">Markets</a><a href="#rivals" class="hm">Rivals</a><a href="#forecast">Forecast</a><a href="#money" class="g">$21M</a>
   </div>
 
+  <!-- HERO -->
   <div class="hero">
     <div class="bg"></div><canvas id="rain"></canvas>
     <div class="wrap">
-      <div class="kick rise">▚ hellyhansen.com · $94.9M online · 617K visits/mo · 127 markets</div>
-      <h1 class="rise">$94.9M online. We found <span class="big"><span id="hnum">$20M</span>+</span> a year, from the outside.</h1>
-      <p class="sub rise">Real revenue, live rankings, competitor SERPs. <b>20 redesigned screens</b>, the fixes that pay for them, and a 90-day plan. Nothing touched.</p>
-      <div class="meta rise"><span>Revenue <b>$94.9M/yr</b></span><span>Organic <b class="tnum">617,458/mo</b></span><span>Reviews live <b>12,400+</b></span><span>Data <b>public, 6 Jul 2026</b></span></div>
+      <h1 class="rise">$94.9M online. We found <span class="big"><span id="hnum">$21M</span></span> a year, from the outside.</h1>
+      <p class="sub rise">Real revenue, live rankings, 127 markets of demand. <b>20 screens redesigned</b>, the country-by-country paid-vs-organic picture, a 12-month forecast, and the plan to get there. Nothing touched.</p>
+      <div class="meta rise"><span>Revenue <b>$94.9M/yr</b></span><span>Sessions <b class="tnum">3.8M/mo</b></span><span>AOV <b>~$250</b></span><span>Conversion <b>1.65%</b></span><span>Data <b>Ahrefs + Grips, Jul 2026</b></span></div>
     </div>
+    <div class="cue rise">scroll ↓</div>
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="v">$94.9M</div><div class="k">online revenue</div></div>
-    <div class="stat"><div class="v tnum">617K</div><div class="k">organic / mo</div></div>
+    <div class="stat"><div class="v">$94.9M</div><div class="k">online revenue 2025</div></div>
+    <div class="stat"><div class="v tnum">62,580</div><div class="k">orders / mo</div></div>
     <div class="stat"><div class="v tnum">20</div><div class="k">screens redesigned</div></div>
-    <div class="stat"><div class="v g">~$20M+</div><div class="k">recoverable / yr</div></div>
+    <div class="stat"><div class="v g">~$21M</div><div class="k">recoverable / yr</div></div>
   </div>
 
   <!-- DIAGNOSIS -->
   <section id="diag"><div class="wrap">
-    <span class="eyebrow">the diagnosis</span>
-    <div class="sh"><h2>You win your name. <span class="accent">You lose your category.</span></h2></div>
-    <p class="lead">You rank #1 for "Helly Hansen". You are on page 2 for the words that bring new customers. Growth is converting the traffic you have, and winning the category you invented.</p>
+    <h2>You win your name. <span class="accent">You lose your category.</span></h2>
+    <p class="lead">You rank #1 for "Helly Hansen". You are on page two for the words that bring new customers. Your real funnel is healthy, growth is converting more of it and owning the category you invented.</p>
+    <div class="real">
+      <div class="rm"><div class="v">~$250</div><div class="k">Average order</div><div class="s">$15.6M / 62,580 orders, Jan 2026</div></div>
+      <div class="rm"><div class="v">1.65%</div><div class="k">Conversion</div><div class="s">3.8M sessions → 62,580 orders</div></div>
+      <div class="rm"><div class="v">43%</div><div class="k">Sales on mobile</div><div class="s">where your fixes matter most</div></div>
+      <div class="rm"><div class="v">+10–20%</div><div class="k">2026 growth (planned)</div><div class="s">before any of this</div></div>
+    </div>
     <div class="split">
-      <div class="card rise"><h4 class="win">You win · branded</h4>
+      <div class="card rise"><h4 class="win">You win · branded search</h4>
         <div class="kv"><span>helly hansen</span><b class="win">#1 · 45,000/mo</b></div>
         <div class="kv"><span>helly hansen rain jacket</span><b class="win">#1 · 3,700/mo</b></div>
-        <div class="kv"><span>Homepage organic</span><b class="win">46,523/mo</b></div>
+        <div class="kv"><span>Homepage organic traffic</span><b class="win">46,523/mo</b></div>
       </div>
-      <div class="card rise"><h4 class="lose">You lose · category</h4>
+      <div class="card rise"><h4 class="lose">You lose · category search</h4>
         <div class="kv"><span>windbreaker</span><b class="lose">#20 · 46,000/mo</b></div>
         <div class="kv"><span>best waterproof jackets</span><b class="lose">#20 · 30,000/mo</b></div>
         <div class="kv"><span>raincoat</span><b class="lose">#14 · 14,000/mo</b></div>
@@ -212,10 +231,8 @@
 
   <!-- 20 FIXES -->
   <section id="fixes"><div class="wrap">
-    <span class="eyebrow">the redesign · 20 screens, before → after</span>
-    <div class="sh"><h2>Every screen between a visitor and a purchase.</h2></div>
-    <p class="lead">Twenty specific, testable changes. Tap a stage. A conservative +15% conversion on $94.9M is <b class="accent">$14.2M</b>.</p>
-
+    <h2>20 screens, before → after.</h2>
+    <p class="lead">Specific, testable changes. Tap a stage. A conservative +15% conversion on $94.9M is <b class="accent">$14.2M</b>. Every change is A/B tested, you keep only what wins.</p>
     <div class="tabs" id="tabs">
       <button class="tab on" data-t="home">Homepage <span class="c">3</span></button>
       <button class="tab" data-t="cat">Category <span class="c">3</span></button>
@@ -225,157 +242,154 @@
       <button class="tab" data-t="mobile">Mobile &amp; email <span class="c">2</span></button>
     </div>
 
-    <!-- HOMEPAGE -->
     <div class="panel on" data-p="home">
       <div class="ex"><div class="ex-top"><span class="ex-num">01</span><span class="ex-t">Value proposition</span><span class="ex-cap">say why you cost more</span><span class="ex-lift">+3–5%</span></div>
         <div class="ex-ba">
-          <div class="snap img"><span class="flag">before</span><div class="ov"><div class="u-brand" style="color:#cfe0f5">New Arrivals</div><div style="font-size:16px;font-weight:800">The Odin 9 Worlds Collection</div><span class="u-btn gh" style="color:#fff;border-color:#fff;width:max-content;padding:7px 13px">Shop Now</span></div></div>
-          <div class="snap img after"><span class="flag">after</span><div class="ov"><div class="u-brand" style="color:#cfe0f5">Made for the pros · since 1877</div><div style="font-size:16px;font-weight:800">Storm-tested shells the pros trust</div><div style="font-size:11px;color:#dbe6f3">Guaranteed waterproof, or your money back</div><div class="u-row"><span class="u-btn red" style="width:max-content;padding:8px 13px">Shop waterproof jackets</span></div></div></div>
+          <div class="snap img"><span class="flag">before</span><div class="ov"><div class="u-brand" style="color:#cfe0f5">New Arrivals</div><div class="u-name" style="color:#fff;font-size:22px">The Odin 9 Worlds Collection</div><span class="u-btn gh" style="color:#fff;border-color:#fff;width:max-content;padding:10px 18px">Shop Now</span></div></div>
+          <div class="snap img after"><span class="flag">after</span><div class="ov"><div class="u-brand" style="color:#cfe0f5">Made for the pros · since 1877</div><div class="u-name" style="color:#fff;font-size:22px">Storm-tested shells the pros trust</div><div style="font-size:13px;color:#dbe6f3">Guaranteed waterproof, or your money back</div><span class="u-btn red" style="width:max-content;padding:11px 18px">Shop waterproof jackets</span></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">02</span><span class="ex-t">Trust bar</span><span class="ex-cap">de-risk the $200 decision</span><span class="ex-lift">+2–3%</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">02</span><span class="ex-t">Trust bar</span><span class="ex-cap">de-risk a $250 order</span><span class="ex-lift">+2–3%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="text-align:center;padding-top:34px">— no shipping, returns or warranty shown —</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="justify-content:center;gap:11px"><div class="u-row" style="gap:14px;flex-wrap:wrap"><span><span class="u-ck">✓</span> Free shipping $99+</span><span><span class="u-ck">✓</span> 30-day returns</span></div><div class="u-row" style="gap:14px;flex-wrap:wrap"><span><span class="u-ck">✓</span> 2-year warranty</span><span><span class="u-ck">✓</span> Price match</span></div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">No shipping, returns or warranty shown above the fold</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="justify-content:center;gap:16px"><div class="u-row" style="gap:20px;flex-wrap:wrap"><span><span class="u-ck">✓</span> Free shipping $99+</span><span><span class="u-ck">✓</span> 30-day returns</span></div><div class="u-row" style="gap:20px;flex-wrap:wrap"><span><span class="u-ck">✓</span> 2-year warranty</span><span><span class="u-ck">✓</span> Price match</span></div></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">03</span><span class="ex-t">Social proof</span><span class="ex-cap">12,400 reviews, unused</span><span class="ex-lift">+2–4%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="text-align:center;padding-top:34px">— no rating anywhere above the fold —</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="justify-content:center"><div class="u-row"><span class="u-stars" style="font-size:18px">★★★★★</span> <b style="font-size:16px">4.8</b></div><div class="u-muted">12,400 verified reviews · 96% recommend</div><div class="u-muted" style="font-size:11px">"Kept me dry through a Bergen storm." — verified buyer</div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">No rating anywhere above the fold</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="justify-content:center;gap:9px"><div class="u-row"><span class="u-stars" style="font-size:22px">★★★★★</span> <b style="font-family:var(--head);font-size:20px">4.8</b></div><div class="u-muted">12,400 verified reviews · 96% recommend</div><div class="u-muted" style="font-size:12.5px;font-style:italic">"Kept me bone dry through a Bergen storm." — verified buyer</div></div></div>
         </div></div>
     </div>
 
-    <!-- CATEGORY -->
     <div class="panel" data-p="cat">
-      <div class="ex"><div class="ex-top"><span class="ex-num">04</span><span class="ex-t">Product cards</span><span class="ex-cap">rating + quick add</span><span class="ex-lift">+2–4%</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">04</span><span class="ex-t">Product cards</span><span class="ex-cap">rating + swatches + quick add</span><span class="ex-lift">+2–4%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-row" style="align-items:flex-start"><div style="width:56px;height:66px;border-radius:4px;background:url(assets/pdp.jpg) center/cover"></div><div class="stack" style="gap:5px"><div class="u-brand">Helly Hansen</div><div class="u-name">Odin Shell Jacket</div><div class="u-price">$450</div></div></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-row" style="align-items:flex-start"><div style="width:56px;height:66px;border-radius:4px;background:url(assets/pdp.jpg) center/cover"></div><div class="stack" style="gap:5px"><div class="u-brand">Helly Hansen</div><div class="u-name">Odin Shell Jacket</div><div class="u-rate"><span class="u-stars">★★★★★</span> 4.8 (312)</div><div class="u-row"><div class="u-sw"><i style="background:#12406b"></i><i style="background:#111"></i><i style="background:#c0392b"></i></div><div class="u-price" style="margin-left:auto">$450</div></div><span class="u-btn red" style="padding:6px 10px;font-size:10px">Quick add</span></div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-row" style="align-items:flex-start;gap:14px"><div class="u-th" style="width:78px;height:96px"></div><div class="stk" style="gap:6px"><div class="u-brand">Helly Hansen</div><div class="u-name">Odin Shell Jacket</div><div class="u-price">$450</div></div></div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-row" style="align-items:flex-start;gap:14px"><div class="u-th" style="width:78px;height:96px;background-image:url(assets/pdp.jpg)"></div><div class="stk" style="gap:7px"><div class="u-brand">Helly Hansen</div><div class="u-name">Odin Shell Jacket</div><div class="u-rate"><span class="u-stars">★★★★★</span> 4.8 (312)</div><div class="u-row"><div class="u-sw"><i style="background:#12406b"></i><i style="background:#111"></i><i style="background:#c0392b"></i></div><div class="u-price" style="margin-left:auto">$450</div></div><span class="u-btn red" style="padding:8px 12px;font-size:12px">Quick add +</span></div></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">05</span><span class="ex-t">Need-based filters</span><span class="ex-cap">let them filter by tech</span><span class="ex-lift">+3–6%</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">05</span><span class="ex-t">Need-based filters</span><span class="ex-cap">let them filter by Helly Tech</span><span class="ex-lift">+3–6%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-row"><span class="u-chip">Sort by ▾</span></div><div class="u-muted" style="margin-top:12px">Price · Newest — that is it.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-row" style="flex-wrap:wrap;gap:6px"><span class="u-chip on">Fully waterproof</span><span class="u-chip">Windproof</span><span class="u-chip">Insulated</span></div><div class="u-row" style="flex-wrap:wrap;gap:6px;margin-top:7px"><span class="u-chip">Sailing</span><span class="u-chip">Ski</span><span class="u-chip">Hike</span><span class="u-chip">Rain</span></div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-row"><span class="u-chip">Sort by ▾</span></div><div class="empty" style="margin-top:20px">Price &amp; Newest. That is the whole toolset.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="gap:11px"><div><div class="u-brand" style="margin-bottom:8px">Waterproofing</div><div class="u-row" style="flex-wrap:wrap;gap:8px"><span class="u-chip on">Fully waterproof</span><span class="u-chip">Windproof</span><span class="u-chip">Insulated</span></div></div><div><div class="u-brand" style="margin-bottom:8px">Activity</div><div class="u-row" style="flex-wrap:wrap;gap:8px"><span class="u-chip">Sailing</span><span class="u-chip">Ski</span><span class="u-chip">Hike</span><span class="u-chip">Rain</span></div></div></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">06</span><span class="ex-t">Merchandising</span><span class="ex-cap">sell to first-timers</span><span class="ex-lift">+1–3%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-row"><span class="u-chip on">Newest first</span></div><div class="u-muted" style="margin-top:12px">Built for loyalists who know what they want.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-row" style="gap:6px;flex-wrap:wrap"><span class="u-chip on">Best sellers</span><span class="u-chip">Most reviewed</span><span class="u-chip">Editor's picks</span></div><div class="u-muted" style="margin-top:10px">New visitors need proof, not chronology.</div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-row"><span class="u-chip on">Newest first</span></div><div class="empty" style="margin-top:20px">Ordered for loyalists who know the range.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-row" style="gap:8px;flex-wrap:wrap"><span class="u-chip on">Best sellers</span><span class="u-chip">Most reviewed</span><span class="u-chip">Pro-team picks</span></div><div class="u-muted" style="margin-top:14px">New visitors need proof, not chronology.</div></div>
         </div></div>
     </div>
 
-    <!-- PRODUCT -->
     <div class="panel" data-p="pdp">
       <div class="ex"><div class="ex-top"><span class="ex-num">07</span><span class="ex-t">Rating in the buy box</span><span class="ex-cap">at the point of decision</span><span class="ex-lift">+3–5%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="stack" style="gap:7px"><div class="u-name">Odin 9 Worlds Shell</div><div class="u-price">$450.00</div><span class="u-btn" style="margin-top:auto">Add to Bag</span></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:7px"><div class="u-name">Odin 9 Worlds Shell</div><div class="u-rate"><span class="u-stars">★★★★★</span> 4.8 · 312 reviews</div><div class="u-price">$450.00</div><span class="u-btn red" style="margin-top:auto">Add to Bag</span></div></div>
+          <div class="snap imgp" style="min-height:250px"></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk"><div class="u-brand">Helly Hansen</div><div class="u-name">Odin 9 Worlds Infinity Shell</div><div class="u-rate"><span class="u-stars">★★★★★</span> 4.8 · 312 reviews · <span style="color:#28a35c">96% recommend</span></div><div class="u-price">$450.00</div><span class="u-btn red" style="margin-top:auto">Add to Bag</span></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">08</span><span class="ex-t">Sell the technology</span><span class="ex-cap">Helly Tech is your moat</span><span class="ex-lift">margin defense</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:30px;text-align:center">Fabric &amp; care <span style="font-size:10px">(collapsed, page bottom)</span></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:8px"><span class="u-tech">◆ HELLY TECH® PRO · GUARANTEED WATERPROOF</span><div class="u-row" style="gap:8px"><span class="u-chip">20,000mm</span><span class="u-chip">Fully seam-sealed</span></div><div class="u-muted" style="font-size:11px">Why it is worth $450, at eye level.</div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">"Fabric &amp; care" collapsed, at the bottom of the page</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="gap:11px"><span class="u-tech">◆ HELLY TECH® PROFESSIONAL · GUARANTEED WATERPROOF</span><div class="u-row" style="gap:8px;flex-wrap:wrap"><span class="u-chip">20,000mm column</span><span class="u-chip">Fully seam-sealed</span><span class="u-chip">4-way stretch</span></div><div class="u-muted">Why it is worth $450, at eye level, not buried.</div></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">09</span><span class="ex-t">Financing</span><span class="ex-cap">Klarna on a $450 basket</span><span class="ex-lift">+2–5% &amp; AOV</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">09</span><span class="ex-t">Financing</span><span class="ex-cap">Klarna on a $250 basket</span><span class="ex-lift">+2–5% &amp; AOV</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="stack" style="gap:7px"><div class="u-price">$450.00</div><span class="u-btn" style="margin-top:auto">Add to Bag</span></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:7px"><div class="u-price">$450.00</div><div class="u-fin">or 4 interest-free payments of <b>$112.50</b> with Klarna</div><span class="u-btn red" style="margin-top:auto">Add to Bag</span></div></div>
+          <div class="snap"><span class="flag">before</span><div class="stk"><div class="u-price">$450.00</div><span class="u-btn" style="margin-top:auto">Add to Bag</span></div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk"><div class="u-price">$450.00</div><div class="u-fin">or 4 interest-free payments of <b>$112.50</b> with Klarna</div><span class="u-btn red" style="margin-top:auto">Add to Bag</span></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">10</span><span class="ex-t">Sticky add-to-cart</span><span class="ex-cap">buy button never leaves</span><span class="ex-lift">+2–4% mobile</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">10</span><span class="ex-t">Sticky add-to-cart</span><span class="ex-cap">43% of you shop on mobile</span><span class="ex-lift">+2–4% mobile</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:24px;text-align:center">On long pages the buy button<br>scrolls away at the moment of intent.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-muted" style="padding-top:14px;text-align:center">Buy button follows the scroll ▾</div><div class="sticky-cta"><div class="stack" style="gap:2px"><b style="font-size:11px">Odin Shell · $450</b></div><span class="u-btn red" style="margin-left:auto;padding:8px 14px">Add to Bag</span></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">On long pages the buy button scrolls away at the moment of intent</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="empty" style="margin-bottom:auto;padding-top:6px">Buy button follows the scroll ▾</div><div class="sticky-cta"><div><b style="font-family:var(--head);font-size:13px">Odin Shell</b><div class="u-muted" style="font-size:11px">$450</div></div><span class="u-btn red" style="margin-left:auto;padding:10px 16px">Add to Bag</span></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">11</span><span class="ex-t">Fit finder</span><span class="ex-cap">#1 returns driver</span><span class="ex-lift">+conv, −returns</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">11</span><span class="ex-t">Fit finder</span><span class="ex-cap">#1 returns driver in outerwear</span><span class="ex-lift">+conv, −returns</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-sizes"><b>S</b><b>M</b><b>L</b><b>XL</b></div><div class="u-muted" style="margin-top:12px">Guess your size. Return what does not fit.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-row" style="flex-wrap:wrap;gap:5px"><span class="u-sizes"><b>S</b><b>M</b><b>L</b><b>XL</b></span><span class="u-btn gh" style="padding:5px 9px;font-size:10px">Find my size ›</span></div><div class="u-muted" style="margin-top:10px">Two questions → the right size, first time.</div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-sizes"><b>S</b><b>M</b><b>L</b><b>XL</b></div><div class="empty" style="margin-top:20px">Guess your size. Return what does not fit.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-row" style="flex-wrap:wrap;gap:8px"><span class="u-sizes"><b>S</b><b>M</b><b>L</b><b>XL</b></span><span class="u-btn gh" style="padding:7px 12px;font-size:12px">Find my size ›</span></div><div class="u-muted" style="margin-top:16px">Two questions → the right size, first time. Fewer returns, fewer abandoned carts.</div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">12</span><span class="ex-t">Complete the kit</span><span class="ex-cap">cross-sell how it is worn</span><span class="ex-lift">+3–6% AOV</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:34px;text-align:center">— no cross-sell —</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-name" style="font-size:12px">Complete the kit</div><div class="stack" style="gap:6px;margin-top:7px"><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span><span>LIFA® Merino base layer</span><b style="margin-left:auto">$95</b></div><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span><span>Odin shell pant</span><b style="margin-left:auto">$300</b></div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">No cross-sell. Base layer + shell + pant sold separately, if at all.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-name" style="font-size:14px">Complete the kit</div><div class="stk" style="gap:9px;margin-top:10px"><div class="u-row"><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span><span>LIFA® Merino base layer</span><b style="margin-left:auto;font-family:var(--head)">$95</b></div><div class="u-row"><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span><span>Odin shell pant</span><b style="margin-left:auto;font-family:var(--head)">$300</b></div><div class="u-fin" style="margin-top:2px">Add both and save 10% · +$356 basket</div></div></div>
         </div></div>
     </div>
 
-    <!-- SEARCH -->
     <div class="panel" data-p="search">
       <div class="ex"><div class="ex-top"><span class="ex-num">13</span><span class="ex-t">Predictive search</span><span class="ex-cap">searchers convert 2–3×</span><span class="ex-lift">+2–5%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-searchbar">rain jack…</div><div class="u-muted" style="margin-top:12px">No suggestions. Type it exactly, or nothing.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-searchbar" style="color:#10233b">rain jack…</div><div class="u-sugg"><div><b>rain jackets</b> · 84 items</div><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span>Odin Shell · $450</div><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span>Loke Jacket · $130</div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-search">rain jack…</div><div class="empty" style="margin-top:20px">No suggestions. Spell it exactly, or get nothing.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-search" style="color:#0d1f33;border-color:#0d1f33">rain jack…</div><div class="u-sugg"><div><b>rain jackets</b> · 84 items</div><div><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span>Odin 9 Worlds Shell · $450</div><div><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span>Loke Jacket · $130</div></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">14</span><span class="ex-t">Zero-results rescue</span><span class="ex-cap">a dead end is a lost sale</span><span class="ex-lift">+recovered</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><b>0 results for "goretex"</b><div class="u-muted" style="margin-top:10px">Try again. → most leave.</div></div>
-          <div class="snap after"><span class="flag">after</span><b style="font-size:12px">No exact match — did you mean waterproof shells?</b><div class="stack" style="gap:6px;margin-top:7px"><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span>Odin Shell · ★4.8</div><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span>Verglas Shell · ★4.7</div></div></div>
+          <div class="snap"><span class="flag">before</span><b class="u-name">0 results for "goretex"</b><div class="empty" style="margin-top:14px">"Try a different search." → most leave.</div></div>
+          <div class="snap after"><span class="flag">after</span><b class="u-name" style="font-size:14px">No exact match — did you mean waterproof shells?</b><div class="stk" style="gap:9px;margin-top:12px"><div class="u-row"><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span>Odin 9 Worlds Shell · ★4.8</div><div class="u-row"><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span>Verglas Infinity Shell · ★4.7</div></div></div>
         </div></div>
     </div>
 
-    <!-- CHECKOUT -->
     <div class="panel" data-p="checkout">
-      <div class="ex"><div class="ex-top"><span class="ex-num">15</span><span class="ex-t">Free-ship progress bar</span><span class="ex-cap">nudge basket up</span><span class="ex-lift">+3–5% AOV</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">15</span><span class="ex-t">Free-ship progress bar</span><span class="ex-cap">nudge the basket up</span><span class="ex-lift">+3–5% AOV</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:34px;text-align:center">Subtotal $82 — no nudge to the free-ship line.</div></div>
-          <div class="snap after"><span class="flag">after</span><b style="font-size:12px">You are <span style="color:#2ba55d">$17 away</span> from free shipping</b><div class="u-bar" style="margin-top:9px"><i style="width:83%"></i></div><div class="u-muted" style="margin-top:8px;font-size:11px">Add a beanie? Most-added at $25.</div></div>
+          <div class="snap"><span class="flag">before</span><div class="u-row" style="justify-content:space-between"><span>Subtotal</span><b class="u-price">$82</b></div><div class="empty" style="margin-top:16px">No nudge toward the free-shipping line.</div></div>
+          <div class="snap after"><span class="flag">after</span><b class="u-name" style="font-size:14px">You are <span style="color:#28a35c">$17 away</span> from free shipping</b><div class="u-bar" style="margin-top:12px"><i style="width:83%"></i></div><div class="u-row" style="margin-top:14px"><span class="u-th" style="background-image:url(assets/pdp.jpg);width:30px;height:34px"></span><span class="u-muted" style="font-size:12.5px">Add a HH beanie? Most-added at $25.</span></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">16</span><span class="ex-t">Express pay first</span><span class="ex-cap">one-tap checkout</span><span class="ex-lift">+2–4%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="stack" style="gap:7px"><div class="u-searchbar">Email</div><div class="u-searchbar">First name</div><div class="u-muted" style="font-size:11px">…9 more fields before pay.</div></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:7px"><span class="u-btn dark"> Pay</span><span class="u-btn" style="background:#003087">PayPal</span><span class="u-btn" style="background:#5a31f4">Shop Pay</span><div class="u-muted" style="text-align:center;font-size:10px">— or check out with email —</div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="stk"><div class="u-search">Email</div><div class="u-search">First name</div><div class="u-search">Last name</div><div class="u-muted" style="font-size:12px">…9 more fields before you can pay.</div></div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk"><span class="u-btn dark"> Apple Pay</span><span class="u-btn" style="background:#003087">PayPal</span><span class="u-btn" style="background:#5a31f4">Shop Pay</span><div class="u-muted" style="text-align:center;font-size:11px">— or check out with email —</div></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">17</span><span class="ex-t">Guest checkout</span><span class="ex-cap">stop forcing accounts</span><span class="ex-lift">+1–3%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="stack" style="gap:7px"><b style="font-size:12px">Sign in to continue</b><div class="u-searchbar">Email</div><div class="u-searchbar">Password</div><div class="u-muted" style="font-size:10px">Account required.</div></div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:8px"><span class="u-btn red">Continue as guest</span><div class="u-muted" style="text-align:center;font-size:10px">— or sign in —</div><div class="u-muted" style="font-size:11px">Buy first. Invite the account after.</div></div></div>
+          <div class="snap"><span class="flag">before</span><div class="stk"><b class="u-name">Sign in to continue</b><div class="u-search">Email</div><div class="u-search">Password</div><div class="u-muted" style="font-size:11px">Account required to check out.</div></div></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="gap:12px"><span class="u-btn red">Continue as guest</span><div class="u-muted" style="text-align:center;font-size:11px">— or sign in —</div><div class="u-muted">Let people buy first. Invite the account after the sale.</div></div></div>
         </div></div>
-      <div class="ex"><div class="ex-top"><span class="ex-num">18</span><span class="ex-t">Reassurance at pay</span><span class="ex-cap">kill the last flicker</span><span class="ex-lift">+1–2%</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">18</span><span class="ex-t">Reassurance at pay</span><span class="ex-cap">kill the last flicker of doubt</span><span class="ex-lift">+1–2%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><span class="u-btn" style="margin-top:38px">Place order</span></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:8px;justify-content:center"><span class="u-btn red">Place order</span><div class="u-row" style="justify-content:center;gap:12px;font-size:10.5px"><span><span class="u-ck">✓</span> 30-day returns</span><span><span class="u-ck">✓</span> Secure checkout</span></div></div></div>
+          <div class="snap"><span class="flag">before</span><span class="u-btn" style="margin:auto 0">Place order</span></div>
+          <div class="snap after"><span class="flag">after</span><div class="stk" style="justify-content:center;gap:12px"><span class="u-btn red">Place order · $450</span><div class="u-row" style="justify-content:center;gap:16px;font-size:12px"><span><span class="u-ck">✓</span> 30-day returns</span><span><span class="u-ck">✓</span> Secure checkout</span></div></div></div>
         </div></div>
     </div>
 
-    <!-- MOBILE / EMAIL -->
     <div class="panel" data-p="mobile">
-      <div class="ex"><div class="ex-top"><span class="ex-num">19</span><span class="ex-t">Mobile buy bar</span><span class="ex-cap">most of your traffic</span><span class="ex-lift">+2–4%</span></div>
+      <div class="ex"><div class="ex-top"><span class="ex-num">19</span><span class="ex-t">Mobile buy bar</span><span class="ex-cap">43% of sales, most friction</span><span class="ex-lift">+2–4%</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:34px;text-align:center">Add-to-cart lost far below the fold on mobile.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="u-muted" style="padding-top:12px;text-align:center">Thumb-reach buy bar, always visible ▾</div><div class="sticky-cta"><b style="font-size:11px">$450</b><span class="u-btn red" style="margin-left:auto;padding:9px 18px">Add to Bag</span></div></div>
+          <div class="snap dark" style="background:#0d1f33;color:#fff"><span class="flag">before</span><div class="phone"><div class="ph-img"></div><div style="padding:10px;color:#0d1f33"><div class="u-name" style="font-size:12px">Odin Shell</div><div class="u-price" style="font-size:14px">$450</div><div class="u-muted" style="font-size:10px;margin-top:6px">↓ add-to-cart is far below the fold</div></div></div></div>
+          <div class="snap dark after" style="background:#0d1f33;color:#fff"><span class="flag">after</span><div class="phone" style="position:relative"><div class="ph-img"></div><div style="padding:10px 10px 46px;color:#0d1f33"><div class="u-name" style="font-size:12px">Odin Shell</div><div class="u-price" style="font-size:14px">$450</div></div><div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e5eaf0;padding:8px;display:flex;align-items:center;gap:6px"><b style="font-family:var(--head);font-size:11px;color:#0d1f33">$450</b><span class="u-btn red" style="margin-left:auto;padding:8px 14px;font-size:11px">Add to Bag</span></div></div></div>
         </div></div>
       <div class="ex"><div class="ex-top"><span class="ex-num">20</span><span class="ex-t">Abandonment flow</span><span class="ex-cap">you already run Klaviyo</span><span class="ex-lift">+recovered</span></div>
         <div class="ex-ba">
-          <div class="snap"><span class="flag">before</span><div class="u-muted" style="padding-top:34px;text-align:center">Cart left → silence.</div></div>
-          <div class="snap after"><span class="flag">after</span><div class="stack" style="gap:6px"><div class="u-brand">Email · 1 hour later</div><b style="font-size:12px">Still thinking it over?</b><div class="u-prodmini"><span class="th" style="background:url(assets/pdp.jpg) center/cover"></span>Odin Shell in your bag · $450</div><span class="u-btn red" style="padding:7px 12px;width:max-content">Complete your order</span></div></div>
+          <div class="snap"><span class="flag">before</span><div class="empty">Cart left behind → silence. No reminder, no recovery.</div></div>
+          <div class="snap after"><span class="flag">after</span><div class="u-brand">Email · 1 hour later</div><b class="u-name" style="margin-top:8px">Still thinking it over?</b><div class="u-row" style="margin-top:12px"><span class="u-th" style="background-image:url(assets/pdp.jpg)"></span><div><div style="font-size:12.5px">Odin 9 Worlds Shell in your bag</div><b class="u-price" style="font-size:15px">$450</b></div></div><span class="u-btn red" style="padding:9px 14px;width:max-content;margin-top:12px">Complete your order</span></div>
         </div></div>
     </div>
   </div></section>
 
-  <!-- SEO -->
-  <section id="seo"><div class="wrap">
-    <span class="eyebrow">demand you rank for and miss</span>
-    <div class="sh"><h2>Page 2 for the words you invented.</h2></div>
-    <div class="kwbox rise">
-      <div class="kwbar"><span>Live US rankings · hellyhansen.com</span><span>Ahrefs · 6 Jul 2026</span></div>
-      <div class="kwscroll"><table class="tnum">
-        <thead><tr><th>Buyer keyword</th><th class="td-r">Searches/mo</th><th class="td-r">You rank</th><th class="td-r">Visits</th><th class="td-r">CPC</th></tr></thead>
+  <!-- MARKETS: SEO vs PPC -->
+  <section id="markets"><div class="wrap">
+    <h2>Where you sell, and how you pay for it.</h2>
+    <p class="lead">Your top 10 markets, organic vs paid. In Germany, France and Italy your organic footprint is a fraction of your traffic, so you rent it back through ads. Own the category in your biggest EU markets and the paid dependency drops.</p>
+    <div class="tblwrap rise">
+      <div class="tblbar"><span>Organic vs paid by market · hellyhansen.com</span><span>Ahrefs · 6 Jul 2026</span></div>
+      <div class="tblscroll"><table class="tnum">
+        <thead><tr><th>Market</th><th class="td-r">Organic /mo</th><th class="td-r">Organic keywords</th><th class="td-r">Paid /mo</th><th class="td-r">Paid spend /mo</th><th>Read</th></tr></thead>
         <tbody>
-          <tr><td class="kw">windbreaker</td><td class="td-r">46,000</td><td class="td-r"><span class="pos">#20</span></td><td class="td-r miss">0</td><td class="td-r">$45</td></tr>
-          <tr><td class="kw">best waterproof jackets</td><td class="td-r">30,000</td><td class="td-r"><span class="pos">#20</span></td><td class="td-r">144</td><td class="td-r">$39</td></tr>
-          <tr><td class="kw">raincoat</td><td class="td-r">14,000</td><td class="td-r"><span class="pos">#14</span></td><td class="td-r">59</td><td class="td-r">$40</td></tr>
-          <tr><td class="kw">rain jacket men</td><td class="td-r">11,000</td><td class="td-r"><span class="pos">#19</span></td><td class="td-r">17</td><td class="td-r">$47</td></tr>
-          <tr><td class="kw">merino wool base layer</td><td class="td-r">7,500</td><td class="td-r"><span class="pos">#19</span></td><td class="td-r">20</td><td class="td-r">$110</td></tr>
-          <tr><td class="kw">rain pants</td><td class="td-r">6,500</td><td class="td-r"><span class="pos">#20</span></td><td class="td-r miss">0</td><td class="td-r">$32</td></tr>
+          <tr><td class="c1">United States</td><td class="td-r">146,289</td><td class="td-r">12,160</td><td class="td-r">90,814</td><td class="td-r">$28,010</td><td><span class="rd ppc">PPC-heavy</span></td></tr>
+          <tr><td class="c1">Canada</td><td class="td-r">73,917</td><td class="td-r">6,623</td><td class="td-r">26,544</td><td class="td-r">$4,791</td><td><span class="rd ok">balanced</span></td></tr>
+          <tr><td class="c1">United Kingdom</td><td class="td-r">65,347</td><td class="td-r">3,970</td><td class="td-r">18,511</td><td class="td-r">$5,492</td><td><span class="rd ok">SEO-led</span></td></tr>
+          <tr><td class="c1">Germany</td><td class="td-r">44,857</td><td class="td-r miss">1,488</td><td class="td-r">39,490</td><td class="td-r">$5,471</td><td><span class="rd thin">SEO-thin, renting</span></td></tr>
+          <tr><td class="c1">Norway</td><td class="td-r">42,386</td><td class="td-r">2,738</td><td class="td-r">6,626</td><td class="td-r">$1,951</td><td><span class="rd ok">home, organic</span></td></tr>
+          <tr><td class="c1">Spain</td><td class="td-r">39,295</td><td class="td-r">2,660</td><td class="td-r">18,334</td><td class="td-r">$1,310</td><td><span class="rd ppc">PPC-heavy</span></td></tr>
+          <tr><td class="c1">France</td><td class="td-r">37,659</td><td class="td-r miss">1,374</td><td class="td-r">2,389</td><td class="td-r">$448</td><td><span class="rd thin">SEO-thin, untapped</span></td></tr>
+          <tr><td class="c1">Sweden</td><td class="td-r">26,127</td><td class="td-r">1,714</td><td class="td-r">16,352</td><td class="td-r">$3,019</td><td><span class="rd ppc">PPC-heavy</span></td></tr>
+          <tr><td class="c1">Italy</td><td class="td-r">20,797</td><td class="td-r miss">933</td><td class="td-r">16,451</td><td class="td-r">$2,316</td><td><span class="rd thin">paid &gt; organic</span></td></tr>
+          <tr><td class="c1">Netherlands</td><td class="td-r">13,969</td><td class="td-r">673</td><td class="td-r">6,260</td><td class="td-r">$888</td><td><span class="rd thin">SEO-thin</span></td></tr>
         </tbody>
       </table></div>
-      <div class="kwnote">40+ page-two buyer terms, <b>~300,000 searches/mo</b>, a low-single-digit % captured. Top-three on a slice = <b>~$2M/yr</b> organic.</div>
+      <div class="tblnote">Germany: <b>1,488</b> organic keywords, yet <b>39,490</b> paid visits/mo — nearly one paid click for every organic one. That is category demand you should own, bought back at <b>$5,471/mo</b>. Same pattern in France and Italy.</div>
     </div>
   </div></section>
 
-  <!-- COMPETITORS -->
-  <section id="comp"><div class="wrap">
-    <span class="eyebrow">who takes the clicks</span>
-    <div class="sh"><h2>Your rivals out-rank you on the money terms.</h2></div>
-    <p class="lead">US organic traffic on shared keywords. Same category, same tier, multiples of your search demand.</p>
+  <!-- RIVALS -->
+  <section id="rivals"><div class="wrap">
+    <h2>Your rivals out-rank you on the money terms.</h2>
+    <p class="lead">US organic traffic on shared keywords. Same category, same tier, multiples of your search demand, because they own the category pages you sit on page two for.</p>
     <div class="cmp rise">
       <div class="crow"><span class="c">REI</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val tnum">3.80M</span></div>
       <div class="crow"><span class="c">The North Face</span><span class="track"><span class="fill" style="width:42%"></span></span><span class="val tnum">1.59M</span></div>
@@ -385,51 +399,94 @@
     </div>
   </div></section>
 
-  <!-- FUNNEL -->
+  <!-- FUNNEL (real Jan numbers) -->
   <section><div class="wrap">
-    <span class="eyebrow">where it leaks</span>
-    <div class="sh"><h2>890K visitors in. The fixes act here.</h2></div>
+    <h2>Your real funnel, and where the fixes act.</h2>
+    <p class="lead">Grips, January 2026. 3.8M sessions to 62,580 orders is a 1.65% conversion rate. Lift it to 1.90% and that is +$14.2M/yr, from the same traffic.</p>
     <div class="funnel rise">
-      <div class="fstep"><span class="c">Visitors/mo</span><span class="bar" style="width:100%">~890,000</span><span class="drop"></span></div>
-      <div class="fstep"><span class="c">View a product</span><span class="bar" style="width:62%">~550,000</span><span class="drop">home · cat · search</span></div>
-      <div class="fstep"><span class="c">Add to cart</span><span class="bar" style="width:22%">~195,000</span><span class="drop">product fixes</span></div>
-      <div class="fstep"><span class="c">Checkout</span><span class="bar" style="width:12%">~110,000</span><span class="drop">cart · express pay</span></div>
-      <div class="fstep win"><span class="c">Purchase</span><span class="bar" style="width:7%">~62,000</span><span class="drop" style="color:var(--mint)">every fix compounds</span></div>
+      <div class="fstep"><span class="c">Sessions</span><span class="bar" style="width:100%">3,798,818</span><span class="drop">home · category · search</span></div>
+      <div class="fstep"><span class="c">Product views</span><span class="bar" style="width:64%">~2,430,000</span><span class="drop">card &amp; PLP fixes</span></div>
+      <div class="fstep"><span class="c">Add to cart</span><span class="bar" style="width:26%">~990,000</span><span class="drop">product-page fixes</span></div>
+      <div class="fstep"><span class="c">Checkout</span><span class="bar" style="width:14%">~530,000</span><span class="drop">express pay · guest</span></div>
+      <div class="fstep win"><span class="c">Orders</span><span class="bar" style="width:7%">62,580</span><span class="drop" style="color:var(--mint)">$15.6M · every fix compounds</span></div>
+    </div>
+  </div></section>
+
+  <!-- FORECAST -->
+  <section id="forecast"><div class="wrap">
+    <h2>The 12-month picture.</h2>
+    <p class="lead">Run-rate revenue as the fixes ship and compound, on top of your planned +10–20%. Conservative, benchmarked on your real AOV and conversion, and every step measured against a holdout.</p>
+    <div class="chart rise">
+      <svg viewBox="0 0 820 320" role="img" aria-label="Revenue forecast over four quarters">
+        <defs>
+          <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5ef08f" stop-opacity="0.34"/><stop offset="100%" stop-color="#5ef08f" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- gridlines -->
+        <g stroke="rgba(255,255,255,.08)" stroke-width="1">
+          <line x1="60" y1="60" x2="800" y2="60"/><line x1="60" y1="130" x2="800" y2="130"/><line x1="60" y1="200" x2="800" y2="200"/><line x1="60" y1="262" x2="800" y2="262"/>
+        </g>
+        <g fill="#5a6094" font-family="JetBrains Mono, monospace" font-size="11">
+          <text x="12" y="64">$116M</text><text x="12" y="134">$109M</text><text x="12" y="204">$102M</text><text x="16" y="266">$95M</text>
+        </g>
+        <!-- baseline -->
+        <line x1="60" y1="228" x2="800" y2="228" stroke="#5a6094" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="620" y="222" fill="#5a6094" font-family="JetBrains Mono, monospace" font-size="10.5">baseline $94.9M</text>
+        <!-- uplift area -->
+        <path d="M60,228 L245,188 L430,150 L615,116 L800,86 L800,228 Z" fill="url(#area)"/>
+        <path d="M60,228 L245,188 L430,150 L615,116 L800,86" fill="none" stroke="#5ef08f" stroke-width="2.5"/>
+        <!-- dots -->
+        <g fill="#5ef08f">
+          <circle cx="60" cy="228" r="4"/><circle cx="245" cy="188" r="4.5"/><circle cx="430" cy="150" r="4.5"/><circle cx="615" cy="116" r="4.5"/><circle cx="800" cy="86" r="5"/>
+        </g>
+        <!-- milestone labels -->
+        <g font-family="Golos Text, sans-serif" font-weight="700" fill="#eef0f8" font-size="12.5">
+          <text x="245" y="176" text-anchor="middle">+$5.7M</text><text x="430" y="138" text-anchor="middle">+$11.7M</text><text x="615" y="104" text-anchor="middle">+$16.7M</text><text x="792" y="74" text-anchor="end">+$20.9M</text>
+        </g>
+        <g font-family="JetBrains Mono, monospace" fill="#9298bd" font-size="10">
+          <text x="245" y="286" text-anchor="middle">Q1 · homepage, PDP, checkout</text>
+          <text x="430" y="286" text-anchor="middle">Q2 · category, fit, AOV</text>
+          <text x="615" y="286" text-anchor="middle">Q3 · SEO + EU markets</text>
+          <text x="784" y="286" text-anchor="end">Q4 · retention</text>
+          <text x="60" y="286" text-anchor="middle">Now</text>
+        </g>
+      </svg>
+      <div class="legend"><span><i style="background:#5ef08f"></i>Projected run-rate with the program</span><span><i style="background:#5a6094"></i>Baseline ($94.9M, before)</span></div>
     </div>
   </div></section>
 
   <!-- PLAN -->
   <section id="plan"><div class="wrap">
-    <span class="eyebrow">first 90 days</span>
-    <div class="sh"><h2>Sequenced by impact over effort.</h2></div>
+    <h2>The plan, sequenced by impact over effort.</h2>
     <div class="road rise">
-      <div class="rr"><span class="num">1</span><span class="nm">Homepage value prop · trust · reviews<small>copy + components, no re-platform</small></span><span class="eff">Low effort</span><span class="imp">High</span></div>
-      <div class="rr"><span class="num">2</span><span class="nm">PDP rating · tech · financing · sticky ATC<small>your highest-leverage page</small></span><span class="eff">Med</span><span class="imp">High</span></div>
-      <div class="rr"><span class="num">3</span><span class="nm">Express pay · guest · free-ship bar<small>recover abandoned carts</small></span><span class="eff">Low</span><span class="imp">High</span></div>
-      <div class="rr"><span class="num">4</span><span class="nm">Filters · card ratings · fit finder · cross-sell<small>browse → cart → bigger basket</small></span><span class="eff">Med</span><span class="imp">High</span></div>
-      <div class="rr"><span class="num">5</span><span class="nm">Category SEO + content-to-commerce<small>win "raincoat", "windbreaker"</small></span><span class="eff">Med</span><span class="imp">Compounding</span></div>
+      <div class="rr"><span class="num">1</span><span class="nm">Homepage value prop · trust · reviews<small>copy + components, no re-platform · Q1</small></span><span class="eff">Low effort</span><span class="imp">High</span></div>
+      <div class="rr"><span class="num">2</span><span class="nm">PDP rating · Helly Tech · financing · sticky ATC<small>your highest-leverage page · Q1</small></span><span class="eff">Med</span><span class="imp">High</span></div>
+      <div class="rr"><span class="num">3</span><span class="nm">Express pay · guest · free-ship bar<small>recover abandoned carts · Q1</small></span><span class="eff">Low</span><span class="imp">High</span></div>
+      <div class="rr"><span class="num">4</span><span class="nm">Filters · card ratings · fit finder · complete-the-kit<small>browse → cart → bigger basket · Q2</small></span><span class="eff">Med</span><span class="imp">High</span></div>
+      <div class="rr"><span class="num">5</span><span class="nm">Category SEO in DE, FR, IT + content-to-commerce<small>own the demand you rent · Q3</small></span><span class="eff">Med</span><span class="imp">Compounding</span></div>
+      <div class="rr"><span class="num">6</span><span class="nm">Retention, winback &amp; localization<small>compound every gain into LTV · Q4</small></span><span class="eff">Med</span><span class="imp">Compounding</span></div>
     </div>
   </div></section>
 
   <!-- MONEY -->
   <section id="money" style="border-bottom:none"><div class="wrap">
-    <span class="eyebrow">the invoice you are not seeing</span>
-    <div class="sh"><h2>Your $94.9M store, priced by what it loses.</h2></div>
+    <h2>Your $94.9M store, priced by what it loses.</h2>
     <div class="inv rise">
-      <div class="irow"><div class="l">Conversion <small>20 fixes above · +15%</small></div><div class="a">+$14.2M / yr</div></div>
-      <div class="irow"><div class="l">Order value <small>kits · financing · thresholds · +5%</small></div><div class="a">+$4.7M / yr</div></div>
-      <div class="irow"><div class="l">Organic search <small>page-two category terms</small></div><div class="a">+$2.0M / yr</div></div>
-      <div class="irow"><div class="l">Speed · international · retention <small>quantified with your field data</small></div><div class="a tbd">to measure</div></div>
-      <div class="irow tot"><div class="l">Found, year one</div><div class="a tnum">~$20.9M / yr</div></div>
+      <div class="irow"><div class="l">Conversion <small>20 fixes · 1.65% → 1.90% · +15%</small></div><div class="a">+$14.2M / yr</div></div>
+      <div class="irow"><div class="l">Order value <small>kits · financing · thresholds · +5% on $250 AOV</small></div><div class="a">+$4.7M / yr</div></div>
+      <div class="irow"><div class="l">Organic search <small>category terms + EU markets you rent via PPC</small></div><div class="a">+$2.0M / yr</div></div>
+      <div class="irow"><div class="l">Retention &amp; localization <small>compounds once the above is live</small></div><div class="a tbd">upside</div></div>
+      <div class="irow tot"><div class="l">Recoverable, year one</div><div class="a tnum">~$20.9M / yr</div></div>
     </div>
     <div class="cta rise">
-      <div><h3>The version with your real numbers.</h3><p>Your conversion rate and AOV, turned into a costed, test-by-test plan against a holdout. First three fixes shipped in a month.</p></div>
+      <div><h3>The version with your real numbers.</h3><p>Your conversion by device and market, turned into a costed, test-by-test plan against a holdout. First three fixes shipped inside a month.</p></div>
       <a class="btn" href="mailto:hello@scandiweb.com?subject=Helly%20Hansen%20growth%20session">Book the growth session →</a>
     </div>
   </div></section>
 
   <div class="foot"><div class="wrap">
-    <p class="disc"><b>Measured:</b> revenue ($94.9M, Grips 2025), organic/paid traffic, rankings, top pages, competitors, 127 markets — Ahrefs + public sources, 6 Jul 2026. <b>Benchmarked on your real $94.9M:</b> conversion, AOV and per-fix uplift ranges, shown to correct, not promise. Every uplift is A/B tested; you keep only what wins. Redesigns are illustrations rebuilt in your brand; photography is representative (your site blocks automated capture). Built by <b>scandiweb</b> · 2,100+ commerce builds · Adobe Commerce Gold &amp; Hyvä Platinum · ISO 27001 / 27017 / 9001 · PCI DSS.</p>
+    <p class="disc"><b>Measured:</b> online revenue, AOV, conversion, sessions and device split (Grips Intelligence, $94.9M FY2025, $15.6M Jan 2026); organic &amp; paid traffic, rankings, keywords, competitors and 127 markets (Ahrefs, 6 Jul 2026). <b>Benchmarked on your real $94.9M and $250 AOV:</b> per-fix uplift ranges and the forecast, conservative, shown to correct not promise. Every uplift is A/B tested against a holdout; you keep only what wins. Redesigns are illustrations in your brand; photography is representative (your site blocks automated capture). Built by <b>scandiweb</b> · 2,100+ commerce builds · Adobe Commerce Gold &amp; Hyvä Platinum · ISO 27001 / 27017 / 9001 · PCI DSS.</p>
   </div></div>
 
 </div>
@@ -437,17 +494,11 @@
 (function(){
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var el=document.getElementById('hnum');
-  if(el){if(reduce){el.textContent='$20M';}else{var t0=null,d=1200;function s(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/d,1),e=1-Math.pow(1-p,3);el.textContent='$'+(20*e).toFixed(0)+'M';if(p<1)requestAnimationFrame(s);else el.textContent='$20M';}requestAnimationFrame(s);}}
-  // tabs
+  if(el){if(reduce){el.textContent='$21M';}else{var t0=null,d=1200;function s(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/d,1),e=1-Math.pow(1-p,3);el.textContent='$'+(21*e).toFixed(0)+'M';if(p<1)requestAnimationFrame(s);else el.textContent='$21M';}requestAnimationFrame(s);}}
   var tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
-  tabs.forEach(function(t){t.addEventListener('click',function(){
-    var k=t.getAttribute('data-t');
-    tabs.forEach(function(x){x.classList.toggle('on',x===t);});
-    panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p')===k);});
-  });});
-  // rain
+  tabs.forEach(function(t){t.addEventListener('click',function(){var k=t.getAttribute('data-t');tabs.forEach(function(x){x.classList.toggle('on',x===t);});panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p')===k);});});});
   var c=document.getElementById('rain');if(c&&!reduce){var ctx=c.getContext('2d'),W,H,drops;
-    function size(){var r=c.getBoundingClientRect();W=c.width=r.width;H=c.height=r.height;drops=[];var n=Math.min(140,Math.floor(W/9));for(var i=0;i<n;i++)drops.push({x:Math.random()*W,y:Math.random()*H,l:7+Math.random()*15,v:3.5+Math.random()*4.5});}
+    function size(){var r=c.getBoundingClientRect();W=c.width=r.width;H=c.height=r.height;drops=[];var n=Math.min(150,Math.floor(W/9));for(var i=0;i<n;i++)drops.push({x:Math.random()*W,y:Math.random()*H,l:7+Math.random()*15,v:3.5+Math.random()*4.5});}
     size();addEventListener('resize',size);
     (function loop(){ctx.clearRect(0,0,W,H);ctx.strokeStyle='rgba(150,175,220,.3)';ctx.lineWidth=1;for(var i=0;i<drops.length;i++){var dd=drops[i];ctx.beginPath();ctx.moveTo(dd.x,dd.y);ctx.lineTo(dd.x-1.5,dd.y+dd.l);ctx.stroke();dd.y+=dd.v;dd.x-=0.6;if(dd.y>H){dd.y=-dd.l;dd.x=Math.random()*W;}}requestAnimationFrame(loop);})();}
 })();

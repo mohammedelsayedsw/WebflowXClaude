@@ -139,9 +139,10 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h1 className="font-head text-white text-[30px] sm:text-[40px] md:text-[52px] lg:text-[64px] leading-[1.04] tracking-[-0.015em] max-w-[20ch]">
-                You bought every platform. The gap between them is still
-                yours.
+              <h1 className="font-head text-white text-[30px] sm:text-[40px] md:text-[52px] lg:text-[60px] leading-[1.06] tracking-[-0.015em] max-w-[22ch]">
+                ERP, CRM, store, warehouse.
+                <br />
+                And a spreadsheet holding them together.
               </h1>
             </Reveal>
 

@@ -1,26 +1,24 @@
 "use client";
 
 import { Hero } from "@/sections/webinars-opera-layer/Hero";
-import { TheSession } from "@/sections/webinars-opera-layer/TheSession";
-import { ThePattern } from "@/sections/webinars-opera-layer/ThePattern";
-import { SixComplaints } from "@/sections/webinars-opera-layer/SixComplaints";
-import { WhatIsOperaLayer } from "@/sections/webinars-opera-layer/WhatIsOperaLayer";
-import { HowItSolves } from "@/sections/webinars-opera-layer/HowItSolves";
-import { SpeakerBio } from "@/sections/webinars-opera-layer/SpeakerBio";
+import { Overview } from "@/sections/webinars-opera-layer/Overview";
 import { PressBand } from "@/sections/webinars-opera-layer/PressBand";
+import { PainPoints } from "@/sections/webinars-opera-layer/PainPoints";
+import { HowItSolves } from "@/sections/webinars-opera-layer/HowItSolves";
+import { TheSession } from "@/sections/webinars-opera-layer/TheSession";
+import { SpeakerBio } from "@/sections/webinars-opera-layer/SpeakerBio";
 import { CTA } from "@/sections/webinars-opera-layer/CTA";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <TheSession />
-      <ThePattern />
-      <SixComplaints />
-      <WhatIsOperaLayer />
-      <HowItSolves />
-      <SpeakerBio />
+      <Overview />
       <PressBand />
+      <PainPoints />
+      <HowItSolves />
+      <TheSession />
+      <SpeakerBio />
       <CTA />
     </main>
   );

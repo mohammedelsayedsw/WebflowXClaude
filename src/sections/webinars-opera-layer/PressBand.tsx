@@ -4,8 +4,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 /* Outlets that covered the OperaLayer launch. White logos on a dark band.
-   Entries without a `logo` fall back to a text wordmark.
-   {/* TODO: add Tech Buzz Ireland logo when available *\/} */
+   Entries without a `logo` fall back to a text wordmark. */
 const press: { name: string; href: string; logo?: string; h: number }[] = [
   {
     name: "IT Wire",
@@ -37,11 +36,6 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
     logo: "/webinars/opera-layer/press/retailfocus.png",
     h: 20,
   },
-  {
-    name: "Tech Buzz Ireland",
-    href: "https://techbuzzireland.com/2026/05/29/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-    h: 24,
-  },
 ];
 
 export function PressBand() {
@@ -55,7 +49,7 @@ export function PressBand() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code text-white/50 text-[10px] text-center">
-            As featured in
+            Featured in
           </div>
         </Reveal>
         <Reveal delay={0.08}>

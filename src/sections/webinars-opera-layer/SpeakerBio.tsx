@@ -36,7 +36,7 @@ export function SpeakerBio() {
           {/* RIGHT · copy */}
           <div>
             <Reveal>
-              <SectionLabel index="6">The speaker</SectionLabel>
+              <SectionLabel index="5">The speaker</SectionLabel>
             </Reveal>
 
             <Reveal delay={0.05}>

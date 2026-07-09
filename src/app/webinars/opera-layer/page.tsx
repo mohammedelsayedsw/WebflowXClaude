@@ -16,13 +16,13 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Overview />
+      <PressBand />
       <TheSession />
       <ThePattern />
       <SixComplaints />
       <WhatIsOperaLayer />
       <HowItSolves />
       <SpeakerBio />
-      <PressBand />
       <CTA />
     </main>
   );

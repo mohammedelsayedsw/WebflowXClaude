@@ -60,7 +60,7 @@ export default function Page() {
   return (
     <iframe
       ref={ref}
-      src="/solutions/multi-market-personalization.html"
+      src="/solutions/lp/multi-market-personalization.html"
       title="Multi-Market Personalization Engine — scandiweb"
       scrolling="no"
       style={{

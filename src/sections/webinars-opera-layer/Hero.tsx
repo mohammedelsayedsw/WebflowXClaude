@@ -139,10 +139,12 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h1 className="font-head text-white text-[30px] sm:text-[40px] md:text-[52px] lg:text-[60px] leading-[1.06] tracking-[-0.015em] max-w-[22ch]">
+              <h1 className="font-head text-white text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.12] tracking-[-0.01em]">
                 ERP, CRM, store, warehouse.
                 <br />
-                And a spreadsheet holding them together.
+                And a spreadsheet holding
+                <br />
+                them together.
               </h1>
             </Reveal>
 

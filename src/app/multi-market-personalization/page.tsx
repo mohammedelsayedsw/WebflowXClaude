@@ -3,7 +3,7 @@ export default function Page() {
     <>
       <style>{`body{overflow:hidden!important;margin:0}`}</style>
       <iframe
-        src="/solutions/demos/sportland-cdp.html"
+        src="/solutions/multi-market-personalization.html"
         title="Multi-Market Personalization Engine — scandiweb"
         style={{
           position: "fixed",

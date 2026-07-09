@@ -153,8 +153,8 @@ export function Hero() {
                 className="mt-4 md:mt-5 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.35] max-w-[46ch]"
                 style={{ color: "var(--sw-mint)" }}
               >
-                What OperaLayer is, and how it closes the gap between the
-                systems you already run.
+                How OperaLayer closes the gaps between your systems, without
+                replacing a single one.
               </p>
             </Reveal>
 

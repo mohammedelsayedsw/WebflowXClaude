@@ -1,6 +1,7 @@
 "use client";
 
 import { Hero } from "@/sections/webinars-opera-layer/Hero";
+import { Overview } from "@/sections/webinars-opera-layer/Overview";
 import { TheSession } from "@/sections/webinars-opera-layer/TheSession";
 import { ThePattern } from "@/sections/webinars-opera-layer/ThePattern";
 import { SixComplaints } from "@/sections/webinars-opera-layer/SixComplaints";
@@ -14,6 +15,7 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
+      <Overview />
       <TheSession />
       <ThePattern />
       <SixComplaints />

@@ -4,8 +4,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 /* Outlets that covered the OperaLayer launch. White logos on a dark band.
-   Entries without a `logo` fall back to a text wordmark.
-   {/* TODO: add Tech Buzz Ireland logo when available *\/} */
+   Entries without a `logo` fall back to a text wordmark. */
 const press: { name: string; href: string; logo?: string; h: number }[] = [
   {
     name: "IT Wire",
@@ -36,11 +35,6 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
     href: "https://retail-focus.co.uk/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
     logo: "/webinars/opera-layer/press/retailfocus.png",
     h: 20,
-  },
-  {
-    name: "Tech Buzz Ireland",
-    href: "https://techbuzzireland.com/2026/05/29/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-    h: 24,
   },
 ];
 

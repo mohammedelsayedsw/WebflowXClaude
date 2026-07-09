@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/site/Header";
 
 export const metadata: Metadata = {
   title: "Multi-Market Personalization Engine | scandiweb",
@@ -13,5 +14,10 @@ export const metadata: Metadata = {
 export default function MultiMarketPersonalizationLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

@@ -49,7 +49,7 @@ export function PressBand() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code text-white/50 text-[10px] text-center">
-            As featured in
+            Featured in
           </div>
         </Reveal>
         <Reveal delay={0.08}>

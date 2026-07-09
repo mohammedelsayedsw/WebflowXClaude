@@ -2,6 +2,7 @@
 
 import { Eye, TrendingUp, Cog } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const capabilities: {
   icon: typeof Eye;
@@ -52,21 +53,18 @@ export function HowItSolves() {
   return (
     <section
       id="how-it-solves"
-      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="wrap">
+      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
+      <div className="wrap relative">
         <div className="mb-12 md:mb-16 max-w-[760px]">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">5</span>
-              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>How it solves</span>
-            </div>
+            <SectionLabel index="3">How it solves</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
+            <h2 className="font-head text-white text-[28px] sm:text-[34px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[20ch]">
               Visibility. Prediction.{" "}
-              <span className="text-[var(--sw-blue)]">Automation.</span>
+              <span style={{ color: "var(--sw-mint)" }}>Automation.</span>
             </h2>
           </Reveal>
         </div>
@@ -75,33 +73,33 @@ export function HowItSolves() {
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {capabilities.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.08}>
-              <li className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-7 md:p-8">
+              <li className="h-full rounded-[4px] border border-white/10 bg-white/[0.03] p-6 sm:p-7 md:p-8">
                 <div className="flex items-center justify-between mb-5">
                   <span
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)]"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
                     aria-hidden
                   >
                     <c.icon className="h-5 w-5" strokeWidth={1.75} />
                   </span>
-                  <span className="font-head font-bold tabular-nums text-[28px] leading-none text-[var(--sw-black)]/15">
+                  <span className="font-head font-bold tabular-nums text-[28px] leading-none text-white/15">
                     {c.index}
                   </span>
                 </div>
-                <div className="font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[24px] leading-tight">
+                <div className="font-head font-bold text-white text-[20px] md:text-[24px] leading-tight">
                   {c.title}
                 </div>
-                <p className="mt-3 text-[var(--sw-black)]/70 text-[15px] leading-relaxed">
+                <p className="mt-3 text-white/70 text-[15px] leading-relaxed">
                   {c.body}
                 </p>
                 <div className="mt-5 space-y-2">
                   {c.items.map((it) => (
                     <div
                       key={it}
-                      className="flex items-start gap-2.5 text-[var(--sw-black)]/80 text-[14px] leading-snug"
+                      className="flex items-start gap-2.5 text-white/80 text-[14px] leading-snug"
                     >
                       <span
                         className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: "var(--sw-blue)" }}
+                        style={{ background: "var(--sw-mint)" }}
                       />
                       {it}
                     </div>

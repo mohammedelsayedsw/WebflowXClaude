@@ -83,7 +83,7 @@ export function Overview() {
           {/* LEFT · copy */}
           <div className="max-w-[620px]">
             <Reveal>
-              <SectionLabel>In short</SectionLabel>
+              <SectionLabel index="1">In short</SectionLabel>
             </Reveal>
 
             <Reveal delay={0.05}>

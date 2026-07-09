@@ -28,7 +28,7 @@ const pillars: {
     index: "03",
     title: "How it closes the gap",
     body:
-      "Visibility, prediction, and automation on top of your existing stack, with a working prototype in week one and a live module in about four weeks.",
+      "How visibility, prediction, and automation sit on top of the systems you already run, without replacing any of them.",
   },
 ];
 

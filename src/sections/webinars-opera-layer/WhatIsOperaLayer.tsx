@@ -18,7 +18,7 @@ const tiers: {
     accent: false,
   },
   {
-    tag: "Tier 2 · the layer we build",
+    tag: "Tier 2 · the operational layer",
     title: "OperaLayer",
     body:
       "A unified data model, AI models, an automation engine, and access & governance.",

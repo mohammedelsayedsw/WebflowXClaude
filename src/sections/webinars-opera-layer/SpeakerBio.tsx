@@ -4,12 +4,6 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 import { assetUrl } from "@/lib/assets";
 
-const focus: string[] = [
-  "Enterprise architecture",
-  "Systems integration",
-  "Data & automation",
-];
-
 export function SpeakerBio() {
   return (
     <section
@@ -41,44 +35,30 @@ export function SpeakerBio() {
 
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
-                Led by an architect who builds this,
+                Led by someone who works on this,
                 <br />
                 <span style={{ color: "var(--sw-mint)" }}>
-                  not a sales rep
+                  not just talks about it
                 </span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                Martins Jakubovskis is an Enterprise Architect at scandiweb,
-                where he designs the operational layer that connects ERP, CRM,
-                e-commerce, and warehouse systems. He works hands-on with the
-                teams shipping OperaLayer modules, so he is the right person to
-                answer your questions and share the lessons from real builds.
+                Martins Jakubovskis is an Enterprise Architect at scandiweb. He
+                works alongside the teams behind OperaLayer and spends his days
+                deep in how large retailers connect the systems they run, so he
+                can give you straight, experienced answers instead of a script.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
-              <div className="mt-8 md:mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                <div>
-                  <div className="font-head text-white text-[18px] md:text-[20px] leading-tight">
-                    Martins Jakubovskis
-                  </div>
-                  <div className="text-white/60 text-[13px] md:text-[15px] mt-1.5">
-                    Enterprise Architect at scandiweb
-                  </div>
+              <div className="mt-8 md:mt-9">
+                <div className="font-head text-white text-[18px] md:text-[20px] leading-tight">
+                  Martins Jakubovskis
                 </div>
-                <div className="hidden sm:block w-px self-stretch bg-white/15" />
-                <div className="flex flex-wrap gap-2">
-                  {focus.map((f) => (
-                    <span
-                      key={f}
-                      className="inline-flex items-center rounded-[2px] border border-white/12 bg-white/[0.04] px-2.5 py-1 text-white/70 text-[12px] font-head"
-                    >
-                      {f}
-                    </span>
-                  ))}
+                <div className="text-white/60 text-[13px] md:text-[15px] mt-1.5">
+                  Enterprise Architect at scandiweb
                 </div>
               </div>
             </Reveal>

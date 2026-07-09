@@ -13,38 +13,38 @@ const capabilities: {
 }[] = [
   {
     icon: Eye,
-    index: "01",
+    index: "1",
     title: "Visibility",
     body:
       "Any operational view that doesn't exist today because the data lives in three systems with three different definitions.",
     items: [
       "Single customer / order / SKU view",
       "Cross-system executive dashboards",
-      "Department-level drill-downs",
+      "Breakdowns for each department",
     ],
   },
   {
     icon: TrendingUp,
-    index: "02",
+    index: "2",
     title: "Prediction",
     body:
       "Any forward-looking signal your team produces by hand on Friday afternoons, surfaced in time to act on.",
     items: [
-      "Demand & inventory forecasts",
-      "Churn & revenue risk",
+      "Demand & inventory predictions",
+      "At-risk customers & revenue",
       "Margin & anomaly alerts",
     ],
   },
   {
     icon: Cog,
-    index: "03",
+    index: "3",
     title: "Automation",
     body:
       "Any decision that repeats every week and needs a human just to run it. People stay in the loop only where judgement matters.",
     items: [
       "Reorder & replenishment",
       "Cross-system sync & matching",
-      "Approval & review routing",
+      "Approvals sent to the right person",
     ],
   },
 ];
@@ -57,12 +57,12 @@ export function HowItSolves() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="mb-12 md:mb-16 max-w-[760px]">
+        <div className="mb-12 md:mb-16">
           <Reveal>
             <SectionLabel index="3">How it solves</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[28px] sm:text-[34px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[20ch]">
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 lg:whitespace-nowrap">
               Visibility. Prediction.{" "}
               <span style={{ color: "var(--sw-mint)" }}>Automation.</span>
             </h2>

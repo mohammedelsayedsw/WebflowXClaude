@@ -1,34 +1,36 @@
 "use client";
 
-import { AlertTriangle, Layers, Wrench } from "lucide-react";
+import { Search, Rocket, Calculator, Gift } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const pillars: {
-  icon: typeof Layers;
-  index: string;
-  title: string;
+const takeaways: {
+  icon: typeof Search;
+  title: React.ReactNode;
   body: string;
 }[] = [
   {
-    icon: AlertTriangle,
-    index: "01",
-    title: "The pain of too many systems",
+    icon: Search,
+    title: (
+      <>
+        Where your gaps are
+        <br />
+        costing you
+      </>
+    ),
     body:
-      "Why work keeps falling between your ERP, CRM, e-commerce, and warehouse, and ends up in spreadsheets, manual routines, and backlog items that never ship.",
+      "A clear read on which disconnected-systems problems are quietly draining time and margin, so you know exactly what to fix first.",
   },
   {
-    icon: Layers,
-    index: "02",
-    title: "What OperaLayer is",
+    icon: Rocket,
+    title: "Your first move, mapped",
     body:
-      "A thin operational layer that sits across the systems you already run, unifies their data, and hosts focused apps that close each specific gap.",
+      "The one workflow to connect first and a realistic sense of what it takes to get it live, so you can start without a big project.",
   },
   {
-    icon: Wrench,
-    index: "03",
-    title: "How it closes the gap",
+    icon: Calculator,
+    title: "The numbers to decide",
     body:
-      "How visibility, prediction, and automation sit on top of the systems you already run, without replacing any of them.",
+      "An honest read on effort, systems, and timeline, so you can size the opportunity before you spend a cent.",
   },
 ];
 
@@ -44,45 +46,76 @@ export function TheSession() {
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
               <span className="text-[var(--sw-black)]/55">4</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>The session</span>
+              <span>The takeaway</span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2
-              className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]"
-              style={{ textWrap: "balance" }}
-            >
-              Three things you&apos;ll leave{" "}
-              <span className="text-[var(--sw-blue)]">understanding</span>
+            <h2 className="font-head text-[var(--sw-black)] text-[28px] sm:text-[34px] md:text-[44px] lg:text-[50px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
+              Leave with things you can{" "}
+              <span className="text-[var(--sw-blue)]">actually use</span>
             </h2>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[58ch]">
+              Not theory you could get from any chatbot. You walk away with
+              concrete moves for your own store, and a gift for joining live.
+            </p>
           </Reveal>
         </div>
 
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-          {pillars.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.08}>
+          {takeaways.map((t, i) => (
+            <Reveal key={i} delay={i * 0.08}>
               <li className="group h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-7 md:p-8 transition-all hover:border-[var(--sw-blue)]/35 hover:-translate-y-0.5">
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)]"
-                    aria-hidden
-                  >
-                    <p.icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <span className="font-head font-bold tabular-nums text-[28px] leading-none text-[var(--sw-black)]/15">
-                    {p.index}
-                  </span>
-                </div>
+                <span
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)] mb-5"
+                  aria-hidden
+                >
+                  <t.icon className="h-5 w-5" strokeWidth={1.75} />
+                </span>
                 <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[22px] leading-[1.2]">
-                  {p.title}
+                  {t.title}
                 </div>
                 <p className="mt-3 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">
-                  {p.body}
+                  {t.body}
                 </p>
               </li>
             </Reveal>
           ))}
         </ul>
+
+        {/* Gift box for attendees. TODO: finalize the freebie (attendee
+            discount or a demo built for select live joiners). */}
+        <Reveal delay={0.1}>
+          <div
+            className="mt-4 md:mt-5 rounded-[4px] border p-6 sm:p-8 md:p-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-8"
+            style={{
+              background: "rgba(63,74,175,0.06)",
+              borderColor: "rgba(63,74,175,0.30)",
+            }}
+          >
+            <span
+              className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[4px] text-white"
+              style={{ background: "var(--sw-blue)" }}
+              aria-hidden
+            >
+              <Gift className="h-6 w-6" strokeWidth={1.75} />
+            </span>
+            <div className="flex-1">
+              <div className="label-code text-[var(--sw-blue)] text-[10px] mb-2">
+                A gift for joining live
+              </div>
+              <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[24px] leading-[1.2]">
+                Show up live, leave with something built for you
+              </div>
+              <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
+                Live guests walk away with an exclusive attendee perk: a working
+                demo on your own data or a special offer. We&apos;ll reveal it on
+                the day, so join live to claim it.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

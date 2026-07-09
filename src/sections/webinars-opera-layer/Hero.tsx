@@ -94,6 +94,32 @@ function TrustLogos() {
   );
 }
 
+function SpeakerCard() {
+  return (
+    <div className="w-full max-w-[420px] mx-auto flex flex-col items-center text-center">
+      <div className="label-code text-white/55 text-[10px] mb-5">Speaker</div>
+
+      <div className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-60 lg:w-60 rounded-[4px] overflow-hidden border border-white/15 bg-white/[0.03]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/webinars/opera-layer/martins.png")}
+          alt="Martins Jakubovskis, Enterprise Architect at scandiweb"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      <div className="mt-5 md:mt-7">
+        <div className="font-head text-white text-[20px] md:text-[24px] leading-[1.15]">
+          Martins Jakubovskis
+        </div>
+        <div className="text-white/70 text-[13px] md:text-[15px] mt-1.5 md:mt-2">
+          Enterprise Architect at scandiweb
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
     <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col">
@@ -101,7 +127,9 @@ export function Hero() {
 
       <div className="flex-1 flex items-start">
         <div className="wrap relative z-10 pt-[132px] md:pt-[160px] pb-[clamp(32px,6vh,96px)] w-full">
-          <div className="max-w-[52rem]">
+          <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.5fr_1fr] items-center">
+            {/* LEFT · copy */}
+            <div className="max-w-[40rem]">
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                 <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
@@ -160,22 +188,6 @@ export function Hero() {
               </div>
             </Reveal>
 
-            {/* Hosted by */}
-            <Reveal delay={0.2}>
-              <div className="mt-6 md:mt-7 flex items-center gap-3">
-                <span className="label-code text-white/55 text-[10px]">
-                  Hosted by
-                </span>
-                <span className="h-px w-5 bg-white/15" />
-                <span className="font-head text-white text-[14px] md:text-[15px]">
-                  Martins Jakubovskis
-                </span>
-                <span className="text-white/50 text-[13px] md:text-[14px] hidden sm:inline">
-                  Enterprise Architect, scandiweb
-                </span>
-              </div>
-            </Reveal>
-
             <Reveal delay={0.25}>
               <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
                 {/* TODO: replace with real registration link / HubSpot form */}
@@ -184,6 +196,12 @@ export function Hero() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
+            </Reveal>
+            </div>
+
+            {/* RIGHT · speaker card */}
+            <Reveal delay={0.15} className="flex justify-center lg:justify-end">
+              <SpeakerCard />
             </Reveal>
           </div>
         </div>

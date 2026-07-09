@@ -3,36 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
-
-/* Outlets that covered the OperaLayer launch. No logo files on hand, so
-   these render as text wordmarks linking to the coverage.
-   {/* TODO: swap for real press SVG logos when available *\/} */
-const press: { name: string; href: string }[] = [
-  {
-    name: "IT Wire",
-    href: "https://itwire.com/business-it-news/business-software/scandiwebs-operalayer-ships-72-hour-mvps-to-plug-the-gaps-your-erp-cant-see",
-  },
-  {
-    name: "European Business Review",
-    href: "https://www.europeanbusinessreview.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-  },
-  {
-    name: "Tech Bullion",
-    href: "https://techbullion.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-  },
-  {
-    name: "Retail Tech Innovation Hub",
-    href: "https://retailtechinnovationhub.com/home/2026/6/1/scandiweb-releases-new-version-of-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions",
-  },
-  {
-    name: "Retail Focus",
-    href: "https://retail-focus.co.uk/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-  },
-  {
-    name: "Tech Buzz Ireland",
-    href: "https://techbuzzireland.com/2026/05/29/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
-  },
-];
+import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
   return (
@@ -55,7 +26,18 @@ function HeroBg() {
   );
 }
 
-function PressStrip() {
+function TrustLogos() {
+  const logos: { src: string; alt: string; h: number }[] = [
+    { src: "/shared/logos/clients/puma.svg", alt: "PUMA", h: 30 },
+    { src: "/shared/logos/clients/olympus.png", alt: "OM Digital Solutions / Olympus", h: 24 },
+    { src: "/shared/logos/clients/boyscouts.png", alt: "Boy Scouts of America", h: 28 },
+    { src: "/shared/logos/clients/nytimes.svg", alt: "The New York Times", h: 22 },
+    { src: "/shared/logos/clients/samsung.svg", alt: "Samsung", h: 22 },
+    { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
+    { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
+  ];
+  // Duplicate for a seamless loop — marquee track translates by -50%
+  const loop = [...logos, ...logos];
   return (
     <div
       className="relative z-10"
@@ -65,22 +47,47 @@ function PressStrip() {
         borderTop: "1px solid rgba(255,255,255,0.12)",
       }}
     >
-      <div className="wrap py-[clamp(14px,2.5vh,30px)] flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-        <div className="label-code text-white/55 text-[10px] shrink-0">
-          As featured in
+      <div className="wrap py-[clamp(14px,2.5vh,32px)] flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+          Trusted by 700+ leading brands worldwide
         </div>
-        <div className="flex flex-wrap items-center gap-x-7 gap-y-3 md:gap-x-9">
-          {press.map((p) => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-head font-semibold text-white/65 text-[13px] md:text-[15px] leading-none whitespace-nowrap transition-colors hover:text-white"
-            >
-              {p.name}
-            </a>
-          ))}
+        <div
+          className="relative flex-1 overflow-hidden"
+          aria-label="Client logos"
+        >
+          <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">
+            {loop.map((l, i) => (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                key={i}
+                src={assetUrl(l.src)}
+                alt={i < logos.length ? l.alt : ""}
+                aria-hidden={i >= logos.length}
+                className="w-auto opacity-80 shrink-0"
+                style={{
+                  maxHeight: `${l.h}px`,
+                  height: "auto",
+                  filter: "brightness(0) invert(1)",
+                }}
+              />
+            ))}
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20"
+            style={{
+              background:
+                "linear-gradient(270deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0) 100%)",
+            }}
+          />
         </div>
       </div>
     </div>
@@ -92,8 +99,8 @@ export function Hero() {
     <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col">
       <HeroBg />
 
-      <div className="flex-1 flex items-start lg:items-center">
-        <div className="wrap relative z-10 pt-[148px] md:pt-[176px] lg:pt-[clamp(80px,11vh,144px)] pb-[clamp(32px,6vh,96px)] w-full">
+      <div className="flex-1 flex items-start">
+        <div className="wrap relative z-10 pt-[132px] md:pt-[160px] pb-[clamp(32px,6vh,96px)] w-full">
           <div className="max-w-[52rem]">
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
@@ -153,6 +160,22 @@ export function Hero() {
               </div>
             </Reveal>
 
+            {/* Hosted by */}
+            <Reveal delay={0.2}>
+              <div className="mt-6 md:mt-7 flex items-center gap-3">
+                <span className="label-code text-white/55 text-[10px]">
+                  Hosted by
+                </span>
+                <span className="h-px w-5 bg-white/15" />
+                <span className="font-head text-white text-[14px] md:text-[15px]">
+                  Martins Jakubovskis
+                </span>
+                <span className="text-white/50 text-[13px] md:text-[14px] hidden sm:inline">
+                  Enterprise Architect, scandiweb
+                </span>
+              </div>
+            </Reveal>
+
             <Reveal delay={0.25}>
               <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
                 {/* TODO: replace with real registration link / HubSpot form */}
@@ -166,8 +189,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Press coverage strip */}
-      <PressStrip />
+      {/* Trust bar – real client logos, running marquee */}
+      <TrustLogos />
     </section>
   );
 }

@@ -33,7 +33,7 @@ export function CTA() {
             <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8">
               {/* TODO: confirm webinar date */}
               <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                Free webinar &middot; August 26, 2026 &middot; 10:00 AM (GMT)
+                Free webinar &middot; Date &amp; time TBA
               </span>
             </div>
           </Reveal>
@@ -43,7 +43,7 @@ export function CTA() {
               See the gap between your systems,
               <br />
               <span style={{ color: "var(--sw-mint)" }}>
-                and how to close it.
+                and how to close it
               </span>
             </h2>
           </Reveal>

@@ -13,9 +13,10 @@ function HeroBg() {
         className="absolute inset-0 -z-20"
         style={{
           background:
-            "radial-gradient(900px 620px at 18% 22%, #2a3380 0%, transparent 55%)," +
-            "radial-gradient(800px 580px at 85% 82%, #070a1e 0%, transparent 52%)," +
-            "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
+            "radial-gradient(1000px 700px at 80% 24%, #303c96 0%, transparent 58%)," +
+            "radial-gradient(720px 600px at 8% 90%, #060917 0%, transparent 55%)," +
+            "radial-gradient(1200px 820px at 30% 8%, #223072 0%, transparent 50%)," +
+            "radial-gradient(1500px 1000px at 42% 55%, #171d55 0%, #131843 40%, #0e1130 72%, #090c22 100%)",
         }}
       />
       <div
@@ -127,7 +128,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-start">
         <div className="wrap relative z-10 pt-[132px] md:pt-[160px] pb-[clamp(32px,6vh,96px)] w-full">
-          <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.5fr_1fr] items-center">
+          <div className="grid gap-8 md:gap-10 lg:gap-10 lg:grid-cols-[1.9fr_1fr] items-center">
             {/* LEFT · copy */}
             <div className="max-w-[40rem]">
             <Reveal>
@@ -139,7 +140,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h1 className="font-head text-white text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.12] tracking-[-0.01em]">
+              <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
                 ERP, CRM, store, warehouse.
                 <br />
                 And a spreadsheet holding
@@ -167,7 +168,7 @@ export function Hero() {
                   </div>
                   {/* TODO: confirm webinar date */}
                   <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
-                    August 26, 2026
+                    TBA
                   </div>
                 </div>
                 <div className="w-px self-stretch bg-white/15" />
@@ -176,7 +177,7 @@ export function Hero() {
                     Time
                   </div>
                   <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
-                    10:00 AM (GMT)
+                    TBA
                   </div>
                 </div>
                 <div className="w-px self-stretch bg-white/15" />

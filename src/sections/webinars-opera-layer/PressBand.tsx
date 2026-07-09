@@ -22,7 +22,7 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
     name: "Tech Bullion",
     href: "https://techbullion.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
     logo: "/webinars/opera-layer/press/techbullion.png",
-    h: 28,
+    h: 31,
   },
   {
     name: "Retail Tech Innovation Hub",
@@ -34,7 +34,7 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
     name: "Retail Focus",
     href: "https://retail-focus.co.uk/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
     logo: "/webinars/opera-layer/press/retailfocus.png",
-    h: 20,
+    h: 23,
   },
 ];
 

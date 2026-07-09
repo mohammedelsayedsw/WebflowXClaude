@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const systems = ["ERP", "CRM", "E-comm", "WMS", "Finance"];
+const systems = ["ERP", "CRM", "eComm", "WMS", "Finance"];
 const outcomes = ["Dashboards", "Forecasts", "Automations"];
 
 function ConceptDiagram() {
@@ -105,7 +105,7 @@ export function Overview() {
             <Reveal delay={0.15}>
               <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
                 In this webinar we look at why work keeps falling between your
-                ERP, CRM, e-commerce, and warehouse, what OperaLayer actually
+                ERP, CRM, eCommerce, and warehouse, what OperaLayer actually
                 is, and how it closes that gap, with time for your questions at
                 the end.
               </p>

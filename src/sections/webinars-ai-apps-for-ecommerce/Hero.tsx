@@ -152,9 +152,9 @@ export function Hero() {
                   className="mt-3 md:mt-4 font-body text-[15px] sm:text-[17px] md:text-[19px] leading-[1.4] max-w-[52ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
-                  The follow-up session, now from the admin side: spot issues,
-                  reorder stock, and handle support without opening a
-                  dashboard.
+                  Run your whole store from one chat with ChatGPT and Claude:
+                  spot issues, reorder stock, and handle support without opening
+                  a dashboard.
                 </p>
               </Reveal>
 

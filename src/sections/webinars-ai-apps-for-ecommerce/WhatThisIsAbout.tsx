@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const items = [
   "What it means to run your store's admin work through ChatGPT and Claude",
-  "A live demo on a real store: five questions, two real actions, one conversation",
+  "A live demo on a real store, five questions, two real actions, one conversation",
   "Which systems connect, and how long setup takes",
   "Where this saves the most time for a store like yours",
   "Live Q&A: bring your use case and Rolands answers it live",

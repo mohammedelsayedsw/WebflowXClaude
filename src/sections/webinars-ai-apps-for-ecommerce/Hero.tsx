@@ -103,12 +103,25 @@ function SpeakerCard() {
   return (
     <div className="w-full max-w-[440px] mx-auto flex flex-col items-center text-center">
       <div className="label-code text-white/55 text-[10px] mb-5">Speaker</div>
-      <div className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 rounded-[4px] overflow-hidden border border-white/15 bg-white/[0.03]">
+      <div className="relative w-44 sm:w-52 md:w-60 lg:w-64 aspect-[3/4] rounded-[4px] overflow-hidden border border-white/15">
+        {/* Bluish backdrop behind the cut-out photo */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(130% 100% at 50% 16%, #4d59c2 0%, #2c3688 44%, #161c50 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 grid-backdrop opacity-30 mix-blend-overlay"
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={assetUrl("/webinars/ai-apps/rolands.png")}
+          src={assetUrl("/webinars/ai-apps-for-ecommerce/rolands-steroids.png")}
           alt="Rolands Popovs, COO at scandiweb"
-          className="h-full w-full object-cover"
+          className="relative h-full w-full object-contain object-bottom"
         />
       </div>
       <div className="mt-5 md:mt-7">

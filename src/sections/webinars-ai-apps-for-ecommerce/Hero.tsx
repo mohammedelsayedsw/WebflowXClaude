@@ -142,8 +142,8 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
-                  Run your whole store from one chat
+                <h1 className="font-head text-white text-[32px] sm:text-[44px] md:text-[56px] lg:text-[68px] leading-[1.04] tracking-[-0.015em] max-w-[13ch]">
+                  Admin work, on steroids
                 </h1>
               </Reveal>
 

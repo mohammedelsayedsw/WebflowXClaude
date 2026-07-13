@@ -12,8 +12,10 @@ import {
   PackageMinus,
   MessageSquareText,
   Check,
+  ArrowUpRight,
 } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { btnLight } from "@/components/primitives/buttonStyles";
 
 /* ── Timing ────────────────────────────────────────────────────── */
 const STEP_MS = 1400;
@@ -421,7 +423,25 @@ export function IntroParagraph() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.25}>
+            <Reveal delay={0.22}>
+              <div className="mt-8 md:mt-9 rounded-[4px] border border-[var(--sw-black)]/12 bg-white/55 px-5 py-4 md:px-6 md:py-5 max-w-[560px]">
+                <p className="text-[var(--sw-black)]/65 text-[14px] md:text-[15px] leading-relaxed">
+                  This is the second session on ChatGPT and Claude apps. If you
+                  missed the first, catch up below.
+                </p>
+                <a
+                  href="https://youtu.be/kY-MZtjSi9c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnLight + " mt-4"}
+                >
+                  Watch the first session
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.28}>
               <p className="mt-9 font-head font-semibold text-[var(--sw-black)] text-[17px] md:text-[19px]">
                 Wednesday, July 29, 2026 at 10:00 AM (GMT)
               </p>

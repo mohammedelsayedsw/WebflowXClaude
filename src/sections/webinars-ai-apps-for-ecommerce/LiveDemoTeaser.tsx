@@ -7,11 +7,10 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const steps = [
-  "Spot the issue",
-  "Find the cause",
-  "Reorder stock",
-  "Catch the ticket",
-  "Reply to the customer",
+  "Flagged what needed attention",
+  "Diagnosed the cause",
+  "Reordered stock",
+  "Replied to the customer",
 ];
 
 const STEP_MS = 1100;
@@ -164,7 +163,7 @@ function ChecklistPanel() {
           className="font-head uppercase text-white/40 hidden sm:inline"
           style={{ fontSize: "10px", letterSpacing: "0.18em" }}
         >
-          5 tasks
+          4 tasks
         </span>
       </div>
 
@@ -199,10 +198,10 @@ export function LiveDemoTeaser() {
 
             <Reveal delay={0.1}>
               <p className="mt-7 text-white/80 text-[15px] md:text-[17px] leading-relaxed max-w-[60ch]">
-                AI operations sound abstract until you watch it run. Rolands
-                manages a real store live from one chat. He finds what needs
-                attention, diagnoses a sales drop, reorders stock, and replies to
-                a customer, on real data from connected systems.
+                Same store as last session, now from the admin side. Rolands
+                runs it live on a real account: he flags what needs attention,
+                finds the cause, reorders stock, and replies to a customer, all
+                in one conversation.
               </p>
             </Reveal>
 

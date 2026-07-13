@@ -2,6 +2,12 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
+const costs = [
+  "A stock-out sits for days before anyone checks, and the sales are gone at full price",
+  "A bad review goes unanswered while the customer already tells someone else",
+  "Every Monday starts with hours spent just working out what needs attention",
+];
+
 export function TheGap() {
   return (
     <section id="the-gap" className="bg-lp-bright py-28 md:py-36 scroll-mt-20">
@@ -28,6 +34,24 @@ export function TheGap() {
               into building that picture, opening analytics, checking stock,
               reading tickets, and matching it all up by hand before you can act.
             </p>
+          </Reveal>
+
+          <Reveal delay={0.14}>
+            <ul className="mt-8 space-y-3 max-w-[64ch]">
+              {costs.map((c) => (
+                <li
+                  key={c}
+                  className="flex items-start gap-3 text-[var(--sw-black)]/75 text-[15px] md:text-[16px] leading-relaxed"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ background: "var(--sw-blue)" }}
+                  />
+                  {c}
+                </li>
+              ))}
+            </ul>
           </Reveal>
 
           <Reveal delay={0.18}>

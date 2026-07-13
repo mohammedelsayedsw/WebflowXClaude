@@ -6,11 +6,11 @@ import { Check, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const steps = [
-  "Flagged what needed attention",
-  "Diagnosed the cause",
-  "Reordered stock",
-  "Replied to the customer",
+const steps: { label: string; action: boolean }[] = [
+  { label: "Flagged what needed attention", action: false },
+  { label: "Diagnosed the cause", action: false },
+  { label: "Reordered stock", action: true },
+  { label: "Replied to the customer", action: true },
 ];
 
 const STEP_MS = 1100;
@@ -58,7 +58,7 @@ function TaskChecklist() {
 
         return (
           <motion.div
-            key={s}
+            key={s.label}
             className="flex items-center gap-3 rounded-[4px] border px-3.5 py-2.5 sm:py-3"
             animate={{
               borderColor: isDone
@@ -102,21 +102,26 @@ function TaskChecklist() {
                   transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
                 />
               ) : (
-                <span className="font-head font-bold text-[11px] tabular-nums text-white/40">
-                  {i + 1}
-                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
               )}
             </span>
 
-            {/* task label */}
-            <span
-              className={
-                "flex-1 font-head font-semibold text-[13.5px] sm:text-[15px] leading-tight transition-colors " +
-                (isDone || isActive ? "text-white" : "text-white/45")
-              }
-            >
-              {s}
-            </span>
+            {/* task label + optional action marker */}
+            <div className="flex-1 min-w-0 flex items-center gap-2">
+              <span
+                className={
+                  "font-head font-semibold text-[13.5px] sm:text-[15px] leading-tight transition-colors " +
+                  (isDone || isActive ? "text-white" : "text-white/45")
+                }
+              >
+                {s.label}
+              </span>
+              {s.action && (
+                <span className="inline-flex shrink-0 items-center rounded-[2px] border border-[var(--sw-mint)]/35 bg-[var(--sw-mint)]/[0.10] px-1.5 py-[3px] font-head font-semibold uppercase text-[8.5px] tracking-[0.12em] text-[var(--sw-mint)]">
+                  Action
+                </span>
+              )}
+            </div>
 
             {/* trailing status */}
             {isDone ? (
@@ -143,27 +148,19 @@ function TaskChecklist() {
 function ChecklistPanel() {
   return (
     <div className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto rounded-[4px] border border-white/10 bg-white/[0.025] p-4 sm:p-5 md:p-6">
-      {/* Status header */}
-      <div className="flex items-center justify-between gap-4 mb-4 md:mb-5 flex-wrap">
-        <div className="flex items-center gap-2.5">
-          <motion.span
-            className="h-1.5 w-1.5 rounded-full"
-            style={{ background: "var(--sw-mint)" }}
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <span
-            className="font-head font-semibold uppercase text-white/65"
-            style={{ fontSize: "10.5px", letterSpacing: "0.16em" }}
-          >
-            Live operations run
-          </span>
-        </div>
+      {/* Status header — canonical framing, no step count */}
+      <div className="flex items-center gap-2.5 mb-4 md:mb-5">
+        <motion.span
+          className="h-1.5 w-1.5 shrink-0 rounded-full"
+          style={{ background: "var(--sw-mint)" }}
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        />
         <span
-          className="font-head uppercase text-white/40 hidden sm:inline"
-          style={{ fontSize: "10px", letterSpacing: "0.18em" }}
+          className="font-head font-semibold uppercase text-white/60"
+          style={{ fontSize: "9.5px", letterSpacing: "0.11em" }}
         >
-          4 tasks
+          One conversation &middot; five questions &middot; two real actions
         </span>
       </div>
 

@@ -181,7 +181,7 @@ export function LiveDemoTeaser() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-center">
+        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] items-center">
           {/* LEFT · copy */}
           <div className="max-w-[600px]">
             <Reveal>

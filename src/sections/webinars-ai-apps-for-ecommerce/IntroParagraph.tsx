@@ -424,6 +424,12 @@ export function IntroParagraph() {
             </Reveal>
 
             <Reveal delay={0.22}>
+              <p className="mt-9 font-head font-semibold text-[var(--sw-black)] text-[17px] md:text-[19px]">
+                Wednesday, July 29, 2026 at 10:00 AM (GMT)
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.28}>
               <div className="mt-8 md:mt-9 rounded-[4px] border border-[var(--sw-black)]/12 bg-white/55 px-5 py-4 md:px-6 md:py-5 max-w-[560px]">
                 <p className="text-[var(--sw-black)]/65 text-[14px] md:text-[15px] leading-relaxed">
                   This is the second session on ChatGPT and Claude apps. If you
@@ -439,12 +445,6 @@ export function IntroParagraph() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
-            </Reveal>
-
-            <Reveal delay={0.28}>
-              <p className="mt-9 font-head font-semibold text-[var(--sw-black)] text-[17px] md:text-[19px]">
-                Wednesday, July 29, 2026 at 10:00 AM (GMT)
-              </p>
             </Reveal>
           </div>
 

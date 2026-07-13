@@ -149,12 +149,12 @@ export function Hero() {
 
               <Reveal delay={0.1}>
                 <p
-                  className="mt-3 md:mt-4 font-body text-[15px] sm:text-[17px] md:text-[19px] leading-[1.4] max-w-[52ch]"
+                  className="mt-3 md:mt-4 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[60ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
-                  Run your whole store from one chat with ChatGPT and Claude:
-                  spot issues, reorder stock, and handle support without opening
-                  a dashboard.
+                  Run your store from one chat in ChatGPT and Claude. Spot
+                  issues, reorder stock, and handle support without opening a
+                  dashboard.
                 </p>
               </Reveal>
 

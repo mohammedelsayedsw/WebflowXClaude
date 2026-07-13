@@ -37,7 +37,7 @@ export function TheGap() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <ul className="mt-8 space-y-3 max-w-[64ch]">
+            <ul className="mt-8 space-y-3">
               {costs.map((c) => (
                 <li
                   key={c}

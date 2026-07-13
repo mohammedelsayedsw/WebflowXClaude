@@ -163,6 +163,14 @@ export function Hero() {
             {/* LEFT · copy */}
             <div>
               <Reveal>
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
+                  <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
+                    Free webinar &middot; Session 2 &middot; AI operations
+                  </span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.05}>
                 <h1 className="font-head text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[64px] leading-[1.04] tracking-[-0.015em] max-w-[13ch]">
                   Run your whole store from one chat
                 </h1>

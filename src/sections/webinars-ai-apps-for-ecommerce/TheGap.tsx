@@ -38,7 +38,8 @@ export function TheGap() {
               <p className="font-head font-semibold text-[19px] md:text-[24px] lg:text-[28px] leading-[1.25] tracking-[-0.005em]">
                 <span className="text-[var(--sw-blue)]">
                   Connect those systems to the chat, and you ask once.
-                </span>{" "}
+                </span>
+                <br />
                 <span className="text-[var(--sw-black)]">
                   The app reads across all of them and acts on your call.
                 </span>

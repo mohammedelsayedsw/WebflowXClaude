@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { Check } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
@@ -209,6 +209,21 @@ export function LiveDemoTeaser() {
               <p className="mt-6 text-white/70 text-[15px] md:text-[17px] leading-relaxed max-w-[60ch]">
                 The demo shows both sides: what you ask in the chat, and the
                 emails, orders, and tickets that move in your systems.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="mt-6 text-white/45 text-[13px] md:text-[14px] leading-relaxed">
+                Missed the previous session?{" "}
+                <a
+                  href="https://youtu.be/kY-MZtjSi9c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-0.5 font-semibold text-[var(--sw-mint)] underline decoration-[var(--sw-mint)]/30 underline-offset-2 hover:decoration-[var(--sw-mint)] transition-colors"
+                >
+                  Watch it there
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
               </p>
             </Reveal>
           </div>

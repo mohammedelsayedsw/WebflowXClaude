@@ -26,13 +26,13 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   },
   {
     icon: Briefcase,
-    lead: "Founders and execs",
+    lead: "Founder or exec",
     body:
       "You want a clear read on where AI saves real time in your operations.",
   },
   {
     icon: Building2,
-    lead: "B2B sellers",
+    lead: "B2B seller",
     body:
       "You handle reorders, quotes, and account requests across systems and want them in one place.",
   },

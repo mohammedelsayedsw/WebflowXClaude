@@ -10,9 +10,9 @@ const items: { title: string; body: string }[] = [
       "A clear picture of what running your store's operations through ChatGPT and Claude looks like.",
   },
   {
-    title: "Your first task to automate",
+    title: "Where to start",
     body:
-      "The recurring admin task that gives you back the most time first.",
+      "The routine task worth handing to ChatGPT and Claude first, so you save the most time.",
   },
   {
     title: "What it really takes",

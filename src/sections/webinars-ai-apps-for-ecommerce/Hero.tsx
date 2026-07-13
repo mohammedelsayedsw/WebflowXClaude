@@ -102,32 +102,6 @@ function TrustLogos() {
   );
 }
 
-function StatStrip() {
-  const stats: { lead: string; label: string }[] = [
-    { lead: "2 weeks", label: "First setup live" },
-    { lead: "Both platforms", label: "One build" },
-    { lead: "Live demo", label: "A real store, run from the chat" },
-  ];
-  return (
-    <div className="relative z-10 border-t border-white/[0.12]">
-      <div className="wrap py-[clamp(14px,2.5vh,26px)]">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
-          {stats.map((s) => (
-            <div key={s.lead} className="flex items-baseline gap-3">
-              <span className="font-head font-bold text-white text-[18px] md:text-[22px] leading-none shrink-0">
-                {s.lead}
-              </span>
-              <span className="text-white/60 text-[13px] md:text-[14px] leading-snug">
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function SpeakerCard() {
   return (
     <div className="w-full max-w-[440px] mx-auto flex flex-col items-center text-center">
@@ -250,9 +224,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Three-stat strip */}
-      <StatStrip />
 
       {/* Trust bar */}
       <TrustLogos />

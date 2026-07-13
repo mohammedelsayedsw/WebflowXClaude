@@ -12,6 +12,7 @@ import {
   PackageMinus,
   MessageSquareText,
   Check,
+  ArrowUpRight,
 } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
@@ -424,6 +425,23 @@ export function IntroParagraph() {
             <Reveal delay={0.22}>
               <p className="mt-9 font-head font-semibold text-[var(--sw-black)] text-[17px] md:text-[19px]">
                 Wednesday, July 29, 2026 at 10:00 AM (GMT)
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.28}>
+              <p className="mt-6 text-[var(--sw-black)]/50 text-[13px] md:text-[14px] leading-relaxed max-w-[54ch]">
+                This is the second session on ChatGPT and Claude apps. The first
+                showed the customer side, a shopper finding a gift and checking
+                out inside the chat.{" "}
+                <a
+                  href="https://youtu.be/kY-MZtjSi9c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-0.5 font-semibold text-[var(--sw-blue)] underline decoration-[var(--sw-blue)]/30 underline-offset-2 hover:decoration-[var(--sw-blue)] transition-colors"
+                >
+                  Watch the first session
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
               </p>
             </Reveal>
 

@@ -4,8 +4,8 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const costs = [
   "A stock-out sits for days before anyone checks, and the sales are gone at full price",
-  "A bad review goes unanswered while the customer already tells someone else",
-  "Every Monday starts with hours spent just working out what needs attention",
+  "A bad review goes unanswered while the customer tells someone else",
+  "Every Monday opens with an hour of digging before the real work starts",
 ];
 
 export function TheGap() {
@@ -23,16 +23,17 @@ export function TheGap() {
 
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[42px] lg:text-[52px] leading-[1.05] tracking-[-0.01em] mt-6 max-w-[20ch]">
-              The work is not the decisions,{" "}
-              <span className="text-[var(--sw-blue)]">it is the digging</span>
+              The hard part is finding{" "}
+              <span className="text-[var(--sw-blue)]">what needs attention</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
-              You know what to do once you see the full picture. The time goes
-              into building that picture, opening analytics, checking stock,
-              reading tickets, and matching it all up by hand before you can act.
+              You know what to do once you see the full picture. Building that
+              picture is the job: you open analytics, check stock, read tickets,
+              and match it all up by hand. While you dig, problems sit
+              unattended:
             </p>
           </Reveal>
 
@@ -65,7 +66,7 @@ export function TheGap() {
                 </span>
                 <br />
                 <span className="text-[var(--sw-black)]">
-                  The app reads across all of them and acts on your call.
+                  It reads across all of them and acts on your call.
                 </span>
               </p>
             </div>

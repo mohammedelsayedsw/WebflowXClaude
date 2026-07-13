@@ -26,13 +26,13 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
   },
   {
     icon: TrendingUp,
-    lead: "You run real volume",
+    lead: "You have real volume",
     body:
-      "You have steady orders, support, and traffic, not a handful of orders a month.",
+      "You handle steady orders, support, and traffic, not a handful of orders a month.",
   },
   {
     icon: Server,
-    lead: "You run a known platform",
+    lead: "You're on a known platform",
     body:
       "Magento, Shopify Plus, BigCommerce, commercetools, SAP, or Salesforce Commerce Cloud, or something close.",
   },

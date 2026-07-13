@@ -32,7 +32,7 @@ export function WalkAwayWith() {
   return (
     <section
       id="walk-away-with"
-      className="bg-lp-bright py-28 md:py-36 scroll-mt-20"
+      className="bg-lp-bright py-16 md:py-20 scroll-mt-20"
     >
       <div className="wrap">
         <div className="mb-12 md:mb-16">

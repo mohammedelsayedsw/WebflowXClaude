@@ -373,7 +373,7 @@ function ChatDemo() {
 
 export function IntroParagraph() {
   return (
-    <section id="the-shift" className="bg-lp-bright py-28 md:py-36 scroll-mt-20">
+    <section id="the-shift" className="bg-lp-bright py-16 md:py-20 scroll-mt-20">
       <div className="wrap">
         <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-center">
           {/* LEFT · copy */}

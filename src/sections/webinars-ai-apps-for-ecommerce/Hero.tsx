@@ -142,7 +142,7 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[64px] leading-[1.04] tracking-[-0.015em] max-w-[13ch]">
+                <h1 className="font-head text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.015em] max-w-[20ch]">
                   Run your whole store from one chat
                 </h1>
               </Reveal>
@@ -152,8 +152,8 @@ export function Hero() {
                   className="mt-3 md:mt-4 font-body text-[15px] sm:text-[17px] md:text-[19px] leading-[1.4] max-w-[52ch]"
                   style={{ color: "var(--sw-mint)" }}
                 >
-                  The follow-up session, now from your side of the store: spot
-                  issues, reorder stock, and handle support without opening a
+                  The follow-up session, now from the admin side: spot issues,
+                  reorder stock, and handle support without opening a
                   dashboard.
                 </p>
               </Reveal>

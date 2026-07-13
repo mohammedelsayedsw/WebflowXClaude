@@ -16,8 +16,8 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <IntroParagraph />
-      <StatBand />
       <WhatThisIsAbout />
+      <StatBand />
       <TheGap />
       <LiveDemoTeaser />
       <WalkAwayWith />

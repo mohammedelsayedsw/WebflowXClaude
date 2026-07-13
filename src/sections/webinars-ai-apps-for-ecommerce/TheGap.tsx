@@ -4,7 +4,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 export function TheGap() {
   return (
-    <section id="the-gap" className="bg-lp-bright py-16 md:py-20 scroll-mt-20">
+    <section id="the-gap" className="bg-lp-bright py-28 md:py-36 scroll-mt-20">
       <div className="wrap">
         <div className="max-w-[820px]">
           <Reveal>

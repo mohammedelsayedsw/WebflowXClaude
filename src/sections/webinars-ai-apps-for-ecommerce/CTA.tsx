@@ -8,7 +8,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative py-16 md:py-20 overflow-hidden scroll-mt-20"
+      className="relative py-28 md:py-40 overflow-hidden scroll-mt-20"
       style={{
         background:
           "radial-gradient(900px 600px at 20% 20%, #2a3380 0%, transparent 55%)," +

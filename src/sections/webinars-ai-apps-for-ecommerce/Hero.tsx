@@ -8,30 +8,27 @@ import { assetUrl } from "@/lib/assets";
 function HeroBg() {
   return (
     <>
-      {/* Background image */}
+      {/* Brand gradient background — same family as the adobe-commerce hero,
+          but with the highlight positions moved so it isn't a 1:1 copy
+          (blue glow → top-left, deep shadow → bottom-right). */}
       <div
-        className="absolute inset-0 -z-20 bg-center bg-cover"
-        style={{
-          backgroundImage: `url(${assetUrl("/webinars/ai-apps/hero-bg.png")})`,
-        }}
-      />
-      {/* Darken overlay */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-20"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,13,36,0.78) 0%, rgba(16,19,44,0.82) 50%, rgba(10,13,36,0.92) 100%)",
+            "radial-gradient(900px 620px at 20% 22%, #2a3380 0%, transparent 55%)," +
+            "radial-gradient(820px 580px at 86% 80%, #070a1e 0%, transparent 52%)," +
+            "radial-gradient(1400px 900px at 46% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
         }}
       />
-      {/* Cool radial tint */}
+      {/* Soft blurred tint layer — highlights also repositioned vs. the source */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 mix-blend-overlay opacity-70"
+        className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
         style={{
           background:
-            "radial-gradient(900px 620px at 18% 22%, rgba(42,51,128,0.55) 0%, transparent 55%)," +
-            "radial-gradient(800px 580px at 85% 82%, rgba(7,10,30,0.6) 0%, transparent 52%)",
+            "radial-gradient(620px 900px at 30% 64%, rgba(7, 10, 30, 0.85), transparent 60%)," +
+            "radial-gradient(540px 720px at 72% 28%, rgba(63, 74, 175, 0.22), transparent 60%)",
+          filter: "blur(50px)",
         }}
       />
     </>
@@ -132,7 +129,7 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-start lg:items-center">
-        <div className="wrap relative z-10 pt-[148px] md:pt-[176px] lg:pt-[clamp(80px,11vh,144px)] pb-[clamp(28px,5vh,64px)] w-full">
+        <div className="wrap relative z-10 pt-[168px] md:pt-[192px] lg:pt-[clamp(128px,13vh,188px)] pb-[clamp(28px,5vh,64px)] w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.4fr_1fr] items-center">
             {/* LEFT · copy */}
             <div>

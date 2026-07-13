@@ -393,16 +393,16 @@ export function IntroParagraph() {
                 className="font-head text-[var(--sw-black)] text-[24px] sm:text-[30px] md:text-[38px] lg:text-[44px] leading-[1.05] tracking-[-0.01em]"
                 style={{ textWrap: "balance" }}
               >
-                Your store data lives in five tools.{" "}
+                Your store data lives in four systems.{" "}
                 <span className="text-[var(--sw-blue)]">Now you can ask one.</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-9 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed">
-                Running a store means checking analytics, stock, orders, and
-                support in separate places. You open each tool, pull the numbers,
-                and piece the picture together yourself, every week.
+                Running a store means checking stock, sales, traffic, and
+                support in four separate places. You open each tool, pull the
+                numbers, and piece the picture together yourself, every week.
               </p>
             </Reveal>
 

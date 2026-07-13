@@ -2,9 +2,9 @@
 
 import {
   Store,
-  LineChart,
-  Briefcase,
-  Building2,
+  Layers,
+  TrendingUp,
+  Server,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -16,25 +16,25 @@ const cards: { icon: LucideIcon; lead: string; body: string }[] = [
     icon: Store,
     lead: "You run the store",
     body:
-      "You check analytics, stock, and support every week and want that time back.",
+      "You check stock, sales, traffic, and support every week and want that time back.",
   },
   {
-    icon: LineChart,
-    lead: "You manage operations",
+    icon: Layers,
+    lead: "You log into 3+ tools",
     body:
-      "You pull the same reports across tools and want to act on them faster.",
+      "Your team still opens separate logins to answer what needs attention this week.",
   },
   {
-    icon: Briefcase,
-    lead: "Founder or exec",
+    icon: TrendingUp,
+    lead: "You run real volume",
     body:
-      "You want a clear read on where AI saves real time in your operations.",
+      "You have steady orders, support, and traffic, not a handful of orders a month.",
   },
   {
-    icon: Building2,
-    lead: "B2B seller",
+    icon: Server,
+    lead: "You run a known platform",
     body:
-      "You handle reorders, quotes, and account requests across systems and want them in one place.",
+      "Magento, Shopify Plus, BigCommerce, commercetools, SAP, or Salesforce Commerce Cloud, or something close.",
   },
 ];
 

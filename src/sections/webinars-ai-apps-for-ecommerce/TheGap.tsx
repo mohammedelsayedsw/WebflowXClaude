@@ -41,11 +41,11 @@ export function TheGap() {
               {costs.map((c) => (
                 <li
                   key={c}
-                  className="flex items-start gap-3 text-[var(--sw-black)]/75 text-[15px] md:text-[16px] leading-relaxed"
+                  className="flex items-start gap-3 text-[var(--sw-black)]/75 text-[16px] md:text-[18px] leading-relaxed"
                 >
                   <span
                     aria-hidden
-                    className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full"
+                    className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full"
                     style={{ background: "var(--sw-blue)" }}
                   />
                   {c}

@@ -439,10 +439,19 @@ function OutcomeBlockRow({ n, title, lede, results, diagram, theme, reverse, dia
 // ============================================================
 // Module tiles - SIM-card shaped, static (no link, no scroll)
 // ============================================================
-const TILES: { n: string; code: string; name: string }[] = [
+const TILES: { n: string; code: string; name: React.ReactNode }[] = [
   { n: "1", code: "Dp", name: "Device & plan bundles" },
   { n: "2", code: "Pa", name: "Telecom payments" },
-  { n: "3", code: "Si", name: "Numbers, SIM & eligibility" },
+  {
+    n: "3",
+    code: "Si",
+    name: (
+      <>
+        Numbers, SIM &amp;<br />
+        eligibility
+      </>
+    ),
+  },
   { n: "4", code: "Bs", name: "BSS & CRM connection" },
   { n: "5", code: "La", name: "Launch & campaign machinery" },
 ];

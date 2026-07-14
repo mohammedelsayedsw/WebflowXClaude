@@ -85,7 +85,7 @@ export function SimTile({
   tone = "dark",
 }: {
   code: string;
-  name: string;
+  name: React.ReactNode;
   n?: string;
   tone?: Tone;
 }) {
@@ -118,11 +118,11 @@ export function SimTile({
         />
       </svg>
 
-      <div className="relative flex h-full flex-col" style={{ transform: "translateX(20px)" }}>
+      <div className="relative flex h-full flex-col" style={{ transform: "translateX(16px)" }}>
         <div className="flex items-start justify-between">
           <SimChip color={accent} opacity={dark ? 0.75 : 0.7} />
           {n && (
-            <span className="label-code text-[10px] tabular-nums" style={{ color: numColor }}>
+            <span className="label-code text-[10px] tabular-nums" style={{ color: numColor, marginRight: 11 }}>
               {n}
             </span>
           )}

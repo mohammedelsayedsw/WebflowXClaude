@@ -371,6 +371,77 @@ function SvgLaunch() {
 }
 
 // ============================================================
+// Module Ca - One catalog, every channel
+// Team edits one catalog -> every channel shows the same offer
+// ============================================================
+function SvgOneCatalog() {
+  const W = 700;
+  const H = 440;
+  const edX = 26;
+  const edY = 96;
+  const edW = 210;
+  const edH = 250;
+  const channels = [
+    { y: 40, name: "Web shop" },
+    { y: 118, name: "App" },
+    { y: 196, name: "Call center" },
+    { y: 274, name: "Store" },
+  ];
+  const chX = 406;
+  const chW = 268;
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="One catalog edited by your team, read by every channel showing the same offer">
+      <defs>
+        <linearGradient id="catEd" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#3F4AAF" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#3F4AAF" stopOpacity="0.03" />
+        </linearGradient>
+      </defs>
+
+      {/* editor */}
+      <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
+        <rect x={edX} y={edY} width={edW} height={edH} rx={4} fill="url(#catEd)" stroke="rgba(63,74,175,0.45)" />
+        <rect x={edX} y={edY} width={edW} height={4} fill="#6EF76E" />
+        <text x={edX + 18} y={edY + 32} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">Catalog editor</text>
+        <text x={edX + 18} y={edY + 50} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="9.5" letterSpacing="0.6">ONE SCREEN · NO CODE</text>
+        <line x1={edX + 18} x2={edX + edW - 18} y1={edY + 64} y2={edY + 64} stroke="rgba(230,231,239,0.14)" />
+        <rect x={edX + 18} y={edY + 78} width={edW - 36} height={30} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
+        <text x={edX + 30} y={edY + 97} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="10">Offer name</text>
+        <rect x={edX + 18} y={edY + 116} width={edW - 36} height={34} rx={3} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
+        <text x={edX + 30} y={edY + 137} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="10.5">Price</text>
+        <text x={edX + edW - 30} y={edY + 137} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">€49.99</text>
+        <rect x={edX + 18} y={edY + 160} width={(edW - 44) / 2} height={30} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.2)" />
+        <text x={edX + 18 + (edW - 44) / 4} y={edY + 179} fill="rgba(255,255,255,0.75)" fontFamily={INK} fontSize="10.5" fontWeight="600" textAnchor="middle">Preview</text>
+        <rect x={edX + 26 + (edW - 44) / 2} y={edY + 160} width={(edW - 44) / 2} height={30} rx={3} fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.5)" />
+        <text x={edX + 26 + (edW - 44) * 0.75} y={edY + 179} fill="#6EF76E" fontFamily={INK} fontSize="10.5" fontWeight="700" textAnchor="middle">Publish</text>
+        <text x={edX + edW / 2} y={edY + 216} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9" letterSpacing="0.5" textAnchor="middle">ONE CATALOG · ONE SOURCE</text>
+      </motion.g>
+
+      {/* channels */}
+      {channels.map((c, i) => {
+        const midY = c.y + 30;
+        return (
+          <motion.g key={c.name} initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.09, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
+            <DrawnPath
+              d={`M ${edX + edW} ${edY + edH / 2} C ${edX + edW + 50} ${edY + edH / 2}, ${chX - 50} ${midY}, ${chX} ${midY}`}
+              stroke="#3F4AAF" strokeOpacity={0.5} strokeWidth={1.2} strokeDasharray="4 5" duration={0.7} delay={0.4 + i * 0.06}
+            />
+            <rect x={chX} y={c.y} width={chW} height={60} rx={3} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.18)" />
+            <circle cx={chX + 24} cy={midY} r={7} fill="none" stroke="#6EF76E" strokeOpacity={0.7} />
+            <circle cx={chX + 24} cy={midY} r={2.6} fill="#6EF76E" />
+            <text x={chX + 44} y={midY - 3} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">{c.name}</text>
+            <text x={chX + 44} y={midY + 13} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9.5">same offer</text>
+            <text x={chX + chW - 18} y={midY + 4} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">€49.99</text>
+          </motion.g>
+        );
+      })}
+
+      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.4" textAnchor="middle">CHANGE ONCE · LIVE EVERYWHERE IN MINUTES</text>
+    </svg>
+  );
+}
+
+// ============================================================
 // OutcomeBlockRow - layout shell (signal-bar accent)
 // ============================================================
 function OutcomeBlockRow({ n, title, lede, results, diagram, theme, reverse, diagramDark }: OutcomeBlock) {
@@ -440,10 +511,11 @@ function OutcomeBlockRow({ n, title, lede, results, diagram, theme, reverse, dia
 // Module tiles - SIM-card shaped, static (no link, no scroll)
 // ============================================================
 const TILES: { n: string; code: string; name: React.ReactNode }[] = [
-  { n: "1", code: "Dp", name: "Device & plan bundles" },
-  { n: "2", code: "Pa", name: "Telecom payments" },
+  { n: "1", code: "Ca", name: "One catalog, every channel" },
+  { n: "2", code: "Dp", name: "Device & plan bundles" },
+  { n: "3", code: "Pa", name: "Telecom payments" },
   {
-    n: "3",
+    n: "4",
     code: "Si",
     name: (
       <>
@@ -452,13 +524,13 @@ const TILES: { n: string; code: string; name: React.ReactNode }[] = [
       </>
     ),
   },
-  { n: "4", code: "Bs", name: "BSS & CRM connection" },
-  { n: "5", code: "La", name: "Launch & campaign machinery" },
+  { n: "5", code: "Bs", name: "BSS & CRM connection" },
+  { n: "6", code: "La", name: "Launch & campaign machinery" },
 ];
 
 function ModuleTiles() {
   return (
-    <div className="grid grid-cols-2 items-start gap-3 md:grid-cols-5 md:gap-4">
+    <div className="grid grid-cols-2 items-start gap-3 md:grid-cols-6 md:gap-4">
       {TILES.map((m) => (
         <SimTile key={m.n} n={m.n} code={m.code} name={m.name} tone="dark" />
       ))}
@@ -473,6 +545,28 @@ export function Outcomes() {
   const items: OutcomeBlock[] = [
     {
       n: "1",
+      title: (
+        <>
+          Your team edits one catalog.{" "}
+          <span className="text-[var(--sw-blue)]">Every channel shows the same offer</span>
+        </>
+      ),
+      lede:
+        "Right now a price change waits on a developer, and each channel can show something different. This module gives your team one screen to build and edit every offer, bundle, and price, with no code. Every channel reads that one catalog, so a change goes live in one place and shows up everywhere.",
+      results: [
+        "One screen to create and edit offers, bundles, and prices, no developer needed",
+        "One catalog read by every customer channel, kept in sync",
+        "Change a price or a promo once, it updates everywhere in minutes",
+        "Preview an offer before it goes live, copy an existing offer in one click",
+        "Scope offers per brand or MVNO from the same catalog, kept fully separate",
+      ],
+      diagram: <SvgOneCatalog />,
+      theme: "beige",
+      reverse: true,
+      diagramDark: true,
+    },
+    {
+      n: "2",
       title: (
         <>
           Sell the phone and the plan{" "}
@@ -493,7 +587,7 @@ export function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "2",
+      n: "3",
       title: (
         <>
           Installments, balance payment, and OTP,{" "}
@@ -515,7 +609,7 @@ export function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "3",
+      n: "4",
       title: (
         <>
           Pick a number, check coverage, verify ID,{" "}
@@ -536,7 +630,7 @@ export function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "4",
+      n: "5",
       title: (
         <>
           The store talks to your BSS.{" "}
@@ -558,7 +652,7 @@ export function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "5",
+      n: "6",
       title: (
         <>
           Go live on the deadline,{" "}
@@ -594,26 +688,32 @@ export function Outcomes() {
           <div className="grid items-end gap-10 md:gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <h2 className="font-head max-w-[18ch] text-[36px] leading-[1.0] tracking-[-0.015em] text-white md:text-[58px] lg:text-[72px]">
-                Five modules.{" "}
+                Six modules.{" "}
                 <span className="text-[var(--sw-mint)]">Each one removes a real cost or opens real revenue</span>.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-[46ch] text-[16px] leading-relaxed text-white/75 md:text-[18px]">
                 Configure them against your catalog, your systems, and your
-                channels. Start with the one that costs you the most.
+                channels. Apply them all, or pick just the one you are missing.
               </p>
-              <div className="mt-8 grid max-w-[440px] grid-cols-3 gap-5">
+              <div className="mt-8 grid max-w-[460px] grid-cols-3 gap-5">
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">5</div>
+                  <div className="flex h-[34px] items-end md:h-[44px]">
+                    <span className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">6</span>
+                  </div>
                   <div className="label-code mt-2 text-white/50">Modules</div>
                 </div>
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">6-12 wk</div>
+                  <div className="flex h-[34px] items-end md:h-[44px]">
+                    <span className="font-head whitespace-nowrap text-[22px] leading-none tabular-nums text-white md:text-[28px]">6-12 wk</span>
+                  </div>
                   <div className="label-code mt-2 text-white/50">Kickoff to live</div>
                 </div>
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</div>
+                  <div className="flex h-[34px] items-end md:h-[44px]">
+                    <span className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</span>
+                  </div>
                   <div className="label-code mt-2 text-white/50">One-time setup</div>
                 </div>
               </div>

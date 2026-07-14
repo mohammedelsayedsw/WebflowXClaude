@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      "A production-ready commerce accelerator for telecom operators. Live in 6 to 12 weeks. Five modules, proven in production at a national telecom operator: device and plan bundles, telecom payments, numbers and SIM, BSS and CRM connection, launch machinery.",
+      "A production-ready commerce accelerator for telecom operators. Live in 6 to 12 weeks. Six modules, proven in production at a national telecom operator: one catalog every channel, device and plan bundles, telecom payments, numbers and SIM, BSS and CRM connection, launch machinery.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title,
     description:
-      "A production-ready commerce accelerator for telecom operators. Live in 6 to 12 weeks. Five modules, proven in production at a national telecom operator.",
+      "A production-ready commerce accelerator for telecom operators. Live in 6 to 12 weeks. Six modules, proven in production at a national telecom operator.",
   },
 };
 

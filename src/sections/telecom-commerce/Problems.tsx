@@ -8,30 +8,36 @@ export function Problems() {
   const problems = [
     {
       n: "1",
+      title: "Every offer change needs a developer",
+      body:
+        "Every offer change is a developer ticket, and your channels can each show a different price.",
+    },
+    {
+      n: "2",
       title: "A phone price depends on the plan",
       body:
         "Generic platforms know ‘add to cart, pay, ship’. They don't know ‘this iPhone price exists only with a postpaid plan, paid in installments through one specific bank’.",
     },
     {
-      n: "2",
+      n: "3",
       title: "Telecom payments break a normal checkout",
       body:
         "Bank installments with different rules per bank. Paying from the phone account balance. OTP checks. Cash and card on delivery. A standard checkout covers almost none of it.",
     },
     {
-      n: "3",
+      n: "4",
       title: "A SIM sale is more than a product sale",
       body:
         "The customer needs to pick a number, pass an ID check, and confirm coverage at their address. Online shops that can't do this send people to the physical store.",
     },
     {
-      n: "4",
+      n: "5",
       title: "One order, five systems",
       body:
         "A single order must reach billing, provisioning, logistics, and the CRM. Today that path is custom glue, and when it breaks, a person fixes it by hand.",
     },
     {
-      n: "5",
+      n: "6",
       title: "Launches and campaigns are where shops break",
       body:
         "A device launch or a holiday campaign brings the year's peak traffic and the tightest deadline at the same time. Most telecom shops meet that day unprepared.",
@@ -56,7 +62,7 @@ export function Problems() {
               <span className="label-code text-white/60">THE INDUSTRY, CHECKED OPERATOR BY OPERATOR</span>
             </div>
             <h2 className="font-head text-[34px] leading-[1.05] text-white md:text-[48px] lg:text-[56px]">
-              Five problems every{" "}
+              Six problems every{" "}
               <br className="hidden md:block" />
               <span className="text-[var(--sw-mint)]">telecom operator</span> recognises
             </h2>
@@ -64,13 +70,13 @@ export function Problems() {
               Your BSS is the warehouse: it bills, provisions, and keeps
               records, and it does that well. The trouble starts when it&apos;s
               also asked to be the shop window. We built and run telecom commerce
-              in production, and these are the five walls every operator&apos;s
+              in production, and these are the six walls every operator&apos;s
               online store hits.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {problems.map((f, i) => (
             <Reveal key={f.n} delay={i * 0.07}>
               <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-6">

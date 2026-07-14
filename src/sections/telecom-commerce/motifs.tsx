@@ -118,7 +118,7 @@ export function SimTile({
         />
       </svg>
 
-      <div className="relative flex h-full flex-col" style={{ transform: "translateX(16px)" }}>
+      <div className="relative flex h-full flex-col" style={{ transform: "translateX(6px)" }}>
         <div className="flex items-start justify-between">
           <SimChip color={accent} opacity={dark ? 0.75 : 0.7} />
           {n && (

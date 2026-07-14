@@ -74,7 +74,7 @@ function HeroProofCard() {
   );
 }
 
-/** Reference-case proof line. */
+/** Reference-case proof quote (client kept anonymous). */
 function ReferenceNote() {
   return (
     <div
@@ -84,11 +84,17 @@ function ReferenceNote() {
         background: "rgba(110,247,110,0.05)",
       }}
     >
-      <span className="label-code text-[var(--sw-mint)]">AWARD-WINNING REFERENCE BUILD</span>
-      <p className="mt-2 text-[13px] leading-relaxed text-white/70">
-        The reference case won an award at Meet Magento New York 2025. Reference
-        calls with the operator are available on request.
-      </p>
+      <span className="label-code text-[var(--sw-mint)]">MEET MAGENTO NEW YORK 2025</span>
+      <blockquote className="mt-3 text-[14px] leading-relaxed text-white/85">
+        &ldquo;I would like to congratulate scandiweb team on{" "}
+        <span className="text-[var(--sw-mint)]">winning the prestigious award</span>
+        ... this impressive achievement, and I believe it reflects the strength
+        of our collaboration.&rdquo;
+      </blockquote>
+      <div className="mt-3 border-t border-white/10 pt-3">
+        <div className="text-[13px] font-medium text-white">IT leadership</div>
+        <div className="label-code mt-0.5 text-white/55">national telecom operator</div>
+      </div>
     </div>
   );
 }

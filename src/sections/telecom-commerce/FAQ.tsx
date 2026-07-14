@@ -33,19 +33,19 @@ export function FAQ() {
     },
     {
       q: "Which commerce engines does it work with?",
-      a: "The reference build runs on commercetools; Adobe Commerce, Medusa, and other modern engines work too. The telecom logic sits above the engine, so the engine can be swapped.",
+      a: "The reference build runs on Magento / Adobe Commerce with a modern fast frontend. Other engines are assessed in the first review.",
+    },
+    {
+      q: "Does it work in our language and market?",
+      a: "Yes. The reference build runs bilingual, English and Arabic, including right-to-left layout. Payments and delivery are configured per market.",
     },
     {
       q: "Can we use only part of it?",
-      a: "Yes. The modules are independent. Some operators start with only the offer manager, or only the order orchestration.",
+      a: "Yes. The modules are independent. Some operators start with only the payments module, or only the BSS and CRM connection.",
     },
     {
-      q: "How fast can we see something real?",
-      a: "A working prototype of one priority offer in 72 hours. A first live offer in about 6 weeks. Full rollout across channels in 3 to 4 months.",
-    },
-    {
-      q: "Is it TM Forum compliant?",
-      a: "Yes, aligned with TMF620 for the product catalog and TMF622 for product ordering.",
+      q: "Is this proven anywhere real?",
+      a: "Yes. Every module on this page runs in production at a national telecom operator. The case won an award at Meet Magento New York 2025, and the operator takes reference calls on request.",
     },
     {
       q: "Who owns the code after launch?",

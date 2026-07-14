@@ -15,12 +15,12 @@ export function AcceleratorValue() {
       "Telecom logic is the starting point, not the customization",
     ],
     [
-      "Packaged software brings vendor lock-in",
-      "You own the code, any engine, any cloud",
+      "Payment edge cases discovered from customer complaints",
+      "Installments, balance pay, and OTP already hardened in production",
     ],
     [
-      "Every price change is an IT ticket",
-      "The business team changes prices in an interface",
+      "The launch deadline meets an untested stack",
+      "Stress-tested against your real peak before go-live",
     ],
   ];
 
@@ -39,7 +39,7 @@ export function AcceleratorValue() {
           <h2 className="font-head max-w-[34ch] text-[34px] leading-[1.05] text-[var(--sw-black)] md:text-[52px] lg:text-[60px]">
             Eighteen months to build it,{" "}
             <br className="hidden md:block" />
-            or <span className="text-[var(--sw-blue)]">six weeks to set it up</span>
+            or <span className="text-[var(--sw-blue)]">six to twelve weeks to set it up</span>
           </h2>
         </Reveal>
 
@@ -73,12 +73,12 @@ export function AcceleratorValue() {
                 />
                 <div className="relative">
                   <div className="mb-5 flex items-baseline justify-between">
-                    <span className="label-code text-[var(--sw-mint)]">WITH THE ACCELERATOR · 6 WEEKS</span>
+                    <span className="label-code text-[var(--sw-mint)]">WITH THE ACCELERATOR · 6-12 WEEKS</span>
                   </div>
                   <p className="text-[14px] leading-relaxed text-white/90 md:text-[15px]">
-                    The layer is already built and proven in production at
-                    telecom operators. The six weeks go into fitting it to your
-                    catalog and your systems, not into building.
+                    The modules are already built and running in production at a
+                    national telecom operator. The 6 to 12 weeks go into fitting
+                    them to your catalog and your systems, not into building.
                   </p>
                 </div>
               </div>

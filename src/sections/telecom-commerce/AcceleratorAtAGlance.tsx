@@ -21,7 +21,7 @@ export function AcceleratorAtAGlance() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
           {/* LEFT — intro text */}
           <Reveal>
             <div className="mb-5 flex items-center gap-2.5">
@@ -36,9 +36,12 @@ export function AcceleratorAtAGlance() {
               This is not a generic web shop and not a new BSS. It is the store
               layer built for how telecoms sell: a phone that comes with a plan,
               a price that depends on the bank and the contract, a SIM that needs
-              a number and an ID check before it can ship. Every module below is
-              live in production at a national telecom operator. You keep the
-              systems you run. We add the selling layer on top.
+              a number and an ID check before it can ship.
+            </p>
+            <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
+              Every module below runs in production at a national telecom
+              operator, added on top of the systems they already had. Yours stay
+              in place the same way. We add the layer above them.
             </p>
           </Reveal>
 

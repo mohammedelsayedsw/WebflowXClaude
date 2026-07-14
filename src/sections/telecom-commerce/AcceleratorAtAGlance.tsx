@@ -7,7 +7,7 @@ import { SignalBars } from "./motifs";
 export function AcceleratorAtAGlance() {
   const spec: [string, React.ReactNode][] = [
     ["Live in", "6 to 12 weeks, scoped per module set"],
-    ["Works with", "Magento / Adobe Commerce (proven in production) · other modern engines assessed per case"],
+    ["Works with", "Magento / Adobe Commerce · Shopify · BigCommerce · commercetools · Salesforce Commerce Cloud · SAP Commerce Cloud · custom platforms"],
     ["Connects to", "Your BSS, CRM, ERP, provisioning, and fulfillment systems"],
     ["Languages", "Any, including right-to-left; the reference build runs English and Arabic"],
     ["After launch", "Your business team manages offers and prices, no IT tickets"],
@@ -66,10 +66,10 @@ export function AcceleratorAtAGlance() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.05, duration: 0.35 }}
                     viewport={{ once: true, amount: 0.25 }}
-                    className="grid grid-cols-[110px_1fr] gap-4 border-b border-white/10 py-3 last:border-b-0"
+                    className="grid grid-cols-[96px_1fr] gap-4 border-b border-white/10 py-3 last:border-b-0"
                   >
                     <dt className="label-code text-white/55">{k}</dt>
-                    <dd className="text-[13px] leading-snug text-white/90 md:text-[14px]">{v}</dd>
+                    <dd className="text-[13px] leading-snug text-white/90 md:text-[14px] [text-wrap:pretty]">{v}</dd>
                   </motion.div>
                 ))}
               </dl>

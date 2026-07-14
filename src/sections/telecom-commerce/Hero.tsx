@@ -34,7 +34,7 @@ function HeroProofCard() {
     { v: "6-12 wk", l: "kickoff to live, scoped per module set" },
     { v: "0", l: "changes required to the operator's BSS" },
     { v: "2 h", l: "fastest delivery option built into checkout" },
-    { v: "50+", l: "scandiweb specialists have shipped telecom commerce work" },
+    { v: "50+", l: "projects delivered for the telecom industry" },
   ];
   return (
     <div
@@ -84,12 +84,11 @@ function ReferenceNote() {
         background: "rgba(110,247,110,0.05)",
       }}
     >
-      <span className="label-code text-[var(--sw-mint)]">MEET MAGENTO NEW YORK 2025</span>
-      <blockquote className="mt-3 text-[14px] leading-relaxed text-white/85">
-        &ldquo;I would like to congratulate scandiweb team on{" "}
+      <blockquote className="border-l-2 border-[var(--sw-mint)]/50 pl-4 text-[14px] italic leading-relaxed text-white/85">
+        &ldquo;I would like to congratulate [the] Scandiweb team on{" "}
         <span className="text-[var(--sw-mint)]">winning the prestigious award</span>
-        ... this impressive achievement, and I believe it reflects the strength
-        of our collaboration.&rdquo;
+        ... this impressive achievement, and I believe it reflects the{" "}
+        <span className="text-[var(--sw-mint)]">strength of our collaboration</span>.&rdquo;
       </blockquote>
       <div className="mt-3 border-t border-white/10 pt-3">
         <div className="text-[13px] font-medium text-white">IT leadership</div>
@@ -196,7 +195,7 @@ export function Hero() {
                 connects to them, it doesn&apos;t replace them.
               </p>
 
-              <p className="font-head mt-6 max-w-[54ch] text-[17px] leading-[1.35] text-white md:text-[20px]">
+              <p className="font-head mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white md:text-[18px]">
                 Live in 6 to 12 weeks. Five modules, proven in production at a
                 national telecom operator.
               </p>

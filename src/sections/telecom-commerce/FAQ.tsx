@@ -44,6 +44,10 @@ export function FAQ() {
       a: "Yes. The modules are independent. Some operators start with only the payments module, or only the BSS and CRM connection.",
     },
     {
+      q: "Can it support sub-brands or partner setups (MVNO)?",
+      a: "Yes, as a scoped addition. Sub-brand and partner setups, with separate catalogs and prices per brand, are assessed in the first review.",
+    },
+    {
       q: "Is this proven anywhere real?",
       a: "Yes. Every module on this page runs in production at a national telecom operator. The case won an award at Meet Magento New York 2025, and the operator takes reference calls on request.",
     },

@@ -61,9 +61,11 @@ export function Problems() {
               <span className="text-[var(--sw-mint)]">telecom operator</span> recognises
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              The same pattern shows up at operators of every size: the systems
-              that run the network are also being asked to run the shop. They
-              were never built for that.
+              Your BSS is the warehouse: it bills, provisions, and keeps
+              records, and it does that well. The trouble starts when it&apos;s
+              also asked to be the shop window. We built and run telecom commerce
+              in production, and these are the five walls every operator&apos;s
+              online store hits.
             </p>
           </Reveal>
         </div>

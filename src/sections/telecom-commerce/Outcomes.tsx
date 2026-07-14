@@ -477,7 +477,7 @@ export function Outcomes() {
         "Plan-gated offers: a special device price that exists only with a specific plan",
         "Campaign offers built fast: the reference operator ran a device campaign with plan-gated installment pricing",
         "Product pages that present plans and devices differently, because they are different",
-        "Your team manages bundles and offers from the admin",
+        "One-time, monthly, and installment pricing combined on one offer",
       ],
       diagram: <SvgDeviceBundle />,
       theme: "dark",
@@ -537,7 +537,7 @@ export function Outcomes() {
       lede:
         "Every order, number, and balance lives in your systems of record. This module is the connection layer between them and the store, built so the BSS side stays untouched.",
       results: [
-        "Checkout, orders, and customer data flow to your CRM and BSS automatically",
+        "Checkout, orders, and customer data flow to your BSS, OSS, and CRM automatically",
         "Zero changes required on the BSS side: the store adapts to your systems",
         "Failures surface for review instead of disappearing: no silently lost orders",
         "Secure connection to your infrastructure (VPN, your hosting, your rules)",

@@ -9,7 +9,7 @@ export function AcceleratorAtAGlance() {
     ["Live in", "6 to 12 weeks, scoped per module set"],
     ["Works with", "Magento / Adobe Commerce · Shopify · BigCommerce · commercetools · Salesforce Commerce Cloud · SAP Commerce Cloud · custom platforms"],
     ["Connects to", "Your BSS, CRM, ERP, provisioning, and fulfillment systems"],
-    ["Languages", "Any, including right-to-left; the reference build runs English and Arabic"],
+    ["Standards", "API-first architecture, aligned with TM Forum patterns for product catalog and ordering"],
     ["After launch", "Your business team manages offers and prices, no IT tickets"],
     ["You keep", "Full code ownership · runbooks · architecture docs · training"],
   ];

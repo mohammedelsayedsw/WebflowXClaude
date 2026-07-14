@@ -697,23 +697,17 @@ export function Outcomes() {
                 Configure them against your catalog, your systems, and your
                 channels. Apply them all, or pick just the one you are missing.
               </p>
-              <div className="mt-8 grid max-w-[460px] grid-cols-3 gap-5">
+              <div className="mt-8 flex flex-wrap gap-x-10 gap-y-6">
                 <div>
-                  <div className="flex h-[34px] items-end md:h-[44px]">
-                    <span className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">6</span>
-                  </div>
+                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">6</div>
                   <div className="label-code mt-2 text-white/50">Modules</div>
                 </div>
                 <div>
-                  <div className="flex h-[34px] items-end md:h-[44px]">
-                    <span className="font-head whitespace-nowrap text-[22px] leading-none tabular-nums text-white md:text-[28px]">6-12 wk</span>
-                  </div>
+                  <div className="font-head whitespace-nowrap text-[34px] leading-none tabular-nums text-white md:text-[44px]">6-12 wk</div>
                   <div className="label-code mt-2 text-white/50">Kickoff to live</div>
                 </div>
                 <div>
-                  <div className="flex h-[34px] items-end md:h-[44px]">
-                    <span className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</span>
-                  </div>
+                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</div>
                   <div className="label-code mt-2 text-white/50">One-time setup</div>
                 </div>
               </div>

@@ -10,37 +10,37 @@ export function Problems() {
       n: "1",
       title: "Every offer change needs a developer",
       body:
-        "Every offer change is a developer ticket, and your channels can each show a different price.",
+        "Every price change waits on a developer, and each channel can show a different one.",
     },
     {
       n: "2",
       title: "A phone price depends on the plan",
       body:
-        "Generic platforms know ‘add to cart, pay, ship’. They don't know ‘this iPhone price exists only with a postpaid plan, paid in installments through one specific bank’.",
+        "The price shifts with the plan, the bank, and the contract. A generic cart cannot handle that.",
     },
     {
       n: "3",
       title: "Telecom payments break a normal checkout",
       body:
-        "Bank installments with different rules per bank. Paying from the phone account balance. OTP checks. Cash and card on delivery. A standard checkout covers almost none of it.",
+        "Installments, balance payments, OTP, cash on delivery. A standard checkout covers almost none of it.",
     },
     {
       n: "4",
       title: "A SIM sale is more than a product sale",
       body:
-        "The customer needs to pick a number, pass an ID check, and confirm coverage at their address. Online shops that can't do this send people to the physical store.",
+        "The customer picks a number, passes an ID check, and confirms coverage. Most online shops send them to the store instead.",
     },
     {
       n: "5",
       title: "One order, five systems",
       body:
-        "A single order must reach billing, provisioning, logistics, and the CRM. Today that path is custom glue, and when it breaks, a person fixes it by hand.",
+        "One order must reach billing, provisioning, logistics, and CRM. Today that path is hand-fixed glue.",
     },
     {
       n: "6",
       title: "Launches and campaigns are where shops break",
       body:
-        "A device launch or a holiday campaign brings the year's peak traffic and the tightest deadline at the same time. Most telecom shops meet that day unprepared.",
+        "Peak traffic and the tightest deadline hit the same day. Most telecom shops meet it unprepared.",
     },
   ];
 

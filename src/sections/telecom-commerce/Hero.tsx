@@ -196,7 +196,7 @@ export function Hero() {
               </p>
 
               <p className="font-head mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white md:text-[18px]">
-                Live in 6 to 12 weeks. Five modules, proven in production at a
+                Live in 6 to 12 weeks. Six modules, proven in production at a
                 national telecom operator.
               </p>
 

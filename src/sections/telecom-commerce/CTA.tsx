@@ -3,28 +3,31 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { assetUrl } from "@/lib/assets";
 import { SignalBars } from "./motifs";
 
-/** Spokesperson slot - deliberately unfinished. No name is invented. */
-function SpokespersonTodo() {
+function Spokesperson() {
   return (
-    <div
-      className="mt-10 rounded-[4px] p-6 md:p-7"
-      style={{
-        border: "1px dashed rgba(110,247,110,0.45)",
-        background: "rgba(110,247,110,0.04)",
-      }}
-    >
-      <span className="label-code text-[var(--sw-mint)]">SPOKESPERSON · TODO</span>
-      <p className="mt-3 text-[14px] leading-relaxed text-white/60">
-        Placeholder. A named spokesperson and quote go here once confirmed. No
-        name or quote is shown until then.
-      </p>
+    <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] p-6 backdrop-blur md:p-7">
+      <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[24px]">
+        &ldquo;You don&apos;t pay us to learn how telecom sells. We already did.
+        Offers, bundles, eligibility, multi-system orders -{" "}
+        <span className="text-[var(--sw-mint)]">
+          configure the proven layer to your BSS in weeks, not 18 months
+        </span>
+        .&rdquo;
+      </blockquote>
       <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-4">
-        <div className="h-11 w-11 shrink-0 rounded-full border border-dashed border-white/25 bg-white/[0.03]" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/accelerator/school-uniform/team/aigars.png")}
+          alt="Aigars Pavlovics"
+          className="h-11 w-11 shrink-0 rounded-full object-cover"
+          style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+        />
         <div>
-          <div className="h-3 w-32 rounded-[2px] bg-white/10" />
-          <div className="mt-2 h-2.5 w-40 rounded-[2px] bg-white/[0.06]" />
+          <div className="text-[14px] font-medium text-white">Aigars Pavlovics</div>
+          <div className="label-code mt-0.5 text-white/55">Executive Board · scandiweb</div>
         </div>
       </div>
     </div>
@@ -60,7 +63,7 @@ export function CTA() {
               does not, we will say so.
             </p>
 
-            <SpokespersonTodo />
+            <Spokesperson />
 
             <ul className="mt-10 space-y-2.5 text-[13px] text-white/75 md:text-[14px]">
               {[

@@ -487,7 +487,7 @@ function OutcomeBlockRow({ n, title, lede, results, diagram, theme, reverse, dia
             </p>
             <ul className="max-w-[48ch] space-y-3">
               {results.map((r, i) => (
-                <li key={i} className={`flex min-w-0 gap-3 ${bulletColor} text-[14px] leading-relaxed md:text-[15px]`}>
+                <li key={i} className={`flex min-w-0 gap-3 ${bulletColor} text-[15px] leading-relaxed md:text-[17px]`}>
                   <Check className="mt-1 h-4 w-4 shrink-0" style={{ color: accentColor }} />
                   <span className="min-w-0 break-words">{r}</span>
                 </li>

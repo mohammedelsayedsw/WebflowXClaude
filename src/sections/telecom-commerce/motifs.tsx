@@ -122,7 +122,7 @@ export function SimTile({
         <div className="flex items-start justify-between">
           <SimChip color={accent} opacity={dark ? 0.75 : 0.7} />
           {n && (
-            <span className="label-code text-[10px] tabular-nums" style={{ color: numColor, marginRight: 11 }}>
+            <span className="label-code text-[10px] tabular-nums" style={{ color: numColor, marginRight: 16 }}>
               {n}
             </span>
           )}

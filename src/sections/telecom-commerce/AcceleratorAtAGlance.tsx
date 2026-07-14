@@ -6,25 +6,10 @@ import { SignalBars } from "./motifs";
 
 export function AcceleratorAtAGlance() {
   const spec: [string, React.ReactNode][] = [
-    [
-      "Live in",
-      <>
-        6 weeks to a first live offer{" "}
-        <span
-          className="ml-1 inline-block rounded-[2px] px-1.5 py-0.5 align-middle text-[10px] tracking-[0.04em]"
-          style={{
-            border: "1px dashed rgba(63,74,175,0.5)",
-            color: "rgba(63,74,175,0.85)",
-            background: "rgba(63,74,175,0.06)",
-          }}
-        >
-          TODO: confirm against reference delivery
-        </span>
-      </>,
-    ],
-    ["Works with", "Adobe Commerce · commercetools · Medusa · other modern engines"],
+    ["Live in", "6 to 12 weeks, scoped per module set"],
+    ["Works with", "Magento / Adobe Commerce (proven in production) · other modern engines assessed per case"],
     ["Connects to", "Your BSS, CRM, ERP, provisioning, and fulfillment systems"],
-    ["Standards", "TM Forum TMF620 (Product Catalog) and TMF622 (Product Ordering)"],
+    ["Languages", "Any, including right-to-left; the reference build runs English and Arabic"],
     ["After launch", "Your business team manages offers and prices, no IT tickets"],
     ["You keep", "Full code ownership · runbooks · architecture docs · training"],
   ];
@@ -48,12 +33,12 @@ export function AcceleratorAtAGlance() {
               <span className="text-[var(--sw-blue)]">Configure it to your systems</span>
             </h2>
             <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
-              This is not a new BSS and not a generic web shop. It is the missing
-              layer between the two, built for the way telecoms sell: bundles
-              across fiber, mobile, and TV, prices that depend on who the
-              customer is, orders that must reach several systems at once. You
-              keep what works. We add what is missing. After launch your business
-              team runs it from one interface, without IT tickets.
+              This is not a generic web shop and not a new BSS. It is the store
+              layer built for how telecoms sell: a phone that comes with a plan,
+              a price that depends on the bank and the contract, a SIM that needs
+              a number and an ID check before it can ship. Every module below is
+              live in production at a national telecom operator. You keep the
+              systems you run. We add the selling layer on top.
             </p>
           </Reveal>
 
@@ -99,9 +84,9 @@ export function AcceleratorAtAGlance() {
           >
             <span className="label-code shrink-0 text-[var(--sw-blue)]">ALWAYS INCLUDED, NOT A MODULE</span>
             <p className="text-[14px] leading-relaxed text-[var(--sw-black)]/75 md:text-[15px]">
-              TM Forum aligned architecture (TMF620, TMF622), any commerce
-              engine, any cloud, full code ownership, documentation, and
-              training.
+              Bilingual storefront (including right-to-left languages), full data
+              migration from your current store, SEO migration, stress testing
+              against your real peak traffic, documentation, and training.
             </p>
           </div>
         </Reveal>

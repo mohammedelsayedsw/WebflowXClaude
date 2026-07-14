@@ -31,10 +31,10 @@ function HeroBg() {
 /** Reference-build figures. Values rendered exactly as written in the brief. */
 function HeroProofCard() {
   const stats: { v: string; l: React.ReactNode }[] = [
-    { v: "6 wk", l: "from idea to a live offer" },
-    { v: "72 h", l: "to a working prototype of a new offer" },
-    { v: "70%", l: "pre-built before the project starts" },
-    { v: "0", l: "changes required to your BSS" },
+    { v: "6-12 wk", l: "kickoff to live, scoped per module set" },
+    { v: "0", l: "changes required to the operator's BSS" },
+    { v: "2 h", l: "fastest delivery option built into checkout" },
+    { v: "50+", l: "scandiweb specialists have shipped telecom commerce work" },
   ];
   return (
     <div
@@ -60,7 +60,7 @@ function HeroProofCard() {
               key={i}
               className="flex items-center gap-4 border-b border-white/10 py-4 first:pt-0 last:border-b-0"
             >
-              <span className="font-head shrink-0 min-w-[80px] text-[28px] leading-none tabular-nums text-white md:text-[34px]">
+              <span className="font-head shrink-0 min-w-[104px] text-[26px] leading-none tabular-nums text-white md:text-[32px]">
                 {s.v}
               </span>
               <span className="text-[12px] leading-snug text-white/70 md:text-[13px]">
@@ -74,21 +74,27 @@ function HeroProofCard() {
   );
 }
 
-/** Quote slot - deliberately unfinished. No source yet, so nothing invented. */
-function QuoteTodo() {
+/** Reference-case proof quote (client kept anonymous). */
+function ReferenceNote() {
   return (
     <div
       className="mt-5 rounded-[4px] p-5"
       style={{
-        border: "1px dashed rgba(110,247,110,0.45)",
-        background: "rgba(110,247,110,0.04)",
+        border: "1px solid rgba(110,247,110,0.3)",
+        background: "rgba(110,247,110,0.05)",
       }}
     >
-      <span className="label-code text-[var(--sw-mint)]">QUOTE SLOT · TODO</span>
-      <p className="mt-2 text-[13px] leading-relaxed text-white/55">
-        Needs a real source. No quote is shown until an operator reference is
-        confirmed.
-      </p>
+      <span className="label-code text-[var(--sw-mint)]">MEET MAGENTO NEW YORK 2025</span>
+      <blockquote className="mt-3 text-[14px] leading-relaxed text-white/85">
+        &ldquo;I would like to congratulate scandiweb team on{" "}
+        <span className="text-[var(--sw-mint)]">winning the prestigious award</span>
+        ... this impressive achievement, and I believe it reflects the strength
+        of our collaboration.&rdquo;
+      </blockquote>
+      <div className="mt-3 border-t border-white/10 pt-3">
+        <div className="text-[13px] font-medium text-white">IT leadership</div>
+        <div className="label-code mt-0.5 text-white/55">national telecom operator</div>
+      </div>
     </div>
   );
 }
@@ -182,17 +188,17 @@ export function Hero() {
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:mt-6 md:text-[18px]">
                 A{" "}
                 <span className="font-semibold text-white">
-                  production-ready commerce layer
+                  production-ready commerce accelerator
                 </span>{" "}
-                for telecom operators. It sits between your sales channels and
-                your BSS: offers, bundles, prices, and eligibility live in one
-                place your business team controls. Your billing and provisioning
-                systems stay exactly as they are.
+                for telecom operators. Sell devices, plans, and bundles online,
+                with installments, number selection, and coverage checks built
+                in. Your BSS and CRM stay exactly as they are: the store
+                connects to them, it doesn&apos;t replace them.
               </p>
 
               <p className="font-head mt-6 max-w-[54ch] text-[17px] leading-[1.35] text-white md:text-[20px]">
-                Launch a new offer in weeks, not months. Five modules,
-                configured to your systems.
+                Live in 6 to 12 weeks. Five modules, proven in production at a
+                national telecom operator.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4 md:mt-8">
@@ -212,7 +218,7 @@ export function Hero() {
             {/* RIGHT · proof card + unfinished quote slot */}
             <div className="lg:pt-16">
               <HeroProofCard />
-              <QuoteTodo />
+              <ReferenceNote />
             </div>
           </div>
         </div>

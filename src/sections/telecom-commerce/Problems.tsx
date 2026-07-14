@@ -8,21 +8,21 @@ export function Problems() {
   const problems = [
     {
       n: "1",
-      title: "A new offer takes six months",
+      title: "A phone price depends on the plan",
       body:
-        "Every new price or bundle becomes an IT ticket into the BSS queue. By the time the offer is live, the campaign window is gone and a competitor caught it.",
+        "Generic platforms know ‘add to cart, pay, ship’. They don't know ‘this iPhone price exists only with a postpaid plan, paid in installments through one specific bank’.",
     },
     {
       n: "2",
-      title: "Bundles don't fit the platform",
+      title: "Telecom payments break a normal checkout",
       body:
-        "Generic web shops know ‘add to cart, pay, ship’. They don't know ‘fiber plus mobile plus TV, discounted together, only where fiber is available’.",
+        "Bank installments with different rules per bank. Paying from the phone account balance. OTP checks. Cash and card on delivery. A standard checkout covers almost none of it.",
     },
     {
       n: "3",
-      title: "Every channel tells a different price",
+      title: "A SIM sale is more than a product sale",
       body:
-        "The web shop, the app, the call center, and the store each have their own copy of the catalog. Customers notice when they don't match.",
+        "The customer needs to pick a number, pass an ID check, and confirm coverage at their address. Online shops that can't do this send people to the physical store.",
     },
     {
       n: "4",
@@ -32,9 +32,9 @@ export function Problems() {
     },
     {
       n: "5",
-      title: "A new brand means a new build",
+      title: "Launches and campaigns are where shops break",
       body:
-        "Launching a sub-brand or selling through a partner today means copying the whole setup. Every copy doubles the maintenance.",
+        "A device launch or a holiday campaign brings the year's peak traffic and the tightest deadline at the same time. Most telecom shops meet that day unprepared.",
     },
   ];
 

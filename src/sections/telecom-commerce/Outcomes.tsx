@@ -31,62 +31,62 @@ function SvgDeviceBundle() {
     <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="A device and a plan sold as one bundle with a plan-gated installment price">
       {/* device */}
       <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={26} y={64} width={250} height={126} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
-        <rect x={26} y={64} width={250} height={4} fill="#6EF76E" />
-        <rect x={44} y={90} width={26} height={46} rx={4} fill="none" stroke="rgba(255,255,255,0.6)" />
-        <line x1={50} y1={130} x2={64} y2={130} stroke="rgba(255,255,255,0.5)" />
-        <text x={88} y={104} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">iPhone 15</text>
-        <text x={88} y={122} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10.5">smartphone</text>
-        <text x={44} y={172} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="700">€999</text>
-        <text x={112} y={172} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10.5">or in installments</text>
+        <rect x={26} y={50} width={258} height={150} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
+        <rect x={26} y={50} width={258} height={4} fill="#6EF76E" />
+        <rect x={44} y={82} width={30} height={54} rx={4} fill="none" stroke="rgba(255,255,255,0.6)" />
+        <line x1={51} y1={128} x2={67} y2={128} stroke="rgba(255,255,255,0.5)" />
+        <text x={92} y={102} fill="#fff" fontFamily={INK} fontSize="18" fontWeight="700">iPhone 15</text>
+        <text x={92} y={126} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">smartphone</text>
+        <text x={44} y={182} fill="#fff" fontFamily={INK} fontSize="20" fontWeight="700">€999</text>
+        <text x={122} y={182} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="13">or in installments</text>
       </motion.g>
 
-      <text x={151} y={210} fill="#6EF76E" fontFamily={INK} fontSize="26" fontWeight="700" textAnchor="middle">+</text>
+      <text x={155} y={224} fill="#6EF76E" fontFamily={INK} fontSize="30" fontWeight="700" textAnchor="middle">+</text>
 
       {/* plan */}
       <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.15, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={26} y={220} width={250} height={126} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
-        <rect x={26} y={220} width={250} height={4} fill="#3F4AAF" />
-        <g transform="translate(44, 248)">
+        <rect x={26} y={244} width={258} height={150} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
+        <rect x={26} y={244} width={258} height={4} fill="#3F4AAF" />
+        <g transform="translate(44, 274)">
           {[0, 1, 2, 3].map((i) => (
-            <rect key={i} x={i * 8} y={18 - i * 5} width={5} height={5 + i * 5} rx={1} fill="#6EF76E" fillOpacity={0.85} />
+            <rect key={i} x={i * 9} y={20 - i * 6} width={6} height={6 + i * 6} rx={1} fill="#6EF76E" fillOpacity={0.85} />
           ))}
         </g>
-        <text x={92} y={260} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">Postpaid plan</text>
-        <text x={92} y={278} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10.5">24 months</text>
-        <text x={44} y={326} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="700">€29 / mo</text>
+        <text x={96} y={290} fill="#fff" fontFamily={INK} fontSize="18" fontWeight="700">Postpaid plan</text>
+        <text x={96} y={314} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">24 months</text>
+        <text x={44} y={374} fill="#fff" fontFamily={INK} fontSize="20" fontWeight="700">€29 / mo</text>
       </motion.g>
 
       {/* combine arrow */}
-      <DrawnPath d={`M 276 205 C 316 205, 340 210, 380 210`} stroke="#6EF76E" strokeOpacity={0.75} strokeWidth={1.5} duration={0.8} delay={0.6} />
-      <path d={`M 369 205 L 380 210 L 369 215`} fill="none" stroke="#6EF76E" strokeOpacity={0.9} strokeWidth={1.5} />
-      <text x={330} y={196} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="600" textAnchor="middle">one product</text>
+      <DrawnPath d={`M 284 222 C 320 222, 344 218, 372 218`} stroke="#6EF76E" strokeOpacity={0.75} strokeWidth={1.5} duration={0.8} delay={0.6} />
+      <path d={`M 361 213 L 372 218 L 361 223`} fill="none" stroke="#6EF76E" strokeOpacity={0.9} strokeWidth={1.5} />
+      <text x={328} y={204} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="600" textAnchor="middle">one product</text>
 
       {/* bundle */}
       <motion.g initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={380} y={60} width={294} height={312} rx={4} fill="rgba(110,247,110,0.06)" stroke="#6EF76E" strokeOpacity={0.45} />
-        <rect x={380} y={60} width={294} height={4} fill="#6EF76E" />
-        <text x={400} y={92} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">Bundle</text>
-        <text x={400} y={110} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="11">iPhone 15 + Postpaid</text>
-        <rect x={400} y={124} width={186} height={26} rx={13} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <text x={493} y={141} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.5" textAnchor="middle">PLAN-GATED PRICE</text>
-        <line x1={400} x2={654} y1={168} y2={168} stroke="rgba(230,231,239,0.12)" />
+        <rect x={372} y={50} width={300} height={344} rx={4} fill="rgba(110,247,110,0.06)" stroke="#6EF76E" strokeOpacity={0.45} />
+        <rect x={372} y={50} width={300} height={4} fill="#6EF76E" />
+        <text x={394} y={88} fill="#fff" fontFamily={INK} fontSize="18" fontWeight="700">Bundle</text>
+        <text x={394} y={112} fill="rgba(255,255,255,0.65)" fontFamily={INK} fontSize="14">iPhone 15 + Postpaid</text>
+        <rect x={394} y={126} width={212} height={32} rx={16} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <text x={500} y={147} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" letterSpacing="0.5" textAnchor="middle">PLAN-GATED PRICE</text>
+        <line x1={394} x2={650} y1={180} y2={180} stroke="rgba(230,231,239,0.12)" />
         {[
           ["Upfront", "€0"],
           ["Installments", "€41 / mo × 24"],
           ["Through", "one bank"],
         ].map(([k, v], i) => (
           <g key={k}>
-            <text x={400} y={196 + i * 30} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="11.5">{k}</text>
-            <text x={654} y={196 + i * 30} fill="#fff" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="end">{v}</text>
+            <text x={394} y={214 + i * 38} fill="rgba(255,255,255,0.72)" fontFamily={INK} fontSize="16">{k}</text>
+            <text x={650} y={214 + i * 38} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="end">{v}</text>
           </g>
         ))}
-        <rect x={400} y={298} width={254} height={50} rx={3} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.4)" />
-        <text x={416} y={320} fill="#fff" fontFamily={INK} fontSize="11.5" fontWeight="700">This device price exists</text>
-        <text x={416} y={337} fill="#6EF76E" fontFamily={INK} fontSize="11" fontWeight="600">only with this plan</text>
+        <rect x={394} y={324} width={256} height={56} rx={4} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.4)" />
+        <text x={410} y={349} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="700">This device price exists</text>
+        <text x={410} y={369} fill="#6EF76E" fontFamily={INK} fontSize="15" fontWeight="600">only with this plan</text>
       </motion.g>
 
-      <text x={W / 2} y={H - 10} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">DEVICE + PLAN = ONE PRODUCT</text>
+      <text x={W / 2} y={H - 12} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="14" letterSpacing="1.2" textAnchor="middle">DEVICE + PLAN = ONE PRODUCT</text>
     </svg>
   );
 }
@@ -99,64 +99,48 @@ function SvgPayments() {
   const W = 700;
   const H = 440;
   const methods = [
-    ["Bank installments", "per-bank rules", true],
-    ["Phone account balance", "balance checked", false],
-    ["OTP verification", "at the payment step", false],
-    ["Wallet · Apple Pay · Card", "one-tap", false],
-    ["Cash / Card on delivery", "pay at the door", false],
+    "Pay in installments, your bank's rules",
+    "Pay from your phone balance",
+    "Confirm with an SMS code",
+    "Apple Pay, wallet, or card",
+    "Cash or card on delivery",
   ];
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="A single telecom checkout with installments, balance payment, OTP, wallets, and cash or card on delivery">
-      {/* checkout */}
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Every way your customers pay, in one checkout">
+      {/* payment methods */}
       <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={26} y={48} width={336} height={344} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
-        <rect x={26} y={48} width={336} height={4} fill="#6EF76E" />
-        <text x={46} y={80} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">Checkout · payment</text>
-        <text x={46} y={98} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="9.5" letterSpacing="0.6">ONE FLOW · EVERY METHOD</text>
-        {methods.map(([name, sub, active], i) => (
-          <g key={name as string}>
-            <rect x={46} y={112 + i * 52} width={296} height={42} rx={3}
-              fill={active ? "rgba(110,247,110,0.12)" : "rgba(230,231,239,0.04)"}
-              stroke={active ? "rgba(110,247,110,0.5)" : "rgba(230,231,239,0.16)"} />
-            <circle cx={68} cy={133 + i * 52} r={6} fill="none" stroke={active ? "#6EF76E" : "rgba(255,255,255,0.4)"} />
-            {active && <circle cx={68} cy={133 + i * 52} r={2.6} fill="#6EF76E" />}
-            <text x={86} y={129 + i * 52} fill="#fff" fontFamily={INK} fontSize="11.5" fontWeight="700">{name}</text>
-            <text x={86} y={145 + i * 52} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9.5">{sub}</text>
-          </g>
-        ))}
+        <rect x={26} y={44} width={356} height={356} rx={5} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
+        <rect x={26} y={44} width={356} height={4} fill="#6EF76E" />
+        {methods.map((m, i) => {
+          const rowY = 64 + i * 64;
+          const midY = rowY + 25;
+          return (
+            <g key={m}>
+              <rect x={42} y={rowY} width={324} height={50} rx={4} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.16)" />
+              <circle cx={66} cy={midY} r={9} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+              <path d={`M 62 ${midY} l3 3 6 -7`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+              <text x={86} y={midY + 5} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="600">{m}</text>
+            </g>
+          );
+        })}
       </motion.g>
 
-      {/* payment-step detail */}
-      <motion.g initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={402} y={92} width={272} height={256} rx={4} fill="rgba(110,247,110,0.06)" stroke="#6EF76E" strokeOpacity={0.45} />
-        <rect x={402} y={92} width={272} height={4} fill="#6EF76E" />
-        <text x={420} y={124} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700">Bank installments</text>
-        <text x={420} y={142} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="9.5" letterSpacing="0.5">TELECOM-ONLY MECHANICS</text>
-        {/* bank + terms */}
-        <rect x={420} y={156} width={236} height={34} rx={3} fill="rgba(255,255,255,0.03)" stroke="rgba(230,231,239,0.16)" />
-        <text x={432} y={177} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="10.5">Bank · terms per bank</text>
-        <path d="M636 170 l6 6 6 -6" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth={1.4} />
-        {/* balance check */}
-        <rect x={420} y={198} width={236} height={34} rx={3} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
-        <circle cx={438} cy={215} r={7} fill="none" stroke="#6EF76E" />
-        <path d="M434.5 215 l2.5 2.5 4.5 -5" fill="none" stroke="#6EF76E" strokeWidth={1.5} />
-        <text x={454} y={219} fill="#fff" fontFamily={INK} fontSize="10.5">Balance €54.20 · enough</text>
-        {/* OTP */}
-        <text x={420} y={256} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="10">OTP</text>
-        {[0, 1, 2, 3].map((i) => (
-          <rect key={i} x={454 + i * 30} y={244} width={24} height={26} rx={3} fill="rgba(255,255,255,0.05)" stroke="rgba(230,231,239,0.2)" />
-        ))}
-        {[0, 1, 2, 3].map((i) => (
-          <circle key={i} cx={466 + i * 30} cy={257} r={2.4} fill="#6EF76E" />
-        ))}
-        {/* verified */}
-        <rect x={420} y={288} width={236} height={40} rx={3} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.45)" />
-        <circle cx={440} cy={308} r={8} fill="none" stroke="#6EF76E" />
-        <path d="M436 308 l3 3 6 -7" fill="none" stroke="#6EF76E" strokeWidth={1.6} />
-        <text x={458} y={312} fill="#6EF76E" fontFamily={INK} fontSize="11" fontWeight="700">Verified · charge on order only</text>
+      {/* one clear example */}
+      <motion.g initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.35, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
+        <rect x={396} y={128} width={278} height={184} rx={5} fill="rgba(110,247,110,0.06)" stroke="#6EF76E" strokeOpacity={0.45} />
+        <rect x={396} y={128} width={278} height={4} fill="#6EF76E" />
+        <text x={418} y={168} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="700">Pay from your phone balance</text>
+        <rect x={416} y={186} width={242} height={44} rx={4} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.4)" />
+        <circle cx={438} cy={208} r={9} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+        <path d="M 434 208 l3 3 6 -7" fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+        <text x={460} y={213} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="600">Balance €54.20, enough</text>
+        <rect x={416} y={240} width={242} height={44} rx={4} fill="rgba(110,247,110,0.10)" stroke="rgba(110,247,110,0.4)" />
+        <circle cx={438} cy={262} r={9} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+        <path d="M 434 262 l3 3 6 -7" fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+        <text x={460} y={267} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="600">Confirmed by SMS code</text>
       </motion.g>
 
-      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.5" textAnchor="middle">PROVEN IN PRODUCTION · NO LOST REDIRECTS</text>
+      <text x={W / 2} y={H - 14} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14" textAnchor="middle">Every way your customers pay, in one checkout.</text>
     </svg>
   );
 }
@@ -168,36 +152,34 @@ function SvgPayments() {
 function SvgSimEligibility() {
   const W = 700;
   const H = 440;
-  const cards: { x: number; y: number; n: string; title: string; sub: string; chip: string }[] = [
-    { x: 26, y: 54, n: "1", title: "Pick a number", sub: "070 123 4567", chip: "RESERVED VIA CRM" },
-    { x: 356, y: 54, n: "2", title: "Coverage check", sub: "at this address", chip: "FIBER & 5G OK" },
-    { x: 26, y: 224, n: "3", title: "Verify ID", sub: "document upload", chip: "eKYC VERIFIED" },
-    { x: 356, y: 224, n: "4", title: "Deliver", sub: "2h · same-day · next-day", chip: "e-SIM BY SMS" },
+  const cards: { x: number; y: number; n: string; title: string; sub: string; chip: string; note: string }[] = [
+    { x: 26, y: 46, n: "1", title: "Pick a number", sub: "070 123 4567", chip: "RESERVED VIA CRM", note: "auto-release if abandoned" },
+    { x: 356, y: 46, n: "2", title: "Coverage check", sub: "at this address", chip: "FIBER & 5G OK", note: "straight from your systems" },
+    { x: 26, y: 232, n: "3", title: "Verify ID", sub: "document upload", chip: "ID VERIFIED", note: "at checkout" },
+    { x: 356, y: 232, n: "4", title: "Deliver", sub: "2h · same-day · next-day", chip: "e-SIM BY SMS", note: "fits telecom" },
   ];
   const cw = 318;
-  const ch = 150;
+  const ch = 156;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Number selection, coverage check, ID verification, and delivery, all handled online">
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Pick a number, check coverage, verify ID, and deliver, all handled online">
       {cards.map((c, i) => (
         <motion.g key={c.n} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + i * 0.1, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
           <rect x={c.x} y={c.y} width={cw} height={ch} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
           <rect x={c.x} y={c.y} width={cw} height={4} fill="#6EF76E" />
-          <circle cx={c.x + 30} cy={c.y + 36} r={13} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
-          <text x={c.x + 30} y={c.y + 41} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="middle">{c.n}</text>
-          <text x={c.x + 54} y={c.y + 34} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">{c.title}</text>
-          <text x={c.x + 54} y={c.y + 52} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="11">{c.sub}</text>
-          <line x1={c.x + 20} x2={c.x + cw - 20} y1={c.y + 74} y2={c.y + 74} stroke="rgba(230,231,239,0.12)" />
+          <circle cx={c.x + 34} cy={c.y + 40} r={15} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
+          <text x={c.x + 34} y={c.y + 46} fill="#6EF76E" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="middle">{c.n}</text>
+          <text x={c.x + 62} y={c.y + 38} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">{c.title}</text>
+          <text x={c.x + 62} y={c.y + 60} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">{c.sub}</text>
+          <line x1={c.x + 20} x2={c.x + cw - 20} y1={c.y + 82} y2={c.y + 82} stroke="rgba(230,231,239,0.12)" />
           {/* chip */}
-          <rect x={c.x + 20} y={c.y + 90} width={c.chip.length * 7.4 + 26} height={28} rx={14} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
-          <circle cx={c.x + 36} cy={c.y + 104} r={4} fill="#6EF76E" />
-          <text x={c.x + 48} y={c.y + 108} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" letterSpacing="0.4">{c.chip}</text>
-          {/* small helper note per card */}
-          <text x={c.x + cw - 20} y={c.y + 108} fill="rgba(255,255,255,0.4)" fontFamily={INK} fontSize="9" textAnchor="end">
-            {i === 0 ? "auto-release if abandoned" : i === 1 ? "straight from your systems" : i === 2 ? "at checkout" : "fits telecom"}
-          </text>
+          <rect x={c.x + 20} y={c.y + 96} width={c.chip.length * 8.4 + 34} height={30} rx={15} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
+          <circle cx={c.x + 39} cy={c.y + 111} r={4.5} fill="#6EF76E" />
+          <text x={c.x + 54} y={c.y + 116} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" letterSpacing="0.3">{c.chip}</text>
+          {/* helper note below chip */}
+          <text x={c.x + 20} y={c.y + 146} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="12">{c.note}</text>
         </motion.g>
       ))}
-      <text x={W / 2} y={H - 6} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.4" textAnchor="middle">EVERYTHING THE STORE VISIT WAS FOR, ONLINE</text>
+      <text x={W / 2} y={H - 10} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="13" letterSpacing="1.2" textAnchor="middle">EVERYTHING THE STORE VISIT WAS FOR, ONLINE</text>
     </svg>
   );
 }
@@ -377,66 +359,59 @@ function SvgLaunch() {
 function SvgOneCatalog() {
   const W = 700;
   const H = 440;
-  const edX = 26;
-  const edY = 96;
-  const edW = 210;
-  const edH = 250;
+  const cardX = 44;
+  const cardW = 220;
+  const cardH = 150;
+  const cardY = (H - cardH) / 2;
+  const cardMidY = cardY + cardH / 2;
+  const chX = 432;
+  const chW = 224;
+  const chH = 66;
   const channels = [
-    { y: 40, name: "Web shop" },
-    { y: 118, name: "App" },
-    { y: 196, name: "Call center" },
-    { y: 274, name: "Store" },
+    { name: "Website", y: 96 },
+    { name: "App", y: 187 },
+    { name: "Store", y: 278 },
   ];
-  const chX = 406;
-  const chW = 268;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="One catalog edited by your team, read by every channel showing the same offer">
-      <defs>
-        <linearGradient id="catEd" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#3F4AAF" stopOpacity="0.18" />
-          <stop offset="100%" stopColor="#3F4AAF" stopOpacity="0.03" />
-        </linearGradient>
-      </defs>
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Change the price in one place and it is the same everywhere a customer buys">
+      {/* calm connecting lines */}
+      {channels.map((c, i) => (
+        <path
+          key={`l-${i}`}
+          d={`M ${cardX + cardW} ${cardMidY} C ${cardX + cardW + 60} ${cardMidY}, ${chX - 60} ${c.y + chH / 2}, ${chX} ${c.y + chH / 2}`}
+          fill="none"
+          stroke="rgba(255,255,255,0.22)"
+          strokeWidth={1}
+        />
+      ))}
 
-      {/* editor */}
+      {/* left card - you edit it here */}
       <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
-        <rect x={edX} y={edY} width={edW} height={edH} rx={4} fill="url(#catEd)" stroke="rgba(63,74,175,0.45)" />
-        <rect x={edX} y={edY} width={edW} height={4} fill="#6EF76E" />
-        <text x={edX + 18} y={edY + 32} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">Catalog editor</text>
-        <text x={edX + 18} y={edY + 50} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="9.5" letterSpacing="0.6">ONE SCREEN · NO CODE</text>
-        <line x1={edX + 18} x2={edX + edW - 18} y1={edY + 64} y2={edY + 64} stroke="rgba(230,231,239,0.14)" />
-        <rect x={edX + 18} y={edY + 78} width={edW - 36} height={30} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={edX + 30} y={edY + 97} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="10">Offer name</text>
-        <rect x={edX + 18} y={edY + 116} width={edW - 36} height={34} rx={3} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
-        <text x={edX + 30} y={edY + 137} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="10.5">Price</text>
-        <text x={edX + edW - 30} y={edY + 137} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">€49.99</text>
-        <rect x={edX + 18} y={edY + 160} width={(edW - 44) / 2} height={30} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.2)" />
-        <text x={edX + 18 + (edW - 44) / 4} y={edY + 179} fill="rgba(255,255,255,0.75)" fontFamily={INK} fontSize="10.5" fontWeight="600" textAnchor="middle">Preview</text>
-        <rect x={edX + 26 + (edW - 44) / 2} y={edY + 160} width={(edW - 44) / 2} height={30} rx={3} fill="rgba(110,247,110,0.16)" stroke="rgba(110,247,110,0.5)" />
-        <text x={edX + 26 + (edW - 44) * 0.75} y={edY + 179} fill="#6EF76E" fontFamily={INK} fontSize="10.5" fontWeight="700" textAnchor="middle">Publish</text>
-        <text x={edX + edW / 2} y={edY + 216} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9" letterSpacing="0.5" textAnchor="middle">ONE CATALOG · ONE SOURCE</text>
+        <rect x={cardX} y={cardY} width={cardW} height={cardH} rx={5} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.5)" />
+        <rect x={cardX} y={cardY} width={cardW} height={4} fill="#6EF76E" />
+        <text x={cardX + cardW / 2} y={cardY + 36} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700" textAnchor="middle">You edit it here</text>
+        <rect x={cardX + 22} y={cardY + 54} width={cardW - 44} height={40} rx={4} fill="rgba(255,255,255,0.05)" stroke="rgba(230,231,239,0.18)" />
+        <text x={cardX + 38} y={cardY + 79} fill="rgba(255,255,255,0.75)" fontFamily={INK} fontSize="13">Price</text>
+        <text x={cardX + cardW - 38} y={cardY + 79} fill="#6EF76E" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="end">€49.99</text>
+        <rect x={cardX + 22} y={cardY + 104} width={cardW - 44} height={34} rx={4} fill="#6EF76E" />
+        <text x={cardX + cardW / 2} y={cardY + 126} fill="#10132c" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="middle">Publish</text>
       </motion.g>
 
-      {/* channels */}
+      {/* three destinations */}
       {channels.map((c, i) => {
-        const midY = c.y + 30;
+        const midY = c.y + chH / 2;
         return (
-          <motion.g key={c.name} initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.09, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
-            <DrawnPath
-              d={`M ${edX + edW} ${edY + edH / 2} C ${edX + edW + 50} ${edY + edH / 2}, ${chX - 50} ${midY}, ${chX} ${midY}`}
-              stroke="#3F4AAF" strokeOpacity={0.5} strokeWidth={1.2} strokeDasharray="4 5" duration={0.7} delay={0.4 + i * 0.06}
-            />
-            <rect x={chX} y={c.y} width={chW} height={60} rx={3} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.18)" />
-            <circle cx={chX + 24} cy={midY} r={7} fill="none" stroke="#6EF76E" strokeOpacity={0.7} />
-            <circle cx={chX + 24} cy={midY} r={2.6} fill="#6EF76E" />
-            <text x={chX + 44} y={midY - 3} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">{c.name}</text>
-            <text x={chX + 44} y={midY + 13} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9.5">same offer</text>
-            <text x={chX + chW - 18} y={midY + 4} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="end">€49.99</text>
+          <motion.g key={c.name} initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.1, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
+            <rect x={chX} y={c.y} width={chW} height={chH} rx={4} fill="rgba(230,231,239,0.04)" stroke="rgba(230,231,239,0.2)" />
+            <text x={chX + 22} y={midY + 5} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700">{c.name}</text>
+            <circle cx={chX + chW - 96} cy={midY} r={9} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+            <path d={`M ${chX + chW - 100} ${midY} l3 3 6 -7`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+            <text x={chX + chW - 22} y={midY + 5} fill="#6EF76E" fontFamily={INK} fontSize="15" fontWeight="700" textAnchor="end">€49.99</text>
           </motion.g>
         );
       })}
 
-      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.4" textAnchor="middle">CHANGE ONCE · LIVE EVERYWHERE IN MINUTES</text>
+      <text x={W / 2} y={H - 18} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="13" textAnchor="middle">Change it once. It is the same everywhere.</text>
     </svg>
   );
 }
@@ -621,7 +596,7 @@ export function Outcomes() {
       results: [
         "Number selection with reservation through your CRM, and automatic release of abandoned numbers",
         "Coverage check at the customer's address for fiber and 5G, straight from your systems",
-        "ID verification and document upload at checkout (eKYC)",
+        "ID verification and document upload at checkout",
         "E-cards and digital products delivered by SMS",
         "Delivery options that fit telecom: 2-hour, same-day, next-day",
       ],

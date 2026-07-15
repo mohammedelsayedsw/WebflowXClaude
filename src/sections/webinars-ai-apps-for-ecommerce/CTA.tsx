@@ -18,7 +18,7 @@ function RegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto flex w-full max-w-[420px] flex-col gap-3 text-left"
+      className="mx-auto flex w-full max-w-[600px] flex-col gap-3 text-left"
     >
       <input
         type="text"
@@ -105,7 +105,7 @@ export function CTA() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.25}>
+          <Reveal delay={0.25} className="w-full">
             <div className="mt-10 w-full md:mt-12">
               <RegistrationForm />
             </div>

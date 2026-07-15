@@ -514,7 +514,7 @@ export function Outcomes() {
       title: (
         <>
           Your team edits one catalog.{" "}
-          <span className="text-[var(--sw-blue)]">Every channel shows the same offer</span>
+          <span className="text-[var(--sw-blue)]">Every channel shows the same offer</span>.
         </>
       ),
       lede:

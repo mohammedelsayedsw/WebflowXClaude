@@ -188,12 +188,18 @@ export function Hero() {
                 Selling telecom online is not like selling a t-shirt. A phone
                 comes with a plan, the price depends on the contract, and the
                 customer has to pick a number, check coverage, and prove their
-                ID. Most online stores are not built for any of this, so the
-                sale slips to a shop or a phone call.{" "}
+                ID. Most online stores cannot do this, so the sale slips to a
+                shop or a phone call.
+              </p>
+              <p className="mt-4 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:text-[18px]">
+                This is a{" "}
                 <span className="font-semibold text-white">
-                  This accelerator keeps the whole sale online
+                  production-ready commerce accelerator with modules that grow
+                  revenue
                 </span>
-                , on top of the systems you already run.
+                . It keeps the whole sale online and runs on the systems you
+                already have. Tested in production with telecom operators, live
+                in 6 to 12 weeks.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4 md:mt-8">

@@ -664,7 +664,7 @@ export function Outcomes() {
             <Reveal>
               <h2 className="font-head max-w-[18ch] text-[36px] leading-[1.0] tracking-[-0.015em] text-white md:text-[58px] lg:text-[72px]">
                 Six modules.{" "}
-                <span className="text-[var(--sw-mint)]">Each one removes a real cost or opens real revenue</span>.
+                <span className="text-[var(--sw-mint)]">Each one cuts a real cost or brings in real revenue</span>.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>

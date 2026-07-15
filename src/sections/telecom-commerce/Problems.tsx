@@ -67,11 +67,10 @@ export function Problems() {
               <span className="text-[var(--sw-mint)]">telecom operator</span> recognises
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              Your BSS is the warehouse: it bills, provisions, and keeps
-              records, and it does that well. The trouble starts when it&apos;s
-              also asked to be the shop window. We built and run telecom commerce
-              in production, and these are the six walls every operator&apos;s
-              online store hits.
+              Telecom is complicated to sell online, and a standard store is
+              not built for it. We build and run telecom commerce in production,
+              and these are the six problems every operator&apos;s online store
+              runs into.
             </p>
           </Reveal>
         </div>

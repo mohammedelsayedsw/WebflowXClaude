@@ -58,7 +58,7 @@ export function AcceleratorAtAGlance() {
                 style={{ background: "var(--sw-mint)" }}
               />
               <h3 className="font-head mb-7 text-[18px] leading-tight text-white md:text-[20px]">
-                What you get on day one
+                What you get
               </h3>
               <dl className="space-y-0">
                 {spec.map(([k, v], i) => (

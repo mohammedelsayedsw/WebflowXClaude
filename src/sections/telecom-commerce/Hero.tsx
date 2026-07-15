@@ -185,14 +185,15 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:mt-6 md:text-[18px]">
-                A{" "}
+                Selling telecom online is not like selling a t-shirt. A phone
+                comes with a plan, the price depends on the contract, and the
+                customer has to pick a number, check coverage, and prove their
+                ID. Most online stores are not built for any of this, so the
+                sale slips to a shop or a phone call.{" "}
                 <span className="font-semibold text-white">
-                  production-ready commerce accelerator
-                </span>{" "}
-                for telecom operators. Sell devices, plans, and bundles online,
-                with installments, number selection, and coverage checks built
-                in. Your BSS and CRM stay exactly as they are: the store
-                connects to them, it doesn&apos;t replace them.
+                  This accelerator keeps the whole sale online
+                </span>
+                , on top of the systems you already run.
               </p>
 
               <p className="font-head mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white md:text-[18px]">

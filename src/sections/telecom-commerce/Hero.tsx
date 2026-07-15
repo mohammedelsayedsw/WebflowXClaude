@@ -195,11 +195,9 @@ export function Hero() {
                 This is a{" "}
                 <span className="font-semibold text-white">
                   production-ready commerce accelerator with modules that grow
-                  revenue
+                  revenue and finish more sales online
                 </span>
-                . It keeps the whole sale online and runs on the systems you
-                already have. Tested in production with telecom operators, live
-                in 6 to 12 weeks.
+                .
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4 md:mt-8">

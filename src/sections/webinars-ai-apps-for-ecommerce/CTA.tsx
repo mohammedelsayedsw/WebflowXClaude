@@ -1,8 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
 
 export function CTA() {
   return (
@@ -55,12 +53,33 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.25}>
-            <div className="mt-10 md:mt-12 flex justify-center">
-              {/* TODO: replace with real registration link / HubSpot form */}
-              <a href="#cta" className={btnPrimary}>
-                Sign up now
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+            <div className="mt-10 md:mt-12 w-full max-w-[760px] mx-auto">
+              {/* StreamYard watch embed (replaces the registration form) */}
+              <div
+                style={{
+                  width: "100%",
+                  height: 0,
+                  position: "relative",
+                  paddingBottom: "56.25%",
+                }}
+              >
+                <iframe
+                  src="https://streamyard.com/watch/bjPKz5B4e5iV?embed=true"
+                  title="AI apps for eCommerce webinar"
+                  allow="autoplay; fullscreen"
+                  frameBorder={0}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    overflow: "hidden",
+                    border: 0,
+                    borderRadius: 4,
+                  }}
+                />
+              </div>
             </div>
           </Reveal>
         </div>

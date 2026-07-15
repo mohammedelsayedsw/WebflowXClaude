@@ -518,11 +518,11 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Right now a price change waits on a developer, and each channel can show something different. This module gives your team one screen to build and edit every offer, bundle, and price, with no code. Every channel reads that one catalog, so a change goes live in one place and shows up everywhere.",
+        "Right now every price change waits on a developer, and your channels drift out of step. This module gives your team one screen to build and edit every offer, bundle, and price, with no code.",
       results: [
         "One screen to create and edit offers, bundles, and prices, no developer needed",
-        "One catalog read by every customer channel, kept in sync",
-        "Change a price or a promo once, it updates everywhere in minutes",
+        "Set eligibility and contract terms on an offer without engineering",
+        "Roll back a change in one click if something looks wrong",
         "Preview an offer before it goes live, copy an existing offer in one click",
         "Scope offers per brand or MVNO from the same catalog, kept fully separate",
       ],

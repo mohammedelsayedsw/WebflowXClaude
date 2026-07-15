@@ -21,9 +21,9 @@ export default function Page() {
       <AcceleratorValue />
       <HowWeWork />
       <WhatShips />
+      <CaseStudy />
       <FAQ />
       <CTA />
-      <CaseStudy />
     </main>
   );
 }

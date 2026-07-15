@@ -9,6 +9,7 @@ import { HowWeWork } from "@/sections/telecom-commerce/HowWeWork";
 import { WhatShips } from "@/sections/telecom-commerce/WhatShips";
 import { FAQ } from "@/sections/telecom-commerce/FAQ";
 import { CTA } from "@/sections/telecom-commerce/CTA";
+import { CaseStudy } from "@/sections/telecom-commerce/CaseStudy";
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
       <WhatShips />
       <FAQ />
       <CTA />
+      <CaseStudy />
     </main>
   );
 }

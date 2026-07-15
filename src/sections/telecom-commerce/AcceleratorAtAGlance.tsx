@@ -26,11 +26,11 @@ export function AcceleratorAtAGlance() {
           <Reveal>
             <div className="mb-5 flex items-center gap-2.5">
               <SignalBars tone="light" />
-              <span className="label-code text-[var(--sw-black)]/55">BUILT · CONFIGURE TO YOUR SYSTEMS</span>
+              <span className="label-code text-[var(--sw-black)]/55">BUILT · CONNECTS TO YOUR SYSTEMS</span>
             </div>
             <h2 className="font-head max-w-[26ch] text-[34px] leading-[1.04] text-[var(--sw-black)] md:text-[48px] lg:text-[56px]">
               The accelerator is already built.{" "}
-              <span className="text-[var(--sw-blue)]">Configure it to your systems</span>
+              <span className="text-[var(--sw-blue)]">Connect it to your systems</span>
             </h2>
             <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
               This is not a generic web shop and not a new BSS. It is the store
@@ -39,9 +39,8 @@ export function AcceleratorAtAGlance() {
               a number and an ID check before it can ship.
             </p>
             <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
-              Every module below runs in production at a national telecom
-              operator, added on top of the systems they already had. Yours stay
-              in place the same way. We add the layer above them.
+              You keep the systems you already run. We add the store layer on
+              top.
             </p>
           </Reveal>
 

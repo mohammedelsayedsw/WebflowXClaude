@@ -38,7 +38,7 @@ function ReferenceNote() {
       }}
     >
       <blockquote className="border-l-2 border-[var(--sw-mint)]/50 pl-4 text-[14px] italic leading-relaxed text-white/85">
-        &ldquo;I would like to congratulate [the] Scandiweb team on{" "}
+        &ldquo;I would like to congratulate scandiweb&apos;s team on{" "}
         <span className="text-[var(--sw-mint)]">winning the prestigious award</span>
         ... this impressive achievement, and I believe it reflects the{" "}
         <span className="text-[var(--sw-mint)]">strength of our collaboration</span>.&rdquo;

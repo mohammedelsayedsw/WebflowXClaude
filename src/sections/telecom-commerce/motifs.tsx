@@ -79,12 +79,10 @@ function SimChip({ color, opacity = 0.85 }: { color: string; opacity?: number })
  * the direct replacement for the k-12 periodic-element tiles.
  * ------------------------------------------------------------------ */
 export function SimTile({
-  code,
   name,
   n,
   tone = "dark",
 }: {
-  code: string;
   name: React.ReactNode;
   n?: string;
   tone?: Tone;
@@ -92,7 +90,6 @@ export function SimTile({
   const dark = tone === "dark";
   const accent = dark ? "#6EF76E" : "#3F4AAF";
   const bg = dark ? "rgba(255,255,255,0.025)" : "rgba(63,74,175,0.04)";
-  const codeColor = dark ? "#ffffff" : "var(--sw-black)";
   const nameColor = dark ? "rgba(255,255,255,0.9)" : "rgba(16,19,44,0.9)";
   const numColor = dark ? "rgba(255,255,255,0.4)" : "rgba(16,19,44,0.4)";
 
@@ -128,13 +125,7 @@ export function SimTile({
           )}
         </div>
         <span
-          className="mt-4 block font-head text-[30px] leading-none tracking-[-0.01em] md:text-[38px]"
-          style={{ color: codeColor }}
-        >
-          {code}
-        </span>
-        <span
-          className="mt-3 block font-head text-[13px] leading-snug md:text-[14px]"
+          className="mt-5 block font-head text-[17px] leading-[1.18] md:text-[20px]"
           style={{ color: nameColor }}
         >
           {name}

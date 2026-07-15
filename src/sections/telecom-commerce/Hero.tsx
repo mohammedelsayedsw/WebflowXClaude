@@ -1,7 +1,6 @@
 "use client";
 
 import { assetUrl } from "@/lib/assets";
-import { SignalBars } from "./motifs";
 
 function HeroBg() {
   return (
@@ -28,57 +27,11 @@ function HeroBg() {
   );
 }
 
-/** Reference-build figures. Values rendered exactly as written in the brief. */
-function HeroProofCard() {
-  const stats: { v: string; l: React.ReactNode }[] = [
-    { v: "6-12 wk", l: "kickoff to live, scoped per module set" },
-    { v: "0", l: "changes required to the operator's BSS" },
-    { v: "2 h", l: "fastest delivery option built into checkout" },
-    { v: "50+", l: "projects delivered for the telecom industry" },
-  ];
-  return (
-    <div
-      className="relative block overflow-hidden rounded-[4px] backdrop-blur"
-      style={{
-        background:
-          "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.04) 100%), rgba(16,19,44,0.55)",
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
-      }}
-    >
-      <div className="p-6 md:p-8">
-        <div className="mb-5 flex items-center justify-between">
-          <span className="flex items-center gap-2">
-            <SignalBars tone="dark" size={16} />
-            <span className="label-code text-[var(--sw-mint)]">REFERENCE BUILD</span>
-          </span>
-        </div>
-
-        <ul className="space-y-0">
-          {stats.map((s, i) => (
-            <li
-              key={i}
-              className="flex items-center gap-4 border-b border-white/10 py-4 first:pt-0 last:border-b-0"
-            >
-              <span className="font-head shrink-0 min-w-[104px] text-[26px] leading-none tabular-nums text-white md:text-[32px]">
-                {s.v}
-              </span>
-              <span className="text-[12px] leading-snug text-white/70 md:text-[13px]">
-                {s.l}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
 /** Reference-case proof quote (client kept anonymous). */
 function ReferenceNote() {
   return (
     <div
-      className="mt-5 rounded-[4px] p-5"
+      className="rounded-[4px] p-5"
       style={{
         border: "1px solid rgba(110,247,110,0.3)",
         background: "rgba(110,247,110,0.05)",
@@ -185,19 +138,12 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:mt-6 md:text-[18px]">
-                Selling telecom online is not like selling a t-shirt. A phone
-                comes with a plan, the price depends on the contract, and the
-                customer has to pick a number, check coverage, and prove their
-                ID. Most online stores cannot do this, so the sale slips to a
-                shop or a phone call.
-              </p>
-              <p className="mt-4 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:text-[18px]">
-                This is a{" "}
+                Every telecom sale your website can&apos;t finish walks into a
+                store or onto a call.{" "}
                 <span className="font-semibold text-white">
-                  production-ready commerce accelerator with modules that grow
-                  revenue and finish more sales online
+                  This accelerator finishes it online, and grows revenue doing
+                  it.
                 </span>
-                .
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4 md:mt-8">
@@ -216,7 +162,6 @@ export function Hero() {
 
             {/* RIGHT · proof card + unfinished quote slot */}
             <div className="lg:pt-16">
-              <HeroProofCard />
               <ReferenceNote />
             </div>
           </div>

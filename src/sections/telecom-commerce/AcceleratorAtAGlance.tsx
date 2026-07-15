@@ -79,20 +79,6 @@ export function AcceleratorAtAGlance() {
             </div>
           </Reveal>
         </div>
-
-        {/* Always included, not a module */}
-        <Reveal>
-          <div
-            className="mt-12 flex flex-col gap-3 rounded-[4px] border border-[var(--sw-black)]/12 bg-white/60 p-6 md:flex-row md:items-center md:gap-6 md:p-7"
-          >
-            <span className="label-code shrink-0 text-[var(--sw-blue)]">ALWAYS INCLUDED, NOT A MODULE</span>
-            <p className="text-[14px] leading-relaxed text-[var(--sw-black)]/75 md:text-[15px]">
-              Bilingual storefront (including right-to-left languages), full data
-              migration from your current store, SEO migration, stress testing
-              against your real peak traffic, documentation, and training.
-            </p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

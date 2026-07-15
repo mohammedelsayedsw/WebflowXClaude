@@ -8,39 +8,39 @@ export function Problems() {
   const problems = [
     {
       n: "1",
-      title: "Every offer change needs a developer",
+      title: "Every price change needs a developer",
       body:
-        "Every price change waits on a developer, and each channel can show a different one.",
+        "Every price change waits on a developer, and the same phone can cost more on your website than in your store.",
     },
     {
       n: "2",
-      title: "A phone price depends on the plan",
+      title: "One phone, a different price for every plan",
       body:
-        "The price shifts with the plan, the bank, and the contract. A generic cart cannot handle that.",
+        "A phone's price shifts with the plan, the bank, and the contract. A normal store has one price per product, so it cannot show the right price.",
     },
     {
       n: "3",
-      title: "Telecom payments break a normal checkout",
+      title: "Your checkout can't take telecom payments",
       body:
-        "Installments, balance payments, OTP, cash on delivery. A standard checkout covers almost none of it.",
+        "Customers want installments split by bank, payment from their phone balance, one-time codes, and cash on delivery. A standard checkout takes almost none of it.",
     },
     {
       n: "4",
-      title: "A SIM sale is more than a product sale",
+      title: "You can't sell a SIM like a t-shirt",
       body:
-        "The customer picks a number, passes an ID check, and confirms coverage. Most online shops send them to the store instead.",
+        "A SIM needs a chosen number, an ID check, and a coverage check before it can ship. Most online stores cannot do that, so the customer ends up in your shop.",
     },
     {
       n: "5",
-      title: "One order, five systems",
+      title: "One order has to reach five systems",
       body:
-        "One order must reach billing, provisioning, logistics, and CRM. Today that path is hand-fixed glue.",
+        "A single order has to update billing, provisioning, logistics, and your CRM. Today that path is held together by hand, and it breaks.",
     },
     {
       n: "6",
-      title: "Launches and campaigns are where shops break",
+      title: "A new phone launch can break your store",
       body:
-        "Peak traffic and the tightest deadline hit the same day. Most telecom shops meet it unprepared.",
+        "A new phone launch or a holiday sale brings your busiest traffic and your tightest deadline on the same day. Most stores are not ready for it.",
     },
   ];
 

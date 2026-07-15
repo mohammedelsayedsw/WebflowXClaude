@@ -485,29 +485,20 @@ function OutcomeBlockRow({ n, title, lede, results, diagram, theme, reverse, dia
 // ============================================================
 // Module tiles - SIM-card shaped, static (no link, no scroll)
 // ============================================================
-const TILES: { n: string; code: string; name: React.ReactNode }[] = [
-  { n: "1", code: "Ca", name: "One catalog, every channel" },
-  { n: "2", code: "Dp", name: "Device & plan bundles" },
-  { n: "3", code: "Pa", name: "Telecom payments" },
-  {
-    n: "4",
-    code: "Si",
-    name: (
-      <>
-        Numbers, SIM &amp;<br />
-        eligibility
-      </>
-    ),
-  },
-  { n: "5", code: "Bs", name: "BSS & CRM connection" },
-  { n: "6", code: "La", name: "Launch & campaign machinery" },
+const TILES: { n: string; name: React.ReactNode }[] = [
+  { n: "1", name: "One catalog, every channel" },
+  { n: "2", name: "Device & plan bundles" },
+  { n: "3", name: "Telecom payments" },
+  { n: "4", name: "Numbers, SIM & eligibility" },
+  { n: "5", name: "BSS & CRM connection" },
+  { n: "6", name: "Launch & campaign machinery" },
 ];
 
 function ModuleTiles() {
   return (
     <div className="grid grid-cols-2 items-start gap-3 md:grid-cols-6 md:gap-4">
       {TILES.map((m) => (
-        <SimTile key={m.n} n={m.n} code={m.code} name={m.name} tone="dark" />
+        <SimTile key={m.n} n={m.n} name={m.name} tone="dark" />
       ))}
     </div>
   );
@@ -669,8 +660,8 @@ export function Outcomes() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-[46ch] text-[16px] leading-relaxed text-white/75 md:text-[18px]">
-                Configure them against your catalog, your systems, and your
-                channels. Apply them all, or pick just the one you are missing.
+                Configure them to your catalog, systems, and channels. Apply
+                them all, or pick just the one you are missing.
               </p>
               <div className="mt-8 flex flex-wrap gap-x-10 gap-y-6">
                 <div>
@@ -682,7 +673,7 @@ export function Outcomes() {
                   <div className="label-code mt-2 text-white/50">Kickoff to live</div>
                 </div>
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</div>
+                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">Once</div>
                   <div className="label-code mt-2 text-white/50">One-time setup</div>
                 </div>
               </div>

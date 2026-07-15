@@ -1,59 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
-
-const STREAMYARD_URL = "https://streamyard.com/watch/bjPKz5B4e5iV";
-
-const inputClass =
-  "w-full rounded-[2px] border border-white/[0.18] bg-white/[0.04] px-3.5 py-3 text-[14px] text-white placeholder:text-white/40 outline-none transition focus:border-[var(--sw-mint)] focus:bg-white/[0.06]";
-
-/** Name / Surname / Email registration. On submit, hands off to StreamYard. */
-function RegistrationForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    window.location.href = STREAMYARD_URL;
-  };
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="mx-auto flex w-full max-w-[600px] flex-col gap-3 text-left"
-    >
-      <input
-        type="text"
-        name="name"
-        required
-        autoComplete="given-name"
-        placeholder="Name"
-        aria-label="Name"
-        className={inputClass}
-      />
-      <input
-        type="text"
-        name="surname"
-        required
-        autoComplete="family-name"
-        placeholder="Surname"
-        aria-label="Surname"
-        className={inputClass}
-      />
-      <input
-        type="email"
-        name="email"
-        required
-        autoComplete="email"
-        placeholder="Email"
-        aria-label="Email"
-        className={inputClass}
-      />
-      <button type="submit" className={`${btnPrimary} mt-1 w-full`}>
-        Register
-        <ArrowUpRight className="h-4 w-4" />
-      </button>
-    </form>
-  );
-}
 
 export function CTA() {
   return (
@@ -106,8 +53,33 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.25} className="w-full">
-            <div className="mt-10 w-full md:mt-12">
-              <RegistrationForm />
+            <div className="mx-auto mt-10 w-full max-w-[760px] md:mt-12">
+              {/* StreamYard's own registration form / player - inline, captures registrants directly in StreamYard */}
+              <div
+                style={{
+                  width: "100%",
+                  height: 0,
+                  position: "relative",
+                  paddingBottom: "56.25%",
+                }}
+              >
+                <iframe
+                  src="https://streamyard.com/watch/bjPKz5B4e5iV?embed=true"
+                  title="AI apps for eCommerce webinar registration"
+                  allow="autoplay; fullscreen"
+                  frameBorder={0}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    overflow: "hidden",
+                    border: 0,
+                    borderRadius: 4,
+                  }}
+                />
+              </div>
             </div>
           </Reveal>
         </div>

@@ -196,11 +196,6 @@ export function Hero() {
                 , on top of the systems you already run.
               </p>
 
-              <p className="font-head mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white md:text-[18px]">
-                Live in 6 to 12 weeks. Six modules, proven in production at a
-                national telecom operator.
-              </p>
-
               <div className="mt-7 flex flex-wrap items-center gap-4 md:mt-8">
                 <div className="flex items-center gap-3 text-white">
                   <span

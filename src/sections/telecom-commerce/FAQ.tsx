@@ -25,39 +25,39 @@ export function FAQ() {
   const items = [
     {
       q: "Do we need to replace our BSS or ERP?",
-      a: "No. The layer sits in front of them. Billing keeps billing, provisioning keeps provisioning. The layer owns what customers see and buy.",
+      a: "No. The accelerator runs on top of the systems you already have. It connects to your BSS, CRM, and fulfillment, and none of them change. The store adapts to your systems, not the other way around.",
     },
     {
       q: "How is this different from a normal web shop?",
-      a: "Normal shops know 'add to cart, pay, ship'. Telecom needs bundles across services, prices that depend on the customer and the address, and orders that reach several systems. That logic is the starting point here.",
+      a: "A normal web shop cannot sell telecom: a phone priced by the plan and the bank, a SIM that needs a number, an ID check, and a coverage check, and a checkout that takes installments and balance payment. This is built for exactly that, so the whole sale happens online instead of slipping to a store or a call.",
     },
     {
       q: "Which commerce engines does it work with?",
-      a: "The reference build runs on Magento / Adobe Commerce with a modern fast frontend. Other engines are assessed in the first review.",
+      a: "It is proven in production on Magento and Adobe Commerce, and it builds on Shopify, BigCommerce, commercetools, Salesforce Commerce Cloud, SAP Commerce Cloud, and custom platforms. The architecture is API-first and aligned with TM Forum patterns, so it fits your stack instead of forcing a new one.",
     },
     {
       q: "Does it work in our language and market?",
-      a: "Yes. The reference build runs bilingual, English and Arabic, including right-to-left layout. Payments and delivery are configured per market.",
+      a: "Yes. It runs bilingual storefronts, including right-to-left. We built and still run one in English and Arabic in production, with regional payment, delivery, and eligibility rules handled from the start.",
     },
     {
       q: "Can we use only part of it?",
-      a: "Yes. The modules are independent. Some operators start with only the payments module, or only the BSS and CRM connection.",
+      a: "Yes. The six modules are independent. Take all of them, or start with the one you are missing and add the rest later. Each one is configured to your catalog and systems.",
     },
     {
       q: "Can it support sub-brands or partner setups (MVNO)?",
-      a: "Yes, as a scoped addition. Sub-brand and partner setups, with separate catalogs and prices per brand, are assessed in the first review.",
+      a: "Yes. You can scope offers per brand or MVNO from the same catalog, kept fully separate. We confirm the exact setup in the first review so it matches how your partners actually operate.",
     },
     {
       q: "Is this proven anywhere real?",
-      a: "Yes. Every module on this page runs in production at a national telecom operator. The case won an award at Meet Magento New York 2025, and the operator takes reference calls on request.",
+      a: "Yes. Every module comes from a full online store we built and still run for Umniah, a national telecom operator, on Magento 2 and Hyvä, in English and Arabic, without changing their BSS. That build took about six months. Because the modules are already built and proven, a new operator goes live in 6 to 12 weeks.",
     },
     {
       q: "Who owns the code after launch?",
-      a: "You do. Full repository and documentation handed over. No lock-in. Support on request.",
+      a: "You do. Full code ownership, plus architecture docs, runbooks, and training for your team. No black box and no lock-in. You can run and change it yourself, or keep us on if you want.",
     },
     {
       q: "Can we see it before committing?",
-      a: "Yes. The discovery workshop includes a demo against your real offers.",
+      a: "Yes. It starts with a discovery workshop where we map your catalog and systems and demo the accelerator against your real offers. Then a proof of concept runs your real products and prices in your environment, before any full rollout.",
     },
   ];
   return (

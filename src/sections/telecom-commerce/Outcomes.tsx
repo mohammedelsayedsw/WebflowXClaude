@@ -529,7 +529,7 @@ export function Outcomes() {
         "Set eligibility and contract terms on an offer without engineering",
         "Roll back a change in one click if something looks wrong",
         "Preview an offer before it goes live, copy an existing offer in one click",
-        "Scope offers per brand or MVNO from the same catalog, kept fully separate",
+        "Scope offers per brand or Mobile Virtual Network Operator from the same catalog, kept fully separate",
       ],
       diagram: <SvgOneCatalog />,
       theme: "beige",

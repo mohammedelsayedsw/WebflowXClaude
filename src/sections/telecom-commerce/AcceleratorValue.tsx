@@ -8,7 +8,7 @@ export function AcceleratorValue() {
   const rows: [string, string][] = [
     [
       "Stretching the BSS to run the shop deepens technical debt",
-      "The BSS keeps its job; the layer owns the selling",
+      "The BSS keeps its job, the new layer runs the shop",
     ],
     [
       "A generic platform needs heavy customization for telecom",
@@ -16,7 +16,7 @@ export function AcceleratorValue() {
     ],
     [
       "Payment edge cases discovered from customer complaints",
-      "Installments, balance pay, and OTP already hardened in production",
+      "Installments, balance payment, and SMS codes, proven with real customers",
     ],
     [
       "The launch deadline meets an untested stack",

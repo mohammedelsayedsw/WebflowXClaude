@@ -38,7 +38,7 @@ export function Problems() {
     },
     {
       n: "6",
-      title: "A new phone launch can break your store",
+      title: "A new phone or a big sale can flood your store",
       body:
         "A new phone launch or a holiday sale brings your busiest traffic and your tightest deadline on the same day. Most stores are not ready for it.",
     },

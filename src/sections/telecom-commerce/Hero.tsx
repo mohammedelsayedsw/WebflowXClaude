@@ -45,7 +45,7 @@ function ReferenceNote() {
       </blockquote>
       <div className="mt-3 border-t border-white/10 pt-3">
         <div className="text-[13px] font-medium text-white">IT leadership</div>
-        <div className="label-code mt-0.5 text-white/55">national telecom operator</div>
+        <div className="label-code mt-0.5 text-white/55">Umniah, national telecom operator</div>
       </div>
     </div>
   );

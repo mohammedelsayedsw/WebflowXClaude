@@ -540,13 +540,13 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Telecom selling is bundles: a device with a postpaid plan, fiber with TV, 5G with a router. This module makes bundles first-class products, with prices and conditions that depend on the plan.",
+        "Telecom selling is bundles: a device with a postpaid plan, fiber with TV, 5G with a router. This module sells each bundle as one product, with the price and terms set by the plan.",
       results: [
-        "Devices sold together with postpaid, prepaid, fiber, and 5G plans",
-        "Plan-gated offers: a special device price that exists only with a specific plan",
-        "Campaign offers built fast: the reference operator ran a device campaign with plan-gated installment pricing",
-        "Product pages that present plans and devices differently, because they are different",
-        "One-time, monthly, and installment pricing combined on one offer",
+        "Sell devices together with postpaid, prepaid, fiber, and 5G plans",
+        "Set a device price that only exists with a specific plan",
+        "Build a plan-gated device campaign in days, not months",
+        "Give devices and plans each their own product page, with the details that fit each",
+        "Combine one-time, monthly, and installment pricing on one offer",
       ],
       diagram: <SvgDeviceBundle />,
       theme: "dark",

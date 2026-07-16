@@ -11,32 +11,32 @@ export function WhatShips() {
   const deliverables = [
     {
       n: "1",
-      name: "Migration plan",
-      detail: "Migration plan, dry-run tested, with a zero-downtime fallback.",
-      tag: "plan",
+      name: "The accelerator, live and yours",
+      detail: "Set up and configured to your systems, with full code ownership.",
+      tag: "code",
     },
     {
       n: "2",
-      name: "Architecture documentation",
-      detail: "Architecture documentation, versioned with the code.",
-      tag: "doc",
+      name: "Migration plan",
+      detail: "Dry-run tested, with a zero-downtime fallback.",
+      tag: "plan",
     },
     {
       n: "3",
-      name: "Runbooks",
-      detail: "Runbooks written for your team.",
-      tag: "doc",
+      name: "Documentation and runbooks",
+      detail: "Architecture docs and step-by-step runbooks, versioned with the code and written for your team.",
+      tag: "docs",
     },
     {
       n: "4",
       name: "Training",
-      detail: "Training for the commercial team on the offer manager.",
+      detail: "Hands-on sessions so your commercial team runs offers itself.",
       tag: "training",
     },
     {
       n: "5",
       name: "Post-launch on-call",
-      detail: "30-day post-launch joint on-call.",
+      detail: "We stay on call with your team for 30 days after go-live.",
       tag: "support",
     },
   ];
@@ -69,7 +69,7 @@ export function WhatShips() {
             <p className="mt-6 max-w-[44ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               The engagement hands over everything your team needs to run the
               layer on its own: code, documentation, runbooks, training. No black
-              box, no vendor lock-in, no post-launch silence.
+              box, no lock-in, and we don&apos;t go quiet after launch.
             </p>
           </Reveal>
 

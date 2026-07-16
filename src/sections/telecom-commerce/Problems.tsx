@@ -16,7 +16,7 @@ export function Problems() {
       n: "2",
       title: "One phone, a different price for every plan",
       body:
-        "A phone's price shifts with the plan, the bank, and the contract. A normal store has one price per product, so it cannot show the right price.",
+        "A phone's price shifts with the plan, the bank, and the contract. A generic store has one price per product, so it cannot show all of them.",
     },
     {
       n: "3",

@@ -191,30 +191,30 @@ function SvgConnection() {
   const W = 700;
   const H = 440;
   const orderX = 26;
-  const orderY = 150;
-  const orderW = 150;
-  const orderH = 140;
-  const hubX = 250;
-  const hubY = 150;
-  const hubW = 150;
-  const hubH = 140;
+  const orderY = 140;
+  const orderW = 162;
+  const orderH = 158;
+  const hubX = 252;
+  const hubY = 140;
+  const hubW = 162;
+  const hubH = 158;
   const targets = [
-    { y: 30, name: "CRM", sub: "customer + number", ok: true },
-    { y: 118, name: "Billing · BSS", sub: "untouched", ok: true },
+    { y: 26, name: "CRM", sub: "customer + number", ok: true },
+    { y: 116, name: "Billing · BSS", sub: "untouched", ok: true },
     { y: 206, name: "Provisioning", sub: "line activated", ok: true },
-    { y: 294, name: "Logistics", sub: "needs review", ok: false },
+    { y: 296, name: "Logistics", sub: "needs review", ok: false },
   ];
-  const tX = 470;
-  const tW = 204;
+  const tX = 452;
+  const tW = 222;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="The store connects to CRM, BSS, provisioning, and logistics, with a failed step surfaced and monitoring wired in">
       <motion.g initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
         <rect x={orderX} y={orderY} width={orderW} height={orderH} rx={4} fill="rgba(63,74,175,0.10)" stroke="rgba(63,74,175,0.45)" />
         <rect x={orderX} y={orderY} width={orderW} height={4} fill="#6EF76E" />
-        <text x={orderX + orderW / 2} y={orderY + 40} fill="#fff" fontFamily={INK} fontSize="13" fontWeight="700" textAnchor="middle">The store</text>
-        <text x={orderX + orderW / 2} y={orderY + 58} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10" textAnchor="middle">order · number · balance</text>
+        <text x={orderX + orderW / 2} y={orderY + 46} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="middle">The store</text>
+        <text x={orderX + orderW / 2} y={orderY + 68} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="12.5" textAnchor="middle">order · number · balance</text>
         {[0, 1, 2].map((r) => (
-          <rect key={r} x={orderX + 22} y={orderY + 78 + r * 16} width={orderW - 44} height={9} rx={2} fill="rgba(255,255,255,0.12)" />
+          <rect key={r} x={orderX + 26} y={orderY + 90 + r * 18} width={orderW - 52} height={10} rx={2} fill="rgba(255,255,255,0.12)" />
         ))}
       </motion.g>
 
@@ -222,16 +222,15 @@ function SvgConnection() {
 
       <motion.g initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.5 }} viewport={{ once: true, amount: 0.25 }}>
         <rect x={hubX} y={hubY} width={hubW} height={hubH} rx={4} fill="rgba(110,247,110,0.07)" stroke="#6EF76E" strokeOpacity={0.5} />
-        <text x={hubX + hubW / 2} y={hubY + 34} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700" textAnchor="middle">Connection layer</text>
-        <text x={hubX + hubW / 2} y={hubY + 52} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="9" textAnchor="middle">the store adapts to you</text>
-        <rect x={hubX + 26} y={hubY + 70} width={hubW - 52} height={28} rx={14} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <circle cx={hubX + 44} cy={hubY + 84} r={4} fill="#6EF76E" />
-        <text x={hubX + hubW / 2 + 8} y={hubY + 88} fill="#6EF76E" fontFamily={INK} fontSize="9.5" fontWeight="700" textAnchor="middle">MONITORED</text>
-        <text x={hubX + hubW / 2} y={hubY + 120} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="9" textAnchor="middle">VPN · your hosting</text>
+        <text x={hubX + hubW / 2} y={hubY + 48} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="middle">Connection layer</text>
+        <rect x={hubX + 26} y={hubY + 72} width={hubW - 52} height={34} rx={17} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <circle cx={hubX + 46} cy={hubY + 89} r={4.5} fill="#6EF76E" />
+        <text x={hubX + hubW / 2 + 10} y={hubY + 94} fill="#6EF76E" fontFamily={INK} fontSize="12" fontWeight="700" textAnchor="middle">MONITORED</text>
+        <text x={hubX + hubW / 2} y={hubY + 134} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="12" textAnchor="middle">VPN · your hosting</text>
       </motion.g>
 
       {targets.map((t, i) => {
-        const midY = t.y + 30;
+        const midY = t.y + 32;
         const stroke = t.ok ? "#6EF76E" : "#FF5A31";
         return (
           <motion.g key={t.name} initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.09, duration: 0.4 }} viewport={{ once: true, amount: 0.2 }}>
@@ -239,28 +238,28 @@ function SvgConnection() {
               d={`M ${hubX + hubW} ${hubY + hubH / 2} C ${hubX + hubW + 45} ${hubY + hubH / 2}, ${tX - 45} ${midY}, ${tX} ${midY}`}
               stroke={stroke} strokeOpacity={0.5} strokeWidth={1.2} strokeDasharray="4 5" duration={0.7} delay={0.5 + i * 0.06}
             />
-            <rect x={tX} y={t.y} width={tW} height={60} rx={3}
+            <rect x={tX} y={t.y} width={tW} height={64} rx={3}
               fill={t.ok ? "rgba(230,231,239,0.04)" : "rgba(255,90,49,0.08)"}
               stroke={t.ok ? "rgba(230,231,239,0.18)" : "rgba(255,90,49,0.45)"} />
             {t.ok ? (
               <>
-                <circle cx={tX + 24} cy={midY} r={8} fill="none" stroke="#6EF76E" />
-                <path d={`M ${tX + 20} ${midY} l3 3 6 -7`} stroke="#6EF76E" strokeWidth={1.6} fill="none" />
+                <circle cx={tX + 26} cy={midY} r={9} fill="none" stroke="#6EF76E" />
+                <path d={`M ${tX + 21} ${midY} l4 4 6 -8`} stroke="#6EF76E" strokeWidth={1.7} fill="none" />
               </>
             ) : (
               <>
-                <circle cx={tX + 24} cy={midY} r={8} fill="none" stroke="#FF5A31" />
-                <line x1={tX + 24} y1={midY - 4} x2={tX + 24} y2={midY + 1} stroke="#FF5A31" strokeWidth={1.8} />
-                <circle cx={tX + 24} cy={midY + 4} r={1} fill="#FF5A31" />
+                <circle cx={tX + 26} cy={midY} r={9} fill="none" stroke="#FF5A31" />
+                <line x1={tX + 26} y1={midY - 5} x2={tX + 26} y2={midY + 1} stroke="#FF5A31" strokeWidth={2} />
+                <circle cx={tX + 26} cy={midY + 5} r={1.2} fill="#FF5A31" />
               </>
             )}
-            <text x={tX + 44} y={midY - 3} fill="#fff" fontFamily={INK} fontSize="11.5" fontWeight="700">{t.name}</text>
-            <text x={tX + 44} y={midY + 13} fill={t.ok ? "rgba(255,255,255,0.5)" : "#FF5A31"} fontFamily={INK} fontSize="9.5" fontWeight={t.ok ? 400 : 700}>{t.sub}</text>
+            <text x={tX + 48} y={midY - 4} fill="#fff" fontFamily={INK} fontSize="15" fontWeight="700">{t.name}</text>
+            <text x={tX + 48} y={midY + 15} fill={t.ok ? "rgba(255,255,255,0.5)" : "#FF5A31"} fontFamily={INK} fontSize="13" fontWeight={t.ok ? 400 : 700}>{t.sub}</text>
           </motion.g>
         );
       })}
 
-      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.4" textAnchor="middle">THE STORE ADAPTS · YOUR BSS STAYS UNTOUCHED</text>
+      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">The store adapts. Your BSS stays untouched.</text>
     </svg>
   );
 }
@@ -606,10 +605,10 @@ export function Outcomes() {
         "Every order, number, and balance lives in your systems of record. This module is the connection layer between them and the store, built so the BSS side stays untouched.",
       results: [
         "Checkout, orders, and customer data flow to your BSS, OSS, and CRM automatically",
-        "Zero changes required on the BSS side: the store adapts to your systems",
-        "Failures surface for review instead of disappearing: no silently lost orders",
-        "Secure connection to your infrastructure (VPN, your hosting, your rules)",
-        "Monitoring wired in, so problems are seen before customers report them",
+        "The store adapts to your systems, so nothing changes on the BSS side",
+        "When something fails it surfaces for review, so no order is silently lost",
+        "A secure connection into your own infrastructure, over VPN and on your hosting",
+        "Monitoring wired in, so you see problems before customers report them",
       ],
       diagram: <SvgConnection />,
       theme: "beige",

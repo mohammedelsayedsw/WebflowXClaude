@@ -17,24 +17,18 @@ export function WhatShips() {
     },
     {
       n: "2",
-      name: "Migration plan",
-      detail: "Dry-run tested, with a zero-downtime fallback.",
-      tag: "plan",
-    },
-    {
-      n: "3",
       name: "Documentation and runbooks",
       detail: "Architecture docs and step-by-step runbooks, versioned with the code and written for your team.",
       tag: "docs",
     },
     {
-      n: "4",
+      n: "3",
       name: "Training",
       detail: "Hands-on sessions so your commercial team runs offers itself.",
       tag: "training",
     },
     {
-      n: "5",
+      n: "4",
       name: "Post-launch on-call",
       detail: "We stay on call with your team for 30 days after go-live.",
       tag: "support",

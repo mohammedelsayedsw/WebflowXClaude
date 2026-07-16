@@ -36,12 +36,6 @@ export function Problems() {
       body:
         "A single order has to update billing, provisioning, logistics, and your CRM. Today that path is held together by hand, and it breaks.",
     },
-    {
-      n: "6",
-      title: "A new phone or a big sale can flood your store",
-      body:
-        "These are the days your traffic spikes and your deadline will not move, both at once. Most stores are not built for that, so they slow down or crash when every sale counts.",
-    },
   ];
 
   return (
@@ -62,14 +56,14 @@ export function Problems() {
               <span className="label-code text-white/60">THE INDUSTRY, CHECKED OPERATOR BY OPERATOR</span>
             </div>
             <h2 className="font-head text-[34px] leading-[1.05] text-white md:text-[48px] lg:text-[56px]">
-              Six problems every{" "}
+              Five problems every{" "}
               <br className="hidden md:block" />
               <span className="text-[var(--sw-mint)]">telecom operator</span> recognises
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               Telecom is complicated to sell online, and a standard store is
               not built for it. We build and run telecom commerce in production,
-              and these are the six problems every operator&apos;s online store
+              and these are the five problems every operator&apos;s online store
               runs into.
             </p>
           </Reveal>

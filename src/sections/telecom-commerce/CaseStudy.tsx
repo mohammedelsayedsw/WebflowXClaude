@@ -27,7 +27,7 @@ export function CaseStudy() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <div className="flex items-center gap-2.5">
               <SignalBars tone="light" />
-              <span className="label-code text-[var(--sw-black)]/55">CASE STUDY · UMNIAH</span>
+              <span className="label-code text-[var(--sw-black)]/55">CASE STUDY</span>
             </div>
             {/* Umniah logo, paired with the eyebrow */}
             {/* eslint-disable-next-line @next/next/no-img-element */}

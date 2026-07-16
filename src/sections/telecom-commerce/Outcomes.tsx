@@ -270,82 +270,89 @@ function SvgConnection() {
 // ============================================================
 function SvgLaunch() {
   const W = 700;
-  const H = 440;
+  const H = 624;
+  const px = 26;
+  const pw = 648;
+  const ph = 104;
+  const rows = [20, 138, 256, 374, 492];
+  const rowShell = (ry: number, accent = "#6EF76E") => (
+    <>
+      <rect x={px} y={ry} width={pw} height={ph} rx={5} fill="rgba(63,74,175,0.08)" stroke="rgba(63,74,175,0.35)" />
+      <rect x={px} y={ry} width={5} height={ph} fill={accent} />
+    </>
+  );
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Data migration, SEO redirects, stress testing at real peak, bilingual right-to-left storefronts, and campaign layouts">
-      {/* migration */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={26} y={50} width={318} height={104} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
-        <rect x={26} y={50} width={318} height={4} fill="#6EF76E" />
-        <text x={44} y={80} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">Data migration</text>
-        <rect x={44} y={94} width={96} height={44} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={92} y={112} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="10" textAnchor="middle">old store</text>
-        <text x={92} y={128} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="8.5" textAnchor="middle">orders · customers</text>
-        <line x1={148} y1={116} x2={228} y2={116} stroke="#6EF76E" strokeOpacity={0.7} strokeWidth={1.5} />
-        <path d="M222 111 l6 5 -6 5" fill="none" stroke="#6EF76E" strokeWidth={1.5} />
-        <rect x={232} y={94} width={96} height={44} rx={3} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
-        <text x={280} y={112} fill="#fff" fontFamily={INK} fontSize="10" textAnchor="middle">new store</text>
-        <text x={280} y={128} fill="#6EF76E" fontFamily={INK} fontSize="8.5" textAnchor="middle">history kept</text>
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Data migration, stress test at real peak, SEO migration, bilingual right-to-left storefronts, and campaign layouts">
+      {/* 1 - data migration */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+        {rowShell(rows[0])}
+        <text x={50} y={rows[0] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Data migration</text>
+        <text x={50} y={rows[0] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">history kept</text>
+        <rect x={336} y={rows[0] + 24} width={140} height={56} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
+        <text x={406} y={rows[0] + 46} fill="rgba(255,255,255,0.8)" fontFamily={INK} fontSize="14" textAnchor="middle">old store</text>
+        <text x={406} y={rows[0] + 65} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="11" textAnchor="middle">orders, customers</text>
+        <line x1={480} y1={rows[0] + 52} x2={512} y2={rows[0] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.6} />
+        <path d={`M ${506} ${rows[0] + 46} l6 6 -6 6`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+        <rect x={516} y={rows[0] + 24} width={140} height={56} rx={4} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
+        <text x={586} y={rows[0] + 57} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700" textAnchor="middle">new store</text>
       </motion.g>
 
-      {/* SEO redirects */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.12, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={26} y={170} width={318} height={104} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
-        <rect x={26} y={170} width={318} height={4} fill="#3F4AAF" />
-        <text x={44} y={200} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">SEO migration</text>
-        {[0, 1].map((r) => (
-          <g key={r}>
-            <text x={44} y={224 + r * 24} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="9.5">/old/url-{r + 1}</text>
-            <rect x={150} y={214 + r * 24} width={34} height={16} rx={8} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.45)" />
-            <text x={167} y={226 + r * 24} fill="#6EF76E" fontFamily={INK} fontSize="8.5" fontWeight="700" textAnchor="middle">301</text>
-            <text x={196} y={224 + r * 24} fill="rgba(255,255,255,0.7)" fontFamily={INK} fontSize="9.5">/new/url-{r + 1}</text>
-          </g>
+      {/* 2 - stress test at real peak */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+        {rowShell(rows[1])}
+        <text x={50} y={rows[1] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Stress test at real peak</text>
+        {[28, 42, 34, 54, 46, 62, 40].map((h, i) => (
+          <rect key={i} x={340 + i * 24} y={rows[1] + 90 - h} width={18} height={h} rx={2} fill="#3F4AAF" fillOpacity={0.75} />
         ))}
-        <text x={328} y={200} fill="#6EF76E" fontFamily={INK} fontSize="9" textAnchor="end">rankings survive</text>
+        <line x1={334} y1={rows[1] + 22} x2={506} y2={rows[1] + 22} stroke="#FF5A31" strokeOpacity={0.75} strokeWidth={1.4} strokeDasharray="5 4" />
+        <text x={512} y={rows[1] + 26} fill="#FF5A31" fontFamily={INK} fontSize="11">capacity</text>
+        <rect x={556} y={rows[1] + 34} width={100} height={36} rx={18} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <text x={606} y={rows[1] + 57} fill="#6EF76E" fontFamily={INK} fontSize="15" fontWeight="700" textAnchor="middle">PASSED</text>
       </motion.g>
 
-      {/* stress test */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={356} y={50} width={318} height={104} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
-        <rect x={356} y={50} width={318} height={4} fill="#6EF76E" />
-        <text x={374} y={80} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">Stress test at real peak</text>
-        {[26, 40, 30, 52, 44, 60].map((h, i) => (
-          <rect key={i} x={378 + i * 20} y={140 - h} width={12} height={h} rx={1.5} fill="#3F4AAF" fillOpacity={0.7} />
-        ))}
-        <line x1={374} y1={92} x2={506} y2={92} stroke="#FF5A31" strokeOpacity={0.7} strokeWidth={1.2} strokeDasharray="4 3" />
-        <text x={512} y={95} fill="#FF5A31" fontFamily={INK} fontSize="8.5">capacity</text>
-        <rect x={560} y={112} width={98} height={28} rx={14} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
-        <text x={609} y={130} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" textAnchor="middle">PASSED</text>
+      {/* 3 - SEO migration */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+        {rowShell(rows[2], "#3F4AAF")}
+        <text x={50} y={rows[2] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">SEO migration</text>
+        <text x={50} y={rows[2] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">rankings kept</text>
+        <text x={336} y={rows[2] + 58} fill="rgba(255,255,255,0.75)" fontFamily={INK} fontSize="16">/old-url</text>
+        <line x1={422} y1={rows[2] + 52} x2={446} y2={rows[2] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.5} />
+        <path d={`M ${440} ${rows[2] + 47} l6 5 -6 5`} fill="none" stroke="#6EF76E" strokeWidth={1.5} />
+        <rect x={452} y={rows[2] + 38} width={48} height={28} rx={14} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <text x={476} y={rows[2] + 57} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700" textAnchor="middle">301</text>
+        <line x1={506} y1={rows[2] + 52} x2={530} y2={rows[2] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.5} />
+        <path d={`M ${524} ${rows[2] + 47} l6 5 -6 5`} fill="none" stroke="#6EF76E" strokeWidth={1.5} />
+        <text x={538} y={rows[2] + 58} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="600">/new-url</text>
       </motion.g>
 
-      {/* bilingual RTL */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={356} y={170} width={318} height={104} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
-        <rect x={356} y={170} width={318} height={4} fill="#3F4AAF" />
-        <text x={374} y={200} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">Bilingual · right-to-left</text>
-        <rect x={374} y={214} width={130} height={44} rx={3} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={386} y={234} fill="#fff" fontFamily={INK} fontSize="10" fontWeight="700">EN</text>
+      {/* 4 - bilingual, right-to-left */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+        {rowShell(rows[3], "#3F4AAF")}
+        <text x={50} y={rows[3] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Bilingual, right-to-left</text>
+        <text x={50} y={rows[3] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">English and Arabic, in production</text>
+        <rect x={410} y={rows[3] + 20} width={110} height={64} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
+        <text x={428} y={rows[3] + 44} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">EN</text>
         {[0, 1, 2].map((r) => (
-          <rect key={r} x={386} y={242 + r * 4} width={110 - r * 22} height={2.2} rx={1} fill="rgba(255,255,255,0.25)" />
+          <rect key={r} x={428} y={rows[3] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(255,255,255,0.25)" />
         ))}
-        <rect x={526} y={214} width={130} height={44} rx={3} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.35)" />
-        <text x={644} y={234} fill="#6EF76E" fontFamily={INK} fontSize="10" fontWeight="700" textAnchor="end">ع  AR</text>
+        <rect x={534} y={rows[3] + 20} width={120} height={64} rx={4} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.35)" />
+        <text x={638} y={rows[3] + 44} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="end">العربية</text>
         {[0, 1, 2].map((r) => (
-          <rect key={r} x={548 + r * 22} y={242 + r * 4} width={110 - r * 22} height={2.2} rx={1} fill="rgba(110,247,110,0.35)" />
+          <rect key={r} x={562 + r * 18} y={rows[3] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(110,247,110,0.35)" />
         ))}
       </motion.g>
 
-      {/* campaign layouts */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.36, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-        <rect x={26} y={290} width={648} height={70} rx={4} fill="rgba(110,247,110,0.06)" stroke="#6EF76E" strokeOpacity={0.4} />
-        <text x={46} y={320} fill="#fff" fontFamily={INK} fontSize="12.5" fontWeight="700">Campaign layouts</text>
-        <text x={46} y={340} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="10">holiday and launch layouts your team switches on from the admin</text>
-        <rect x={520} y={308} width={134} height={34} rx={17} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <circle cx={637} cy={325} r={11} fill="#6EF76E" fillOpacity={0.85} />
-        <text x={560} y={330} fill="#6EF76E" fontFamily={INK} fontSize="10.5" fontWeight="700" textAnchor="middle">CAMPAIGN ON</text>
+      {/* 5 - campaign layouts */}
+      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+        {rowShell(rows[4])}
+        <text x={50} y={rows[4] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Campaign layouts</text>
+        <text x={50} y={rows[4] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">your team switches it on</text>
+        <rect x={472} y={rows[4] + 26} width={184} height={44} rx={22} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <text x={498} y={rows[4] + 53} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700">CAMPAIGN ON</text>
+        <circle cx={634} cy={rows[4] + 48} r={14} fill="#6EF76E" fillOpacity={0.9} />
       </motion.g>
 
-      <text x={W / 2} y={H - 8} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="10" letterSpacing="1.4" textAnchor="middle">LIVE ON THE DEADLINE · STANDS AT PEAK</text>
+      <text x={W / 2} y={H - 14} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="15" textAnchor="middle">Live on the deadline. Stands at peak.</text>
     </svg>
   );
 }
@@ -624,12 +631,12 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Telecom launches have hard marketing deadlines and real peak traffic. This module is the practiced process that gets a store live on time and keeps it standing.",
+        "Telecom launches have hard marketing deadlines and real peak traffic. This module is the practiced process that gets your store live on time and keeps it standing.",
       results: [
-        "Full data migration from your current store: orders, customers, history",
+        "Full data migration from your current store, including orders, customers, and history",
         "SEO migration with redirects, so rankings survive the move",
         "Stress testing against your real historical peak before launch, not after",
-        "Bilingual and right-to-left storefronts, proven with English and Arabic in production",
+        "A tested rollback, so if go-live goes wrong you are back on the old store fast",
         "Holiday and campaign layouts your team can switch on from the admin",
       ],
       diagram: <SvgLaunch />,
@@ -691,11 +698,11 @@ export function Outcomes() {
       <section className="relative overflow-hidden bg-lp-bright">
         <div className="wrap flex flex-col items-start justify-between gap-6 border-t border-[var(--sw-black)]/10 py-16 md:flex-row md:items-center md:py-20">
           <p className="font-head max-w-[46ch] text-[20px] leading-[1.25] text-[var(--sw-black)] md:text-[24px]">
-            Like the modules? They are already running in production. You fit
-            them to your systems in 6 to 12 weeks.
+            Like the modules? Pick the ones you need and fit them to your
+            systems in 6 to 12 weeks. The build is already done.
           </p>
           <a href="#cta" className={btnLight}>
-            See if it fits your systems
+            See where you&apos;d start
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>

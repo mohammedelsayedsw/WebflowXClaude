@@ -272,7 +272,7 @@ function SvgConnection() {
         );
       })}
 
-      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">The store adapts. Your Business Support Systems stays untouched.</text>
+      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">The store adapts. Your Business Support Systems stay untouched.</text>
     </svg>
   );
 }

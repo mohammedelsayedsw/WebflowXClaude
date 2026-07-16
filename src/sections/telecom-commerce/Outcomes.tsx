@@ -673,8 +673,8 @@ export function Outcomes() {
                   <div className="label-code mt-2 text-white/50">Kickoff to live</div>
                 </div>
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">Once</div>
-                  <div className="label-code mt-2 text-white/50">One-time setup</div>
+                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">1×</div>
+                  <div className="label-code mt-2 text-white/50">Setup</div>
                 </div>
               </div>
             </Reveal>

@@ -556,18 +556,18 @@ export function Outcomes() {
       n: "3",
       title: (
         <>
-          Installments, balance payment, and OTP,{" "}
+          Installments, balance payment, and SMS codes,{" "}
           <span className="text-[var(--sw-blue)]">all in one checkout</span>
         </>
       ),
       lede:
         "Telecom customers pay in ways normal shops never see. This module ships the whole set, proven in production.",
       results: [
-        "Bank installments with per-bank rules: which cards, which terms, which products",
-        "Payment from the customer's phone account, with a live balance check before confirming",
-        "OTP verification built into the payment step",
-        "Wallets, Apple Pay, cards, cash on delivery, and card on delivery",
-        "Payment edge cases handled: no charges without an order, no lost redirects",
+        "Installments with each bank's own rules for cards, terms, and eligible products",
+        "Payment from the customer's phone balance, with a live check before the order confirms",
+        "An SMS code check built into the payment step",
+        "Wallets, Apple Pay, cards, and cash or card on delivery",
+        "Handles the failure cases, so a customer is never charged without an order and no payment gets lost between the bank and your store",
       ],
       diagram: <SvgPayments />,
       theme: "beige",

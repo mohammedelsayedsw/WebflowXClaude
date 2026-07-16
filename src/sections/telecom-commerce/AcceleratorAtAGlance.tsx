@@ -11,7 +11,7 @@ export function AcceleratorAtAGlance() {
     ["Connects to", "Your BSS, CRM, ERP, provisioning, and fulfillment systems"],
     ["Standards", "Open and API-first, aligned with TM Forum, the telecom standards body"],
     ["After launch", "Your business team manages offers and prices, no IT tickets"],
-    ["You keep", "Full code ownership · runbooks · architecture docs · training"],
+    ["You keep", "Full code ownership · runbooks · architecture docs · training materials"],
   ];
 
   return (
@@ -33,10 +33,11 @@ export function AcceleratorAtAGlance() {
               <span className="text-[var(--sw-blue)]">Connect it to your systems</span>
             </h2>
             <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
-              This is not a generic web shop and not a new BSS. It is the store
-              layer built for how telecoms sell: a phone that comes with a plan,
-              a price that depends on the bank and the contract, a SIM that needs
-              a number and an ID check before it can ship.
+              What you connect is a store layer built for how telecoms sell: a
+              phone that comes with a plan, a price that depends on the bank and
+              the contract, a SIM that needs a number and an ID check before it
+              can ship. It is not a generic online shop, and it does not replace
+              your BSS.
             </p>
             <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
               You keep the systems you already run. We add the store layer on

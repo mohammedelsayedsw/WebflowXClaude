@@ -11,9 +11,9 @@ function Spokesperson() {
     <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] p-6 backdrop-blur md:p-7">
       <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[24px]">
         &ldquo;You don&apos;t pay us to learn how telecom sells. We already did.
-        Offers, bundles, eligibility, multi-system orders -{" "}
+        Offers, bundles, eligibility, multi-system orders.{" "}
         <span className="text-[var(--sw-mint)]">
-          configure the proven layer to your BSS in weeks, not 18 months
+          Configure the proven layer to your BSS in weeks, not 18 months
         </span>
         .&rdquo;
       </blockquote>
@@ -67,7 +67,7 @@ export function CTA() {
 
             <ul className="mt-10 space-y-2.5 text-[13px] text-white/75 md:text-[14px]">
               {[
-                "Response within one business day",
+                "A senior engineer on the call, not just sales",
                 "30 minutes · fit assessment, no sales pitch",
                 "Full reference case study on request",
               ].map((t, i) => (
@@ -85,6 +85,7 @@ export function CTA() {
               portalId="25724996"
               formId="3eabce3f-c4d9-41d7-8d66-59080f1c09ed"
               region="eu1"
+              submitText="Book my fit check"
             />
             <p className="label-code mt-3 px-1 text-white/45">
               We respond within one business day

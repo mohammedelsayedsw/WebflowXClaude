@@ -24,6 +24,7 @@ declare global {
           target: string;
           css?: string;
           cssRequired?: string;
+          onFormReady?: () => void;
         }) => void;
       };
     };
@@ -36,16 +37,29 @@ export function HubSpotForm({
   portalId,
   formId,
   region = "eu1",
+  submitText,
 }: {
   portalId: string;
   formId: string;
   region?: string;
+  /** Override the HubSpot form's submit button label (this instance only). */
+  submitText?: string;
 }) {
   const targetId = `hs-form-${formId}`;
   const created = useRef(false);
 
   useEffect(() => {
     if (created.current) return;
+
+    const relabel = () => {
+      if (!submitText) return;
+      const root = document.getElementById(targetId);
+      const btn = root?.querySelector(
+        'input[type="submit"], button[type="submit"], .hs-button'
+      );
+      if (btn instanceof HTMLInputElement) btn.value = submitText;
+      else if (btn instanceof HTMLElement) btn.textContent = submitText;
+    };
 
     const tryCreate = () => {
       if (typeof window !== "undefined" && window.hbspt) {
@@ -59,6 +73,12 @@ export function HubSpotForm({
           target: `#${targetId}`,
           css: "",          // disable HubSpot default CSS so our styles win
           cssRequired: "",  // disable HubSpot's default required-field CSS
+          onFormReady: () => {
+            relabel();
+            // HubSpot can reflow after ready; re-apply a couple of times.
+            window.setTimeout(relabel, 300);
+            window.setTimeout(relabel, 900);
+          },
         });
         created.current = true;
         return true;
@@ -75,7 +95,7 @@ export function HubSpotForm({
       window.clearInterval(id);
       window.clearTimeout(timeout);
     };
-  }, [portalId, formId, region, targetId]);
+  }, [portalId, formId, region, targetId, submitText]);
 
   return (
     <div

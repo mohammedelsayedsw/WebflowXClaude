@@ -13,7 +13,7 @@ import { CaseStudy } from "@/sections/telecom-commerce/CaseStudy";
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col [text-wrap:pretty]">
       <Hero />
       <AcceleratorAtAGlance />
       <Problems />

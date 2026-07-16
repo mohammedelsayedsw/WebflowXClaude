@@ -138,11 +138,11 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/90 md:mt-6 md:text-[18px]">
-                Every telecom sale your website can&apos;t finish walks into a
-                store or onto a call.{" "}
+                Selling telecom online means a phone tied to a plan, a number to
+                reserve, coverage and ID to check, and installments at checkout.{" "}
                 <span className="font-semibold text-white">
-                  This accelerator finishes it online, and grows revenue doing
-                  it.
+                  This accelerator puts all of it in your online store, so the
+                  whole sale closes in the cart, not in a store or on a call.
                 </span>
               </p>
 

@@ -8,11 +8,11 @@ export function AcceleratorValue() {
   const rows: [string, string][] = [
     [
       "Stretching the BSS to run the shop deepens technical debt",
-      "The BSS keeps its job, the new layer runs the shop",
+      "The BSS keeps its job, the new layer handles the store customers buy through",
     ],
     [
       "A generic platform needs heavy customization for telecom",
-      "Telecom logic is the starting point, not the customization",
+      "All the modules are already built, so you skip the heavy customization",
     ],
     [
       "Payment edge cases discovered from customer complaints",
@@ -76,9 +76,10 @@ export function AcceleratorValue() {
                     <span className="label-code text-[var(--sw-mint)]">WITH THE ACCELERATOR · 6-12 WEEKS</span>
                   </div>
                   <p className="text-[14px] leading-relaxed text-white/90 md:text-[15px]">
-                    The modules are already built and running in production at a
-                    national telecom operator. The 6 to 12 weeks go into fitting
-                    them to your catalog and your systems, not into building.
+                    The modules are already built and proven in production, on
+                    top of years of telecom delivery. The 6 to 12 weeks go into
+                    fitting them to your catalog and your systems, not into
+                    building.
                   </p>
                 </div>
               </div>

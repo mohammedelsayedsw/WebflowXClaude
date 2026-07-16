@@ -151,34 +151,47 @@ function SvgPayments() {
 // ============================================================
 function SvgSimEligibility() {
   const W = 700;
-  const H = 440;
-  const cards: { x: number; y: number; n: string; title: string; sub: string; badge: string }[] = [
-    { x: 26, y: 56, n: "1", title: "Pick a number", sub: "070 123 4567", badge: "Number reserved" },
-    { x: 356, y: 56, n: "2", title: "Check coverage", sub: "at the customer's address", badge: "Fiber and 5G available" },
-    { x: 26, y: 234, n: "3", title: "Verify ID", sub: "upload at checkout", badge: "ID verified" },
-    { x: 356, y: 234, n: "4", title: "Deliver", sub: "in 2 hours, same day, or next day", badge: "eSIM sent by SMS" },
+  const H = 540;
+  const cards = [
+    { n: "1", title: "Pick a number", sub: "070 123 4567", badge: "Number reserved" },
+    { n: "2", title: "Check coverage", sub: "at the customer's address", badge: "Fiber and 5G available" },
+    { n: "3", title: "Verify ID", sub: "upload at checkout", badge: "ID verified" },
+    { n: "4", title: "Deliver", sub: "in 2 hours, same day, or next day", badge: "eSIM sent by SMS" },
   ];
-  const cw = 318;
-  const ch = 150;
+  const cardX = 60;
+  const cardW = 580;
+  const cardH = 90;
+  const stepY = 124;
+  const topY = 20;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Pick a number, check coverage, verify ID, and deliver, all handled online">
-      {cards.map((c, i) => (
-        <motion.g key={c.n} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + i * 0.1, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
-          <rect x={c.x} y={c.y} width={cw} height={ch} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
-          <rect x={c.x} y={c.y} width={cw} height={4} fill="#6EF76E" />
-          <circle cx={c.x + 36} cy={c.y + 44} r={16} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
-          <text x={c.x + 36} y={c.y + 50} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="middle">{c.n}</text>
-          <text x={c.x + 66} y={c.y + 42} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">{c.title}</text>
-          <text x={c.x + 66} y={c.y + 66} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="15">{c.sub}</text>
-          <line x1={c.x + 22} x2={c.x + cw - 22} y1={c.y + 88} y2={c.y + 88} stroke="rgba(230,231,239,0.12)" />
-          {/* plain outcome badge */}
-          <rect x={c.x + 22} y={c.y + 104} width={c.badge.length * 8 + 46} height={32} rx={16} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
-          <circle cx={c.x + 43} cy={c.y + 120} r={8} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
-          <path d={`M ${c.x + 39} ${c.y + 120} l3 3 6 -7`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
-          <text x={c.x + 60} y={c.y + 125} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="600">{c.badge}</text>
-        </motion.g>
-      ))}
-      <text x={W / 2} y={H - 12} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">Everything the store visit was for, online.</text>
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Pick a number, check coverage, verify ID, and deliver, step by step, all online">
+      {cards.map((c, i) => {
+        const cy = topY + i * stepY;
+        const mid = cy + cardH / 2;
+        const badgeW = c.badge.length * 8 + 46;
+        const badgeX = cardX + cardW - 20 - badgeW;
+        return (
+          <motion.g key={c.n} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.12, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
+            <rect x={cardX} y={cy} width={cardW} height={cardH} rx={5} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
+            <rect x={cardX} y={cy} width={cardW} height={4} fill="#6EF76E" />
+            <circle cx={cardX + 42} cy={mid} r={17} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
+            <text x={cardX + 42} y={mid + 6} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="middle">{c.n}</text>
+            <text x={cardX + 78} y={mid - 6} fill="#fff" fontFamily={INK} fontSize="18" fontWeight="700">{c.title}</text>
+            <text x={cardX + 78} y={mid + 16} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">{c.sub}</text>
+            <rect x={badgeX} y={mid - 16} width={badgeW} height={32} rx={16} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
+            <circle cx={badgeX + 21} cy={mid} r={8} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+            <path d={`M ${badgeX + 17} ${mid} l3 3 6 -7`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+            <text x={badgeX + 37} y={mid + 5} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="600">{c.badge}</text>
+            {i < cards.length - 1 && (
+              <g>
+                <line x1={W / 2} y1={cy + cardH + 6} x2={W / 2} y2={cy + stepY - 8} stroke="#6EF76E" strokeOpacity={0.7} strokeWidth={2} />
+                <path d={`M ${W / 2 - 6} ${cy + stepY - 15} L ${W / 2} ${cy + stepY - 6} L ${W / 2 + 6} ${cy + stepY - 15}`} fill="none" stroke="#6EF76E" strokeOpacity={0.9} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+              </g>
+            )}
+          </motion.g>
+        );
+      })}
+      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">Everything the store visit was for, online.</text>
     </svg>
   );
 }
@@ -259,7 +272,7 @@ function SvgConnection() {
         );
       })}
 
-      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">The store adapts. Your BSS stays untouched.</text>
+      <text x={W / 2} y={H - 16} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">The store adapts. Your Business Support Systems stays untouched.</text>
     </svg>
   );
 }
@@ -270,11 +283,11 @@ function SvgConnection() {
 // ============================================================
 function SvgLaunch() {
   const W = 700;
-  const H = 624;
+  const H = 540;
   const px = 26;
   const pw = 648;
   const ph = 104;
-  const rows = [20, 138, 256, 374, 492];
+  const rows = [20, 138, 256, 374];
   const rowShell = (ry: number, accent = "#6EF76E") => (
     <>
       <rect x={px} y={ry} width={pw} height={ph} rx={5} fill="rgba(63,74,175,0.08)" stroke="rgba(63,74,175,0.35)" />
@@ -282,7 +295,7 @@ function SvgLaunch() {
     </>
   );
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Data migration, stress test at real peak, SEO migration, bilingual right-to-left storefronts, and campaign layouts">
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Data migration, stress test at real peak, bilingual right-to-left storefronts, and campaign layouts">
       {/* 1 - data migration */}
       <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
         {rowShell(rows[0])}
@@ -310,49 +323,34 @@ function SvgLaunch() {
         <text x={606} y={rows[1] + 57} fill="#6EF76E" fontFamily={INK} fontSize="15" fontWeight="700" textAnchor="middle">PASSED</text>
       </motion.g>
 
-      {/* 3 - SEO migration */}
+      {/* 3 - bilingual, right-to-left */}
       <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
         {rowShell(rows[2], "#3F4AAF")}
-        <text x={50} y={rows[2] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">SEO migration</text>
-        <text x={50} y={rows[2] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">rankings kept</text>
-        <text x={336} y={rows[2] + 58} fill="rgba(255,255,255,0.75)" fontFamily={INK} fontSize="16">/old-url</text>
-        <line x1={422} y1={rows[2] + 52} x2={446} y2={rows[2] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.5} />
-        <path d={`M ${440} ${rows[2] + 47} l6 5 -6 5`} fill="none" stroke="#6EF76E" strokeWidth={1.5} />
-        <rect x={452} y={rows[2] + 38} width={48} height={28} rx={14} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <text x={476} y={rows[2] + 57} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700" textAnchor="middle">301</text>
-        <line x1={506} y1={rows[2] + 52} x2={530} y2={rows[2] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.5} />
-        <path d={`M ${524} ${rows[2] + 47} l6 5 -6 5`} fill="none" stroke="#6EF76E" strokeWidth={1.5} />
-        <text x={538} y={rows[2] + 58} fill="#fff" fontFamily={INK} fontSize="16" fontWeight="600">/new-url</text>
+        <text x={50} y={rows[2] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Bilingual, right-to-left</text>
+        <text x={50} y={rows[2] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">English and Arabic, in production</text>
+        <rect x={410} y={rows[2] + 20} width={110} height={64} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
+        <text x={428} y={rows[2] + 44} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">EN</text>
+        {[0, 1, 2].map((r) => (
+          <rect key={r} x={428} y={rows[2] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(255,255,255,0.25)" />
+        ))}
+        <rect x={534} y={rows[2] + 20} width={120} height={64} rx={4} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.35)" />
+        <text x={638} y={rows[2] + 44} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="end">العربية</text>
+        {[0, 1, 2].map((r) => (
+          <rect key={r} x={562 + r * 18} y={rows[2] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(110,247,110,0.35)" />
+        ))}
       </motion.g>
 
-      {/* 4 - bilingual, right-to-left */}
+      {/* 4 - campaign layouts */}
       <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[3], "#3F4AAF")}
-        <text x={50} y={rows[3] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Bilingual, right-to-left</text>
-        <text x={50} y={rows[3] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">English and Arabic, in production</text>
-        <rect x={410} y={rows[3] + 20} width={110} height={64} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={428} y={rows[3] + 44} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">EN</text>
-        {[0, 1, 2].map((r) => (
-          <rect key={r} x={428} y={rows[3] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(255,255,255,0.25)" />
-        ))}
-        <rect x={534} y={rows[3] + 20} width={120} height={64} rx={4} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.35)" />
-        <text x={638} y={rows[3] + 44} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="end">العربية</text>
-        {[0, 1, 2].map((r) => (
-          <rect key={r} x={562 + r * 18} y={rows[3] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(110,247,110,0.35)" />
-        ))}
+        {rowShell(rows[3])}
+        <text x={50} y={rows[3] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Campaign layouts</text>
+        <text x={50} y={rows[3] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">your team switches it on</text>
+        <rect x={472} y={rows[3] + 26} width={184} height={44} rx={22} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
+        <text x={498} y={rows[3] + 53} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700">CAMPAIGN ON</text>
+        <circle cx={634} cy={rows[3] + 48} r={14} fill="#6EF76E" fillOpacity={0.9} />
       </motion.g>
 
-      {/* 5 - campaign layouts */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[4])}
-        <text x={50} y={rows[4] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Campaign layouts</text>
-        <text x={50} y={rows[4] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">your team switches it on</text>
-        <rect x={472} y={rows[4] + 26} width={184} height={44} rx={22} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <text x={498} y={rows[4] + 53} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700">CAMPAIGN ON</text>
-        <circle cx={634} cy={rows[4] + 48} r={14} fill="#6EF76E" fillOpacity={0.9} />
-      </motion.g>
-
-      <text x={W / 2} y={H - 14} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="15" textAnchor="middle">Live on the deadline. Stands at peak.</text>
+      <text x={W / 2} y={H - 20} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="15" textAnchor="middle">Live on the deadline. Stands at peak.</text>
     </svg>
   );
 }
@@ -605,7 +603,7 @@ export function Outcomes() {
       title: (
         <>
           The store talks to your BSS.{" "}
-          <span className="text-[var(--sw-blue)]">Your BSS doesn&apos;t change</span>
+          <span className="text-[var(--sw-blue)]">Your BSS doesn&apos;t change</span>.
         </>
       ),
       lede:
@@ -634,7 +632,6 @@ export function Outcomes() {
         "Telecom launches have hard marketing deadlines and real peak traffic. This module is the practiced process that gets your store live on time and keeps it standing.",
       results: [
         "Full data migration from your current store, including orders, customers, and history",
-        "SEO migration with redirects, so rankings survive the move",
         "Stress testing against your real historical peak before launch, not after",
         "A tested rollback, so if go-live goes wrong you are back on the old store fast",
         "Holiday and campaign layouts your team can switch on from the admin",

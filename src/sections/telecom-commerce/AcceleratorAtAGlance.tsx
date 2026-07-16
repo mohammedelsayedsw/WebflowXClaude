@@ -30,7 +30,7 @@ export function AcceleratorAtAGlance() {
             </div>
             <h2 className="font-head max-w-[26ch] text-[34px] leading-[1.04] text-[var(--sw-black)] md:text-[48px] lg:text-[56px]">
               The accelerator is already built.{" "}
-              <span className="text-[var(--sw-blue)]">Connect it to your systems</span>
+              <span className="text-[var(--sw-blue)]">Connect it to your systems</span>.
             </h2>
             <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
               What you connect is a store layer built for how telecoms sell: a

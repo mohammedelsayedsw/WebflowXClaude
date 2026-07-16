@@ -152,34 +152,33 @@ function SvgPayments() {
 function SvgSimEligibility() {
   const W = 700;
   const H = 440;
-  const cards: { x: number; y: number; n: string; title: string; sub: string; chip: string; note: string }[] = [
-    { x: 26, y: 46, n: "1", title: "Pick a number", sub: "070 123 4567", chip: "RESERVED VIA CRM", note: "auto-release if abandoned" },
-    { x: 356, y: 46, n: "2", title: "Coverage check", sub: "at this address", chip: "FIBER & 5G OK", note: "straight from your systems" },
-    { x: 26, y: 232, n: "3", title: "Verify ID", sub: "document upload", chip: "ID VERIFIED", note: "at checkout" },
-    { x: 356, y: 232, n: "4", title: "Deliver", sub: "2h · same-day · next-day", chip: "e-SIM BY SMS", note: "fits telecom" },
+  const cards: { x: number; y: number; n: string; title: string; sub: string; badge: string }[] = [
+    { x: 26, y: 56, n: "1", title: "Pick a number", sub: "070 123 4567", badge: "Number reserved" },
+    { x: 356, y: 56, n: "2", title: "Check coverage", sub: "at the customer's address", badge: "Fiber and 5G available" },
+    { x: 26, y: 234, n: "3", title: "Verify ID", sub: "upload at checkout", badge: "ID verified" },
+    { x: 356, y: 234, n: "4", title: "Deliver", sub: "in 2 hours, same day, or next day", badge: "eSIM sent by SMS" },
   ];
   const cw = 318;
-  const ch = 156;
+  const ch = 150;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Pick a number, check coverage, verify ID, and deliver, all handled online">
       {cards.map((c, i) => (
         <motion.g key={c.n} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + i * 0.1, duration: 0.45 }} viewport={{ once: true, amount: 0.2 }}>
           <rect x={c.x} y={c.y} width={cw} height={ch} rx={4} fill="rgba(63,74,175,0.09)" stroke="rgba(63,74,175,0.4)" />
           <rect x={c.x} y={c.y} width={cw} height={4} fill="#6EF76E" />
-          <circle cx={c.x + 34} cy={c.y + 40} r={15} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
-          <text x={c.x + 34} y={c.y + 46} fill="#6EF76E" fontFamily={INK} fontSize="16" fontWeight="700" textAnchor="middle">{c.n}</text>
-          <text x={c.x + 62} y={c.y + 38} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">{c.title}</text>
-          <text x={c.x + 62} y={c.y + 60} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">{c.sub}</text>
-          <line x1={c.x + 20} x2={c.x + cw - 20} y1={c.y + 82} y2={c.y + 82} stroke="rgba(230,231,239,0.12)" />
-          {/* chip */}
-          <rect x={c.x + 20} y={c.y + 96} width={c.chip.length * 8.4 + 34} height={30} rx={15} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
-          <circle cx={c.x + 39} cy={c.y + 111} r={4.5} fill="#6EF76E" />
-          <text x={c.x + 54} y={c.y + 116} fill="#6EF76E" fontFamily={INK} fontSize="13" fontWeight="700" letterSpacing="0.3">{c.chip}</text>
-          {/* helper note below chip */}
-          <text x={c.x + 20} y={c.y + 146} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="12">{c.note}</text>
+          <circle cx={c.x + 36} cy={c.y + 44} r={16} fill="none" stroke="#6EF76E" strokeOpacity={0.6} />
+          <text x={c.x + 36} y={c.y + 50} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="middle">{c.n}</text>
+          <text x={c.x + 66} y={c.y + 42} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">{c.title}</text>
+          <text x={c.x + 66} y={c.y + 66} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="15">{c.sub}</text>
+          <line x1={c.x + 22} x2={c.x + cw - 22} y1={c.y + 88} y2={c.y + 88} stroke="rgba(230,231,239,0.12)" />
+          {/* plain outcome badge */}
+          <rect x={c.x + 22} y={c.y + 104} width={c.badge.length * 8 + 46} height={32} rx={16} fill="rgba(110,247,110,0.12)" stroke="rgba(110,247,110,0.45)" />
+          <circle cx={c.x + 43} cy={c.y + 120} r={8} fill="none" stroke="#6EF76E" strokeWidth={1.4} />
+          <path d={`M ${c.x + 39} ${c.y + 120} l3 3 6 -7`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
+          <text x={c.x + 60} y={c.y + 125} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="600">{c.badge}</text>
         </motion.g>
       ))}
-      <text x={W / 2} y={H - 10} fill="rgba(255,255,255,0.5)" fontFamily={INK} fontSize="13" letterSpacing="1.2" textAnchor="middle">EVERYTHING THE STORE VISIT WAS FOR, ONLINE</text>
+      <text x={W / 2} y={H - 12} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="14" textAnchor="middle">Everything the store visit was for, online.</text>
     </svg>
   );
 }
@@ -583,13 +582,13 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "The reasons customers still visit a store for a SIM are all solvable online. This module solves them.",
+        "Customers still go to a store for a SIM for a handful of reasons. This module handles every one of them online.",
       results: [
-        "Number selection with reservation through your CRM, and automatic release of abandoned numbers",
-        "Coverage check at the customer's address for fiber and 5G, straight from your systems",
-        "ID verification and document upload at checkout",
-        "E-cards and digital products delivered by SMS",
-        "Delivery options that fit telecom: 2-hour, same-day, next-day",
+        "Let customers pick and reserve a number through your CRM, released automatically if they drop off",
+        "Check fiber and 5G coverage at the customer's address, straight from your systems",
+        "Verify ID and upload documents at checkout",
+        "eSIMs and digital products delivered by SMS",
+        "Delivery in 2 hours, same day, or next day",
       ],
       diagram: <SvgSimEligibility />,
       theme: "dark",

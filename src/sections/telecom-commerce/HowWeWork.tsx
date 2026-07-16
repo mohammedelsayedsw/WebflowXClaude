@@ -22,10 +22,10 @@ export function HowWeWork() {
     },
     {
       n: "3",
-      length: "3 to 4 months",
+      length: "6 to 12 weeks",
       label: "Full rollout",
       body:
-        "Production-ready, integrated, live across your channels. We stay with you through the first campaign season.",
+        "Live across your channels, production-ready and integrated. Then we stay with you through your first campaign season.",
     },
   ];
 
@@ -43,8 +43,8 @@ export function HowWeWork() {
             <span className="text-[var(--sw-blue)]">three-step plan</span>
           </h2>
           <p className="mt-6 max-w-[92ch] text-[16px] leading-relaxed text-[var(--sw-black)]/75 md:text-[17px]">
-            Three steps from a first look to live across your channels: review,
-            prove, roll out.
+            From a first look to live across your channels: review, prove, roll
+            out.
           </p>
         </Reveal>
 

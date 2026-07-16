@@ -602,8 +602,8 @@ export function Outcomes() {
       n: "5",
       title: (
         <>
-          The store talks to your BSS.{" "}
-          <span className="text-[var(--sw-blue)]">Your BSS doesn&apos;t change</span>.
+          One order, many systems,{" "}
+          <span className="text-[var(--sw-blue)]">none of it by hand</span>
         </>
       ),
       lede:

@@ -40,7 +40,7 @@ export function Problems() {
       n: "6",
       title: "A new phone or a big sale can flood your store",
       body:
-        "A new phone launch or a holiday sale brings your busiest traffic and your tightest deadline on the same day. Most stores are not ready for it.",
+        "These are the days your traffic spikes and your deadline will not move, both at once. Most stores are not built for that, so they slow down or crash when every sale counts.",
     },
   ];
 

@@ -523,7 +523,7 @@ export function Outcomes() {
         </>
       ),
       lede:
-        "Right now every price change waits on a developer, and your channels drift out of step. This module gives your team one screen to build and edit every offer, bundle, and price, with no code.",
+        "Your team builds and edits every offer, bundle, and price on one screen, with no code. A change goes live in minutes, not weeks in the IT queue, so campaigns launch on time.",
       results: [
         "One screen to create and edit offers, bundles, and prices, no developer needed",
         "Set eligibility and contract terms on an offer without engineering",

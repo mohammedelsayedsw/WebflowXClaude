@@ -38,7 +38,7 @@ function SvgDeviceBundle() {
         <text x={92} y={102} fill="#fff" fontFamily={INK} fontSize="18" fontWeight="700">iPhone 15</text>
         <text x={92} y={126} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="14">smartphone</text>
         <text x={44} y={182} fill="#fff" fontFamily={INK} fontSize="20" fontWeight="700">€999</text>
-        <text x={122} y={182} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="13">or in installments</text>
+        <text x={122} y={182} fill="rgba(255,255,255,0.6)" fontFamily={INK} fontSize="13">or in monthly payments</text>
       </motion.g>
 
       <text x={155} y={224} fill="#6EF76E" fontFamily={INK} fontSize="30" fontWeight="700" textAnchor="middle">+</text>

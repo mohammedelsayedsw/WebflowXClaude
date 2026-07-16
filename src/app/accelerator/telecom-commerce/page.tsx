@@ -22,8 +22,8 @@ export default function Page() {
       <HowWeWork />
       <WhatShips />
       <CaseStudy />
-      <FAQ />
       <CTA />
+      <FAQ />
     </main>
   );
 }

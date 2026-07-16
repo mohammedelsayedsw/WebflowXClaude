@@ -22,7 +22,7 @@ export function Problems() {
       n: "3",
       title: "Your checkout can't take telecom payments",
       body:
-        "Customers want installments split by bank, payment from their phone balance, one-time codes, and cash on delivery. A standard checkout takes almost none of it.",
+        "Customers want installments split by bank, payment from their phone balance, SMS codes, and cash on delivery. A standard checkout takes almost none of it.",
     },
     {
       n: "4",

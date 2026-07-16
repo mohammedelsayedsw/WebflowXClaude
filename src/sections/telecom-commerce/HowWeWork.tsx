@@ -11,7 +11,7 @@ export function HowWeWork() {
       length: "1 week",
       label: "Discovery workshop",
       body:
-        "We map your catalog and systems, pick three quick wins, and demo the accelerator against your real offers.",
+        "We map your catalog and systems, pick the quick wins, and demo the accelerator against your real offers.",
     },
     {
       n: "2",
@@ -25,7 +25,7 @@ export function HowWeWork() {
       length: "6 to 12 weeks",
       label: "Full rollout",
       body:
-        "Live across your channels, production-ready and integrated. Then we stay with you through your first campaign season.",
+        "Live across your channels, production-ready and integrated. Then we stay on call with your team for 30 days after go-live.",
     },
   ];
 
@@ -43,8 +43,7 @@ export function HowWeWork() {
             <span className="text-[var(--sw-blue)]">three-step plan</span>
           </h2>
           <p className="mt-6 max-w-[92ch] text-[16px] leading-relaxed text-[var(--sw-black)]/75 md:text-[17px]">
-            From a first look to live across your channels: review, prove, roll
-            out.
+            From a first look to live across your channels.
           </p>
         </Reveal>
 

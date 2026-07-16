@@ -41,7 +41,7 @@ export function FAQ() {
     },
     {
       q: "Can we use only part of it?",
-      a: "Yes. The six modules are independent. Take all of them, or start with the one you are missing and add the rest later. Each one is configured to your catalog and systems.",
+      a: "Yes. The five modules are independent. Take all of them, or start with the one you are missing and add the rest later. Each one is configured to your catalog and systems.",
     },
     {
       q: "Can it support sub-brands or partner setups (MVNO)?",

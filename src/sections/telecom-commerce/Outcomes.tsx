@@ -278,84 +278,6 @@ function SvgConnection() {
 }
 
 // ============================================================
-// Module 5 - Launch & campaign machinery
-// Migration, SEO redirects, stress test, bilingual/RTL, campaigns
-// ============================================================
-function SvgLaunch() {
-  const W = 700;
-  const H = 540;
-  const px = 26;
-  const pw = 648;
-  const ph = 104;
-  const rows = [20, 138, 256, 374];
-  const rowShell = (ry: number, accent = "#6EF76E") => (
-    <>
-      <rect x={px} y={ry} width={pw} height={ph} rx={5} fill="rgba(63,74,175,0.08)" stroke="rgba(63,74,175,0.35)" />
-      <rect x={px} y={ry} width={5} height={ph} fill={accent} />
-    </>
-  );
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Data migration, stress test at real peak, bilingual right-to-left storefronts, and campaign layouts">
-      {/* 1 - data migration */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[0])}
-        <text x={50} y={rows[0] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Data migration</text>
-        <text x={50} y={rows[0] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">history kept</text>
-        <rect x={336} y={rows[0] + 24} width={140} height={56} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={406} y={rows[0] + 46} fill="rgba(255,255,255,0.8)" fontFamily={INK} fontSize="14" textAnchor="middle">old store</text>
-        <text x={406} y={rows[0] + 65} fill="rgba(255,255,255,0.45)" fontFamily={INK} fontSize="11" textAnchor="middle">orders, customers</text>
-        <line x1={480} y1={rows[0] + 52} x2={512} y2={rows[0] + 52} stroke="#6EF76E" strokeOpacity={0.8} strokeWidth={1.6} />
-        <path d={`M ${506} ${rows[0] + 46} l6 6 -6 6`} fill="none" stroke="#6EF76E" strokeWidth={1.6} />
-        <rect x={516} y={rows[0] + 24} width={140} height={56} rx={4} fill="rgba(110,247,110,0.08)" stroke="rgba(110,247,110,0.4)" />
-        <text x={586} y={rows[0] + 57} fill="#fff" fontFamily={INK} fontSize="14" fontWeight="700" textAnchor="middle">new store</text>
-      </motion.g>
-
-      {/* 2 - stress test at real peak */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[1])}
-        <text x={50} y={rows[1] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Stress test at real peak</text>
-        {[28, 42, 34, 54, 46, 62, 40].map((h, i) => (
-          <rect key={i} x={340 + i * 24} y={rows[1] + 90 - h} width={18} height={h} rx={2} fill="#3F4AAF" fillOpacity={0.75} />
-        ))}
-        <line x1={334} y1={rows[1] + 22} x2={506} y2={rows[1] + 22} stroke="#FF5A31" strokeOpacity={0.75} strokeWidth={1.4} strokeDasharray="5 4" />
-        <text x={512} y={rows[1] + 26} fill="#FF5A31" fontFamily={INK} fontSize="11">capacity</text>
-        <rect x={556} y={rows[1] + 34} width={100} height={36} rx={18} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <text x={606} y={rows[1] + 57} fill="#6EF76E" fontFamily={INK} fontSize="15" fontWeight="700" textAnchor="middle">PASSED</text>
-      </motion.g>
-
-      {/* 3 - bilingual, right-to-left */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[2], "#3F4AAF")}
-        <text x={50} y={rows[2] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Bilingual, right-to-left</text>
-        <text x={50} y={rows[2] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">English and Arabic, in production</text>
-        <rect x={410} y={rows[2] + 20} width={110} height={64} rx={4} fill="rgba(255,255,255,0.04)" stroke="rgba(230,231,239,0.16)" />
-        <text x={428} y={rows[2] + 44} fill="#fff" fontFamily={INK} fontSize="17" fontWeight="700">EN</text>
-        {[0, 1, 2].map((r) => (
-          <rect key={r} x={428} y={rows[2] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(255,255,255,0.25)" />
-        ))}
-        <rect x={534} y={rows[2] + 20} width={120} height={64} rx={4} fill="rgba(110,247,110,0.06)" stroke="rgba(110,247,110,0.35)" />
-        <text x={638} y={rows[2] + 44} fill="#6EF76E" fontFamily={INK} fontSize="17" fontWeight="700" textAnchor="end">العربية</text>
-        {[0, 1, 2].map((r) => (
-          <rect key={r} x={562 + r * 18} y={rows[2] + 56 + r * 6} width={74 - r * 18} height={3} rx={1.5} fill="rgba(110,247,110,0.35)" />
-        ))}
-      </motion.g>
-
-      {/* 4 - campaign layouts */}
-      <motion.g initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.45 }} viewport={{ once: true, amount: 0.15 }}>
-        {rowShell(rows[3])}
-        <text x={50} y={rows[3] + 40} fill="#fff" fontFamily={INK} fontSize="19" fontWeight="700">Campaign layouts</text>
-        <text x={50} y={rows[3] + 68} fill="#6EF76E" fontFamily={INK} fontSize="14">your team switches it on</text>
-        <rect x={472} y={rows[3] + 26} width={184} height={44} rx={22} fill="rgba(110,247,110,0.14)" stroke="rgba(110,247,110,0.5)" />
-        <text x={498} y={rows[3] + 53} fill="#6EF76E" fontFamily={INK} fontSize="14" fontWeight="700">CAMPAIGN ON</text>
-        <circle cx={634} cy={rows[3] + 48} r={14} fill="#6EF76E" fillOpacity={0.9} />
-      </motion.g>
-
-      <text x={W / 2} y={H - 20} fill="rgba(255,255,255,0.55)" fontFamily={INK} fontSize="15" textAnchor="middle">Live on the deadline. Stands at peak.</text>
-    </svg>
-  );
-}
-
-// ============================================================
 // Module Ca - One catalog, every channel
 // Team edits one catalog -> every channel shows the same offer
 // ============================================================
@@ -494,12 +416,11 @@ const TILES: { n: string; name: React.ReactNode }[] = [
   { n: "3", name: "Telecom payments" },
   { n: "4", name: "Numbers, SIM & eligibility" },
   { n: "5", name: "BSS & CRM connection" },
-  { n: "6", name: "Launch & campaign machinery" },
 ];
 
 function ModuleTiles() {
   return (
-    <div className="grid grid-cols-2 items-start gap-3 md:grid-cols-6 md:gap-4">
+    <div className="grid grid-cols-2 items-start gap-3 md:grid-cols-5 md:gap-4">
       {TILES.map((m) => (
         <SimTile key={m.n} n={m.n} name={m.name} tone="dark" />
       ))}
@@ -620,26 +541,6 @@ export function Outcomes() {
       reverse: true,
       diagramDark: true,
     },
-    {
-      n: "6",
-      title: (
-        <>
-          Go live on the deadline,{" "}
-          <span className="text-[var(--sw-mint)]">survive the peak</span>
-        </>
-      ),
-      lede:
-        "Telecom launches have hard marketing deadlines and real peak traffic. This module is the practiced process that gets your store live on time and keeps it standing.",
-      results: [
-        "Full data migration from your current store, including orders, customers, and history",
-        "Stress testing against your real historical peak before launch, not after",
-        "A tested rollback, so if go-live goes wrong you are back on the old store fast",
-        "Holiday and campaign layouts your team can switch on from the admin",
-      ],
-      diagram: <SvgLaunch />,
-      theme: "dark",
-      diagramDark: true,
-    },
   ];
 
   return (
@@ -656,7 +557,7 @@ export function Outcomes() {
           <div className="grid items-end gap-10 md:gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <h2 className="font-head max-w-[18ch] text-[36px] leading-[1.0] tracking-[-0.015em] text-white md:text-[58px] lg:text-[72px]">
-                Six modules.{" "}
+                Five modules.{" "}
                 <span className="text-[var(--sw-mint)]">Each one cuts a real cost or brings in real revenue</span>.
               </h2>
             </Reveal>
@@ -667,7 +568,7 @@ export function Outcomes() {
               </p>
               <div className="mt-8 flex flex-wrap gap-x-10 gap-y-6">
                 <div>
-                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">6</div>
+                  <div className="font-head text-[34px] leading-none tabular-nums text-white md:text-[44px]">5</div>
                   <div className="label-code mt-2 text-white/50">Modules</div>
                 </div>
                 <div>

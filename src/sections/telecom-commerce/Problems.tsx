@@ -75,7 +75,7 @@ export function Problems() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((f, i) => (
             <Reveal key={f.n} delay={i * 0.07}>
               <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-6">

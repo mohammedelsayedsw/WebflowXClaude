@@ -125,7 +125,7 @@ export function SimTile({
           )}
         </div>
         <span
-          className="mt-5 block font-head text-[17px] leading-[1.18] md:text-[20px]"
+          className="mt-5 block font-head text-[16px] leading-[1.18] md:text-[19px]"
           style={{ color: nameColor }}
         >
           {name}

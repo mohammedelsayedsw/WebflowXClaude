@@ -8,9 +8,9 @@ export function Problems() {
   const problems = [
     {
       n: "1",
-      title: "Every price change needs a developer",
+      title: "A new offer takes weeks to go live",
       body:
-        "Every price change waits on a developer, and the same phone can cost more on your website than in your store.",
+        "Every price and promo change routes through engineering. The queue never clears, so campaigns ship late and you miss the window a faster operator already caught.",
     },
     {
       n: "2",

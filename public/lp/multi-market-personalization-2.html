@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Market Personalization Engine | scandiweb</title>
+<meta name="description" content="Run personalization across every market from one view of the customer. A leading Baltics retailer grew email orders 20% and ad return 39% while cutting spend 21%. Free consultation with scandiweb's analytics team.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0e1f;--black:#0b0e1f;
+    --dark:#0a0d20;--dark-2:#0e1230;--panel-d:#131834;
+    --beige:#f8f4ef;
+    --mint:#5ef08f;--blue:#4f5bd6;--muted-d:#9aa0c6;--faint-d:#5c628f;
+    --line-d:rgba(255,255,255,.1);--line-l:rgba(11,14,31,.1);
+    --head:"Golos Text",-apple-system,system-ui,sans-serif;
+    --sans:"Inter",-apple-system,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}
+  body{font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;background:var(--dark)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,36px)}
+  h1,h2,h3{margin:0;font-family:var(--head);font-weight:800;letter-spacing:-.02em;line-height:1.06;text-wrap:balance}
+  .mono{font-family:var(--mono)}.tnum{font-variant-numeric:tabular-nums}
+  .chip{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border:1px solid;border-radius:2px;padding:7px 12px}
+  a{text-decoration:none;color:inherit}
+
+  /* sections */
+  .dark{background:radial-gradient(1100px 640px at 15% 0%,rgba(79,91,214,.16),transparent 55%),radial-gradient(900px 560px at 100% 8%,rgba(94,240,143,.07),transparent 55%),linear-gradient(180deg,var(--dark),var(--dark-2));color:#eef0f8}
+  .bright{background:linear-gradient(180deg,#ffffff,#f4f2ec);color:var(--ink)}
+  section{padding:clamp(56px,8vw,104px) 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint-d)}
+  .bright .kicker{color:#8a7f72}
+
+  /* hero */
+  .hero{min-height:660px;display:flex;align-items:center;position:relative;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;width:100%}
+  @media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+  .hero .chip{color:#dfe3f5;border-color:rgba(255,255,255,.5)}
+  .hero h1{font-size:clamp(38px,6vw,72px);font-weight:900;margin-top:26px;max-width:16ch}
+  .hero h1 em{font-style:normal;color:var(--mint)}
+  .hero p.sub{color:var(--muted-d);font-size:clamp(16px,2vw,20px);max-width:52ch;margin-top:22px}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;align-items:center}
+  .btn{font-family:var(--head);font-weight:700;font-size:15px;padding:14px 26px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
+  .btn.out-d{border:1px solid var(--mint);color:#fff}.btn.out-d:hover{background:rgba(94,240,143,.12)}
+  .btn.out-l{border:1px solid var(--blue);color:var(--blue)}.btn.out-l:hover{background:rgba(79,91,214,.06)}
+  .btn.ghost{color:var(--muted-d)}.btn.ghost:hover{color:#fff}
+  .proofline{margin-top:38px;padding-top:26px;border-top:1px solid var(--line-d);color:var(--muted-d);font-size:15.5px;max-width:56ch}
+  .proofline b{color:var(--mint);font-weight:700}
+
+  /* offer card */
+  .offer{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,0) 55%),rgba(16,20,44,.6);border:1px solid var(--line-d);border-radius:4px;padding:28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+  .offer .tag{background:var(--mint);color:#08120c;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:2px}
+  .offer h3{font-family:var(--head);color:#fff;font-size:26px;margin-top:18px}
+  .offer p{color:var(--muted-d);font-size:14px;margin-top:12px}
+  .offer ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:12px}
+  .offer li{display:flex;gap:11px;font-size:14px;color:#e6e9f6}
+  .offer li b{color:var(--mint);font-family:var(--mono);font-size:12px;flex:none;margin-top:2px}
+  .offer .go{margin-top:22px;display:flex;justify-content:center}
+  .offer .fine{text-align:center;font-family:var(--mono);font-size:11px;color:var(--faint-d);margin-top:14px}
+
+  h2{font-size:clamp(28px,4vw,48px);font-weight:900}
+  .lead{max-width:66ch;margin-top:16px;font-size:clamp(16px,1.8vw,18px)}
+  .dark .lead{color:var(--muted-d)}.bright .lead{color:#4a4d5e}
+
+  /* pain cards (five across two rows) */
+  .cards5{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+  .cards5>*{grid-column:span 2}
+  .cards5>*:nth-child(4),.cards5>*:nth-child(5){grid-column:span 3}
+  @media(max-width:820px){.cards5{grid-template-columns:1fr}.cards5>*,.cards5>*:nth-child(4),.cards5>*:nth-child(5){grid-column:auto}}
+  .pain{background:linear-gradient(160deg,rgba(255,255,255,.045),transparent 60%),var(--panel-d);border:1px solid var(--line-d);border-radius:4px;padding:26px}
+  .pain h3{font-size:20px;color:#fff;margin-top:8px}.pain p{color:var(--muted-d);font-size:14.5px;margin-top:12px}
+  .pain .n{font-family:var(--mono);color:var(--mint);font-size:13px}
+
+  /* solution split: left outcomes, right capability box */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,56px);align-items:start;margin-top:14px}
+  @media(max-width:900px){.split{grid-template-columns:1fr}}
+  .split h2{max-width:22ch;font-size:clamp(26px,3.2vw,38px)}
+  .sublabel{display:block;margin-top:36px}
+  .outcomes{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:20px}
+  .outcome b{display:block;font-family:var(--head);font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.01em;line-height:1.25}
+  .outcome span{display:block;color:#565a6b;font-size:14.5px;margin-top:6px}
+  .outcome span i{font-style:normal;color:var(--blue);font-weight:600}
+  .capbox{background:#fff;border:1px solid var(--line-l);border-radius:4px;padding:28px;box-shadow:0 1px 0 rgba(11,14,31,.05)}
+  .capbox h3{font-size:20px}
+  .capbox ul{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:13px}
+  .capbox li{display:flex;gap:12px;font-size:14.5px;color:#3c4054;line-height:1.45}
+  .capbox li:before{content:"";width:6px;height:6px;border-radius:1px;background:var(--blue);flex:none;margin-top:8px}
+
+  /* proof / results */
+  .caseline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+  .caseline .badge{font-family:var(--mono);font-size:12px;color:var(--mint);border:1px solid var(--line-d);border-radius:2px;padding:6px 12px}
+  .resgroups{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+  @media(max-width:760px){.resgroups{grid-template-columns:1fr}}
+  .rg{background:var(--dark-2);border:1px solid var(--line-d);border-radius:4px;padding:26px}
+  .rg .gh{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
+  .rg .metrics{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;margin-top:20px}
+  .rg .m .v{font-family:var(--head);font-weight:900;font-size:clamp(24px,3.2vw,34px);color:var(--mint);line-height:1.05}
+  .rg .m .v.down{color:#fff}
+  .rg .m .k{font-family:var(--mono);font-size:11px;color:var(--faint-d);text-transform:uppercase;letter-spacing:.04em;margin-top:7px}
+  .closing{font-family:var(--mono);font-size:12px;color:var(--faint-d);margin-top:20px}
+  .quote{margin-top:40px;border-left:2px solid var(--mint);padding:6px 0 6px 22px;max-width:70ch}
+  .quote blockquote{font-family:var(--head);font-size:clamp(19px,2.3vw,26px);color:#fff;margin:0;font-weight:600;letter-spacing:-.01em}
+  .quote .who{font-family:var(--mono);font-size:12px;color:var(--muted-d);margin-top:14px}
+
+  /* steps */
+  .steps{margin-top:44px;display:flex;flex-direction:column;gap:14px}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start;background:#fff;border:1px solid var(--line-l);border-radius:4px;padding:22px 24px}
+  .step .n{font-family:var(--head);font-weight:900;font-size:26px;color:var(--blue)}
+  .step h3{font-size:19px}.step p{color:#565a6b;font-size:14.5px;margin-top:6px}
+
+  /* final cta */
+  .final{text-align:center}
+  .final h2{max-width:20ch;margin:0 auto}
+  .final .sub{color:var(--muted-d);max-width:56ch;margin:18px auto 0;font-size:17px}
+  .trust{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--faint-d)}
+  .trust span .c{color:var(--mint)}
+  .foot{padding:30px 0 60px;font-family:var(--mono);font-size:11px;color:var(--faint-d);text-align:center}
+  @media(prefers-reduced-motion:no-preference){.rise{opacity:0;transform:translateY(10px);animation:r .6s ease forwards}@keyframes r{to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="dark hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="chip rise">scandiweb solution · retail</span>
+        <h1 class="rise">Multi-Market <em>Personalization</em> Engine</h1>
+        <p class="sub rise">Selling across markets means separate email tools, separate recommendation engines, and customer data that never joins up. This replaces them with one platform that personalizes every market from a single view of the customer.</p>
+        <div class="cta-row rise">
+          <a class="btn out-d" href="#consult">Book a free analytics consultation →</a>
+          <a class="btn ghost" href="#proof">See the Sportland results</a>
+        </div>
+        <p class="proofline rise">The Baltics' leading sportswear retailer used it to grow email orders <b>20%</b> and paid-media return <b>39%</b>, while cutting ad spend <b>21%</b>.</p>
+      </div>
+      <div class="rise">
+        <div class="offer" id="consult-card">
+          <span class="tag">Free, no commitment</span>
+          <h3>Free analytics consultation</h3>
+          <p>Thirty minutes with our analytics team, on your markets and your numbers.</p>
+          <ul>
+            <li><b>1</b> We map your markets and tools</li>
+            <li><b>2</b> We show you where spend and orders are leaking</li>
+            <li><b>3</b> We tell you honestly whether this fits</li>
+          </ul>
+          <div class="go"><a class="btn out-d" href="#consult">Book my consultation →</a></div>
+          <div class="fine">We reply within one business day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="dark" style="border-top:1px solid var(--line-d)">
+  <div class="wrap">
+    <span class="kicker">the problem</span>
+    <h2 style="margin-top:12px;color:#fff">Five problems every multi-market retailer knows</h2>
+    <p class="lead">Selling across markets multiplies your tools and splits your data. These are the five that cost you the most.</p>
+    <div class="cards5">
+      <div class="pain"><div class="n">1</div><h3>Every market runs its own tools</h3><p>Email here, recommendations there, and none of them share what they know.</p></div>
+      <div class="pain"><div class="n">2</div><h3>The customer data never joins up</h3><p>A shopper looks brand new in every country, so you personalize on guesses.</p></div>
+      <div class="pain"><div class="n">3</div><h3>You pay for the same job several times</h3><p>Separate email, recommendation, and ad tools, none of them talking to each other.</p></div>
+      <div class="pain"><div class="n">4</div><h3>Paid media targets broad audiences</h3><p>Without real customer segments, you overspend for an average return.</p></div>
+      <div class="pain"><div class="n">5</div><h3>No single view of the customer</h3><p>Campaigns are timed and targeted blind, so the right message reaches the wrong people.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="bright">
+  <div class="wrap">
+    <span class="kicker">the solution</span>
+    <div class="split">
+      <div>
+        <h2 style="margin-top:12px">We solve it by replacing your siloed market tools with one Multi-Market Personalization Engine.</h2>
+        <span class="kicker sublabel">Results you can expect</span>
+        <ul class="outcomes">
+          <li class="outcome"><b>Get a higher return on ad spend</b><span><i>→</i> by syncing real customer segments and purchase-likelihood models to Meta and Google</span></li>
+          <li class="outcome"><b>Grow email orders and revenue</b><span><i>→</i> by running per-market automation flows on one unified set of customer data</span></li>
+          <li class="outcome"><b>Raise average order value</b><span><i>→</i> by personalizing recommendations across web, email, and ads</span></li>
+          <li class="outcome"><b>Grow repeat revenue and lean less on ads</b><span><i>→</i> by triggering retention journeys from real customer behavior</span></li>
+          <li class="outcome"><b>Run every market from one place</b><span><i>→</i> by unifying siloed customer data with a market-specific structure</span></li>
+        </ul>
+      </div>
+      <div class="capbox">
+        <h3>Multi-Market Personalization Engine</h3>
+        <ul>
+          <li>Unified customer data platform (CDP)</li>
+          <li>Market-specific data structure</li>
+          <li>Web behavior and backend orders in one view</li>
+          <li>Email and journey automation</li>
+          <li>Predictive segmentation and product recommendations</li>
+          <li>Paid audience sync (Meta, Google)</li>
+          <li>Consent management per market</li>
+          <li>Reporting dashboards (Bloomreach, Looker Studio)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="dark" id="proof">
+  <div class="wrap">
+    <span class="kicker">proven with Sportland</span>
+    <h2 style="margin-top:12px;color:#fff">The Baltics' leading sportswear retailer, running every market from one platform</h2>
+    <div class="caseline"><span class="badge">Multi-market · multi-store-view</span><span class="badge">Klaviyo + Clerk.io → one platform</span></div>
+    <p class="lead">Sportland sells across several countries, each with its own store view, language, and customer database. Their email ran on one tool and recommendations on another, on data that never joined up. We moved them onto one unified platform with a market-specific setup, and rebuilt their automation on top of it.</p>
+    <div class="resgroups">
+      <div class="rg">
+        <div class="gh">Email marketing</div>
+        <div class="metrics">
+          <div class="m"><div class="v">+20.6%</div><div class="k">orders</div></div>
+          <div class="m"><div class="v">+11.3%</div><div class="k">placed-order rate</div></div>
+          <div class="m"><div class="v">+10.4%</div><div class="k">revenue</div></div>
+        </div>
+      </div>
+      <div class="rg">
+        <div class="gh">Paid media</div>
+        <div class="metrics">
+          <div class="m"><div class="v">+39.1%</div><div class="k">ROAS</div></div>
+          <div class="m"><div class="v">+25.1%</div><div class="k">average order value</div></div>
+          <div class="m"><div class="v">+9.5%</div><div class="k">revenue</div></div>
+          <div class="m"><div class="v down">21.3%</div><div class="k">less ad spend</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="closing">All within a few months of going live.</p>
+    <div class="quote">
+      <blockquote>"scandiweb has a future-looking attitude."</blockquote>
+      <div class="who">Henri Kruusel · Head of eCommerce and Marketing, Sportland</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE ROLL IT OUT -->
+<section class="bright">
+  <div class="wrap">
+    <span class="kicker">how we roll it out</span>
+    <h2 style="margin-top:12px">Built for your markets, not a template</h2>
+    <p class="lead">The same approach that unified Sportland, run against your stack. Platform-neutral in selection, market-specific in build.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><h3>Audit</h3><p>We map your markets, tools, and data, and find where spend and orders leak.</p></div></div>
+      <div class="step"><span class="n">2</span><div><h3>Platform selection</h3><p>We compare options against your stack and budget, platform-neutral, and pick what fits.</p></div></div>
+      <div class="step"><span class="n">3</span><div><h3>Unify</h3><p>We stand up the platform with a market-specific structure and connect your web and backend data.</p></div></div>
+      <div class="step"><span class="n">4</span><div><h3>Automation and ads</h3><p>Per-market flows and predictive audiences go live across email, web, and paid.</p></div></div>
+      <div class="step"><span class="n">5</span><div><h3>Reporting your team can read</h3><p>Dashboards your marketing team runs without touching the backend.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="dark final" id="consult">
+  <div class="wrap">
+    <h2 style="color:#fff">See what one platform would do across your markets</h2>
+    <p class="sub">Thirty minutes with our analytics team. We map your markets and tools, show you where spend and orders are leaking, and tell you honestly whether this fits.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a class="btn out-d" href="mailto:hello@scandiweb.com?subject=Free%20analytics%20consultation%20-%20Multi-Market%20Personalization">Book a free analytics consultation →</a>
+    </div>
+    <div class="trust">
+      <span><span class="c">✓</span> Thirty minutes, no commitment</span>
+      <span><span class="c">✓</span> No pitch deck</span>
+      <span><span class="c">✓</span> Platform-neutral advice</span>
+      <span><span class="c">✓</span> Analytics team, not a salesperson</span>
+    </div>
+  </div>
+  <div class="foot">scandiweb · Multi-Market Personalization Engine · results from the Sportland case study</div>
+</section>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
 const GROUPS = [
   {
@@ -33,9 +34,19 @@ export function CaseStudy() {
       <div className="wrap relative">
         <div className="max-w-[56rem]">
           <Reveal>
-            <span className="label-code mb-5 block text-[var(--sw-mint)]">
-              Proven with Sportland
-            </span>
+            <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <span className="label-code text-[var(--sw-mint)]">
+                Proven with Sportland
+              </span>
+              {/* keeps Sportland red, unlike the white-flattened trust-bar logos:
+                  this is a named case study, not a logo wall */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl("/shared/logos/clients/sportland.png")}
+                alt="Sportland"
+                className="h-6 w-auto shrink-0 md:h-7"
+              />
+            </div>
             <h2 className="font-head text-[32px] leading-[1.06] text-white md:text-[44px] lg:text-[52px]">
               The Baltics&apos; leading sportswear retailer, running{" "}
               <span className="text-[var(--sw-mint)]">

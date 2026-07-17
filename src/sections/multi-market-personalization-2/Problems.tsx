@@ -37,8 +37,10 @@ export function Problems() {
       id="problems"
       className="relative overflow-hidden bg-[var(--sw-black)] py-28 md:py-36"
     >
+      {/* w-full is load-bearing: the viewBox gives the svg an intrinsic 1000px
+          width, so without it the line stops at 1000px instead of spanning. */}
       <svg
-        className="absolute inset-x-0 top-0 h-px opacity-40"
+        className="absolute inset-x-0 top-0 h-px w-full opacity-40"
         viewBox="0 0 1000 1"
         preserveAspectRatio="none"
       >

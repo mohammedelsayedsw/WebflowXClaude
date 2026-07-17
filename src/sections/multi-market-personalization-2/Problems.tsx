@@ -66,25 +66,28 @@ export function Problems() {
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               Selling across markets multiplies your tools and splits your data.
-              These are the five that cost you the most.
+              These are the five{" "}
+              {/* kept whole so "that" is not stranded at the end of line 1 */}
+              <span className="whitespace-nowrap">that cost you the most.</span>
             </p>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* all five in one row on desktop, so each reads as a tall column */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {PROBLEMS.map((p, i) => (
-            <Reveal key={p.n} delay={i * 0.07}>
-              <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-6">
+            <Reveal key={p.n} delay={i * 0.07} className="h-full">
+              <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-5">
                 <div className="label-code mb-4 text-white/55">
                   Problem · {p.n}
                 </div>
-                <h3 className="font-head mb-3 text-[19px] leading-[1.18] text-white md:text-[21px]">
+                <h3 className="font-head mb-3 text-[18px] leading-[1.2] text-white lg:text-[17px] xl:text-[18px]">
                   {p.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed text-white/70 md:text-[14px]">
+                <p className="text-[13px] leading-relaxed text-white/70">
                   {p.body}
                 </p>
-                <span className="absolute left-6 top-0 h-px w-10 bg-[var(--sw-mint)]/70" />
+                <span className="absolute left-5 top-0 h-px w-8 bg-[var(--sw-mint)]/70" />
               </div>
             </Reveal>
           ))}

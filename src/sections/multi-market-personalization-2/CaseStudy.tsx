@@ -110,12 +110,23 @@ export function CaseStudy() {
             <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[26px]">
               &ldquo;scandiweb has a future-looking attitude.&rdquo;
             </blockquote>
-            <figcaption className="mt-4">
-              <div className="text-[14px] font-medium text-white">
-                Henri Kruusel
-              </div>
-              <div className="label-code mt-0.5 text-white/55">
-                Head of eCommerce and Marketing · Sportland
+            <figcaption className="mt-5 flex items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl(
+                  "/multi-market-personalization-2/team/henri-kruusel.jpg"
+                )}
+                alt="Henri Kruusel"
+                className="h-12 w-12 shrink-0 rounded-full object-cover"
+                style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+              />
+              <div>
+                <div className="text-[14px] font-medium text-white">
+                  Henri Kruusel
+                </div>
+                <div className="label-code mt-0.5 text-white/55">
+                  Head of eCommerce and Marketing · Sportland
+                </div>
               </div>
             </figcaption>
           </figure>

@@ -23,6 +23,15 @@ function HeroBg() {
         aria-hidden
         className="absolute inset-0 -z-10 grid-backdrop opacity-40"
       />
+      {/* darken the lower edge of the hero */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/2"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(6,9,20,0) 0%, rgba(6,9,20,0.45) 70%, rgba(6,9,20,0.7) 100%)",
+        }}
+      />
     </>
   );
 }
@@ -150,9 +159,9 @@ export function Hero() {
                 className="mt-4 md:mt-5 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.35] max-w-[52ch]"
                 style={{ color: "var(--sw-mint)" }}
               >
-                How a distribution company stopped matching invoices, delivery
-                notes, and waybills by hand, using apps built on top of their
-                ERP in 72 hours. No system replaced.
+                How to stop matching invoices, delivery notes, and waybills by
+                hand, using apps built on top of your ERP in 72 hours. No system
+                replaced.
               </p>
             </Reveal>
 

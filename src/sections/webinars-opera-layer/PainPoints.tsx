@@ -53,14 +53,15 @@ export function PainPoints() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
           {stats.map((s, i) => (
             <Reveal key={s.value} delay={i * 0.08}>
-              <div className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-7">
+              <div className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-7">
                 <div className="font-head font-bold text-[var(--sw-blue)] text-[40px] md:text-[52px] leading-none tabular-nums">
                   {s.value}
                 </div>
                 <p className="mt-4 text-[var(--sw-black)]/75 text-[14px] md:text-[15px] leading-relaxed">
                   {s.label}
                 </p>
-                <div className="mt-4 text-[var(--sw-black)]/45 text-[11px] leading-snug">
+                {/* mt-auto pins the source to the card bottom so all three align */}
+                <div className="mt-auto pt-4 text-[var(--sw-black)]/45 text-[11px] leading-snug">
                   {s.source}
                 </div>
               </div>

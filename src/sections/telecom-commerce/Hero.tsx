@@ -55,7 +55,9 @@ function ReferenceNote() {
             Design Pioneer Award
           </div>
           <div className="label-code mt-1 text-white/55">
-            2025 Meet Magento New York · Ecommerce Excellence Awards
+            2025 Meet Magento New York
+            <br />
+            Ecommerce Excellence Awards
           </div>
         </div>
       </div>

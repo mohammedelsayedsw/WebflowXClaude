@@ -199,13 +199,6 @@ export function Hero() {
                 </a>
               </div>
             </Reveal>
-
-            <Reveal delay={0.3}>
-              <p className="mt-6 md:mt-7 text-white/60 text-[13px] md:text-[14px] leading-relaxed max-w-[52ch] border-l-2 border-[var(--sw-mint)]/40 pl-4">
-                This is the first session in a series. Each one takes a single
-                module and the team that uses it. Procurement is next.
-              </p>
-            </Reveal>
             </div>
 
             {/* RIGHT · speaker card */}

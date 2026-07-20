@@ -2,7 +2,6 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
-import { assetUrl } from "@/lib/assets";
 
 // Scannable facts for the right column. Reworded from the story, kept short.
 const facts: { label: string; body: string }[] = [
@@ -89,34 +88,6 @@ export function CaseStudy() {
             ))}
           </div>
         </div>
-
-        {/* Screen recording of the reconciliation module. Click to play,
-            preload metadata only so the 18MB file does not block first paint. */}
-        <Reveal delay={0.1}>
-          <figure className="mt-12 md:mt-16">
-            <div className="overflow-hidden rounded-[4px] border border-white/10 bg-black/40">
-              <video
-                controls
-                muted
-                playsInline
-                preload="metadata"
-                poster={assetUrl(
-                  "/webinars/opera-layer/reconciliation-demo-poster.jpg"
-                )}
-                className="block h-auto w-full"
-                aria-label="Screen recording of the reconciliation module running on OperaLayer"
-              >
-                <source
-                  src={assetUrl("/webinars/opera-layer/reconciliation-demo.mp4")}
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-            <figcaption className="label-code mt-3 text-white/45">
-              The reconciliation module, running on OperaLayer
-            </figcaption>
-          </figure>
-        </Reveal>
       </div>
     </section>
   );

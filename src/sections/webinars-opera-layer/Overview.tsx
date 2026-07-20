@@ -110,6 +110,13 @@ export function Overview() {
                 the end.
               </p>
             </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
+                This is the first session in a series. Each one takes a single
+                module and the team that uses it. Procurement is next.
+              </p>
+            </Reveal>
           </div>
 
           {/* RIGHT · concept diagram */}

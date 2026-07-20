@@ -65,12 +65,13 @@ export function HowItSolves() {
           </Reveal>
         </div>
 
-        {/* Use-case cards. Reconciliation is flagged as this session's deep dive. */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {/* Use-case cards, all five in one row on desktop so each reads as a
+            tall column. Reconciliation is flagged as this session's deep dive. */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
           {useCases.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.07}>
+            <Reveal key={c.title} delay={i * 0.07} className="h-full">
               <li
-                className="relative flex h-full flex-col rounded-[4px] border p-6 sm:p-7"
+                className="relative flex h-full flex-col rounded-[4px] border p-5"
                 style={
                   c.deepDive
                     ? {
@@ -83,34 +84,29 @@ export function HowItSolves() {
                       }
                 }
               >
-                <div className="flex items-center justify-between mb-5">
-                  <span
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
-                    aria-hidden
-                  >
-                    <c.icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  {c.deepDive && (
-                    <span
-                      className="label-code text-[9px] rounded-[2px] px-2 py-1"
-                      style={{
-                        background: "var(--sw-mint)",
-                        color: "var(--sw-black)",
-                      }}
-                    >
-                      This session&apos;s deep dive
-                    </span>
-                  )}
-                </div>
+                <span
+                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
+                  aria-hidden
+                >
+                  <c.icon className="h-5 w-5" strokeWidth={1.75} />
+                </span>
                 <div className="label-code text-white/50 text-[10px] mb-2">
                   {c.dept}
                 </div>
-                <div className="font-head font-bold text-white text-[19px] md:text-[22px] leading-tight">
+                <div className="font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
                   {c.title}
                 </div>
-                <p className="mt-3 text-white/70 text-[15px] leading-relaxed">
+                <p className="mt-2.5 text-white/70 text-[14px] leading-relaxed">
                   {c.body}
                 </p>
+                {c.deepDive && (
+                  <span
+                    className="label-code mt-auto pt-5 text-[9px] font-semibold"
+                    style={{ color: "var(--sw-mint)" }}
+                  >
+                    This session&apos;s deep dive
+                  </span>
+                )}
               </li>
             </Reveal>
           ))}

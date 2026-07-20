@@ -1,5 +1,6 @@
 "use client";
 
+import { Award } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 
 function HeroBg() {
@@ -37,6 +38,28 @@ function ReferenceNote() {
         background: "rgba(110,247,110,0.05)",
       }}
     >
+      {/* names the award the quote refers to ("winning the prestigious award") */}
+      <div className="mb-4 flex items-start gap-3 border-b border-white/10 pb-4">
+        <span
+          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+          style={{
+            border: "1px solid rgba(110,247,110,0.35)",
+            background: "rgba(110,247,110,0.08)",
+          }}
+          aria-hidden
+        >
+          <Award className="h-4 w-4 text-[var(--sw-mint)]" />
+        </span>
+        <div>
+          <div className="text-[13px] font-semibold leading-snug text-white">
+            Design Pioneer Award
+          </div>
+          <div className="label-code mt-1 text-white/55">
+            2025 Meet Magento New York · Ecommerce Excellence Awards
+          </div>
+        </div>
+      </div>
+
       <blockquote className="border-l-2 border-[var(--sw-mint)]/50 pl-4 text-[14px] italic leading-relaxed text-white/85">
         &ldquo;I would like to congratulate scandiweb&apos;s team on{" "}
         <span className="text-[var(--sw-mint)]">winning the prestigious award</span>

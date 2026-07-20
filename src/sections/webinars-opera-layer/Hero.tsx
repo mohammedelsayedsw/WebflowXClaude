@@ -134,28 +134,25 @@ export function Hero() {
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                 <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                  Free webinar &middot; Operations &amp; systems
+                  Free webinar &middot; B2B operations &middot; Episode 1
                 </span>
               </div>
             </Reveal>
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
-                ERP, CRM, store, warehouse.
-                <br />
-                And a spreadsheet holding
-                <br />
-                them together.
+                Stop running operations in spreadsheets
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p
-                className="mt-4 md:mt-5 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.35] max-w-[46ch]"
+                className="mt-4 md:mt-5 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.35] max-w-[52ch]"
                 style={{ color: "var(--sw-mint)" }}
               >
-                How OperaLayer closes the gaps between your systems, without
-                replacing a single one.
+                How a distribution company stopped matching invoices, delivery
+                notes, and waybills by hand, using apps built on top of their
+                ERP in 72 hours. No system replaced.
               </p>
             </Reveal>
 
@@ -176,6 +173,7 @@ export function Hero() {
                   <div className="label-code text-white/55 text-[10px] mb-2">
                     Time
                   </div>
+                  {/* TODO: confirm webinar time */}
                   <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
                     TBA
                   </div>
@@ -200,6 +198,13 @@ export function Hero() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <p className="mt-6 md:mt-7 text-white/60 text-[13px] md:text-[14px] leading-relaxed max-w-[52ch] border-l-2 border-[var(--sw-mint)]/40 pl-4">
+                This is the first session in a series. Each one takes a single
+                module and the team that uses it. Procurement is next.
+              </p>
             </Reveal>
             </div>
 

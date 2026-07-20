@@ -44,7 +44,7 @@ export function TheSession() {
         <div className="mb-12 md:mb-16 max-w-[720px]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">4</span>
+              <span className="text-[var(--sw-black)]/55">5</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The takeaway</span>
             </div>
@@ -58,7 +58,8 @@ export function TheSession() {
           <Reveal delay={0.15}>
             <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[58ch]">
               Not theory you could get from any chatbot. You walk away with
-              concrete moves for your own store, and a gift for joining live.
+              concrete moves for your own operations, and a working demo built on
+              your own data if you join live.
             </p>
           </Reveal>
         </div>
@@ -84,8 +85,7 @@ export function TheSession() {
           ))}
         </ul>
 
-        {/* Gift box for attendees. TODO: finalize the freebie (attendee
-            discount or a demo built for select live joiners). */}
+        {/* Offer for live attendees: a working demo built on their own data. */}
         <Reveal delay={0.1}>
           <div
             className="mt-4 md:mt-5 rounded-[4px] border p-6 sm:p-8 md:p-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-8"
@@ -103,15 +103,15 @@ export function TheSession() {
             </span>
             <div className="flex-1">
               <div className="label-code text-[var(--sw-blue)] text-[10px] mb-2">
-                A gift for joining live
+                For joining live
               </div>
               <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[24px] leading-[1.2]">
-                Show up live, leave with something built for you
+                Join live and we will build a working demo on your own data
               </div>
               <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
-                Live guests walk away with an exclusive attendee perk: a working
-                demo on your own data or a special offer. We&apos;ll reveal it on
-                the day, so join live to claim it.
+                Bring a workflow you run by hand today. We take your own data and
+                build a working demo of it, so you see the module running on your
+                numbers, not a canned example.
               </p>
             </div>
           </div>

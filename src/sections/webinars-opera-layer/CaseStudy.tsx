@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
+import { ReconciliationDiagram } from "./ReconciliationDiagram";
 
 // Scannable facts for the right column. Reworded from the story, kept short.
 const facts: { label: string; body: string }[] = [
@@ -88,6 +89,13 @@ export function CaseStudy() {
             ))}
           </div>
         </div>
+
+        {/* Reconciliation flow, rebuilt vertically from the production diagram. */}
+        <Reveal delay={0.1}>
+          <div className="mt-14 md:mt-20">
+            <ReconciliationDiagram />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

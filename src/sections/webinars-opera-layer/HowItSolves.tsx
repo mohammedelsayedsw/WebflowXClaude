@@ -1,51 +1,47 @@
 "use client";
 
-import { Eye, TrendingUp, Cog } from "lucide-react";
+import { FileCheck, ShoppingCart, Boxes, AlertTriangle, RefreshCw } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const capabilities: {
-  icon: typeof Eye;
-  index: string;
+const useCases: {
+  icon: typeof FileCheck;
   title: string;
+  dept: string;
   body: string;
-  items: string[];
+  deepDive?: boolean;
 }[] = [
   {
-    icon: Eye,
-    index: "1",
-    title: "Visibility",
+    icon: FileCheck,
+    title: "Document reconciliation",
+    dept: "Accounting and warehouse",
     body:
-      "Any operational view that doesn't exist today because the data lives in three systems with three different definitions.",
-    items: [
-      "Single customer / order / SKU view",
-      "Cross-system executive dashboards",
-      "Breakdowns for each department",
-    ],
+      "Invoices, delivery notes, and waybills matched against purchase orders automatically.",
+    deepDive: true,
   },
   {
-    icon: TrendingUp,
-    index: "2",
-    title: "Prediction",
-    body:
-      "Any forward-looking signal your team produces by hand on Friday afternoons, surfaced in time to act on.",
-    items: [
-      "Demand & inventory predictions",
-      "At-risk customers & revenue",
-      "Margin & anomaly alerts",
-    ],
+    icon: ShoppingCart,
+    title: "Procurement",
+    dept: "Purchasing",
+    body: "Reorder and supplier workflows that run across your systems.",
   },
   {
-    icon: Cog,
-    index: "3",
-    title: "Automation",
-    body:
-      "Any decision that repeats every week and needs a human just to run it. People stay in the loop only where judgement matters.",
-    items: [
-      "Reorder & replenishment",
-      "Cross-system sync & matching",
-      "Approvals sent to the right person",
-    ],
+    icon: Boxes,
+    title: "Stock and shipment control",
+    dept: "Warehouse and logistics",
+    body: "One live view of stock, orders, and shipments.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Exception allocation",
+    dept: "Supply chain",
+    body: "Faster response when a shipment or supply disruption hits.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Replenishment",
+    dept: "Buying",
+    body: "Reorder decisions surfaced in time to act on.",
   },
 ];
 
@@ -59,21 +55,34 @@ export function HowItSolves() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="3">How it solves</SectionLabel>
+            <SectionLabel index="4">What teams use it for</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6 lg:whitespace-nowrap">
-              Visibility. Prediction.{" "}
-              <span style={{ color: "var(--sw-mint)" }}>Automation.</span>
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
+              Five things teams use{" "}
+              <span style={{ color: "var(--sw-mint)" }}>OperaLayer</span> for
             </h2>
           </Reveal>
         </div>
 
-        {/* Capability cards */}
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-          {capabilities.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.08}>
-              <li className="h-full rounded-[4px] border border-white/10 bg-white/[0.03] p-6 sm:p-7 md:p-8">
+        {/* Use-case cards. Reconciliation is flagged as this session's deep dive. */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {useCases.map((c, i) => (
+            <Reveal key={c.title} delay={i * 0.07}>
+              <li
+                className="relative flex h-full flex-col rounded-[4px] border p-6 sm:p-7"
+                style={
+                  c.deepDive
+                    ? {
+                        background: "rgba(110,247,110,0.06)",
+                        borderColor: "rgba(110,247,110,0.35)",
+                      }
+                    : {
+                        background: "rgba(255,255,255,0.03)",
+                        borderColor: "rgba(255,255,255,0.10)",
+                      }
+                }
+              >
                 <div className="flex items-center justify-between mb-5">
                   <span
                     className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
@@ -81,30 +90,27 @@ export function HowItSolves() {
                   >
                     <c.icon className="h-5 w-5" strokeWidth={1.75} />
                   </span>
-                  <span className="font-head font-bold tabular-nums text-[28px] leading-none text-white/15">
-                    {c.index}
-                  </span>
+                  {c.deepDive && (
+                    <span
+                      className="label-code text-[9px] rounded-[2px] px-2 py-1"
+                      style={{
+                        background: "var(--sw-mint)",
+                        color: "var(--sw-black)",
+                      }}
+                    >
+                      This session&apos;s deep dive
+                    </span>
+                  )}
                 </div>
-                <div className="font-head font-bold text-white text-[20px] md:text-[24px] leading-tight">
+                <div className="label-code text-white/50 text-[10px] mb-2">
+                  {c.dept}
+                </div>
+                <div className="font-head font-bold text-white text-[19px] md:text-[22px] leading-tight">
                   {c.title}
                 </div>
                 <p className="mt-3 text-white/70 text-[15px] leading-relaxed">
                   {c.body}
                 </p>
-                <div className="mt-5 space-y-2">
-                  {c.items.map((it) => (
-                    <div
-                      key={it}
-                      className="flex items-start gap-2.5 text-white/80 text-[14px] leading-snug"
-                    >
-                      <span
-                        className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: "var(--sw-mint)" }}
-                      />
-                      {it}
-                    </div>
-                  ))}
-                </div>
               </li>
             </Reveal>
           ))}

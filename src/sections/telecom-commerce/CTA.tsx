@@ -80,10 +80,9 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            {/* Reuses the shared accelerator fit-assessment form (same as sibling pages) */}
             <HubSpotForm
               portalId="25724996"
-              formId="3eabce3f-c4d9-41d7-8d66-59080f1c09ed"
+              formId="f8524761-3573-4a37-974e-8249994bd68a"
               region="eu1"
               submitText="Book my fit check"
             />

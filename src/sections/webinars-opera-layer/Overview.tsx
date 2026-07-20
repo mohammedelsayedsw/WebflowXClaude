@@ -111,9 +111,15 @@ export function Overview() {
             <Reveal delay={0.15}>
               <p className="mt-5 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
                 This session is built for B2B distribution and wholesale teams.
-                We look at why work keeps falling between your ERP, CRM,
-                eCommerce, and warehouse, what OperaLayer actually is, and how it
-                closes that gap, with time for your questions at the end.
+                We take one job that eats your week, matching supplier documents
+                to purchase orders, and show the whole pipeline working end to
+                end, with time for your questions.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="mt-5 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+                This is the first session in a series.
               </p>
             </Reveal>
           </div>

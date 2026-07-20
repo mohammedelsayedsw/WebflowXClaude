@@ -5,6 +5,8 @@ import { Overview } from "@/sections/webinars-opera-layer/Overview";
 import { CaseStudy } from "@/sections/webinars-opera-layer/CaseStudy";
 import { PressBand } from "@/sections/webinars-opera-layer/PressBand";
 import { PainPoints } from "@/sections/webinars-opera-layer/PainPoints";
+import { HowItWorks } from "@/sections/webinars-opera-layer/HowItWorks";
+import { Agenda } from "@/sections/webinars-opera-layer/Agenda";
 import { HowItSolves } from "@/sections/webinars-opera-layer/HowItSolves";
 import { TheSession } from "@/sections/webinars-opera-layer/TheSession";
 import { SpeakerBio } from "@/sections/webinars-opera-layer/SpeakerBio";
@@ -18,6 +20,8 @@ export default function Page() {
       <CaseStudy />
       <PressBand />
       <PainPoints />
+      <HowItWorks />
+      <Agenda />
       <HowItSolves />
       <TheSession />
       <SpeakerBio />

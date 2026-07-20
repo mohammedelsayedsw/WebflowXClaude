@@ -1,6 +1,6 @@
 "use client";
 
-import { FileCheck, ShoppingCart, Boxes, AlertTriangle, RefreshCw } from "lucide-react";
+import { FileCheck, ShoppingCart, Boxes, AlertTriangle } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
@@ -37,12 +37,6 @@ const useCases: {
     dept: "Supply chain",
     body: "Faster response when a shipment or supply disruption hits.",
   },
-  {
-    icon: RefreshCw,
-    title: "Replenishment",
-    dept: "Buying",
-    body: "Reorder decisions surfaced in time to act on.",
-  },
 ];
 
 export function HowItSolves() {
@@ -55,19 +49,19 @@ export function HowItSolves() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="4">What teams use it for</SectionLabel>
+            <SectionLabel index="6">What teams use it for</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
-              Five things teams use{" "}
+              Four things teams use{" "}
               <span style={{ color: "var(--sw-mint)" }}>OperaLayer</span> for
             </h2>
           </Reveal>
         </div>
 
-        {/* Use-case cards, all five in one row on desktop so each reads as a
+        {/* Use-case cards, all four in one row on desktop so each reads as a
             tall column. Reconciliation is flagged as this session's deep dive. */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {useCases.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.07} className="h-full">
               <li

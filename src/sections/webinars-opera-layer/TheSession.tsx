@@ -44,7 +44,7 @@ export function TheSession() {
         <div className="mb-12 md:mb-16 max-w-[720px]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">5</span>
+              <span className="text-[var(--sw-black)]/55">7</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The takeaway</span>
             </div>

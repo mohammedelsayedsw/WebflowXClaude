@@ -160,8 +160,8 @@ export function Hero() {
                 style={{ color: "var(--sw-mint)" }}
               >
                 How to stop matching invoices, delivery notes, and waybills by
-                hand, using apps built on top of your ERP in 72 hours. No system
-                replaced.
+                hand, using apps built on top of your ERP in as little as 72
+                hours. No system replaced.
               </p>
             </Reveal>
 

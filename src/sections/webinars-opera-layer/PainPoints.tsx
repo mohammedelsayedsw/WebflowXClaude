@@ -2,12 +2,25 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
-// One third-party stat, kept deliberately. The real case leads this section.
-const stat = {
-  value: "~16 hrs",
-  label: "a week lost to manually syncing data across disconnected systems",
-  source: "Cin7 State of Inventory Intelligence, 2025",
-};
+const stats: { value: string; label: string; source: string }[] = [
+  {
+    value: "40%+",
+    label:
+      "of wholesale distributors still run on standalone systems, manual processes, and spreadsheets",
+    source: "Klipboard distribution benchmark",
+  },
+  {
+    value: "55%",
+    label:
+      "have bought ERP, CRM, and eCommerce systems, and most have never connected them",
+    source: "Distribution Strategy Group, 2026",
+  },
+  {
+    value: "22%",
+    label: "of invoices need a person to stop and fix a mismatch",
+    source: "AP industry benchmarks",
+  },
+];
 
 export function PainPoints() {
   return (
@@ -37,22 +50,23 @@ export function PainPoints() {
           </Reveal>
         </div>
 
-        {/* single stat, presented as a wide bar rather than a lonely card */}
-        <Reveal delay={0.1}>
-          <div className="rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-            <div className="font-head font-bold text-[var(--sw-blue)] text-[48px] md:text-[64px] leading-none tabular-nums shrink-0">
-              {stat.value}
-            </div>
-            <div>
-              <p className="text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-snug max-w-[46ch]">
-                {stat.label}
-              </p>
-              <div className="mt-3 text-[var(--sw-black)]/45 text-[11px] md:text-[12px]">
-                {stat.source}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+          {stats.map((s, i) => (
+            <Reveal key={s.value} delay={i * 0.08}>
+              <div className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 sm:p-7">
+                <div className="font-head font-bold text-[var(--sw-blue)] text-[40px] md:text-[52px] leading-none tabular-nums">
+                  {s.value}
+                </div>
+                <p className="mt-4 text-[var(--sw-black)]/75 text-[14px] md:text-[15px] leading-relaxed">
+                  {s.label}
+                </p>
+                <div className="mt-4 text-[var(--sw-black)]/45 text-[11px] leading-snug">
+                  {s.source}
+                </div>
               </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

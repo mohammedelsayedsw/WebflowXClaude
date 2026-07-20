@@ -6,17 +6,21 @@ const systems = ["ERP", "CRM", "eComm", "WMS", "Finance"];
 const outcomes = ["Dashboards", "Forecasts", "Automations"];
 
 function ConceptDiagram() {
+  // Dark card so the diagram reads as its own object on the bright section.
   return (
-    <div className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 sm:p-7">
+    <div
+      className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto rounded-[4px] p-5 sm:p-7"
+      style={{ background: "#10132c", border: "1px solid rgba(255,255,255,0.1)" }}
+    >
       {/* Tier 1 · outcomes */}
-      <div className="label-code text-[var(--sw-black)]/45 text-[10px] mb-3 text-center">
+      <div className="label-code text-white/45 text-[10px] mb-3 text-center">
         What you see
       </div>
       <div className="flex flex-wrap justify-center gap-2">
         {outcomes.map((o) => (
           <span
             key={o}
-            className="rounded-[2px] border border-[var(--sw-black)]/10 bg-[var(--sw-black)]/[0.03] px-3 py-1.5 text-[var(--sw-black)]/80 text-[12px] font-head"
+            className="rounded-[2px] border border-white/12 bg-white/[0.05] px-3 py-1.5 text-white/80 text-[12px] font-head"
           >
             {o}
           </span>
@@ -25,39 +29,42 @@ function ConceptDiagram() {
 
       {/* connector */}
       <div className="flex justify-center my-3" aria-hidden>
-        <div className="h-6 w-px bg-[var(--sw-black)]/15" />
+        <div className="h-6 w-px bg-white/15" />
       </div>
 
       {/* Tier 2 · OperaLayer */}
       <div
         className="rounded-[2px] px-4 py-3.5 text-center"
         style={{
-          background: "rgba(110,247,110,0.12)",
-          border: "1px solid rgba(110,247,110,0.5)",
+          background: "rgba(110,247,110,0.08)",
+          border: "1px solid rgba(110,247,110,0.35)",
         }}
       >
-        <div className="font-head font-bold text-[15px] text-[var(--sw-black)]">
+        <div
+          className="font-head font-bold text-[15px]"
+          style={{ color: "var(--sw-mint)" }}
+        >
           OperaLayer
         </div>
-        <div className="text-[var(--sw-black)]/60 text-[11.5px] mt-1">
+        <div className="text-white/60 text-[11.5px] mt-1">
           One data model across your systems
         </div>
       </div>
 
       {/* connector */}
       <div className="flex justify-center my-3" aria-hidden>
-        <div className="h-6 w-px bg-[var(--sw-black)]/15" />
+        <div className="h-6 w-px bg-white/15" />
       </div>
 
       {/* Tier 3 · systems */}
-      <div className="label-code text-[var(--sw-black)]/45 text-[10px] mb-3 text-center">
+      <div className="label-code text-white/45 text-[10px] mb-3 text-center">
         Your existing systems
       </div>
       <div className="grid grid-cols-5 gap-1.5">
         {systems.map((s) => (
           <span
             key={s}
-            className="rounded-[2px] border border-[var(--sw-black)]/10 bg-[var(--sw-black)]/[0.03] px-1 py-2.5 text-[var(--sw-black)]/70 text-[10.5px] font-head text-center leading-none"
+            className="rounded-[2px] border border-white/10 bg-white/[0.03] px-1 py-2.5 text-white/70 text-[10.5px] font-head text-center leading-none"
           >
             {s}
           </span>

@@ -137,7 +137,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-start">
         <div className="wrap relative z-10 pt-[132px] md:pt-[160px] pb-[clamp(32px,6vh,96px)] w-full">
-          <div className="grid gap-8 md:gap-10 lg:gap-10 lg:grid-cols-[1.9fr_1fr] items-center">
+          <div className="mt-[15px] grid gap-8 md:gap-10 lg:gap-10 lg:grid-cols-[1.9fr_1fr] items-center">
             {/* LEFT · copy */}
             <div className="max-w-[40rem]">
             <Reveal>
@@ -156,7 +156,7 @@ export function Hero() {
 
             <Reveal delay={0.1}>
               <p
-                className="mt-4 md:mt-5 font-body text-[16px] sm:text-[18px] md:text-[22px] leading-[1.35] max-w-[52ch]"
+                className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[40rem]"
                 style={{ color: "var(--sw-mint)" }}
               >
                 How to stop matching invoices, delivery notes, and waybills by

@@ -44,7 +44,7 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
  */
 export function PressBand() {
   return (
-    <div id="as-featured-in" className="wrap relative pt-16 md:pt-28 scroll-mt-20">
+    <div id="as-featured-in" className="wrap relative pt-[44px] md:pt-[92px] scroll-mt-20">
       <div>
         <Reveal>
           <div className="label-code text-[var(--sw-black)]/45 text-[10px] text-center">

@@ -142,6 +142,14 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
+                That is where the margin goes. Buy too little of what sells and
+                you lose the sale. Buy too much of what does not and you discount
+                your way out of it. Forecasting at the grain you plan in is what
+                stops both.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Your ERP stays as it is. This reads from it and gives your
                 category managers something to act on.
               </p>

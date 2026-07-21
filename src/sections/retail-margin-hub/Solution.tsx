@@ -21,8 +21,8 @@ const OUTCOMES = [
     how: "by a forward stock-cover walk that flags every line as fine, at the limit, or stocking out",
   },
   {
-    title: "Time markdowns on cover, not hindsight",
-    how: "by seeing weeks of cover ahead instead of reacting once the margin has gone",
+    title: "Stop discounting your way out of bad buys",
+    how: "by seeing weeks of cover ahead instead of reacting after the stock has piled up",
   },
   {
     title: "Trust it enough to actually use it",

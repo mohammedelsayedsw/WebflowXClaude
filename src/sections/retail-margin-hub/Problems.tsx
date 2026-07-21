@@ -3,33 +3,33 @@
 import { Reveal } from "@/components/primitives/Reveal";
 import { DrawnPath } from "@/components/primitives/DrawnPath";
 
-/** The one that causes the rest. */
+/** The one problem underneath the rest. */
 const ROOT = {
-  title: "Planning runs on instinct because the data is scattered",
-  body: "Sales history, stock, and web data sit in Business Central and a handful of other systems, with no single forecast-ready source. So buying and replenishment lean on lagging reports and the judgement of whoever has been there longest.",
+  title: "Planning runs on spreadsheets and gut feel",
+  body: "Sales, stock, and web data sit in Business Central and a handful of other systems, and none of it looks forward. So buyers plan in spreadsheets, on last year and instinct.",
 };
 
-/** The four that follow from it. */
+/** The four ways that problem costs you. */
 const SYMPTOMS = [
   {
     n: "1",
     title: "Your markets get planned as one",
-    body: "Countries are treated as a single homogeneous market even though demand differs sharply by category, brand, and season in each one.",
+    body: "Countries are planned together, even though what sells differs a lot from one to the next.",
   },
   {
     n: "2",
     title: "Top sizes sell out while seasonal stock sits",
-    body: "Best sellers run out in the sizes people actually buy, while non-reorderable seasonal product lingers into the wrong season.",
+    body: "The sizes people actually buy run out, while seasonal stock you cannot reorder sits into the wrong season.",
   },
   {
     n: "3",
     title: "Markdowns come too late",
-    body: "The decision is triggered after stock cover has already passed healthy, so the margin is gone before anyone acts.",
+    body: "You discount after the stock has already piled up, so the margin is gone by the time anyone acts.",
   },
   {
     n: "4",
     title: "Size curves are guesswork",
-    body: "Without a reliable view of true size demand by category, gender, and brand, assortment depth never matches how customers really buy.",
+    body: "Nobody has a clear view of which sizes really sell, so you buy the wrong depth.",
   },
 ];
 
@@ -61,14 +61,14 @@ export function Problems() {
               The problem
             </span>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
-              One root cause,{" "}
+              One problem underneath,{" "}
               <br className="hidden md:block" />
-              <span className="text-[var(--sw-mint)]">four expensive symptoms</span>
+              <span className="text-[var(--sw-mint)]">four ways it costs you</span>
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               Every season you commit money months ahead of demand. Fix the
-              cause underneath and the four problems below it start to close on
-              their own.
+              problem underneath and the four below it start to close on their
+              own.
             </p>
           </Reveal>
         </div>
@@ -102,7 +102,7 @@ export function Problems() {
         <Reveal delay={0.05}>
           <div className="mt-8 mb-5 flex items-center gap-4 md:mt-10">
             <span className="label-code shrink-0 text-white/50">
-              The four symptoms it creates
+              Where it costs you
             </span>
             <span className="h-px flex-1 bg-white/10" />
           </div>
@@ -114,7 +114,7 @@ export function Problems() {
             <Reveal key={p.n} delay={i * 0.07} className="h-full">
               <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-5 md:p-6">
                 <div className="label-code mb-4 text-white/55">
-                  Symptom · {p.n}
+                  Cost · {p.n}
                 </div>
                 <h3 className="font-head mb-3 text-[18px] leading-[1.2] text-white md:text-[19px]">
                   {p.title}

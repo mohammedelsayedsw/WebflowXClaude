@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowUpRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 const TRUST = [
   "Thirty minutes, no commitment",
@@ -10,52 +10,6 @@ const TRUST = [
   "Platform-neutral advice",
   "Analytics team, not a salesperson",
 ];
-
-const STEPS = [
-  "We map your markets and tools",
-  "We show you where spend and orders are leaking",
-  "We tell you honestly whether this fits",
-];
-
-/** The booking module. Moved here from the hero so the hero carries one message. */
-function ConsultCard() {
-  return (
-    <div className="rounded-[4px] border border-white/15 bg-white/[0.04] p-6 backdrop-blur md:p-8">
-      <h3 className="font-head text-[22px] leading-[1.15] text-white md:text-[26px]">
-        Free analytics consultation
-      </h3>
-      <p className="mt-3 text-[14px] leading-relaxed text-white/70 md:text-[15px]">
-        Thirty minutes with our analytics team, on your markets and your numbers.
-      </p>
-      <ul className="mt-6 flex flex-col gap-3">
-        {STEPS.map((s, i) => (
-          <li key={s} className="flex gap-3 text-[14px] leading-snug text-white/85">
-            <span className="label-code shrink-0 pt-0.5 text-[var(--sw-mint)]">
-              {i + 1}
-            </span>
-            {s}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-7 border-t border-white/10 pt-6">
-        {/* TODO: swap the mailto for <HubSpotForm> once a formId is available */}
-        {/* height via inline style: the label wraps on narrow screens, and
-            btnPrimary's fixed h-12 would clip it. */}
-        <a
-          href="mailto:hello@scandiweb.com?subject=Free%20analytics%20consultation%20-%20Multi-Market%20Personalization"
-          className={`${btnPrimary} w-full py-3 text-center leading-snug`}
-          style={{ height: "auto", minHeight: "3rem" }}
-        >
-          Book my consultation
-          <ArrowUpRight className="h-4 w-4 shrink-0" />
-        </a>
-        <div className="label-code mt-3 text-center text-white/45">
-          We reply within one business day
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function CTA() {
   return (
@@ -90,9 +44,28 @@ export function CTA() {
             </ul>
           </Reveal>
 
-          {/* RIGHT · booking module */}
+          {/* RIGHT · consultation form */}
           <Reveal delay={0.1}>
-            <ConsultCard />
+            <div>
+              <div className="mb-5">
+                <h3 className="font-head text-[22px] leading-[1.15] text-white md:text-[26px]">
+                  Free analytics consultation
+                </h3>
+                <p className="mt-3 text-[14px] leading-relaxed text-white/70 md:text-[15px]">
+                  Thirty minutes with our analytics team, on your markets and
+                  your numbers.
+                </p>
+              </div>
+              <HubSpotForm
+                portalId="25724996"
+                formId="1f8bfb0f-7656-4abc-8648-686ea497f155"
+                region="eu1"
+                submitText="Book my consultation"
+              />
+              <div className="label-code mt-3 text-center text-white/45">
+                We reply within one business day
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>

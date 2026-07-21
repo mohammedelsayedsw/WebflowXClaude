@@ -75,7 +75,7 @@ export function CaseStudy() {
             </div>
           </div>
           <p className="label-code mt-4 text-white/50">
-            All within a few months of going live.
+            All within a few months of going live
           </p>
         </Reveal>
 

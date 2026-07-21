@@ -6,8 +6,8 @@ import { DrawnPath } from "@/components/primitives/DrawnPath";
 const PROBLEMS = [
   {
     n: "1",
-    title: "Planning runs on instinct",
-    body: "Buying and replenishment lean on lagging ERP reports and the judgement of whoever has been there longest. There is no forward demand signal at the grain you plan in.",
+    title: "Planning runs on instinct because the data is scattered",
+    body: "Sales history, stock, and web data sit in Business Central and a handful of other systems, with no single forecast-ready source. So buying and replenishment lean on lagging reports and the judgement of whoever has been there longest.",
   },
   {
     n: "2",

@@ -11,7 +11,7 @@ const STEPS = [
   {
     n: "2",
     title: "Data foundation",
-    body: "We build the pipeline from your ERP and retail systems into one forecast-ready layer, reusable for whatever you model next.",
+    body: "We build the pipeline from Business Central and your retail and web systems into one forecast-ready layer, reusable for whatever you model next.",
   },
   {
     n: "3",

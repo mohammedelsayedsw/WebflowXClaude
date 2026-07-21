@@ -130,6 +130,13 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
+                It is a customer data platform (CDP) that holds your customer
+                data from every market and runs your email, recommendations, and
+                ads from it.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Today every market runs its own email tool and its own
                 recommendation engine. That costs you twice. You pay for the
                 same software in every market, and because the customer data
@@ -137,7 +144,7 @@ export function InShort() {
                 so everyone gets the same generic email.
               </p>
             </Reveal>
-            <Reveal delay={0.15}>
+            <Reveal delay={0.2}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Moving every market onto one platform fixes both. Your team
                 works in one place instead of many, and because the data is

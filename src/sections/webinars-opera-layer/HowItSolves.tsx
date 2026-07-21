@@ -2,7 +2,6 @@
 
 import { FileCheck, ShoppingCart, Boxes, AlertTriangle } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const useCases: {
   icon: typeof FileCheck;
@@ -43,18 +42,21 @@ export function HowItSolves() {
   return (
     <section
       id="how-it-solves"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="relative bg-lp-bright py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="5">What teams use it for</SectionLabel>
+            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <span className="text-[var(--sw-black)]/55">5</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+              <span>What teams use it for</span>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
+            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
               Four things teams use{" "}
-              <span style={{ color: "var(--sw-mint)" }}>OperaLayer</span> for
+              <span style={{ color: "var(--sw-blue)" }}>OperaLayer</span> for
             </h2>
           </Reveal>
         </div>
@@ -69,34 +71,34 @@ export function HowItSolves() {
                 style={
                   c.deepDive
                     ? {
-                        background: "rgba(110,247,110,0.06)",
-                        borderColor: "rgba(110,247,110,0.35)",
+                        background: "rgba(63,74,175,0.06)",
+                        borderColor: "rgba(63,74,175,0.4)",
                       }
                     : {
-                        background: "rgba(255,255,255,0.03)",
-                        borderColor: "rgba(255,255,255,0.10)",
+                        background: "#ffffff",
+                        borderColor: "rgba(16,19,44,0.10)",
                       }
                 }
               >
                 <span
-                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
+                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)]"
                   aria-hidden
                 >
                   <c.icon className="h-5 w-5" strokeWidth={1.75} />
                 </span>
-                <div className="label-code text-white/50 text-[10px] mb-2">
+                <div className="label-code text-[var(--sw-black)]/50 text-[10px] mb-2">
                   {c.dept}
                 </div>
-                <div className="font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
+                <div className="font-head font-bold text-[var(--sw-black)] text-[17px] md:text-[18px] leading-tight">
                   {c.title}
                 </div>
-                <p className="mt-2.5 text-white/70 text-[14px] leading-relaxed">
+                <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] leading-relaxed">
                   {c.body}
                 </p>
                 {c.deepDive && (
                   <span
-                    className="label-code mt-auto pt-5 text-[9px] font-semibold"
-                    style={{ color: "var(--sw-mint)" }}
+                    className="font-head mt-auto inline-flex w-fit rounded-[2px] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
+                    style={{ background: "var(--sw-blue)", color: "#fff" }}
                   >
                     This session&apos;s deep dive
                   </span>

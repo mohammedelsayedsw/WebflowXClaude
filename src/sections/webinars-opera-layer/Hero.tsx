@@ -46,7 +46,7 @@ function TrustLogos() {
     { src: "/shared/logos/clients/acer.png", alt: "Acer", h: 22 },
     { src: "/shared/logos/clients/adobe.svg", alt: "Adobe", h: 22 },
   ];
-  // Duplicate for a seamless loop — marquee track translates by -50%
+  // Duplicate for a seamless loop - marquee track translates by -50%
   const loop = [...logos, ...logos];
   return (
     <div

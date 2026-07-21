@@ -103,16 +103,6 @@ export function HowItWorks() {
           ))}
         </ul>
 
-        {/* pull quote */}
-        <Reveal delay={0.1}>
-          <blockquote className="mt-12 md:mt-16 border-l-2 border-[var(--sw-mint)] pl-6 max-w-[64ch]">
-            <p className="font-head text-white text-[20px] md:text-[26px] leading-[1.3] tracking-[-0.005em]">
-              The AI handles the easy 80%. People spend their time only on the
-              20% that needs judgement.
-            </p>
-          </blockquote>
-        </Reveal>
-
         {/* four detail cards as a single-column collapsed accordion */}
         <div className="mt-12 md:mt-16 flex flex-col gap-3">
           {cards.map((c, i) => (
@@ -135,6 +125,16 @@ export function HowItWorks() {
             </Reveal>
           ))}
         </div>
+
+        {/* pull quote, under the four blocks */}
+        <Reveal delay={0.1}>
+          <blockquote className="mt-12 md:mt-16 border-l-2 border-[var(--sw-mint)] pl-6 max-w-[64ch]">
+            <p className="font-head text-white text-[20px] md:text-[26px] leading-[1.3] tracking-[-0.005em]">
+              The AI handles the easy 80%. People spend their time only on the
+              20% that needs judgement.
+            </p>
+          </blockquote>
+        </Reveal>
       </div>
     </section>
   );

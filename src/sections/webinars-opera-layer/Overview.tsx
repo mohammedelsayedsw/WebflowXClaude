@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { PressBand } from "./PressBand";
 
 const systems = ["ERP", "CRM", "eComm", "WMS", "Finance"];
 const outcomes = ["Dashboards", "Forecasts", "Automations"];
@@ -125,6 +126,9 @@ export function Overview() {
           </Reveal>
         </div>
       </div>
+
+      {/* Featured in press row shares this section's bright background */}
+      <PressBand />
     </section>
   );
 }

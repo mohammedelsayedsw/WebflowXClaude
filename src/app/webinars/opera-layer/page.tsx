@@ -3,7 +3,6 @@
 import { Hero } from "@/sections/webinars-opera-layer/Hero";
 import { Overview } from "@/sections/webinars-opera-layer/Overview";
 import { CaseStudy } from "@/sections/webinars-opera-layer/CaseStudy";
-import { PressBand } from "@/sections/webinars-opera-layer/PressBand";
 import { PainPoints } from "@/sections/webinars-opera-layer/PainPoints";
 import { HowItWorks } from "@/sections/webinars-opera-layer/HowItWorks";
 import { Agenda } from "@/sections/webinars-opera-layer/Agenda";
@@ -17,7 +16,6 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Overview />
-      <PressBand />
       <CaseStudy />
       <PainPoints />
       <HowItWorks />

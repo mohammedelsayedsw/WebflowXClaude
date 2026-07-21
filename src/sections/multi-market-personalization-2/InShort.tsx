@@ -130,16 +130,21 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                It is a customer data platform (CDP), set up for retailers
-                selling in more than one market. It pulls customer data out of
-                the separate
-                tools each market runs, joins it into one view of the customer,
-                and uses that to personalise email, ads, and your site. Each
-                market keeps its own store view, language, and assortment, so
-                nothing gets mixed up.
+                You cannot personalise what you cannot see. When every market
+                runs its own email tool and its own recommendation engine, the
+                same shopper looks like a stranger in each one, so every message
+                is a guess.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
+              <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
+                This joins that data into one view of the customer, then uses it
+                to personalise email, ads, and your site. Each market keeps its
+                own store view, language, and assortment, so nothing gets mixed
+                up.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Your store, ERP, and POS stay as they are. This sits across them.
               </p>

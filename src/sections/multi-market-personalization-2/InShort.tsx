@@ -146,11 +146,6 @@ export function InShort() {
                 gets mixed up.
               </p>
             </Reveal>
-            <Reveal delay={0.2}>
-              <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                Your store, ERP, and POS stay as they are. This sits across them.
-              </p>
-            </Reveal>
           </div>
 
           {/* RIGHT · diagram */}

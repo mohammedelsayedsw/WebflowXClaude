@@ -40,14 +40,11 @@ export function Solution() {
             The fix
           </span>
           <h2 className="font-head text-[34px] leading-[1.05] tracking-[-0.01em] text-[var(--sw-black)] md:text-[48px] lg:text-[56px]">
-            We solve it by replacing your siloed market tools with one{" "}
+            We replace your siloed market tools with one{" "}
             <span className="text-[var(--sw-blue)]">
               Multi-Market Personalization Engine
             </span>
-            .{" "}
-            <span className="text-[var(--sw-black)]/50">
-              Here is what you can expect.
-            </span>
+            .
           </h2>
         </Reveal>
 

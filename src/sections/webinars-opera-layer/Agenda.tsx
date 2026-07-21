@@ -35,8 +35,8 @@ export function Agenda() {
 
         <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
           {agenda.map((item, i) => (
-            <Reveal key={i} delay={(i % 2) * 0.06}>
-              <li className="flex gap-4 border-b border-[var(--sw-black)]/10 pb-4">
+            <Reveal key={i} delay={(i % 2) * 0.06} className="h-full">
+              <li className="flex h-full gap-4 border-b border-[var(--sw-black)]/10 pb-4">
                 <span className="font-head font-bold text-[var(--sw-blue)] text-[18px] md:text-[20px] tabular-nums leading-tight shrink-0 w-7">
                   {i + 1}
                 </span>

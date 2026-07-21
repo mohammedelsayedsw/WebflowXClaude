@@ -81,9 +81,9 @@ export function CaseStudy() {
 
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[24ch]">
-                Every shipment still brings three documents.{" "}
+                From typing it all in,{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Nobody types them anymore.
+                  to checking what doesn&apos;t match
                 </span>
               </h2>
             </Reveal>

@@ -80,10 +80,10 @@ export function CaseStudy() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[22ch]">
-                Matching documents by hand,{" "}
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[24ch]">
+                Every shipment still brings three documents.{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  every shipment, every day
+                  Nobody types them anymore.
                 </span>
               </h2>
             </Reveal>

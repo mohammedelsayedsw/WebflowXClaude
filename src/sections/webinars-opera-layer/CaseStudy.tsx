@@ -92,24 +92,34 @@ export function CaseStudy() {
               <p className="mt-7 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
                 A distribution company&apos;s warehouse and accounting teams
                 matched invoices, delivery notes, and transport waybills against
-                purchase orders by hand. Every shipment, every day. We built the
-                reconciliation module on OperaLayer, on top of the systems they
-                already ran.
+                purchase orders by hand. Every shipment, every day.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
               <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-                The part that surprised us: it gets more accurate the longer it
-                runs. Every correction an operator makes feeds back, so the same
-                mistake stops coming back.
+                Now the document gets photographed on the warehouse floor or
+                dropped in as a PDF. The AI reads every line and matches it to
+                the purchase order it belongs to. Quantity gaps, price
+                differences, and pack mismatches like boxes against pieces are
+                flagged before anything posts. Clean lines collapse away, so the
+                team only opens what actually needs a decision. One confirm posts
+                the goods receipt straight to the ERP.
               </p>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-                Months in, the warehouse manager who used to do this by hand is
-                smiling.
+                It learns each supplier as it goes, their item codes, their pack
+                conversions, which lines are freight rather than product. Every
+                correction feeds back, so the same mistake stops coming back.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.25}>
+              <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
+                They are now building their second module with us. The warehouse
+                manager who used to do this by hand is smiling.
               </p>
             </Reveal>
           </div>
@@ -120,14 +130,10 @@ export function CaseStudy() {
               <ReconciliationFlow />
             </div>
 
-            <p className="mt-5 text-[14px] md:text-[15px] italic text-white/50">
-              This is the real system running in production, not a mockup.
-            </p>
-
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="font-head mt-4 inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[var(--sw-mint)] underline decoration-[var(--sw-mint)]/40 underline-offset-4 transition hover:decoration-[var(--sw-mint)]"
+              className="font-head mt-6 inline-flex items-center gap-2 text-[14px] md:text-[15px] font-semibold text-[var(--sw-mint)] underline decoration-[var(--sw-mint)]/40 underline-offset-4 transition hover:decoration-[var(--sw-mint)]"
             >
               See the full system architecture
               <span aria-hidden>&rarr;</span>

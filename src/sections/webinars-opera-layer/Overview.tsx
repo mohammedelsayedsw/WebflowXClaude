@@ -117,11 +117,6 @@ export function Overview() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.2}>
-              <p className="mt-5 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-                This is the first session in a series.
-              </p>
-            </Reveal>
           </div>
 
           {/* RIGHT · concept diagram */}

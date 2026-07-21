@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { useAnimate, useInView } from "motion/react";
 
 /**
  * Compact five-step reconciliation flow for the case-study right column.
- * A timeline: each step is a node on a vertical rail, and the rail segments
- * light up top to bottom on scroll into view, loop with a pause, and are shown
- * fully lit with no motion when the visitor prefers reduced motion.
+ * A timeline: each step is a node on a vertical rail. On scroll into view the
+ * rail segments fill top to bottom in sequence, loop with a pause, and are
+ * shown fully filled with no motion under prefers-reduced-motion. Driven with
+ * framer-motion (same library as the page's Reveal), no glow.
  */
 
 const STEPS: { title: string; detail: string }[] = [
@@ -34,59 +36,50 @@ const STEPS: { title: string; detail: string }[] = [
   },
 ];
 
+const CONN_COUNT = STEPS.length - 1;
+
 export function ReconciliationFlow() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const connRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [scope, animate] = useAnimate();
+  const inView = useInView(scope, { amount: 0.4 });
 
   useEffect(() => {
-    const wrap = wrapRef.current;
-    if (!wrap) return;
-    const conns = connRefs.current.filter(Boolean) as HTMLSpanElement[];
+    if (!inView) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      conns.forEach((c) => c.classList.add("cf-lit"));
+      for (let i = 0; i < CONN_COUNT; i++) {
+        animate(`.cf-fill-${i}`, { scaleY: 1 }, { duration: 0 });
+      }
       return;
     }
 
-    let cancelled = false;
+    let active = true;
     const wait = (ms: number) =>
       new Promise<void>((r) => window.setTimeout(r, ms));
 
-    const run = async () => {
-      while (!cancelled) {
-        conns.forEach((c) => c.classList.remove("cf-lit"));
+    const loop = async () => {
+      while (active) {
+        await animate(".cf-fill", { scaleY: 0 }, { duration: 0 });
         await wait(300);
-        for (const c of conns) {
-          if (cancelled) return;
-          c.classList.add("cf-lit");
-          await wait(420);
+        for (let i = 0; i < CONN_COUNT; i++) {
+          if (!active) return;
+          await animate(
+            `.cf-fill-${i}`,
+            { scaleY: 1 },
+            { duration: 0.44, ease: "easeOut" }
+          );
         }
         await wait(2000);
       }
     };
-
-    let started = false;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && !started) {
-            started = true;
-            run();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    io.observe(wrap);
+    loop();
 
     return () => {
-      cancelled = true;
-      io.disconnect();
+      active = false;
     };
-  }, []);
+  }, [inView, animate]);
 
   return (
-    <div ref={wrapRef}>
+    <div ref={scope}>
       <ol className="m-0 list-none p-0">
         {STEPS.map((s, i) => {
           const last = i === STEPS.length - 1;
@@ -99,10 +92,7 @@ export function ReconciliationFlow() {
               <div className="flex flex-col items-center">
                 <span
                   className="mt-1.5 h-3 w-3 shrink-0 rounded-full"
-                  style={{
-                    background: "var(--sw-mint)",
-                    boxShadow: "0 0 0 4px rgba(110,247,110,0.12)",
-                  }}
+                  style={{ background: "var(--sw-mint)" }}
                 />
                 {!last && (
                   <span
@@ -110,10 +100,12 @@ export function ReconciliationFlow() {
                     style={{ background: "rgba(255,255,255,0.12)" }}
                   >
                     <span
-                      ref={(el) => {
-                        connRefs.current[i] = el;
+                      className={`cf-fill cf-fill-${i} absolute inset-0 rounded`}
+                      style={{
+                        background: "var(--sw-mint)",
+                        transformOrigin: "top",
+                        transform: "scaleY(0)",
                       }}
-                      className="cf-conn absolute inset-0 rounded"
                     />
                   </span>
                 )}
@@ -132,24 +124,6 @@ export function ReconciliationFlow() {
           );
         })}
       </ol>
-
-      <style jsx>{`
-        .cf-conn {
-          background: var(--sw-mint);
-          transform: scaleY(0);
-          transform-origin: top;
-          transition: transform 440ms ease;
-          box-shadow: 0 0 6px rgba(110, 247, 110, 0.6);
-        }
-        .cf-conn.cf-lit {
-          transform: scaleY(1);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .cf-conn {
-            transition: none;
-          }
-        }
-      `}</style>
     </div>
   );
 }

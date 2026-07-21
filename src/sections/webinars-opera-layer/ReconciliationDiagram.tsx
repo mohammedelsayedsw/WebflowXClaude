@@ -499,7 +499,6 @@ export function ReconciliationDiagram() {
         .dg-glow {
           opacity: 0;
           transition: stroke-dashoffset 520ms ease, opacity 200ms ease;
-          filter: drop-shadow(0 0 4px rgba(110, 247, 110, 0.6));
         }
         .dg-glow.dg-lit {
           opacity: 1;

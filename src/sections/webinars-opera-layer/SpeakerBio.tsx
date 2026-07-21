@@ -13,9 +13,9 @@ export function SpeakerBio() {
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
         <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.3fr] items-center">
-          {/* LEFT · portrait */}
+          {/* LEFT · portrait with name and position under it */}
           <Reveal>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex flex-col items-center lg:items-start">
               <div className="relative h-44 w-44 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-[4px] overflow-hidden border border-white/15 bg-white/[0.03]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -24,13 +24,21 @@ export function SpeakerBio() {
                   className="h-full w-full object-cover"
                 />
               </div>
+              <div className="mt-5 text-center lg:text-left">
+                <div className="font-head text-white text-[18px] md:text-[20px] leading-tight">
+                  Martins Jakubovskis
+                </div>
+                <div className="text-white/60 text-[13px] md:text-[15px] mt-1.5">
+                  Enterprise Architect at scandiweb
+                </div>
+              </div>
             </div>
           </Reveal>
 
           {/* RIGHT · copy */}
           <div>
             <Reveal>
-              <SectionLabel index="5">The speaker</SectionLabel>
+              <SectionLabel index="8">The speaker</SectionLabel>
             </Reveal>
 
             <Reveal delay={0.05}>
@@ -50,17 +58,6 @@ export function SpeakerBio() {
                 deep in how large retailers connect the systems they run, so he
                 can give you straight, experienced answers instead of a script.
               </p>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <div className="mt-8 md:mt-9">
-                <div className="font-head text-white text-[18px] md:text-[20px] leading-tight">
-                  Martins Jakubovskis
-                </div>
-                <div className="text-white/60 text-[13px] md:text-[15px] mt-1.5">
-                  Enterprise Architect at scandiweb
-                </div>
-              </div>
             </Reveal>
           </div>
         </div>

@@ -87,19 +87,16 @@ export function TheSession() {
         {/* Why join live */}
         <Reveal delay={0.1}>
           <div
-            className="mt-4 md:mt-5 rounded-[4px] border p-6 sm:p-8 md:p-9"
-            style={{
-              background: "rgba(63,74,175,0.06)",
-              borderColor: "rgba(63,74,175,0.30)",
-            }}
+            className="mt-4 md:mt-5 rounded-[4px] p-6 sm:p-8 md:p-9"
+            style={{ background: "var(--sw-blue)" }}
           >
-            <div className="label-code text-[var(--sw-blue)] text-[10px] mb-2">
+            <div className="label-code text-white/70 text-[10px] mb-2">
               Why join live
             </div>
-            <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[24px] leading-[1.2]">
+            <div className="font-head font-bold text-white text-[19px] md:text-[24px] leading-[1.2]">
               Bring your own situation
             </div>
-            <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
+            <p className="mt-2.5 text-white/85 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
               Come with the workflow you run by hand today. Martins answers your
               questions live, on your setup, rather than a canned example.
             </p>

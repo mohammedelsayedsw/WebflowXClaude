@@ -29,55 +29,46 @@ export function Solution() {
   return (
     <section id="solution" className="bg-lp-bright py-28 md:py-36">
       <div className="wrap">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:items-start">
-          {/* LEFT · heading */}
-          <div>
-            <Reveal>
-              <span className="label-code mb-5 block text-[var(--sw-black)]/50">
-                The fix
-              </span>
-              <h2 className="font-head max-w-[20ch] text-[30px] leading-[1.08] text-[var(--sw-black)] md:text-[40px]">
-                We solve it by replacing your siloed market tools with one{" "}
-                <span className="text-[var(--sw-blue)]">
-                  Multi-Market Personalization Engine
-                </span>
-                .
-              </h2>
-            </Reveal>
-          </div>
+        {/* heading · full width, transition-line scale */}
+        <Reveal>
+          <span className="label-code mb-4 block text-[var(--sw-black)]/50">
+            The fix
+          </span>
+          <h2 className="font-head max-w-[38ch] text-[20px] leading-[1.15] text-[var(--sw-black)] md:text-[26px]">
+            We solve it by replacing your siloed market tools with one{" "}
+            <span className="text-[var(--sw-blue)]">
+              Multi-Market Personalization Engine
+            </span>
+            .
+          </h2>
+        </Reveal>
 
-          {/* RIGHT · results */}
-          <div>
-            <Reveal>
-              <span className="label-code mb-6 block text-[var(--sw-black)]/50">
-                Results you can expect
-              </span>
-            </Reveal>
+        <Reveal delay={0.05}>
+          <span className="label-code mt-12 mb-5 block text-[var(--sw-black)]/50 md:mt-14">
+            Results you can expect
+          </span>
+        </Reveal>
 
-            <div className="flex flex-col gap-4">
-              {OUTCOMES.map((o, i) => (
-                <Reveal key={o.title} delay={i * 0.07}>
-                  <div className="rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 md:p-6">
-                    <div className="label-code text-[11px] tabular-nums text-[var(--sw-black)]/35">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <h3 className="font-head mt-2 text-[16px] font-bold leading-[1.25] text-[var(--sw-black)] md:text-[18px]">
-                      {o.title}
-                    </h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-[var(--sw-black)]/55 md:text-[14px]">
-                      <span
-                        aria-hidden
-                        className="mr-1.5 font-semibold text-[var(--sw-blue)]"
-                      >
-                        &rarr;
-                      </span>
-                      {o.how}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
+        {/* five parallel results · 3 + 2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          {OUTCOMES.map((o, i) => (
+            <Reveal key={o.title} delay={i * 0.06} className="h-full">
+              <div className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-4">
+                <h3 className="font-head text-[16px] font-bold leading-[1.25] text-[var(--sw-black)] md:text-[17px]">
+                  {o.title}
+                </h3>
+                <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--sw-black)]/55">
+                  <span
+                    aria-hidden
+                    className="mr-1.5 font-semibold text-[var(--sw-blue)]"
+                  >
+                    &rarr;
+                  </span>
+                  {o.how}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

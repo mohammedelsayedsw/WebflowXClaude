@@ -5,28 +5,28 @@ import { Reveal } from "@/components/primitives/Reveal";
 const STEPS = [
   {
     n: "1",
-    title: "Audit",
-    body: "We map your markets, tools, and data, and find where spend and orders leak.",
+    title: "Audit and platform selection",
+    body: "We map your markets, tools, and data, then compare platforms and cost against your channels, so you buy the right system rather than the loudest one. Bloomreach fit Sportland. Yours may differ.",
   },
   {
     n: "2",
-    title: "Platform selection",
-    body: "We compare options against your stack and budget, platform-neutral, and pick what fits.",
+    title: "Market-specific setup",
+    body: "A structure per store view, so overlapping data and conflicting user IDs never corrupt the customer record. Data integrity first.",
   },
   {
     n: "3",
-    title: "Unify",
-    body: "We stand up the platform with a market-specific structure and connect your web and backend data.",
+    title: "Tracking and data pipelines",
+    body: "Web SDK for on-site behaviour, backend orders and refunds integrated via BigQuery, tracking tuned so you capture what matters without overpaying on event volume.",
   },
   {
     n: "4",
     title: "Automation and ads",
-    body: "Per-market flows and predictive audiences go live across email, web, and paid.",
+    body: "Flows rebuilt and expanded per market, product recommendations migrated in, predictive audiences synced to Google and Meta.",
   },
   {
     n: "5",
-    title: "Reporting your team can read",
-    body: "Dashboards your marketing team runs without touching the backend.",
+    title: "Reporting your teams can read",
+    body: "Dashboards in the CDP and Looker Studio, so buying, finance, and country teams see performance without touching the backend.",
   },
 ];
 
@@ -53,7 +53,7 @@ export function HowWeWork() {
         <div className="flex flex-col gap-3">
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.07}>
-              <div className="grid grid-cols-[auto_1fr] items-start gap-5 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:gap-7 md:p-7">
+              <div className="grid grid-cols-[auto_1fr] items-start gap-5 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-3.5 md:gap-7 md:p-4">
                 <span className="font-head w-8 text-[24px] leading-none text-[var(--sw-blue)] md:w-10 md:text-[28px]">
                   {s.n}
                 </span>

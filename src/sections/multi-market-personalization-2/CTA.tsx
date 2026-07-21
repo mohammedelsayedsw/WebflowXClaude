@@ -6,7 +6,7 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 const TRUST = [
   "Thirty minutes, no commitment",
-  "No pitch deck",
+  "We tell you if it is not a fit",
   "Platform-neutral advice",
   "Analytics team, not a salesperson",
 ];
@@ -24,12 +24,9 @@ export function CTA() {
       }}
     >
       <div className="wrap relative">
-        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+        <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
           {/* LEFT · the pitch */}
           <Reveal>
-            <span className="label-code mb-5 block text-[var(--sw-mint)]">
-              See if it fits
-            </span>
             <h2 className="font-head max-w-[18ch] text-[34px] leading-[1.05] text-white md:text-[48px] lg:text-[56px]">
               See what one platform would do{" "}
               <span className="text-[var(--sw-mint)]">across your markets</span>

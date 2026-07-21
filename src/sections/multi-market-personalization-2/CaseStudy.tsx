@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
@@ -18,12 +19,18 @@ const GROUPS = [
       { v: "+39.1%", k: "ROAS" },
       { v: "+25.1%", k: "average order value" },
       { v: "+9.5%", k: "revenue" },
-      { v: "21.3%", k: "less ad spend", down: true },
+      { v: "-21.3%", k: "ad spend" },
     ],
   },
 ];
 
-const BADGES = ["Multi-market · multi-store-view", "Klaviyo + Clerk.io → one platform"];
+const BUILT = [
+  "A market-specific CDP setup, so each country keeps its own store view and customer data",
+  "Email and product recommendations moved off two tools onto one platform",
+  "Per-market automation flows: browse abandonment, cart abandonment, post-purchase, welcome, and outlet",
+  "Predictive audiences synced to Google and Meta",
+  "Reporting in the CDP and Looker Studio, readable outside marketing",
+];
 
 export function CaseStudy() {
   return (
@@ -53,25 +60,33 @@ export function CaseStudy() {
                 every market from one platform
               </span>
             </h2>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              {BADGES.map((b) => (
-                <span
-                  key={b}
-                  className="label-code rounded-[2px] border border-white/15 px-3 py-1.5 text-white/70"
-                >
-                  {b}
-                </span>
-              ))}
-            </div>
             <p className="mt-7 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              Sportland sells across several countries, each with its own store
-              view, language, and customer database. Their email ran on one tool
-              and recommendations on another, on data that never joined up. We
-              moved them onto one unified platform with a market-specific setup,
-              and rebuilt their automation on top of it.
+              We moved Sportland&apos;s email and recommendations off two
+              separate tools onto one platform, with a market-specific setup so
+              each country keeps its own store view and customer data.
             </p>
           </Reveal>
         </div>
+
+        {/* What we built */}
+        <Reveal delay={0.05}>
+          <div className="mt-12 md:mt-14">
+            <span className="label-code mb-5 block text-white/50">
+              What we built
+            </span>
+            <ul className="flex max-w-[64rem] flex-col gap-3">
+              {BUILT.map((b) => (
+                <li
+                  key={b}
+                  className="flex gap-3 text-[15px] leading-snug text-white/80 md:text-[16px]"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--sw-mint)]" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-4 md:mt-16 md:grid-cols-2">
           {GROUPS.map((g, gi) => (
@@ -83,11 +98,7 @@ export function CaseStudy() {
                 <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
                   {g.metrics.map((m) => (
                     <div key={m.k}>
-                      <div
-                        className={`font-head text-[28px] leading-none tracking-[-0.01em] md:text-[36px] ${
-                          m.down ? "text-white" : "text-[var(--sw-mint)]"
-                        }`}
-                      >
+                      <div className="font-head text-[28px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[36px]">
                         {m.v}
                       </div>
                       <div className="label-code mt-2.5 text-white/55">{m.k}</div>

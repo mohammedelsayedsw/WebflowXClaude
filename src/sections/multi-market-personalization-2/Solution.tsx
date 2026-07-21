@@ -39,7 +39,7 @@ export function Solution() {
           <span className="label-code mb-4 block text-[var(--sw-black)]/50">
             The fix
           </span>
-          <h2 className="font-head max-w-[46ch] text-[20px] leading-[1.15] text-[var(--sw-black)] md:text-[26px]">
+          <h2 className="font-head text-[34px] leading-[1.05] tracking-[-0.01em] text-[var(--sw-black)] md:text-[48px] lg:text-[56px]">
             We solve it by replacing your siloed market tools with one{" "}
             <span className="text-[var(--sw-blue)]">
               Multi-Market Personalization Engine

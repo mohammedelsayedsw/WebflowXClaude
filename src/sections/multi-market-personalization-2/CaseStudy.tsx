@@ -33,7 +33,7 @@ export function CaseStudy() {
           <div className="max-w-[64rem]">
             <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-4">
               <span className="label-code text-[var(--sw-mint)]">
-                Proven with Sportland
+                Proven with
               </span>
               {/* keeps Sportland red, unlike the white-flattened trust-bar logos:
                   this is a named case study, not a logo wall */}

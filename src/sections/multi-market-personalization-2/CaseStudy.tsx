@@ -39,44 +39,40 @@ export function CaseStudy() {
       className="relative overflow-hidden bg-[var(--sw-black)] py-28 md:py-36"
     >
       <div className="wrap relative">
-        {/* Headline · full width */}
-        <Reveal>
-          <div className="max-w-[56rem]">
-            <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <span className="label-code text-[var(--sw-mint)]">
-                Proven with Sportland
-              </span>
-              {/* keeps Sportland red, unlike the white-flattened trust-bar logos:
-                  this is a named case study, not a logo wall */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={assetUrl("/shared/logos/clients/sportland.png")}
-                alt="Sportland"
-                className="h-6 w-auto shrink-0 md:h-7"
-              />
-            </div>
-            <h2 className="font-head text-[32px] leading-[1.06] text-white md:text-[44px] lg:text-[52px]">
-              The Baltics&apos; leading sportswear retailer, running{" "}
-              <span className="text-[var(--sw-mint)]">
-                every market from one platform
-              </span>
-            </h2>
-          </div>
-        </Reveal>
-
-        {/* Two columns */}
-        <div className="mt-12 grid gap-10 md:mt-14 lg:grid-cols-2 lg:gap-16 lg:items-start">
-          {/* LEFT · story + what we built */}
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-start">
+          {/* LEFT · eyebrow, logo, headline, intro, what we built */}
           <div>
             <Reveal>
-              <p className="text-[16px] leading-relaxed text-white/75 md:text-[17px]">
+              <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <span className="label-code text-[var(--sw-mint)]">
+                  Proven with Sportland
+                </span>
+                {/* keeps Sportland red, unlike the white-flattened trust-bar
+                    logos: this is a named case study, not a logo wall */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl("/shared/logos/clients/sportland.png")}
+                  alt="Sportland"
+                  className="h-6 w-auto shrink-0 md:h-7"
+                />
+              </div>
+              <h2 className="font-head text-[30px] leading-[1.07] text-white md:text-[40px] lg:text-[46px]">
+                The Baltics&apos; leading sportswear retailer, running{" "}
+                <span className="text-[var(--sw-mint)]">
+                  every market from one platform
+                </span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <p className="mt-6 text-[16px] leading-relaxed text-white/75 md:text-[17px]">
                 We moved Sportland&apos;s email and recommendations off two
                 separate tools onto one platform, with a market-specific setup so
                 each country keeps its own store view and customer data.
               </p>
             </Reveal>
 
-            <Reveal delay={0.05}>
+            <Reveal delay={0.1}>
               <div className="mt-8">
                 <span className="label-code mb-5 block text-white/50">
                   What we built
@@ -101,17 +97,17 @@ export function CaseStudy() {
             <div className="flex flex-col gap-4">
               {GROUPS.map((g, gi) => (
                 <Reveal key={g.name} delay={gi * 0.07}>
-                  <div className="rounded-[4px] border border-white/10 bg-white/[0.02] p-6 md:p-8">
-                    <div className="label-code border-b border-white/10 pb-4 text-white/60">
+                  <div className="rounded-[4px] border border-white/10 bg-white/[0.02] p-5">
+                    <div className="label-code border-b border-white/10 pb-3 text-white/60">
                       {g.name}
                     </div>
-                    <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
+                    <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-5">
                       {g.metrics.map((m) => (
                         <div key={m.k}>
-                          <div className="font-head text-[28px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[36px]">
+                          <div className="font-head text-[24px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[30px]">
                             {m.v}
                           </div>
-                          <div className="label-code mt-2.5 text-white/55">
+                          <div className="label-code mt-1.5 text-white/55">
                             {m.k}
                           </div>
                         </div>

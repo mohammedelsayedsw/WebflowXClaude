@@ -39,7 +39,7 @@ export function HowWeWork() {
             <span className="label-code mb-5 block text-[var(--sw-black)]/50">
               How we roll it out
             </span>
-            <h2 className="font-head text-[34px] leading-[1.05] text-[var(--sw-black)] md:text-[48px] lg:text-[56px]">
+            <h2 className="font-head text-[28px] leading-[1.1] text-[var(--sw-black)] md:text-[40px]">
               Built for your markets,{" "}
               <span className="text-[var(--sw-blue)]">not a template</span>
             </h2>

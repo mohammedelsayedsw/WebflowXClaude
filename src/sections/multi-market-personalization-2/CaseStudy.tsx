@@ -44,7 +44,7 @@ export function CaseStudy() {
                 className="h-6 w-auto shrink-0 md:h-7"
               />
             </div>
-            <h2 className="font-head text-[30px] leading-[1.07] text-white md:text-[40px] lg:text-[46px]">
+            <h2 className="font-head text-[28px] leading-[1.1] text-white md:text-[40px]">
               The Baltics&apos; leading sportswear retailer, running{" "}
               <span className="text-[var(--sw-mint)]">
                 every market from one platform

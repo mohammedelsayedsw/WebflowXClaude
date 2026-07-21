@@ -92,33 +92,36 @@ export function CaseStudy() {
             </Reveal>
           </div>
 
-          {/* RIGHT · result cards + caption */}
+          {/* RIGHT · compact results scorecard */}
           <div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-7">
               {GROUPS.map((g, gi) => (
                 <Reveal key={g.name} delay={gi * 0.07}>
-                  <div className="rounded-[4px] border border-white/10 bg-white/[0.02] p-5">
-                    <div className="label-code border-b border-white/10 pb-3 text-white/60">
+                  <div>
+                    <div className="label-code border-b border-white/15 pb-2.5 text-white/60">
                       {g.name}
                     </div>
-                    <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-5">
+                    <dl>
                       {g.metrics.map((m) => (
-                        <div key={m.k}>
-                          <div className="font-head text-[24px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[30px]">
-                            {m.v}
-                          </div>
-                          <div className="label-code mt-1.5 text-white/55">
+                        <div
+                          key={m.k}
+                          className="flex items-baseline justify-between gap-4 border-b border-white/[0.07] py-2.5 last:border-b-0"
+                        >
+                          <dt className="text-[13px] text-white/60 md:text-[14px]">
                             {m.k}
-                          </div>
+                          </dt>
+                          <dd className="font-head shrink-0 text-[19px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] tabular-nums md:text-[21px]">
+                            {m.v}
+                          </dd>
                         </div>
                       ))}
-                    </div>
+                    </dl>
                   </div>
                 </Reveal>
               ))}
             </div>
             <Reveal delay={0.1}>
-              <p className="label-code mt-5 text-white/50">
+              <p className="label-code mt-6 text-white/50">
                 All within a few months of going live.
               </p>
             </Reveal>

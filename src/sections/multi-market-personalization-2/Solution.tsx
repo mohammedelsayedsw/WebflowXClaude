@@ -24,6 +24,10 @@ const OUTCOMES = [
     title: "Run every market from one place",
     how: "by unifying siloed customer data with a market-specific structure",
   },
+  {
+    title: "Know which markets are actually working",
+    how: "by reporting in the CDP and Looker Studio that teams outside marketing can read",
+  },
 ];
 
 export function Solution() {
@@ -67,24 +71,24 @@ export function Solution() {
               </div>
             </Reveal>
           ))}
-
-          {/* sixth cell · accent CTA card */}
-          <Reveal delay={OUTCOMES.length * 0.06} className="h-full">
-            <a
-              href="#cta"
-              className="group flex h-full flex-col justify-between rounded-[4px] p-4 transition-colors"
-              style={{ background: "var(--sw-blue)" }}
-            >
-              <h3 className="font-head text-[16px] font-bold leading-[1.25] text-white md:text-[17px]">
-                Want this across your markets?
-              </h3>
-              <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-[2px] border border-white/55 px-3 py-1.5 font-head text-[12px] font-semibold text-white transition-colors group-hover:bg-white group-hover:text-[var(--sw-blue)]">
-                Book a free analytics consultation
-                <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
-              </span>
-            </a>
-          </Reveal>
         </div>
+
+        {/* slim full-width CTA band under the results */}
+        <Reveal delay={0.1}>
+          <a
+            href="#cta"
+            className="group mt-3 flex flex-col justify-between gap-4 rounded-[4px] p-5 transition-colors sm:flex-row sm:items-center md:mt-4 md:px-7"
+            style={{ background: "var(--sw-blue)" }}
+          >
+            <span className="font-head text-[16px] font-bold text-white md:text-[18px]">
+              Want this across your markets?
+            </span>
+            <span className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-[2px] border border-white/55 px-4 py-2 font-head text-[13px] font-semibold text-white transition-colors group-hover:bg-white group-hover:text-[var(--sw-blue)]">
+              Book a free analytics consultation
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );

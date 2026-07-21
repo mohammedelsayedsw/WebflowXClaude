@@ -124,7 +124,7 @@ export function InShort() {
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-head mt-5 max-w-[24ch] text-[28px] leading-[1.1] text-[var(--sw-black)] md:text-[40px]">
+              <h2 className="font-head mt-5 max-w-[24ch] text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
                 What the Multi-Market Personalization Engine is
               </h2>
             </Reveal>

@@ -20,7 +20,7 @@ function MarketDiagram() {
         {channels.map((c) => (
           <span
             key={c}
-            className="font-head flex items-center justify-center rounded-[2px] border border-white/12 bg-white/[0.05] px-1 py-2 text-center text-[10px] leading-tight text-white/80"
+            className="font-head flex items-center justify-center whitespace-nowrap rounded-[2px] border border-white/12 bg-white/[0.05] px-1 py-2 text-center text-[8.5px] leading-tight text-white/80"
           >
             {c}
           </span>

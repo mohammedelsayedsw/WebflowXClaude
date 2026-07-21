@@ -31,8 +31,7 @@ const STEPS: { title: string; detail: string }[] = [
   },
   {
     title: "It learns",
-    detail:
-      "Every correction an operator makes feeds back, so the same mistake stops coming back.",
+    detail: "Every correction an operator makes feeds back into the system.",
   },
 ];
 

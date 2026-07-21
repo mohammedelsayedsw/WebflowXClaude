@@ -21,10 +21,7 @@ const STEPS = [
 function ConsultCard() {
   return (
     <div className="rounded-[4px] border border-white/15 bg-white/[0.04] p-6 backdrop-blur md:p-8">
-      <span className="font-head inline-flex rounded-[2px] bg-[var(--sw-mint)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--sw-black)]">
-        Free, no commitment
-      </span>
-      <h3 className="font-head mt-5 text-[22px] leading-[1.15] text-white md:text-[26px]">
+      <h3 className="font-head text-[22px] leading-[1.15] text-white md:text-[26px]">
         Free analytics consultation
       </h3>
       <p className="mt-3 text-[14px] leading-relaxed text-white/70 md:text-[15px]">

@@ -130,18 +130,20 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                You cannot personalise what you cannot see. When every market
-                runs its own email tool and its own recommendation engine, the
-                same shopper looks like a stranger in each one, so every message
-                is a guess.
+                Today every market runs its own email tool and its own
+                recommendation engine. That costs you twice. You pay for the
+                same software in every market, and because the customer data
+                never joins up, the system does not know what anyone has bought,
+                so everyone gets the same generic email.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                This joins that data into one view of the customer, then uses it
-                to personalise email, ads, and your site. Each market keeps its
-                own store view, language, and assortment, so nothing gets mixed
-                up.
+                Moving every market onto one platform fixes both. Your team
+                works in one place instead of five, and because the data is
+                finally joined, the messages can be personal. Each market still
+                keeps its own store view, language, and assortment, so nothing
+                gets mixed up.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

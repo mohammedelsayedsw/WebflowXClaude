@@ -130,8 +130,9 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                It is a customer data platform set up for retailers selling in
-                more than one market. It pulls customer data out of the separate
+                It is a customer data platform (CDP), set up for retailers
+                selling in more than one market. It pulls customer data out of
+                the separate
                 tools each market runs, joins it into one view of the customer,
                 and uses that to personalise email, ads, and your site. Each
                 market keeps its own store view, language, and assortment, so

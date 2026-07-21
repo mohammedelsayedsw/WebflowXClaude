@@ -31,6 +31,10 @@ const TONE: Record<Tone, { border: string; label: string }> = {
   ai: { border: "rgba(168,132,255,0.65)", label: "#b7a0ff" },
 };
 
+// Bind the last two words with a non-breaking space so a line never ends on a
+// single stranded word.
+const noWidow = (s: string) => s.replace(/\s+(\S+)\s*$/, " $1");
+
 function Box({
   tag,
   title,
@@ -60,11 +64,11 @@ function Box({
         </div>
       )}
       <div className="font-head text-white text-[17px] md:text-[19px] leading-[1.2]">
-        {title}
+        {noWidow(title)}
       </div>
       {desc && (
         <div className="text-white/65 text-[15px] md:text-[16px] leading-snug mt-1.5">
-          {desc}
+          {noWidow(desc)}
         </div>
       )}
     </div>
@@ -329,9 +333,9 @@ export function ReconciliationDiagram() {
         ))}
 
         {/* ---- STAGE 1 · sources ---- */}
-        <div ref={s1}>
+        <div>
           <StageLabel n={1}>Where the documents come from</StageLabel>
-          <div className={row3}>
+          <div ref={s1} className={row3}>
             <Box
               tone="external"
               tag="External system"
@@ -362,9 +366,9 @@ export function ReconciliationDiagram() {
           </div>
 
           {/* STAGE 2 · import */}
-          <div ref={s2}>
+          <div>
             <StageLabel n={2}>Import into OperaLayer</StageLabel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
+            <div ref={s2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
               <Box tone="process" title="PO Import" desc="ERP sync" />
               <Box tone="process" title="Delivery Note Import" desc="PDF or photo upload" />
               <Box tone="process" title="Delivery Note + Invoice Import" desc="One combined file" />
@@ -374,9 +378,9 @@ export function ReconciliationDiagram() {
           </div>
 
           {/* STAGE 3 · read and resolve */}
-          <div ref={s3} className="mt-14">
+          <div className="mt-14">
             <StageLabel n={3}>Read and resolve</StageLabel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+            <div ref={s3} className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
               <Box
                 tone="process"
                 title="AI Extraction and OCR"
@@ -392,9 +396,9 @@ export function ReconciliationDiagram() {
 
           {/* STAGE 4 · reconciliation (CMR is the left box so its Archived path
               runs straight down the left lane) */}
-          <div ref={s4} className="mt-14">
+          <div className="mt-14">
             <StageLabel n={4}>Reconciliation</StageLabel>
-            <div className={row3}>
+            <div ref={s4} className={row3}>
               <Box
                 boxRef={cmrRecon}
                 tone="process"
@@ -454,9 +458,9 @@ export function ReconciliationDiagram() {
           </div>
 
           {/* STAGE 6 · result (Archived is the left box) */}
-          <div ref={s6} className="mt-14">
+          <div className="mt-14">
             <StageLabel n={6}>Result</StageLabel>
-            <div className={row3}>
+            <div ref={s6} className={row3}>
               <Box
                 boxRef={archived}
                 tone="archived"
@@ -480,9 +484,10 @@ export function ReconciliationDiagram() {
         </div>
 
         {/* ---- STAGE 7 · back to the ERP ---- */}
-        <div ref={s7} className="mt-12">
+        <div className="mt-12">
           <StageLabel n={7}>Back to the ERP</StageLabel>
           <Box
+            boxRef={s7}
             tone="external"
             tag="External system"
             title="Microsoft Dynamics NAV"

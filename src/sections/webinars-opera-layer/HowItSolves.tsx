@@ -97,7 +97,7 @@ export function HowItSolves() {
                 </p>
                 {c.deepDive && (
                   <span
-                    className="font-head mt-auto inline-flex w-fit rounded-[2px] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
+                    className="font-head mt-6 inline-flex w-fit rounded-[2px] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em]"
                     style={{ background: "var(--sw-blue)", color: "#fff" }}
                   >
                     This session&apos;s deep dive

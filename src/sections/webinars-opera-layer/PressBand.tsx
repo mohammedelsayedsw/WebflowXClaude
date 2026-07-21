@@ -42,13 +42,11 @@ export function PressBand() {
   return (
     <section
       id="as-featured-in"
-      className="relative bg-[var(--sw-black)] py-16 md:py-20 overflow-hidden scroll-mt-20"
+      className="relative bg-lp-bright pb-16 pt-4 md:pb-20 overflow-hidden scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
-      <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code text-white/50 text-[10px] text-center">
+          <div className="label-code text-[var(--sw-black)]/45 text-[10px] text-center">
             Featured in
           </div>
         </Reveal>
@@ -61,15 +59,16 @@ export function PressBand() {
                   href={p.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 opacity-70 transition-opacity hover:opacity-100"
+                  className="shrink-0 opacity-60 transition-opacity hover:opacity-100"
                   aria-label={p.name}
                 >
+                  {/* white source logos inverted to dark for the light band */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={assetUrl(p.logo)}
                     alt={p.name}
                     className="w-auto"
-                    style={{ height: `${p.h}px` }}
+                    style={{ height: `${p.h}px`, filter: "brightness(0)" }}
                   />
                 </a>
               ) : (
@@ -78,7 +77,7 @@ export function PressBand() {
                   href={p.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-head font-semibold text-white/60 text-[15px] md:text-[18px] leading-none whitespace-nowrap transition-colors hover:text-white"
+                  className="font-head font-semibold text-[var(--sw-black)]/60 text-[15px] md:text-[18px] leading-none whitespace-nowrap transition-colors hover:text-[var(--sw-black)]"
                 >
                   {p.name}
                 </a>

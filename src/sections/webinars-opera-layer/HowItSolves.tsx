@@ -49,7 +49,7 @@ export function HowItSolves() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <SectionLabel index="6">What teams use it for</SectionLabel>
+            <SectionLabel index="5">What teams use it for</SectionLabel>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">

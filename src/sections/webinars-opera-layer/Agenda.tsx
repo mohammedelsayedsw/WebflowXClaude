@@ -20,7 +20,7 @@ export function Agenda() {
         <div className="mb-12 md:mb-16 max-w-[52rem]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">5</span>
+              <span className="text-[var(--sw-black)]/55">6</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>What we will cover</span>
             </div>
@@ -33,7 +33,8 @@ export function Agenda() {
           </Reveal>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
+        {/* column-wise flow: 1-4 down the left column, 5-8 down the right */}
+        <ol className="grid grid-cols-1 md:grid-flow-col md:grid-cols-2 md:grid-rows-4 gap-x-10 gap-y-4">
           {agenda.map((item, i) => (
             <Reveal key={i} delay={(i % 2) * 0.06} className="h-full">
               <li className="flex h-full gap-4 border-b border-[var(--sw-black)]/10 pb-4">

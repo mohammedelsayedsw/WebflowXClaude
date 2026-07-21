@@ -8,7 +8,7 @@ const BUILT = [
   "A demand forecasting engine trained on 9.3 million historical sales transactions",
   "Forecasts at the grain buyers plan in, then split across sizes for reordering",
   "Estonia, Latvia, and Lithuania modelled separately instead of as one Baltic market",
-  "A rebuilt ERP data pipeline, running on roughly a third of the resources",
+  "A rebuilt Business Central data pipeline, running on roughly a third of the resources",
   "Three category manager dashboards: replenishment recommendations, size mix, and product seasonality",
 ];
 

@@ -39,8 +39,9 @@ export function CaseStudy() {
       className="relative overflow-hidden bg-[var(--sw-black)] py-28 md:py-36"
     >
       <div className="wrap relative">
-        <div className="max-w-[56rem]">
-          <Reveal>
+        {/* Headline · full width */}
+        <Reveal>
+          <div className="max-w-[56rem]">
             <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-4">
               <span className="label-code text-[var(--sw-mint)]">
                 Proven with Sportland
@@ -60,64 +61,77 @@ export function CaseStudy() {
                 every market from one platform
               </span>
             </h2>
-            <p className="mt-7 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              We moved Sportland&apos;s email and recommendations off two
-              separate tools onto one platform, with a market-specific setup so
-              each country keeps its own store view and customer data.
-            </p>
-          </Reveal>
-        </div>
-
-        {/* What we built */}
-        <Reveal delay={0.05}>
-          <div className="mt-12 md:mt-14">
-            <span className="label-code mb-5 block text-white/50">
-              What we built
-            </span>
-            <ul className="flex max-w-[64rem] flex-col gap-3">
-              {BUILT.map((b) => (
-                <li
-                  key={b}
-                  className="flex gap-3 text-[15px] leading-snug text-white/80 md:text-[16px]"
-                >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--sw-mint)]" />
-                  {b}
-                </li>
-              ))}
-            </ul>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-4 md:mt-16 md:grid-cols-2">
-          {GROUPS.map((g, gi) => (
-            <Reveal key={g.name} delay={gi * 0.07}>
-              <div className="h-full rounded-[4px] border border-white/10 bg-white/[0.02] p-6 md:p-8">
-                <div className="label-code border-b border-white/10 pb-4 text-white/60">
-                  {g.name}
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
-                  {g.metrics.map((m) => (
-                    <div key={m.k}>
-                      <div className="font-head text-[28px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[36px]">
-                        {m.v}
-                      </div>
-                      <div className="label-code mt-2.5 text-white/55">{m.k}</div>
-                    </div>
+        {/* Two columns */}
+        <div className="mt-12 grid gap-10 md:mt-14 lg:grid-cols-2 lg:gap-16 lg:items-start">
+          {/* LEFT · story + what we built */}
+          <div>
+            <Reveal>
+              <p className="text-[16px] leading-relaxed text-white/75 md:text-[17px]">
+                We moved Sportland&apos;s email and recommendations off two
+                separate tools onto one platform, with a market-specific setup so
+                each country keeps its own store view and customer data.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <div className="mt-8">
+                <span className="label-code mb-5 block text-white/50">
+                  What we built
+                </span>
+                <ul className="flex flex-col gap-3">
+                  {BUILT.map((b) => (
+                    <li
+                      key={b}
+                      className="flex gap-3 text-[15px] leading-snug text-white/80 md:text-[16px]"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--sw-mint)]" />
+                      {b}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </Reveal>
-          ))}
+          </div>
+
+          {/* RIGHT · result cards + caption */}
+          <div>
+            <div className="flex flex-col gap-4">
+              {GROUPS.map((g, gi) => (
+                <Reveal key={g.name} delay={gi * 0.07}>
+                  <div className="rounded-[4px] border border-white/10 bg-white/[0.02] p-6 md:p-8">
+                    <div className="label-code border-b border-white/10 pb-4 text-white/60">
+                      {g.name}
+                    </div>
+                    <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
+                      {g.metrics.map((m) => (
+                        <div key={m.k}>
+                          <div className="font-head text-[28px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[36px]">
+                            {m.v}
+                          </div>
+                          <div className="label-code mt-2.5 text-white/55">
+                            {m.k}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={0.1}>
+              <p className="label-code mt-5 text-white/50">
+                All within a few months of going live.
+              </p>
+            </Reveal>
+          </div>
         </div>
 
+        {/* Testimonial · full width */}
         <Reveal delay={0.1}>
-          <p className="label-code mt-6 text-white/50">
-            All within a few months of going live.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <figure className="mt-12 max-w-[70ch] border-l-2 border-[var(--sw-mint)] pl-6 md:mt-16">
+          <figure className="mt-14 max-w-[70ch] border-l-2 border-[var(--sw-mint)] pl-6 md:mt-20">
             <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[26px]">
               &ldquo;scandiweb has a future-looking attitude.&rdquo;
             </blockquote>

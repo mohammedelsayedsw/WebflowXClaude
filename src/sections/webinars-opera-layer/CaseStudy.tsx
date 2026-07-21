@@ -98,13 +98,10 @@ export function CaseStudy() {
 
             <Reveal delay={0.15}>
               <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-                Now the document gets photographed on the warehouse floor or
-                dropped in as a PDF. The AI reads every line and matches it to
-                the purchase order it belongs to. Quantity gaps, price
-                differences, and pack mismatches like boxes against pieces are
-                flagged before anything posts. Clean lines collapse away, so the
-                team only opens what actually needs a decision. One confirm posts
-                the goods receipt straight to the ERP.
+                Now quantity gaps, price differences, and pack mismatches like
+                boxes against pieces are flagged before anything posts. Clean
+                lines collapse away, so the team only opens what actually needs a
+                decision.
               </p>
             </Reveal>
 

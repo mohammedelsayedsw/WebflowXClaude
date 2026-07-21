@@ -17,12 +17,12 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Overview />
-      <CaseStudy />
       <PressBand />
+      <CaseStudy />
       <PainPoints />
       <HowItWorks />
-      <Agenda />
       <HowItSolves />
+      <Agenda />
       <TheSession />
       <SpeakerBio />
       <CTA />

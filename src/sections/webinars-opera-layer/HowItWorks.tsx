@@ -1,6 +1,6 @@
 "use client";
 
-import { Camera, ScanLine, GitCompareArrows, CheckCheck, Upload } from "lucide-react";
+import { Camera, ScanLine, GitCompareArrows, CheckCheck, Upload, Plus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
@@ -40,19 +40,19 @@ const steps: { icon: typeof Camera; n: string; title: string; body: string }[] =
 const cards: { title: string; body: string }[] = [
   {
     title: "When things do not match",
-    body: "Quantity and price differences, and pack or unit mismatches like boxes against pieces, are flagged before anything posts. Clean lines collapse away so reviewers only see exceptions.",
+    body: "Quantity gaps, price differences, and pack mismatches like boxes against pieces are flagged before anything posts. Reviewers only see the exceptions.",
   },
   {
     title: "It learns your suppliers",
-    body: "It picks up each supplier's item codes, pack conversions, and which lines are real products rather than freight or discount lines. Every confirmation improves it, with no rules to write by hand.",
+    body: "It picks up each supplier's item codes and pack conversions, and which lines are freight rather than product. No rules to write by hand.",
   },
   {
     title: "It connects to your ERP",
-    body: "The connector is swappable, so it is not tied to one system. The app itself is built in days. Connecting your ERP usually takes a few days to two weeks, depending on how readily it can share the data.",
+    body: "The connector is swappable, so it is not tied to one system. Connecting yours usually takes a few days to two weeks, depending on how readily it can share the data.",
   },
   {
     title: "Nothing posts by accident",
-    body: "Nothing exports until a person confirms. Every confirm, export, and override is recorded, and double-send protection means nothing posts twice. The AI provider is your choice, so you are not locked to one vendor.",
+    body: "Nothing exports until a person confirms, and every confirm, export, and override is recorded. The AI provider is your choice, so you are not locked to one vendor.",
   },
 ];
 
@@ -113,18 +113,25 @@ export function HowItWorks() {
           </blockquote>
         </Reveal>
 
-        {/* four detail cards */}
-        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        {/* four detail cards as a single-column collapsed accordion */}
+        <div className="mt-12 md:mt-16 flex flex-col gap-3">
           {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.07} className="h-full">
-              <div className="h-full rounded-[4px] border border-white/10 bg-white/[0.03] p-6 sm:p-7">
-                <h3 className="font-head text-white text-[19px] md:text-[21px] leading-tight">
-                  {c.title}
-                </h3>
-                <p className="mt-3 text-white/70 text-[15px] md:text-[16px] leading-relaxed">
+            <Reveal key={c.title} delay={i * 0.06}>
+              <details className="group rounded-[4px] border border-white/10 bg-white/[0.03] transition-colors open:bg-white/[0.05]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
+                  <h3 className="font-head text-white text-[18px] md:text-[20px] leading-tight">
+                    {c.title}
+                  </h3>
+                  <Plus
+                    className="h-5 w-5 shrink-0 text-[var(--sw-mint)] transition-transform duration-200 group-open:rotate-45"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                </summary>
+                <p className="-mt-1 max-w-[70ch] px-6 pb-6 text-white/70 text-[15px] md:text-[16px] leading-relaxed">
                   {c.body}
                 </p>
-              </div>
+              </details>
             </Reveal>
           ))}
         </div>

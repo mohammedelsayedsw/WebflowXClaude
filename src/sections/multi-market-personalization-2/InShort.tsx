@@ -140,7 +140,7 @@ export function InShort() {
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Moving every market onto one platform fixes both. Your team
-                works in one place instead of five, and because the data is
+                works in one place instead of many, and because the data is
                 finally joined, the messages can be personal. Each market still
                 keeps its own store view, language, and assortment, so nothing
                 gets mixed up.

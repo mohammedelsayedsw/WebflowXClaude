@@ -72,7 +72,7 @@ export function CaseStudy() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-center">
           {/* LEFT · the story */}
           <div className="max-w-[640px]">
             <Reveal>

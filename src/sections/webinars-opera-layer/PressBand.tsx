@@ -38,13 +38,14 @@ const press: { name: string; href: string; logo?: string; h: number }[] = [
   },
 ];
 
+/**
+ * "Featured in" press row. Rendered inside the Overview (In short) section so
+ * it shares the exact same bright background, with no seam between them.
+ */
 export function PressBand() {
   return (
-    <section
-      id="as-featured-in"
-      className="relative bg-lp-bright pb-16 pt-4 md:pb-20 overflow-hidden scroll-mt-20"
-    >
-      <div className="wrap relative">
+    <div id="as-featured-in" className="wrap relative mt-16 md:mt-24 scroll-mt-20">
+      <div>
         <Reveal>
           <div className="label-code text-[var(--sw-black)]/45 text-[10px] text-center">
             Featured in
@@ -86,6 +87,6 @@ export function PressBand() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </div>
   );
 }

@@ -58,7 +58,7 @@ export function Problems() {
             <span className="label-code mb-5 block text-white/60">
               The problem
             </span>
-            <h2 className="font-head text-[28px] leading-[1.1] text-white md:text-[40px]">
+            <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
               Five problems every{" "}
               <br className="hidden md:block" />
               <span className="text-[var(--sw-mint)]">multi-market retailer</span>{" "}

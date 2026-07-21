@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Rocket, Calculator, Gift } from "lucide-react";
+import { Search, Rocket, Calculator } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const takeaways: {
@@ -58,8 +58,7 @@ export function TheSession() {
           <Reveal delay={0.15}>
             <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[58ch]">
               Not theory you could get from any chatbot. You walk away with
-              concrete moves for your own operations, and a working demo built on
-              your own data if you join live.
+              concrete moves for your own operations.
             </p>
           </Reveal>
         </div>
@@ -85,35 +84,25 @@ export function TheSession() {
           ))}
         </ul>
 
-        {/* Offer for live attendees: a working demo built on their own data. */}
+        {/* Why join live */}
         <Reveal delay={0.1}>
           <div
-            className="mt-4 md:mt-5 rounded-[4px] border p-6 sm:p-8 md:p-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-8"
+            className="mt-4 md:mt-5 rounded-[4px] border p-6 sm:p-8 md:p-9"
             style={{
               background: "rgba(63,74,175,0.06)",
               borderColor: "rgba(63,74,175,0.30)",
             }}
           >
-            <span
-              className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[4px] text-white"
-              style={{ background: "var(--sw-blue)" }}
-              aria-hidden
-            >
-              <Gift className="h-6 w-6" strokeWidth={1.75} />
-            </span>
-            <div className="flex-1">
-              <div className="label-code text-[var(--sw-blue)] text-[10px] mb-2">
-                For joining live
-              </div>
-              <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[24px] leading-[1.2]">
-                Join live and we will build a working demo on your own data
-              </div>
-              <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
-                Bring a workflow you run by hand today. We take your own data and
-                build a working demo of it, so you see the module running on your
-                numbers, not a canned example.
-              </p>
+            <div className="label-code text-[var(--sw-blue)] text-[10px] mb-2">
+              Why join live
             </div>
+            <div className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[24px] leading-[1.2]">
+              Bring your own situation
+            </div>
+            <p className="mt-2.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed max-w-[68ch]">
+              Come with the workflow you run by hand today. Martins answers your
+              questions live, on your setup, rather than a canned example.
+            </p>
           </div>
         </Reveal>
       </div>

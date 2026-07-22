@@ -5,7 +5,7 @@ import { DrawnPath } from "@/components/primitives/DrawnPath";
 
 /** The one problem underneath the rest. */
 const ROOT = {
-  title: "Planning runs on spreadsheets and gut feel",
+  title: "Planning runs on spreadsheets and guesswork",
   body: "Sales, stock, and web data sit in Business Central and a handful of other systems, and none of it looks forward. So buyers plan in spreadsheets, on last year and instinct.",
 };
 
@@ -14,17 +14,17 @@ const SYMPTOMS = [
   {
     n: "1",
     title: "Your markets get planned as one",
-    body: "Countries are planned together, even though what sells differs a lot from one to the next.",
+    body: "Countries are planned together, even though different products sell in each one.",
   },
   {
     n: "2",
-    title: "Top sizes sell out while seasonal stock sits",
-    body: "The sizes people actually buy run out, while seasonal stock you cannot reorder sits into the wrong season.",
+    title: "You run out of what sells, and overstock what doesn't",
+    body: "The popular sizes sell out and you can't reorder fast enough. The seasonal stuff that didn't sell is still there after the season ends.",
   },
   {
     n: "3",
-    title: "Markdowns come too late",
-    body: "You discount after the stock has already piled up, so the margin is gone by the time anyone acts.",
+    title: "You discount too late, and lose the margin",
+    body: "You wait too long to drop the price, so you end up selling it cheap and making almost nothing on it.",
   },
   {
     n: "4",
@@ -66,9 +66,9 @@ export function Problems() {
               <span className="text-[var(--sw-mint)]">four ways it costs you</span>
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              Every season you commit money months ahead of demand. Fix the
-              problem underneath and the four below it start to close on their
-              own.
+              You place most of your orders long before you know what will
+              sell. One thing makes that guess harder than it needs to be, and
+              it feeds all four problems below.
             </p>
           </Reveal>
         </div>

@@ -127,31 +127,25 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-head mt-5 max-w-[24ch] text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
-                What the Retail Margin Hub is
+                What the{" "}
+                <span className="text-[var(--sw-blue)]">Retail Margin Hub</span>{" "}
+                is
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                It is a demand forecasting engine and a set of buying
-                dashboards, built for retailers whose planning data sits in an
-                ERP that was never designed to look forward. It reads your sales
-                history, forecasts demand a week at a time at the grain your
-                buyers plan in, splits that across sizes, and shows what to
-                reorder, when, and where.
+                It tells your buyers what to order, in which sizes, for which
+                market, and when. It works out expected demand from your own
+                sales history, so buying decisions rest on what actually sells
+                rather than last year and gut feel.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                That is where the margin goes. Buy too little of what sells and
-                you lose the sale. Buy too much of what does not and you discount
-                your way out of it. Forecasting at the grain you plan in is what
-                stops both.
-              </p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                Your ERP stays as it is. This reads from it and gives your
-                category managers something to act on.
+                That is where the margin lives. Order too little of what sells
+                and you lose the sale. Order too much of what doesn&apos;t and
+                you have to discount to clear it. Forecasting from real demand is
+                what keeps you off both.
               </p>
             </Reveal>
           </div>

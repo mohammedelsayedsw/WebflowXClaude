@@ -15,13 +15,13 @@ const STEPS = [
   },
   {
     n: "3",
-    title: "Forecasting engine",
-    body: "We train on your own sales history, at the grain your team plans in, and test it against a held-back period before anyone relies on it.",
+    title: "The forecast",
+    body: "We train it on your own sales history, the way your team plans, and test it against a past period before anyone relies on it.",
   },
   {
     n: "4",
-    title: "Size and stock logic",
-    body: "Forecasts split across sizes, and a forward stock-cover walk that turns them into a reorder queue.",
+    title: "Sizes and reordering",
+    body: "It works the forecast down to each size, then turns it into a list of what to reorder and when.",
   },
   {
     n: "5",
@@ -44,9 +44,9 @@ export function HowWeWork() {
               <span className="text-[var(--sw-blue)]">not a template</span>
             </h2>
             <p className="mt-6 max-w-[72ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
-              The same approach that gave Sportland its first forecasting
-              engine, run against your stack. Platform-neutral in selection,
-              built around the decisions your buyers make.
+              The same approach that gave Sportland its first working system,
+              run on your own data. We stay neutral on which tools to use, and
+              build around the decisions your buyers make.
             </p>
           </Reveal>
         </div>

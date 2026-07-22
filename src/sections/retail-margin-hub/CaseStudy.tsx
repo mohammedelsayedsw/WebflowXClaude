@@ -5,16 +5,16 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
-  { v: "97%", k: "at category level" },
-  { v: "74%", k: "at brand, activity, and gender" },
-  { v: "9.3M", k: "transactions modelled" },
-  { v: "513k", k: "weekly forecast rows" },
-  { v: "3x", k: "lighter data pipeline" },
+  { v: "97%", k: "accuracy at category level" },
+  { v: "74%", k: "accuracy by brand and gender" },
+  { v: "9.3M", k: "sales records it learned from" },
+  { v: "513k", k: "buying recommendations a week" },
+  { v: "3x", k: "faster data pipeline" },
 ];
 
 const BUILT = [
   "A demand forecasting engine trained on 9.3 million historical sales transactions",
-  "Forecasts at the grain buyers plan in, then split across sizes for reordering",
+  "Forecasts the way buyers plan, broken down to each size",
   "Estonia, Latvia, and Lithuania modelled separately instead of as one Baltic market",
   "A rebuilt Business Central data pipeline, running on roughly a third of the resources",
   "Three category manager dashboards: replenishment recommendations, size mix, and product seasonality",
@@ -44,9 +44,9 @@ export function CaseStudy() {
               />
             </div>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
-              The Baltics&apos; leading sportswear retailer, buying to a{" "}
+              The Baltics&apos; leading sportswear retailer, buying to{" "}
               <span className="text-[var(--sw-mint)]">
-                forecast instead of a hunch
+                real demand instead of a guess
               </span>
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">

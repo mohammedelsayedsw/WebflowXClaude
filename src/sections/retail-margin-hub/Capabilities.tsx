@@ -4,28 +4,28 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const CAPABILITIES = [
   {
-    title: "A forecast at planning grain",
-    body: "Market, category, activity, brand, gender, and item type, the shape your buyers actually plan in, rather than SKUs that do not exist yet.",
+    title: "A forecast for how you actually buy",
+    body: "It forecasts by market, category, brand, and gender, the way your buyers plan, not by individual product codes that change every season.",
   },
   {
-    title: "Size-level allocation",
-    body: "Every forecast row split across sizes from real purchase shares, with totals preserved exactly.",
+    title: "Right down to each size",
+    body: "It breaks every forecast down to sizes, based on what really sells in each, so you order the right depth.",
   },
   {
-    title: "Forward stock cover",
-    body: "A rolling stock-on-hand walk that flags every line as fine, at the safety limit, or stocking out, and queues the reorders that matter.",
+    title: "See what will run out, before it does",
+    body: "It tracks how long your stock will last and flags every line as fine, running low, or about to sell out, so reorders happen in time.",
   },
   {
-    title: "Country-aware modelling",
-    body: "Each market forecast on its own demand rather than a regional average.",
+    title: "Every market on its own numbers",
+    body: "Each country is forecast on its own demand, not a shared regional average.",
   },
   {
-    title: "Explainable, not a black box",
-    body: "The signals driving each forecast are published with every model update, and planners can override at any level.",
+    title: "You can see why, and overrule it",
+    body: "It shows what's behind every number, and your team can change any forecast they disagree with.",
   },
   {
-    title: "Dashboards built for category managers",
-    body: "Replenishment recommendations, size mix, and product seasonality, built around the decisions your team makes on Monday morning.",
+    title: "Dashboards your buyers actually use",
+    body: "Reorders, size mix, and seasonal demand, laid out around the decisions your team makes every Monday.",
   },
 ];
 

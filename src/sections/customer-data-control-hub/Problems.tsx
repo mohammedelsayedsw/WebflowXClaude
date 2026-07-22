@@ -7,27 +7,27 @@ const PROBLEMS = [
   {
     n: "1",
     title: "The same person shows up many times",
-    body: "One shopper appears as separate customer files across your website, stores, guest checkout, CRM, and clienteling, so your customer counts are never quite real.",
+    body: "One shopper appears as many separate customer files, so your counts are never real.",
   },
   {
     n: "2",
     title: "A vendor controls who counts as who",
-    body: "Your team can see how customer files are matched but cannot safely change the rules without paying for a support ticket and waiting.",
+    body: "Your team cannot change the matching rules without paying and waiting.",
   },
   {
     n: "3",
     title: "Reporting is held together by hand",
-    body: "Analysts spend their week on exports, spreadsheets, and checking the numbers by hand instead of on retention and campaigns.",
+    body: "Analysts lose the week to exports and spreadsheets.",
   },
   {
     n: "4",
     title: "Your best audiences get stuck",
-    body: "The customers most likely to buy reach email, but cannot move cleanly into Google, Meta, messaging, and store workflows.",
+    body: "Your top customers reach email, but not Google, Meta, or your stores.",
   },
   {
     n: "5",
-    title: "The wrong entries get mixed into your real customer list",
-    body: "Wholesale, fulfillment, staff, and guest entries get mixed into your real customer list unless someone explicitly keeps them out.",
+    title: "The wrong entries get mixed in",
+    body: "Wholesale, staff, and guest entries get counted as customers.",
   },
 ];
 

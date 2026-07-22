@@ -34,8 +34,7 @@ function ProofStats() {
   const stats = [
     { value: "~90%", label: "faster reporting" },
     { value: "3.06M to 336K", label: "scattered records, matched to real people" },
-    { value: "40%+", label: "of online sales run on the unified data" },
-    { value: "In-house", label: "your team changes the rules, not a vendor" },
+    { value: "40%+", label: "of online sales come from email and SMS" },
   ];
   return (
     <div className="flex flex-col gap-5 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">

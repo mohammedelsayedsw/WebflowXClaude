@@ -67,8 +67,10 @@ export function Problems() {
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               You place most of your orders long before you know what will
-              sell. One thing makes that guess harder than it needs to be, and
-              it feeds all four problems below.
+              sell. One thing makes{" "}
+              <br className="hidden md:block" />
+              that guess harder than it needs to be, and it feeds all four
+              problems below.
             </p>
           </Reveal>
         </div>

@@ -13,11 +13,11 @@ const METRICS = [
 ];
 
 const BUILT = [
-  "A demand forecasting engine trained on 9.3 million historical sales transactions",
-  "Forecasts the way buyers plan, broken down to each size",
-  "Estonia, Latvia, and Lithuania modelled separately instead of as one Baltic market",
-  "A rebuilt Business Central data pipeline, running on roughly a third of the resources",
-  "Three category manager dashboards: replenishment recommendations, size mix, and product seasonality",
+  "A demand prediction model trained on 9.3 million past sales",
+  "Predicts demand the way buyers plan, broken down to each size",
+  "Estonia, Latvia, and Lithuania each planned on their own demand, not as one Baltic market",
+  "A rebuilt Business Central data pipeline, running on about a third of the resources",
+  "Three dashboards for category managers: what to reorder, which sizes, and how demand moves by season",
 ];
 
 export function CaseStudy() {
@@ -50,9 +50,8 @@ export function CaseStudy() {
               </span>
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              We built Sportland&apos;s first production demand forecasting
-              engine, and the dashboards that turn its output into weekly buying
-              decisions.
+              We built Sportland&apos;s first system for predicting demand, and
+              the dashboards that turn it into weekly buying decisions.
             </p>
           </div>
         </Reveal>
@@ -75,10 +74,6 @@ export function CaseStudy() {
           </div>
           <p className="label-code mt-4 text-white/50">
             Measured across a twelve-week test window
-          </p>
-          <p className="mt-3 max-w-[78ch] text-[12px] leading-relaxed text-white/40 md:text-[13px]">
-            Business impact on stock-out rate, service level, and full-price
-            sell-through is being measured as the dashboards move into daily use.
           </p>
         </Reveal>
 

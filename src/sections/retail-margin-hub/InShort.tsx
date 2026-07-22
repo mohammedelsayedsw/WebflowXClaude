@@ -136,8 +136,8 @@ export function InShort() {
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 It tells your buyers what to order, in which sizes, for which
                 market, and when. It works out expected demand from your own
-                sales history, so buying decisions rest on what actually sells
-                rather than last year and gut feel.
+                sales history, so buying decisions rest on what actually sells,
+                not on last year and guesswork.
               </p>
             </Reveal>
             <Reveal delay={0.15}>

@@ -10,11 +10,11 @@ const OUTCOMES = [
   },
   {
     title: "Plan each market on its own numbers",
-    how: "by forecasting each country on its own demand, not a regional average",
+    how: "by reading each country's own demand, not a regional average",
   },
   {
     title: "Order the right depth in every size",
-    how: "by breaking the forecast down to sizes, from what really sells in each",
+    how: "by breaking demand down to sizes, from what really sells in each",
   },
   {
     title: "Reorder before you stock out",

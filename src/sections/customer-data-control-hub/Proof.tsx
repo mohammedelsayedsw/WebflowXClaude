@@ -5,7 +5,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const METRICS = [
   { v: "~90%", k: "faster reporting" },
-  { v: "3.06M to 336K", k: "duplicate records resolved into real customers" },
+  { v: "3.06M to 336K", k: "scattered records, matched to real people" },
   { v: "40%+", k: "of online sales run on the unified data" },
   { v: "In-house", k: "identity, data, and reporting rules owned by the team" },
 ];

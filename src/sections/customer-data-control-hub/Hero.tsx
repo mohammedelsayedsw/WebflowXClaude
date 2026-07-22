@@ -33,7 +33,7 @@ function HeroBg() {
 function ProofStats() {
   const stats = [
     { value: "~90%", label: "faster reporting" },
-    { value: "3.06M to 336K", label: "duplicate records resolved into real customers" },
+    { value: "3.06M to 336K", label: "scattered records, matched to real people" },
     { value: "40%+", label: "of online sales run on the unified data" },
     { value: "In-house", label: "your team changes the rules, not a vendor" },
   ];

@@ -5,23 +5,23 @@ import { Reveal } from "@/components/primitives/Reveal";
 const ITEMS = [
   {
     title: "A control assessment",
-    body: "A full read of your sources, duplicate records, identity rules, activation gaps, and renewal risk, with a costed plan, before you commit to anything big.",
+    body: "A full read of your sources, duplicate customer files, identity rules, gaps in how you use the data, and renewal risk, with a costed plan, before you commit to anything big.",
   },
   {
-    title: "A governed data foundation",
-    body: "Clean, checked data layers that catch bad records and can grow without being rebuilt.",
+    title: "A clean, checked customer database",
+    body: "It catches bad customer files and can grow without being rebuilt.",
   },
   {
     title: "One customer identity",
-    body: "Readable rules that decide which records are the same person, with staff, wholesale, and fulfillment records kept out.",
+    body: "Readable rules that decide which entries are the same person, with staff, wholesale, and fulfillment entries kept out.",
   },
   {
     title: "Audiences that actually move",
-    body: "Trusted profiles pushed to email, SMS, Google, Meta, and your store tools, as campaigns and suppression, not just reports.",
+    body: "Trusted customer files sent to email, SMS, Google, Meta, and your store tools, to run campaigns and to leave the right people out, not just for reports.",
   },
   {
     title: "Reporting and clienteling on real customers",
-    body: "Retention, merchandising, and store views built on clean profiles, so teams act without rebuilding exports every week.",
+    body: "Retention, merchandising, and store views built on clean customer files, so teams act without rebuilding exports every week.",
   },
   {
     title: "Ownership handed over",

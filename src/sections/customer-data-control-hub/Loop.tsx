@@ -5,27 +5,27 @@ import { Reveal } from "@/components/primitives/Reveal";
 const STEPS = [
   {
     n: "1",
-    title: "Map",
-    body: "We trace every source, every match rule, every renewal deadline, and every place your audiences need to go.",
+    title: "Find it",
+    body: "We trace every source, every rule for which entries are the same person, every renewal deadline, and every place your audiences need to go.",
   },
   {
     n: "2",
-    title: "Govern",
-    body: "We build clean, checked data layers, so bad records are caught and everything can be traced back.",
+    title: "Clean it",
+    body: "We build a clean, checked customer database, so bad customer files are caught and everything can be traced back.",
   },
   {
     n: "3",
-    title: "Resolve",
-    body: "We set clear, readable rules for which records are the same person, and which to keep out.",
+    title: "Match it",
+    body: "We set clear, readable rules for which entries are the same person, and which to keep out.",
   },
   {
     n: "4",
-    title: "Activate",
-    body: "We push trusted profiles into email, SMS, Google, Meta, reporting, and store teams.",
+    title: "Use it",
+    body: "We send trusted customer files to email, SMS, Google, Meta, reporting, and store teams.",
   },
   {
     n: "5",
-    title: "Operate",
+    title: "Own it",
     body: "We train your team to watch quality, change the rules, and add new uses themselves.",
   },
 ];
@@ -37,10 +37,10 @@ export function Loop() {
         <div className="mb-12 max-w-[54rem] md:mb-16">
           <Reveal>
             <span className="label-code mb-4 block text-[var(--sw-black)]/50">
-              The loop
+              How it works
             </span>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
-              From scattered records to{" "}
+              From scattered customer files to{" "}
               <span className="text-[var(--sw-blue)]">
                 action your team owns
               </span>

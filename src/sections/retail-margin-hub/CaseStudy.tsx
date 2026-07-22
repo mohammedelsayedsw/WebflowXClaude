@@ -106,8 +106,8 @@ export function CaseStudy() {
                 The brief, in his words
               </div>
               <p className="mt-4 text-[14px] leading-relaxed text-white/60 md:text-[15px]">
-                Brand Manager Pertti Prits framed the objective at the start of
-                the engagement:
+                When the project started, Sportland&apos;s Brand Manager set one
+                goal:
               </p>
               <blockquote className="font-head mt-4 text-[19px] leading-[1.3] tracking-[-0.005em] text-white md:text-[22px]">
                 &ldquo;Maximize net sales with the most optimal stock

@@ -137,9 +137,9 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                Your team owns the rules. Changing how customers are matched,
-                reported on, or used no longer waits in a vendor&apos;s support
-                queue.
+                And you control that list yourself. When you want to change how
+                customers are grouped or counted, your team does it, instead of
+                paying your software supplier and waiting for them.
               </p>
             </Reveal>
           </div>

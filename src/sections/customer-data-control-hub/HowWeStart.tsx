@@ -15,7 +15,7 @@ const PACKAGES = [
   },
   {
     n: "3",
-    title: "Use",
+    title: "Activate",
     body: "Email, SMS, paid media, reporting, and store use cases, prioritised by value.",
   },
   {

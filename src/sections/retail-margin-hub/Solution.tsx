@@ -5,28 +5,28 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const OUTCOMES = [
   {
-    title: "Buy to real demand, not last year's gut",
-    how: "by a weekly forecast at the grain your buyers actually plan in",
+    title: "Buy what will actually sell, not what sold last year",
+    how: "by working out demand from your own recent sales, per market",
   },
   {
     title: "Plan each market on its own numbers",
-    how: "by modelling every country separately with country-aware features",
+    how: "by forecasting each country on its own demand, not a regional average",
   },
   {
     title: "Order the right depth in every size",
-    how: "by splitting each forecast across sizes using real purchase shares",
+    how: "by breaking the forecast down to sizes, from what really sells in each",
   },
   {
     title: "Reorder before you stock out",
-    how: "by a forward stock-cover walk that flags every line as fine, at the limit, or stocking out",
+    how: "by flagging every line ahead of time as fine, running low, or about to sell out",
   },
   {
     title: "Stop discounting your way out of bad buys",
-    how: "by seeing weeks of cover ahead instead of reacting after the stock has piled up",
+    how: "by showing how long your stock will last, so you act before it piles up",
   },
   {
     title: "Trust it enough to actually use it",
-    how: "by publishing what drives every forecast and letting planners override at any level",
+    how: "by showing what's behind every number, and letting your team overrule it",
   },
 ];
 

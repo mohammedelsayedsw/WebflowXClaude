@@ -143,10 +143,10 @@ export function Hero() {
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
                 Buying, reordering, and markdown decisions still run on
-                spreadsheets and last year&apos;s gut feel, on data scattered
+                spreadsheets and last year&apos;s guesswork, on data spread
                 across systems that only tell you what already happened. This
-                gives your buyers a weekly forecast at the grain they actually
-                plan at.
+                gives your buyers a weekly plan for what to order, in which sizes
+                and markets.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

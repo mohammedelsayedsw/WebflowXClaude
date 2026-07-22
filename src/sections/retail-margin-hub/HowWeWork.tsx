@@ -11,17 +11,17 @@ const STEPS = [
   {
     n: "2",
     title: "Data foundation",
-    body: "We build the pipeline from Business Central and your retail and web systems into one forecast-ready layer, reusable for whatever you model next.",
+    body: "We build the pipeline from Business Central and your retail and web systems into one clean layer the model can read, reusable for whatever you build next.",
   },
   {
     n: "3",
-    title: "The forecast",
+    title: "The demand model",
     body: "We train it on your own sales history, the way your team plans, and test it against a past period before anyone relies on it.",
   },
   {
     n: "4",
     title: "Sizes and reordering",
-    body: "It works the forecast down to each size, then turns it into a list of what to reorder and when.",
+    body: "It breaks demand down to each size, then turns it into a list of what to reorder and when.",
   },
   {
     n: "5",

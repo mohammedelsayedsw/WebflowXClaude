@@ -7,7 +7,7 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
 const TRUST = [
   "Twenty minutes, no commitment",
   "We tell you if it is not a fit",
-  "We do not lead with a platform migration",
+  "We do not lead with moving you to new software",
   "Data and analytics team, not a salesperson",
 ];
 
@@ -28,13 +28,15 @@ export function CTA() {
           {/* LEFT · the pitch */}
           <Reveal>
             <h2 className="font-head max-w-[20ch] text-[34px] leading-[1.05] text-white md:text-[48px] lg:text-[54px]">
-              See where your customer data is{" "}
-              <span className="text-[var(--sw-mint)]">leaking control</span>
+              See where you have{" "}
+              <span className="text-[var(--sw-mint)]">
+                lost control of your customer data
+              </span>
             </h2>
             <p className="mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white/80 md:text-[17px]">
-              Twenty minutes with our team. We look at where your customer
-              records are fragmented, which changes are stuck behind a vendor,
-              and whether this fits. If it does not, we will say so.
+              Twenty minutes with our team. We look at where your customer files
+              are fragmented, which changes are stuck behind a vendor, and
+              whether this fits. If it does not, we will say so.
             </p>
             <ul className="mt-8 space-y-3 text-[14px] text-white/75 md:mt-10 md:text-[15px]">
               {TRUST.map((t) => (

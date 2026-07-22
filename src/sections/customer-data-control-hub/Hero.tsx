@@ -33,7 +33,7 @@ function HeroBg() {
 function ProofStats() {
   const stats = [
     { value: "~90%", label: "faster reporting" },
-    { value: "3.06M to 336K", label: "scattered records, matched to real people" },
+    { value: "3.06M to 336K", label: "scattered customer files, matched to real people" },
     { value: "40%+", label: "of online sales come from email and SMS" },
   ];
   return (
@@ -143,14 +143,15 @@ export function Hero() {
               </h1>
 
               <p className="font-head mt-4 text-[17px] font-semibold leading-snug text-white/90 md:text-[19px]">
-                Own your customer identity. Activate every channel.
+                See who your customers really are, and reach them wherever they
+                buy.
               </p>
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                The same shopper shows up as different records across your
-                stores, website, CRM, and messaging. This gives you one clean
-                customer identity your own team controls, and can push to email,
-                SMS, paid media, reporting, and store teams.
+                The same shopper shows up as different customer files across
+                your stores, website, CRM, and messaging. This gives you one
+                clean customer identity your own team controls, and can send to
+                email, SMS, paid media, reporting, and store teams.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

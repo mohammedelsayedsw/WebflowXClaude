@@ -5,32 +5,32 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const METRICS = [
   { v: "~90%", k: "faster reporting" },
-  { v: "3.06M to 336K", k: "scattered records, matched to real people" },
-  { v: "40%+", k: "of online sales come from email and SMS" },
-  { v: "In-house", k: "identity, data, and reporting rules owned by the team" },
+  { v: "3.06M to 336K", k: "records matched to real people" },
+  { v: "40%+", k: "of online sales from email and SMS" },
+  { v: "In-house", k: "your team owns the rules" },
 ];
 
 const BUILT = [
-  "One trusted customer identity, replacing vendor-controlled matching rules",
-  "Clean, checked data layers with failure handling, so bad records get caught",
+  "One trusted customer identity, replacing vendor-controlled rules for which entries are the same person",
+  "A clean, checked customer database with failure handling, so bad customer files get caught",
   "Automated reporting, replacing manual exports and spreadsheets",
-  "Website behaviour, carts, and purchases connected to known customers",
-  "Unified audiences feeding email, SMS, Google, and Meta",
+  "What people do on your site, carts, and purchases connected to known customers",
+  "Joined-up audiences feeding email, SMS, Google, and Meta",
   "Store stylists given real customer history and preferences",
 ];
 
 const SHIFTS = [
   {
-    before: "Vendor-gated matching changes",
-    after: "matching rules the team owns and can read",
+    before: "A vendor gated who counts as the same person",
+    after: "the team owns and can read those rules",
   },
   {
     before: "Manual exports and spreadsheet reporting",
-    after: "automated reporting on clean profiles",
+    after: "automated reporting on clean customer files",
   },
   {
-    before: "Web behaviour cut off from known customers",
-    after: "web events mapped to real customers",
+    before: "What people do on your site, cut off from known customers",
+    after: "what people do on your site, mapped to real customers",
   },
   {
     before: "Another forced contract renewal",
@@ -58,9 +58,10 @@ export function Proof() {
               </span>
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
-              Lafayette 148 New York moved off vendor-locked matching rules and
-              spreadsheet reporting onto a foundation their own team runs, before
-              their old contract forced another year&apos;s renewal.
+              Lafayette 148 New York moved off vendor-locked rules for which
+              entries are the same person and spreadsheet reporting onto a clean,
+              checked customer database their own team runs, before their old
+              contract forced another year&apos;s renewal.
             </p>
           </div>
         </Reveal>
@@ -84,9 +85,10 @@ export function Proof() {
           {/* mandatory honesty caveats, straight from the case doc */}
           <p className="mt-4 max-w-[90ch] text-[12px] leading-relaxed text-white/45 md:text-[13px]">
             Lafayette 148 operating results. The 40%+ is the share of online
-            sales from email and SMS, not uplift caused by the migration. The
-            3.06M to 336K is a point-in-time reading on the main matching rule.
-            The 90% refers to reporting cycle time.
+            sales from email and SMS, not uplift caused by moving to new
+            software. The 3.06M to 336K is a point-in-time reading on the main
+            rule for which entries are the same person. The 90% refers to
+            reporting cycle time.
           </p>
         </Reveal>
 

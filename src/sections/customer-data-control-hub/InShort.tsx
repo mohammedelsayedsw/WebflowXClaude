@@ -12,9 +12,9 @@ function ControlDiagram() {
       className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto rounded-[4px] p-5 sm:p-7"
       style={{ background: "#10132c", border: "1px solid rgba(255,255,255,0.1)" }}
     >
-      {/* Top · where it activates */}
+      {/* Top · where you send it */}
       <div className="label-code text-white/45 text-[10px] mb-3 text-center">
-        Where it activates
+        Where you send it
       </div>
       <div className="grid grid-cols-4 gap-1.5">
         {activations.map((c) => (
@@ -129,18 +129,17 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                It is one layer that sits over the systems where your customer
-                data already lives, your website, POS, CRM, messaging,
-                clienteling, and paid media. It works out which records are the
-                same person, cleans them into one trusted profile, and sends
-                those profiles to the channels that need them.
+                Your customer information is scattered across your website, your
+                shops, your CRM, and your marketing tools. This pulls it
+                together, works out which entries are the same person, and gives
+                you one clean list you can actually use.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Your team owns the rules. Changing how customers are matched,
-                reported on, or activated no longer waits in a vendor&apos;s
-                support queue.
+                reported on, or used no longer waits in a vendor&apos;s support
+                queue.
               </p>
             </Reveal>
           </div>

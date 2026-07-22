@@ -139,8 +139,8 @@ export function Hero() {
               </div>
 
               <h1 className="font-head max-w-[16ch] text-[38px] leading-[1.03] tracking-[-0.015em] text-white sm:text-[46px] md:text-[54px] lg:text-[60px]">
-                Customer Data{" "}
-                <span className="text-[var(--sw-mint)]">Control</span> Hub
+                Customer{" "}
+                <span className="text-[var(--sw-mint)]">Data Control</span> Hub
               </h1>
 
               <p className="font-head mt-4 text-[17px] font-semibold leading-snug text-white/90 md:text-[19px]">

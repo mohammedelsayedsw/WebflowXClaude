@@ -102,10 +102,7 @@ export function CaseStudy() {
 
           <Reveal delay={0.1}>
             <figure className="rounded-[4px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
-              <div className="label-code text-white/50">
-                The brief, in his words
-              </div>
-              <p className="mt-4 text-[14px] leading-relaxed text-white/60 md:text-[15px]">
+              <p className="text-[14px] leading-relaxed text-white/60 md:text-[15px]">
                 When the project started, Sportland&apos;s Brand Manager set one
                 goal:
               </p>

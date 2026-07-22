@@ -110,8 +110,17 @@ export function CaseStudy() {
                 &ldquo;Maximize net sales with the most optimal stock
                 level.&rdquo;
               </blockquote>
-              <figcaption className="label-code mt-5 text-white/55">
-                Pertti Prits, Brand Manager, Sportland
+              <figcaption className="mt-5 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl("/retail-margin-hub/team/pertti-prits.jpg")}
+                  alt="Pertti Prits"
+                  className="h-11 w-11 shrink-0 rounded-full object-cover"
+                  style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+                />
+                <span className="label-code text-white/55">
+                  Pertti Prits, Brand Manager, Sportland
+                </span>
               </figcaption>
             </figure>
           </Reveal>

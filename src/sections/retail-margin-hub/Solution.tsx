@@ -41,7 +41,7 @@ export function Solution() {
           </span>
           <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
             We replace spreadsheet planning with one{" "}
-            <span className="text-[var(--sw-blue)]">Retail Margin Hub</span>.
+            <span className="text-[var(--sw-blue)]">Retail Margin Hub</span>
           </h2>
         </Reveal>
 

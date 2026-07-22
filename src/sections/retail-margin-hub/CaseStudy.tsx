@@ -51,7 +51,9 @@ export function CaseStudy() {
             </h2>
             <p className="mt-6 max-w-[78ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               We built Sportland&apos;s first system for predicting demand, and
-              the dashboards that turn it into weekly buying decisions.
+              the dashboards that turn{" "}
+              <br className="hidden md:block" />
+              it into weekly buying decisions.
             </p>
           </div>
         </Reveal>
@@ -99,27 +101,20 @@ export function CaseStudy() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <figure className="border-l-2 border-[var(--sw-mint)] pl-6">
-              <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[26px]">
+            <figure className="rounded-[4px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
+              <div className="label-code text-white/50">
+                The brief, in his words
+              </div>
+              <p className="mt-4 text-[14px] leading-relaxed text-white/60 md:text-[15px]">
+                Brand Manager Pertti Prits framed the objective at the start of
+                the engagement:
+              </p>
+              <blockquote className="font-head mt-4 text-[19px] leading-[1.3] tracking-[-0.005em] text-white md:text-[22px]">
                 &ldquo;Maximize net sales with the most optimal stock
                 level.&rdquo;
               </blockquote>
-              <figcaption className="mt-5 flex items-center gap-4">
-                <span
-                  className="font-head flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-[15px] text-[var(--sw-mint)]"
-                  style={{ border: "1px solid rgba(110,247,110,0.4)" }}
-                  aria-hidden
-                >
-                  PP
-                </span>
-                <div>
-                  <div className="text-[14px] font-medium text-white">
-                    Pertti Prits
-                  </div>
-                  <div className="label-code mt-0.5 text-white/55">
-                    Brand Manager · Sportland
-                  </div>
-                </div>
+              <figcaption className="label-code mt-5 text-white/55">
+                Pertti Prits, Brand Manager, Sportland
               </figcaption>
             </figure>
           </Reveal>

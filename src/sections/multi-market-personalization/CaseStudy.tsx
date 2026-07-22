@@ -109,7 +109,7 @@ export function CaseStudy() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={assetUrl(
-                    "/multi-market-personalization-2/team/henri-kruusel.jpg"
+                    "/multi-market-personalization/team/henri-kruusel.jpg"
                   )}
                   alt="Henri Kruusel"
                   className="h-12 w-12 shrink-0 rounded-full object-cover"

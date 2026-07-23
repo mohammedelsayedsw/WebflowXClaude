@@ -32,7 +32,7 @@ function HeroBg() {
 /** Family First proof, four numbers. Detail and caveats live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "52 weeks ahead", label: "room-by-room occupancy, refreshed weekly" },
+    { value: "5+ weeks ahead", label: "knowing how full rooms will be" },
     { value: "Under 1 child", label: "average miss on each room's weekly number" },
     { value: "17,000+", label: "UK nurseries ranked as acquisition targets" },
     { value: "1.7 million", label: "UK postcodes matched to family types and likely revenue" },

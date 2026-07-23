@@ -5,13 +5,10 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
-  { v: "52 weeks", k: "room-by-room occupancy, refreshed every Monday" },
-  {
-    v: "Under 1 child",
-    k: "each room's weekly number was off by less than one child on average",
-  },
+  { v: "52 weeks", k: "room-by-room occupancy,\nrefreshed every Monday" },
+  { v: "7 systems", k: "brought into one place" },
   { v: "17,000+", k: "UK nurseries valued and scored for acquisitions" },
-  { v: "1.7 million", k: "UK postcodes mapped to family types and likely revenue" },
+  { v: "1.7 million", k: "UK postcodes mapped to family types and likely spend" },
 ];
 
 const BUILT = [
@@ -75,7 +72,7 @@ export function Proof() {
               one trusted platform. Now they can see how full each room will be
               for the next year, refreshed every Monday, score acquisition
               targets across the whole UK, and show investors numbers that trace
-              back to source. We have run this since 2025, and it is still live.
+              back to source.
             </p>
           </div>
         </Reveal>
@@ -89,19 +86,13 @@ export function Proof() {
                   <div className="font-head text-[22px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[28px]">
                     {m.v}
                   </div>
-                  <div className="mt-2 text-[12px] leading-tight text-white/55 md:text-[13px]">
+                  <div className="mt-2 whitespace-pre-line text-[12px] leading-tight text-white/55 md:text-[13px]">
                     {m.k}
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          {/* required honesty caveat */}
-          <p className="mt-4 max-w-[90ch] text-[12px] leading-relaxed text-white/45 md:text-[13px]">
-            Family First results. Another group&apos;s numbers depend on its own
-            data history, coverage, and setup. The 17,000-nursery scoring was a
-            one-off study, not a weekly job.
-          </p>
         </Reveal>
 
         {/* What we built + before/after · two columns */}
@@ -156,8 +147,7 @@ export function Proof() {
         <Reveal delay={0.1}>
           <p className="mt-12 border-t border-white/10 pt-6 text-[13px] leading-relaxed text-white/50 md:mt-14 md:text-[14px]">
             Built on Databricks and AWS, with Looker Studio and Tableau
-            reporting. The stack proves delivery. What you buy is trusted numbers
-            and forward visibility.
+            reporting.
           </p>
         </Reveal>
       </div>

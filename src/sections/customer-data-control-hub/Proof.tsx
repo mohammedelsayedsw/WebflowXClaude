@@ -106,7 +106,7 @@ export function Proof() {
                   Jonathan Chan
                 </div>
                 <div className="label-code mt-0.5 text-white/55">
-                  Executive Director
+                  Executive Director, Lafayette 148
                 </div>
               </figcaption>
             </figure>

@@ -39,13 +39,13 @@ function ProofStats() {
   return (
     <div className="flex flex-col gap-5 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
       {stats.map((s) => (
-        <div key={s.label} className="flex flex-col gap-1.5 min-w-0">
+        <div key={s.label} className="flex flex-col gap-2 min-w-0">
           <div
-            className="font-head text-[24px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[30px]"
+            className="font-head text-[30px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[38px]"
           >
             {s.value}
           </div>
-          <div className="label-code text-[10px] leading-snug text-white/60">
+          <div className="label-code text-[11px] leading-snug text-white/60">
             {s.label}
           </div>
         </div>
@@ -144,10 +144,9 @@ export function Hero() {
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
                 See who your customers really are, and reach them wherever they
-                buy. The same shopper shows up as different customer files across
-                your stores, website, CRM, and messaging. The Customer Data
-                Control Hub gives you one clean view your own team controls, and
-                can send to email, SMS, paid media, reporting, and store teams.
+                buy. The Customer Data Control Hub gives you one clean view of
+                every customer that your own team controls, and can send to
+                email, SMS, paid media, reporting, and store teams.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

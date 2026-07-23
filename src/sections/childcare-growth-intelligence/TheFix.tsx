@@ -18,14 +18,14 @@ const OUTCOMES = [
   },
   {
     title: "A clear picture of your families",
-    how: "by mapping the types of families across postcodes and their likely revenue",
+    how: "by mapping the types of families in each area and how much they would spend",
   },
   {
     title: "Hiring tied to where you grow",
     how: "by connecting hiring to how full your nurseries are and where you are opening next",
   },
   {
-    title: "Teams that act instead of reconcile",
+    title: "Teams that act instead of fixing spreadsheets",
     how: "by one reliable foundation instead of weekly spreadsheet work",
   },
 ];

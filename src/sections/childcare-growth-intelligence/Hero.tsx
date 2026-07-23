@@ -32,9 +32,9 @@ function HeroBg() {
 /** Family First proof, four numbers. Detail and caveats live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "A year ahead", label: "knowing how full rooms will be" },
-    { value: "Every nursery", label: "scored, so you can see the best acquisitions" },
-    { value: "Every area", label: "mapped, so you know where to grow" },
+    { value: "50+ weeks ahead", label: "knowing how full rooms will be" },
+    { value: "15K+ nurseries", label: "scored, so you can see the best acquisitions" },
+    { value: "1M+ postcodes", label: "mapped, so you can see where to expand" },
   ];
   return (
     <div className="flex flex-col gap-5 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">

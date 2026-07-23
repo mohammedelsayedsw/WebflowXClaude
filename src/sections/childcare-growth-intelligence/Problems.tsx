@@ -22,7 +22,7 @@ const PROBLEMS = [
   {
     n: "4",
     title: "Hiring is cut off from growth",
-    body: "Recruitment is planned separately from occupancy and new sites.",
+    body: "Hiring is planned separately from how full your nurseries are and where you are opening new ones.",
   },
   {
     n: "5",
@@ -62,8 +62,9 @@ export function Problems() {
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               As a group adds locations, brands, systems, and investors, the
-              decisions that matter get harder to support. These five gaps are
-              the result.
+              decisions that matter get{" "}
+              <br className="hidden md:block" />
+              harder to support. These five gaps are the result.
             </p>
           </Reveal>
         </div>

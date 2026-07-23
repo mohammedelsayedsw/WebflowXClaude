@@ -6,7 +6,7 @@ const STAGES = [
   {
     n: "1",
     title: "Assess",
-    body: "We map your systems, test how far your numbers can be trusted, review privacy, and confirm whether a reliable view of the weeks ahead is possible, around one priority decision.",
+    body: "We map your systems, check how far your numbers can be trusted, and start with the one decision you most need to fix.",
   },
   {
     n: "2",

@@ -19,25 +19,6 @@ const BUILT = [
   "Sensitive family data protected, with controlled access and a clear record of every number",
 ];
 
-const SHIFTS = [
-  {
-    before: "Notebooks and static spreadsheets",
-    after: "one trusted platform the team relies on",
-  },
-  {
-    before: "Occupancy read after the fact",
-    after: "a 52-week forward view, refreshed weekly",
-  },
-  {
-    before: "Expansion argued from anecdote",
-    after: "more than 17,000 nurseries scored on the same basis",
-  },
-  {
-    before: "Board numbers no one could trace",
-    after: "figures with a clear record of where they came from",
-  },
-];
-
 export function Proof() {
   return (
     <section
@@ -95,53 +76,25 @@ export function Proof() {
           </div>
         </Reveal>
 
-        {/* What we built + before/after · two columns */}
-        <div className="mt-14 grid gap-10 md:mt-16 lg:grid-cols-2 lg:gap-16 lg:items-start">
-          <Reveal>
-            <div>
-              <span className="label-code mb-5 block text-white/50">
-                What we built
-              </span>
-              <ul className="flex flex-col gap-3">
-                {BUILT.map((b) => (
-                  <li
-                    key={b}
-                    className="flex gap-3 text-[15px] leading-snug text-white/80 md:text-[16px]"
-                  >
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--sw-mint)]" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div>
-              <span className="label-code mb-5 block text-white/50">
-                Before and after
-              </span>
-              <div className="flex flex-col gap-2.5">
-                {SHIFTS.map((s) => (
-                  <div
-                    key={s.before}
-                    className="rounded-[4px] border border-white/10 bg-white/[0.02] p-4"
-                  >
-                    <div className="text-[13px] leading-snug text-white/45 line-through decoration-white/25">
-                      {s.before}
-                    </div>
-                    <div className="mt-1.5 flex gap-2 text-[14px] leading-snug text-white md:text-[15px]">
-                      <span aria-hidden className="text-[var(--sw-mint)]">
-                        &rarr;
-                      </span>
-                      {s.after}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
+        {/* What we built · full width */}
+        <Reveal>
+          <div className="mt-14 md:mt-16">
+            <span className="label-code mb-5 block text-white/50">
+              What we built
+            </span>
+            <ul className="grid gap-x-16 gap-y-3 sm:grid-cols-2">
+              {BUILT.map((b) => (
+                <li
+                  key={b}
+                  className="flex gap-3 text-[15px] leading-snug text-white/80 md:text-[16px]"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--sw-mint)]" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
 
         {/* Built on · the only place the stack is named */}
         <Reveal delay={0.1}>

@@ -23,6 +23,11 @@ const STAGES = [
     title: "Expand",
     body: "We add market insight, family types, workforce planning, and board reporting.",
   },
+  {
+    n: "5",
+    title: "Support",
+    body: "For the first 30 days after it goes live, our team stays with you, answers your questions, and helps your team get the most out of it.",
+  },
 ];
 
 export function Delivery() {
@@ -43,7 +48,7 @@ export function Delivery() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 md:gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-4">
           {STAGES.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.06} className="h-full">
               <div className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">

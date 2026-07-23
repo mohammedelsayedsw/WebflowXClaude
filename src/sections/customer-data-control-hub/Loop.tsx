@@ -6,12 +6,12 @@ const STEPS = [
   {
     n: "1",
     title: "Find it",
-    body: "We trace every source, every rule for which entries are the same person, every renewal deadline, and every place your audiences need to go.",
+    body: "We list every source of customer data, every rule for which entries are the same person, every renewal deadline, and every place your audiences need to go.",
   },
   {
     n: "2",
     title: "Clean it",
-    body: "We build a clean, checked customer database, so bad customer files are caught and everything can be traced back.",
+    body: "We build a clean, checked customer database, so wrong entries are caught and everything can be traced back.",
   },
   {
     n: "3",
@@ -37,7 +37,7 @@ export function Loop() {
         <div className="mb-12 max-w-[54rem] md:mb-16">
           <Reveal>
             <span className="label-code mb-4 block text-[var(--sw-black)]/50">
-              How it works
+              The solution
             </span>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
               From scattered customer files to{" "}

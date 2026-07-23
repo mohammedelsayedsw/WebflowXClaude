@@ -21,7 +21,7 @@ const PACKAGES = [
   {
     n: "4",
     title: "Operate",
-    body: "Monitoring, support, and new uses over time. A retainer once it is live.",
+    body: "We keep it running, fix issues, and help you add new campaigns and reports over time.",
   },
 ];
 

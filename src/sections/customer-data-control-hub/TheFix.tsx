@@ -21,8 +21,8 @@ const OUTCOMES = [
     how: "by automated reporting on clean customer files, not weekly exports",
   },
   {
-    title: "Give store teams real customer history",
-    how: "by putting each customer's purchases and preferences in front of stylists",
+    title: "Give store staff real customer history",
+    how: "by putting each customer's past purchases and preferences on the screen in front of them",
   },
   {
     title: "Change the rules without a vendor",

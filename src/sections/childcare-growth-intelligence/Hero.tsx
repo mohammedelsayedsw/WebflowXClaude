@@ -32,10 +32,10 @@ function HeroBg() {
 /** Family First proof, four numbers. Detail and caveats live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "5+ weeks ahead", label: "knowing how full rooms will be" },
+    { value: "50+ weeks ahead", label: "knowing how full rooms will be" },
     { value: "Under 1 child", label: "average miss on each room's weekly number" },
-    { value: "17,000+", label: "UK nurseries ranked as acquisition targets" },
-    { value: "1.7 million", label: "UK postcodes matched to family types and likely revenue" },
+    { value: "17,000+ nurseries", label: "ranked, so you know which to buy" },
+    { value: "1M+ postcodes", label: "mapped, so you know where to grow" },
   ];
   return (
     <div className="flex flex-col gap-5 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">

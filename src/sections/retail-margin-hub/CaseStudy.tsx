@@ -118,9 +118,14 @@ export function CaseStudy() {
                   className="h-11 w-11 shrink-0 rounded-full object-cover"
                   style={{ border: "1px solid rgba(255,255,255,0.15)" }}
                 />
-                <span className="label-code text-white/55">
-                  Pertti Prits, Brand Manager, Sportland
-                </span>
+                <div>
+                  <div className="text-[14px] font-medium text-white">
+                    Pertti Prits
+                  </div>
+                  <div className="label-code mt-0.5 text-white/55">
+                    Brand Manager, Sportland
+                  </div>
+                </div>
               </figcaption>
             </figure>
           </Reveal>

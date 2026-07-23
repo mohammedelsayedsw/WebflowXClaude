@@ -101,7 +101,7 @@ export function CaseStudy() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <figure className="border-l-2 border-[var(--sw-mint)] pl-6">
+            <figure className="rounded-[4px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
               <blockquote className="font-head text-[20px] leading-[1.25] tracking-[-0.005em] text-white md:text-[26px]">
                 &ldquo;scandiweb has a future-looking attitude.&rdquo;
               </blockquote>
@@ -120,7 +120,7 @@ export function CaseStudy() {
                     Henri Kruusel
                   </div>
                   <div className="label-code mt-0.5 text-white/55">
-                    Head of eCommerce and Marketing · Sportland
+                    Head of eCommerce and Marketing, Sportland
                   </div>
                 </div>
               </figcaption>

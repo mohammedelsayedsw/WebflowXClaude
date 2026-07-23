@@ -59,7 +59,7 @@ export function Proof() {
         {/* Stats band · full width, one row of four */}
         <Reveal delay={0.05}>
           <div className="mt-12 border-y border-white/10 py-8 md:mt-14 md:py-10">
-            <div className="flex flex-wrap gap-x-12 gap-y-8 md:gap-x-16">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:flex lg:justify-between lg:gap-x-8">
               {METRICS.map((m) => (
                 <div key={m.k}>
                   <div className="font-head text-[22px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[30px]">
@@ -96,8 +96,8 @@ export function Proof() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <figure className="border-l-2 border-[var(--sw-mint)] pl-6">
-              <blockquote className="font-head text-[20px] leading-[1.3] tracking-[-0.005em] text-white md:text-[24px]">
+            <figure className="rounded-[4px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
+              <blockquote className="font-head text-[19px] leading-[1.35] tracking-[-0.005em] text-white md:text-[22px]">
                 &ldquo;scandiweb is experienced and responsive. A true partner
                 whose expertise we rely on for our toughest projects.&rdquo;
               </blockquote>

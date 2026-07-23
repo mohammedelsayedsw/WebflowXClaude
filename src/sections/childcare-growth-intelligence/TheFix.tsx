@@ -10,7 +10,7 @@ const OUTCOMES = [
   },
   {
     title: "Capacity risk you see coming",
-    how: "by a 52-week, room-by-room view, refreshed every week",
+    how: "by a room-by-room view up to a year ahead, refreshed every week",
   },
   {
     title: "Growth backed by evidence",

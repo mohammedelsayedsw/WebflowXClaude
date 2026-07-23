@@ -7,22 +7,27 @@ const PROBLEMS = [
   {
     n: "1",
     title: "You cannot fully trust your own numbers",
-    body: "Leadership cannot trace every investor-facing number back to one reliable source.",
+    body: "Leadership cannot trace every investor number back to one reliable source.",
   },
   {
     n: "2",
     title: "Capacity problems show up too late",
-    body: "Room occupancy is read off static spreadsheets, so there is little time to act on admissions, marketing, or staffing.",
+    body: "Room occupancy is read off spreadsheets, so there is little time to act.",
   },
   {
     n: "3",
-    title: "Growth decisions run on anecdote",
-    body: "New sites and acquisitions get discussed without a clear view of local demand, quality, pricing, capacity, and revenue.",
+    title: "Growth decisions run on guesswork",
+    body: "New sites and acquisitions get discussed without a clear view of demand, pricing, and capacity.",
   },
   {
     n: "4",
+    title: "Hiring is cut off from growth",
+    body: "Recruitment is planned separately from occupancy and new sites.",
+  },
+  {
+    n: "5",
     title: "Teams assemble data instead of using it",
-    body: "Operations, finance, marketing, and people teams spend their time reconciling systems rather than improving performance.",
+    body: "Finance, operations, and marketing spend their time reconciling systems.",
   },
 ];
 
@@ -57,15 +62,13 @@ export function Problems() {
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               As a group adds locations, brands, systems, and investors, the
-              decisions that matter get harder to support. Occupancy is in one
-              system, recruitment in another, family and enquiry data somewhere
-              else, and board reporting waits on spreadsheets. These four gaps
-              are the result.
+              decisions that matter get harder to support. These five gaps are
+              the result.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {PROBLEMS.map((p, i) => (
             <Reveal key={p.n} delay={i * 0.07} className="h-full">
               <div className="relative flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.02] p-5">

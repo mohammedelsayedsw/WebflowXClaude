@@ -129,18 +129,19 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                Your group&apos;s information is scattered across your nursery
-                systems, your CRM, your recruitment tools, your finance data, and
-                outside market data. The Childcare Growth Intelligence Hub brings
-                it together, keeps a clear record of where every number comes
-                from, and turns it into occupancy forecasts, board reporting, and
-                growth decisions.
+                It answers three questions a growing nursery group cannot answer
+                well from spreadsheets: how full will each room be in the weeks
+                ahead, can you stand behind the numbers you put in front of
+                investors, and where is the next site or acquisition worth
+                making. The Childcare Growth Intelligence Hub pulls your nursery,
+                CRM, recruitment, finance, and market data into one place, and
+                turns it into those answers.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-5 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                And your own team can rely on it. The numbers come from one
-                trusted source, so board reporting, capacity planning, and
+                And your own team can rely on it. Every number traces back to
+                one trusted source, so board reporting, capacity planning, and
                 expansion decisions no longer wait on spreadsheets.
               </p>
             </Reveal>

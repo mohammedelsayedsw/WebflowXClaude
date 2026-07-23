@@ -143,7 +143,7 @@ export function Hero() {
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
                 A governed data and predictive intelligence platform for
-                multi-site UK nursery groups that need investor-ready reporting,
+                multi-site nursery groups that need investor-ready reporting,
                 forward room-level occupancy visibility, and evidence-based
                 expansion decisions.
               </p>

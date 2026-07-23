@@ -142,16 +142,12 @@ export function Hero() {
                 <span className="text-[var(--sw-mint)]">Data Control</span> Hub
               </h1>
 
-              <p className="font-head mt-4 text-[17px] font-semibold leading-snug text-white/90 md:text-[19px]">
-                See who your customers really are, and reach them wherever they
-                buy.
-              </p>
-
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                The same shopper shows up as different customer files across
-                your stores, website, CRM, and messaging. This gives you one
-                clean customer identity your own team controls, and can send to
-                email, SMS, paid media, reporting, and store teams.
+                See who your customers really are, and reach them wherever they
+                buy. The same shopper shows up as different customer files across
+                your stores, website, CRM, and messaging. The Customer Data
+                Control Hub gives you one clean view your own team controls, and
+                can send to email, SMS, paid media, reporting, and store teams.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

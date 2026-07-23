@@ -17,7 +17,7 @@ const PROBLEMS = [
   {
     n: "3",
     title: "Growth decisions run on guesswork",
-    body: "New sites and acquisitions get discussed without a clear view of demand, pricing, and capacity.",
+    body: "Opening or buying a nursery gets discussed without a clear view of demand, pricing, and capacity.",
   },
   {
     n: "4",

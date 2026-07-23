@@ -132,8 +132,8 @@ export function InShort() {
                 It answers three questions a growing nursery group cannot answer
                 well from spreadsheets: how full will each room be in the weeks
                 ahead, can you stand behind the numbers you put in front of
-                investors, and where is the next site or acquisition worth
-                making. The Childcare Growth Intelligence Hub pulls your nursery,
+                investors, and where is the next nursery worth opening or
+                buying. The Childcare Growth Intelligence Hub pulls your nursery,
                 CRM, recruitment, finance, and market data into one place, and
                 turns it into those answers.
               </p>

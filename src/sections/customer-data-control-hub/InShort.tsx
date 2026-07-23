@@ -132,7 +132,8 @@ export function InShort() {
                 Your customer information is scattered across your website, your
                 shops, your CRM, and your marketing tools. The Customer Data
                 Control Hub pulls it together, works out which entries are the
-                same person, and gives you one clean list you can actually use.
+                same person, and gives you one clean list, then sends the right
+                customers to email, ads, and your store teams.
               </p>
             </Reveal>
             <Reveal delay={0.15}>

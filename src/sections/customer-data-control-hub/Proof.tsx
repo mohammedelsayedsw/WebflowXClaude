@@ -2,10 +2,11 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
   { v: "~90%", k: "faster reporting" },
-  { v: "3.06M to 336K", k: "scattered customer files, matched to real people" },
+  { v: "3.06M to 336K", k: "duplicates matched to real people" },
   { v: "40%+", k: "of online sales from email and SMS" },
   { v: "In-house", k: "your team owns the rules" },
 ];
@@ -48,9 +49,17 @@ export function Proof() {
         {/* Headline + intro · full width */}
         <Reveal>
           <div className="max-w-[64rem]">
-            <span className="label-code mb-6 block text-[var(--sw-mint)]">
-              Proven with Lafayette 148
-            </span>
+            <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <span className="label-code text-[var(--sw-mint)]">
+                Proven with
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl("/customer-data-control-hub/lafayette-148.png")}
+                alt="Lafayette 148"
+                className="h-5 w-auto shrink-0 md:h-6"
+              />
+            </div>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
               A luxury fashion brand that{" "}
               <span className="text-[var(--sw-mint)]">
@@ -82,14 +91,6 @@ export function Proof() {
               ))}
             </div>
           </div>
-          {/* mandatory honesty caveats, straight from the case doc */}
-          <p className="mt-4 max-w-[90ch] text-[12px] leading-relaxed text-white/45 md:text-[13px]">
-            Lafayette 148 operating results. The 40%+ is the share of online
-            sales from email and SMS, not uplift caused by moving to new
-            software. The 3.06M to 336K is a point-in-time reading on the main
-            rule for which entries are the same person. The 90% refers to
-            reporting cycle time.
-          </p>
         </Reveal>
 
         {/* What we built + before/after · two columns */}

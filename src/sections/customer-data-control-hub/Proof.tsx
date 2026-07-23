@@ -8,35 +8,16 @@ const METRICS = [
   { v: "~90%", k: "faster reporting" },
   { v: "3.06M to 336K", k: "duplicates matched to real people" },
   { v: "40%+", k: "of online sales from email and SMS" },
-  { v: "In-house", k: "your team owns the rules" },
+  { v: "In-house", k: "run without the software supplier" },
 ];
 
 const BUILT = [
   "One trusted customer identity, replacing vendor-controlled rules for which entries are the same person",
   "A clean, checked customer database with failure handling, so bad customer files get caught",
   "Automated reporting, replacing manual exports and spreadsheets",
-  "What people do on your site, carts, and purchases connected to known customers",
+  "What people do on site, carts, and purchases connected to known customers",
   "Joined-up audiences feeding email, SMS, Google, and Meta",
   "Store stylists given real customer history and preferences",
-];
-
-const SHIFTS = [
-  {
-    before: "A vendor gated who counts as the same person",
-    after: "the team owns and can read those rules",
-  },
-  {
-    before: "Manual exports and spreadsheet reporting",
-    after: "automated reporting on clean customer files",
-  },
-  {
-    before: "What people do on your site, cut off from known customers",
-    after: "what people do on your site, mapped to real customers",
-  },
-  {
-    before: "Another forced contract renewal",
-    after: "delivered before the renewal deadline, on their terms",
-  },
 ];
 
 export function Proof() {
@@ -78,7 +59,7 @@ export function Proof() {
         {/* Stats band · full width, one row of four */}
         <Reveal delay={0.05}>
           <div className="mt-12 border-y border-white/10 py-8 md:mt-14 md:py-10">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+            <div className="flex flex-wrap gap-x-12 gap-y-8 md:gap-x-16">
               {METRICS.map((m) => (
                 <div key={m.k}>
                   <div className="font-head text-[22px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[30px]">
@@ -115,29 +96,20 @@ export function Proof() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div>
-              <span className="label-code mb-5 block text-white/50">
-                Before and after
-              </span>
-              <div className="flex flex-col gap-2.5">
-                {SHIFTS.map((s) => (
-                  <div
-                    key={s.before}
-                    className="rounded-[4px] border border-white/10 bg-white/[0.02] p-4"
-                  >
-                    <div className="text-[13px] leading-snug text-white/45 line-through decoration-white/25">
-                      {s.before}
-                    </div>
-                    <div className="mt-1.5 flex gap-2 text-[14px] leading-snug text-white md:text-[15px]">
-                      <span aria-hidden className="text-[var(--sw-mint)]">
-                        &rarr;
-                      </span>
-                      {s.after}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <figure className="border-l-2 border-[var(--sw-mint)] pl-6">
+              <blockquote className="font-head text-[20px] leading-[1.3] tracking-[-0.005em] text-white md:text-[24px]">
+                &ldquo;scandiweb is experienced and responsive. A true partner
+                whose expertise we rely on for our toughest projects.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5">
+                <div className="text-[14px] font-medium text-white">
+                  Jonathan Chan
+                </div>
+                <div className="label-code mt-0.5 text-white/55">
+                  Executive Director
+                </div>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
 

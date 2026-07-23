@@ -6,7 +6,7 @@ const STAGES = [
   {
     n: "1",
     title: "Assess",
-    body: "We map your systems, test how far your numbers can be trusted, review privacy, and confirm whether a reliable forecast is possible, around one priority decision.",
+    body: "We map your systems, test how far your numbers can be trusted, review privacy, and confirm whether a reliable view of the weeks ahead is possible, around one priority decision.",
   },
   {
     n: "2",
@@ -16,7 +16,7 @@ const STAGES = [
   {
     n: "3",
     title: "Predict",
-    body: "We add occupancy forecasts, capacity alerts, and the operating views your teams act on, where the data supports a reliable model.",
+    body: "We add occupancy views, capacity alerts, and the operating dashboards your teams act on, where the data supports a reliable model.",
   },
   {
     n: "4",

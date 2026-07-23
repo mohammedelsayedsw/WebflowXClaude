@@ -8,7 +8,7 @@ const METRICS = [
   { v: "52 weeks", k: "room-by-room occupancy, refreshed every Monday" },
   {
     v: "Under 1 child",
-    k: "the baseline weekly room forecast was off by less than one child on average",
+    k: "each room's weekly number was off by less than one child on average",
   },
   { v: "17,000+", k: "UK nurseries valued and scored for acquisitions" },
   { v: "1.7 million", k: "UK postcodes mapped to family types and likely revenue" },
@@ -16,7 +16,7 @@ const METRICS = [
 
 const BUILT = [
   "One trusted platform pulling from seven live nursery and marketing systems",
-  "A 52-week, room-by-room occupancy forecast, refreshed every Monday",
+  "A 52-week, room-by-room view, refreshed every Monday",
   "Acquisition scoring across more than 17,000 UK nurseries",
   "Family types mapped across 1.7 million UK postcodes",
   "Sensitive family data protected, with controlled access and a clear record of every number",
@@ -59,7 +59,7 @@ export function Proof() {
               <img
                 src={assetUrl("/childcare-growth-intelligence/family-first.png")}
                 alt="Family First"
-                className="h-8 w-auto shrink-0 md:h-9"
+                className="h-10 w-auto shrink-0 md:h-12"
               />
             </div>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">

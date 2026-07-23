@@ -21,8 +21,8 @@ const PROBLEMS = [
   },
   {
     n: "4",
-    title: "Your best audiences get stuck",
-    body: "Your top customers reach email, but not Google, Meta, or your stores.",
+    title: "You can only reach customers in one place",
+    body: "You can email a group of customers, but you cannot use that same group for your Google and Meta ads or in your stores.",
   },
   {
     n: "5",

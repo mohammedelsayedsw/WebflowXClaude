@@ -33,7 +33,6 @@ function HeroBg() {
 function ProofStats() {
   const stats = [
     { value: "50+ weeks ahead", label: "knowing how full rooms will be" },
-    { value: "Under 1 child", label: "average miss on each room's weekly number" },
     { value: "17,000+ nurseries", label: "ranked, so you know which to buy" },
     { value: "1M+ postcodes", label: "mapped, so you know where to grow" },
   ];

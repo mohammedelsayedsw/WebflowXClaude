@@ -26,7 +26,7 @@ const OUTCOMES = [
   },
   {
     title: "Change the rules without a vendor",
-    how: "by handing your team the identity rules, with training and documentation",
+    how: "by letting your own team decide how customers are grouped and counted, with the training to do it",
   },
 ];
 

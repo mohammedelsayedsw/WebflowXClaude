@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
   { v: "52 weeks", k: "room-by-room occupancy, refreshed every Monday" },
@@ -50,9 +51,17 @@ export function Proof() {
         {/* Headline + intro · full width */}
         <Reveal>
           <div className="max-w-[64rem]">
-            <span className="label-code mb-6 block text-[var(--sw-mint)]">
-              Proven with Family First
-            </span>
+            <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <span className="label-code text-[var(--sw-mint)]">
+                Proven with
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl("/childcare-growth-intelligence/family-first.png")}
+                alt="Family First"
+                className="h-8 w-auto shrink-0 md:h-9"
+              />
+            </div>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
               A fast-growing UK nursery group, from scattered spreadsheets to{" "}
               <span className="text-[var(--sw-mint)]">

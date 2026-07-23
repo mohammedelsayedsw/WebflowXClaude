@@ -14,7 +14,7 @@ const OUTCOMES = [
   },
   {
     title: "Growth backed by evidence",
-    how: "by scoring new sites and acquisitions on the same demand, quality, and revenue basis",
+    how: "by scoring nurseries you might open or buy on the same demand, quality, and revenue basis",
   },
   {
     title: "A clear picture of your families",
@@ -22,7 +22,7 @@ const OUTCOMES = [
   },
   {
     title: "Hiring tied to where you grow",
-    how: "by connecting recruitment to occupancy and your new-site plans",
+    how: "by connecting hiring to how full your nurseries are and where you are opening next",
   },
   {
     title: "Teams that act instead of reconcile",

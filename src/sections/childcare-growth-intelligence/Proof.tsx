@@ -14,7 +14,7 @@ const METRICS = [
 ];
 
 const BUILT = [
-  "One governed platform pulling from seven live nursery and marketing systems",
+  "One trusted platform pulling from seven live nursery and marketing systems",
   "A 52-week, room-by-room occupancy forecast, refreshed every Monday",
   "Acquisition scoring across more than 17,000 UK nurseries",
   "Family types mapped across 1.7 million UK postcodes",
@@ -24,7 +24,7 @@ const BUILT = [
 const SHIFTS = [
   {
     before: "Notebooks and static spreadsheets",
-    after: "one governed platform the team can rely on",
+    after: "one trusted platform the team relies on",
   },
   {
     before: "Occupancy read after the fact",
@@ -63,7 +63,7 @@ export function Proof() {
               Family First runs nurseries across several brands and regions, and
               needed data it could put in front of investors, planners, and its
               own board. We moved them off notebooks and static spreadsheets onto
-              one governed platform, then added occupancy forecasting, UK-wide
+              one trusted platform, then added occupancy forecasting, UK-wide
               acquisition scoring, and family insight.
             </p>
           </div>
@@ -88,8 +88,8 @@ export function Proof() {
           {/* required honesty caveat */}
           <p className="mt-4 max-w-[90ch] text-[12px] leading-relaxed text-white/45 md:text-[13px]">
             Family First results. Another group&apos;s numbers depend on its own
-            data history, coverage, and setup. The 17,000-nursery scoring was run
-            as a one-off study, not a weekly job.
+            data history, coverage, and setup. The 17,000-nursery scoring was a
+            one-off study, not a weekly job.
           </p>
         </Reveal>
 

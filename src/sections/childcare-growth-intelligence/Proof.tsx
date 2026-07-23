@@ -63,8 +63,10 @@ export function Proof() {
               Family First runs nurseries across several brands and regions, and
               needed data it could put in front of investors, planners, and its
               own board. We moved them off notebooks and static spreadsheets onto
-              one trusted platform, then added occupancy forecasting, UK-wide
-              acquisition scoring, and family insight.
+              one trusted platform. Now they can see how full each room will be
+              for the next year, refreshed every Monday, score acquisition
+              targets across the whole UK, and show investors numbers that trace
+              back to source. We have run this since 2025, and it is still live.
             </p>
           </div>
         </Reveal>

@@ -11,7 +11,7 @@ const PACKAGES = [
   {
     n: "2",
     title: "Control",
-    body: "The clean, checked customer database plus one trusted customer identity. Phased, after the assessment.",
+    body: "The clean, checked customer database, plus one trusted view of each customer.",
   },
   {
     n: "3",
@@ -40,10 +40,10 @@ export function HowWeStart() {
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[17px]">
               The first step is a fixed-scope Customer Data Control Assessment.
-              It maps your sources, your rules for which entries are the same
-              person, the gaps in how you use the data, and your renewal risk,
-              and ends with a prioritised plan and a costed estimate. No big
-              commitment before you know what you are buying.
+              We map where your customer data lives, how it is matched today,
+              where it cannot reach, and what your renewal deadline looks like.
+              You get a clear plan and a costed estimate, with no big commitment
+              before you know what you are buying.
             </p>
           </Reveal>
         </div>

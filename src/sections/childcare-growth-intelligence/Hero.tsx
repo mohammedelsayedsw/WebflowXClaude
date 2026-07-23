@@ -143,10 +143,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                Your occupancy, recruitment, and board numbers sit in separate
-                systems. The Childcare Growth Intelligence Hub brings them into
-                one place, so you can see how full each room will be weeks ahead,
-                back the numbers you show investors, and know where to grow next.
+                A governed data and predictive intelligence platform for
+                multi-site UK nursery groups that need investor-ready reporting,
+                forward room-level occupancy visibility, and evidence-based
+                expansion decisions.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

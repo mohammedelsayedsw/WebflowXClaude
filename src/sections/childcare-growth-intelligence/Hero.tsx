@@ -32,10 +32,10 @@ function HeroBg() {
 /** Family First proof, four numbers. Detail and caveats live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "52 weeks", label: "of room-by-room occupancy, refreshed weekly" },
-    { value: "Under 1 child", label: "average error on the weekly room forecast" },
-    { value: "17,000+", label: "UK nurseries scored for acquisitions" },
-    { value: "1.7 million", label: "UK postcodes mapped to family types and likely revenue" },
+    { value: "52 weeks ahead", label: "room-by-room occupancy, refreshed weekly" },
+    { value: "Under 1 child", label: "average miss on each room's weekly number" },
+    { value: "17,000+", label: "UK nurseries ranked as acquisition targets" },
+    { value: "1.7 million", label: "UK postcodes matched to family types and likely revenue" },
   ];
   return (
     <div className="flex flex-col gap-5 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
@@ -143,12 +143,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                As a nursery group grows, occupancy sits in one system,
-                recruitment in another, and board numbers depend on spreadsheets
-                that take too long to trust. The Childcare Growth Intelligence
-                Hub brings that data together, so you can see how full each room
-                will be, show investors numbers you can stand behind, and decide
-                where to grow on evidence.
+                Your occupancy, recruitment, and board numbers sit in separate
+                systems. The Childcare Growth Intelligence Hub brings them into
+                one place, so you can see how full each room will be weeks ahead,
+                back the numbers you show investors, and know where to grow next.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
   { v: "11", k: "areas of the business, from tracking to checkout to customers" },
@@ -16,25 +17,6 @@ const BUILT = [
   "One platform, 46 dashboards across 11 areas, on shared definitions",
   "Conversion tracking rebuilt across five ad platforms, with proper consent",
   "Deep-dive analyses that shaped the checkout redesign and the personalisation work",
-];
-
-const SHIFTS = [
-  {
-    before: "Broken tracking no one trusted",
-    after: "GA4 rebuilt and matched to real orders",
-  },
-  {
-    before: "Two stores, two silos",
-    after: "one view across both",
-  },
-  {
-    before: "Order data stuck in Magento",
-    after: "sales connected to on-site behaviour",
-  },
-  {
-    before: "Ad platforms fed bad data",
-    after: "accurate conversion data across five platforms",
-  },
 ];
 
 export function Proof() {
@@ -111,29 +93,34 @@ export function Proof() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div>
-              <span className="label-code mb-5 block text-white/50">
-                Before and after
-              </span>
-              <div className="flex flex-col gap-2.5">
-                {SHIFTS.map((s) => (
-                  <div
-                    key={s.before}
-                    className="rounded-[4px] border border-white/10 bg-white/[0.02] p-4"
-                  >
-                    <div className="text-[13px] leading-snug text-white/45 line-through decoration-white/25">
-                      {s.before}
-                    </div>
-                    <div className="mt-1.5 flex gap-2 text-[14px] leading-snug text-white md:text-[15px]">
-                      <span aria-hidden className="text-[var(--sw-mint)]">
-                        &rarr;
-                      </span>
-                      {s.after}
-                    </div>
+            <figure className="rounded-[4px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
+              <blockquote className="font-head text-[19px] leading-[1.35] tracking-[-0.005em] text-white md:text-[22px]">
+                &ldquo;Working with scandiweb has been great, because they helped
+                us to implement changes and features quickly.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl(
+                    "/decision-grade-commerce-bi/patrick-ryan-simon.png"
+                  )}
+                  alt="Patrick Ryan Simon"
+                  className="h-11 w-11 shrink-0 rounded-full object-cover"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    objectPosition: "50% 22%",
+                  }}
+                />
+                <div>
+                  <div className="text-[14px] font-medium text-white">
+                    Patrick Ryan Simon
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div className="label-code mt-0.5 text-white/55">
+                    Store Owner in the US market for Nicokick
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
 

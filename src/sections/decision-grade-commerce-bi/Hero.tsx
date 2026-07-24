@@ -141,11 +141,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                Most ecommerce dashboards cannot be trusted. The numbers do not
-                match your orders, every store reports on its own, and leadership
-                makes calls on figures nobody is sure of. Decision-Grade Commerce
-                BI rebuilds your tracking, connects it to your real sales, and
-                turns it into dashboards your team can actually decide from.
+                Most ecommerce dashboards cannot be trusted, so leadership ends
+                up deciding on numbers nobody is sure of. Decision-Grade Commerce
+                BI rebuilds your tracking, ties it to your real sales, and turns
+                it into dashboards your team can actually act on.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

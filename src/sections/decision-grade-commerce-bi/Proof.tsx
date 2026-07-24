@@ -6,7 +6,7 @@ import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
   { v: "11", k: "areas of reporting: acquisition, funnel, promos, and more" },
-  { v: "46", k: "dashboards in one place, on shared definitions" },
+  { v: "200K+", k: "past customers to win back" },
   { v: "$7.69M", k: "measured each month across both stores, matched to real orders" },
   { v: "285,186", k: "customers segmented by stage, frequency, and spend" },
 ];

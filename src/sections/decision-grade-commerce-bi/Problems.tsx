@@ -64,8 +64,9 @@ export function Problems() {
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">
               As stores grow, the tracking behind them falls apart, and
-              leadership ends up deciding on figures nobody is sure of. These
-              five gaps are why.
+              leadership ends up{" "}
+              <br className="hidden md:block" />
+              deciding on figures nobody is sure of. These five gaps are why.
             </p>
           </Reveal>
         </div>

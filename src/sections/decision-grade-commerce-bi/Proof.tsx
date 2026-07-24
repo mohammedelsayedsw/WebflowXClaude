@@ -5,7 +5,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
-  { v: "11", k: "areas of the business, from tracking to checkout to customers" },
+  { v: "11", k: "areas of reporting: acquisition, funnel, promos, and more" },
   { v: "46", k: "dashboards in one place, on shared definitions" },
   { v: "$7.69M", k: "measured each month across both stores, matched to real orders" },
   { v: "285,186", k: "customers segmented by stage, frequency, and spend" },

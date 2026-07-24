@@ -16,7 +16,7 @@ const STEPS = [
   {
     n: "3",
     title: "Build",
-    body: "We build the dashboards leadership decides from, on one shared set of definitions, covering traffic, products, checkout, and customers.",
+    body: "We build the dashboards your leadership decides from and your team can trust and use every day, covering traffic, products, checkout, and customers.",
   },
   {
     n: "4",

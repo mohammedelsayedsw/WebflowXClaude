@@ -32,14 +32,23 @@ function HeroBg() {
 /** Word-led proof, no growth numbers. The case-specific figures live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "One source of truth", label: "the same numbers across every store, matched to your orders" },
+    {
+      value: "One source of truth",
+      label: (
+        <>
+          the same numbers across every store,
+          <br />
+          <span className="whitespace-nowrap">matched to your orders</span>
+        </>
+      ),
+    },
     { value: "GA4 you can trust", label: "rebuilt and tied to your real sales" },
     { value: "Every store in one view", label: "from ads to checkout to customers" },
   ];
   return (
     <div className="flex flex-col gap-6 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
       {stats.map((s) => (
-        <div key={s.label} className="flex flex-col gap-1.5 min-w-0">
+        <div key={s.value} className="flex flex-col gap-1.5 min-w-0">
           <div className="font-head text-[20px] leading-tight tracking-[-0.01em] text-[var(--sw-mint)] md:text-[24px]">
             {s.value}
           </div>

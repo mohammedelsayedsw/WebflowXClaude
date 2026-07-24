@@ -29,9 +29,17 @@ export function Proof() {
         {/* Headline + intro · full width */}
         <Reveal>
           <div className="max-w-[64rem]">
-            <span className="label-code mb-6 block text-[var(--sw-mint)]">
-              Proven with Haypp Group
-            </span>
+            <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <span className="label-code text-[var(--sw-mint)]">
+                Proven with
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl("/decision-grade-commerce-bi/haypp-group.png")}
+                alt="Haypp Group"
+                className="h-5 w-auto shrink-0 md:h-6"
+              />
+            </div>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
               How two US eCommerce stores got numbers their leadership could{" "}
               <span className="text-[var(--sw-mint)]">finally trust</span>

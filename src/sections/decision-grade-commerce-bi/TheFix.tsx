@@ -10,11 +10,11 @@ const OUTCOMES = [
   },
   {
     title: "One view across every channel",
-    how: "by one shared set of definitions and dashboards, instead of a silo per channel",
+    how: "by one shared set of definitions and dashboards, instead of each channel on its own",
   },
   {
     title: "See what customers actually do",
-    how: "by connecting your Magento order data to what people do on the site",
+    how: "by connecting your order data to what people do on the site",
   },
   {
     title: "Ad spend aimed at what converts",
@@ -43,7 +43,6 @@ export function TheFix() {
             <span className="text-[var(--sw-blue)]">
               numbers your team can act on
             </span>
-            .
           </h2>
         </Reveal>
 

@@ -7,16 +7,16 @@ const PROBLEMS = [
   {
     n: "1",
     title: "Your numbers do not match your orders",
-    body: "GA4 says one thing, Magento says another, so nobody trusts the dashboard.",
+    body: "GA4 shows one number, your orders show another, so nobody trusts the dashboard.",
   },
   {
     n: "2",
-    title: "Every store reports on its own",
-    body: "No single view across your stores, no shared definitions, no way to compare.",
+    title: "Your channels never add up to one number",
+    body: "Website, app, and marketplaces each report on their own, so you never get one clean total.",
   },
   {
     n: "3",
-    title: "Your order data is stuck in Magento",
+    title: "Your order data is stuck in your store",
     body: "You cannot connect sales to behaviour, so real customer and retention analysis is impossible.",
   },
   {

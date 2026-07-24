@@ -9,8 +9,8 @@ const OUTCOMES = [
     how: "by rebuilding your GA4 and tag setup from scratch and matching it to your real orders",
   },
   {
-    title: "One view across every store",
-    how: "by one shared set of definitions and dashboards, instead of a silo per store",
+    title: "One view across every channel",
+    how: "by one shared set of definitions and dashboards, instead of a silo per channel",
   },
   {
     title: "See what customers actually do",

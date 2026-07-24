@@ -122,7 +122,8 @@ export function InShort() {
               <h2 className="font-head mt-5 max-w-[26ch] text-[26px] leading-[1.08] tracking-[-0.01em] text-[var(--sw-black)] sm:text-[32px] md:text-[40px] lg:text-[46px]">
                 What{" "}
                 <span className="text-[var(--sw-blue)]">
-                  Decision-Grade Commerce BI
+                  <span className="whitespace-nowrap">Decision-Grade</span>{" "}
+                  Commerce BI
                 </span>{" "}
                 is
               </h2>

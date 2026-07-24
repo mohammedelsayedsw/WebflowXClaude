@@ -7,8 +7,8 @@ import { assetUrl } from "@/lib/assets";
 const METRICS = [
   { v: "11", k: "areas of reporting: acquisition, funnel, promos, and more" },
   { v: "200K+", k: "past customers to win back" },
-  { v: "$7.69M", k: "measured each month across both stores, matched to real orders" },
-  { v: "285,186", k: "customers segmented by stage, frequency, and spend" },
+  { v: "5", k: "ad platforms, tracking rebuilt and accurate" },
+  { v: "46", k: "dashboards, your whole business in one place" },
 ];
 
 const BUILT = [
@@ -71,12 +71,6 @@ export function Proof() {
               ))}
             </div>
           </div>
-          {/* required honesty caveat */}
-          <p className="mt-4 max-w-[90ch] text-[12px] leading-relaxed text-white/45 md:text-[13px]">
-            Haypp Group results. The revenue and growth figures are the whole
-            business&apos;s, which the platform now measures accurately, not
-            uplift from the analytics work alone.
-          </p>
         </Reveal>
 
         {/* What we built + before/after · two columns */}
@@ -84,7 +78,7 @@ export function Proof() {
           <Reveal>
             <div>
               <span className="label-code mb-5 block text-white/50">
-                What we built
+                What we did
               </span>
               <ul className="flex flex-col gap-3">
                 {BUILT.map((b) => (

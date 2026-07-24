@@ -20,8 +20,8 @@ const STEPS = [
   },
   {
     n: "4",
-    title: "Run",
-    body: "We keep it accurate as your business changes, and run deep dives on the live questions you are deciding on.",
+    title: "Rely",
+    body: "Your team gets a setup they can rely on, and clear answers when the big questions come up. We stay on for the first 30 days to help your team settle in.",
   },
 ];
 

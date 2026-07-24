@@ -58,9 +58,9 @@ export function Proof() {
         {/* Stats band · full width */}
         <Reveal delay={0.05}>
           <div className="mt-12 border-y border-white/10 py-8 md:mt-14 md:py-10">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:flex lg:justify-between lg:gap-x-8">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-x-10">
               {METRICS.map((m) => (
-                <div key={m.k} className="lg:max-w-[15rem]">
+                <div key={m.k}>
                   <div className="font-head text-[24px] leading-none tracking-[-0.01em] text-[var(--sw-mint)] md:text-[32px]">
                     {m.v}
                   </div>

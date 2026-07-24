@@ -32,9 +32,9 @@ function HeroBg() {
 /** Word-led proof, no growth numbers. The case-specific figures live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "One source of truth", label: "the same numbers everywhere, matched to your orders" },
-    { value: "GA4 you can trust", label: "rebuilt and matched to your real orders" },
-    { value: "Every decision covered", label: "from ads to checkout to customers" },
+    { value: "One source of truth", label: "the same numbers across every store, matched to your orders" },
+    { value: "GA4 you can trust", label: "rebuilt and tied to your real sales" },
+    { value: "Every store in one view", label: "from ads to checkout to customers" },
   ];
   return (
     <div className="flex flex-col gap-6 border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
@@ -131,7 +131,7 @@ export function Hero() {
             <div>
               <div className="mb-5 inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5">
                 <span className="font-head text-[11px] font-semibold uppercase tracking-[0.14em] text-white md:text-[12px]">
-                  scandiweb solution · eCommerce
+                  scandiweb solution · Multi-Store eCommerce
                 </span>
               </div>
 
@@ -142,10 +142,10 @@ export function Hero() {
               </h1>
 
               <p className="mt-5 max-w-[64ch] text-[16px] leading-relaxed text-white/85 md:text-[17px]">
-                Most eCommerce dashboards cannot be trusted, so leadership ends
-                up deciding on numbers nobody is sure of. Decision-Grade Commerce
-                BI rebuilds your tracking, ties it to your real sales, and turns
-                it into dashboards your team can actually act on.
+                When you run more than one store, the numbers rarely agree
+                across them, and leadership ends up deciding on figures nobody
+                trusts. Decision-Grade Commerce BI rebuilds your tracking, ties
+                it to your real sales, and gives you one view across every store.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">

@@ -6,18 +6,18 @@ import { DrawnPath } from "@/components/primitives/DrawnPath";
 const PROBLEMS = [
   {
     n: "1",
+    title: "Every store reports on its own",
+    body: "No shared view across your stores, no way to compare them.",
+  },
+  {
+    n: "2",
     title: "Your numbers do not match your orders",
     body: "GA4 shows one number, your orders show another, so nobody trusts the dashboard.",
   },
   {
-    n: "2",
-    title: "Your channels never add up to one number",
-    body: "Website, app, and marketplaces each report on their own, so you never get one clean total.",
-  },
-  {
     n: "3",
     title: "Your order data is stuck in your store",
-    body: "You cannot connect sales to behaviour, so real customer and retention analysis is impossible.",
+    body: "You cannot connect sales to what people do on the site.",
   },
   {
     n: "4",
@@ -27,7 +27,7 @@ const PROBLEMS = [
   {
     n: "5",
     title: "Analysts rebuild reports by hand",
-    body: "The week goes on exports and spreadsheets instead of decisions.",
+    body: "The week goes on exports instead of decisions.",
   },
 ];
 

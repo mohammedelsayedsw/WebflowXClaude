@@ -60,7 +60,7 @@ export function CTA() {
               </div>
               <HubSpotForm
                 portalId="25724996"
-                formId="1f8bfb0f-7656-4abc-8648-686ea497f155"
+                formId="86c9b6eb-74bc-45f0-981f-ff84bf7d9577"
                 region="eu1"
                 submitText="Book a free analytics consultation"
               />

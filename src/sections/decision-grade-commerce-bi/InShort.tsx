@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/primitives/Reveal";
 
 const decisions = ["Traffic and ads", "Products", "Checkout", "Customers"];
-const sources = ["Your website (GA4)", "Ad platforms", "Orders", "Search"];
+const stores = ["Store 1", "Store 2", "Store 3"];
 
 /** Static layered diagram: sources (bottom) -> hub (middle) -> decisions (top). */
 function DataDiagram() {
@@ -67,14 +67,14 @@ function DataDiagram() {
         </div>
       </div>
 
-      {/* connector: four sources up into the hub */}
+      {/* connector: your stores up into the hub */}
       <svg
         viewBox="0 0 100 22"
         preserveAspectRatio="none"
         className="my-1.5 h-5 w-full"
         aria-hidden
       >
-        {[12.5, 37.5, 62.5, 87.5].map((x, i) => (
+        {[16.67, 50, 83.33].map((x, i) => (
           <line
             key={i}
             x1={x}
@@ -88,12 +88,12 @@ function DataDiagram() {
         ))}
       </svg>
 
-      {/* Bottom · where your data comes from */}
+      {/* Bottom · your stores */}
       <div className="label-code text-white/45 text-[10px] mb-3 text-center">
-        Where your data comes from
+        Your stores
       </div>
-      <div className="grid grid-cols-4 gap-1.5">
-        {sources.map((m) => (
+      <div className="grid grid-cols-3 gap-1.5">
+        {stores.map((m) => (
           <span
             key={m}
             className="font-head flex items-center justify-center rounded-[2px] border border-white/10 bg-white/[0.03] px-1 py-2 text-center text-[8.5px] leading-tight text-white/80"
@@ -130,11 +130,11 @@ export function InShort() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
-                Your data is spread across GA4, your ad platforms, and your
-                orders, and the numbers rarely agree. Decision-Grade
-                Commerce BI rebuilds your tracking so it is right, connects your
-                order data to what people do on the site, and turns it all into
-                dashboards that cover traffic, products, checkout, and customers.
+                When your stores each run their own tracking, the numbers never
+                line up, and no one can compare them. Decision-Grade Commerce BI
+                rebuilds the tracking across your stores, ties it to your real
+                sales, and turns it all into one set of dashboards covering
+                traffic, products, checkout, and customers.
               </p>
             </Reveal>
             <Reveal delay={0.15}>

@@ -22,7 +22,7 @@ const PROBLEMS = [
   {
     n: "4",
     title: "Your ad tracking is wrong",
-    body: "Ad platforms get bad conversion data, so you optimise spend on noise.",
+    body: "Ad platforms get the wrong conversion data, so your spend chases the wrong things.",
   },
   {
     n: "5",

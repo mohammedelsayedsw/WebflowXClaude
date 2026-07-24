@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/primitives/Reveal";
 
 const decisions = ["Traffic and ads", "Products", "Checkout", "Customers"];
-const sources = ["Your website (GA4)", "Ad platforms", "Magento orders", "Search"];
+const sources = ["Your website (GA4)", "Ad platforms", "Orders", "Search"];
 
 /** Static layered diagram: sources (bottom) -> hub (middle) -> decisions (top). */
 function DataDiagram() {

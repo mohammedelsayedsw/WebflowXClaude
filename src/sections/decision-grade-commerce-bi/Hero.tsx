@@ -32,7 +32,7 @@ function HeroBg() {
 /** Word-led proof, no growth numbers. The case-specific figures live in the proof section. */
 function ProofStats() {
   const stats = [
-    { value: "One source of truth", label: "one view across all your stores" },
+    { value: "One source of truth", label: "the same numbers everywhere, matched to your orders" },
     { value: "GA4 you can trust", label: "rebuilt and matched to your real orders" },
     { value: "Every decision covered", label: "from ads to checkout to customers" },
   ];

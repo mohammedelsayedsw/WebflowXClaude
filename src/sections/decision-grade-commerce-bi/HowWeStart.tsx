@@ -11,7 +11,7 @@ const STEPS = [
   {
     n: "2",
     title: "Rebuild",
-    body: "We fix the tracking from the ground up and pull your Magento order data into one place, so the numbers finally agree.",
+    body: "We fix the tracking from the ground up and pull your order data into one place, so the numbers finally agree.",
   },
   {
     n: "3",

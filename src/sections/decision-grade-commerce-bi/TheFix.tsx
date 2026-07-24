@@ -25,7 +25,7 @@ const OUTCOMES = [
     how: "by dashboards covering traffic, products, checkout, and customers, on one set of definitions",
   },
   {
-    title: "Analysts who analyse, not assemble",
+    title: "Analysts who find answers, not build reports",
     how: "by dashboards that update themselves, instead of weekly spreadsheet work",
   },
 ];

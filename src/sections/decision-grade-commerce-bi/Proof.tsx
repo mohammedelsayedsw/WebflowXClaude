@@ -5,7 +5,16 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
-  { v: "11", k: "areas of reporting: acquisition, funnel, promos, and more" },
+  {
+    v: "11",
+    k: (
+      <>
+        areas of reporting: acquisition, funnel,
+        <br />
+        promos, and more
+      </>
+    ),
+  },
   { v: "200K+", k: "past customers to win back" },
   { v: "5", k: "ad platforms, tracking rebuilt and accurate" },
   { v: "46", k: "dashboards, your whole business in one place" },
@@ -61,7 +70,7 @@ export function Proof() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-x-0">
               {METRICS.map((m, i) => (
                 <div
-                  key={m.k}
+                  key={m.v}
                   className={
                     i === 0
                       ? "lg:pl-0"

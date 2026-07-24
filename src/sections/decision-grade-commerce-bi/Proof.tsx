@@ -33,7 +33,7 @@ export function Proof() {
               Proven with Haypp Group
             </span>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
-              How two US ecommerce stores got numbers their leadership could{" "}
+              How two US eCommerce stores got numbers their leadership could{" "}
               <span className="text-[var(--sw-mint)]">finally trust</span>
             </h2>
             <p className="mt-6 max-w-[80ch] text-[16px] leading-relaxed text-white/75 md:text-[17px]">

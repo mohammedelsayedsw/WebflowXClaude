@@ -130,7 +130,7 @@ export function InShort() {
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[68ch] text-[16px] leading-relaxed text-[var(--sw-black)]/70 md:text-[18px]">
                 Your data is spread across GA4, your ad platforms, and your
-                Magento orders, and the numbers rarely agree. Decision-Grade
+                orders, and the numbers rarely agree. Decision-Grade
                 Commerce BI rebuilds your tracking so it is right, connects your
                 order data to what people do on the site, and turns it all into
                 dashboards that cover traffic, products, checkout, and customers.

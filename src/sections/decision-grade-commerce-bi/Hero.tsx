@@ -131,12 +131,13 @@ export function Hero() {
             <div>
               <div className="mb-5 inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5">
                 <span className="font-head text-[11px] font-semibold uppercase tracking-[0.14em] text-white md:text-[12px]">
-                  scandiweb solution · ecommerce
+                  scandiweb solution · eCommerce
                 </span>
               </div>
 
               <h1 className="font-head max-w-[15ch] text-[38px] leading-[1.03] tracking-[-0.015em] text-white sm:text-[46px] md:text-[54px] lg:text-[60px]">
-                Decision-Grade{" "}
+                <span className="whitespace-nowrap">Decision-Grade</span>
+                <br />
                 <span className="text-[var(--sw-mint)]">Commerce BI</span>
               </h1>
 

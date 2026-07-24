@@ -57,7 +57,7 @@ export function Problems() {
               The problem
             </span>
             <h2 className="font-head text-[26px] leading-[1.08] tracking-[-0.01em] text-white sm:text-[32px] md:text-[40px] lg:text-[46px]">
-              You cannot run an ecommerce business on{" "}
+              You cannot run an eCommerce business on{" "}
               <span className="text-[var(--sw-mint)]">
                 numbers you do not trust
               </span>

@@ -4,7 +4,7 @@ import { Header } from "@/components/site/Header";
 export const metadata: Metadata = {
   title: "Decision-Grade Commerce BI | scandiweb",
   description:
-    "Rebuild your ecommerce tracking, connect it to your real Magento orders, and turn it into dashboards your team can actually decide from. One trusted set of numbers across every store. Proven with Haypp Group. Free analytics consultation with scandiweb's data and analytics team.",
+    "Rebuild your eCommerce tracking, connect it to your real Magento orders, and turn it into dashboards your team can actually decide from. One trusted set of numbers across every store. Proven with Haypp Group. Free analytics consultation with scandiweb's data and analytics team.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/decision-grade-commerce-bi",
   },

@@ -16,8 +16,8 @@ const PROBLEMS = [
   },
   {
     n: "3",
-    title: "Your order data is stuck in your store",
-    body: "You cannot connect sales to what people do on the site.",
+    title: "Your order data is stuck in your stores",
+    body: "You cannot connect what people buy to what they do on your sites, so real customer analysis is impossible.",
   },
   {
     n: "4",

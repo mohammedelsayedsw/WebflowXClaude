@@ -66,7 +66,7 @@ export function PainPoints() {
 
         {/* Lead-in ties the copy to the boxes so they don't float */}
         <Reveal delay={0.2}>
-          <p className="mb-5 md:mb-6 font-head text-[var(--sw-black)]/50 text-[13px] md:text-[14px] tracking-[0.08em] uppercase">
+          <p className="mb-5 md:mb-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             You deal with these every day:
           </p>
         </Reveal>

@@ -10,7 +10,7 @@ const flow: { label: string; highlight?: boolean }[] = [
   { label: "Data pulled out" },
   { label: "Matched against your systems" },
   { label: "Exception found", highlight: true },
-  { label: "Operator corrects" + NB + "it", highlight: true },
+  { label: "Operator corrects it", highlight: true },
   { label: "The system learns" },
   { label: "Final action or" + NB + "alert" },
 ];
@@ -48,12 +48,12 @@ export function CaseStudy() {
 
         {/* end-to-end flow — full-width process row */}
         <Reveal delay={0.15}>
-          <ol className="mt-9 md:mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 md:gap-3">
+          <ol className="mt-9 md:mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
             {flow.map((step, i) => (
               <li
                 key={step.label}
                 className={
-                  "flex h-full min-h-[104px] flex-col justify-between gap-3 rounded-[4px] border p-4 " +
+                  "flex h-full min-h-[104px] flex-col justify-between gap-3 rounded-[4px] border px-2.5 py-3 " +
                   (step.highlight
                     ? "border-[var(--sw-mint)]/50 bg-[var(--sw-mint)]/[0.08]"
                     : "border-white/12 bg-white/[0.03]")
@@ -69,7 +69,7 @@ export function CaseStudy() {
                 </span>
                 <span
                   className={
-                    "font-head text-[13px] md:text-[14px] leading-snug " +
+                    "font-head text-[13px] md:text-[13.5px] leading-snug " +
                     (step.highlight ? "text-[var(--sw-mint)]" : "text-white/85")
                   }
                 >

@@ -6,12 +6,9 @@ import { assetUrl } from "@/lib/assets";
 
 const METRICS = [
   { v: "11", k: "intelligence areas" },
-  { v: "51", k: "dashboard pages across the 11 intelligence areas" },
+  { v: "51", k: "dashboard pages" },
   { v: "7", k: "integrated data sources" },
-  {
-    v: "3M+",
-    k: "historic customer profiles, with lifetime value, buying patterns, and the groups they fall into",
-  },
+  { v: "3M+", k: "historic customer profiles" },
 ];
 
 const BUILT = [

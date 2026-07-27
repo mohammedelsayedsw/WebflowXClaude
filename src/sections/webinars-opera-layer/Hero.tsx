@@ -150,7 +150,10 @@ export function Hero() {
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
-                Improve Operations Without Replacing Your ERP
+                Improve Operations{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  Without Replacing Your ERP
+                </span>
               </h1>
             </Reveal>
 

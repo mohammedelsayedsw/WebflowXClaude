@@ -1,57 +1,54 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const agenda: string[] = [
-  "Why matching supplier documents eats your team's week",
-  "The pipeline end to end, from a photo of a delivery note to a posted goods receipt",
-  "Live: an invoice and a delivery note going through it",
-  "What happens when the numbers do not match, and how exceptions get resolved",
-  "How the system learns each supplier and gets more accurate over time",
-  "What stops a bad document reaching your ERP",
-  "What it takes to get one workflow live, and how long connecting your ERP really takes",
-  "Your questions",
+const points: string[] = [
+  "Where your team loses hours between systems",
+  "Why you don't need to replace your ERP",
+  "How OperaLayer takes over the manual work",
+  "How to pick your first workflow",
+  "What data and access it needs",
+  "What's realistic in the first 72 hours",
+  "How to measure the time and money saved",
+  "When OperaLayer is, and isn't, the right fit",
 ];
 
 export function Agenda() {
   return (
     <section
-      id="agenda"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      id="what-youll-learn"
+      className="relative bg-lp-bright py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
-      <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="mb-12 md:mb-16 max-w-[52rem]">
-          <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">6</span>
-              <span className="h-px w-6 bg-white/15" />
-              <span>What we will cover</span>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]">
-              What we will cover in{" "}
-              <span style={{ color: "var(--sw-mint)" }}>45 minutes</span>
-            </h2>
-          </Reveal>
-        </div>
-
-        {/* column-wise flow: 1-4 down the left column, 5-8 down the right */}
-        <ol className="grid grid-cols-1 md:grid-flow-col md:grid-cols-2 md:grid-rows-4 gap-x-10 gap-y-4">
-          {agenda.map((item, i) => (
-            <Reveal key={i} delay={(i % 2) * 0.06} className="h-full">
-              <li className="flex h-full gap-4 border-b border-white/10 pb-4">
-                <span className="font-head font-bold text-[var(--sw-mint)] text-[18px] md:text-[20px] tabular-nums leading-tight shrink-0 w-7">
-                  {i + 1}
-                </span>
-                <span className="text-white/80 text-[16px] md:text-[17px] leading-snug">
-                  {item}
-                </span>
-              </li>
+        <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          {/* LEFT · heading */}
+          <div>
+            <Reveal>
+              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
+                What you will learn{" "}
+                <span className="text-[var(--sw-blue)]">during webinar</span>
+              </h2>
             </Reveal>
-          ))}
-        </ol>
+          </div>
+
+          {/* RIGHT · checklist */}
+          <ul className="flex flex-col gap-4 md:gap-5">
+            {points.map((item, i) => (
+              <Reveal key={item} delay={i * 0.06}>
+                <li className="flex gap-4 border-b border-[var(--sw-black)]/10 pb-4 md:pb-5">
+                  <Check
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[var(--sw-blue)]"
+                    strokeWidth={2}
+                  />
+                  <span className="text-[var(--sw-black)]/75 text-[16px] md:text-[18px] leading-snug">
+                    {item}
+                  </span>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

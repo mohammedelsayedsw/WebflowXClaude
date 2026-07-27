@@ -1,77 +1,128 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { PressBand } from "./PressBand";
 
-const systems = ["ERP", "CRM", "eComm", "WMS", "Finance"];
-const outcomes = ["Dashboards", "Forecasts", "Automations"];
+const MINT = "#6EF76E";
+const PAPER = "255,255,255";
 
-function ConceptDiagram() {
-  // Dark card so the diagram reads as its own object on the bright section.
+// Solid, defined systems — a vertical spine.
+const systems: {
+  label: string;
+  sub?: string;
+  y: number;
+  h: number;
+}[] = [
+  { label: "ERP", sub: "records transactions", y: 16, h: 60 },
+  { label: "Warehouse", y: 154, h: 48 },
+  { label: "Accounting", y: 280, h: 48 },
+  { label: "Suppliers", y: 406, h: 48 },
+];
+
+// Loose, unowned work — sits in the gaps between the systems above.
+const gapItems: { label: string; y: number }[] = [
+  { label: "Documents", y: 96 },
+  { label: "Emails & PDFs", y: 222 },
+  { label: "Spreadsheets", y: 348 },
+];
+
+const SYS_X = 40;
+const SYS_W = 360;
+const GAP_X = 92;
+const GAP_W = 256;
+const GAP_H = 38;
+
+function VerticalGapDiagram() {
   return (
-    <div
-      className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto rounded-[4px] p-5 sm:p-7"
-      style={{ background: "#10132c", border: "1px solid rgba(255,255,255,0.1)" }}
+    <svg
+      viewBox="0 0 440 470"
+      className="w-full h-auto"
+      role="img"
+      aria-label="A vertical stack of your systems — ERP (which only records transactions), Warehouse, Accounting, Suppliers — with the manual work no system owns, Documents, Emails and PDFs, and Spreadsheets, sitting loose in the gaps between them."
     >
-      {/* Tier 1 · outcomes */}
-      <div className="label-code text-white/45 text-[10px] mb-3 text-center">
-        What you see
-      </div>
-      <div className="flex flex-wrap justify-center gap-2">
-        {outcomes.map((o) => (
-          <span
-            key={o}
-            className="rounded-[2px] border border-white/12 bg-white/[0.05] px-3 py-1.5 text-white/80 text-[12px] font-head"
+      {/* GAP ITEMS · loose, unowned work floating in the gaps */}
+      {gapItems.map((g) => (
+        <g key={g.label}>
+          <rect
+            x={GAP_X}
+            y={g.y}
+            width={GAP_W}
+            height={GAP_H}
+            rx="4"
+            fill={`rgba(${PAPER},0.015)`}
+            stroke={`rgba(${PAPER},0.32)`}
+            strokeWidth="1"
+            strokeDasharray="5 4"
+            vectorEffect="non-scaling-stroke"
+          />
+          <text
+            x={GAP_X + GAP_W / 2}
+            y={g.y + GAP_H / 2 + 1}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="font-head"
+            fontSize="12.5"
+            fill={`rgba(${PAPER},0.6)`}
           >
-            {o}
-          </span>
-        ))}
-      </div>
+            {g.label}
+          </text>
+        </g>
+      ))}
 
-      {/* connector */}
-      <div className="flex justify-center my-3" aria-hidden>
-        <div className="h-6 w-px bg-white/15" />
-      </div>
-
-      {/* Tier 2 · OperaLayer */}
-      <div
-        className="rounded-[2px] px-4 py-3.5 text-center"
-        style={{
-          background: "rgba(110,247,110,0.08)",
-          border: "1px solid rgba(110,247,110,0.35)",
-        }}
-      >
-        <div
-          className="font-head font-bold text-[15px]"
-          style={{ color: "var(--sw-mint)" }}
-        >
-          OperaLayer
-        </div>
-        <div className="text-white/60 text-[11.5px] mt-1">
-          One data model across your systems
-        </div>
-      </div>
-
-      {/* connector */}
-      <div className="flex justify-center my-3" aria-hidden>
-        <div className="h-6 w-px bg-white/15" />
-      </div>
-
-      {/* Tier 3 · systems */}
-      <div className="label-code text-white/45 text-[10px] mb-3 text-center">
-        Your existing systems
-      </div>
-      <div className="grid grid-cols-5 gap-1.5">
-        {systems.map((s) => (
-          <span
-            key={s}
-            className="rounded-[2px] border border-white/10 bg-white/[0.03] px-1 py-2.5 text-white/70 text-[10.5px] font-head text-center leading-none"
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-    </div>
+      {/* SYSTEMS · solid, defined */}
+      {systems.map((s) => (
+        <g key={s.label}>
+          <rect
+            x={SYS_X}
+            y={s.y}
+            width={SYS_W}
+            height={s.h}
+            rx="4"
+            fill={`rgba(${PAPER},0.035)`}
+            stroke={MINT}
+            strokeOpacity="0.55"
+            strokeWidth="1.25"
+            vectorEffect="non-scaling-stroke"
+          />
+          {s.sub ? (
+            <>
+              <text
+                x={SYS_X + SYS_W / 2}
+                y={s.y + 28}
+                textAnchor="middle"
+                className="font-head"
+                fontSize="18"
+                fontWeight="700"
+                fill={MINT}
+              >
+                {s.label}
+              </text>
+              <text
+                x={SYS_X + SYS_W / 2}
+                y={s.y + 48}
+                textAnchor="middle"
+                className="font-head"
+                fontSize="11.5"
+                fill={`rgba(${PAPER},0.6)`}
+              >
+                {s.sub}
+              </text>
+            </>
+          ) : (
+            <text
+              x={SYS_X + SYS_W / 2}
+              y={s.y + s.h / 2 + 1}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="font-head"
+              fontSize="15"
+              fill={`rgba(${PAPER},0.92)`}
+            >
+              {s.label}
+            </text>
+          )}
+        </g>
+      ))}
+    </svg>
   );
 }
 
@@ -79,56 +130,54 @@ export function Overview() {
   return (
     <section
       id="overview"
-      className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
+      <div aria-hidden className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="grid gap-12 md:gap-14 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+        <div className="grid gap-12 lg:gap-16 lg:grid-cols-[1fr_1fr] lg:items-center">
           {/* LEFT · copy */}
-          <div className="max-w-[620px]">
+          <div className="max-w-[560px]">
             <Reveal>
-              <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
-                <span className="text-[var(--sw-black)]/55">1</span>
-                <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-                <span>In short</span>
+              <div className="label-code mb-5 inline-flex items-center gap-3 text-white/60">
+                <span className="text-white/55">3</span>
+                <span className="h-px w-6 bg-white/15" />
+                <span>The ERP gap</span>
               </div>
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[20ch]">
-                What OperaLayer is, and what this{" "}
-                <span className="text-[var(--sw-blue)]">session covers</span>
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[22ch]">
+                Why your ERP does not fix the{" "}
+                <span style={{ color: "var(--sw-mint)" }}>work between systems</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p className="mt-7 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-                OperaLayer is a thin operational layer that runs across the
-                systems you already use, unifies their data into one model, and
-                hosts focused apps that close the gaps between them. Nothing gets
-                replaced.
+              <p className="mt-7 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
+                Your ERP records transactions. The real operational work lives
+                somewhere else: in documents, emails, warehouse systems, supplier
+                portals, and people&apos;s spreadsheets. Your ERP was never built
+                to see any of it.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
-              <p className="mt-5 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-                This session is built for B2B distribution and wholesale teams.
-                We take one job that eats your week, matching supplier documents
-                to purchase orders, and show the whole pipeline working end to
-                end, with time for your questions.
+              <p className="mt-5 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
+                That is why customising or replacing the ERP rarely solves it.
+                Those projects are slow and expensive, and the gaps between
+                systems are still there when they finish.
               </p>
             </Reveal>
-
           </div>
 
-          {/* RIGHT · concept diagram */}
-          <Reveal delay={0.15}>
-            <ConceptDiagram />
+          {/* RIGHT · vertical gap diagram */}
+          <Reveal delay={0.1} className="w-full">
+            <div className="mx-auto w-full max-w-[400px]">
+              <VerticalGapDiagram />
+            </div>
           </Reveal>
         </div>
       </div>
-
-      {/* Featured in press row shares this section's bright background */}
-      <PressBand />
     </section>
   );
 }

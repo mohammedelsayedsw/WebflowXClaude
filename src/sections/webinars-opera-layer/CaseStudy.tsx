@@ -8,7 +8,7 @@ const NB = String.fromCharCode(160);
 const flow: { label: string; highlight?: boolean }[] = [
   { label: "Incoming document" },
   { label: "Data pulled out" },
-  { label: "Matched against your systems" },
+  { label: "Matched to systems" },
   { label: "Exception found", highlight: true },
   { label: "Operator corrects it", highlight: true },
   { label: "The system learns" },

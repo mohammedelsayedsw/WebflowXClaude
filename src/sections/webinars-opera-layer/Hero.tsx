@@ -157,6 +157,7 @@ export function Hero() {
             <Reveal delay={0.1}>
               <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[40rem] text-white/85">
                 Cut the manual work between your ERP, warehouse, and suppliers,
+                <br />
                 without replacing any system.
               </p>
             </Reveal>
@@ -173,8 +174,8 @@ export function Hero() {
 
             <Reveal delay={0.28}>
               <p className="mt-4 text-white/60 text-[13px] md:text-[14px] leading-relaxed max-w-[40rem]">
-                Free to attend. Can&apos;t join live? Register and we&apos;ll send
-                you the recording.
+                Can&apos;t join live? Register and we&apos;ll send you the
+                recording.
               </p>
             </Reveal>
             </div>

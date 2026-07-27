@@ -7,7 +7,6 @@ import { PainPoints } from "@/sections/webinars-opera-layer/PainPoints";
 import { HowItWorks } from "@/sections/webinars-opera-layer/HowItWorks";
 import { Agenda } from "@/sections/webinars-opera-layer/Agenda";
 import { HowItSolves } from "@/sections/webinars-opera-layer/HowItSolves";
-import { TheSession } from "@/sections/webinars-opera-layer/TheSession";
 import { SpeakerBio } from "@/sections/webinars-opera-layer/SpeakerBio";
 import { CTA } from "@/sections/webinars-opera-layer/CTA";
 
@@ -15,13 +14,12 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <Overview />
-      <CaseStudy />
-      <PainPoints />
-      <HowItWorks />
-      <HowItSolves />
       <Agenda />
-      <TheSession />
+      <HowItWorks />
+      <PainPoints />
+      <Overview />
+      <HowItSolves />
+      <CaseStudy />
       <SpeakerBio />
       <CTA />
     </main>

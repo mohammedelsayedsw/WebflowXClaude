@@ -29,29 +29,17 @@ export function CTA() {
 
       <div className="wrap relative">
         <div className="max-w-[820px] mx-auto text-center flex flex-col items-center">
-          <Reveal>
-            <div className="inline-flex items-center rounded-[2px] border border-white/70 px-3 py-1.5 mb-8">
-              {/* TODO: confirm webinar date */}
-              <span className="font-head text-[11px] md:text-[12px] font-semibold tracking-[0.14em] text-white uppercase">
-                Free webinar &middot; Date &amp; time TBA
-              </span>
-            </div>
-          </Reveal>
-
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              See the gap between your systems,
-              <br />
-              <span style={{ color: "var(--sw-mint)" }}>
-                and how to close it
-              </span>
+            <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[18ch] mx-auto">
+              Save your <span style={{ color: "var(--sw-mint)" }}>seat</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              Join the webinar to see OperaLayer work on real data, get your
-              questions answered live, and leave knowing your first move.
+              {/* TODO: confirm webinar date and time */}
+              Date TBA &middot; Time TBA &middot; Online &middot; Free to attend.
+              Can&apos;t join live? Register and we&apos;ll send the recording.
             </p>
           </Reveal>
 

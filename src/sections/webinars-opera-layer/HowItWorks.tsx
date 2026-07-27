@@ -1,60 +1,137 @@
 "use client";
 
-import { Camera, ScanLine, GitCompareArrows, CheckCheck, Upload, Plus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const steps: { icon: typeof Camera; n: string; title: string; body: string }[] = [
-  {
-    icon: Camera,
-    n: "1",
-    title: "Capture",
-    body: "Upload a PDF or snap a photo on a phone.",
-  },
-  {
-    icon: ScanLine,
-    n: "2",
-    title: "AI extract",
-    body: "Reads every line, whatever the layout or language.",
-  },
-  {
-    icon: GitCompareArrows,
-    n: "3",
-    title: "Match",
-    body: "Lines matched to your purchase order.",
-  },
-  {
-    icon: CheckCheck,
-    n: "4",
-    title: "Review",
-    body: "An operator confirms, and anything that does not match is flagged.",
-  },
-  {
-    icon: Upload,
-    n: "5",
-    title: "Export",
-    body: "Posted back to your ERP.",
-  },
-];
+const systems = ["ERP", "Warehouse", "Accounting", "Supplier portal", "Email"];
 
-const cards: { title: string; body: string }[] = [
-  {
-    title: "When things do not match",
-    body: "Quantity gaps, price differences, and pack mismatches like boxes against pieces are flagged before anything posts. Reviewers only see the exceptions.",
-  },
-  {
-    title: "It learns your suppliers",
-    body: "It picks up each supplier's item codes and pack conversions, and which lines are freight rather than product. No rules to write by hand.",
-  },
-  {
-    title: "It connects to your ERP",
-    body: "The connector is swappable, so it is not tied to one system. Connecting yours usually takes a few days to two weeks, depending on how readily it can share the data.",
-  },
-  {
-    title: "Nothing posts by accident",
-    body: "Nothing exports until a person confirms, and every confirm, export, and override is recorded. The AI provider is your choice, so you are not locked to one vendor.",
-  },
-];
+// Bottom-tier box geometry.
+const BOX_W = 84;
+const BOX_GAP = 6;
+const BOX_Y = 290;
+const BOX_H = 48;
+const START_X = 8;
+const boxX = (i: number) => START_X + i * (BOX_W + BOX_GAP);
+const boxCx = (i: number) => boxX(i) + BOX_W / 2;
+
+const MINT = "#6EF76E";
+const PAPER = "255,255,255";
+
+function StackDiagram() {
+  return (
+    <svg
+      viewBox="0 0 460 360"
+      className="w-full h-auto"
+      role="img"
+      aria-label="OperaLayer sits as one wide layer on top of your existing systems — ERP, warehouse, accounting, supplier portal, and email — and surfaces one thing above it: what needs your attention."
+    >
+      {/* line from band up to the top box */}
+      <line
+        x1="230"
+        y1="150"
+        x2="230"
+        y2="78"
+        stroke={MINT}
+        strokeOpacity="0.5"
+        strokeWidth="1.25"
+        vectorEffect="non-scaling-stroke"
+      />
+
+      {/* lines from each system up into the band */}
+      {systems.map((s, i) => (
+        <line
+          key={s}
+          x1={boxCx(i)}
+          y1={BOX_Y}
+          x2={boxCx(i)}
+          y2="200"
+          stroke={MINT}
+          strokeOpacity="0.4"
+          strokeWidth="1"
+          vectorEffect="non-scaling-stroke"
+        />
+      ))}
+
+      {/* TOP · what surfaces */}
+      <rect
+        x="120"
+        y="30"
+        width="220"
+        height="48"
+        rx="4"
+        fill={`rgba(${PAPER},0.03)`}
+        stroke={MINT}
+        strokeOpacity="0.5"
+        strokeWidth="1.25"
+        vectorEffect="non-scaling-stroke"
+      />
+      <text
+        x="230"
+        y="59"
+        textAnchor="middle"
+        className="font-head"
+        fontSize="14"
+        fill={`rgba(${PAPER},0.92)`}
+      >
+        What needs your attention
+      </text>
+
+      {/* MIDDLE · the OperaLayer band */}
+      <rect
+        x={START_X}
+        y="150"
+        width={460 - START_X * 2}
+        height="50"
+        rx="4"
+        fill={MINT}
+        fillOpacity="0.1"
+        stroke={MINT}
+        strokeOpacity="0.75"
+        strokeWidth="1.5"
+        vectorEffect="non-scaling-stroke"
+      />
+      <text
+        x="230"
+        y="181"
+        textAnchor="middle"
+        className="font-head"
+        fontSize="20"
+        fontWeight="700"
+        fill={MINT}
+      >
+        OperaLayer
+      </text>
+
+      {/* BOTTOM · your existing systems */}
+      {systems.map((s, i) => (
+        <g key={s}>
+          <rect
+            x={boxX(i)}
+            y={BOX_Y}
+            width={BOX_W}
+            height={BOX_H}
+            rx="4"
+            fill={`rgba(${PAPER},0.03)`}
+            stroke={`rgba(${PAPER},0.28)`}
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+          <text
+            x={boxCx(i)}
+            y={BOX_Y + BOX_H / 2 + 1}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="font-head"
+            fontSize="9.5"
+            fill={`rgba(${PAPER},0.8)`}
+          >
+            {s}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
 
 export function HowItWorks() {
   return (
@@ -64,77 +141,48 @@ export function HowItWorks() {
     >
       <div className="absolute top-0 inset-x-0 h-px bg-white/10" />
       <div className="wrap relative">
-        <div className="mb-12 md:mb-16 max-w-[52rem]">
-          <Reveal>
-            <SectionLabel index="4">How it works</SectionLabel>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
-              One pipeline, from the document to{" "}
-              <span style={{ color: "var(--sw-mint)" }}>your ERP</span>
-            </h2>
+        <div className="grid gap-12 lg:gap-16 lg:grid-cols-[1fr_1fr] lg:items-center">
+          {/* LEFT · copy */}
+          <div className="max-w-[560px]">
+            <Reveal>
+              <SectionLabel index="1">What it is</SectionLabel>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em] mt-6">
+                OperaLayer, in{" "}
+                <span style={{ color: "var(--sw-mint)" }}>plain English</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-6 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+                It sits on top of the systems you already run and takes over the
+                manual work between them.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="mt-5 max-w-[60ch] text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+                From there, it connects your operational data and documents, does
+                the repetitive checking and matching your team does by hand, and
+                flags the exceptions that actually need a person. As your team
+                corrects those, it learns from them, and everything lands in one
+                place where you can see what needs action.
+              </p>
+            </Reveal>
+            <Reveal delay={0.25}>
+              <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
+                And there&apos;s no long rollout to sit through, your first
+                workflow can be live in days.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* RIGHT · three-tier stack */}
+          <Reveal delay={0.1} className="w-full">
+            <div className="mx-auto w-full max-w-[460px]">
+              <StackDiagram />
+            </div>
           </Reveal>
         </div>
-
-        {/* five pipeline steps */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
-          {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.07} className="h-full">
-              <li className="flex h-full flex-col rounded-[4px] border border-white/10 bg-white/[0.03] p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.04] text-[var(--sw-mint)]"
-                    aria-hidden
-                  >
-                    <s.icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <span className="font-head font-bold tabular-nums text-[26px] leading-none text-white/15">
-                    {s.n}
-                  </span>
-                </div>
-                <div className="font-head font-bold text-white text-[18px] leading-tight">
-                  {s.title}
-                </div>
-                <p className="mt-2 text-white/70 text-[14px] leading-relaxed">
-                  {s.body}
-                </p>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
-
-        {/* four detail cards as a single-column collapsed accordion */}
-        <div className="mt-12 md:mt-16 flex flex-col gap-3">
-          {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.06}>
-              <details className="group rounded-[4px] border border-white/10 bg-white/[0.03] transition-colors open:bg-white/[0.05]">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
-                  <h3 className="font-head text-white text-[18px] md:text-[20px] leading-tight">
-                    {c.title}
-                  </h3>
-                  <Plus
-                    className="h-5 w-5 shrink-0 text-[var(--sw-mint)] transition-transform duration-200 group-open:rotate-45"
-                    strokeWidth={1.75}
-                    aria-hidden
-                  />
-                </summary>
-                <p className="-mt-1 max-w-[70ch] px-6 pb-6 text-white/70 text-[15px] md:text-[16px] leading-relaxed">
-                  {c.body}
-                </p>
-              </details>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* pull quote, under the four blocks */}
-        <Reveal delay={0.1}>
-          <blockquote className="mt-12 md:mt-16 border-l-2 border-[var(--sw-mint)] pl-6 max-w-[64ch]">
-            <p className="font-head text-white text-[20px] md:text-[26px] leading-[1.3] tracking-[-0.005em]">
-              The AI handles the easy 80%. People spend their time only on the
-              20% that needs judgement.
-            </p>
-          </blockquote>
-        </Reveal>
       </div>
     </section>
   );

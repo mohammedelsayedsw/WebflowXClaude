@@ -136,76 +136,46 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-[100px] md:pt-[112px] pb-[clamp(32px,6vh,80px)] w-full">
+        <div className="wrap relative z-10 pt-[75px] md:pt-[90px] pb-[clamp(32px,6vh,80px)] w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-10 lg:grid-cols-[1.9fr_1fr] items-center">
             {/* LEFT · copy */}
             <div className="max-w-[40rem]">
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                 <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                  Free webinar &middot; B2B operations &middot; Episode 1
+                  Free webinar &middot; Date TBA &middot; Time TBA
                 </span>
               </div>
             </Reveal>
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
-                Stop running operations in spreadsheets
+                Improve Operations Without Replacing Your ERP
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p
-                className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.4] max-w-[40rem]"
-                style={{ color: "var(--sw-mint)" }}
-              >
-                How to build AI-powered operational apps on top of your ERP in
-                as little as 72 hours, without replacing your existing systems.
+              <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[40rem] text-white/85">
+                Cut the manual work between your ERP, warehouse, and suppliers,
+                without replacing any system.
               </p>
             </Reveal>
 
-            {/* Date + time block */}
-            <Reveal delay={0.15}>
-              <div className="mt-6 md:mt-8 flex flex-row gap-5 sm:gap-8 items-start">
-                <div>
-                  <div className="label-code text-white/55 text-[10px] mb-2">
-                    Date
-                  </div>
-                  {/* TODO: confirm webinar date */}
-                  <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
-                    TBA
-                  </div>
-                </div>
-                <div className="w-px self-stretch bg-white/15" />
-                <div>
-                  <div className="label-code text-white/55 text-[10px] mb-2">
-                    Time
-                  </div>
-                  {/* TODO: confirm webinar time */}
-                  <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
-                    TBA
-                  </div>
-                </div>
-                <div className="w-px self-stretch bg-white/15" />
-                <div>
-                  <div className="label-code text-white/55 text-[10px] mb-2">
-                    Format
-                  </div>
-                  <div className="font-head text-white text-[16px] sm:text-[18px] md:text-[20px] leading-none">
-                    45 min + live Q&amp;A
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.25}>
-              <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
+            <Reveal delay={0.2}>
+              <div className="mt-7 md:mt-8 flex flex-wrap items-center gap-3">
                 {/* TODO: replace with real registration link / HubSpot form */}
                 <a href="#cta" className={btnPrimary}>
                   Save your seat
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
+            </Reveal>
+
+            <Reveal delay={0.28}>
+              <p className="mt-4 text-white/60 text-[13px] md:text-[14px] leading-relaxed max-w-[40rem]">
+                Free to attend. Can&apos;t join live? Register and we&apos;ll send
+                you the recording.
+              </p>
             </Reveal>
             </div>
 

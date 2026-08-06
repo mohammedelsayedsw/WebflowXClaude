@@ -18,8 +18,8 @@ export default function Page() {
       <HowItWorks />
       <PainPoints />
       <Overview />
-      <HowItSolves />
       <CaseStudy />
+      <HowItSolves />
       <SpeakerBio />
       <CTA />
     </main>

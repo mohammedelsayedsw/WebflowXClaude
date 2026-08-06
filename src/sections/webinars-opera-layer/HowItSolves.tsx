@@ -89,7 +89,7 @@ export function HowItSolves() {
                 More in the coming webinars
               </div>
               <p className="mt-1.5 text-white/70 text-[14px] md:text-[15px] leading-relaxed">
-                Each of these gets its own live demo in an upcoming webinar, one
+                Each of these gets its own live demo in upcoming webinars, one
                 new use case at a time.
               </p>
             </div>

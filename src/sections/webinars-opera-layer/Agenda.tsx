@@ -5,13 +5,13 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const points: string[] = [
   "Where teams lose hours between systems",
-  "Why you don't need to replace your ERP",
-  "How OperaLayer takes over the manual work",
-  "What data and access it needs",
+  "How OperaLayer works on top of the systems you already run",
+  "The manual work OperaLayer takes over",
+  "What OperaLayer needs to run, in data and access",
   "What's realistic in the first 72 hours",
   "How to measure the time and money saved",
-  "When OperaLayer is, and isn't, the right fit",
-  "How to find the best starting point for your business",
+  "When OperaLayer fits your business, and when it doesn't",
+  "Where to start in your own operation",
 ];
 
 export function Agenda() {
@@ -26,7 +26,7 @@ export function Agenda() {
           <div>
             <Reveal>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-                What you will hear{" "}
+                What we&apos;ll cover{" "}
                 <span className="text-[var(--sw-blue)]">during the webinar</span>
               </h2>
             </Reveal>

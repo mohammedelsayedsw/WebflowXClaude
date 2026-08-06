@@ -150,10 +150,10 @@ export function Hero() {
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
-                Improve Your Operations{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Without Replacing Your Systems
-                </span>
+                  Cut the Manual Work
+                </span>{" "}
+                Between Your Systems
               </h1>
             </Reveal>
 

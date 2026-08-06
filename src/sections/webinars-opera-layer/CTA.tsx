@@ -37,8 +37,9 @@ export function CTA() {
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              {/* TODO: confirm webinar date and time */}
-              Date TBA &middot; Time TBA &middot; Online &middot; Free to attend.
+              {/* TODO: confirm webinar time, date is set */}
+              August 25, 2026 &middot; Time TBC &middot; Online &middot; Free to
+              attend.
               Can&apos;t join live? Register and we&apos;ll send the recording.
             </p>
           </Reveal>

@@ -1,23 +1,23 @@
 "use client";
 
 import {
-  Sheet,
-  FileText,
-  Paperclip,
+  Files,
   Copy,
   FileQuestion,
   RefreshCw,
+  Hourglass,
+  Wrench,
 } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const pains: { label: string; icon: typeof Sheet }[] = [
-  { label: "Spreadsheets", icon: Sheet },
-  { label: "PDFs", icon: FileText },
-  { label: "Email attachments", icon: Paperclip },
+const pains: { label: string; icon: typeof Files }[] = [
+  { label: "Overwhelming amount of documents daily", icon: Files },
   { label: "Duplicate data entry", icon: Copy },
-  { label: "Missing information", icon: FileQuestion },
-  { label: "Status checking", icon: RefreshCw },
+  { label: "Missing or wrong information", icon: FileQuestion },
+  { label: "Constant status checking", icon: RefreshCw },
+  { label: "Human bottleneck", icon: Hourglass },
+  { label: "Expensive ERP customizations", icon: Wrench },
 ];
 
 const container: Variants = {
@@ -51,7 +51,7 @@ export function PainPoints() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]">
-              Where your team&apos;s time{" "}
+              Where warehouse and accounting teams&apos; time{" "}
               <span className="text-[var(--sw-blue)]">actually disappears</span>
             </h2>
           </Reveal>
@@ -59,7 +59,9 @@ export function PainPoints() {
             <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
               Between your ERP, warehouse, accounting, and supplier systems sits
               a layer of manual work nobody planned for. It falls on your team to
-              hold it together by hand, and it costs them hours.
+              hold it together by hand, and it costs you time and accuracy that
+              add up to{" "}
+              <span className="text-[var(--sw-orange)]">money lost</span>.
             </p>
           </Reveal>
         </div>
@@ -67,7 +69,7 @@ export function PainPoints() {
         {/* Lead-in ties the copy to the boxes so they don't float */}
         <Reveal delay={0.2}>
           <p className="mb-5 md:mb-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            You deal with these every day:
+            You deal with these every day
           </p>
         </Reveal>
 

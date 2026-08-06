@@ -4,14 +4,14 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const points: string[] = [
-  "Where your team loses hours between systems",
+  "Where teams lose hours between systems",
   "Why you don't need to replace your ERP",
   "How OperaLayer takes over the manual work",
-  "How to pick your first workflow",
   "What data and access it needs",
   "What's realistic in the first 72 hours",
   "How to measure the time and money saved",
   "When OperaLayer is, and isn't, the right fit",
+  "If reconciliation isn't your first step, where else OperaLayer can start",
 ];
 
 export function Agenda() {
@@ -26,8 +26,8 @@ export function Agenda() {
           <div>
             <Reveal>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-                What you will learn{" "}
-                <span className="text-[var(--sw-blue)]">during webinar</span>
+                What you will hear{" "}
+                <span className="text-[var(--sw-blue)]">during the webinar</span>
               </h2>
             </Reveal>
           </div>

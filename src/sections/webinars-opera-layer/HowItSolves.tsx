@@ -1,27 +1,27 @@
 "use client";
 
-import { FileCheck, Boxes, AlertTriangle } from "lucide-react";
+import { TrendingUp, Radar, Brain } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const useCases: {
-  icon: typeof FileCheck;
+  icon: typeof TrendingUp;
   title: string;
   body: string;
 }[] = [
   {
-    icon: FileCheck,
-    title: "Document matching",
-    body: "Match purchase orders, invoices, delivery notes, and transport documents automatically. Flag missing information, quantity differences, and price differences.",
+    icon: TrendingUp,
+    title: "Procurement and demand prediction",
+    body: "Work out what to reorder and when, from your own order history, stock levels, and supplier lead times.",
   },
   {
-    icon: Boxes,
-    title: "Stock and shipment control",
-    body: "One live view of purchase orders, delayed shipments, and stock. See at a glance what is available, at risk, or blocked.",
+    icon: Radar,
+    title: "Live visibility across processes and tasks",
+    body: "One view of what is running, what is late, and what is blocked, pulled from the systems that already hold the answer.",
   },
   {
-    icon: AlertTriangle,
-    title: "Procurement and exception management",
-    body: "Bring delayed orders, missing documents, supplier issues, and warehouse problems into one prioritised queue, so your team knows what to handle first.",
+    icon: Brain,
+    title: "Company Knowledge Brain",
+    body: "Your documents, decisions, and internal rules in one place your team can ask questions of.",
   },
 ];
 
@@ -37,15 +37,20 @@ export function HowItSolves() {
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
               <span className="text-[var(--sw-black)]/55">4</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-              <span>The solution</span>
+              <span>Other solutions</span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
-              Three operational workflows
-              <br />
-              <span className="text-[var(--sw-blue)]">OperaLayer takes over</span>
+              Three more{" "}
+              <span className="text-[var(--sw-blue)]">OperaLayer use cases</span>
             </h2>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+              Reconciliation is where many teams start. OperaLayer does more, and
+              each new use case builds on the same connected picture.
+            </p>
           </Reveal>
         </div>
 

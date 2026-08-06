@@ -39,9 +39,10 @@ export function CaseStudy() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
-              We will take one incoming document and follow it all the way to the
-              final action, including the moment something breaks and how the
-              system handles it.
+              We will follow one real use case, document reconciliation, from
+              the moment a document arrives to the moment it exports to your
+              ERP, and show how OperaLayer helps your warehouse and accounting
+              teams handle it.
             </p>
           </Reveal>
         </div>
@@ -82,8 +83,8 @@ export function CaseStudy() {
 
         <Reveal delay={0.2}>
           <p className="mt-8 md:mt-10 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
-            This is the part that proves OperaLayer runs, instead of just
-            presenting well.
+            This is the first use case we are rolling out. More follow in the
+            weeks after.
           </p>
         </Reveal>
       </div>

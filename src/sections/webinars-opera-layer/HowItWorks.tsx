@@ -149,29 +149,32 @@ export function HowItWorks() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em] mt-6">
-                OperaLayer, in{" "}
-                <span style={{ color: "var(--sw-mint)" }}>plain English</span>
+                Operational Layer, or OperaLayer
               </h2>
             </Reveal>
             <Reveal delay={0.15}>
-              <p className="mt-6 text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-                It sits on top of the systems you already run and takes over the
-                manual work between them.
+              <p className="mt-6 max-w-[60ch] text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+                OperaLayer sits on top of the systems you already run, your ERP,
+                warehouse, accounting, supplier portals, CRM, and email, and
+                builds one connected picture of how your operation actually
+                works.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-[60ch] text-white/70 text-[15px] md:text-[17px] leading-relaxed">
-                From there, it connects your operational data and documents, does
-                the repetitive checking and matching your team does by hand, and
-                flags the exceptions that actually need a person. As your team
-                corrects those, it learns from them, and everything lands in one
-                place where you can see what needs action.
+                On top of that picture it takes over the manual work that lives
+                between systems, matching supplier documents, working out what to
+                reorder, predicting demand, keeping live visibility across tasks,
+                and flagging the exceptions that need a person. Your team stays
+                in control, and every correction they make teaches the system.
               </p>
             </Reveal>
             <Reveal delay={0.25}>
               <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                And there&apos;s no long rollout to sit through, your first
-                workflow can be live in days.
+                The more of your operation runs on it, the more it pays off. The
+                data and context are already there, so each new use case is
+                faster and cheaper to add than the last, and everything lands in
+                one place where you can see what needs your attention.
               </p>
             </Reveal>
           </div>

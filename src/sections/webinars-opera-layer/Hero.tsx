@@ -143,25 +143,25 @@ export function Hero() {
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                 <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                  Free webinar &middot; Date TBA &middot; Time TBA
+                  Free webinar &middot; August 25, 2026 &middot; Time TBC
                 </span>
               </div>
             </Reveal>
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[38px] md:text-[46px] lg:text-[47px] leading-[1.09] tracking-[-0.02em]">
-                Improve Operations{" "}
+                Improve Your Operations{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  Without Replacing Your ERP
+                  Without Replacing Your Systems
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[40rem] text-white/85">
-                Cut the manual work between your ERP, warehouse, and suppliers,
-                <br />
-                without replacing any system.
+                OperaLayer takes over the manual work between your ERP,
+                warehouse, accounting, and suppliers, so documents move faster
+                and with fewer errors, and your team gets those hours back.
               </p>
             </Reveal>
 

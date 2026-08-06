@@ -148,24 +148,25 @@ export function Overview() {
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[22ch]">
                 Why your ERP does not fix the{" "}
-                <span style={{ color: "var(--sw-mint)" }}>work between systems</span>
+                <span style={{ color: "var(--sw-orange)" }}>work between systems</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-7 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
-                Your ERP records transactions. The real operational work lives
-                somewhere else: in documents, emails, warehouse systems, supplier
-                portals, and people&apos;s spreadsheets. Your ERP was never built
-                to see any of it.
+                Your ERP holds your core records. The operational work lives
+                around it, in documents, emails, warehouse systems, supplier
+                portals, and spreadsheets, and your ERP was never built to see
+                any of it.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
               <p className="mt-5 text-white/75 text-[16px] md:text-[18px] leading-relaxed">
-                That is why customising or replacing the ERP rarely solves it.
-                Those projects are slow and expensive, and the gaps between
-                systems are still there when they finish.
+                That is why customizing or replacing your ERP rarely fixes the
+                problem. Those projects run slow and cost a lot to fit every
+                document format, edge case, and internal rule, and the gaps
+                between systems are still there when they finish.
               </p>
             </Reveal>
           </div>

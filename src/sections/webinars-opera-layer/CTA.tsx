@@ -39,6 +39,7 @@ export function CTA() {
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
               August 25, 2026 &middot; 1 PM GMT &middot; Online &middot; Free to
               attend.
+              <br />
               Can&apos;t join live? Register and we&apos;ll send the recording.
             </p>
           </Reveal>

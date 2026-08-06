@@ -47,16 +47,16 @@ export function CaseStudy() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
-              See it work on one real case, start to finish
+              Watch OperaLayer clear the manual work and{" "}
+              <span className="text-[var(--sw-blue)]">close the gap</span>,
+              live
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              We will follow one real use case, document reconciliation,
-              checking that incoming invoices and delivery notes match your
-              orders and records. You will see it end to end, from the moment a
-              document arrives to the moment it exports to your ERP, and how
-              OperaLayer helps your warehouse and accounting teams handle it.
+              The use case is document reconciliation, checking that incoming
+              invoices and delivery notes match your purchase orders. You will
+              see it run on real data.
             </p>
           </Reveal>
         </div>
@@ -90,12 +90,6 @@ export function CaseStudy() {
           </ol>
         </Reveal>
 
-        <Reveal delay={0.2}>
-          <p className="mt-6 text-[14px] leading-relaxed text-[var(--sw-black)]/60 md:text-[15px]">
-            Every correction teaches OperaLayer for the next document.
-          </p>
-        </Reveal>
-
         <Reveal delay={0.25}>
           <div className="mt-8">
             <button
@@ -111,8 +105,8 @@ export function CaseStudy() {
 
         <Reveal delay={0.3}>
           <p className="mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            This is the first use case we are rolling out. More follow in the
-            weeks after.
+            This is the first use case in the series. We will cover a new one in
+            each of the coming webinars.
           </p>
         </Reveal>
       </div>

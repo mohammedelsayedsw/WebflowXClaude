@@ -8,7 +8,7 @@ import {
   Hourglass,
   Wrench,
 } from "lucide-react";
-import { motion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const pains: { label: string; icon: typeof Files }[] = [
@@ -35,6 +35,10 @@ const item: Variants = {
 };
 
 export function PainPoints() {
+  // Framer handles the entrance; the float and hover lift are CSS, and both
+  // opt out under prefers-reduced-motion.
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="the-pain"
@@ -59,11 +63,10 @@ export function PainPoints() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-6 max-w-[760px] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+            <p className="mt-6 max-w-[760px] lg:max-w-[900px] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
               None of your systems talk to each other, so someone copies data
               from one into the next and hunts down what does not match. It eats
-              hours every day and quietly{" "}
-              <span className="text-[var(--sw-orange)]">costs you money</span>.
+              hours every day and quietly costs you money.
             </p>
           </Reveal>
         </div>
@@ -78,26 +81,35 @@ export function PainPoints() {
         {/* The pains — full-width grid, the focal point */}
         <motion.ul
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4"
-          variants={container}
-          initial="hidden"
-          whileInView="shown"
+          variants={reduceMotion ? undefined : container}
+          initial={reduceMotion ? undefined : "hidden"}
+          whileInView={reduceMotion ? undefined : "shown"}
           viewport={{ once: true, amount: 0.3 }}
         >
-          {pains.map((p) => (
+          {pains.map((p, i) => (
             <motion.li
               key={p.label}
-              variants={item}
-              className="group relative flex min-h-[136px] flex-col justify-between gap-6 rounded-[6px] border border-[var(--sw-black)]/10 bg-white p-5 transition-colors duration-300 hover:border-[var(--sw-blue)]/40"
+              variants={reduceMotion ? undefined : item}
+              className="h-full"
             >
-              <span
-                aria-hidden
-                className="inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)]"
+              {/* separate layer for the float so it never fights the entrance
+                  transform on the li or the hover lift on the card */}
+              <div
+                className="sw-card-float h-full"
+                style={{ animationDelay: `${i * 0.2}s` }}
               >
-                <p.icon className="h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <span className="font-head text-[var(--sw-black)]/85 text-[13px] leading-snug">
-                {p.label}
-              </span>
+                <div className="group relative flex h-full min-h-[136px] flex-col justify-between gap-6 rounded-[6px] border border-[var(--sw-black)]/10 bg-white p-5 transition-[transform,box-shadow,border-color] duration-300 hover:border-[var(--sw-blue)]/40 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_12px_28px_rgba(16,19,44,0.10)]">
+                  <span
+                    aria-hidden
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-blue)]"
+                  >
+                    <p.icon className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="font-head text-[var(--sw-black)]/85 text-[13px] leading-snug">
+                    {p.label}
+                  </span>
+                </div>
+              </div>
             </motion.li>
           ))}
         </motion.ul>

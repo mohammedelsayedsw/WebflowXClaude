@@ -3,10 +3,18 @@
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "@/components/primitives/SectionLabel";
 
-const systems = ["ERP", "Warehouse", "Accounting", "Supplier portal", "Email"];
+const systems = [
+  "ERP",
+  "Warehouse",
+  "Accounting",
+  "Supplier portal",
+  "CRM",
+  "Email",
+];
 
 // Top-tier box geometry — the source systems that feed into OperaLayer.
-const BOX_W = 84;
+// Width is sized so six boxes plus their gaps span the same 444 as the band.
+const BOX_W = 69;
 const BOX_GAP = 6;
 const BOX_Y = 30;
 const BOX_H = 48;
@@ -23,7 +31,7 @@ function StackDiagram() {
       viewBox="0 0 460 360"
       className="w-full h-auto"
       role="img"
-      aria-label="Your existing systems, ERP, warehouse, accounting, supplier portal, and email, feed down into OperaLayer, which surfaces one thing below it, what needs your attention."
+      aria-label="Your existing systems, ERP, warehouse, accounting, supplier portal, CRM, and email, feed down into OperaLayer, which surfaces one thing below it, what needs your attention."
     >
       {/* line from band down to the result box */}
       <line
@@ -122,7 +130,7 @@ function StackDiagram() {
             textAnchor="middle"
             dominantBaseline="middle"
             className="font-head"
-            fontSize="9.5"
+            fontSize="8.5"
             fill={`rgba(${PAPER},0.8)`}
           >
             {s}
@@ -149,33 +157,32 @@ export function HowItWorks() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em] mt-6">
-                Operational Layer, or{" "}
-                <span style={{ color: "var(--sw-mint)" }}>OperaLayer</span>
+                Operational Layer,{" "}
+                <span style={{ color: "var(--sw-mint)" }}>or OperaLayer</span>
               </h2>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="mt-6 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
                 OperaLayer sits on top of the systems you already run, your ERP,
-                warehouse, accounting, supplier portals, CRM, and email, and
-                builds one connected picture of how your operation actually
-                works.
+                warehouse, accounting, suppliers, CRM, and email. It builds one
+                connected picture of how your operation actually works.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                On top of that picture it takes over the manual work that lives
-                between systems, matching supplier documents, working out what to
-                reorder, predicting demand, keeping live visibility across tasks,
-                and flagging the exceptions that need a person. Your team stays
-                in control, and every correction they make teaches the system.
+                On top of that picture, it takes over the manual work that lives
+                between those systems, the checking and matching your team does
+                by hand, and flags the exceptions that actually need a person.
+                Your team stays in control, and every correction they make
+                teaches the system.
               </p>
             </Reveal>
             <Reveal delay={0.25}>
               <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                The more of your operation runs on it, the more it does for you.
-                The data and context are already there, so each new use case
-                builds on the last, and everything lands in one place where you
-                can see what needs your attention.
+                The more of your operation runs on it, the more it sees across
+                your business. The data and context are already there, so each
+                new use case builds on the last, and everything lands in one
+                place where you can see what needs your attention.
               </p>
             </Reveal>
           </div>

@@ -479,3 +479,18 @@
     animation: none;
   }
 }
+
+/* Idle float — cards bob gently on a loop. The per-card animation-delay is
+   set inline, which offsets the phase and reads as a left-to-right wave. */
+@keyframes sw-card-float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+.sw-card-float {
+  animation: sw-card-float 3.4s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sw-card-float {
+    animation: none;
+  }
+}

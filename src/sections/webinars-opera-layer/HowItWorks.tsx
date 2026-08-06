@@ -5,10 +5,10 @@ import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const systems = ["ERP", "Warehouse", "Accounting", "Supplier portal", "Email"];
 
-// Bottom-tier box geometry.
+// Top-tier box geometry — the source systems that feed into OperaLayer.
 const BOX_W = 84;
 const BOX_GAP = 6;
-const BOX_Y = 290;
+const BOX_Y = 30;
 const BOX_H = 48;
 const START_X = 8;
 const boxX = (i: number) => START_X + i * (BOX_W + BOX_GAP);
@@ -23,28 +23,28 @@ function StackDiagram() {
       viewBox="0 0 460 360"
       className="w-full h-auto"
       role="img"
-      aria-label="OperaLayer sits as one wide layer on top of your existing systems — ERP, warehouse, accounting, supplier portal, and email — and surfaces one thing above it: what needs your attention."
+      aria-label="Your existing systems, ERP, warehouse, accounting, supplier portal, and email, feed down into OperaLayer, which surfaces one thing below it, what needs your attention."
     >
-      {/* line from band up to the top box */}
+      {/* line from band down to the result box */}
       <line
         x1="230"
-        y1="150"
+        y1="200"
         x2="230"
-        y2="78"
+        y2="290"
         stroke={MINT}
         strokeOpacity="0.5"
         strokeWidth="1.25"
         vectorEffect="non-scaling-stroke"
       />
 
-      {/* lines from each system up into the band */}
+      {/* lines from each system down into the band */}
       {systems.map((s, i) => (
         <line
           key={s}
           x1={boxCx(i)}
-          y1={BOX_Y}
+          y1={BOX_Y + BOX_H}
           x2={boxCx(i)}
-          y2="200"
+          y2="150"
           stroke={MINT}
           strokeOpacity="0.4"
           strokeWidth="1"
@@ -52,10 +52,10 @@ function StackDiagram() {
         />
       ))}
 
-      {/* TOP · what surfaces */}
+      {/* BOTTOM · what surfaces */}
       <rect
         x="120"
-        y="30"
+        y="290"
         width="220"
         height="48"
         rx="4"
@@ -67,7 +67,7 @@ function StackDiagram() {
       />
       <text
         x="230"
-        y="59"
+        y="319"
         textAnchor="middle"
         className="font-head"
         fontSize="14"
@@ -102,7 +102,7 @@ function StackDiagram() {
         OperaLayer
       </text>
 
-      {/* BOTTOM · your existing systems */}
+      {/* TOP · your existing systems */}
       {systems.map((s, i) => (
         <g key={s}>
           <rect
@@ -149,11 +149,12 @@ export function HowItWorks() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em] mt-6">
-                Operational Layer, or OperaLayer
+                Operational Layer, or{" "}
+                <span style={{ color: "var(--sw-mint)" }}>OperaLayer</span>
               </h2>
             </Reveal>
             <Reveal delay={0.15}>
-              <p className="mt-6 max-w-[60ch] text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+              <p className="mt-6 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
                 OperaLayer sits on top of the systems you already run, your ERP,
                 warehouse, accounting, supplier portals, CRM, and email, and
                 builds one connected picture of how your operation actually
@@ -161,7 +162,7 @@ export function HowItWorks() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 max-w-[60ch] text-white/70 text-[15px] md:text-[17px] leading-relaxed">
+              <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
                 On top of that picture it takes over the manual work that lives
                 between systems, matching supplier documents, working out what to
                 reorder, predicting demand, keeping live visibility across tasks,
@@ -171,10 +172,10 @@ export function HowItWorks() {
             </Reveal>
             <Reveal delay={0.25}>
               <p className="mt-5 max-w-[60ch] text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                The more of your operation runs on it, the more it pays off. The
-                data and context are already there, so each new use case is
-                faster and cheaper to add than the last, and everything lands in
-                one place where you can see what needs your attention.
+                The more of your operation runs on it, the more it does for you.
+                The data and context are already there, so each new use case
+                builds on the last, and everything lands in one place where you
+                can see what needs your attention.
               </p>
             </Reveal>
           </div>

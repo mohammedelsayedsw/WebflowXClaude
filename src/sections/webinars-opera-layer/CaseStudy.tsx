@@ -26,7 +26,7 @@ export function CaseStudy() {
         <div className="max-w-[60rem]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">5</span>
+              <span className="text-white/55">4</span>
               <span className="h-px w-6 bg-white/15" />
               <span>The live demo</span>
             </div>

@@ -41,7 +41,7 @@ export function PainPoints() {
       className="relative bg-lp-bright py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
-        <div className="mb-10 md:mb-12 max-w-[760px]">
+        <div className="mb-10 md:mb-12 max-w-[760px] lg:max-w-[1100px]">
           <Reveal>
             <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
               <span className="text-[var(--sw-black)]/55">2</span>
@@ -51,17 +51,19 @@ export function PainPoints() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]">
-              Where warehouse and accounting teams&apos; time{" "}
+              Where warehouse and accounting{" "}
+              {/* force the two-line break on desktop so the headline never sets in three */}
+              <br className="hidden lg:block" />
+              teams&apos; time{" "}
               <span className="text-[var(--sw-blue)]">actually disappears</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              Between your ERP, warehouse, accounting, and supplier systems sits
-              a layer of manual work nobody planned for. It falls on your team to
-              hold it together by hand, and it costs you time and accuracy that
-              add up to{" "}
-              <span className="text-[var(--sw-orange)]">money lost</span>.
+            <p className="mt-6 max-w-[760px] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+              None of your systems talk to each other, so someone copies data
+              from one into the next and hunts down what does not match. It eats
+              hours every day and quietly{" "}
+              <span className="text-[var(--sw-orange)]">costs you money</span>.
             </p>
           </Reveal>
         </div>
@@ -69,7 +71,7 @@ export function PainPoints() {
         {/* Lead-in ties the copy to the boxes so they don't float */}
         <Reveal delay={0.2}>
           <p className="mb-5 md:mb-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            You deal with these every day
+            This is what your team handles by hand every day
           </p>
         </Reveal>
 
@@ -99,6 +101,12 @@ export function PainPoints() {
             </motion.li>
           ))}
         </motion.ul>
+
+        <Reveal delay={0.2}>
+          <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+            OperaLayer is built to take this work off your team&apos;s hands.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

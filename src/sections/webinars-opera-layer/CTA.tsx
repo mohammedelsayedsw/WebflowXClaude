@@ -31,14 +31,13 @@ export function CTA() {
         <div className="max-w-[820px] mx-auto text-center flex flex-col items-center">
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[18ch] mx-auto">
-              Save your <span style={{ color: "var(--sw-mint)" }}>seat</span>
+              Save your seat
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              {/* TODO: confirm webinar time, date is set */}
-              August 25, 2026 &middot; Time TBC &middot; Online &middot; Free to
+              August 25, 2026 &middot; 1 PM GMT &middot; Online &middot; Free to
               attend.
               Can&apos;t join live? Register and we&apos;ll send the recording.
             </p>

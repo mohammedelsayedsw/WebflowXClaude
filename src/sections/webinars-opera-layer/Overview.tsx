@@ -147,8 +147,7 @@ export function Overview() {
 
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[22ch]">
-                Why your ERP does not fix the{" "}
-                <span style={{ color: "var(--sw-orange)" }}>work between systems</span>
+                Why your ERP does not fix the work between systems
               </h2>
             </Reveal>
 
@@ -173,7 +172,7 @@ export function Overview() {
 
           {/* RIGHT · vertical gap diagram */}
           <Reveal delay={0.1} className="w-full">
-            <div className="mx-auto w-full max-w-[400px]">
+            <div className="mx-auto mt-[15px] w-full max-w-[400px]">
               <VerticalGapDiagram />
             </div>
           </Reveal>

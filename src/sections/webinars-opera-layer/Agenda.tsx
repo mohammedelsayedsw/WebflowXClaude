@@ -11,7 +11,7 @@ const points: string[] = [
   "What's realistic in the first 72 hours",
   "How to measure the time and money saved",
   "When OperaLayer is, and isn't, the right fit",
-  "If reconciliation isn't your first step, where else OperaLayer can start",
+  "How to find the best starting point for your business",
 ];
 
 export function Agenda() {

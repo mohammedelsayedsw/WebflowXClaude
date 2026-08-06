@@ -19,6 +19,25 @@ const NODE_H = 92;
 const DIA_W = 230;
 const DIA_H = 130;
 
+// SVG has no flexbox, so the title-plus-sub-lines block is measured and
+// centred by hand. Every line is drawn with dominantBaseline="middle", so
+// each y below is a line centre rather than a baseline.
+const TITLE_LH = 15;
+const SUB_LH = 12;
+const TITLE_GAP = 5;
+
+/** Line centres for a title + wrapped sub-lines block, centred in `boxH`. */
+function centredLines(subCount: number, boxTop: number, boxH: number) {
+  const blockH =
+    TITLE_LH + (subCount ? TITLE_GAP + subCount * SUB_LH : 0);
+  const top = boxTop + (boxH - blockH) / 2;
+  return {
+    title: top + TITLE_LH / 2,
+    sub: (i: number) =>
+      top + TITLE_LH + TITLE_GAP + i * SUB_LH + SUB_LH / 2,
+  };
+}
+
 type NodeType =
   | "person"
   | "external"
@@ -451,6 +470,7 @@ export function FullFlowDiagram() {
 
         if (n.type === "decision") {
           const cy = n.y + DIA_H / 2;
+          const line = centredLines(1, n.y, DIA_H);
           return (
             <g key={n.id}>
               <polygon
@@ -464,8 +484,9 @@ export function FullFlowDiagram() {
               />
               <text
                 x={cx}
-                y={cy - 4}
+                y={line.title}
                 textAnchor="middle"
+                dominantBaseline="middle"
                 className="font-head"
                 fontSize="11.5"
                 fontWeight="700"
@@ -475,8 +496,9 @@ export function FullFlowDiagram() {
               </text>
               <text
                 x={cx}
-                y={cy + 13}
+                y={line.sub(0)}
                 textAnchor="middle"
+                dominantBaseline="middle"
                 className="font-head"
                 fontSize="9"
                 fill={`rgba(${PAPER},0.6)`}
@@ -488,6 +510,7 @@ export function FullFlowDiagram() {
         }
 
         const subLines = wrapText(n.sub, 28);
+        const line = centredLines(subLines.length, n.y, NODE_H);
         return (
           <g key={n.id}>
             <rect
@@ -506,8 +529,9 @@ export function FullFlowDiagram() {
             />
             <text
               x={cx}
-              y={n.y + 26}
+              y={line.title}
               textAnchor="middle"
+              dominantBaseline="middle"
               className="font-head"
               fontSize="12"
               fontWeight="700"
@@ -515,17 +539,18 @@ export function FullFlowDiagram() {
             >
               {n.title}
             </text>
-            {subLines.map((line, i) => (
+            {subLines.map((l, i) => (
               <text
-                key={line + i}
+                key={l + i}
                 x={cx}
-                y={n.y + 46 + i * 12}
+                y={line.sub(i)}
                 textAnchor="middle"
+                dominantBaseline="middle"
                 className="font-head"
                 fontSize="9.5"
                 fill={`rgba(${PAPER},0.6)`}
               >
-                {line}
+                {l}
               </text>
             ))}
           </g>

@@ -160,8 +160,9 @@ export function Hero() {
             <Reveal delay={0.1}>
               <p className="mt-4 md:mt-5 font-body text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[40rem] text-white/85">
                 OperaLayer takes over the manual work between your ERP,
-                warehouse, accounting, and suppliers, so documents move faster
-                and with fewer errors, and your team gets those hours back.
+                warehouse, accounting, and suppliers. Documents move faster and
+                with fewer errors, and your team gets back the hours it used to
+                lose by hand.
               </p>
             </Reveal>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { SectionLabel } from "@/components/primitives/SectionLabel";
 
 const systems = [
   "ERP",
@@ -153,10 +152,14 @@ export function HowItWorks() {
           {/* LEFT · copy */}
           <div className="max-w-[560px]">
             <Reveal>
-              <SectionLabel index="1">What it is</SectionLabel>
+              <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
+                <span className="text-white/55">1</span>
+                <span className="h-px w-6 bg-white/15" />
+                <span>What it is</span>
+              </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em] mt-6">
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.06] tracking-[-0.01em]">
                 Operational Layer,{" "}
                 <span style={{ color: "var(--sw-mint)" }}>or OperaLayer</span>
               </h2>

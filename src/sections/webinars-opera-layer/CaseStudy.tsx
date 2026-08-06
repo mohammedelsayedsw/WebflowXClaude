@@ -2,8 +2,23 @@
 
 import { useState } from "react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { FullFlowModal } from "./FullFlowModal";
+
+const container: Variants = {
+  hidden: {},
+  shown: { transition: { staggerChildren: 0.08 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  shown: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const steps: { title: string; body: string }[] = [
   {
@@ -30,6 +45,9 @@ const steps: { title: string; body: string }[] = [
 
 export function CaseStudy() {
   const [flowOpen, setFlowOpen] = useState(false);
+  // Same treatment as the pain cards: framer for the entrance, CSS for the
+  // idle float and hover lift, all off under prefers-reduced-motion.
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -39,14 +57,14 @@ export function CaseStudy() {
       <div className="wrap relative">
         <div className="max-w-[68rem]">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+            <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
               <span className="text-[var(--sw-black)]/55">4</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The live demo</span>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
+            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]">
               Watch OperaLayer clear the manual work and{" "}
               <span className="text-[var(--sw-blue)]">close the gap</span>,
               live
@@ -62,11 +80,26 @@ export function CaseStudy() {
         </div>
 
         {/* Five-step flow */}
-        <Reveal delay={0.15}>
-          <ol className="mt-10 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))] lg:gap-0">
-            {steps.map((s, i) => (
-              <li key={s.title} className="flex items-stretch">
-                <div className="flex h-full min-h-[160px] flex-1 flex-col rounded-[6px] border border-[var(--sw-black)]/10 bg-white p-5">
+        <motion.ol
+          className="mt-10 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))] lg:gap-0"
+          variants={reduceMotion ? undefined : container}
+          initial={reduceMotion ? undefined : "hidden"}
+          whileInView={reduceMotion ? undefined : "shown"}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {steps.map((s, i) => (
+            <motion.li
+              key={s.title}
+              variants={reduceMotion ? undefined : item}
+              className="flex items-stretch"
+            >
+              {/* separate layer for the float so it never fights the entrance
+                  transform on the li or the hover lift on the card */}
+              <div
+                className="sw-card-float flex flex-1"
+                style={{ animationDelay: `${i * 0.2}s` }}
+              >
+                <div className="flex h-full min-h-[160px] flex-1 flex-col rounded-[6px] border border-[var(--sw-black)]/10 bg-white p-5 transition-[transform,box-shadow,border-color] duration-300 hover:border-[var(--sw-blue)]/40 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_12px_28px_rgba(16,19,44,0.10)]">
                   <span className="font-head text-[13px] tabular-nums leading-none text-[var(--sw-blue)]">
                     {i + 1}
                   </span>
@@ -77,18 +110,18 @@ export function CaseStudy() {
                     {s.body}
                   </span>
                 </div>
-                {i < steps.length - 1 && (
-                  <div
-                    aria-hidden
-                    className="hidden shrink-0 items-center px-1.5 lg:flex"
-                  >
-                    <ChevronRight className="h-4 w-4 text-[var(--sw-black)]/30" />
-                  </div>
-                )}
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+              </div>
+              {i < steps.length - 1 && (
+                <div
+                  aria-hidden
+                  className="hidden shrink-0 items-center px-1.5 lg:flex"
+                >
+                  <ChevronRight className="h-4 w-4 text-[var(--sw-black)]/30" />
+                </div>
+              )}
+            </motion.li>
+          ))}
+        </motion.ol>
 
         <Reveal delay={0.25}>
           <div className="mt-8">
@@ -103,12 +136,6 @@ export function CaseStudy() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.3}>
-          <p className="mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            This is the first use case in the series. We will cover a new one in
-            each of the coming webinars.
-          </p>
-        </Reveal>
       </div>
 
       <FullFlowModal open={flowOpen} onClose={() => setFlowOpen(false)} />

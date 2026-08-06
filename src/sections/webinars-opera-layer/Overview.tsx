@@ -133,7 +133,7 @@ export function Overview() {
           {/* LEFT · copy */}
           <div className="max-w-[560px]">
             <Reveal>
-              <div className="label-code mb-5 inline-flex items-center gap-3 text-white/60">
+              <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
                 <span className="text-white/55">3</span>
                 <span className="h-px w-6 bg-white/15" />
                 <span>The ERP gap</span>
@@ -141,7 +141,7 @@ export function Overview() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] mt-6 max-w-[22ch]">
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.01em] max-w-[22ch]">
                 Why your ERP can&apos;t close the gap
               </h2>
             </Reveal>

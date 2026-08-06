@@ -47,7 +47,7 @@ export function PainPoints() {
       <div className="wrap relative">
         <div className="mb-10 md:mb-12 max-w-[760px] lg:max-w-[1100px]">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+            <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
               <span className="text-[var(--sw-black)]/55">2</span>
               <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The problem</span>

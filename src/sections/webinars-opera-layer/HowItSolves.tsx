@@ -1,6 +1,6 @@
 "use client";
 
-import { TrendingUp, Radar, Brain } from "lucide-react";
+import { TrendingUp, Radar, Brain, CalendarClock } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const useCases: {
@@ -34,14 +34,14 @@ export function HowItSolves() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16">
           <Reveal>
-            <div className="label-code mb-5 inline-flex items-center gap-3 text-white/60">
+            <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
               <span className="text-white/55">5</span>
               <span className="h-px w-6 bg-white/15" />
               <span>More use cases</span>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em] mt-6">
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[1.05] tracking-[-0.01em]">
               Three more{" "}
               <span style={{ color: "var(--sw-mint)" }}>OperaLayer use cases</span>
             </h2>
@@ -74,6 +74,27 @@ export function HowItSolves() {
             </Reveal>
           ))}
         </ul>
+
+        {/* Series note, deliberately not styled as a fourth use case */}
+        <Reveal delay={0.24}>
+          <div className="mt-3 flex flex-col gap-4 rounded-[4px] border border-[var(--sw-mint)]/35 bg-[var(--sw-mint)]/[0.06] p-6 sm:flex-row sm:items-center md:mt-4">
+            <span
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] border border-[var(--sw-mint)]/30 bg-[var(--sw-mint)]/[0.08] text-[var(--sw-mint)]"
+              aria-hidden
+            >
+              <CalendarClock className="h-5 w-5" strokeWidth={1.75} />
+            </span>
+            <div>
+              <div className="font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
+                More in the coming webinars
+              </div>
+              <p className="mt-1.5 text-white/70 text-[14px] md:text-[15px] leading-relaxed">
+                Each of these gets its own live demo in an upcoming webinar, one
+                new use case at a time.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

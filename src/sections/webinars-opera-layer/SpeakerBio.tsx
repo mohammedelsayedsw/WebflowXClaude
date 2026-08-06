@@ -36,7 +36,7 @@ export function SpeakerBio() {
           {/* RIGHT · copy */}
           <div>
             <Reveal>
-              <div className="label-code mb-5 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
                 <span className="text-[var(--sw-black)]/55">6</span>
                 <span className="h-px w-6 bg-[var(--sw-black)]/20" />
                 <span>The speaker</span>
@@ -44,7 +44,7 @@ export function SpeakerBio() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
+              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em]">
                 Led by one of the people{" "}
                 <span style={{ color: "var(--sw-blue)" }}>
                   building OperaLayer

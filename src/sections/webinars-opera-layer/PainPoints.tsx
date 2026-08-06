@@ -64,8 +64,8 @@ export function PainPoints() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-6 max-w-[760px] lg:max-w-[900px] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              None of your systems talk to each other, so someone copies data
-              from one into the next and hunts down what does not match. It eats
+              Your systems don&apos;t talk to each other. So your team re-types
+              the same numbers into each system and checks they match. It eats
               hours every day and quietly costs you money.
             </p>
           </Reveal>

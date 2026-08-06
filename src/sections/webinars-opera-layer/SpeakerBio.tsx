@@ -45,20 +45,19 @@ export function SpeakerBio() {
 
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[30px] md:text-[40px] lg:text-[44px] leading-[1.1] tracking-[-0.01em] mt-6">
-                Led by someone who works on this,
-                <br />
+                Led by one of the people{" "}
                 <span style={{ color: "var(--sw-blue)" }}>
-                  not just talks about it
+                  building OperaLayer
                 </span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-7 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed max-w-[62ch]">
-                Martins Jakubovskis is an Enterprise Architect at scandiweb. He
-                works alongside the teams behind OperaLayer and spends his days
-                deep in how large retailers connect the systems they run, so he
-                can give you straight, experienced answers instead of a script.
+                Martins is an Enterprise Architect at scandiweb, working
+                alongside the team that builds OperaLayer. His days go into how
+                large retailers connect their systems, so his answers come
+                straight from real builds.
               </p>
             </Reveal>
           </div>

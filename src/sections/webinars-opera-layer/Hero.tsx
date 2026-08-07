@@ -136,7 +136,7 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-[75px] md:pt-[90px] pb-[clamp(32px,6vh,80px)] w-full">
+        <div className="wrap relative z-10 pt-[132px] lg:pt-[90px] pb-[clamp(32px,6vh,80px)] w-full">
           <div className="grid gap-8 md:gap-10 lg:gap-10 lg:grid-cols-[1.9fr_1fr] items-center">
             {/* LEFT · copy */}
             <div className="max-w-[40rem]">

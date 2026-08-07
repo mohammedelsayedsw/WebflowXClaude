@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -44,13 +43,19 @@ export function CTA() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.25}>
-            <div className="mt-10 md:mt-12 flex justify-center">
-              {/* TODO: replace with real registration link / HubSpot form */}
-              <a href="#cta" className={btnPrimary}>
-                Save your seat
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+          {/* w-full on the Reveal: it is a flex item under items-center, so
+              without it the wrapper shrinks to the form's intrinsic width. */}
+          <Reveal delay={0.25} className="w-full">
+            {/* Registration form. Styling comes from `.hubspot-form-wrapper` in
+                globals.css, which already matches this design system, so the
+                embed does not read as a HubSpot form. */}
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+              <HubSpotForm
+                portalId="25724996"
+                formId="02bf5ce2-64e5-4a81-a502-d58b43becf8e"
+                region="eu1"
+                submitText="Save your seat"
+              />
             </div>
           </Reveal>
         </div>

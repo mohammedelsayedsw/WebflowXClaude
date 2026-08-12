@@ -159,27 +159,27 @@ const BODY = String.raw`
             <div class="gs-navtabs"><span>All</span><span>Images</span><span class="on">Shopping</span></div>
             <div class="gs-tiles">
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#E0603C" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-1.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;18.99</p>
             </div>
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#3F4AAF" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-2.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;24.99</p>
             </div>
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#2F8F5B" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-3.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;16.50</p>
             </div>
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#E0603C" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-4.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;29.95</p>
             </div>
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#3F4AAF" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-5.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;21.00</p>
             </div>
             <div class="gs-tile">
-              <div class="gs-tile-img"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#2F8F5B" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-tile-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/tile-6.webp" alt="" width="232" height="80"></div>
               <p class="gs-tile-p">&euro;15.75</p>
             </div>
             </div>
@@ -440,7 +440,7 @@ const BODY = String.raw`
             <img class="avatar" src="/solutions/google-shopping-baltics/58e97309eb.webp" alt="Nika Zhgheria" width="80" height="80">
             <div>
               <p class="nm">Nika Zhgheria</p>
-              <p class="role">Paid Media Business Developer</p>
+              <p class="role">Marketing Growth Strategist</p>
               <p class="em"><a href="mailto:nika.zhgheria@scandiweb.com">nika.zhgheria@scandiweb.com</a></p>
             </div>
           </div>

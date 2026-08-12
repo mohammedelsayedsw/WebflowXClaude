@@ -411,7 +411,7 @@
 .gsb .gs-navtabs .on{color:#1A73E8;font-weight:600;border-bottom:2px solid #1A73E8}
 .gsb .gs-tiles{margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .gsb .gs-tile{border:1px solid #E6E8F0;border-radius:6px;padding:5px}
-.gsb .gs-tile-img{height:32px;border-radius:4px;background:#F4F5FA;display:grid;place-items:center;margin-bottom:4px}
+.gsb .gs-tile-img{height:40px;border-radius:4px;background:#F4F5FA;display:grid;place-items:center;overflow:hidden;margin-bottom:4px}
 .gsb .gs-tile-p{font-family:var(--font-head);font-size:10.5px;font-weight:700;color:var(--navy)}
 .gsb .coming-panel .map-label{margin:12px 0 8px}
 .gsb .coming-panel .map-label-first{margin-top:0}

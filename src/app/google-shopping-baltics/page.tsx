@@ -428,11 +428,11 @@ const BODY = String.raw`
             </li>
             <li>
               <span class="num-circle" aria-hidden="true">3</span>
-              <span>We come back with a launch plan</span>
+              <span>We come back with a plan</span>
             </li>
             <li>
               <span class="num-circle" aria-hidden="true">4</span>
-              <span>We build your feed, ready for the Baltic launch</span>
+              <span>We build your feed, so it is ready first day Shopping opens</span>
             </li>
           </ol>
 

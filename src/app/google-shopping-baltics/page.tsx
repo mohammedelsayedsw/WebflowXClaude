@@ -53,14 +53,14 @@ const BODY = String.raw`
               <p class="hv-tag">Sponsored &middot; Shopping</p>
               <div class="hv-grid">
             <div class="hv-p">
-              <div class="hv-pimg"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#E0603C" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="hv-pimg"><img class="hv-pshot" src="/solutions/google-shopping-baltics/tee-performance.webp" alt="" width="320" height="104"></div>
               <p class="hv-pt">Performance Tee</p>
               <p class="hv-pp">&euro;18.99</p>
               <p class="hv-ps">teamsport.example</p>
               <p class="hv-ps"><span class="hv-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span> (412)</p>
             </div>
             <div class="hv-p">
-              <div class="hv-pimg"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#3F4AAF" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="hv-pimg"><img class="hv-pshot" src="/solutions/google-shopping-baltics/tee-jersey.webp" alt="" width="320" height="104"></div>
               <p class="hv-pt">Pro Team Jersey</p>
               <p class="hv-pp">&euro;24.99</p>
               <p class="hv-ps">sportstore.example</p>
@@ -134,17 +134,17 @@ const BODY = String.raw`
             <p class="gs-spon">Sponsored &middot; Shopping</p>
             <div class="gs-row">
             <div class="gs-mini">
-              <div class="gs-mini-img"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#E0603C" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-mini-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/mini-1.webp" alt="" width="232" height="80"></div>
               <p class="gs-mini-t">Performance Tee</p>
               <p class="gs-mini-p">&euro;18.99</p>
             </div>
             <div class="gs-mini">
-              <div class="gs-mini-img"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#3F4AAF" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-mini-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/mini-2.webp" alt="" width="232" height="80"></div>
               <p class="gs-mini-t">Pro Team Jersey</p>
               <p class="gs-mini-p">&euro;24.99</p>
             </div>
             <div class="gs-mini">
-              <div class="gs-mini-img"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 3 4.6l1 2.2 1-.5V13h6V6.3l1 .5 1-2.2L10 3a2 2 0 0 1-4 0Z" stroke="#2F8F5B" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+              <div class="gs-mini-img"><img class="gs-shot" src="/solutions/google-shopping-baltics/mini-3.webp" alt="" width="232" height="80"></div>
               <p class="gs-mini-t">Active Training Tee</p>
               <p class="gs-mini-p">&euro;16.50</p>
             </div>

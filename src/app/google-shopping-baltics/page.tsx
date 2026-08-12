@@ -78,9 +78,9 @@ const BODY = String.raw`
 
     <!-- trust bar sits inside the hero section, as it does on k-12 -->
     <div class="trustbar" aria-label="scandiweb clients">
-    <div class="wrap trustbar-in">
+    <div class="gsb-wrap trustbar-in">
       <div class="trustbar-label">Trusted by 700+ leading brands worldwide</div>
-      <div class="marquee" aria-label="Client logos">
+      <div class="gsb-marquee" aria-label="Client logos">
         <div class="sw-marquee-track">
           <img src="/solutions/google-shopping-baltics/c024211616.svg" alt="PUMA" style="max-height:30px">
           <img src="/solutions/google-shopping-baltics/a4f2ef7c9d.png" alt="OM Digital Solutions / Olympus" style="max-height:24px">
@@ -97,8 +97,8 @@ const BODY = String.raw`
           <img src="/solutions/google-shopping-baltics/0a5331e157.png" alt="" aria-hidden="true" style="max-height:22px">
           <img src="/solutions/google-shopping-baltics/d943da66f2.svg" alt="" aria-hidden="true" style="max-height:22px">
         </div>
-        <div class="marquee-fade left" aria-hidden="true"></div>
-        <div class="marquee-fade right" aria-hidden="true"></div>
+        <div class="gsb-marquee-fade left" aria-hidden="true"></div>
+        <div class="gsb-marquee-fade right" aria-hidden="true"></div>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@ const BODY = String.raw`
   <!-- ========== 3. WHAT CHANGES ========== -->
   <!-- ========== WHAT IS COMING ========== -->
   <section class="section section-solid" aria-labelledby="coming-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <div class="split split-top split-coming">
         <div>
           <p class="eyebrow">What is coming</p>
@@ -191,7 +191,7 @@ const BODY = String.raw`
   </section>
 
   <section class="section section-stake" aria-labelledby="changes-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <div class="split split-top split-stake">
         <div>
           <p class="eyebrow">How Google Shopping works</p>
@@ -258,7 +258,7 @@ const BODY = String.raw`
 
     <!-- ========== 6. OUR APPROACH ========== -->
   <section id="approach" class="section section-tight" aria-labelledby="approach-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <p class="eyebrow">What we do</p>
       <h2 id="approach-title" style="max-width:900px">We get your feed approved<br><span class="accent-blue">and hand it over ready to sell</span></h2>
 
@@ -308,7 +308,7 @@ const BODY = String.raw`
 
   <!-- ========== 8. PROOF ========== -->
   <section class="section dark" aria-labelledby="proof-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <div class="proof-head">
         <p class="eyebrow">Proven with</p>
         <img class="proof-logo" src="/solutions/google-shopping-baltics/76468ce163.webp" alt="Laithwaites">
@@ -368,7 +368,7 @@ const BODY = String.raw`
 
   <!-- ========== 9. THE OFFER ========== -->
   <section class="section" id="offer" aria-labelledby="offer-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <p class="eyebrow">The offer</p>
       <h2 id="offer-title">Your launch-ready feed at <span class="accent-blue">a fixed price</span></h2>
 
@@ -412,7 +412,7 @@ const BODY = String.raw`
 
   <!-- ========== 12. CLOSING FORM ========== -->
   <section class="section dark" id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
+    <div class="gsb-wrap">
       <div class="form-split">
         <div>
           <h2 id="contact-title">Get your feed ready before <span class="accent-green">the Baltic market opens</span></h2>

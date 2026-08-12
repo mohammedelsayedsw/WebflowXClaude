@@ -656,8 +656,8 @@
 .gsb .form-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .gsb .contact{display:flex;align-items:center;gap:14px;margin-top:36px}
 .gsb .avatar{
-  width:48px;height:48px;border-radius:var(--r-sm);border:1px solid var(--line-dark);
-  object-fit:cover;display:block;flex:0 0 48px;
+  width:108px;height:108px;border-radius:var(--r-sm);border:1px solid var(--line-dark);
+  object-fit:cover;display:block;flex:0 0 108px;
 }
 .gsb .contact .nm{font-family:var(--font-head);color:#fff;font-weight:600;font-size:15px;line-height:1.3}
 .gsb .contact .role{font-size:14px;color:rgba(255,255,255,.65);line-height:1.4;margin-top:2px}

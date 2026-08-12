@@ -1,0 +1,718 @@
+/* Ported from the approved standalone LP. Every rule is scoped under .gsb so
+   the page's generic class names cannot reach the site Header or Footer. */
+/* ---------- design tokens · scandiweb LP system (matches /solutions/accelerator/k-12) ---------- */
+.gsb{
+  --navy:#10132C;
+  --white:#FFFFFF;
+  --blue:#3F4AAF;
+  --orange:#FF5A31;
+  --green:#6EF76E;
+  --beige:#F8F4EF;
+  --dark-grey:#7E83A0;
+  --light-grey:#DADCF1;
+
+  /* dark-surface foreground scale */
+  --fg:#E6E7EF;
+  --muted:#8D91A8;
+  --dim:#565970;
+
+  /* light-surface foreground scale */
+  --ink-light:#4A4F6B;
+  --ink-dark:#B9BEDA;
+
+  --line-light:rgba(16,19,44,.10);
+  --line-dark:rgba(255,255,255,.10);
+  --card-dark:rgba(255,255,255,.02);
+  --pale-blue:#EEF0FB;
+
+  /* the system runs on a tight 2 / 4 / 8 radius scale — no rounded pills */
+  --r-sm:2px;
+  --r:4px;
+  --r-lg:8px;
+  --radius:var(--r);
+
+  --font-head:"Golos Text",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --font-body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --wrap:1280px;
+}
+
+/* ---------- base ---------- */
+.gsb *,.gsb *::before,.gsb *::after{box-sizing:border-box}
+.gsb{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+.gsb{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  color:var(--ink-light);
+  /* one continuous wash for the whole page, viewport-anchored, so adjacent
+     light sections never show a seam where a per-section gradient restarts */
+  background:
+    radial-gradient(1200px 780px at 12% 0%, rgba(63,74,175,.07) 0%, rgba(63,74,175,0) 55%),
+    radial-gradient(900px 650px at 100% 100%, rgba(16,19,44,.05) 0%, rgba(16,19,44,0) 55%),
+    linear-gradient(180deg,#ffffff 0%,#f9f8f4 55%,#f0eee8 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+.gsb img,.gsb svg{max-width:100%}
+.gsb h1,.gsb h2,.gsb h3,.gsb h4{
+  margin:0;
+  font-family:var(--font-head);
+  color:var(--navy);
+  letter-spacing:-.01em;
+  font-weight:700;
+  line-height:1.04;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+.gsb p{margin:0;text-wrap:pretty}
+.gsb ul{margin:0;padding:0;list-style:none}
+.gsb a{color:inherit}
+.gsb ::selection{background:var(--blue);color:#fff}
+
+.gsb .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.gsb .section{padding:clamp(72px,9vw,144px) 0}
+
+/* light sections sit transparent on the page-level wash set on body */
+.gsb .section:not(.dark):not(.strip):not(.section-solid){background:transparent}
+
+.gsb .dark{background:var(--navy);color:var(--fg);position:relative;overflow:hidden}
+.gsb .dark::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 18% 22%, #2a3380 0%, transparent 55%),
+    radial-gradient(800px 580px at 85% 82%, #070a1e 0%, transparent 52%),
+    radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%);
+}
+/* hairline that opens every dark band, as on the accelerator pages */
+.gsb .dark::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:rgba(255,255,255,.10);pointer-events:none;z-index:2;
+}
+.gsb .dark > *{position:relative;z-index:1}
+.gsb .dark h1,.gsb .dark h2,.gsb .dark h3,.gsb .dark h4{color:var(--white)}
+
+/* ---------- eyebrows / labels ---------- */
+.gsb .eyebrow,.gsb .label{
+  font-family:var(--font-head);
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--dark-grey);
+}
+.gsb .eyebrow{margin:0 0 16px}
+.gsb .dark .eyebrow,.gsb .dark .label{color:var(--muted)}
+
+.gsb h1{font-size:clamp(34px,4.4vw,58px);font-weight:700;letter-spacing:-.015em;line-height:1.04}
+.gsb h2{font-size:clamp(30px,4.4vw,56px);line-height:1.05}
+.gsb h3{font-size:clamp(18px,1.5vw,21px);line-height:1.18}
+.gsb .accent-blue{color:var(--blue)}
+.gsb .accent-green{color:var(--green)}
+.gsb .accent-orange{color:var(--orange)}
+.gsb .lede{margin-top:20px;font-size:clamp(16px,1.3vw,18px);max-width:62ch;line-height:1.6}
+.gsb .dark .lede{color:rgba(255,255,255,.85)}
+
+/* ---------- buttons · outlined, 2px radius, fill on hover ---------- */
+.gsb .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:48px;padding:0 32px;
+  border-radius:var(--r-sm);
+  font-family:var(--font-head);font-weight:600;font-size:17px;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;
+  background:transparent;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
+}
+.gsb .btn-white{border-color:var(--beige);color:var(--beige)}
+.gsb .btn-white:hover{background:var(--beige);color:var(--navy)}
+.gsb .btn-blue{border-color:var(--blue);color:var(--blue)}
+.gsb .btn-blue:hover{background:var(--blue);color:var(--white)}
+.gsb .strip .btn-white{border-color:var(--white);color:var(--white)}
+.gsb .strip .btn-white:hover{background:var(--white);color:var(--blue)}
+.gsb .textlink{
+  display:inline-block;font-family:var(--font-head);font-weight:600;font-size:15px;
+  text-decoration:underline;text-underline-offset:4px;color:var(--white);
+}
+.gsb .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:32px}
+
+/* ---------- cards ---------- */
+.gsb .card{
+  border:1px solid var(--line-light);border-radius:var(--r);padding:24px;background:var(--white);
+}
+.gsb .dark .card,.gsb .card-dark{
+  background:var(--card-dark);border:1px solid var(--line-dark);border-radius:var(--r);padding:24px;
+}
+.gsb .card h3{margin-bottom:10px}
+.gsb .card p{font-size:14px;line-height:1.6}
+.gsb .dark .card p{color:rgba(255,255,255,.70)}
+.gsb .grid{display:grid;gap:16px}
+.gsb .g2{grid-template-columns:repeat(2,1fr)}
+.gsb .g3{grid-template-columns:repeat(3,1fr)}
+.gsb .g4{grid-template-columns:repeat(4,1fr)}
+.gsb .g4{grid-template-columns:repeat(4,1fr)}
+
+/* ---------- global site header · 1:1 with k-12 ---------- */
+.gsb .sw-header{position:absolute;top:0;left:0;right:0;z-index:60;height:60px}
+.gsb .sw-header-in{display:flex;height:100%;align-items:center;justify-content:space-between}
+.gsb .sw-logo-link{display:block;transition:opacity .2s ease}
+.gsb .sw-logo-link:hover{opacity:.8}
+.gsb .sw-logo-img{display:block;height:18px;width:auto}
+.gsb .sw-menu{
+  display:inline-flex;align-items:center;cursor:pointer;color:#fff;background:none;border:0;padding:0;
+  font-family:var(--font-head);transition:color .2s ease;
+}
+.gsb .sw-menu:hover{color:var(--green)}
+.gsb .sw-menu-word{
+  font-size:18px;font-weight:600;letter-spacing:1px;margin-right:16px;
+  transform:translateY(-2px);line-height:1;
+}
+.gsb .sw-menu-icon{display:inline-flex}
+@media (min-width:768px){
+  .gsb .sw-header{height:75px}
+  .gsb .sw-logo-img{height:20px}
+}
+
+/* ---------- hero · 1:1 with /solutions/accelerator/k-12 ----------
+   k-12: section min-h-screen flex-col > flex-1 flex items-center >
+   wrap pt-24 md:pt-28 pb-10 md:pb-14 > grid gap-8 md:gap-12
+   lg:grid-cols-[1.3fr_1fr] items-start, right column lg:pt-16.
+   Breakpoints follow Tailwind's 640 / 768 / 1024. */
+.gsb .hero{
+  background:var(--navy);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  padding:0;
+}
+.gsb .hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(1100px 760px at 70% 20%, #1E2154 0%, rgba(30,33,84,0) 62%);
+}
+.gsb .hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(45deg,
+    rgba(255,255,255,.03) 0 1px, rgba(255,255,255,0) 1px 40px);
+}
+/* k-12's .wrap, verbatim */
+.gsb .hero-wrap{
+  max-width:1280px;margin:0 auto;
+  padding-left:clamp(1.25rem,4vw,3rem);padding-right:clamp(1.25rem,4vw,3rem);
+  position:relative;z-index:1;width:100%;
+}
+.gsb .hero-body{flex:1;padding-top:0;display:flex;align-items:center;min-height:0}
+.gsb .hero-body > .hero-wrap{padding-top:72px;padding-bottom:40px}
+
+/* copy left, visual right — same 1.3fr / 1fr split k-12 uses */
+.gsb .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;align-items:center}
+
+.gsb .hero h1{
+  color:var(--white);font-size:27px;font-weight:800;line-height:1.08;letter-spacing:-.015em;
+  /* no ch cap, and no balancing: the manual break after "Baltics" governs */
+  max-width:none;text-wrap:normal;
+}
+.gsb .hero-lede{
+  margin-top:18px;color:rgba(255,255,255,.9);font-size:15px;line-height:1.6;max-width:56ch;
+}
+.gsb .hero-green{
+  margin-top:20px;font-family:var(--font-head);color:var(--green);font-size:15px;font-weight:600;
+}
+.gsb .hero-green span{color:rgba(110,247,110,.5)}
+.gsb .hero-cta{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.gsb .hero-btn{
+  display:inline-block;background:var(--white);color:var(--navy);
+  font-family:var(--font-head);font-weight:600;font-size:15px;
+  padding:16px 28px;border-radius:6px;text-decoration:none;
+  transition:background-color .2s ease,transform .2s ease;
+}
+.gsb .hero-btn:hover{background:#F0F1F7;transform:translateY(-1px)}
+.gsb .hero-link{
+  color:var(--white);font-family:var(--font-head);font-weight:500;font-size:15px;
+  text-decoration:none;background:none;border:0;
+}
+.gsb .hero-link:hover,.gsb .hero-link:focus-visible{text-decoration:underline;text-underline-offset:4px}
+
+@media (min-width:640px){
+  .gsb .hero h1{font-size:30px}
+}
+@media (min-width:768px){
+  .gsb .hero-grid{gap:48px}
+  .gsb .hero h1{font-size:34px}
+  .gsb .hero-lede{margin-top:20px;font-size:16px}
+  .gsb .hero-cta{margin-top:32px}
+  .gsb .hero-body > .hero-wrap{padding-top:88px;padding-bottom:48px}
+}
+@media (min-width:1024px){
+  .gsb .hero-grid{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+  /* narrower column at this step */
+  .gsb .hero h1{font-size:48px}
+}
+@media (min-width:1280px){
+  /* three lines now; the longest is "first Baltic stores" */
+  .gsb .hero h1{font-size:64px}
+}
+
+/* ---------- 1.4 hero visual · before / after, built in CSS and inline SVG
+   in the same panel language as the listing card in WHAT IS COMING ---------- */
+.gsb .hv-col{display:flex;justify-content:center;min-width:0}
+.gsb .hv-panel{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r);padding:18px;width:100%;max-width:430px;
+}
+.gsb .hv-panel .label{display:block;margin:0 0 9px}
+.gsb .hv-panel .hv-label-2{margin-top:14px}
+.gsb .hv-serp{background:var(--white);border-radius:8px;padding:11px}
+.gsb .hv-serp-after{box-shadow:0 14px 36px rgba(0,0,0,.34)}
+.gsb .hv-q{display:flex;align-items:center;gap:9px;border:1px solid #DFE1E5;border-radius:var(--r);padding:6px 10px}
+.gsb .hv-goog{font-family:var(--font-head);font-size:14px;font-weight:700;letter-spacing:-.02em;flex-shrink:0}
+.gsb .hv-goog i{font-style:normal}
+.gsb .hv-qt{font-size:12px;color:#3C4043;line-height:1}
+/* before: blue links only, nothing to look at */
+.gsb .hv-rows{margin-top:9px}
+.gsb .hv-row + .hv-row{margin-top:7px;padding-top:7px;border-top:1px solid #EDEEF3}
+.gsb .hv-src{font-size:9.5px;color:#5F6368;line-height:1.3}
+.gsb .hv-blue{margin-top:2px;font-size:12.5px;color:#1A0DAB;line-height:1.25}
+/* after: the same query, now with pictures and prices */
+.gsb .hv-tag{margin-top:9px;font-family:var(--font-head);font-size:9.5px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.1em;color:#5F6368}
+.gsb .hv-grid{margin-top:7px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gsb .hv-p{border:1px solid #E6E8F0;border-radius:6px;padding:7px}
+.gsb .hv-pimg{height:52px;border-radius:5px;background:#F4F5FA;display:grid;place-items:center;margin-bottom:7px}
+.gsb .hv-pt{font-size:10.5px;color:var(--navy);line-height:1.25}
+.gsb .hv-pp{margin-top:3px;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--navy)}
+.gsb .hv-ps{margin-top:2px;font-size:9.5px;color:#7A80A0;line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gsb .hv-stars{color:#F2B01E;letter-spacing:.5px}
+@media (max-width:1023px){
+  .gsb .hv-panel{max-width:400px}
+}
+
+/* ---------- 1b. benefit band ---------- */
+
+/* ---------- trust bar · same component as the accelerator pages ---------- */
+.gsb .trustbar{
+  padding:24px 0;
+  border-top:1px solid rgba(255,255,255,.12);
+  /* nested inside the hero now, exactly as on k-12, so the hero's navy shows
+     through and this only paints the overlay */
+  background:linear-gradient(180deg, rgba(16,19,44,0) 0%, rgba(16,19,44,.55) 100%);
+  position:relative;z-index:1;
+}
+.gsb .trustbar::before{display:none}
+.gsb .trustbar::after{display:none}
+.gsb .trustbar .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+.gsb .trustbar-in{display:flex;flex-direction:column;gap:16px}
+.gsb .trustbar-label{
+  font-family:var(--font-head);font-weight:700;color:var(--white);
+  font-size:14px;line-height:1.35;flex-shrink:0;
+}
+.gsb .marquee{position:relative;flex:1;overflow:hidden}
+.gsb .sw-marquee-track{
+  display:flex;align-items:center;gap:0 48px;width:max-content;
+  animation:sw-marquee 40s linear infinite;
+}
+.gsb .sw-marquee-track:hover{animation-play-state:paused}
+.gsb .sw-marquee-track img{
+  width:auto;height:auto;opacity:.8;flex-shrink:0;
+  filter:brightness(0) invert(1);
+}
+@keyframes sw-marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.gsb .marquee-fade{position:absolute;top:0;bottom:0;width:48px;pointer-events:none}
+.gsb .marquee-fade.left{left:0;background:linear-gradient(90deg, rgba(16,19,44,.8) 0%, rgba(16,19,44,0) 100%)}
+.gsb .marquee-fade.right{right:0;background:linear-gradient(270deg, rgba(16,19,44,.8) 0%, rgba(16,19,44,0) 100%)}
+@media (min-width:768px){
+  .gsb .trustbar{padding:32px 0}
+  .gsb .trustbar-in{flex-direction:row;align-items:center;gap:40px}
+  .gsb .trustbar-label{font-size:18px}
+  .gsb .sw-marquee-track{gap:0 64px}
+  .gsb .marquee-fade{width:80px}
+}
+@media (prefers-reduced-motion:reduce){
+  .gsb .sw-marquee-track{animation:none}
+}
+
+/* ---------- two column section ---------- */
+.gsb .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.gsb .prose p + p{margin-top:18px}
+.gsb .callout{
+  margin-top:28px;background:var(--pale-blue);border-radius:var(--r);padding:22px 24px;
+  color:var(--navy);font-family:var(--font-head);font-weight:600;font-size:16px;line-height:1.5;
+}
+.gsb .quote{
+  margin-top:24px;border-left:2px solid var(--blue);padding-left:20px;
+  font-family:var(--font-head);font-size:18px;font-weight:600;color:var(--navy);line-height:1.45;
+}
+
+/* feed diagram card (section 3) */
+.gsb .feedmap{background:var(--navy);border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.gsb .feedmap::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(110% 80% at 20% 0%,#252C6B 0%,rgba(37,44,107,0) 60%);
+}
+.gsb .feedmap > *{position:relative}
+.gsb .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gsb .chip{
+  border:1px solid var(--line-dark);border-radius:var(--r-sm);padding:11px 8px;text-align:center;
+  font-family:var(--font-head);font-size:12px;font-weight:500;color:rgba(255,255,255,.80);
+  background:rgba(255,255,255,.03);
+}
+.gsb .chips-6{grid-template-columns:repeat(3,1fr)}
+.gsb .center-box{
+  margin:18px 0;border:1px solid rgba(110,247,110,.55);border-radius:var(--r);padding:18px;text-align:center;
+  background:rgba(110,247,110,.06);
+}
+.gsb .center-box strong{display:block;font-family:var(--font-head);color:var(--white);font-size:17px;font-weight:600}
+.gsb .center-box span{display:block;margin-top:5px;font-size:13px;color:rgba(255,255,255,.70)}
+.gsb .stem{display:grid;place-items:center;padding:2px 0}
+.gsb .map-label{margin:18px 0 10px}
+
+/* ---------- what is coming · Shopping result, feedmap treatment ---------- */
+.gsb .coming-prose{max-width:640px}
+.gsb .coming-prose p + p{margin-top:18px}
+/* on a dark section the panel lifts off the ground instead of sinking into it */
+.gsb .coming-panel{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);
+  margin:0 auto;max-width:470px;width:100%;padding:22px;
+}
+.gsb .coming-panel::before{display:none}
+.gsb .gs-card{
+  width:100%;background:var(--white);border-radius:12px;padding:14px;
+  box-shadow:0 14px 36px rgba(0,0,0,.34);
+}
+.gsb .gs-img{height:150px;border-radius:8px;background:#F4F5FA;display:grid;place-items:center;margin-bottom:12px}
+.gsb .gs-title{font-size:14px;line-height:1.35;color:var(--navy)}
+.gsb .gs-price{margin-top:8px;font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--navy)}
+.gsb .gs-store{margin-top:6px;font-size:12px;color:#7A80A0;display:flex;align-items:center;gap:6px}
+.gsb .gs-stars{color:#F2B01E;letter-spacing:1px}
+.gsb .gs-count{color:#9096B4}
+.gsb .coming-panel .chips{grid-template-columns:1fr}
+.gsb .coming-panel .chip{text-align:left}
+/* the search term, kept on the page but out of the reading flow */
+/* the news line closing the column, not a footnote */
+.gsb .coming-news{font-size:18px;font-weight:600;color:var(--white)}
+/* the two placements */
+.gsb .gs-page{background:var(--white);border-radius:8px;padding:10px;box-shadow:0 14px 36px rgba(0,0,0,.34)}
+.gsb .gs-q{display:flex;align-items:center;gap:9px;border:1px solid #DFE1E5;border-radius:var(--r);padding:6px 10px}
+.gsb .gs-qt{font-size:12px;color:#3C4043;line-height:1}
+.gsb .gs-spon{margin-top:8px;font-family:var(--font-head);font-size:9.5px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.1em;color:#5F6368}
+.gsb .gs-row{margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.gsb .gs-mini{border:1px solid #E6E8F0;border-radius:6px;padding:6px}
+.gsb .gs-mini-img{height:40px;border-radius:4px;background:#F4F5FA;display:grid;place-items:center;margin-bottom:5px}
+.gsb .gs-mini-t{font-size:9px;color:var(--navy);line-height:1.25}
+.gsb .gs-mini-p{margin-top:2px;font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--navy)}
+.gsb .gs-links{margin-top:8px;padding-top:7px;border-top:1px solid #EDEEF3}
+.gsb .gs-link-src{font-size:9.5px;color:#5F6368;line-height:1.3}
+.gsb .gs-link-t{margin-top:2px;font-size:12px;color:#1A0DAB;line-height:1.25}
+.gsb .gs-navtabs{display:flex;gap:16px;margin-top:9px;border-bottom:1px solid #EDEEF3}
+.gsb .gs-navtabs span{font-size:10.5px;color:#5F6368;padding-bottom:5px}
+.gsb .gs-navtabs .on{color:#1A73E8;font-weight:600;border-bottom:2px solid #1A73E8}
+.gsb .gs-tiles{margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.gsb .gs-tile{border:1px solid #E6E8F0;border-radius:6px;padding:5px}
+.gsb .gs-tile-img{height:32px;border-radius:4px;background:#F4F5FA;display:grid;place-items:center;margin-bottom:4px}
+.gsb .gs-tile-p{font-family:var(--font-head);font-size:10.5px;font-weight:700;color:var(--navy)}
+.gsb .coming-panel .map-label{margin:12px 0 8px}
+.gsb .coming-panel .map-label-first{margin-top:0}
+
+/* ---------- the stake ---------- */
+.gsb .h2-sm{font-size:clamp(26px,3.2vw,38px)}
+.gsb .section-stake{padding-top:96px}
+.gsb .split-top{align-items:start}
+.gsb .split-mid{align-items:center}
+/* At the full h2 size these two titles set inside a column, so the column has to
+   be wide enough for the accent line to hold together. The panel beside each one
+   is pinned to the width it actually needs and the text takes the rest. */
+.gsb .split-coming{grid-template-columns:470px minmax(0,1fr);gap:48px}
+.gsb .split-stake{grid-template-columns:minmax(0,1fr) 500px;gap:40px;align-items:center}
+/* Drop the panel past the eyebrow so its top edge starts on the title line,
+   not the eyebrow line. 18px eyebrow + its 16px margin. */
+@media (min-width:1024px){
+  .gsb .split-coming > .feedmap{order:-1}
+}
+.gsb .section-stake .prose p{max-width:640px}
+.gsb .section-cta{margin-top:28px}
+.gsb .section-cta a{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-head);font-weight:600;font-size:15px;color:var(--blue);
+  text-decoration:none;
+}
+.gsb .section-cta a:hover{text-decoration:underline;text-underline-offset:4px}
+.gsb .map-label-first{margin-top:0}
+/* data fields, not buttons */
+.gsb .chips-fields .chip{
+  background:rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.10);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;font-weight:400;color:#B9BEDA;letter-spacing:0;
+}
+
+/* ---------- reason cards ---------- */
+/* ---------- the timing · split, image full-bleed to the right edge ---------- */
+.gsb .timing{padding:0}
+.gsb .timing-split{display:grid;grid-template-columns:1.15fr 1fr;align-items:stretch}
+/* left padding lands the copy on the same line as every .wrap on the page */
+.gsb .timing-copy{
+  padding:clamp(72px,9vw,144px) clamp(32px,5vw,72px) clamp(72px,9vw,144px)
+          calc(max(0px, (100vw - var(--wrap)) / 2) + clamp(20px,4vw,48px));
+}
+.gsb .timing h2{max-width:560px}
+.gsb .timing-list{list-style:none;padding:0;margin:40px 0 0}
+.gsb .timing-list li{display:flex;align-items:center;gap:16px}
+.gsb .timing-list li + li{margin-top:40px}
+.gsb .timing-list svg{flex:0 0 28px}
+.gsb .timing-list span{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--white);line-height:1.3}
+.gsb .timing-cta{margin-top:56px}
+.gsb .timing-media{position:relative}
+.gsb .timing-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:899px){
+  .gsb .timing-split{grid-template-columns:1fr}
+  .gsb .timing-copy{padding-right:clamp(20px,4vw,48px)}
+  .gsb .timing-media{min-height:320px}
+}
+
+/* urgency band */
+.gsb .band{
+  margin-top:40px;background:#080A1C;border:1px solid rgba(255,255,255,.10);border-radius:var(--r);
+  padding:40px;
+}
+.gsb .band-head{align-items:flex-start}
+.gsb .band h3{line-height:1.15}
+.gsb .band-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.gsb .band-head h3{font-size:clamp(22px,2.2vw,26px)}
+.gsb .tag-grey{border-color:rgba(255,255,255,.28) !important;color:#8A90B8 !important}
+.gsb .tag{
+  display:inline-block;border:1px solid rgba(110,247,110,.50);color:var(--green);border-radius:var(--r-sm);
+  padding:5px 10px;font-family:var(--font-head);font-size:11px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.gsb .checklist{margin-top:22px;display:grid;gap:12px}
+.gsb .checklist li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.gsb .checklist svg{flex:0 0 18px;margin-top:4px}
+
+/* ---------- approach ---------- */
+.gsb .phase{padding:28px}
+.gsb .phases{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+/* equal height, with each outcome strip pinned to the bottom of its box */
+.gsb .phase{display:flex;flex-direction:column;align-items:stretch}
+.gsb .phase .badge{align-self:flex-start}
+.gsb .phase .checklist{margin-bottom:24px}
+.gsb .phase .outcome{margin-top:auto;min-height:111px}
+@media (max-width:899px){.gsb .phases{grid-template-columns:1fr}}
+.gsb .badge{
+  display:inline-block;border:1px solid var(--blue);color:var(--blue);background:transparent;
+  border-radius:var(--r-sm);padding:6px 12px;font-family:var(--font-head);font-size:11px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;
+}
+.gsb .phase h3{font-size:clamp(20px,2vw,24px);margin-bottom:22px}
+.gsb .outcome{margin-top:24px;background:var(--pale-blue);border-radius:var(--r);padding:18px 20px}
+.gsb .outcome .label{display:block;margin-bottom:6px;color:var(--blue)}
+.gsb .outcome strong{font-family:var(--font-head);color:var(--navy);font-weight:600;font-size:16px}
+.gsb .note{
+  margin-top:28px;border-left:2px solid var(--blue);background:rgba(63,74,175,.05);
+  border-radius:0 var(--r) var(--r) 0;padding:20px 24px;
+}
+.gsb .note .label{display:block;margin-bottom:6px;color:var(--blue)}
+.gsb .note p{font-size:15px}
+
+/* ---------- flat navy section · same treatment as k-12's #problems ----------
+   Solid var(--sw-black) with no radial wash, plus the faint green hairline. */
+.gsb .section-solid{background:var(--navy);color:rgba(255,255,255,.75);position:relative;overflow:hidden}
+.gsb .section-solid::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:rgba(255,255,255,.12);
+}
+.gsb .section-solid h2,.gsb .section-solid h3,.gsb .section-solid h4{color:var(--white)}
+.gsb .section-solid .eyebrow,.gsb .section-solid .label{color:var(--muted)}
+.gsb .section-solid .lede{color:rgba(255,255,255,.75)}
+.gsb .section-solid .accent-blue{color:var(--green)}
+.gsb .section-solid .card{background:rgba(255,255,255,.02);border-color:var(--line-dark)}
+.gsb .section-solid .card p{color:rgba(255,255,255,.70)}
+.gsb .section-solid .step{border-top-color:rgba(255,255,255,.12)}
+.gsb .steplist{list-style:none;padding-inline-start:0;padding:0;margin:32px 0 0;display:grid;gap:12px}
+.gsb .steplist li{display:flex;align-items:center;gap:14px;font-size:15px;color:rgba(255,255,255,.78)}
+/* solid blue box, white numeral, sized down for a list */
+.gsb .steplist .num-circle{
+  flex:0 0 32px;width:32px;height:32px;font-size:14px;
+  background:var(--blue);border-color:var(--blue);color:var(--white);
+}
+.gsb .num-circle{border-color:rgba(255,255,255,.5);color:var(--white)}
+.gsb .section-solid .badge{border-color:rgba(255,255,255,.35);color:var(--white)}
+.gsb .section-solid .outcome{background:rgba(255,255,255,.05)}
+.gsb .section-solid .outcome strong{color:var(--white)}
+.gsb .section-solid .outcome .label{color:var(--green)}
+.gsb .section-solid .note{background:rgba(255,255,255,.03);border-left-color:var(--green)}
+.gsb .section-solid .note .label{color:var(--green)}
+.gsb .section-solid .note p{color:rgba(255,255,255,.75)}
+.gsb .section-solid .checklist li{color:rgba(255,255,255,.78)}
+.gsb .section-solid .checklist svg path{stroke:var(--green)}
+
+/* ---------- what we do · four cards in one row, light ground ---------- */
+.gsb .section-tight{padding:80px 0}
+/* flat ground so the white cards read as cards, not as the page */
+.gsb #approach{background:#F5F6FA}
+/* two-up bar on the dark case-study ground */
+.gsb .proof-bar{
+  margin-top:32px;padding-top:28px;border-top:1px solid var(--line-dark);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;
+}
+.gsb .proof-bar p{color:var(--fg);font-size:16px;line-height:1.5;max-width:70ch}
+.gsb .btn-blue-solid{
+  display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;
+  background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:var(--r-sm);
+  font-family:var(--font-head);font-weight:600;font-size:15px;text-decoration:none;
+  white-space:nowrap;transition:filter .2s ease;
+}
+.gsb .btn-blue-solid:hover{filter:brightness(1.15)}
+
+/* ---------- blue strip ---------- */
+.gsb .strip{background:var(--blue);color:#fff;padding:56px 0}
+.gsb .strip-in{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.gsb .strip h2{font-size:clamp(24px,2.6vw,32px);color:#fff}
+.gsb .strip p{margin-top:8px;color:rgba(255,255,255,.82);font-size:15px}
+
+/* ---------- proof ---------- */
+.gsb .proof-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:start;margin-top:32px}
+.gsb .proof-logo{display:block;height:29px;width:auto}
+@media (max-width:1023px){
+  .gsb .g4{grid-template-columns:repeat(2,1fr)}
+}
+
+.gsb .proof-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:16px}
+.gsb .proof-head .eyebrow{margin:0}
+.gsb .wordmark{font-family:var(--font-head);color:#fff;font-weight:600;font-size:18px;letter-spacing:-.01em}
+/* `.dark .card p` would otherwise outrank a plain `.stat .num`, so match on p.num */
+.gsb .stat p.num{
+  font-family:var(--font-head);font-size:clamp(40px,5vw,56px);font-weight:700;color:var(--green);
+  line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.gsb .stat p.cap{margin-top:12px;font-size:13px;color:rgba(255,255,255,.70);line-height:1.5}
+/* product shot sits flush against the top edge of the card, so the 24px card
+   padding is cancelled on that side only */
+.gsb .stat-stack{position:relative;display:flex}
+.gsb .stat-stack > .card{flex:1}
+/* sits directly on the top edge of the box, overhanging the row above it */
+.gsb .stat-shot{position:absolute;bottom:100%;left:50%;transform:translateX(calc(-50% + 20px));z-index:2;pointer-events:none;
+  display:block;height:211px;width:auto;max-width:100%}
+.gsb .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.gsb .tagpill{
+  border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:9px 18px;font-size:13px;
+  color:#E4E7F5;background:rgba(255,255,255,.06);
+}
+.gsb .closer{
+  margin-top:36px;border-left:2px solid var(--green);padding-left:22px;
+  font-family:var(--font-head);font-size:17px;font-weight:600;color:var(--white);line-height:1.5;
+}
+
+/* ---------- offer ---------- */
+.gsb .pricecard{
+  border-radius:var(--r);padding:40px;color:#fff;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  background:
+    radial-gradient(900px 600px at 20% 20%, #2a3380 0%, transparent 55%),
+    radial-gradient(800px 580px at 85% 82%, #070a1e 0%, transparent 52%),
+    radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.gsb .pricecard > *{position:relative}
+.gsb .pricecard .figure{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
+.gsb .pricecard .amount{
+  font-family:var(--font-head);font-size:clamp(48px,6vw,76px);font-weight:700;letter-spacing:-.03em;
+  line-height:1;color:var(--green);font-variant-numeric:tabular-nums;
+}
+.gsb .pricecard .unit{font-family:var(--font-head);font-size:17px;font-weight:500;color:rgba(255,255,255,.85)}
+.gsb .pricecard .sub{margin-top:18px;font-size:16px;color:rgba(255,255,255,.80);max-width:56ch;line-height:1.6}
+.gsb .pricecard .eyebrow{color:var(--muted)}
+.gsb .offer-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:stretch}
+/* the right column ends level with the price card */
+.gsb .offer-grid > :last-child{display:flex;flex-direction:column}
+.gsb .offer-grid .checklist{margin-bottom:24px}
+.gsb .offer-grid .note{margin-top:auto;padding:16px 20px}
+.gsb .checklist.on-light li{color:var(--ink-light)}
+
+/* ---------- steps ---------- */
+.gsb .step{display:grid;grid-template-columns:56px 1fr;gap:22px;padding:26px 0;border-top:1px solid var(--line-light)}
+.gsb .step:first-of-type{border-top:0}
+.gsb .num-circle{
+  width:44px;height:44px;border-radius:var(--r-sm);border:1px solid var(--blue);background:transparent;
+  color:var(--blue);display:grid;place-items:center;font-family:var(--font-head);font-weight:600;font-size:17px;
+  font-variant-numeric:tabular-nums;
+}
+.gsb .step h3{margin-bottom:8px}
+
+/* ---------- faq ---------- */
+.gsb .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:40px}
+.gsb .faq-item{border:1px solid var(--line-light);border-radius:var(--r);background:var(--white)}
+.gsb .faq-item h3{font-size:17px;margin:0}
+.gsb .faq-btn{
+  width:100%;display:flex;gap:18px;align-items:flex-start;justify-content:space-between;
+  background:none;border:0;padding:20px 22px;text-align:left;cursor:pointer;
+  font-family:var(--font-head);font-size:17px;font-weight:600;color:var(--navy);line-height:1.3;
+}
+.gsb .faq-btn .plus{flex:0 0 20px;margin-top:3px;transition:transform .2s ease;color:var(--blue)}
+.gsb .faq-btn[aria-expanded="true"] .plus{transform:rotate(45deg)}
+.gsb .faq-panel{padding:0 22px 22px;font-size:15px;line-height:1.6}
+.gsb .faq-panel[hidden]{display:none}
+
+/* ---------- closing form ---------- */
+.gsb .form-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.gsb .contact{display:flex;align-items:center;gap:14px;margin-top:36px}
+.gsb .avatar{
+  width:48px;height:48px;border-radius:var(--r-sm);border:1px solid var(--line-dark);
+  object-fit:cover;display:block;flex:0 0 48px;
+}
+.gsb .contact .nm{font-family:var(--font-head);color:#fff;font-weight:600;font-size:15px;line-height:1.3}
+.gsb .contact .role{font-size:14px;color:rgba(255,255,255,.65);line-height:1.4;margin-top:2px}
+.gsb .contact .em{font-size:14px;color:rgba(255,255,255,.65)}
+
+/* ---------- footer placeholder ---------- */
+.gsb .footer-slot{
+  background:var(--navy);border-top:1px solid var(--line-dark);padding:48px 0;
+  color:var(--dim);font-size:13px;text-align:center;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1199px){
+  .gsb .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:32px}
+  .gsb .hero h1{font-size:32px}
+}
+@media (max-width:1023px){
+  /* stack: copy, then the visual centred beneath it */
+  /* stacked · the H1 gets its full measure back, so it can grow again */
+  .gsb .hero-grid{grid-template-columns:1fr;gap:40px}
+  .gsb .hv{font-size:13.6px;justify-self:start}
+  .gsb .hero h1{font-size:44px}
+  .gsb .g4{grid-template-columns:1fr 1fr}
+  /* these set their own tracks, so the generic .split collapse never reaches them */
+  .gsb .split,.gsb .split-coming,.gsb .split-stake,.gsb .offer-grid,.gsb .form-split{grid-template-columns:1fr;gap:36px}
+  .gsb .coming-panel{max-width:470px}
+  .gsb .phases{grid-template-columns:1fr}
+  .gsb .timing-split{grid-template-columns:1fr}
+  .gsb .timing-media{min-height:320px}
+}
+@media (max-width:767px){
+  /* visual to 70%, phone overlap hidden, hero may exceed 100vh and that is fine */
+  .gsb .hv-phone{display:none}
+  .gsb .hero h1{font-size:32px}
+  .gsb .hero{min-height:0}
+}
+@media (max-width:479px){
+  /* 375 · stack vertically, arrow rotates to point down, CTAs full width */
+  .gsb .hv{flex-direction:column;align-items:stretch;gap:1.5em;font-size:14px;max-width:100%}
+  .gsb .hv-feed,.gsb .hv-results-wrap{flex:1 1 auto}
+  .gsb .hv-arrow{align-self:center;transform:rotate(90deg)}
+  .gsb .hero h1{font-size:28px}
+  .gsb .hero-cta{flex-direction:column;align-items:stretch}
+  .gsb .hero-btn{text-align:center}
+  .gsb .hero-link{text-align:center}
+}
+@media (max-width:767px){
+  .gsb .split,.gsb .offer-grid,.gsb .form-split{grid-template-columns:1fr;gap:36px}
+  .gsb .grid.g2,.gsb .grid.g3,.gsb .grid.g4,.gsb .faq-grid{grid-template-columns:1fr}
+  .gsb .chips,.gsb .chips-6{grid-template-columns:1fr 1fr}
+  .gsb .pricecard{padding:28px}
+  .gsb .band{padding:24px}
+  .gsb .step{grid-template-columns:44px 1fr;gap:16px}
+  .gsb .strip-in{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .gsb *,.gsb *::before,.gsb *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}

@@ -437,7 +437,7 @@ const BODY = String.raw`
           </ol>
 
           <div class="contact">
-            <img class="avatar" src="/solutions/google-shopping-baltics/58e97309eb.webp" alt="Nika Zhgheria" width="108" height="108">
+            <img class="avatar" src="/solutions/google-shopping-baltics/58e97309eb.webp" alt="Nika Zhgheria" width="80" height="80">
             <div>
               <p class="nm">Nika Zhgheria</p>
               <p class="role">Paid Media Business Developer</p>

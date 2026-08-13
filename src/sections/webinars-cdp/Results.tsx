@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { Lockup } from "./Lockup";
+import { assetUrl } from "@/lib/assets";
 
 const stats: { figure: string; label: string }[] = [
   { figure: "+48%", label: "email revenue YoY" },
@@ -34,6 +35,18 @@ export function Results() {
         aria-hidden
         className="absolute inset-0 -z-10 grid-backdrop opacity-30"
       />
+
+      {/* Product shot sits above the gradient but below the content, so the
+          stat cards, which are only 3% white, let it show through where the
+          two overlap. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/webinars/cdp/results-products.webp")}
+          alt=""
+          className="h-full w-full object-contain object-center"
+        />
+      </div>
 
       <div className="wrap relative">
         <div className="mb-12 md:mb-16 max-w-[46rem]">

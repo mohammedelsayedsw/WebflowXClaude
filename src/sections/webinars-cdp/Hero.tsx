@@ -45,8 +45,8 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-start">
-        <div className="wrap relative z-10 pt-[calc(60px+clamp(28px,5vh,64px))] md:pt-[calc(75px+clamp(28px,5vh,64px))] pb-[clamp(24px,4vh,56px)] w-full">
-          <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="wrap relative z-10 pt-[calc(120px+clamp(24px,4vh,52px))] md:pt-[calc(150px+clamp(24px,4vh,52px))] pb-[clamp(24px,4vh,56px)] w-full">
+          <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="max-w-[52rem]">
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-4 md:mb-5">
@@ -88,7 +88,7 @@ export function Hero() {
             </Reveal>
           </div>
 
-          <div className="mt-4 lg:mt-14">
+          <div className="mt-4 lg:mt-0">
             <HeroPanel />
           </div>
           </div>

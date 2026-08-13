@@ -4,7 +4,7 @@ import { assetUrl } from "@/lib/assets";
 
 const BRANDS: { src: string; alt: string; h: number; knockOut?: boolean }[] = [
   // supplied already reversed, so it needs no filter
-  { src: "/webinars/cdp/logo-bloomreach-white.webp", alt: "Bloomreach", h: 21.4 },
+  { src: "/webinars/cdp/logo-bloomreach-white.webp", alt: "Bloomreach", h: 22.9 },
   { src: "/webinars/cdp/logo-sportland.webp", alt: "Sportland", h: 17, knockOut: true },
   { src: "/webinars/cdp/logo-scandiweb.webp", alt: "scandiweb", h: 18, knockOut: true },
 ];

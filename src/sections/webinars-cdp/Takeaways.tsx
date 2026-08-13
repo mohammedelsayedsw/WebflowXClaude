@@ -3,9 +3,9 @@
 import { Reveal } from "@/components/primitives/Reveal";
 
 const cards: string[] = [
-  "How a Baltic retail leader runs personalization across markets with different languages, catalogs, and customer bases",
-  "Where the benefit comes from once a CDP is live, and where it doesn&apos;t",
-  "What year one of advanced marketing automation realistically looks like, and when it starts paying",
+  "How to personalize across markets without multiplying the work",
+  "Where a CDP pays off, and where it doesn&apos;t",
+  "What year one really looks like, and when it starts paying",
   "The costs nobody warns you about",
 ];
 
@@ -22,10 +22,10 @@ export function Takeaways() {
           </h2>
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 items-stretch">
           {cards.map((c, i) => (
-            <Reveal key={i} delay={i * 0.07}>
-              <div className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8">
+            <Reveal key={i} delay={i * 0.07} className="h-full">
+              <div className="flex h-full min-h-[164px] md:min-h-[176px] flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8">
                 <div
                   className="font-head text-[15px] mb-4"
                   style={{ color: "var(--sw-blue)" }}

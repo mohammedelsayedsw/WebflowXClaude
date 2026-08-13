@@ -24,7 +24,12 @@ export const SPEAKERS: Speaker[] = [
     company: "Sportland",
   },
   { name: "Speaker name TBC", role: "Role TBC", company: "Bloomreach" },
-  { name: "Glebs Vrevsky", role: "Board member", company: "scandiweb" },
+  {
+    name: "Glebs Vrevsky",
+    role: "Board Member & co-CEO",
+    company: "scandiweb",
+    photo: "/webinars/cdp/glebs-vrevsky.webp",
+  },
 ];
 
 /** Photo sits in a 4px-rounded box, per the brief. */

@@ -22,7 +22,7 @@ const NAMES: { name: string; role: string; company: string }[] = [
 
 export function HeroPanel() {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden">
       {/* The shot is a cut-out, so it fades out at the bottom with a mask
           rather than a coloured overlay. That keeps the hero's gradient
           showing through instead of banding against a flat colour, and it
@@ -39,7 +39,7 @@ export function HeroPanel() {
         <img
           src={assetUrl("/webinars/cdp/panel-liis-glebs.webp")}
           alt="Liis Veersalu of Sportland and Glebs Vrevsky of scandiweb"
-          className="w-full h-auto max-h-[44vh] lg:max-h-[60vh] object-contain object-bottom"
+          className="w-full h-auto max-h-[22vh] sm:max-h-[30vh] lg:max-h-[60vh] object-contain object-bottom"
         />
       </div>
 

@@ -91,8 +91,8 @@ export function Hero() {
 
             <Reveal delay={0.1}>
               <p className="mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[44rem] text-white/85">
-                Sportland&apos;s first months on one: 39% better ROAS, 21%
-                more email orders, 21% less ad spend
+                Sportland&apos;s case, 39% better ROAS, 21% more email
+                orders, and 21% less marketing spend.
               </p>
             </Reveal>
 

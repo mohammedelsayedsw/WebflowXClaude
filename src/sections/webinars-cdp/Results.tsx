@@ -38,10 +38,11 @@ export function Results() {
 
       {/* Product shot sits above the gradient but below the content, so the
           stat cards, which are only 3% white, let it show through where the
-          two overlap. */}
+          two overlap. Desktop only, since the narrower layouts stack the cards
+          over it and it reads as clutter behind the text. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 hidden lg:block"
         style={{ transform: "translateY(8px)" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}

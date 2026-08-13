@@ -60,7 +60,7 @@ export function Results() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
-              What the switch delivered
+              The numbers after CDP implementation
             </h2>
           </Reveal>
         </div>

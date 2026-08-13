@@ -1,6 +1,7 @@
 "use client";
 
 import { Hero } from "@/sections/webinars-cdp/Hero";
+import { Covered } from "@/sections/webinars-cdp/Covered";
 import { Story } from "@/sections/webinars-cdp/Story";
 import { Results } from "@/sections/webinars-cdp/Results";
 import { Agenda } from "@/sections/webinars-cdp/Agenda";
@@ -15,6 +16,7 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
+      <Covered />
       <Story />
       <Results />
       <Agenda />

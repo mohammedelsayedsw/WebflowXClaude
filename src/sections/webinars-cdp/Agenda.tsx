@@ -34,7 +34,7 @@ export function Agenda() {
       <div className="wrap relative">
         <Reveal>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em] mb-12 md:mb-16">
-            What we&apos;ll cover
+            The agenda
           </h2>
         </Reveal>
 

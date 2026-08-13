@@ -6,7 +6,7 @@ import { Lockup } from "./Lockup";
 const stats: { figure: string; label: string }[] = [
   { figure: "+48%", label: "email revenue YoY" },
   { figure: "+39.1%", label: "ROAS on paid media" },
-  { figure: "21.3%", label: "less marketing spend" },
+  { figure: "\u221221.3%", label: "less marketing spend" },
   { figure: "2.4x", label: "on-site conversion from AI recommendations" },
 ];
 
@@ -69,8 +69,9 @@ export function Results() {
 
         <Reveal delay={0.3}>
           <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            Five markets, one platform, no new headcount. Automated flows now
-            drive 39% of email revenue from just 3% of sends.
+            The team did it on one platform, across five markets, without new
+            hires. Automated flows now bring in 39% of email revenue from only
+            3% of sends.
           </p>
         </Reveal>
       </div>

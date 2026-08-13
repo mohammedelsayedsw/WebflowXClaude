@@ -51,7 +51,7 @@ export function Results() {
 
         <Reveal delay={0.3}>
           <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            Four markets, one platform, no new headcount. Automated flows now
+            Five markets, one platform, no new headcount. Automated flows now
             drive 39% of email revenue from just 3% of sends.
           </p>
         </Reveal>

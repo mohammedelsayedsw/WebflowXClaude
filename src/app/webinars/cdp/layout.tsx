@@ -6,7 +6,7 @@ export const metadata: Metadata = {
       "Sportland x Bloomreach x scandiweb webinar: More revenue on less spend | scandiweb",
   },
   description:
-    "How Sportland runs AI personalization across four markets, and what it took to get there. An open conversation with Sportland, Bloomreach, and scandiweb. September 24, 2 PM CET.",
+    "How Sportland runs AI personalization across five markets, and what it took to get there. An open conversation with Sportland, Bloomreach, and scandiweb. September 24, 2 PM CET.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/webinars/cdp",
   },

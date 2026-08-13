@@ -7,7 +7,7 @@ const points: string[] = [
   "What a customer data platform actually does, in plain words",
   "How Sportland grew revenue on 21% less marketing spend",
   "Why Sportland moved off Klaviyo to Bloomreach",
-  "Personalization across three markets, run from one platform",
+  "Personalization across five markets, run from one platform",
   "Where retail personalization is heading, and what AI changes",
   "What the build really takes, and what to automate",
   "Live Q&A with all three teams",

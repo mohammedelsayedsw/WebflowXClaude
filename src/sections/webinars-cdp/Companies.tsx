@@ -13,7 +13,7 @@ const COMPANIES: {
     logo: "/webinars/cdp/logo-sportland.webp",
     alt: "Sportland",
     h: 20,
-    body: "The retailer in the case, the leading sportswear brand in the Baltics. It runs four markets on one platform.",
+    body: "The retailer in the case, the leading sportswear brand in the Baltics. It runs five markets on one platform.",
   },
   {
     logo: "/webinars/cdp/logo-bloomreach.webp",

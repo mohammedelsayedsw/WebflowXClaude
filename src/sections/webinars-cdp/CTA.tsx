@@ -3,7 +3,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
-import { BrandLockup } from "./BrandLockup";
 
 export function CTA() {
   return (
@@ -59,11 +58,6 @@ export function CTA() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.3}>
-            <div className="mt-12 md:mt-14 w-full flex justify-center">
-              <BrandLockup />
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>

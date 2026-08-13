@@ -75,7 +75,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <p className="mt-2 md:mt-3 text-[14px] md:text-[16px] leading-[1.45] max-w-[44rem] text-white/70">
+              <p className="mt-[23px] md:mt-[27px] text-[14px] md:text-[16px] leading-[1.45] max-w-[44rem] text-white/70">
                 An open conversation with Sportland, Bloomreach, and scandiweb.
               </p>
             </Reveal>

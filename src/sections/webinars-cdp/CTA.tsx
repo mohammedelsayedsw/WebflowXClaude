@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 
 export function CTA() {
@@ -39,7 +39,7 @@ export function CTA() {
 
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              See how Sportland did it, and ask the team directly
+              See what a CDP can deliver, and ask your questions live
             </h2>
           </Reveal>
 
@@ -49,10 +49,6 @@ export function CTA() {
               <a href="#hero" className={btnPrimary}>
                 Save your seat
                 <ArrowUpRight className="h-4 w-4" />
-              </a>
-              {/* TODO: case study link */}
-              <a href="#hero" className={btnSecondary}>
-                Read the full case study
               </a>
             </div>
           </Reveal>

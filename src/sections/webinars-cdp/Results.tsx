@@ -56,10 +56,7 @@ export function Results() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16 max-w-[46rem]">
           <Reveal>
-            <div className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <div className="label-code text-white/60">The results</div>
-              <Lockup />
-            </div>
+            <div className="label-code mb-5 text-white/60">The results</div>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
@@ -91,6 +88,12 @@ export function Results() {
             The team did it on one platform, across five markets, without new
             hires.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.35}>
+          <div className="mt-7 md:mt-8">
+            <Lockup />
+          </div>
         </Reveal>
       </div>
     </section>

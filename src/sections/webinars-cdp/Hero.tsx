@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { TrustLogos } from "./TrustLogos";
-import { SPEAKERS, SpeakerPhoto, type Speaker } from "./panel";
+import { HeroPanel } from "./HeroPanel";
 
 function HeroBg() {
   return (
@@ -36,26 +36,6 @@ function HeroBg() {
   );
 }
 
-/**
- * Compact in the hero so the whole section, trust bar included, lands inside
- * one viewport. The full cards live in the Meet the panel section.
- */
-function HeroSpeaker({ speaker }: { speaker: Speaker }) {
-  return (
-    <div className="flex items-center gap-3">
-      <SpeakerPhoto speaker={speaker} className="h-[52px] w-[52px] shrink-0" />
-      <div className="min-w-0">
-        <div className="font-head text-white text-[14px] md:text-[15px] leading-[1.2] truncate">
-          {speaker.name}
-        </div>
-        <div className="text-white/60 text-[12px] md:text-[13px] leading-snug truncate">
-          {speaker.company}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function Hero() {
   return (
     <section
@@ -66,6 +46,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-center">
         <div className="wrap relative z-10 pt-[calc(60px+clamp(28px,5vh,64px))] md:pt-[calc(75px+clamp(28px,5vh,64px))] pb-[clamp(24px,4vh,56px)] w-full">
+          <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div className="max-w-[52rem]">
             <Reveal>
               <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-4 md:mb-5">
@@ -107,12 +88,7 @@ export function Hero() {
             </Reveal>
           </div>
 
-          <div className="mt-6 md:mt-10 grid gap-x-5 md:gap-x-8 gap-y-4 md:gap-y-5 grid-cols-2 lg:grid-cols-4 max-w-[68rem]">
-            {SPEAKERS.map((s, i) => (
-              <Reveal key={`${s.company}-${i}`} delay={0.26 + i * 0.06}>
-                <HeroSpeaker speaker={s} />
-              </Reveal>
-            ))}
+          <HeroPanel />
           </div>
         </div>
       </div>

@@ -9,19 +9,18 @@ const BRANDS: { src: string; alt: string; h: number }[] = [
 ];
 
 /**
- * Bloomreach x Sportland x scandiweb. The Bloomreach wordmark is navy and the
- * other two are red, so on a dark section the row sits on a light plate rather
- * than being recoloured, which would break all three brands.
+ * Bloomreach x Sportland x scandiweb, knocked out to white for the dark
+ * section, the same mono treatment the client logos in the trust bar use.
  */
 export function Lockup() {
   return (
-    <div className="inline-flex items-center gap-3 md:gap-4 rounded-[4px] bg-white px-4 py-2.5">
+    <div className="inline-flex items-center gap-3 md:gap-4">
       {BRANDS.map((b, i) => (
         <span key={b.alt} className="inline-flex items-center gap-3 md:gap-4">
           {i > 0 ? (
             <span
               aria-hidden
-              className="font-head text-[var(--sw-black)]/35 text-[13px] leading-none"
+              className="font-head text-white/35 text-[13px] leading-none"
             >
               &times;
             </span>
@@ -30,8 +29,8 @@ export function Lockup() {
           <img
             src={assetUrl(b.src)}
             alt={b.alt}
-            className="w-auto"
-            style={{ height: `${b.h}px` }}
+            className="w-auto opacity-90"
+            style={{ height: `${b.h}px`, filter: "brightness(0) invert(1)" }}
           />
         </span>
       ))}

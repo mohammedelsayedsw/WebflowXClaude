@@ -39,7 +39,7 @@ export function HeroPanel() {
         <img
           src={assetUrl("/webinars/cdp/panel-liis-glebs.webp")}
           alt="Liis Veersalu of Sportland and Glebs Vrevsky of scandiweb"
-          className="w-full h-auto max-h-[38vh] lg:max-h-[52vh] object-contain object-bottom"
+          className="w-full h-auto max-h-[44vh] lg:max-h-[60vh] object-contain object-bottom"
         />
       </div>
 
@@ -54,10 +54,7 @@ export function HeroPanel() {
             <div className="font-head text-white text-[13px] md:text-[15px] leading-[1.2]">
               {p.name}
             </div>
-            <div className="text-white/70 text-[11px] md:text-[12px] leading-snug mt-1">
-              {p.role}
-            </div>
-            <div className="text-white/50 text-[11px] md:text-[12px] leading-snug">
+            <div className="text-white/55 text-[11px] md:text-[13px] leading-snug mt-1">
               {p.company}
             </div>
           </div>

@@ -1,31 +1,59 @@
 "use client";
 
+import { assetUrl } from "@/lib/assets";
+
 /** The four panellists, shared by the hero row and the Meet the panel section. */
 export type Speaker = {
   name: string;
   role: string;
   company: string;
+  /** Square headshot. Undefined until the photo is supplied. */
+  photo?: string;
 };
 
 export const SPEAKERS: Speaker[] = [
-  { name: "Liis Veersalu", role: "Role TBC", company: "Sportland" },
+  {
+    name: "Liis Veersalu",
+    role: "Role TBC",
+    company: "Sportland",
+    photo: "/webinars/cdp/liis-veersalu.webp",
+  },
   { name: "Algirdas Zalagaitis", role: "Role TBC", company: "Sportland" },
   { name: "Speaker name TBC", role: "Role TBC", company: "Bloomreach" },
   { name: "Speaker name TBC", role: "Role TBC", company: "scandiweb" },
 ];
 
-/**
- * Photo sits in a 4px-rounded box, per the brief. Real headshots are not in
- * yet, so the box carries a neutral placeholder.
- */
+/** Photo sits in a 4px-rounded box, per the brief. */
+export function SpeakerPhoto({
+  speaker,
+  className = "",
+}: {
+  speaker: Speaker;
+  className?: string;
+}) {
+  const box = `rounded-[4px] overflow-hidden bg-white/10 border border-white/15 ${className}`;
+
+  if (!speaker.photo) {
+    /* TODO: real speaker photo */
+    return <div className={box} aria-hidden />;
+  }
+
+  return (
+    <div className={box}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={assetUrl(speaker.photo)}
+        alt={`${speaker.name}, ${speaker.company}`}
+        className="h-full w-full object-cover"
+      />
+    </div>
+  );
+}
+
 export function SpeakerBox({ speaker }: { speaker: Speaker }) {
   return (
     <div className="flex flex-col">
-      {/* TODO: real speaker photo */}
-      <div
-        className="w-full aspect-[4/3] rounded-[4px] bg-white/10 border border-white/15"
-        aria-hidden
-      />
+      <SpeakerPhoto speaker={speaker} className="w-full aspect-square" />
       <div className="mt-4">
         <div className="font-head text-white text-[17px] md:text-[19px] leading-[1.2]">
           {speaker.name}

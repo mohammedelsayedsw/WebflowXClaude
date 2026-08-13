@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { TrustLogos } from "./TrustLogos";
-import { SPEAKERS } from "./panel";
+import { SPEAKERS, SpeakerPhoto, type Speaker } from "./panel";
 
 function HeroBg() {
   return (
@@ -40,20 +40,16 @@ function HeroBg() {
  * Compact in the hero so the whole section, trust bar included, lands inside
  * one viewport. The full cards live in the Meet the panel section.
  */
-function HeroSpeaker({ name, company }: { name: string; company: string }) {
+function HeroSpeaker({ speaker }: { speaker: Speaker }) {
   return (
     <div className="flex items-center gap-3">
-      {/* TODO: real speaker photo */}
-      <div
-        className="h-[52px] w-[52px] shrink-0 rounded-[4px] bg-white/10 border border-white/15"
-        aria-hidden
-      />
+      <SpeakerPhoto speaker={speaker} className="h-[52px] w-[52px] shrink-0" />
       <div className="min-w-0">
         <div className="font-head text-white text-[14px] md:text-[15px] leading-[1.2] truncate">
-          {name}
+          {speaker.name}
         </div>
         <div className="text-white/60 text-[12px] md:text-[13px] leading-snug truncate">
-          {company}
+          {speaker.company}
         </div>
       </div>
     </div>
@@ -115,7 +111,7 @@ export function Hero() {
           <div className="mt-6 md:mt-10 grid gap-x-5 md:gap-x-8 gap-y-4 md:gap-y-5 grid-cols-2 lg:grid-cols-4 max-w-[68rem]">
             {SPEAKERS.map((s, i) => (
               <Reveal key={`${s.company}-${i}`} delay={0.26 + i * 0.06}>
-                <HeroSpeaker name={s.name} company={s.company} />
+                <HeroSpeaker speaker={s} />
               </Reveal>
             ))}
           </div>

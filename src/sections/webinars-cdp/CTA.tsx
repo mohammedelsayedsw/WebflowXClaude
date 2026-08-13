@@ -32,8 +32,7 @@ export function CTA() {
           <Reveal>
             <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6">
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                Free webinar &middot; 24 September &middot; 3:00 PM Tallinn
-                (12:00 GMT)
+                Free webinar &middot; 24 September &middot; 2 PM CET
               </span>
             </div>
           </Reveal>

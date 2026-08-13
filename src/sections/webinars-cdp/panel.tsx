@@ -14,13 +14,17 @@ export type Speaker = {
 export const SPEAKERS: Speaker[] = [
   {
     name: "Liis Veersalu",
-    role: "Role TBC",
+    role: "Head of Group Marketing & Communications",
     company: "Sportland",
     photo: "/webinars/cdp/liis-veersalu.webp",
   },
-  { name: "Algirdas Zalagaitis", role: "Role TBC", company: "Sportland" },
+  {
+    name: "Algirdas Zalagaitis",
+    role: "Head of eCommerce",
+    company: "Sportland",
+  },
   { name: "Speaker name TBC", role: "Role TBC", company: "Bloomreach" },
-  { name: "Speaker name TBC", role: "Role TBC", company: "scandiweb" },
+  { name: "Glebs Vrevsky", role: "Board member", company: "scandiweb" },
 ];
 
 /** Photo sits in a 4px-rounded box, per the brief. */

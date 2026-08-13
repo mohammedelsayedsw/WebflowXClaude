@@ -13,11 +13,11 @@ export function Takeaways() {
   return (
     <section
       id="takeaways"
-      className="relative bg-lp-bright py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
         <Reveal>
-          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em] mb-12 md:mb-16 max-w-[24ch]">
+          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em] mb-12 md:mb-16 max-w-[24ch]">
             What you&apos;ll take away
           </h2>
         </Reveal>
@@ -25,15 +25,15 @@ export function Takeaways() {
         <div className="grid gap-5 md:grid-cols-2">
           {cards.map((c, i) => (
             <Reveal key={i} delay={i * 0.07}>
-              <div className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-7 md:p-8">
+              <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-7 md:p-8">
                 <div
                   className="font-head text-[15px] mb-4"
-                  style={{ color: "var(--sw-blue)" }}
+                  style={{ color: "var(--sw-mint)" }}
                 >
                   {i + 1}
                 </div>
                 <p
-                  className="text-[var(--sw-black)]/75 text-[16px] md:text-[18px] leading-snug"
+                  className="text-white/75 text-[16px] md:text-[18px] leading-snug"
                   dangerouslySetInnerHTML={{ __html: c }}
                 />
               </div>

@@ -39,7 +39,11 @@ export function Results() {
       {/* Product shot sits above the gradient but below the content, so the
           stat cards, which are only 3% white, let it show through where the
           two overlap. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ transform: "translateY(8px)" }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={assetUrl("/webinars/cdp/results-products.webp")}

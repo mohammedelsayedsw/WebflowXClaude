@@ -59,7 +59,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h1 className="font-head text-white text-[28px] sm:text-[36px] md:text-[44px] lg:text-[clamp(38px,4.4vh,54px)] leading-[1.06] tracking-[-0.02em]">
+              <h1 className="font-head text-white text-[clamp(26px,4.4vh,32px)] sm:text-[42px] md:text-[52px] lg:text-[clamp(46px,5.6vh,68px)] leading-[1.03] tracking-[-0.025em]">
                 Every retailer over &euro;20M needs a{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
                   customer data platform

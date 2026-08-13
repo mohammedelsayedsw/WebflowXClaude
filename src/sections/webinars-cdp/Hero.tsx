@@ -5,6 +5,7 @@ import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { TrustLogos } from "./TrustLogos";
 import { HeroPanel } from "./HeroPanel";
+import { Lockup } from "./Lockup";
 
 function HeroBg() {
   return (
@@ -49,10 +50,11 @@ export function Hero() {
           <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="max-w-[52rem]">
             <Reveal>
-              <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-4 md:mb-5">
+              <div className="mb-4 md:mb-5 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                  Free webinar &middot; 24 September &middot; 2 PM CET
+                  Free webinar
                 </span>
+                <Lockup />
               </div>
             </Reveal>
 
@@ -80,6 +82,11 @@ export function Hero() {
 
             <Reveal delay={0.22}>
               <div className="mt-6 md:mt-7 flex flex-wrap items-center gap-3">
+                <div className="inline-flex h-12 items-center rounded-[2px] border border-white/25 px-4">
+                  <span className="font-head text-[12px] md:text-[13px] font-semibold tracking-[0.06em] text-white/85 uppercase">
+                    September 24 &middot; 2 PM CET
+                  </span>
+                </div>
                 <a href="#cta" className={btnPrimary}>
                   Save your seat
                   <ArrowUpRight className="h-4 w-4" />

@@ -2,10 +2,11 @@
 
 import { assetUrl } from "@/lib/assets";
 
-const BRANDS: { src: string; alt: string; h: number }[] = [
-  { src: "/webinars/cdp/logo-bloomreach.webp", alt: "Bloomreach", h: 22 },
-  { src: "/webinars/cdp/logo-sportland.webp", alt: "Sportland", h: 17 },
-  { src: "/webinars/cdp/logo-scandiweb.webp", alt: "scandiweb", h: 18 },
+const BRANDS: { src: string; alt: string; h: number; knockOut?: boolean }[] = [
+  // supplied already reversed, so it needs no filter
+  { src: "/webinars/cdp/logo-bloomreach-white.webp", alt: "Bloomreach", h: 20 },
+  { src: "/webinars/cdp/logo-sportland.webp", alt: "Sportland", h: 17, knockOut: true },
+  { src: "/webinars/cdp/logo-scandiweb.webp", alt: "scandiweb", h: 18, knockOut: true },
 ];
 
 /**
@@ -30,7 +31,10 @@ export function Lockup() {
             src={assetUrl(b.src)}
             alt={b.alt}
             className="w-auto opacity-90"
-            style={{ height: `${b.h}px`, filter: "brightness(0) invert(1)" }}
+            style={{
+              height: `${b.h}px`,
+              filter: b.knockOut ? "brightness(0) invert(1)" : undefined,
+            }}
           />
         </span>
       ))}

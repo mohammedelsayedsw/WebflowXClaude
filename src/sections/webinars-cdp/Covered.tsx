@@ -6,11 +6,11 @@ import { Reveal } from "@/components/primitives/Reveal";
 const points: string[] = [
   "What a customer data platform actually does, in plain words",
   "How Sportland grew revenue on 21% less marketing spend",
-  "Personalization across four markets, run from one platform",
   "Why Sportland moved off Klaviyo to Bloomreach",
-  "How email, ads, and on-site personalization run off one customer view",
-  "What setup really takes, and what to expect first",
-  "Whether a customer data platform is the right move for your business",
+  "Personalization across three markets, run from one platform",
+  "Where retail personalization is heading, and what AI changes",
+  "What the build really takes, and what to automate",
+  "Live Q&A with all three teams",
 ];
 
 export function Covered() {

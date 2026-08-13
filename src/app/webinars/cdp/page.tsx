@@ -4,7 +4,6 @@ import { Hero } from "@/sections/webinars-cdp/Hero";
 import { Covered } from "@/sections/webinars-cdp/Covered";
 import { Story } from "@/sections/webinars-cdp/Story";
 import { Results } from "@/sections/webinars-cdp/Results";
-import { Agenda } from "@/sections/webinars-cdp/Agenda";
 import { Takeaways } from "@/sections/webinars-cdp/Takeaways";
 import { WhoShouldJoin } from "@/sections/webinars-cdp/WhoShouldJoin";
 import { Format } from "@/sections/webinars-cdp/Format";
@@ -19,7 +18,6 @@ export default function Page() {
       <Covered />
       <Story />
       <Results />
-      <Agenda />
       <Takeaways />
       <WhoShouldJoin />
       <Format />

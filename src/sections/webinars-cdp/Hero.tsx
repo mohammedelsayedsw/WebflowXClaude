@@ -82,15 +82,17 @@ export function Hero() {
 
             <Reveal delay={0.05}>
               <h1 className="font-head text-white text-[28px] sm:text-[36px] md:text-[44px] lg:text-[clamp(38px,4.4vh,54px)] leading-[1.06] tracking-[-0.02em]">
-                More revenue on{" "}
-                <span style={{ color: "var(--sw-mint)" }}>less spend</span>
+                Every retailer over &euro;20M needs a{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  customer data platform
+                </span>
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[44rem] text-white/85">
-                How Sportland runs AI personalization across four Baltic
-                markets, and what it took to get there.
+                Sportland&apos;s first months on one: 39% better ROAS, 21%
+                more email orders, 21% less ad spend
               </p>
             </Reveal>
 

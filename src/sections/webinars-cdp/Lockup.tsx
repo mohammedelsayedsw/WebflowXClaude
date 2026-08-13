@@ -2,11 +2,24 @@
 
 import { assetUrl } from "@/lib/assets";
 
-const BRANDS: { src: string; alt: string; h: number; knockOut?: boolean }[] = [
+const BRANDS: {
+  src: string;
+  alt: string;
+  h: number;
+  knockOut?: boolean;
+  /** optical nudge in px, negative lifts the mark */
+  nudge?: number;
+}[] = [
   // supplied already reversed, so it needs no filter
   { src: "/webinars/cdp/logo-bloomreach-white.webp", alt: "Bloomreach", h: 22.9 },
   { src: "/webinars/cdp/logo-sportland.webp", alt: "Sportland", h: 17, knockOut: true },
-  { src: "/webinars/cdp/logo-scandiweb.webp", alt: "scandiweb", h: 18, knockOut: true },
+  {
+    src: "/webinars/cdp/logo-scandiweb.webp",
+    alt: "scandiweb",
+    h: 18,
+    knockOut: true,
+    nudge: -1,
+  },
 ];
 
 /**
@@ -34,6 +47,7 @@ export function Lockup() {
             style={{
               height: `${b.h}px`,
               filter: b.knockOut ? "brightness(0) invert(1)" : undefined,
+              transform: b.nudge ? `translateY(${b.nudge}px)` : undefined,
             }}
           />
         </span>

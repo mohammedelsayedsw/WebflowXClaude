@@ -19,10 +19,10 @@ export default function Page() {
       <Story />
       <Platform />
       <Results />
-      <Takeaways />
-      <WhoShouldJoin />
       <Format />
       <Speakers />
+      <Takeaways />
+      <WhoShouldJoin />
       <CTA />
     </main>
   );

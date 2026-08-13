@@ -30,7 +30,7 @@ export function Platform() {
       <div className="wrap relative">
         <div className="mb-12 md:mb-16 max-w-[75ch]">
           <Reveal>
-            <div className="label-code mb-4 text-white/60">The platform</div>
+            <div className="label-code mb-4 text-white/60">The solution</div>
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -42,12 +42,11 @@ export function Platform() {
 
           <Reveal delay={0.1}>
             <p className="mt-5 md:mt-6 text-white/75 text-[16px] md:text-[18px] leading-[1.6]">
-              Sportland had outgrown a standalone email tool, so they moved to
-              Bloomreach, a customer data platform and personalization engine in
-              one. A customer data platform, or CDP, pulls customer data from
-              every source, eCommerce, ERP, email, ads, and support, into one
-              profile, so every channel works from the same view of the
-              customer.
+              Bloomreach is a customer data platform and personalization
+              engine in one. A customer data platform, or CDP, pulls customer
+              data from every source, eCommerce, ERP, email, ads, and support,
+              into one profile, so every channel works from the same view of
+              the customer.
             </p>
           </Reveal>
         </div>

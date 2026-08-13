@@ -4,10 +4,10 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const rows: string[] = [
-  "You run marketing or eCommerce at a retailer and want more from your customer data",
-  "You own a CDP or marketing automation setup, or are about to choose one",
-  "You run multiple markets, languages, or store views",
-  "You want honest numbers on what a CDP does, and does not, deliver",
+  "You run marketing or eCommerce for a retail brand and want more from your customer data",
+  "You manage a CDP or marketing automation tool, or are about to choose one",
+  "You run multiple markets, languages, or store views, and want personalization that works across all of them",
+  "You want honest numbers on what a CDP does and doesn't deliver",
 ];
 
 export function WhoShouldJoin() {

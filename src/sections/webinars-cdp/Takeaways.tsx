@@ -4,7 +4,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const cards: string[] = [
   "How a Baltic retail leader runs personalization across markets with different languages, catalogs, and customer bases",
-  "Where the benefit actually comes from once a CDP is live, and where it doesn&apos;t",
+  "Where the benefit comes from once a CDP is live, and where it doesn&apos;t",
   "What year one of advanced marketing automation realistically looks like, and when it starts paying",
   "The costs nobody warns you about",
 ];

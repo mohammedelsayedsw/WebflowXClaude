@@ -8,6 +8,7 @@ const stats: { figure: string; label: string }[] = [
   { figure: "+39.1%", label: "ROAS on paid media" },
   { figure: "\u221221.3%", label: "less marketing spend" },
   { figure: "2.4x", label: "on-site conversion from AI recommendations" },
+  { figure: "39%", label: "of email revenue from 3% of sends" },
 ];
 
 export function Results() {
@@ -49,17 +50,17 @@ export function Results() {
           </Reveal>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {stats.map((s, i) => (
             <Reveal key={s.figure} delay={i * 0.07}>
-              <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-7 md:p-8">
+              <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-7">
                 <div
-                  className="font-head text-[34px] md:text-[44px] leading-none tracking-[-0.02em]"
+                  className="font-head text-[32px] md:text-[38px] leading-none tracking-[-0.02em]"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   {s.figure}
                 </div>
-                <div className="mt-4 text-white/75 text-[15px] md:text-[16px] leading-snug">
+                <div className="mt-3 text-white/75 text-[14px] md:text-[15px] leading-snug">
                   {s.label}
                 </div>
               </div>
@@ -70,8 +71,7 @@ export function Results() {
         <Reveal delay={0.3}>
           <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
             The team did it on one platform, across five markets, without new
-            hires. Automated flows now bring in 39% of email revenue from only
-            3% of sends.
+            hires.
           </p>
         </Reveal>
       </div>

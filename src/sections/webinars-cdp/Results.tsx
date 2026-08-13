@@ -1,0 +1,97 @@
+"use client";
+
+import { Reveal } from "@/components/primitives/Reveal";
+import { Lockup } from "./Lockup";
+import { assetUrl } from "@/lib/assets";
+
+const stats: { figure: string; label: string }[] = [
+  { figure: "+48%", label: "email revenue YoY" },
+  { figure: "+39.1%", label: "ROAS on paid media" },
+  { figure: "\u221221.3%", label: "less marketing spend" },
+  { figure: "2.4x", label: "on-site conversion from AI recommendations" },
+  { figure: "39%", label: "of email revenue from 3% of sends" },
+];
+
+export function Results() {
+  return (
+    <section
+      id="the-results"
+      className="relative py-28 md:py-36 overflow-hidden scroll-mt-20"
+    >
+      {/* Same gradient recipe as the hero, with the highlights repositioned so
+          the two do not read as the identical image. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20"
+        style={{
+          background:
+            "radial-gradient(1000px 700px at 16% 28%, #303c96 0%, transparent 58%)," +
+            "radial-gradient(720px 600px at 92% 12%, #060917 0%, transparent 55%)," +
+            "radial-gradient(1200px 820px at 74% 86%, #223072 0%, transparent 50%)," +
+            "radial-gradient(1500px 1000px at 56% 46%, #171d55 0%, #131843 40%, #0e1130 72%, #090c22 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 grid-backdrop opacity-30"
+      />
+
+      {/* Product shot sits above the gradient but below the content, so the
+          stat cards, which are only 3% white, let it show through where the
+          two overlap. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ transform: "translateY(8px)" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/webinars/cdp/results-products.webp")}
+          alt=""
+          className="h-full w-full object-contain object-center"
+        />
+      </div>
+
+      <div className="wrap relative">
+        <div className="mb-12 md:mb-16 max-w-[46rem]">
+          <Reveal>
+            <div className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div className="label-code text-white/60">The results</div>
+              <Lockup />
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
+              What the switch delivered
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {stats.map((s, i) => (
+            <Reveal key={s.figure} delay={i * 0.07}>
+              <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-7">
+                <div
+                  className="font-head text-[32px] md:text-[38px] leading-none tracking-[-0.02em]"
+                  style={{ color: "var(--sw-mint)" }}
+                >
+                  {s.figure}
+                </div>
+                <div className="mt-3 text-white/75 text-[14px] md:text-[15px] leading-snug">
+                  {s.label}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.3}>
+          <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
+            The team did it on one platform, across five markets, without new
+            hires.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

@@ -9,7 +9,7 @@ const cards: { title: string; body: string }[] = [
   },
   {
     title: "AI that learns",
-    body: "Loomi, Bloomreach's AI, learns from customer behavior and improves recommendations over time",
+    body: "Loomi, Bloomreach's AI, improves recommendations from customer behavior over time",
   },
   {
     title: "Every channel, one platform",
@@ -42,11 +42,9 @@ export function Platform() {
 
           <Reveal delay={0.1}>
             <p className="mt-5 md:mt-6 text-white/75 text-[16px] md:text-[18px] leading-[1.6]">
-              Bloomreach is a customer data platform and personalization
-              engine in one. A customer data platform, or CDP, pulls customer
-              data from every source, eCommerce, ERP, email, ads, and support,
-              into one profile, so every channel works from the same view of
-              the customer.
+              Bloomreach is a customer data platform, or CDP, with
+              personalization built in. It pulls your customer data into one
+              profile, then acts on it across every channel.
             </p>
           </Reveal>
         </div>
@@ -66,11 +64,6 @@ export function Platform() {
           ))}
         </div>
 
-        <Reveal delay={0.34}>
-          <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed">
-            This is the platform behind the results you&apos;re about to see.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

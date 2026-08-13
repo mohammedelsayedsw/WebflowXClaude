@@ -14,8 +14,26 @@ export function Results() {
   return (
     <section
       id="the-results"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden scroll-mt-20"
+      className="relative py-28 md:py-36 overflow-hidden scroll-mt-20"
     >
+      {/* Same gradient recipe as the hero, with the highlights repositioned so
+          the two do not read as the identical image. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20"
+        style={{
+          background:
+            "radial-gradient(1000px 700px at 16% 28%, #303c96 0%, transparent 58%)," +
+            "radial-gradient(720px 600px at 92% 12%, #060917 0%, transparent 55%)," +
+            "radial-gradient(1200px 820px at 74% 86%, #223072 0%, transparent 50%)," +
+            "radial-gradient(1500px 1000px at 56% 46%, #171d55 0%, #131843 40%, #0e1130 72%, #090c22 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 grid-backdrop opacity-30"
+      />
+
       <div className="wrap relative">
         <div className="mb-12 md:mb-16 max-w-[46rem]">
           <Reveal>

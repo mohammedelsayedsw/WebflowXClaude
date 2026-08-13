@@ -51,19 +51,15 @@ export function Hero() {
           alignment, where the content already fills the space. */}
       <div className="flex-1 flex items-start md:items-center">
         <div className="wrap relative z-10 pt-[calc(106px+clamp(12px,2vh,40px))] md:pt-[calc(96px+clamp(16px,3vh,44px))] pb-[clamp(16px,2vh,40px)] md:pb-[clamp(24px,4vh,56px)] w-full">
-          {/* Eyebrow spans the hero, so the lockup sits out on the right */}
           <Reveal>
-            <div className="mb-7 md:mb-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                  Free webinar
-                </span>
-                <span aria-hidden className="hidden sm:block h-3 w-px bg-white/25" />
-                <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/70 uppercase">
-                  September 24 &middot; 2 PM CET
-                </span>
-              </div>
-              <Lockup />
+            <div className="mb-4 md:mb-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
+                Free webinar
+              </span>
+              <span aria-hidden className="hidden sm:block h-3 w-px bg-white/25" />
+              <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/70 uppercase">
+                September 24 &middot; 2 PM CET
+              </span>
             </div>
           </Reveal>
 
@@ -91,6 +87,12 @@ export function Hero() {
                   Save your seat
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.28}>
+              <div className="mt-7 md:mt-9">
+                <Lockup />
               </div>
             </Reveal>
           </div>

@@ -9,7 +9,7 @@ const stats: { figure: string; label: string }[] = [
   { figure: "+39.1%", label: "ROAS on paid media" },
   { figure: "\u221221.3%", label: "less marketing spend" },
   { figure: "2.4x", label: "on-site conversion from AI recommendations" },
-  { figure: "39%", label: "of email revenue from 3% of sends" },
+  { figure: "39%", label: "of email revenue comes from automation" },
 ];
 
 export function Results() {
@@ -60,7 +60,7 @@ export function Results() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
-              The numbers after CDP implementation
+              The numbers after switching to Bloomreach
             </h2>
           </Reveal>
         </div>

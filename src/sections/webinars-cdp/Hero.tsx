@@ -52,7 +52,7 @@ export function Hero() {
       <div className="flex-1 flex items-start md:items-center">
         <div className="wrap relative z-10 pt-[calc(106px+clamp(12px,2vh,40px))] md:pt-[calc(96px+clamp(16px,3vh,44px))] pb-[clamp(16px,2vh,40px)] md:pb-[clamp(24px,4vh,56px)] w-full">
           <Reveal>
-            <div className="mb-4 md:mb-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <div className="mb-7 md:mb-9 flex flex-wrap items-center gap-x-4 gap-y-2">
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                 Free webinar
               </span>

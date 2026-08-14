@@ -13,13 +13,13 @@ export function Format() {
           <div>
             <Reveal>
               <div className="label-code mb-4 text-[var(--sw-black)]/55">
-                The format of webinar
+                The format
               </div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
-                An honest conversation,{" "}
-                <span className="text-[var(--sw-blue)]">with real numbers</span>
+                A talk with the teams{" "}
+                <span className="text-[var(--sw-blue)]">who did the work</span>
               </h2>
             </Reveal>
           </div>

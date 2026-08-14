@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -39,20 +38,29 @@ export function CTA() {
 
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              See what a CDP can deliver, and ask your questions live
+              See what{" "}
+              <span style={{ color: "var(--sw-mint)" }}>
+                advanced omnichannel marketing automation can deliver
+              </span>
+              , and ask your questions live
             </h2>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="mt-9 md:mt-10 flex flex-wrap items-center justify-center gap-3">
-              {/* TODO: registration link or HubSpot form id */}
-              <a href="#hero" className={btnPrimary}>
-                Save your seat
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+          {/* w-full on the Reveal: it is a flex item under items-center, so
+              without it the wrapper shrinks to the form's intrinsic width. */}
+          <Reveal delay={0.2} className="w-full">
+            {/* Registration form. Styling comes from `.hubspot-form-wrapper` in
+                globals.css, which already matches this design system, so the
+                embed does not read as a HubSpot form. */}
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+              <HubSpotForm
+                portalId="25724996"
+                formId="47da245c-6de1-413a-bfbf-4b4a649ff7a8"
+                region="eu1"
+                submitText="Save your seat"
+              />
             </div>
           </Reveal>
-
         </div>
       </div>
     </section>

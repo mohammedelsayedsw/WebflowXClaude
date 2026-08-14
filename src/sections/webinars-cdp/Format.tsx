@@ -33,7 +33,7 @@ export function Format() {
             <p className="mt-5 text-[var(--sw-black)]/75 text-[16px] md:text-[19px] leading-[1.6] max-w-[60ch]">
               We&apos;ll ask the Sportland team how it went in real life.
               You&apos;ll hear what worked, what didn&apos;t, and what
-              they&apos;d tell a retailer their size starting out today. Bring
+              they&apos;d tell a retailer starting out today. Bring
               your questions for the live Q&amp;A with all three teams.
             </p>
           </Reveal>

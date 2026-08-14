@@ -42,9 +42,9 @@ export function Platform() {
 
           <Reveal delay={0.1}>
             <p className="mt-5 md:mt-6 text-white/75 text-[16px] md:text-[18px] leading-[1.6]">
-              Bloomreach is a marketing automation and personalization platform.
-              It brings your customer data into one profile, then acts on it
-              across every channel.
+              Bloomreach is an AI platform for personalization. It brings your
+              customer and product data into one place, then personalizes every
+              channel, email, ads, search, and your site.
             </p>
           </Reveal>
         </div>

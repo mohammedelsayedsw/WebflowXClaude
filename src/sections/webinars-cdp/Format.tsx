@@ -26,9 +26,9 @@ export function Format() {
 
           <Reveal delay={0.1}>
             <p className="text-[var(--sw-black)]/75 text-[16px] md:text-[19px] leading-[1.6] max-w-[60ch]">
-              Each part starts with a real CDP topic, what it can deliver and how
-              to make it work for retailers. scandiweb and Bloomreach walk you
-              through it in plain terms.
+              Each part takes a real question about personalization, what it can
+              deliver and how to make it work for a retailer. scandiweb and
+              Bloomreach walk you through it in plain terms.
             </p>
             <p className="mt-5 text-[var(--sw-black)]/75 text-[16px] md:text-[19px] leading-[1.6] max-w-[60ch]">
               We&apos;ll ask the Sportland team how it went in real life.

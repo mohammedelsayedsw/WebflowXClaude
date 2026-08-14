@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const points: string[] = [
-  "What a customer data platform actually does, in plain words",
+  "What a CDP and marketing automation do, in plain words",
   "How Sportland grew revenue on 21% less marketing spend",
   "Why Sportland moved off Klaviyo to Bloomreach",
   "Personalization across five markets, run from one platform",

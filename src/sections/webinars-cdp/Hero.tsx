@@ -58,26 +58,35 @@ export function Hero() {
               </span>
               <span aria-hidden className="hidden sm:block h-3 w-px bg-white/25" />
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/70 uppercase">
-                September 24 &middot; 2 PM CET
+                September 24 &middot; 3 PM EEST
               </span>
             </div>
           </Reveal>
 
           <div className="grid gap-5 sm:gap-6 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="max-w-[52rem]">
+            <Reveal delay={0.04}>
+              <p className="font-head text-[15px] sm:text-[17px] md:text-[20px] leading-[1.2] tracking-[-0.01em] text-white/70">
+                More revenue on less spend
+              </p>
+            </Reveal>
+
             <Reveal delay={0.05}>
-              <h1 className="font-head text-white text-[clamp(26px,4.4vh,32px)] sm:text-[42px] md:text-[52px] lg:text-[clamp(46px,min(5.6vh,4.2vw),72px)] leading-[1.03] tracking-[-0.025em]">
-                Every retailer over &euro;20M needs a{" "}
+              <h1 className="mt-2 md:mt-3 font-head text-white text-[clamp(23px,3.9vh,29px)] sm:text-[36px] md:text-[44px] lg:text-[clamp(38px,min(4.6vh,3.4vw),60px)] leading-[1.05] tracking-[-0.025em]">
+                How Sportland runs{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  customer data platform
-                </span>
+                  AI&nbsp;personalization
+                </span>{" "}
+                across three Baltic states, and what it took
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-3 sm:mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[44rem] text-white/85">
-                One of them already proved it. Sportland&apos;s case, 39% better
-                ROAS, 21% more email orders, and 21% less marketing spend.
+                Sportland grew email orders and paid ROAS while cutting spend.
+                Their team joins Bloomreach and scandiweb to share what worked,
+                what didn&apos;t, and what they&apos;d tell a retailer starting
+                out today.
               </p>
             </Reveal>
 

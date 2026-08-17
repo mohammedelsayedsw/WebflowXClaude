@@ -23,7 +23,12 @@ export const SPEAKERS: Speaker[] = [
     role: "Head of eCommerce",
     company: "Sportland",
   },
-  { name: "Speaker name TBC", role: "Role TBC", company: "Bloomreach" },
+  {
+    name: "Hugo Habodasz",
+    role: "Senior Success Manager",
+    company: "Bloomreach",
+    photo: "/webinars/cdp/hugo-habodasz.webp",
+  },
   {
     name: "Glebs Vrevsky",
     role: "Board Member & co-CEO",

@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { assetUrl } from "@/lib/assets";
 
 /**
@@ -52,21 +53,28 @@ export function HeroPanel() {
         />
       </div>
 
+      {/* Names and companies are two rows of one grid rather than a stack per
+          person. Around 1024-1100px a column gets narrow enough for one of the
+          names to wrap, and a per-person stack would push only that company
+          line down. Sharing a row keeps every company on the same baseline
+          whichever name happens to wrap first. */}
       <div
-        className="absolute inset-x-0 bottom-0 grid gap-4 md:gap-6"
+        className="absolute inset-x-0 bottom-0 grid gap-x-4 md:gap-x-6"
         style={{
           gridTemplateColumns: `repeat(${NAMES.length}, minmax(0, 1fr))`,
+          gridTemplateRows: "auto auto",
+          gridAutoFlow: "column",
         }}
       >
         {NAMES.map((p) => (
-          <div key={p.name}>
+          <Fragment key={p.name}>
             <div className="font-head text-white text-[13px] md:text-[15px] leading-[1.2]">
               {p.name}
             </div>
             <div className="text-white/55 text-[11px] md:text-[13px] leading-snug mt-1">
               {p.company}
             </div>
-          </div>
+          </Fragment>
         ))}
       </div>
     </div>

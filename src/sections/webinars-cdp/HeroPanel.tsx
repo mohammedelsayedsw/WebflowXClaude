@@ -9,6 +9,11 @@ import { assetUrl } from "@/lib/assets";
  */
 const NAMES: { name: string; role: string; company: string }[] = [
   {
+    name: "Hugo Habodasz",
+    role: "Senior Success Manager",
+    company: "Bloomreach",
+  },
+  {
     name: "Liis Veersalu",
     role: "Head of Group Marketing & Communications",
     company: "Sportland",
@@ -41,8 +46,8 @@ export function HeroPanel() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={assetUrl("/webinars/cdp/panel-liis-glebs.webp")}
-          alt="Liis Veersalu of Sportland and Glebs Vrevsky of scandiweb"
+          src={assetUrl("/webinars/cdp/panel-hugo-liis-glebs.webp")}
+          alt="Hugo Habodasz of Bloomreach, Liis Veersalu of Sportland and Glebs Vrevsky of scandiweb"
           className="w-auto max-w-full lg:w-full h-auto max-h-[22vh] sm:max-h-[30vh] lg:max-h-[60vh] object-contain object-bottom"
         />
       </div>

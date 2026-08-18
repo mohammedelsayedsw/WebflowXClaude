@@ -2,7 +2,7 @@
 
 import { assetUrl } from "@/lib/assets";
 
-/** The four panellists, shared by the hero row and the Meet the panel section. */
+/** The panellists, shared by the hero row and the Meet the panel section. */
 export type Speaker = {
   name: string;
   role: string;
@@ -18,11 +18,9 @@ export const SPEAKERS: Speaker[] = [
     company: "Sportland",
     photo: "/webinars/cdp/liis-veersalu.webp",
   },
-  {
-    name: "Algirdas Zalagaitis",
-    role: "Head of eCommerce",
-    company: "Sportland",
-  },
+  // Algirdas Zalagaitis, Head of eCommerce, Sportland - hidden until his
+  // photo arrives. Restore this entry and put Speakers.tsx back to
+  // lg:grid-cols-4 when it does.
   {
     name: "Hugo Habodasz",
     role: "Senior Success Manager",

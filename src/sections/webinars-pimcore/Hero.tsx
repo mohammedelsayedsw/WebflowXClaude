@@ -48,7 +48,7 @@ function OfferLine() {
       </span>
       <p className="font-head font-semibold text-white text-[14px] sm:text-[15px] md:text-[17px] leading-[1.35]">
         Every attendee can request a free product information management (PIM)
-        prototype built on their own catalog
+        prototype built on your own catalog
       </p>
     </div>
   );
@@ -80,7 +80,7 @@ export function Hero() {
                 <h1 className="font-head text-white text-[29px] sm:text-[38px] md:text-[46px] lg:text-[48px] leading-[1.07] tracking-[-0.02em]">
                   Spreadsheets built your catalog.{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
-                    Now they&apos;re capping it.
+                    Now they&apos;re holding it back.
                   </span>
                 </h1>
               </Reveal>
@@ -88,9 +88,8 @@ export function Hero() {
               <Reveal delay={0.1}>
                 <p className="mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] text-white/85">
                   One product lives in a dozen partial versions across
-                  spreadsheets, ERP extensions, and shared drives. This session
-                  puts a number on what that costs you, and shows what changes
-                  when product data has one home.
+                  spreadsheets, ERP extensions, and shared drives. It costs you
+                  hours every week, and the errors reach your customers.
                 </p>
               </Reveal>
 

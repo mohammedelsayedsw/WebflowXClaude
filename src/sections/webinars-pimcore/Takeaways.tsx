@@ -15,13 +15,13 @@ const ITEMS: {
 }[] = [
   {
     icon: Calculator,
-    lead: "A number for your own business",
-    body: "What fragmented product data costs you in hours, errors, and lost sales",
+    lead: "The costs, laid out",
+    body: "What each pain point takes from a business like yours, in hours and in revenue",
   },
   {
     icon: MonitorPlay,
     lead: "Live demo scenarios",
-    body: "The same problems, solved in a working system, not slides",
+    body: "The same problems, solved in a working system",
   },
   {
     icon: FolderCheck,
@@ -90,7 +90,7 @@ export function Takeaways() {
 
         <Reveal delay={0.3}>
           <p className="mt-8 md:mt-10 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
-            No pitch. This is an hour on what the problem costs and what fixes it.
+            An hour on what the problem costs and what fixes it.
           </p>
         </Reveal>
       </div>

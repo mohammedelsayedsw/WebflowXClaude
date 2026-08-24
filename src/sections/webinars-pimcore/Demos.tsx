@@ -45,7 +45,7 @@ const DEMOS: {
   },
   {
     n: "04",
-    title: "Product data an AI can actually use",
+    title: "Product data an AI can use",
     before:
       "Attributes are inconsistent, incomplete, and stored in a dozen formats",
     inSystem: [
@@ -80,8 +80,8 @@ export function Demos() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              Each demo starts from a situation you&apos;ll recognize, and ends
-              with the problem gone. Working system, real records, no slides.
+              Each demo starts from a situation you will recognize and ends
+              with the problem gone, in a working system with real records.
             </p>
           </Reveal>
         </div>
@@ -154,8 +154,8 @@ export function Demos() {
 
         <Reveal delay={0.3}>
           <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            These run in Pimcore, and the point is the problem being solved, not
-            the product.
+            The demos run in Pimcore, and each one is there to show a problem
+            being solved.
           </p>
         </Reveal>
       </div>

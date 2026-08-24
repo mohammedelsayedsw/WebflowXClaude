@@ -7,22 +7,22 @@ const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: LineChart,
     lead: "You own the numbers",
-    body: "CEO, MD, COO, CFO, or CMO, and product data problems are showing up in margin and in launch dates",
+    body: "CEO, MD, COO, CFO, or CMO, and product data is showing up in margin and in launch dates",
   },
   {
     icon: ShoppingCart,
-    lead: "You lead eCommerce or digital",
+    lead: "Running eCommerce or digital",
     body: "New channels and new markets keep waiting on data that is not ready",
   },
   {
     icon: Server,
-    lead: "You are responsible for the data foundation",
-    body: "CTO or IT Director, and you are working out what AI needs underneath it before it can deliver anything",
+    lead: "Responsible for the data foundation",
+    body: "CTO or IT Director, working out what AI needs underneath it first",
   },
   {
     icon: ClipboardList,
     lead: "You live in it daily",
-    body: "Catalog manager, product information lead, or localization manager, and you know exactly where the hours go",
+    body: "Catalog manager, product information lead, or localization manager, and you know where the hours go",
   },
 ];
 

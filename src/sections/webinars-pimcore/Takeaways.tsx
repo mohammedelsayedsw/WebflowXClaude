@@ -45,7 +45,7 @@ export function Takeaways() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-            <span className="text-[var(--sw-black)]/55">1</span>
+            <span className="text-[var(--sw-black)]/55">8</span>
             <span className="h-px w-6 bg-[var(--sw-black)]/20" />
             <span>Why attend</span>
           </div>

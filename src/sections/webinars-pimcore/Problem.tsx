@@ -22,65 +22,56 @@ export function Problem() {
   return (
     <section
       id="the-problem"
-      className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20"
+      className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
         <div className="max-w-[68rem]">
           <Reveal>
-            <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">2</span>
-              <span className="h-px w-6 bg-white/15" />
+            <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
+              <span className="text-[var(--sw-black)]/55">2</span>
+              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
               <span>The problem</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
               <span style={{ color: "var(--sw-orange)" }}>Nobody can say</span>{" "}
               which version is the right one
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-6 max-w-[70ch] text-white/75 text-[16px] md:text-[18px] leading-relaxed">
-              Your product data lives in more places than anyone can name, a
-              spreadsheet for the launch, an ERP extension for the specs, a
-              shared drive for the images, and another sheet for the German
-              site. None of them agree, and nobody is sure which one is right.
+            <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+              Your product data sits in a spreadsheet, an ERP extension, a
+              shared drive, and another sheet for the German site, and none of
+              them agree.
             </p>
           </Reveal>
-        </div>
 
-        {/* Sourced from the Läderach case study, so the figure is safe to state here */}
-        <Reveal delay={0.16}>
-          <blockquote className="mt-10 md:mt-12 max-w-[64rem] border-l-2 border-[var(--sw-orange)] pl-6 md:pl-8">
+          {/* Sourced from the Läderach case study, so the figure is safe to state here */}
+          <Reveal delay={0.14}>
             <p
-              className="font-head text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.25] tracking-[-0.01em]"
+              className="mt-5 max-w-[68ch] font-head font-semibold text-[15px] md:text-[17px] leading-[1.45]"
               style={{ color: "var(--sw-orange)" }}
             >
               In one catalog we worked on, a single product took 10 to 20 manual
               entries before it was ready to sell.
             </p>
-          </blockquote>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal delay={0.2}>
-          <p className="mt-12 md:mt-14 mb-5 md:mb-6 font-head text-white/80 text-[16px] md:text-[19px]">
-            A normal week
-          </p>
-        </Reveal>
-
-        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
+        <ul className="mt-10 md:mt-14 grid gap-3 md:gap-4 md:grid-cols-3">
           {WEEK.map((w, i) => (
-            <Reveal key={w.body} delay={0.24 + i * 0.07} className="h-full">
-              <li className="flex h-full flex-col rounded-[4px] border border-white/12 bg-white/[0.035] p-6">
+            <Reveal key={w.body} delay={0.18 + i * 0.07} className="h-full">
+              <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">
                 <span
                   aria-hidden
-                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-white/12 bg-white/[0.05] text-[var(--sw-mint)]"
+                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-orange)]"
                 >
                   <w.icon className="h-5 w-5" strokeWidth={1.75} />
                 </span>
-                <p className="text-white/80 text-[15px] md:text-[16px] leading-relaxed">
+                <p className="text-[var(--sw-black)]/75 text-[15px] md:text-[16px] leading-relaxed">
                   {w.body}
                 </p>
               </li>
@@ -88,11 +79,10 @@ export function Problem() {
           ))}
         </ul>
 
-        <Reveal delay={0.44}>
-          <p className="mt-8 md:mt-10 max-w-[72ch] text-white/70 text-[16px] md:text-[18px] leading-relaxed">
-            None of this looks like a crisis on any given day. It takes hours,
-            the errors reach your customers, and some of it comes back as
-            returns. All of it stops once product data has one home.
+        <Reveal delay={0.4}>
+          <p className="mt-8 md:mt-10 max-w-[72ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+            None of it looks like a crisis on any given day, and all of it stops
+            once product data has one home.
           </p>
         </Reveal>
       </div>

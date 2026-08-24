@@ -25,7 +25,7 @@ export function Speakers() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-            <span className="text-white/55">8</span>
+            <span className="text-white/55">7</span>
             <span className="h-px w-6 bg-white/15" />
             <span>The speakers</span>
           </div>

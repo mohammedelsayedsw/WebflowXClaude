@@ -1,7 +1,6 @@
 "use client";
 
 import { Hero } from "@/sections/webinars-pimcore/Hero";
-import { TrustBar } from "@/sections/webinars-pimcore/TrustBar";
 import { Takeaways } from "@/sections/webinars-pimcore/Takeaways";
 import { Problem } from "@/sections/webinars-pimcore/Problem";
 import { Costs } from "@/sections/webinars-pimcore/Costs";
@@ -16,15 +15,14 @@ export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Hero />
-      <TrustBar />
-      <Takeaways />
+      <Covered />
       <Problem />
       <Costs />
-      <Covered />
       <Demos />
       <CaseStudy />
       <WhoShouldJoin />
       <Speakers />
+      <Takeaways />
       <CTA />
     </main>
   );

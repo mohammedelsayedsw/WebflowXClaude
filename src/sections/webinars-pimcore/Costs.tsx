@@ -11,8 +11,8 @@ import { Reveal } from "@/components/primitives/Reveal";
  * the same if a fifth is ever added.
  */
 
-const AXIS = "rgba(16,19,44,0.14)";
-const INK = "rgba(16,19,44,0.55)";
+const AXIS = "rgba(255,255,255,0.14)";
+const INK = "rgba(255,255,255,0.55)";
 
 /** Launches slip while data is found, checked, and rekeyed. */
 function TimeFigure() {
@@ -21,21 +21,18 @@ function TimeFigure() {
       <text x="0" y="12" fill={INK} fontSize="10" letterSpacing="1">
         PLANNED
       </text>
-      <rect x="0" y="20" width="150" height="14" rx="4" fill="var(--sw-blue)" opacity="0.85" />
+      <rect x="0" y="20" width="150" height="14" rx="4" fill="var(--sw-mint)" opacity="0.8" />
       <text x="0" y="60" fill={INK} fontSize="10" letterSpacing="1">
         ACTUAL
       </text>
-      <rect x="0" y="68" width="150" height="14" rx="4" fill="var(--sw-blue)" opacity="0.35" />
-      <rect x="150" y="68" width="112" height="14" rx="4" fill="var(--sw-orange)" opacity="0.75" />
-      <text x="266" y="79" fill={INK} fontSize="10" textAnchor="end" opacity="0">
-        .
-      </text>
+      <rect x="0" y="68" width="150" height="14" rx="4" fill="var(--sw-mint)" opacity="0.3" />
+      <rect x="150" y="68" width="112" height="14" rx="4" fill="var(--sw-orange)" opacity="0.85" />
       <line x1="150" y1="16" x2="150" y2="90" stroke={AXIS} strokeDasharray="3 3" />
     </svg>
   );
 }
 
-/** Live but wrong listings sell worse than listings that are not live at all. */
+/** Listings are rejected, and the ones that go live convert worse. */
 function ChannelFigure() {
   const bars = [
     { h: 46, bad: false },
@@ -56,8 +53,8 @@ function ChannelFigure() {
             width="30"
             height={b.h}
             rx="4"
-            fill={b.bad ? "var(--sw-orange)" : "var(--sw-blue)"}
-            opacity={b.bad ? 0.75 : 0.8}
+            fill={b.bad ? "var(--sw-orange)" : "var(--sw-mint)"}
+            opacity={b.bad ? 0.85 : 0.7}
           />
           {b.bad ? (
             <text
@@ -77,7 +74,7 @@ function ChannelFigure() {
   );
 }
 
-/** Every new market multiplies the problem instead of adding to the revenue. */
+/** Every new market multiplies the work instead of adding to the revenue. */
 function MarketsFigure() {
   const rows = [
     { code: "EN", state: "Current" },
@@ -98,16 +95,16 @@ function MarketsFigure() {
               width="280"
               height="18"
               rx="4"
-              fill={ok ? "rgba(63,74,175,0.10)" : "rgba(255,90,49,0.09)"}
+              fill={ok ? "rgba(110,247,110,0.10)" : "rgba(255,90,49,0.10)"}
             />
-            <text x="10" y={y + 13} fill="rgba(16,19,44,0.8)" fontSize="11" fontWeight="600">
+            <text x="10" y={y + 13} fill="rgba(255,255,255,0.85)" fontSize="11" fontWeight="600">
               {r.code}
             </text>
             <circle
               cx="46"
               cy={y + 9}
               r="3.5"
-              fill={ok ? "var(--sw-blue)" : "var(--sw-orange)"}
+              fill={ok ? "var(--sw-mint)" : "var(--sw-orange)"}
             />
             <text x="60" y={y + 13} fill={INK} fontSize="11">
               {r.state}
@@ -119,29 +116,23 @@ function MarketsFigure() {
   );
 }
 
-const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX.Element }[] = [
+const COSTS: { n: string; title: string; body: string; figure: () => React.JSX.Element }[] = [
   {
     n: "1",
     title: "Time to market",
-    body: [
-      "New products and new channels wait on data that has to be found, checked, and rekeyed. Every launch starts later than it needed to.",
-    ],
+    body: "Every launch waits while someone finds, checks, and retypes the data.",
     figure: TimeFigure,
   },
   {
     n: "2",
     title: "Channel and marketplace revenue",
-    body: [
-      "Listings are rejected or published with errors, and the products that do go live convert worse than they should.",
-    ],
+    body: "Listings get rejected, and the ones that go live convert worse.",
     figure: ChannelFigure,
   },
   {
     n: "3",
     title: "The growth ceiling on new markets",
-    body: [
-      "Translations go stale or get overwritten, and nothing tells you which language version is current. Every new market multiplies the work instead of adding to the revenue.",
-    ],
+    body: "Translations go stale, and every new market multiplies the work.",
     figure: MarketsFigure,
   },
 ];
@@ -150,21 +141,21 @@ export function Costs() {
   return (
     <section
       id="the-cost"
-      className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
+      className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
         <div className="max-w-[68rem]">
           <Reveal>
-            <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">3</span>
-              <span className="h-px w-6 bg-[var(--sw-black)]/20" />
+            <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
+              <span className="text-white/55">3</span>
+              <span className="h-px w-6 bg-white/15" />
               <span>The cost</span>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
               Where it{" "}
-              <span className="text-[var(--sw-blue)]">costs you</span>
+              <span style={{ color: "var(--sw-orange)" }}>costs you</span>
             </h2>
           </Reveal>
         </div>
@@ -172,70 +163,72 @@ export function Costs() {
         <ul className="mt-10 md:mt-14 grid gap-3 md:gap-4 md:grid-cols-3">
           {COSTS.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.07} className="h-full">
-              <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6 md:p-7">
-                <span className="font-head text-[13px] tabular-nums leading-none text-[var(--sw-blue)]">
+              <li className="flex h-full flex-col rounded-[4px] border border-white/12 bg-white/[0.035] p-6 md:p-7">
+                <span
+                  className="font-head text-[13px] tabular-nums leading-none"
+                  style={{ color: "var(--sw-mint)" }}
+                >
                   {c.n}
                 </span>
-                <div className="mt-4 font-head font-bold text-[var(--sw-black)] text-[18px] md:text-[21px] leading-tight">
+                <div className="mt-4 font-head font-bold text-white text-[18px] md:text-[21px] leading-tight">
                   {c.title}
                 </div>
                 <div className="mt-6 mb-6">
                   <c.figure />
                 </div>
-                {c.body.map((p) => (
-                  <p
-                    key={p}
-                    className="mt-auto text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed"
-                  >
-                    {p}
-                  </p>
-                ))}
+                <p className="mt-auto text-white/70 text-[14px] md:text-[15px] leading-relaxed">
+                  {c.body}
+                </p>
               </li>
             </Reveal>
           ))}
         </ul>
 
-        {/* 04, the block that lands with CTOs and CDOs, so it gets the width */}
+        {/* 4, the block that lands with CTOs and CDOs, so it gets the width */}
         <Reveal delay={0.24}>
-          <div className="mt-3 md:mt-4 rounded-[4px] border border-[var(--sw-blue)]/40 bg-[var(--sw-blue)]/[0.05] p-7 md:p-10">
-            <span className="font-head text-[13px] tabular-nums leading-none text-[var(--sw-blue)]">
+          <div className="mt-3 md:mt-4 rounded-[4px] border border-[var(--sw-orange)]/35 bg-[var(--sw-orange)]/[0.06] p-7 md:p-10">
+            <span
+              className="font-head text-[13px] tabular-nums leading-none"
+              style={{ color: "var(--sw-orange)" }}
+            >
               4
             </span>
-            <div className="mt-4 font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[26px] leading-tight">
+            <div className="mt-4 font-head font-bold text-white text-[20px] md:text-[26px] leading-tight">
               AI that never gets off the ground
             </div>
 
             <div className="mt-8 grid gap-8 md:gap-10 lg:grid-cols-[auto_1fr] lg:items-center">
-              <div className="flex flex-wrap gap-8 md:gap-12">
-                <div>
-                  <div className="font-head font-bold text-[var(--sw-blue)] text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums">
-                    80%+
+              <div>
+                <div className="flex flex-wrap gap-8 md:gap-12">
+                  <div>
+                    <div
+                      className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
+                      style={{ color: "var(--sw-orange)" }}
+                    >
+                      80%+
+                    </div>
+                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                      of companies report no clear bottom line impact from AI
+                    </div>
                   </div>
-                  <div className="mt-2 max-w-[22ch] text-[var(--sw-black)]/70 text-[13px] md:text-[14px] leading-snug">
-                    of companies report no clear bottom line impact from AI
+                  <div>
+                    <div
+                      className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
+                      style={{ color: "var(--sw-orange)" }}
+                    >
+                      5.5%
+                    </div>
+                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                      see real financial returns
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="font-head font-bold text-[var(--sw-blue)] text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums">
-                    5.5%
-                  </div>
-                  <div className="mt-2 max-w-[22ch] text-[var(--sw-black)]/70 text-[13px] md:text-[14px] leading-snug">
-                    see real financial returns
-                  </div>
-                </div>
+                <p className="mt-6 label-code text-white/50">McKinsey, State of AI</p>
               </div>
 
-              <div className="lg:border-l lg:border-[var(--sw-black)]/10 lg:pl-10">
-                <p className="font-head text-[var(--sw-black)] text-[17px] md:text-[21px] leading-[1.4] max-w-[46ch]">
-                  More than 80% of companies report no clear bottom line impact
-                  from AI, and only 5.5% see real financial returns.
-                </p>
-                <p className="mt-3 label-code text-[var(--sw-black)]/50">
-                  McKinsey, State of AI
-                </p>
-                <p className="mt-6 text-[var(--sw-black)]/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">
-                  The blocker is usually not the model. It is the product data
-                  underneath it.
+              <div className="lg:border-l lg:border-white/12 lg:pl-10">
+                <p className="font-head text-white text-[17px] md:text-[21px] leading-[1.4] max-w-[46ch]">
+                  Most of the time, the blocker is the product data underneath.
                 </p>
               </div>
             </div>

@@ -4,7 +4,8 @@ import { ArrowUpRight, Gift } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HeroPanel } from "./HeroPanel";
-import { Lockup, PartnerBadge } from "./Lockup";
+import { PartnerBadge } from "./Lockup";
+import { TrustBar } from "./TrustBar";
 
 function HeroBg() {
   return (
@@ -39,14 +40,14 @@ function HeroBg() {
 /** The offer, boxed and in the accent colour. It is the strongest reason to attend. */
 function OfferLine() {
   return (
-    <div className="flex items-start gap-3 rounded-[4px] border border-[var(--sw-mint)]/40 bg-[var(--sw-mint)]/[0.07] px-4 py-3.5 md:px-5 md:py-4">
+    <div className="flex h-full min-h-12 items-center gap-3 rounded-[4px] border border-[var(--sw-mint)]/40 bg-[var(--sw-mint)]/[0.07] px-4 py-2.5 md:px-5">
       <span
         aria-hidden
-        className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] border border-[var(--sw-mint)]/35 text-[var(--sw-mint)]"
+        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] border border-[var(--sw-mint)]/35 text-[var(--sw-mint)]"
       >
         <Gift className="h-3.5 w-3.5" strokeWidth={1.9} />
       </span>
-      <p className="font-head font-semibold text-white text-[14px] sm:text-[15px] md:text-[17px] leading-[1.35]">
+      <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.3]">
         Every attendee can get a free PIM prototype after the webinar
       </p>
     </div>
@@ -55,19 +56,21 @@ function OfferLine() {
 
 export function Hero() {
   return (
+    // hero-fill plus the trust bar as the last child: landing on the page shows
+    // everything down to and including the client logo row, without scrolling.
     <section
       id="hero"
-      className="relative -mt-[60px] md:-mt-[75px] overflow-hidden flex flex-col"
+      className="relative -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col"
     >
       <HeroBg />
 
       <div className="flex-1 flex items-start lg:items-center">
-        <div className="wrap relative z-10 pt-[calc(128px+clamp(12px,2vh,36px))] md:pt-[calc(126px+clamp(16px,3vh,44px))] pb-[clamp(24px,4vh,56px)] w-full">
-          <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div className="wrap relative z-10 pt-[calc(96px+clamp(10px,2.4vh,34px))] md:pt-[calc(100px+clamp(12px,3vh,40px))] pb-[clamp(16px,2.6vh,44px)] w-full">
+          <div className="grid gap-8 lg:gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             {/* LEFT · copy */}
-            <div className="max-w-[38rem]">
+            <div className="max-w-[46rem]">
               <Reveal>
-                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
+                <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-[clamp(12px,2.2vh,24px)]">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                     {/* TODO: replace both placeholders once the slot is confirmed */}
                     Free webinar &middot; [Date TBC] &middot; [Time TBC] &middot; 60 minutes
@@ -76,39 +79,46 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[29px] sm:text-[38px] md:text-[46px] lg:text-[48px] leading-[1.07] tracking-[-0.02em]">
-                  Spreadsheets built your catalog.{" "}
-                  <span style={{ color: "var(--sw-orange)" }}>
-                    Now they&apos;re holding it back.
+                <h1 className="font-head text-white text-[27px] sm:text-[34px] md:text-[40px] lg:text-[clamp(30px,min(4.4vh,3.1vw),43px)] leading-[1.08] tracking-[-0.02em] text-balance">
+                  Slow product launches, wrong details online, and returns{" "}
+                  <span style={{ color: "var(--sw-mint)" }}>
+                    you could have avoided
                   </span>
                 </h1>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <p className="mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] text-white/85">
-                  One product lives in a dozen partial versions across
-                  spreadsheets, ERP extensions, and shared drives. It costs you
-                  hours every week, and the errors reach your customers.
+                <p className="mt-[clamp(10px,1.8vh,20px)] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85">
+                  You know these problems. In 60 minutes we&apos;ll show you
+                  what&apos;s causing them, what they cost, and how to fix them
+                  for good.
                 </p>
               </Reveal>
 
-              <Reveal delay={0.16}>
-                <div className="mt-6 md:mt-7">
-                  <OfferLine />
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.22}>
-                <div className="mt-6 md:mt-7 flex flex-wrap items-center gap-3">
-                  <a href="#cta" className={btnPrimary}>
+              {/* The button and the offer sit on one line, so the payoff reads
+                  as part of the action rather than a separate claim above it. */}
+              <Reveal delay={0.18}>
+                <div className="mt-[clamp(16px,2.6vh,32px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
+                  {/* height auto plus align-items stretch: the button takes
+                      the height of the offer box beside it, whether that box
+                      sets on one line or two. py-3 keeps it 48px when it
+                      stacks above the box on phones. */}
+                  <a
+                    href="#cta"
+                    className={`${btnPrimary} shrink-0 py-3`}
+                    style={{ height: "auto" }}
+                  >
                     Save your seat
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
+                  <div className="sm:flex-1">
+                    <OfferLine />
+                  </div>
                 </div>
               </Reveal>
 
-              <Reveal delay={0.28}>
-                <p className="mt-4 text-white/60 text-[13px] md:text-[14px] leading-relaxed">
+              <Reveal delay={0.26}>
+                <p className="mt-[clamp(10px,1.6vh,18px)] text-white/60 text-[13px] md:text-[14px] leading-relaxed">
                   Free, 60 minutes. Can&apos;t join live? Register and
                   we&apos;ll send you the recording.
                 </p>
@@ -121,16 +131,16 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* co-brand lockup and the partner proof, at the foot of the hero */}
-          <Reveal delay={0.34}>
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-x-8 gap-y-5 border-t border-white/12 pt-6 md:pt-7">
-              <Lockup />
-              <span aria-hidden className="hidden sm:block h-10 w-px bg-white/12" />
-              <PartnerBadge />
+          {/* the partner badge closes the hero, on its own */}
+          <Reveal delay={0.32}>
+            <div className="mt-[clamp(18px,2.6vh,36px)]">
+              <PartnerBadge h={78} />
             </div>
           </Reveal>
         </div>
       </div>
+
+      <TrustBar />
     </section>
   );
 }

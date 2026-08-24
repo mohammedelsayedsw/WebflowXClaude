@@ -64,8 +64,8 @@ export function CTA() {
           <Reveal>
             <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6">
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                {/* TODO: replace [TIME TBC] once the slot is confirmed */}
-                Free webinar &middot; September 8 &middot; [Time TBC] &middot; 60 minutes
+                {/* TODO: replace both placeholders once the slot is confirmed */}
+                Free webinar &middot; [Date TBC] &middot; [Time TBC] &middot; 60 minutes
               </span>
             </div>
           </Reveal>

@@ -21,12 +21,14 @@ type Fig = {
   caption?: string;
   /** phrases set smaller than figures, so the row keeps one optical weight */
   phrase?: boolean;
-  accent?: boolean;
+  /** green reads positive, orange reads negative, white stays neutral */
+  tone?: "positive" | "negative";
 };
 
 type Study = {
   heading: string;
   accentFrom: number;
+  accentColor: string;
   subline: string;
   figures: Fig[];
   before: string;
@@ -37,11 +39,12 @@ type Study = {
 const STUDIES: Study[] = [
   {
     heading: "One product, up to 20 manual entries",
-    accentFrom: 12,
+    accentFrom: 13,
+    accentColor: "var(--sw-orange)",
     subline: "Läderach, premium Swiss chocolate, 250+ stores worldwide",
     figures: [
       { value: "250+", caption: "stores worldwide" },
-      { value: "10–20", caption: "manual entries per product", accent: true },
+      { value: "10–20", caption: "manual entries per product", tone: "negative" },
       { from: "Hours", to: "minutes", caption: "to enrich one product", phrase: true },
     ],
     before:
@@ -53,9 +56,10 @@ const STUDIES: Study[] = [
   {
     heading: "81,000 products, one source of truth",
     accentFrom: 7,
+    accentColor: "var(--sw-mint)",
     subline: "Rocket Industrial, US packaging distributor, B2B",
     figures: [
-      { from: "70,000", to: "81,000", caption: "complete records", accent: true },
+      { from: "70,000", to: "81,000", caption: "complete records", tone: "positive" },
       {
         value: "Duplicates merged",
         caption: "across ERP and the storefront",
@@ -79,13 +83,18 @@ function Figure({ fig }: { fig: Fig }) {
     : fig.from
       ? "text-[26px] md:text-[36px] tracking-[-0.02em]"
       : "text-[36px] md:text-[52px] tracking-[-0.03em]";
-  const color = fig.accent ? undefined : "#ffffff";
+  const color =
+    fig.tone === "negative"
+      ? "var(--sw-orange)"
+      : fig.tone === "positive"
+        ? "var(--sw-mint)"
+        : "#ffffff";
 
   return (
     <div className="bg-[var(--sw-black)] px-6 py-7 md:px-8 md:py-9">
       <div
         className={`flex flex-wrap items-end gap-x-2.5 gap-y-1 min-w-0 min-h-[36px] md:min-h-[52px] font-head font-bold leading-none tabular-nums ${size}`}
-        style={{ color: fig.accent ? "var(--sw-mint)" : color }}
+        style={{ color }}
       >
         {fig.from ? (
           <>
@@ -118,7 +127,7 @@ function Card({ study }: { study: Study }) {
       <Reveal>
         <h3 className="font-head text-white text-[22px] sm:text-[26px] md:text-[32px] leading-[1.1] tracking-[-0.01em]">
           {head.slice(0, study.accentFrom)}
-          <span style={{ color: "var(--sw-mint)" }}>
+          <span style={{ color: study.accentColor }}>
             {head.slice(study.accentFrom)}
           </span>
         </h3>

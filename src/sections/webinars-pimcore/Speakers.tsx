@@ -1,16 +1,20 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
-/**
- * Only confirmed speakers are rendered. A card that reads "TBC" never goes out,
- * so while both names are pending the section carries the heading and the
- * supporting line alone. Adding a name to SPEAKERS renders its card.
- *
- * TODO: scandiweb speaker name, role, and portrait. A Pimcore speaker was
- * offered on the call and is still to be confirmed.
- */
-const SPEAKERS: { name: string; role: string; photo?: string }[] = [];
+const SPEAKERS: { name: string; role: string; photo: string }[] = [
+  {
+    name: "Ana Luisa Taylor",
+    role: "Key Account Manager at scandiweb",
+    photo: "/webinars/pimcore/ana-luisa-taylor.jpg",
+  },
+  {
+    name: "Maris Skujins",
+    role: "Head of Digital Commerce Strategy at scandiweb",
+    photo: "/webinars/pimcore/maris-skujins.jpg",
+  },
+];
 
 export function Speakers() {
   return (
@@ -34,30 +38,32 @@ export function Speakers() {
           </h2>
         </Reveal>
 
-        {SPEAKERS.length > 0 ? (
-          <div className="mt-10 md:mt-14 grid gap-3 md:gap-4 sm:grid-cols-2 lg:max-w-[62rem]">
-            {SPEAKERS.map((s, i) => (
-              <Reveal key={s.name} delay={i * 0.07} className="h-full">
-                <div className="flex h-full items-center gap-5 rounded-[4px] border border-white/12 bg-white/[0.035] p-6 md:p-7">
-                  <div
-                    aria-hidden
-                    className="h-20 w-20 md:h-24 md:w-24 shrink-0 rounded-[4px] border border-white/12 bg-white/[0.05]"
+        <div className="mt-10 md:mt-14 grid gap-3 md:gap-4 sm:grid-cols-2 lg:max-w-[74rem]">
+          {SPEAKERS.map((s, i) => (
+            <Reveal key={s.name} delay={i * 0.07} className="h-full">
+              <div className="flex h-full items-center gap-5 md:gap-6 rounded-[4px] border border-white/12 bg-white/[0.035] p-5 md:p-6">
+                <div className="h-24 w-24 md:h-28 md:w-28 shrink-0 overflow-hidden rounded-[4px] border border-white/12 bg-white/[0.05]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetUrl(s.photo)}
+                    alt={`${s.name}, ${s.role}`}
+                    className="h-full w-full object-cover"
                   />
-                  <div>
-                    <div className="font-head font-bold text-white text-[17px] md:text-[19px] leading-tight">
-                      {s.name}
-                    </div>
-                    <div className="mt-1.5 text-white/65 text-[14px] md:text-[15px]">
-                      {s.role}
-                    </div>
+                </div>
+                <div>
+                  <div className="font-head font-bold text-white text-[17px] md:text-[19px] leading-tight">
+                    {s.name}
+                  </div>
+                  <div className="mt-1.5 text-white/65 text-[14px] md:text-[15px] leading-snug text-pretty">
+                    {s.role}
                   </div>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        ) : null}
+              </div>
+            </Reveal>
+          ))}
+        </div>
 
-        <Reveal delay={0.12}>
+        <Reveal delay={0.2}>
           <p className="mt-8 md:mt-10 max-w-[72ch] text-white/70 text-[16px] md:text-[18px] leading-relaxed">
             scandiweb is a certified Pimcore Platinum Solution Partner and builds
             product data and commerce systems for brands and manufacturers with

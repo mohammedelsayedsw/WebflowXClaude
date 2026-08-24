@@ -70,8 +70,8 @@ export function Hero() {
               <Reveal>
                 <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-5 md:mb-6">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                    {/* TODO: replace [TIME TBC] once the slot is confirmed */}
-                    Free webinar &middot; September 8 &middot; [Time TBC] &middot; 60 minutes
+                    {/* TODO: replace both placeholders once the slot is confirmed */}
+                    Free webinar &middot; [Date TBC] &middot; [Time TBC] &middot; 60 minutes
                   </span>
                 </div>
               </Reveal>
@@ -79,7 +79,7 @@ export function Hero() {
               <Reveal delay={0.05}>
                 <h1 className="font-head text-white text-[29px] sm:text-[38px] md:text-[46px] lg:text-[48px] leading-[1.07] tracking-[-0.02em]">
                   Spreadsheets built your catalog.{" "}
-                  <span style={{ color: "var(--sw-mint)" }}>
+                  <span style={{ color: "var(--sw-orange)" }}>
                     Now they&apos;re holding it back.
                   </span>
                 </h1>

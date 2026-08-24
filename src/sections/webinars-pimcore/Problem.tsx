@@ -1,30 +1,29 @@
 "use client";
 
-import { PackageX, FileWarning, BellOff } from "lucide-react";
+import { PackageX, FileWarning, RefreshCw, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const WEEK: { icon: typeof PackageX; key: string; body: React.ReactNode }[] = [
+/** One box per live demo, in the same order the demos run. */
+const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
   {
     icon: PackageX,
     key: "rejected",
-    body: "A sales channel rejects your product because a required field is empty",
+    body: "A partner portal rejects your product file because a field they require is empty",
   },
   {
     icon: FileWarning,
-    key: "stale-sheet",
-    body: "A partner is working from a product sheet that is two months out of date",
+    key: "stale-file",
+    body: "A distributor is still selling from the product file you sent them in spring",
   },
   {
-    icon: BellOff,
-    key: "unannounced",
-    // the break is set, so the line never leaves "is told" on its own
-    body: (
-      <>
-        A product detail changes and nobody
-        <br />
-        else is told
-      </>
-    ),
+    icon: RefreshCw,
+    key: "out-of-sync",
+    body: "A product detail changes in your ERP, and your website still shows the old one",
+  },
+  {
+    icon: Sparkles,
+    key: "ai",
+    body: "You want to use AI on your catalog, and the data underneath isn't ready",
   },
 ];
 
@@ -66,7 +65,7 @@ export function Problem() {
           </p>
         </Reveal>
 
-        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
+        <ul className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {WEEK.map((w, i) => (
             <Reveal key={w.key} delay={0.18 + i * 0.07} className="h-full">
               <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">

@@ -17,8 +17,8 @@ export default function Page() {
       <Hero />
       <Covered />
       <Problem />
-      <Demos />
       <Costs />
+      <Demos />
       <CaseStudy />
       <WhoShouldJoin />
       <Speakers />

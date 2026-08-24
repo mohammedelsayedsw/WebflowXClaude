@@ -3,18 +3,28 @@
 import { PackageX, FileWarning, BellOff } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const WEEK: { icon: typeof PackageX; body: string }[] = [
+const WEEK: { icon: typeof PackageX; key: string; body: React.ReactNode }[] = [
   {
     icon: PackageX,
+    key: "rejected",
     body: "A sales channel rejects your product because a required field is empty",
   },
   {
     icon: FileWarning,
+    key: "stale-sheet",
     body: "A partner is working from a product sheet that is two months out of date",
   },
   {
     icon: BellOff,
-    body: "A product detail changes and nobody else is told",
+    key: "unannounced",
+    // the break is set, so the line never leaves "is told" on its own
+    body: (
+      <>
+        A product detail changes and nobody
+        <br />
+        else is told
+      </>
+    ),
   },
 ];
 
@@ -58,7 +68,7 @@ export function Problem() {
 
         <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
           {WEEK.map((w, i) => (
-            <Reveal key={w.body} delay={0.18 + i * 0.07} className="h-full">
+            <Reveal key={w.key} delay={0.18 + i * 0.07} className="h-full">
               <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">
                 <span
                   aria-hidden
@@ -75,7 +85,7 @@ export function Problem() {
         </ul>
 
         <Reveal delay={0.4}>
-          <p className="mt-8 md:mt-10 max-w-[72ch] font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
+          <p className="mt-8 md:mt-10 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
             None of this looks like a crisis on any given day, and it all stops
             when your product details live in one place.
           </p>

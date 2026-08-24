@@ -47,8 +47,11 @@ function OfferLine() {
       >
         <Gift className="h-3.5 w-3.5" strokeWidth={1.9} />
       </span>
-      <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.3]">
-        Every attendee can get a free PIM prototype after the webinar
+      <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.35]">
+        {/* the break is deliberate: the offer reads on two even lines */}
+        Every attendee can get a free
+        <br />
+        PIM prototype after the webinar
       </p>
     </div>
   );
@@ -65,7 +68,7 @@ export function Hero() {
       <HeroBg />
 
       <div className="flex-1 flex items-start lg:items-center">
-        <div className="wrap relative z-10 pt-[calc(96px+clamp(10px,2.4vh,34px))] md:pt-[calc(100px+clamp(12px,3vh,40px))] pb-[clamp(16px,2.6vh,44px)] w-full">
+        <div className="wrap relative z-10 pt-[calc(116px+clamp(10px,2.4vh,34px))] md:pt-[calc(124px+clamp(12px,3vh,40px))] pb-[clamp(16px,2.6vh,44px)] w-full">
           <div className="grid gap-8 lg:gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             {/* LEFT · copy */}
             <div className="max-w-[46rem]">
@@ -79,8 +82,14 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.05}>
-                <h1 className="font-head text-white text-[27px] sm:text-[34px] md:text-[40px] lg:text-[clamp(30px,min(4.4vh,3.1vw),43px)] leading-[1.08] tracking-[-0.02em] text-balance">
-                  Slow product launches, wrong details online, and returns{" "}
+                {/* The three breaks are set on purpose from md up, so the
+                    headline always reads as launches / details and returns /
+                    what could have been avoided. Phones wrap naturally. */}
+                <h1 className="font-head text-white text-[27px] sm:text-[34px] md:text-[40px] lg:text-[clamp(30px,min(4.4vh,3.1vw),43px)] leading-[1.08] tracking-[-0.02em] text-balance md:[text-wrap:initial]">
+                  Slow product launches,
+                  <br className="hidden md:block" />{" "}
+                  wrong details online, and returns
+                  <br className="hidden md:block" />{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
                     you could have avoided
                   </span>
@@ -90,6 +99,7 @@ export function Hero() {
               <Reveal delay={0.1}>
                 <p className="mt-[clamp(10px,1.8vh,20px)] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85">
                   You know these problems. In 60 minutes we&apos;ll show you
+                  <br className="hidden md:block" />{" "}
                   what&apos;s causing them, what they cost, and how to fix them
                   for good.
                 </p>
@@ -98,7 +108,7 @@ export function Hero() {
               {/* The button and the offer sit on one line, so the payoff reads
                   as part of the action rather than a separate claim above it. */}
               <Reveal delay={0.18}>
-                <div className="mt-[clamp(16px,2.6vh,32px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
+                <div className="mt-[clamp(26px,4.4vh,52px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
                   {/* height auto plus align-items stretch: the button takes
                       the height of the offer box beside it, whether that box
                       sets on one line or two. py-3 keeps it 48px when it
@@ -111,7 +121,9 @@ export function Hero() {
                     Save your seat
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
-                  <div className="sm:flex-1">
+                  {/* no flex-1: the box hugs its two lines instead of
+                      stretching to the end of the column */}
+                  <div className="flex">
                     <OfferLine />
                   </div>
                 </div>
@@ -123,6 +135,14 @@ export function Hero() {
                   we&apos;ll send you the recording.
                 </p>
               </Reveal>
+
+              {/* the partner badge sits with the microcopy, not adrift below
+                  the speaker panel */}
+              <Reveal delay={0.32}>
+                <div className="mt-[clamp(12px,1.8vh,20px)]">
+                  <PartnerBadge h={78} />
+                </div>
+              </Reveal>
             </div>
 
             {/* RIGHT · the two speakers */}
@@ -131,12 +151,6 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* the partner badge closes the hero, on its own */}
-          <Reveal delay={0.32}>
-            <div className="mt-[clamp(18px,2.6vh,36px)]">
-              <PartnerBadge h={78} />
-            </div>
-          </Reveal>
         </div>
       </div>
 

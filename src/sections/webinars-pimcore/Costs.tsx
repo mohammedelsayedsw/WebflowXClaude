@@ -126,13 +126,13 @@ const COSTS: { n: string; title: string; body: string; figure: () => React.JSX.E
   {
     n: "2",
     title: "Channel and marketplace revenue",
-    body: "Products get rejected, and the ones that go live are missing the details people need to buy.",
+    body: "Every channel asks for different details, and nothing tells you what is missing until a product is rejected.",
     figure: ChannelFigure,
   },
   {
     n: "3",
     title: "The growth ceiling on new markets",
-    body: "Translations go stale, and every new market multiplies the work.",
+    body: "You update a product, and the other languages don't update accordingly.",
     figure: MarketsFigure,
   },
 ];
@@ -170,7 +170,7 @@ export function Costs() {
                 >
                   {c.n}
                 </span>
-                <div className="mt-4 font-head font-bold text-white text-[18px] md:text-[21px] leading-tight">
+                <div className="mt-4 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
                   {c.title}
                 </div>
                 <div className="mt-6 mb-6">
@@ -184,7 +184,8 @@ export function Costs() {
           ))}
         </ul>
 
-        {/* 4, the block that lands with CTOs and CDOs, so it gets the width */}
+        {/* 4, the block that lands with CTOs and CDOs, so it gets the width.
+            The link to product data leads, the figures back it up. */}
         <Reveal delay={0.24}>
           <div className="mt-3 md:mt-4 rounded-[4px] border border-[var(--sw-orange)]/35 bg-[var(--sw-orange)]/[0.06] p-7 md:p-10">
             <span
@@ -194,44 +195,40 @@ export function Costs() {
               4
             </span>
             <div className="mt-4 font-head font-bold text-white text-[20px] md:text-[26px] leading-tight">
-              AI that never gets off the ground
+              Your AI plans are waiting on product data
             </div>
 
-            <div className="mt-8 grid gap-8 md:gap-10 lg:grid-cols-[auto_1fr] lg:items-center">
+            <p className="mt-5 max-w-[68ch] font-head text-white text-[17px] md:text-[21px] leading-[1.4]">
+              AI works from the data you already have, so when your product data
+              is inconsistent, the results are too.
+            </p>
+
+            <div className="mt-9 md:mt-10 flex flex-wrap gap-8 md:gap-14">
               <div>
-                <div className="flex flex-wrap gap-8 md:gap-12">
-                  <div>
-                    <div
-                      className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
-                      style={{ color: "var(--sw-orange)" }}
-                    >
-                      80%+
-                    </div>
-                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
-                      of companies report no clear bottom line impact from AI
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
-                      style={{ color: "var(--sw-orange)" }}
-                    >
-                      5.5%
-                    </div>
-                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
-                      see real financial returns
-                    </div>
-                  </div>
+                <div
+                  className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
+                  style={{ color: "var(--sw-orange)" }}
+                >
+                  80%+
                 </div>
-                <p className="mt-6 label-code text-white/50">McKinsey, State of AI</p>
+                <div className="mt-2 max-w-[24ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                  say AI has not changed their profit
+                </div>
               </div>
-
-              <div className="lg:border-l lg:border-white/12 lg:pl-10">
-                <p className="font-head text-white text-[17px] md:text-[21px] leading-[1.4] max-w-[46ch]">
-                  Most of the time, the blocker is the product data underneath.
-                </p>
+              <div>
+                <div
+                  className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
+                  style={{ color: "var(--sw-orange)" }}
+                >
+                  5.5%
+                </div>
+                <div className="mt-2 max-w-[24ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                  say AI is actually making them money
+                </div>
               </div>
             </div>
+
+            <p className="mt-6 label-code text-white/50">McKinsey, State of AI</p>
           </div>
         </Reveal>
       </div>

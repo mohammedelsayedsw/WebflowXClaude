@@ -44,17 +44,12 @@ export function Lockup({ size = 1 }: { size?: number }) {
 /** Platinum partner badge, used as proof at the foot of the hero. */
 export function PartnerBadge({ h = 56 }: { h?: number }) {
   return (
-    <div className="flex items-center gap-3">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={assetUrl("/webinars/pimcore/pimcore-platinum-partner.png")}
-        alt="Pimcore Platinum Partner"
-        className="w-auto shrink-0"
-        style={{ height: `${h}px` }}
-      />
-      <span className="font-head text-white/70 text-[12px] md:text-[13px] leading-[1.3] max-w-[16ch]">
-        scandiweb is a Pimcore Platinum Solution Partner
-      </span>
-    </div>
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src={assetUrl("/webinars/pimcore/pimcore-platinum-partner.png")}
+      alt="scandiweb is a Pimcore Platinum Solution Partner"
+      className="w-auto shrink-0"
+      style={{ height: `${h}px` }}
+    />
   );
 }

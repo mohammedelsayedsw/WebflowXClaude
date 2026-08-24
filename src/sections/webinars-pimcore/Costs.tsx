@@ -126,7 +126,7 @@ const COSTS: { n: string; title: string; body: string; figure: () => React.JSX.E
   {
     n: "2",
     title: "Channel and marketplace revenue",
-    body: "Listings get rejected, and the ones that go live convert worse.",
+    body: "Products get rejected, and the ones that go live are missing the details people need to buy.",
     figure: ChannelFigure,
   },
   {

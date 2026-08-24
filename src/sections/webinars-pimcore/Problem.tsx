@@ -36,16 +36,16 @@ export function Problem() {
 
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              <span style={{ color: "var(--sw-orange)" }}>Nobody can say</span>{" "}
-              which version is the right one
+              Your product details live in{" "}
+              <span style={{ color: "var(--sw-orange)" }}>too many places</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              Your product data sits in a spreadsheet, an ERP extension, a
-              shared drive, and another sheet for the German site, and none of
-              them agree.
+              Your product details sit in a spreadsheet, an ERP extension, a
+              shared drive, and whatever your team built to fill the gaps, and
+              none of them agree.
             </p>
           </Reveal>
 

@@ -22,7 +22,11 @@ export function HeroPanel() {
     // itself and centres. Otherwise the names span the full column while the
     // photo sits letterboxed in the middle of it, and each name drifts left of
     // the person it belongs to.
-    <div className="relative w-fit mx-auto lg:w-full lg:mx-0">
+    //
+    // From lg the panel is wider than its grid column on purpose. The copy
+    // column needs its width for the headline, so the shot bleeds to the right
+    // instead of shrinking. The hero clips the overflow.
+    <div className="relative w-fit mx-auto lg:w-[126%] lg:max-w-none lg:mx-0 lg:-translate-x-[70px]">
       {/* The shot is a cut-out, so it fades out at the bottom with a mask
           rather than a coloured overlay. That keeps the hero's gradient
           showing through instead of banding against a flat colour, and it
@@ -39,7 +43,7 @@ export function HeroPanel() {
         <img
           src={assetUrl("/webinars/pimcore/panel-ana-maris.webp")}
           alt="Ana Luisa Taylor and Maris Skujins of scandiweb"
-          className="w-auto max-w-full lg:w-full h-auto max-h-[34vh] sm:max-h-[42vh] lg:max-h-[62vh] object-contain object-bottom"
+          className="w-auto max-w-full lg:w-full h-auto max-h-[22vh] sm:max-h-[26vh] lg:max-h-[62vh] object-contain object-bottom"
         />
       </div>
 

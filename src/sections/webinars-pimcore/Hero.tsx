@@ -69,9 +69,9 @@ export function Hero() {
 
       <div className="flex-1 flex items-start lg:items-center">
         <div className="wrap relative z-10 pt-[calc(116px+clamp(10px,2.4vh,34px))] md:pt-[calc(124px+clamp(12px,3vh,40px))] pb-[clamp(16px,2.6vh,44px)] w-full">
-          <div className="grid gap-8 lg:gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div className="grid gap-5 md:gap-6 lg:gap-12 lg:grid-cols-[1.34fr_0.66fr] lg:items-center">
             {/* LEFT · copy */}
-            <div className="max-w-[46rem]">
+            <div className="max-w-[53rem]">
               <Reveal>
                 <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-[clamp(12px,2.2vh,24px)]">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
@@ -85,7 +85,7 @@ export function Hero() {
                 {/* The three breaks are set on purpose from md up, so the
                     headline always reads as launches / details and returns /
                     what could have been avoided. Phones wrap naturally. */}
-                <h1 className="font-head text-white text-[27px] sm:text-[34px] md:text-[40px] lg:text-[clamp(30px,min(4.4vh,3.1vw),43px)] leading-[1.08] tracking-[-0.02em] text-balance md:[text-wrap:initial]">
+                <h1 className="font-head text-white text-[30px] sm:text-[38px] md:text-[44px] lg:text-[clamp(34px,min(5.4vh,3.8vw),48px)] leading-[1.08] tracking-[-0.02em] text-balance md:[text-wrap:initial]">
                   Slow product launches,
                   <br className="hidden md:block" />{" "}
                   wrong details online, and returns
@@ -108,7 +108,7 @@ export function Hero() {
               {/* The button and the offer sit on one line, so the payoff reads
                   as part of the action rather than a separate claim above it. */}
               <Reveal delay={0.18}>
-                <div className="mt-[clamp(26px,4.4vh,52px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
+                <div className="mt-[clamp(34px,6vh,72px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
                   {/* height auto plus align-items stretch: the button takes
                       the height of the offer box beside it, whether that box
                       sets on one line or two. py-3 keeps it 48px when it
@@ -140,7 +140,7 @@ export function Hero() {
                   the speaker panel */}
               <Reveal delay={0.32}>
                 <div className="mt-[clamp(12px,1.8vh,20px)]">
-                  <PartnerBadge h={78} />
+                  <PartnerBadge />
                 </div>
               </Reveal>
             </div>

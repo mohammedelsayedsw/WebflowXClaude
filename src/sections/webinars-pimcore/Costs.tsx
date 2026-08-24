@@ -132,7 +132,7 @@ const COSTS: { n: string; title: string; body: string; figure: () => React.JSX.E
   {
     n: "3",
     title: "The growth ceiling on new markets",
-    body: "Translations go stale, and every new market multiplies the work.",
+    body: "You update a product, and the other languages don't update accordingly.",
     figure: MarketsFigure,
   },
 ];
@@ -170,7 +170,7 @@ export function Costs() {
                 >
                   {c.n}
                 </span>
-                <div className="mt-4 font-head font-bold text-white text-[18px] md:text-[21px] leading-tight">
+                <div className="mt-4 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
                   {c.title}
                 </div>
                 <div className="mt-6 mb-6">

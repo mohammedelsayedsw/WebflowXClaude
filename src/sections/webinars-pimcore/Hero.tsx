@@ -47,8 +47,11 @@ function OfferLine() {
       >
         <Gift className="h-3.5 w-3.5" strokeWidth={1.9} />
       </span>
-      <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.3]">
-        Every attendee can get a free PIM prototype after the webinar
+      <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.35]">
+        {/* the break is deliberate: the offer reads on two even lines */}
+        Every attendee can get a free
+        <br />
+        PIM prototype after the webinar
       </p>
     </div>
   );
@@ -98,7 +101,7 @@ export function Hero() {
               {/* The button and the offer sit on one line, so the payoff reads
                   as part of the action rather than a separate claim above it. */}
               <Reveal delay={0.18}>
-                <div className="mt-[clamp(16px,2.6vh,32px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
+                <div className="mt-[clamp(26px,4.4vh,52px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
                   {/* height auto plus align-items stretch: the button takes
                       the height of the offer box beside it, whether that box
                       sets on one line or two. py-3 keeps it 48px when it
@@ -123,6 +126,14 @@ export function Hero() {
                   we&apos;ll send you the recording.
                 </p>
               </Reveal>
+
+              {/* the partner badge sits with the microcopy, not adrift below
+                  the speaker panel */}
+              <Reveal delay={0.32}>
+                <div className="mt-[clamp(12px,1.8vh,20px)]">
+                  <PartnerBadge h={78} />
+                </div>
+              </Reveal>
             </div>
 
             {/* RIGHT · the two speakers */}
@@ -131,12 +142,6 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* the partner badge closes the hero, on its own */}
-          <Reveal delay={0.32}>
-            <div className="mt-[clamp(18px,2.6vh,36px)]">
-              <PartnerBadge h={78} />
-            </div>
-          </Reveal>
         </div>
       </div>
 

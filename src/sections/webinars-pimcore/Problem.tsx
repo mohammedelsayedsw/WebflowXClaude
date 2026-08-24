@@ -42,7 +42,7 @@ export function Problem() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+            <p className="mt-6 max-w-[70ch] font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
               Your product details sit in a spreadsheet, an ERP extension, a
               shared drive, and whatever your team built to fill the gaps, and
               none of them agree.
@@ -75,7 +75,7 @@ export function Problem() {
         </ul>
 
         <Reveal delay={0.4}>
-          <p className="mt-8 md:mt-10 max-w-[72ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+          <p className="mt-8 md:mt-10 max-w-[72ch] font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
             None of this looks like a crisis on any given day, and it all stops
             when your product details live in one place.
           </p>

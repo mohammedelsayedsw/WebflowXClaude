@@ -147,7 +147,7 @@ export function Costs() {
         <div className="max-w-[68rem]">
           <Reveal>
             <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">3</span>
+              <span className="text-white/55">4</span>
               <span className="h-px w-6 bg-white/15" />
               <span>The cost</span>
             </div>

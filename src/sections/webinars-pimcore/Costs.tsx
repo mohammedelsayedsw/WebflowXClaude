@@ -158,6 +158,11 @@ export function Costs() {
               <span style={{ color: "var(--sw-orange)" }}>costs you</span>
             </h2>
           </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-6 font-head text-white/80 text-[16px] md:text-[19px] leading-relaxed">
+              It costs you in four places, and nobody ever counts the total.
+            </p>
+          </Reveal>
         </div>
 
         <ul className="mt-10 md:mt-14 grid gap-3 md:gap-4 md:grid-cols-3">

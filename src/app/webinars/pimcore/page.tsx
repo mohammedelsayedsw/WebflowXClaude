@@ -10,7 +10,6 @@ import { Demos } from "@/sections/webinars-pimcore/Demos";
 import { CaseStudy } from "@/sections/webinars-pimcore/CaseStudy";
 import { WhoShouldJoin } from "@/sections/webinars-pimcore/WhoShouldJoin";
 import { Speakers } from "@/sections/webinars-pimcore/Speakers";
-import { FAQ } from "@/sections/webinars-pimcore/FAQ";
 import { CTA } from "@/sections/webinars-pimcore/CTA";
 
 export default function Page() {
@@ -26,7 +25,6 @@ export default function Page() {
       <CaseStudy />
       <WhoShouldJoin />
       <Speakers />
-      <FAQ />
       <CTA />
     </main>
   );

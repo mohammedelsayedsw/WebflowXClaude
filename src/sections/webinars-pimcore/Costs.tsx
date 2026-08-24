@@ -121,7 +121,7 @@ function MarketsFigure() {
 
 const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX.Element }[] = [
   {
-    n: "01",
+    n: "1",
     title: "Time to market",
     body: [
       "New products and new channels wait on data that has to be found, checked, and rekeyed. Every launch starts later than it needed to.",
@@ -129,7 +129,7 @@ const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX
     figure: TimeFigure,
   },
   {
-    n: "02",
+    n: "2",
     title: "Channel and marketplace revenue",
     body: [
       "Listings are rejected or published with errors, and the products that do go live convert worse than they should.",
@@ -137,7 +137,7 @@ const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX
     figure: ChannelFigure,
   },
   {
-    n: "03",
+    n: "3",
     title: "The growth ceiling on new markets",
     body: [
       "Translations go stale or get overwritten, and nothing tells you which language version is current. Every new market multiplies the work instead of adding to the revenue.",
@@ -199,7 +199,7 @@ export function Costs() {
         <Reveal delay={0.24}>
           <div className="mt-3 md:mt-4 rounded-[4px] border border-[var(--sw-blue)]/40 bg-[var(--sw-blue)]/[0.05] p-7 md:p-10">
             <span className="font-head text-[13px] tabular-nums leading-none text-[var(--sw-blue)]">
-              04
+              4
             </span>
             <div className="mt-4 font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[26px] leading-tight">
               AI that never gets off the ground

@@ -36,8 +36,8 @@ export function Problem() {
 
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              Nobody can say which version is{" "}
-              <span style={{ color: "var(--sw-mint)" }}>the right one</span>
+              <span style={{ color: "var(--sw-orange)" }}>Nobody can say</span>{" "}
+              which version is the right one
             </h2>
           </Reveal>
 
@@ -53,10 +53,10 @@ export function Problem() {
 
         {/* Sourced from the Läderach case study, so the figure is safe to state here */}
         <Reveal delay={0.16}>
-          <blockquote className="mt-10 md:mt-12 max-w-[64rem] border-l-2 border-[var(--sw-mint)] pl-6 md:pl-8">
+          <blockquote className="mt-10 md:mt-12 max-w-[64rem] border-l-2 border-[var(--sw-orange)] pl-6 md:pl-8">
             <p
               className="font-head text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.25] tracking-[-0.01em]"
-              style={{ color: "var(--sw-mint)" }}
+              style={{ color: "var(--sw-orange)" }}
             >
               In one catalog we worked on, a single product took 10 to 20 manual
               entries before it was ready to sell.

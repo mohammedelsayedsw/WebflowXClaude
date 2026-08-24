@@ -11,7 +11,7 @@ const DEMOS: {
   after: string;
 }[] = [
   {
-    n: "01",
+    n: "1",
     title: "The rejected listing",
     before: "A marketplace rejects a product for missing or invalid attributes",
     inSystem: [
@@ -22,7 +22,7 @@ const DEMOS: {
     after: "The listing goes live, and the fix holds for every product after it",
   },
   {
-    n: "02",
+    n: "2",
     title: "One product, every channel",
     before:
       "The same product reads differently on the site, the marketplace, and the partner datasheet",
@@ -33,7 +33,7 @@ const DEMOS: {
     after: "Every channel shows the same product, updated from one place",
   },
   {
-    n: "03",
+    n: "3",
     title: "A new market without the mess",
     before:
       "Translations are stale, overwritten, or missing, and nobody knows which is current",
@@ -44,7 +44,7 @@ const DEMOS: {
     after: "A new market launches on current content instead of guesswork",
   },
   {
-    n: "04",
+    n: "4",
     title: "Product data an AI can use",
     before:
       "Attributes are inconsistent, incomplete, and stored in a dozen formats",

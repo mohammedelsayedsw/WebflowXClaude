@@ -6,7 +6,7 @@ export const metadata: Metadata = {
       "scandiweb x Pimcore webinar: what fragmented product data costs you | scandiweb",
   },
   description:
-    "A free 60-minute session on what scattered product data costs in hours, errors, and lost sales, with four live demos and a free PIM prototype built on your own catalog. September 8.",
+    "A free 60-minute session on what scattered product data costs in hours, errors, and lost sales, with four live demos and a free PIM prototype built on your own catalog.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/webinars/pimcore",
   },

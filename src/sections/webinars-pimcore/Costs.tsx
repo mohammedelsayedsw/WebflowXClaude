@@ -132,7 +132,7 @@ const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX
     n: "02",
     title: "Channel and marketplace revenue",
     body: [
-      "Data errors throttle listings and drag conversion. Products that are live but wrong sell worse than products that are not live at all.",
+      "Listings are rejected or published with errors, and the products that do go live convert worse than they should.",
     ],
     figure: ChannelFigure,
   },
@@ -140,7 +140,7 @@ const COSTS: { n: string; title: string; body: string[]; figure: () => React.JSX
     n: "03",
     title: "The growth ceiling on new markets",
     body: [
-      "Translations go stale or get overwritten, and nothing tells you which language version is current. Every new market multiplies the problem instead of adding to the revenue.",
+      "Translations go stale or get overwritten, and nothing tells you which language version is current. Every new market multiplies the work instead of adding to the revenue.",
     ],
     figure: MarketsFigure,
   },
@@ -163,7 +163,7 @@ export function Costs() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              The four places it{" "}
+              Where it{" "}
               <span className="text-[var(--sw-blue)]">costs you</span>
             </h2>
           </Reveal>

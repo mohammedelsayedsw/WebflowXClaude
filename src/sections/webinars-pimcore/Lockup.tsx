@@ -53,7 +53,7 @@ export function PartnerBadge({ h = 56 }: { h?: number }) {
         style={{ height: `${h}px` }}
       />
       <span className="font-head text-white/70 text-[12px] md:text-[13px] leading-[1.3] max-w-[16ch]">
-        scandiweb is a Pimcore Platinum Partner
+        scandiweb is a Pimcore Platinum Solution Partner
       </span>
     </div>
   );

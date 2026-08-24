@@ -77,6 +77,8 @@ export function CTA() {
             </h2>
           </Reveal>
 
+          {/* TODO: add the urgency line "Registration closes on September 7"
+              here, but only once that is true at publish time */}
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
               One hour, four live demos, and a free PIM prototype built on your

@@ -4,12 +4,13 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const POINTS: string[] = [
-  "What fragmented product data is costing you, in hours and in revenue",
-  "What a single source of truth for product data actually looks like in practice",
-  "Live demo scenarios, from a rejected marketplace listing to a clean multi-channel launch",
-  "How product data gets ready for AI, and why most AI projects stall without it",
-  "How multilingual catalogs stay current across markets",
-  "What a PIM project really takes, and what it does not",
+  "Where fragmented product data drains hours and revenue",
+  "What a single source of truth looks like in practice, not in theory",
+  "Live demos, from a rejected marketplace listing to a clean multi-channel launch",
+  "Why most AI projects stall on product data, and what fixes that",
+  "How multilingual catalogs stay current as you add markets",
+  "What a PIM project takes, and what it does not",
+  "Real examples from catalogs of 80,000 products and more",
   "Live Q&A with the team",
 ];
 

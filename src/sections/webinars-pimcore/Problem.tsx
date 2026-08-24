@@ -6,15 +6,15 @@ import { Reveal } from "@/components/primitives/Reveal";
 const WEEK: { icon: typeof PackageX; body: string }[] = [
   {
     icon: PackageX,
-    body: "A marketplace rejects a listing because a required attribute is missing or wrong",
+    body: "A sales channel rejects your product because a required field is empty",
   },
   {
     icon: FileWarning,
-    body: "A partner is sent a datasheet that has been out of date for two months",
+    body: "A partner is working from a product sheet that is two months out of date",
   },
   {
     icon: BellOff,
-    body: "A spec changes and nobody downstream is told",
+    body: "A product detail changes and nobody else is told",
   },
 ];
 

@@ -1,30 +1,29 @@
 "use client";
 
-import { PackageX, FileWarning, BellOff } from "lucide-react";
+import { PackageX, Copy, Languages, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const WEEK: { icon: typeof PackageX; key: string; body: React.ReactNode }[] = [
+/** One box per live demo, in the same order the demos run. */
+const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
   {
     icon: PackageX,
     key: "rejected",
     body: "A sales channel rejects your product because a required field is empty",
   },
   {
-    icon: FileWarning,
-    key: "stale-sheet",
-    body: "A partner is working from a product sheet that is two months out of date",
+    icon: Copy,
+    key: "mismatch",
+    body: "The same product reads differently on your site and on a partner's sheet",
   },
   {
-    icon: BellOff,
-    key: "unannounced",
-    // the break is set, so the line never leaves "is told" on its own
-    body: (
-      <>
-        A product detail changes and nobody
-        <br />
-        else is told
-      </>
-    ),
+    icon: Languages,
+    key: "languages",
+    body: "You update a product and the other languages don't follow",
+  },
+  {
+    icon: Sparkles,
+    key: "ai",
+    body: "You want to use AI on your catalog, and the data underneath isn't ready",
   },
 ];
 
@@ -66,7 +65,7 @@ export function Problem() {
           </p>
         </Reveal>
 
-        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
+        <ul className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {WEEK.map((w, i) => (
             <Reveal key={w.key} delay={0.18 + i * 0.07} className="h-full">
               <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">

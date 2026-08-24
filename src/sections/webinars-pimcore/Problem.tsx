@@ -1,9 +1,9 @@
 "use client";
 
-import { PackageX, FileWarning, RefreshCw, Sparkles } from "lucide-react";
+import { PackageX, FileWarning, RefreshCw } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-/** One box per live demo, in the same order the demos run. */
+/** Ana's three symptoms, in her words. */
 const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
   {
     icon: PackageX,
@@ -19,11 +19,6 @@ const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
     icon: RefreshCw,
     key: "out-of-sync",
     body: "A product detail changes in your ERP, and your website still shows the old one",
-  },
-  {
-    icon: Sparkles,
-    key: "ai",
-    body: "You want to use AI on your catalog, and the data underneath isn't ready",
   },
 ];
 
@@ -65,7 +60,7 @@ export function Problem() {
           </p>
         </Reveal>
 
-        <ul className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
           {WEEK.map((w, i) => (
             <Reveal key={w.key} delay={0.18 + i * 0.07} className="h-full">
               <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">

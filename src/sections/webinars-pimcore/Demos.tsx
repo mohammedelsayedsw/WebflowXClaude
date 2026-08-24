@@ -16,20 +16,21 @@ type Demo = {
 const DEMOS: Demo[] = [
   {
     n: "1",
-    title: "The rejected listing",
-    before: "A marketplace rejects a product for missing or invalid attributes",
+    title: "The rejected file",
+    before:
+      "A partner portal rejects your product file because a field they require is empty",
     inSystem: [
-      "Required attributes checked before export",
+      "Required fields checked before export",
       "Gaps flagged where they happen",
       "Corrections made once",
     ],
-    after: "The listing goes live, and the fix holds for every product after it",
+    after: "The product goes live, and the fix holds for every product after it",
   },
   {
     n: "2",
     title: "One product, every channel",
     before:
-      "The same product reads differently on the site, the marketplace, and the partner datasheet",
+      "The same product shows differently on your website, at a distributor, and on a partner sheet",
     inSystem: [
       "One record for the product",
       "Channel-specific views generated from it",
@@ -38,9 +39,8 @@ const DEMOS: Demo[] = [
   },
   {
     n: "3",
-    title: "A new market without the mess",
-    before:
-      "Translations are stale, overwritten, or missing, and nobody knows which is current",
+    title: "Every language, up to date",
+    before: "You add a language, and the translations never keep up",
     inSystem: [
       "Language versions tracked against the source",
       "Status visible for every market",
@@ -51,10 +51,10 @@ const DEMOS: Demo[] = [
     n: "4",
     title: "Product data an AI can use",
     before:
-      "Attributes are inconsistent, incomplete, and stored in a dozen formats",
+      "You want to use AI on your catalog, and the data underneath isn't ready",
     inSystem: [
       "Structured, complete, consistent records",
-      "One definition per attribute",
+      "One definition per field",
     ],
     after:
       "The data underneath is ready for AI and automation, instead of blocking it",
@@ -307,7 +307,7 @@ export function Demos() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              The same problems,{" "}
+              Four problems,{" "}
               <span className="text-[var(--sw-blue)]">solved live</span>
             </h2>
           </Reveal>

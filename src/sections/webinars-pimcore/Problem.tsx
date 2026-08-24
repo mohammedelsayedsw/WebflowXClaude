@@ -1,6 +1,6 @@
 "use client";
 
-import { PackageX, Copy, Languages, Sparkles } from "lucide-react";
+import { PackageX, FileWarning, RefreshCw, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 /** One box per live demo, in the same order the demos run. */
@@ -8,17 +8,17 @@ const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
   {
     icon: PackageX,
     key: "rejected",
-    body: "A sales channel rejects your product because a required field is empty",
+    body: "A partner portal rejects your product file because a field they require is empty",
   },
   {
-    icon: Copy,
-    key: "mismatch",
-    body: "The same product reads differently on your site and on a partner's sheet",
+    icon: FileWarning,
+    key: "stale-file",
+    body: "A distributor is still selling from the product file you sent them in spring",
   },
   {
-    icon: Languages,
-    key: "languages",
-    body: "You update a product and the other languages don't follow",
+    icon: RefreshCw,
+    key: "out-of-sync",
+    body: "A product detail changes in your ERP, and your website still shows the old one",
   },
   {
     icon: Sparkles,

@@ -48,20 +48,15 @@ export function Problem() {
               none of them agree.
             </p>
           </Reveal>
-
-          {/* Sourced from the Läderach case study, so the figure is safe to state here */}
-          <Reveal delay={0.14}>
-            <p
-              className="mt-5 max-w-[68ch] font-head font-semibold text-[15px] md:text-[17px] leading-[1.45]"
-              style={{ color: "var(--sw-orange)" }}
-            >
-              In one catalog we worked on, a single product took 10 to 20 manual
-              entries before it was ready to sell.
-            </p>
-          </Reveal>
         </div>
 
-        <ul className="mt-10 md:mt-14 grid gap-3 md:gap-4 md:grid-cols-3">
+        <Reveal delay={0.14}>
+          <p className="mt-10 md:mt-12 mb-5 md:mb-6 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px]">
+            So this keeps happening.
+          </p>
+        </Reveal>
+
+        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
           {WEEK.map((w, i) => (
             <Reveal key={w.body} delay={0.18 + i * 0.07} className="h-full">
               <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">
@@ -81,8 +76,8 @@ export function Problem() {
 
         <Reveal delay={0.4}>
           <p className="mt-8 md:mt-10 max-w-[72ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            None of it looks like a crisis on any given day, and all of it stops
-            once product data has one home.
+            None of this looks like a crisis on any given day, and it all stops
+            when your product details live in one place.
           </p>
         </Reveal>
       </div>

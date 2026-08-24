@@ -7,8 +7,8 @@ import { Reveal } from "@/components/primitives/Reveal";
  * own small figure rather than an icon. The AI block is deliberately the loudest,
  * it is the one that lands with CTOs and CDOs.
  *
- * TODO: the source brief promised five pain points and listed four. Ana to
- * confirm the fifth, then add it as a fourth card in COSTS below.
+ * Four pain points, final. The heading carries no count, so the section reads
+ * the same if a fifth is ever added.
  */
 
 const AXIS = "rgba(16,19,44,0.14)";

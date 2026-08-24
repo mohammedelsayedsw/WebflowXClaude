@@ -91,8 +91,8 @@ export function Problem() {
         <Reveal delay={0.44}>
           <p className="mt-8 md:mt-10 max-w-[72ch] text-white/70 text-[16px] md:text-[18px] leading-relaxed">
             None of this looks like a crisis on any given day. It takes hours,
-            some of it reaches your customers, and all of it stops once product
-            data has one home.
+            the errors reach your customers, and some of it comes back as
+            returns. All of it stops once product data has one home.
           </p>
         </Reveal>
       </div>

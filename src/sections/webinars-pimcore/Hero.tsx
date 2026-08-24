@@ -3,7 +3,7 @@
 import { ArrowUpRight, Gift } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
-import { HeroVisual } from "./HeroVisual";
+import { HeroPanel } from "./HeroPanel";
 import { Lockup, PartnerBadge } from "./Lockup";
 
 function HeroBg() {
@@ -47,8 +47,7 @@ function OfferLine() {
         <Gift className="h-3.5 w-3.5" strokeWidth={1.9} />
       </span>
       <p className="font-head font-semibold text-white text-[14px] sm:text-[15px] md:text-[17px] leading-[1.35]">
-        Every attendee can request a free product information management (PIM)
-        prototype built on your own catalog
+        Every attendee can get a free PIM prototype after the webinar
       </p>
     </div>
   );
@@ -116,9 +115,9 @@ export function Hero() {
               </Reveal>
             </div>
 
-            {/* RIGHT · one product, twelve records */}
+            {/* RIGHT · the two speakers */}
             <Reveal delay={0.12}>
-              <HeroVisual />
+              <HeroPanel />
             </Reveal>
           </div>
 

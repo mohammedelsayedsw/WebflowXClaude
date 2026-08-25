@@ -4,7 +4,6 @@ import { ArrowUpRight, Gift } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HeroPanel } from "./HeroPanel";
-import { PartnerBadge } from "./Lockup";
 import { TrustBar } from "./TrustBar";
 
 function HeroBg() {
@@ -108,7 +107,7 @@ export function Hero() {
               {/* The button and the offer sit on one line, so the payoff reads
                   as part of the action rather than a separate claim above it. */}
               <Reveal delay={0.18}>
-                <div className="mt-[clamp(34px,6vh,72px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
+                <div className="mt-[clamp(48px,8.5vh,104px)] flex flex-col sm:flex-row sm:items-stretch gap-3 md:gap-4">
                   {/* height auto plus align-items stretch: the button takes
                       the height of the offer box beside it, whether that box
                       sets on one line or two. py-3 keeps it 48px when it
@@ -136,13 +135,6 @@ export function Hero() {
                 </p>
               </Reveal>
 
-              {/* the partner badge sits with the microcopy, not adrift below
-                  the speaker panel */}
-              <Reveal delay={0.32}>
-                <div className="mt-[clamp(12px,1.8vh,20px)]">
-                  <PartnerBadge />
-                </div>
-              </Reveal>
             </div>
 
             {/* RIGHT · the two speakers */}

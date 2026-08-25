@@ -158,6 +158,7 @@ export function CaseStudy() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden lg:block"
+        style={{ transform: "translateY(-15px)" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

@@ -43,7 +43,7 @@ export function WhoShouldJoin() {
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            Join if <span className="text-[var(--sw-blue)]">any of these is you</span>
+            For whom is <span className="text-[var(--sw-blue)]">the webinar</span>
           </h2>
         </Reveal>
 

@@ -131,8 +131,8 @@ export function Hero() {
 
               <Reveal delay={0.26}>
                 <p className="mt-[clamp(10px,1.6vh,18px)] text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-                  Free, 60 minutes. Can&apos;t join live? Register and
-                  we&apos;ll send you the recording.
+                  Can&apos;t join live? Register and we&apos;ll send you the
+                  recording.
                 </p>
               </Reveal>
 

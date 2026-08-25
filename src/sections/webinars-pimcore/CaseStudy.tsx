@@ -94,7 +94,7 @@ function CaseLockup() {
       src: "/webinars/pimcore/logo-scandiweb-white.webp",
       alt: "scandiweb",
       h: 17.85,
-      nudge: -1,
+      nudge: -2.5,
     },
   ];
 

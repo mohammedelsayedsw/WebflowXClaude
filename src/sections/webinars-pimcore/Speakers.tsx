@@ -13,13 +13,13 @@ const SPEAKERS: {
     name: "Ana Luisa Taylor",
     role: "Key Account Manager at scandiweb",
     photo: "/webinars/pimcore/ana-luisa-taylor-portrait.webp",
-    bio: "Ana leads scandiweb\u2019s PIM work with brands and manufacturers, from the first look at a messy catalog through to the live system, drawing on 50+ product data projects.",
+    bio: "Ana leads scandiweb\u2019s PIM practice. She has delivered 50+ product data projects for brands and manufacturers, from the first audit through to the live system.",
   },
   {
     name: "Maris Skujins",
     role: "Head of Digital Commerce Strategy at scandiweb",
     photo: "/webinars/pimcore/maris-skujins-portrait.webp",
-    bio: "Maris advises large retailers and manufacturers on the systems behind their catalogs, working with brands like ABA Labels, Zumiez, and Wienerberger.",
+    bio: "Maris heads digital commerce strategy at scandiweb. He shapes how companies like Zumiez, Wienerberger, and ABA Labels build and connect the systems their commerce runs on.",
   },
 ];
 
@@ -63,7 +63,9 @@ export function Speakers() {
                   <div className="font-head font-bold text-white text-[17px] md:text-[19px] leading-tight">
                     {s.name}
                   </div>
-                  <div className="mt-1.5 text-white/65 text-[14px] md:text-[15px] leading-snug text-pretty">
+                  {/* holds two lines, so a role that wraps does not push its
+                      bio below the one in the card alongside it */}
+                  <div className="mt-1.5 min-h-[2.75em] text-white/65 text-[14px] md:text-[15px] leading-snug text-pretty">
                     {s.role}
                   </div>
                   <p className="mt-3 text-white/70 text-[14px] md:text-[15px] leading-relaxed text-pretty">

@@ -199,41 +199,47 @@ export function Costs() {
             >
               4
             </span>
-            <div className="mt-4 font-head font-bold text-white text-[20px] md:text-[26px] leading-tight">
-              Your AI plans are waiting on product data
-            </div>
-
-            <p className="mt-5 max-w-[68ch] font-head text-white text-[17px] md:text-[21px] leading-[1.4]">
-              AI works from the data you already have, so when your product data
-              is inconsistent, the results are too.
-            </p>
-
-            <div className="mt-9 md:mt-10 flex flex-wrap gap-8 md:gap-14">
+            <div className="mt-4 grid gap-8 lg:gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              {/* left, the point. right, the figures that back it up, which
+                  keeps the block wide rather than tall */}
               <div>
-                <div
-                  className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
-                  style={{ color: "var(--sw-orange)" }}
-                >
-                  80%+
+                <div className="font-head font-bold text-white text-[20px] md:text-[26px] leading-tight">
+                  Your AI plans are waiting on product data
                 </div>
-                <div className="mt-2 max-w-[24ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
-                  say AI has not changed their profit
-                </div>
+                <p className="mt-4 max-w-[52ch] font-head text-white text-[17px] md:text-[21px] leading-[1.4]">
+                  AI works from the data you already have, so when your product
+                  data is inconsistent, the results are too.
+                </p>
               </div>
-              <div>
-                <div
-                  className="font-head font-bold text-[44px] md:text-[64px] leading-none tracking-[-0.03em] tabular-nums"
-                  style={{ color: "var(--sw-orange)" }}
-                >
-                  5.5%
+
+              <div className="lg:border-l lg:border-white/12 lg:pl-10 xl:pl-14">
+                <div className="flex flex-wrap gap-8 md:gap-12">
+                  <div>
+                    <div
+                      className="font-head font-bold text-[40px] md:text-[56px] leading-none tracking-[-0.03em] tabular-nums"
+                      style={{ color: "var(--sw-orange)" }}
+                    >
+                      80%+
+                    </div>
+                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                      say AI has not changed their profit
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="font-head font-bold text-[40px] md:text-[56px] leading-none tracking-[-0.03em] tabular-nums"
+                      style={{ color: "var(--sw-orange)" }}
+                    >
+                      5.5%
+                    </div>
+                    <div className="mt-2 max-w-[22ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
+                      say AI is actually making them money
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2 max-w-[24ch] text-white/70 text-[13px] md:text-[14px] leading-snug">
-                  say AI is actually making them money
-                </div>
+                <p className="mt-5 label-code text-white/50">McKinsey, State of AI</p>
               </div>
             </div>
-
-            <p className="mt-6 label-code text-white/50">McKinsey, State of AI</p>
           </div>
         </Reveal>
       </div>

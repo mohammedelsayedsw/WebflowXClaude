@@ -1,28 +1,65 @@
 "use client";
 
-import { PackageX, FileWarning, RefreshCw } from "lucide-react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+
 import { Reveal } from "@/components/primitives/Reveal";
 
-/** Ana's three symptoms, in her words. */
-const WEEK: { icon: typeof PackageX; key: string; body: string }[] = [
+/**
+ * The three symptoms, set as the alerts they actually arrive as rather than as
+ * generic content boxes. The first one is the hard failure, so it carries the
+ * orange label; the other two are the quieter ones.
+ */
+const ALERTS: {
+  key: string;
+  glyph: string;
+  source: string;
+  message: React.ReactNode;
+  urgent?: boolean;
+}[] = [
   {
-    icon: PackageX,
-    key: "rejected",
-    body: "A partner portal rejects your product file because a field they require is empty",
+    key: "portal",
+    glyph: "⚠",
+    source: "Partner portal",
+    message: "Upload failed, 1 required field empty",
+    urgent: true,
   },
   {
-    icon: FileWarning,
-    key: "stale-file",
-    body: "A distributor is still selling from the product file you sent them in spring",
+    key: "distributor",
+    glyph: "✉",
+    source: "From a distributor",
+    message: (
+      <>
+        &ldquo;Is this price list still correct?&rdquo; Sent in spring
+      </>
+    ),
   },
   {
-    icon: RefreshCw,
-    key: "out-of-sync",
-    body: "A product detail changes in your ERP, and your website still shows the old one",
+    key: "erp",
+    glyph: "⟳",
+    source: "ERP, field updated",
+    message: "Website still shows the old value",
   },
 ];
 
 export function Problem() {
+  const reduced = useReducedMotion();
+
+  // the cards drop in the way a notification does, unless the visitor has
+  // asked the operating system for less movement
+  const card: Variants = {
+    hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 16 },
+    shown: {
+      opacity: 1,
+      y: 0,
+      transition: reduced
+        ? { duration: 0.2 }
+        : {
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          },
+    },
+  };
+
   return (
     <section
       id="the-problem"
@@ -54,36 +91,40 @@ export function Problem() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.14}>
-          <p className="mt-10 md:mt-12 mb-5 md:mb-6 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px]">
-            So this keeps happening.
-          </p>
-        </Reveal>
-
-        <ul className="grid gap-3 md:gap-4 md:grid-cols-3">
-          {WEEK.map((w, i) => (
-            <Reveal key={w.key} delay={0.18 + i * 0.07} className="h-full">
-              <li className="flex h-full flex-col rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-6">
-                <span
-                  aria-hidden
-                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[var(--sw-black)]/10 bg-[var(--sw-beige)] text-[var(--sw-orange)]"
-                >
-                  <w.icon className="h-5 w-5" strokeWidth={1.75} />
+        <ul className="mt-10 md:mt-12 flex max-w-[560px] flex-col gap-2.5 md:gap-3">
+          {ALERTS.map((a, i) => (
+            <motion.li
+              key={a.key}
+              initial="hidden"
+              whileInView="shown"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={card}
+              transition={{ delay: i * 0.12 }}
+              className="rounded-[4px] bg-white p-4 md:p-5"
+              style={{
+                borderLeft: "3px solid var(--sw-orange)",
+                boxShadow: "0 1px 2px rgba(20,20,30,0.06), 0 6px 18px rgba(20,20,30,0.07)",
+              }}
+            >
+              <div
+                className="label-code flex items-center gap-2"
+                style={{
+                  color: a.urgent
+                    ? "var(--sw-orange)"
+                    : "rgba(57,55,72,0.55)",
+                }}
+              >
+                <span aria-hidden className="text-[12px] leading-none">
+                  {a.glyph}
                 </span>
-                <p className="text-[var(--sw-black)]/75 text-[15px] md:text-[16px] leading-relaxed">
-                  {w.body}
-                </p>
-              </li>
-            </Reveal>
+                <span>{a.source}</span>
+              </div>
+              <p className="mt-2 text-[var(--sw-black)] text-[15px] md:text-[16px] leading-snug">
+                {a.message}
+              </p>
+            </motion.li>
           ))}
         </ul>
-
-        <Reveal delay={0.4}>
-          <p className="mt-8 md:mt-10 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
-            None of this looks like a crisis on any given day, and it all stops
-            when your product details live in one place.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

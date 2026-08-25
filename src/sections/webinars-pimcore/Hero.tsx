@@ -3,6 +3,7 @@
 import { ArrowUpRight, Gift } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { PartnerBadge } from "./Lockup";
 import { HeroPanel } from "./HeroPanel";
 import { TrustBar } from "./TrustBar";
 
@@ -135,6 +136,13 @@ export function Hero() {
                 </p>
               </Reveal>
 
+              {/* the partner badge sits with the microcopy, not adrift below
+                  the speaker panel */}
+              <Reveal delay={0.32}>
+                <div className="mt-[clamp(12px,1.8vh,20px)]">
+                  <PartnerBadge />
+                </div>
+              </Reveal>
             </div>
 
             {/* RIGHT · the two speakers */}

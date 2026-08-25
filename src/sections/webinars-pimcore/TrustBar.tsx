@@ -2,12 +2,9 @@
 
 import { assetUrl } from "@/lib/assets";
 
-import { PartnerBadge } from "./Lockup";
-
 /**
- * The co-brand bar that closes the hero. It carries the Pimcore Platinum
- * Solution Partner credential, which used to sit inside the hero itself, and
- * the standard client-logo marquee from /solutions/webinars/cdp.
+ * The standard client-logo trust bar that closes the hero, identical to the one
+ * on /solutions/webinars/cdp.
  */
 export function TrustBar() {
   const logos: { src: string; alt: string; h: number }[] = [
@@ -40,12 +37,8 @@ export function TrustBar() {
       }}
     >
       <div className="wrap py-[clamp(14px,2.5vh,32px)] flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-        <div className="flex items-center gap-4 md:gap-5 shrink-0 md:max-w-[30rem]">
-          <PartnerBadge />
-          <div className="font-head font-bold text-white text-[14px] md:text-[16px] leading-[1.35] text-pretty">
-            A scandiweb webinar, with Pimcore. scandiweb is a certified Pimcore
-            Platinum Solution Partner.
-          </div>
+        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+          Trusted by 700+ leading brands worldwide
         </div>
         <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
           <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">

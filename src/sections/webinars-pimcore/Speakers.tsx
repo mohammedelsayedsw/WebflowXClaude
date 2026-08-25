@@ -12,13 +12,13 @@ const SPEAKERS: {
   {
     name: "Ana Luisa Taylor",
     role: "Key Account Manager at scandiweb",
-    photo: "/webinars/pimcore/ana-luisa-taylor.jpg",
+    photo: "/webinars/pimcore/ana-luisa-taylor-portrait.webp",
     bio: "Ana leads scandiweb\u2019s PIM work with brands and manufacturers, from the first look at a messy catalog through to the live system, drawing on 50+ product data projects.",
   },
   {
     name: "Maris Skujins",
     role: "Head of Digital Commerce Strategy at scandiweb",
-    photo: "/webinars/pimcore/maris-skujins.jpg",
+    photo: "/webinars/pimcore/maris-skujins-portrait.webp",
     bio: "Maris advises large retailers and manufacturers on the systems behind their catalogs, working with brands like ABA Labels, Zumiez, and Wienerberger.",
   },
 ];
@@ -49,12 +49,14 @@ export function Speakers() {
           {SPEAKERS.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.07} className="h-full">
               <div className="flex h-full items-start gap-5 md:gap-6 rounded-[4px] border border-white/12 bg-white/[0.035] p-5 md:p-6">
-                <div className="h-24 w-24 md:h-28 md:w-28 shrink-0 overflow-hidden rounded-[4px] border border-white/12 bg-white/[0.05]">
+                {/* portrait frame at the photos' own 7:10, so neither shot is
+                    cropped back to a square */}
+                <div className="w-32 md:w-40 aspect-[7/10] shrink-0 overflow-hidden rounded-[4px] border border-white/12 bg-white/[0.05]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={assetUrl(s.photo)}
                     alt={`${s.name}, ${s.role}`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
                 <div className="min-w-0">

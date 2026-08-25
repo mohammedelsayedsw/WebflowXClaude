@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
@@ -8,28 +8,31 @@ import { assetUrl } from "@/lib/assets";
  * One published scandiweb case study, led by its figures. Every number is
  * quoted exactly as the case study states it.
  *
- * The section takes the same gradient and card treatment as the CDP results
- * section, without its product shot.
+ * The section takes the same gradient, card and product-shot treatment as the
+ * CDP results section.
  */
 
 type Fig = {
-  value?: string;
-  from?: string;
-  to?: string;
+  value: string;
   caption: string;
+  /** the old number, carried underneath as a quiet historical reference */
+  was?: string;
   /** phrases set smaller than figures, so the row keeps one optical weight */
   phrase?: boolean;
-  /** green reads positive, orange reads negative, white stays neutral */
-  tone?: "positive" | "negative";
 };
 
+/** All three lead with the result, so all three figures are green. */
 const FIGURES: Fig[] = [
-  { value: "250+", caption: "stores worldwide" },
-  { value: "10–20", caption: "manual entries per product", tone: "negative" },
+  { value: "1", caption: "enrichment per product", was: "was 10 to 20" },
   {
-    from: "Hours",
-    to: "minutes",
+    value: "Minutes",
     caption: "to enrich one product",
+    was: "was hours",
+    phrase: true,
+  },
+  {
+    value: "Every market",
+    caption: "inherits from one record",
     phrase: true,
   },
 ];
@@ -40,36 +43,24 @@ const CASE_URL =
 function Figure({ fig }: { fig: Fig }) {
   const size = fig.phrase
     ? "text-[22px] md:text-[26px] tracking-[-0.02em]"
-    : fig.from
-      ? "text-[24px] md:text-[30px] tracking-[-0.02em]"
-      : "text-[32px] md:text-[38px] tracking-[-0.02em]";
-  // green carries the positive figures, orange the one that is a cost
-  const color =
-    fig.tone === "negative" ? "var(--sw-orange)" : "var(--sw-mint)";
+    : "text-[32px] md:text-[38px] tracking-[-0.02em]";
 
   return (
     <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-7">
       <div
-        className={`flex flex-wrap items-end gap-x-2.5 gap-y-1 min-w-0 min-h-[32px] md:min-h-[38px] font-head leading-none tabular-nums ${size}`}
-        style={{ color }}
+        className={`min-h-[32px] md:min-h-[38px] font-head leading-none tabular-nums ${size}`}
+        style={{ color: "var(--sw-mint)" }}
       >
-        {fig.from ? (
-          <>
-            {fig.from}
-            <ArrowRight
-              className="h-4 w-4 md:h-5 md:w-5 shrink-0 mb-0.5"
-              strokeWidth={2}
-              aria-label="to"
-            />
-            {fig.to}
-          </>
-        ) : (
-          fig.value
-        )}
+        {fig.value}
       </div>
       <div className="mt-3 text-white/75 text-[14px] md:text-[15px] leading-snug">
         {fig.caption}
       </div>
+      {fig.was ? (
+        <div className="mt-1.5 text-white/40 text-[12px] md:text-[13px] leading-snug">
+          {fig.was}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -94,16 +85,16 @@ function CaseLockup() {
       knockOut: true,
     },
     {
-      src: "/webinars/pimcore/logo-scandiweb-white.webp",
-      alt: "scandiweb",
-      h: 17.85,
-      nudge: -1,
-    },
-    {
       src: "/webinars/pimcore/logo-laderach.webp",
       alt: "Läderach",
       h: 22,
       knockOut: true,
+    },
+    {
+      src: "/webinars/pimcore/logo-scandiweb-white.webp",
+      alt: "scandiweb",
+      h: 17.85,
+      nudge: -1,
     },
   ];
 
@@ -143,7 +134,7 @@ export function CaseStudy() {
       className="relative py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       {/* The same gradient the CDP results section uses, highlights placed so
-          it does not read as a repeat of the hero. No product shot behind it. */}
+          it does not read as a repeat of the hero. */}
       <div
         aria-hidden
         className="absolute inset-0 -z-20"
@@ -160,6 +151,22 @@ export function CaseStudy() {
         className="absolute inset-0 -z-10 grid-backdrop opacity-30"
       />
 
+      {/* Product shot sits above the gradient but below the content, so the
+          cards, which are only 3% white, let it show through where the two
+          overlap. Desktop only, since the narrower layouts stack the cards
+          over it and it reads as clutter behind the text. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden lg:block"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={assetUrl("/webinars/pimcore/case-products.webp")}
+          alt=""
+          className="h-full w-full object-contain object-center"
+        />
+      </div>
+
       <div className="wrap relative">
         <div className="max-w-[68rem]">
           <Reveal>
@@ -174,10 +181,8 @@ export function CaseStudy() {
               the section heading */}
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              One product,{" "}
-              <span style={{ color: "var(--sw-orange)" }}>
-                up to 20 manual entries
-              </span>
+              From 20 manual entries{" "}
+              <span style={{ color: "var(--sw-mint)" }}>to one</span>
             </h2>
           </Reveal>
         </div>
@@ -191,7 +196,7 @@ export function CaseStudy() {
         <Reveal delay={0.18}>
           <div className="mt-7 md:mt-8 grid gap-4 sm:grid-cols-3">
             {FIGURES.map((f) => (
-              <Figure key={f.value ?? `${f.from}-${f.to}`} fig={f} />
+              <Figure key={f.value} fig={f} />
             ))}
           </div>
         </Reveal>

@@ -203,10 +203,12 @@ export function Costs() {
               {/* left, the point. right, the figures that back it up, which
                   keeps the block wide rather than tall */}
               <div>
-                <div className="font-head font-bold text-white text-[20px] md:text-[26px] leading-tight">
+                {/* set to match the three cost cards above, so block 4 reads
+                    as the fourth item rather than a separate pull-quote */}
+                <div className="font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
                   Your AI plans are waiting on product data
                 </div>
-                <p className="mt-4 max-w-[52ch] font-head text-white text-[17px] md:text-[21px] leading-[1.4]">
+                <p className="mt-4 max-w-[52ch] text-white/70 text-[14px] md:text-[15px] leading-relaxed">
                   AI works from the data you already have, so when your product
                   data is inconsistent, the results are too.
                 </p>

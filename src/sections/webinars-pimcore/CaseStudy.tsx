@@ -90,22 +90,17 @@ export function CaseStudy() {
             </div>
           </Reveal>
 
+          {/* the case is the only one in this section, so its heading is
+              the section heading */}
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              What changed for{" "}
-              <span style={{ color: "var(--sw-mint)" }}>catalogs like yours</span>
+              One product,{" "}
+              <span style={{ color: "var(--sw-orange)" }}>
+                up to 20 manual entries
+              </span>
             </h2>
           </Reveal>
         </div>
-
-        <Reveal delay={0.1}>
-          <h3 className="mt-12 md:mt-16 font-head text-white text-[22px] sm:text-[26px] md:text-[32px] leading-[1.1] tracking-[-0.01em]">
-            One product,{" "}
-            <span style={{ color: "var(--sw-orange)" }}>
-              up to 20 manual entries
-            </span>
-          </h3>
-        </Reveal>
 
         <Reveal delay={0.14}>
           <p className="mt-3 text-white/65 text-[15px] md:text-[17px] leading-relaxed">

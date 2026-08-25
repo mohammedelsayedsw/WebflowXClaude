@@ -79,8 +79,13 @@ export function CTA() {
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              One hour, four live demos, and a free PIM prototype built on your
-              own catalog.
+              One hour, four live demos, and a free PIM prototype
+              {/* break set from md up, so the prototype offer gets line two to
+                  itself. Phones wrap naturally. */}
+              <br className="hidden md:block" />{" "}
+              <span className="whitespace-nowrap">
+                built on your own catalog.
+              </span>
             </p>
           </Reveal>
 

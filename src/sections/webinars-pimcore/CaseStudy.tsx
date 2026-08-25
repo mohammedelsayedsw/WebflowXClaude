@@ -177,8 +177,16 @@ export function CaseStudy() {
               the section heading */}
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              One system, and hours of work{" "}
-              <span style={{ color: "var(--sw-mint)" }}>became minutes</span>
+              One system, and hours of work
+              {/* break set from md up, so the green phrase gets line two to
+                  itself. Phones wrap naturally. */}
+              <br className="hidden md:block" />{" "}
+              <span
+                className="whitespace-nowrap"
+                style={{ color: "var(--sw-mint)" }}
+              >
+                became minutes
+              </span>
             </h2>
           </Reveal>
         </div>

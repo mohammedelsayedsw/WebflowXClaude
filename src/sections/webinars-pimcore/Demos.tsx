@@ -28,7 +28,7 @@ const DEMOS: Demo[] = [
   },
   {
     n: "2",
-    title: "One product, every channel",
+    title: "Every channel matches",
     before:
       "The same product shows differently on your website, at a distributor, and on a partner sheet",
     inSystem: [
@@ -39,7 +39,7 @@ const DEMOS: Demo[] = [
   },
   {
     n: "3",
-    title: "Every language, up to date",
+    title: "Languages that match",
     before: "You add a language, and the translations never keep up",
     inSystem: [
       "Language versions tracked against the source",
@@ -307,7 +307,7 @@ export function Demos() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              Four problems,{" "}
+              Four problems{" "}
               <span className="text-[var(--sw-blue)]">solved live</span>
             </h2>
           </Reveal>

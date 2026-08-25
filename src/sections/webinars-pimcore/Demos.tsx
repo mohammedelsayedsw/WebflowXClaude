@@ -326,8 +326,7 @@ export function Demos() {
 
         <Reveal delay={0.2}>
           <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            The demos run in Pimcore, and each one is there to show a problem
-            being solved.
+            All four demos run in Pimcore, on a real catalog.
           </p>
         </Reveal>
       </div>

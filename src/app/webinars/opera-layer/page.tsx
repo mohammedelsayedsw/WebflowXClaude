@@ -9,6 +9,7 @@ import { Agenda } from "@/sections/webinars-opera-layer/Agenda";
 import { HowItSolves } from "@/sections/webinars-opera-layer/HowItSolves";
 import { SpeakerBio } from "@/sections/webinars-opera-layer/SpeakerBio";
 import { CTA } from "@/sections/webinars-opera-layer/CTA";
+import { Workshop } from "@/sections/webinars-opera-layer/Workshop";
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
       <HowItSolves />
       <SpeakerBio />
       <CTA />
+      <Workshop />
     </main>
   );
 }

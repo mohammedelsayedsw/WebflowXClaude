@@ -10,22 +10,20 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 /**
  * The three symptoms, set as the alerts they actually arrive as rather than as
- * generic content boxes. The first one is the hard failure, so it carries the
- * orange label; the other two are the quieter ones.
+ * generic content boxes. Orange is left to the broken links, so every source
+ * label stays quiet.
  */
 const ALERTS: {
   key: string;
   icon: typeof TriangleAlert;
   source: string;
   message: React.ReactNode;
-  urgent?: boolean;
 }[] = [
   {
     key: "portal",
     icon: TriangleAlert,
     source: "Partner portal",
     message: "Upload failed, 1 required field empty",
-    urgent: true,
   },
   {
     key: "distributor",
@@ -178,7 +176,7 @@ export function Problem() {
             />
             <div className="label-code mt-4 text-white/45">One product</div>
             <div className="mt-1.5 font-head font-bold text-white text-[14px] leading-tight">
-              Trail Running Shoe
+              Running shoes
             </div>
           </motion.div>
 
@@ -267,11 +265,7 @@ export function Problem() {
               >
                 <div
                   className="label-code flex items-center gap-2"
-                  style={{
-                    color: a.urgent
-                      ? "var(--sw-orange)"
-                      : "rgba(57,55,72,0.55)",
-                  }}
+                  style={{ color: "rgba(57,55,72,0.55)" }}
                 >
                   <a.icon
                     aria-hidden

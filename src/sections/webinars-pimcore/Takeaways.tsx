@@ -15,18 +15,18 @@ const ITEMS: {
 }[] = [
   {
     icon: Calculator,
-    lead: "The costs, laid out",
-    body: "What each pain point takes from a business like yours, in hours and in revenue",
+    lead: "The real cost",
+    body: "What scattered product data costs you, in hours and in revenue",
   },
   {
     icon: MonitorPlay,
-    lead: "Live demo scenarios",
-    body: "The same problems, solved in a working system",
+    lead: "How the fix works",
+    body: "See the most common problems fixed, step by step",
   },
   {
     icon: FolderCheck,
-    lead: "Real project examples",
-    body: "What changed for companies with catalogs like yours",
+    lead: "What changed",
+    body: "Real numbers from a brand running multiple markets",
   },
   {
     icon: Gift,
@@ -87,12 +87,6 @@ export function Takeaways() {
             </Reveal>
           ))}
         </ul>
-
-        <Reveal delay={0.3}>
-          <p className="mt-8 md:mt-10 font-head text-[var(--sw-black)]/80 text-[16px] md:text-[19px] leading-relaxed">
-            An hour on what the problem costs and what fixes it.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

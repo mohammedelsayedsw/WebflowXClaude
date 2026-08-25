@@ -3,10 +3,14 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
-const POINTS: string[] = [
+const POINTS: React.ReactNode[] = [
   "Where fragmented product data drains hours and revenue",
   "What a single source of truth looks like in practice, not in theory",
-  "Live demos, from a rejected marketplace listing to a clean multi-channel launch",
+  // held together so the line breaks before it, never inside the hyphen
+  <>
+    Live demos, from a rejected marketplace listing to a clean{" "}
+    <span className="whitespace-nowrap">multi-channel launch</span>
+  </>,
   "Why most AI projects stall on product data, and what fixes that",
   "How multilingual catalogs stay current as you add markets",
   "What a PIM project takes, and what it does not",
@@ -40,7 +44,7 @@ export function Covered() {
 
           <ul className="flex flex-col gap-4 md:gap-5">
             {POINTS.map((item, i) => (
-              <Reveal key={item} delay={i * 0.06}>
+              <Reveal key={i} delay={i * 0.06}>
                 <li className="flex gap-4 border-b border-white/10 pb-4 md:pb-5">
                   <Check
                     className="mt-0.5 h-5 w-5 shrink-0"

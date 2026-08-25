@@ -1,5 +1,6 @@
 "use client";
 
+import { Mail, RefreshCw, TriangleAlert } from "lucide-react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 
 import { Reveal } from "@/components/primitives/Reveal";
@@ -11,21 +12,21 @@ import { Reveal } from "@/components/primitives/Reveal";
  */
 const ALERTS: {
   key: string;
-  glyph: string;
+  icon: typeof TriangleAlert;
   source: string;
   message: React.ReactNode;
   urgent?: boolean;
 }[] = [
   {
     key: "portal",
-    glyph: "⚠",
+    icon: TriangleAlert,
     source: "Partner portal",
     message: "Upload failed, 1 required field empty",
     urgent: true,
   },
   {
     key: "distributor",
-    glyph: "✉",
+    icon: Mail,
     source: "From a distributor",
     message: (
       <>
@@ -35,7 +36,7 @@ const ALERTS: {
   },
   {
     key: "erp",
-    glyph: "⟳",
+    icon: RefreshCw,
     source: "ERP, field updated",
     message: "Website still shows the old value",
   },
@@ -91,7 +92,7 @@ export function Problem() {
           </Reveal>
         </div>
 
-        <ul className="mt-10 md:mt-12 flex max-w-[560px] flex-col gap-2.5 md:gap-3">
+        <ul className="mt-10 md:mt-12 flex flex-col gap-2.5 md:gap-3">
           {ALERTS.map((a, i) => (
             <motion.li
               key={a.key}
@@ -114,12 +115,14 @@ export function Problem() {
                     : "rgba(57,55,72,0.55)",
                 }}
               >
-                <span aria-hidden className="text-[12px] leading-none">
-                  {a.glyph}
-                </span>
+                <a.icon
+                  aria-hidden
+                  className="h-[18px] w-[18px] shrink-0"
+                  strokeWidth={2}
+                />
                 <span>{a.source}</span>
               </div>
-              <p className="mt-2 text-[var(--sw-black)] text-[15px] md:text-[16px] leading-snug">
+              <p className="mt-2 font-head text-[var(--sw-black)] text-[16px] md:text-[19px] leading-relaxed">
                 {a.message}
               </p>
             </motion.li>

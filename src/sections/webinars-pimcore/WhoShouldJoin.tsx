@@ -6,7 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: LineChart,
-    lead: "You own the numbers",
+    lead: "Leading the company",
     body: "CEO, MD, COO, CFO, or CMO, and product data is showing up in margin and in launch dates",
   },
   {

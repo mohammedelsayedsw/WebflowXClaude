@@ -100,7 +100,7 @@ function DemoBody({ demo }: { demo: Demo }) {
 
       <div className="md:pl-7">
         <div className="label-code text-[var(--sw-blue)]">After</div>
-        <p className="mt-2.5 font-head text-[var(--sw-black)] text-[15px] md:text-[16px] leading-[1.45]">
+        <p className="mt-2.5 text-[var(--sw-black)] text-[14px] md:text-[15px] leading-relaxed">
           {demo.after}
         </p>
       </div>

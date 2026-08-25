@@ -1,13 +1,80 @@
 "use client";
 
+import { useEffect } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 /**
- * Second ask, under the registration CTA. Same form treatment as the seat
- * form above it, so the two read as one pair rather than two designs.
+ * Holds the #workshop anchor in place.
+ *
+ * The browser jumps to the anchor as soon as the element exists, but the
+ * HubSpot form in the CTA above this one loads afterwards and grows, which
+ * pushes this section down and leaves the reader looking at the tail of that
+ * form and half this heading. This re-applies the jump while the page settles,
+ * and gives up the moment the reader scrolls, so it never fights them.
+ *
+ * It matters for the printed QR code, which lands people straight on #workshop.
  */
+function useHoldAnchor() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#workshop") return;
+
+    const el = document.getElementById("workshop");
+    if (!el) return;
+    // measure from the heading, not the section box, so the section's own top
+    // padding does not push the block half a screen down
+    const anchor = el.querySelector("h2") ?? el;
+
+    let released = false;
+    const release = () => {
+      released = true;
+    };
+
+    // the page sets scroll-behavior: smooth, which turns each correction into
+    // an animation the next one interrupts, so it never lands. Jump instantly
+    // instead, then hand smooth scrolling back.
+    const root = document.documentElement;
+    const settle = () => {
+      if (released) return;
+      const previous = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      const top = anchor.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo(0, top);
+      root.style.scrollBehavior = previous;
+    };
+
+    const opts = { passive: true, once: true } as const;
+    window.addEventListener("wheel", release, opts);
+    window.addEventListener("touchmove", release, opts);
+    window.addEventListener("keydown", release, { once: true });
+
+    settle();
+
+    // The forms above finish loading seconds after the jump and change height,
+    // which slides this section down. Follow every one of those reflows rather
+    // than guessing at delays, and stop once the page has been quiet a while.
+    const observer = new ResizeObserver(() => settle());
+    observer.observe(document.body);
+
+    const done = window.setTimeout(() => {
+      released = true;
+      observer.disconnect();
+    }, 12_000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(done);
+      window.removeEventListener("wheel", release);
+      window.removeEventListener("touchmove", release);
+      window.removeEventListener("keydown", release);
+    };
+  }, []);
+}
+
 export function Workshop() {
+  useHoldAnchor();
+
   return (
     <section
       id="workshop"

@@ -11,9 +11,13 @@ const POINTS: React.ReactNode[] = [
     Live demos, from a rejected marketplace listing to a clean{" "}
     <span className="whitespace-nowrap">multi-channel launch</span>
   </>,
-  "Why most AI projects stall on product data, and what fixes that",
+  "Why most AI get stuck on product data, and what fixes that",
   "How multilingual catalogs stay current as you add markets",
-  "What a PIM project takes, and what it does not",
+  // held together so "systems" never sits alone on its own line
+  <>
+    What a PIM project takes, and why it does not mean{" "}
+    <span className="whitespace-nowrap">replacing your systems</span>
+  </>,
   "Real examples from catalogs of 80,000 products and more",
   "Live Q&A with the team",
 ];

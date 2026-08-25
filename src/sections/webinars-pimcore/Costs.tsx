@@ -237,7 +237,6 @@ export function Costs() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-5 label-code text-white/50">McKinsey, State of AI</p>
               </div>
             </div>
           </div>

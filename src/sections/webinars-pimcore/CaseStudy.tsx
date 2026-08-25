@@ -79,14 +79,26 @@ function Figure({ fig }: { fig: Fig }) {
  * colour artwork, so they reverse cleanly; the scandiweb mark is already white.
  */
 function CaseLockup() {
-  const brands: { src: string; alt: string; h: number; knockOut?: boolean }[] = [
+  const brands: {
+    src: string;
+    alt: string;
+    h: number;
+    knockOut?: boolean;
+    /** optical nudge in px, negative lifts the mark */
+    nudge?: number;
+  }[] = [
     {
       src: "/webinars/pimcore/logo-pimcore.webp",
       alt: "Pimcore",
       h: 20,
       knockOut: true,
     },
-    { src: "/webinars/pimcore/logo-scandiweb-white.webp", alt: "scandiweb", h: 17 },
+    {
+      src: "/webinars/pimcore/logo-scandiweb-white.webp",
+      alt: "scandiweb",
+      h: 17.85,
+      nudge: -1,
+    },
     {
       src: "/webinars/pimcore/logo-laderach.webp",
       alt: "Läderach",
@@ -115,6 +127,7 @@ function CaseLockup() {
             style={{
               height: `${b.h}px`,
               filter: b.knockOut ? "brightness(0) invert(1)" : undefined,
+              transform: b.nudge ? `translateY(${b.nudge}px)` : undefined,
             }}
           />
         </span>

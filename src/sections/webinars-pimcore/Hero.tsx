@@ -97,11 +97,10 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.1}>
-                <p className="mt-[clamp(10px,1.8vh,20px)] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85">
-                  You know these problems. In 60 minutes we&apos;ll show you
-                  <br className="hidden md:block" />{" "}
-                  what&apos;s causing them, what they cost, and how to fix them
-                  for good.
+                <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[56ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-pretty">
+                  If you sell thousands of products across several websites and
+                  markets, you know these problems. We&apos;ll show you
+                  what&apos;s causing them, what they cost, and how to fix them.
                 </p>
               </Reveal>
 

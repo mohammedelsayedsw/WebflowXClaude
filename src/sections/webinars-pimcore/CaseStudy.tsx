@@ -32,7 +32,7 @@ const FIGURES: Fig[] = [
   },
   {
     value: "Every market",
-    caption: "inherits from one record",
+    caption: "gets the update automatically",
     phrase: true,
   },
 ];

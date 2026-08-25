@@ -36,7 +36,6 @@ export function Workshop() {
                 portalId="25724996"
                 formId="43f3cbc8-9872-4390-9d73-4013420863a7"
                 region="eu1"
-                submitText="Book the workshop"
               />
             </div>
           </Reveal>

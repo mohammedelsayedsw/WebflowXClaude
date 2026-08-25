@@ -7,22 +7,22 @@ const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: LineChart,
     lead: "Business leaders",
-    body: "CEO, MD, COO, CFO, or CMO, seeing the cost in thinner margins and launch dates that slip",
+    body: "CEO, MD, COO, CFO, or CMO, seeing the cost in thinner margins and launch dates that slip.",
   },
   {
     icon: ShoppingCart,
     lead: "eCommerce and digital leads",
-    body: "Head of eCommerce or Digital, watching new channels and markets wait on data that is not ready",
+    body: "Head of eCommerce or Digital, watching new channels and markets wait on data that is not ready.",
   },
   {
     icon: Server,
     lead: "Technology and data owners",
-    body: "CTO or IT Director, working out whether your product data is ready for AI",
+    body: "CTO or IT Director, working out whether your product data is ready for AI.",
   },
   {
     icon: ClipboardList,
     lead: "Catalog and product teams",
-    body: "Catalog manager, product information lead, or localization manager, watching the hours disappear",
+    body: "Catalog manager, product information lead, or localization manager, watching the hours disappear.",
   },
 ];
 

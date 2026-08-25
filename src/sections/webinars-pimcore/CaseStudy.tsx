@@ -31,18 +31,12 @@ const CASE_URL =
   "https://scandiweb.com/blog/pimcore-enrichment-platform-for-a-global-chocolatier/";
 
 function Figure({ fig }: { fig: Fig }) {
-  // phrases set smaller than a bare number would be, so the row keeps one
-  // optical weight across all three boxes
-  const size = fig.from
-    ? "text-[24px] md:text-[30px]"
-    : "text-[22px] md:text-[26px]";
-
   // padding matches the before/after boxes below, so every line of text in
   // the section starts on one left edge
   return (
     <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-8">
       <div
-        className={`flex flex-wrap items-end gap-x-2.5 gap-y-1 min-w-0 min-h-[32px] md:min-h-[38px] font-head leading-none tracking-[-0.02em] tabular-nums ${size}`}
+        className="flex flex-wrap items-end gap-x-2.5 gap-y-1 min-w-0 min-h-[32px] md:min-h-[38px] font-head leading-none tracking-[-0.02em] tabular-nums text-[22px] md:text-[26px]"
         style={{ color: "var(--sw-mint)" }}
       >
         {fig.from ? (
@@ -183,15 +177,16 @@ export function CaseStudy() {
               the section heading */}
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              From 20 manual entries{" "}
-              <span style={{ color: "var(--sw-mint)" }}>to one</span>
+              One system, and hours of work{" "}
+              <span style={{ color: "var(--sw-mint)" }}>became minutes</span>
             </h2>
           </Reveal>
         </div>
 
         <Reveal delay={0.14}>
           <p className="mt-3 text-white/65 text-[15px] md:text-[17px] leading-relaxed">
-            Läderach, premium Swiss chocolate, 250+ stores worldwide
+            Our work with Läderach, premium Swiss chocolate, 250+ stores
+            worldwide.
           </p>
         </Reveal>
 

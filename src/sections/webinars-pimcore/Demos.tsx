@@ -67,7 +67,7 @@ function DemoBody({ demo }: { demo: Demo }) {
     <div className="grid gap-5 md:gap-0 md:grid-cols-[1fr_auto_1.15fr_auto_1fr] md:items-stretch">
       <div className="md:pr-7">
         <div className="label-code text-[var(--sw-black)]/45">Before</div>
-        <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+        <p className="mt-2.5 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
           {demo.before}
         </p>
       </div>
@@ -82,7 +82,7 @@ function DemoBody({ demo }: { demo: Demo }) {
           {demo.inSystem.map((s) => (
             <li
               key={s}
-              className="flex gap-2.5 text-[var(--sw-black)]/80 text-[14px] md:text-[15px] leading-relaxed"
+              className="flex gap-2.5 text-[var(--sw-black)]/80 text-[16px] md:text-[18px] leading-relaxed"
             >
               <span
                 aria-hidden
@@ -100,7 +100,7 @@ function DemoBody({ demo }: { demo: Demo }) {
 
       <div className="md:pl-7">
         <div className="label-code text-[var(--sw-blue)]">After</div>
-        <p className="mt-2.5 text-[var(--sw-black)] text-[14px] md:text-[15px] leading-relaxed">
+        <p className="mt-2.5 text-[var(--sw-black)] text-[16px] md:text-[18px] leading-relaxed">
           {demo.after}
         </p>
       </div>
@@ -154,14 +154,14 @@ function DemoTabs({
               aria-controls={`demo-panel-${d.n}`}
               tabIndex={on ? 0 : -1}
               onClick={() => setActive(i)}
-              className={`flex items-start gap-3 rounded-[4px] border p-4 md:p-5 text-left transition-colors duration-200 ${
+              className={`flex items-baseline gap-3 rounded-[4px] border p-4 md:p-5 text-left transition-colors duration-200 ${
                 on
                   ? "border-[var(--sw-blue)] bg-white"
                   : "border-[var(--sw-black)]/12 bg-white/50 hover:border-[var(--sw-black)]/30"
               }`}
             >
               <span
-                className={`font-head text-[13px] tabular-nums leading-none mt-0.5 ${
+                className={`font-head text-[13px] tabular-nums leading-none ${
                   on ? "text-[var(--sw-blue)]" : "text-[var(--sw-black)]/40"
                 }`}
               >
@@ -229,9 +229,9 @@ function DemoAccordion({
               onClick={() => setActive(on ? -1 : i)}
               className="w-full flex items-start justify-between gap-4 p-5 text-left"
             >
-              <span className="flex items-start gap-3">
+              <span className="flex items-baseline gap-3">
                 <span
-                  className={`font-head text-[13px] tabular-nums leading-none mt-0.5 ${
+                  className={`font-head text-[13px] tabular-nums leading-none ${
                     on ? "text-[var(--sw-blue)]" : "text-[var(--sw-black)]/40"
                   }`}
                 >

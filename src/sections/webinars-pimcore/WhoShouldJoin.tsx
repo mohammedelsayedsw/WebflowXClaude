@@ -6,22 +6,22 @@ import { Reveal } from "@/components/primitives/Reveal";
 const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: LineChart,
-    lead: "Leading the company",
+    lead: "Business leaders",
     body: "CEO, MD, COO, CFO, or CMO, and product data is showing up in margin and in launch dates",
   },
   {
     icon: ShoppingCart,
-    lead: "Running eCommerce or digital",
+    lead: "eCommerce and digital leads",
     body: "New channels and new markets keep waiting on data that is not ready",
   },
   {
     icon: Server,
-    lead: "Responsible for the data foundation",
+    lead: "Technology and data owners",
     body: "CTO or IT Director, working out what AI needs underneath it first",
   },
   {
     icon: ClipboardList,
-    lead: "You live in it daily",
+    lead: "Catalog and product teams",
     body: "Catalog manager, product information lead, or localization manager, and you know where the hours go",
   },
 ];

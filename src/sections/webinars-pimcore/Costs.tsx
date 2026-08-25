@@ -149,7 +149,7 @@ export function Costs() {
             <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
               <span className="text-white/55">3</span>
               <span className="h-px w-6 bg-white/15" />
-              <span>The cost</span>
+              <span>The price you pay</span>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
@@ -160,7 +160,7 @@ export function Costs() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 font-head text-white/80 text-[16px] md:text-[19px] leading-relaxed">
-              It costs you in four places, and nobody ever counts the total.
+              It shows up in four places, and nobody ever counts the total.
             </p>
           </Reveal>
         </div>

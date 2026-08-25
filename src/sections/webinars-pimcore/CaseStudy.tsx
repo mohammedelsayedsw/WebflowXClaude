@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
@@ -13,54 +13,55 @@ import { assetUrl } from "@/lib/assets";
  */
 
 type Fig = {
-  value: string;
+  value?: string;
+  /** a before and after, set as one line with an arrow between */
+  from?: string;
+  to?: string;
   caption: string;
-  /** the old number, carried underneath as a quiet historical reference */
-  was?: string;
-  /** phrases set smaller than figures, so the row keeps one optical weight */
-  phrase?: boolean;
 };
 
 /** All three lead with the result, so all three figures are green. */
 const FIGURES: Fig[] = [
-  { value: "1", caption: "enrichment per product", was: "was 10 to 20" },
-  {
-    value: "Minutes",
-    caption: "to enrich one product",
-    was: "was hours",
-    phrase: true,
-  },
-  {
-    value: "Every market",
-    caption: "gets the update automatically",
-    phrase: true,
-  },
+  { value: "One system", caption: "for every product update" },
+  { value: "New markets", caption: "without extra manual work" },
+  { from: "Hours", to: "minutes", caption: "to get one product ready to sell" },
 ];
 
 const CASE_URL =
   "https://scandiweb.com/blog/pimcore-enrichment-platform-for-a-global-chocolatier/";
 
 function Figure({ fig }: { fig: Fig }) {
-  const size = fig.phrase
-    ? "text-[22px] md:text-[26px] tracking-[-0.02em]"
-    : "text-[32px] md:text-[38px] tracking-[-0.02em]";
+  // phrases set smaller than a bare number would be, so the row keeps one
+  // optical weight across all three boxes
+  const size = fig.from
+    ? "text-[24px] md:text-[30px]"
+    : "text-[22px] md:text-[26px]";
 
+  // padding matches the before/after boxes below, so every line of text in
+  // the section starts on one left edge
   return (
-    <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-7">
+    <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-8">
       <div
-        className={`min-h-[32px] md:min-h-[38px] font-head leading-none tabular-nums ${size}`}
+        className={`flex flex-wrap items-end gap-x-2.5 gap-y-1 min-w-0 min-h-[32px] md:min-h-[38px] font-head leading-none tracking-[-0.02em] tabular-nums ${size}`}
         style={{ color: "var(--sw-mint)" }}
       >
-        {fig.value}
+        {fig.from ? (
+          <>
+            {fig.from}
+            <ArrowRight
+              className="h-4 w-4 md:h-5 md:w-5 shrink-0 mb-0.5"
+              strokeWidth={2}
+              aria-label="to"
+            />
+            {fig.to}
+          </>
+        ) : (
+          fig.value
+        )}
       </div>
       <div className="mt-3 text-white/75 text-[14px] md:text-[15px] leading-snug">
         {fig.caption}
       </div>
-      {fig.was ? (
-        <div className="mt-1.5 text-white/40 text-[12px] md:text-[13px] leading-snug">
-          {fig.was}
-        </div>
-      ) : null}
     </div>
   );
 }
@@ -197,7 +198,7 @@ export function CaseStudy() {
         <Reveal delay={0.18}>
           <div className="mt-7 md:mt-8 grid gap-4 sm:grid-cols-3">
             {FIGURES.map((f) => (
-              <Figure key={f.value} fig={f} />
+              <Figure key={f.value ?? `${f.from}-${f.to}`} fig={f} />
             ))}
           </div>
         </Reveal>
@@ -207,8 +208,8 @@ export function CaseStudy() {
             <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-8">
               <div className="label-code text-white/45">Before</div>
               <p className="mt-3 text-white/75 text-[15px] md:text-[17px] leading-relaxed">
-                Every market had its own SKU, so the same product was entered
-                again and again.
+                Every market had its own product code, so the same product was
+                entered again and again.
               </p>
             </div>
           </Reveal>
@@ -219,7 +220,8 @@ export function CaseStudy() {
                 After
               </div>
               <p className="mt-3 text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                Enriched once, and every market gets the update automatically.
+                Now it is filled in once, and every market updates
+                automatically.
               </p>
             </div>
           </Reveal>

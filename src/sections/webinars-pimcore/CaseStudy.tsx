@@ -219,7 +219,7 @@ export function CaseStudy() {
                 After
               </div>
               <p className="mt-3 text-white/85 text-[15px] md:text-[17px] leading-relaxed">
-                Enriched once, and every market version inherits it.
+                Enriched once, and every market gets the update automatically.
               </p>
             </div>
           </Reveal>

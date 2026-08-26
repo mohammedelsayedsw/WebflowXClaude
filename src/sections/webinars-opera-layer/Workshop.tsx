@@ -106,7 +106,7 @@ export function Workshop() {
           </Reveal>
 
           <Reveal delay={0.16}>
-            <p className="mt-5 font-head text-white text-[16px] md:text-[18px] leading-relaxed max-w-[52ch] mx-auto">
+            <p className="mt-5 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[52ch] mx-auto">
               Register now and pick a date that suits you later.
             </p>
           </Reveal>

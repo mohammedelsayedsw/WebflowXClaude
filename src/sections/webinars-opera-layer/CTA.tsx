@@ -1,7 +1,9 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { WATCH_URL } from "./Hero";
 
 export function CTA() {
   return (
@@ -30,32 +32,27 @@ export function CTA() {
         <div className="max-w-[820px] mx-auto text-center flex flex-col items-center">
           <Reveal delay={0.1}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] max-w-[18ch] mx-auto">
-              Save your seat
+              Watch the session
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto">
-              August 25, 2026 &middot; 1 PM GMT &middot; Online &middot; Free to
-              attend.
-              <br />
-              Can&apos;t join live? Register and we&apos;ll send the recording.
+              The full recording, free to watch.
             </p>
           </Reveal>
 
-          {/* w-full on the Reveal: it is a flex item under items-center, so
-              without it the wrapper shrinks to the form's intrinsic width. */}
-          <Reveal delay={0.25} className="w-full">
-            {/* Registration form. Styling comes from `.hubspot-form-wrapper` in
-                globals.css, which already matches this design system, so the
-                embed does not read as a HubSpot form. */}
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <HubSpotForm
-                portalId="25724996"
-                formId="02bf5ce2-64e5-4a81-a502-d58b43becf8e"
-                region="eu1"
-                submitText="Save your seat"
-              />
+          <Reveal delay={0.25}>
+            <div className="mt-10 md:mt-12">
+              <a
+                href={WATCH_URL}
+                target="_blank"
+                rel="noreferrer"
+                className={btnPrimary}
+              >
+                Watch now
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </Reveal>
         </div>

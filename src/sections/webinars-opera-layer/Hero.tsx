@@ -130,6 +130,9 @@ function SpeakerCard() {
   );
 }
 
+/** The session has run, so both calls to action point at the recording. */
+export const WATCH_URL = "https://youtu.be/HWJnUuX_2sg";
+
 export function Hero() {
   return (
     <section className="relative -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col">
@@ -168,20 +171,18 @@ export function Hero() {
 
             <Reveal delay={0.2}>
               <div className="mt-7 md:mt-8 flex flex-wrap items-center gap-3">
-                {/* TODO: replace with real registration link / HubSpot form */}
-                <a href="#cta" className={btnPrimary}>
-                  Save your seat
+                <a
+                  href={WATCH_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={btnPrimary}
+                >
+                  Watch now
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
             </Reveal>
 
-            <Reveal delay={0.28}>
-              <p className="mt-4 text-white/60 text-[13px] md:text-[14px] leading-relaxed max-w-[40rem]">
-                Can&apos;t join live? Register and we&apos;ll send you the
-                recording.
-              </p>
-            </Reveal>
             </div>
 
             {/* RIGHT · speaker card */}

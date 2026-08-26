@@ -12,8 +12,11 @@ const NAMES: {
   name: string;
   role: string;
   company: string;
-  /** optical nudge in px, to line a column up with the person above it */
-  nudge?: number;
+  /**
+   * Optical nudge to line a column up with the person above it. Written as a
+   * literal utility, since Tailwind only sees class names it can scan.
+   */
+  nudge?: string;
 }[] = [
   {
     name: "Hugo Habodasz",
@@ -29,7 +32,7 @@ const NAMES: {
     name: "Glebs Vrevsky",
     role: "Board Member & co-CEO",
     company: "scandiweb",
-    nudge: 5,
+    nudge: "lg:translate-x-[5px]",
   },
 ];
 
@@ -39,26 +42,25 @@ export function HeroPanel() {
     // itself and centres. Otherwise the names span the full column while the
     // photo sits letterboxed in the middle of it, and each name drifts left of
     // the person it belongs to.
-    // the whole panel, shot and names together, nudged on a transform so
-    // nothing around it shifts
-    <div
-      className="relative w-fit mx-auto lg:w-full lg:mx-0 max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden"
-      style={{ transform: "translate(20px, 75px)" }}
-    >
+    // The whole panel, shot and names together, is nudged on a transform so
+    // nothing around it shifts. From lg only: below that the column is
+    // narrower and centred, and the same offsets push the shot past the right
+    // edge and drop the companies into the trust bar.
+    <div className="relative w-fit mx-auto lg:w-full lg:mx-0 lg:translate-x-[20px] lg:translate-y-[75px] max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden">
       {/* The shot is a cut-out, so it fades out at the bottom with a mask
           rather than a coloured overlay. That keeps the hero's gradient
           showing through instead of banding against a flat colour, and it
           gives the names a dark area to sit on. */}
       <div
+        // scaled and nudged on the transform, so the layout box and the names
+        // underneath stay exactly where they are. From lg only, for the same
+        // reason as the wrapper above.
+        className="lg:origin-bottom lg:translate-x-[15px] lg:scale-150"
         style={{
           WebkitMaskImage:
             "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 92%)",
           maskImage:
             "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 92%)",
-          // scaled and nudged on the transform, so the layout box and the
-          // names underneath stay exactly where they are
-          transform: "translateX(15px) scale(1.5)",
-          transformOrigin: "bottom center",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -83,20 +85,18 @@ export function HeroPanel() {
         }}
       >
         {NAMES.map((p) => {
-          const nudge = p.nudge
-            ? { transform: `translateX(${p.nudge}px)` }
-            : undefined;
+          // desktop only: it lines a column up with the person above it in
+          // the scaled shot, which is not how the columns sit on phones
+          const nudge = p.nudge ?? "";
           return (
             <Fragment key={p.name}>
               <div
-                className="font-head text-white text-[13px] md:text-[15px] leading-[1.2]"
-                style={nudge}
+                className={`font-head text-white text-[13px] md:text-[15px] leading-[1.2] ${nudge}`}
               >
                 {p.name}
               </div>
               <div
-                className="text-white/55 text-[11px] md:text-[13px] leading-snug mt-1"
-                style={nudge}
+                className={`text-white/55 text-[11px] md:text-[13px] leading-snug mt-1 ${nudge}`}
               >
                 {p.company}
               </div>

@@ -43,7 +43,7 @@ export function HeroPanel() {
     // nothing around it shifts
     <div
       className="relative w-fit mx-auto lg:w-full lg:mx-0 max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden"
-      style={{ transform: "translate(10px, 15px)" }}
+      style={{ transform: "translate(10px, 45px)" }}
     >
       {/* The shot is a cut-out, so it fades out at the bottom with a mask
           rather than a coloured overlay. That keeps the hero's gradient

@@ -52,7 +52,11 @@ export function Hero() {
       <div className="flex-1 flex items-start md:items-center">
         <div className="wrap relative z-10 pt-[calc(106px+clamp(12px,2vh,40px))] md:pt-[calc(96px+clamp(16px,3vh,44px))] pb-[clamp(16px,2vh,40px)] md:pb-[clamp(24px,4vh,56px)] w-full">
           <Reveal>
-            <div className="mb-7 md:mb-9 flex flex-wrap items-center gap-x-4 gap-y-2">
+            {/* the badge and the column below it drop together, on a transform
+                so the speaker boxes beside them stay where they are. From lg
+                only: below that the two stack, and the shift would eat the gap
+                between the lockup and the boxes. */}
+            <div className="mb-7 md:mb-9 flex flex-wrap items-center gap-x-4 gap-y-2 lg:translate-y-[20px]">
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
                 Free webinar
               </span>
@@ -64,7 +68,7 @@ export function Hero() {
           </Reveal>
 
           <div className="grid gap-5 sm:gap-6 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div className="max-w-[52rem]">
+          <div className="max-w-[52rem] lg:translate-y-[20px]">
             <Reveal delay={0.04}>
               <p className="font-head text-[15px] sm:text-[17px] md:text-[20px] leading-[1.2] tracking-[-0.01em] text-white/70">
                 More revenue on less spend

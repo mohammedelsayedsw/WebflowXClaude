@@ -4,12 +4,11 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { Lockup } from "./Lockup";
 import { assetUrl } from "@/lib/assets";
 
+/** Outcomes rather than figures: the client asked for no numbers on the page. */
 const stats: { figure: string; label: string }[] = [
-  { figure: "+48%", label: "email revenue YoY" },
-  { figure: "+39.1%", label: "ROAS on paid media" },
-  { figure: "\u221221.3%", label: "less marketing spend" },
-  { figure: "2.4x", label: "on-site conversion from AI recommendations" },
-  { figure: "39%", label: "of email revenue comes from automation" },
+  { figure: "More email revenue", label: "year on year" },
+  { figure: "A better return", label: "on paid media" },
+  { figure: "A smaller marketing budget", label: "for more revenue" },
 ];
 
 export function Results() {
@@ -60,17 +59,17 @@ export function Results() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
-              The numbers after switching to Bloomreach
+              What changed after switching to Bloomreach
             </h2>
           </Reveal>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((s, i) => (
             <Reveal key={s.figure} delay={i * 0.07}>
               <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-6 md:p-7">
                 <div
-                  className="font-head text-[32px] md:text-[38px] leading-none tracking-[-0.02em]"
+                  className="min-h-[2.5em] font-head text-[22px] md:text-[26px] leading-tight tracking-[-0.02em] text-balance"
                   style={{ color: "var(--sw-mint)" }}
                 >
                   {s.figure}
@@ -85,8 +84,7 @@ export function Results() {
 
         <Reveal delay={0.3}>
           <p className="mt-10 md:mt-12 text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            The team did it on one platform, across five markets, without new
-            hires.
+            Every market on one platform, with no new hires.
           </p>
         </Reveal>
 

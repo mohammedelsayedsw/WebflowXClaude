@@ -16,7 +16,7 @@ export function Speakers() {
           </h2>
         </Reveal>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {SPEAKERS.map((s, i) => (
             <Reveal key={`${s.company}-${i}`} delay={i * 0.07}>
               <div className="h-full rounded-[4px] border border-white/12 bg-white/[0.03] p-5 md:p-6">

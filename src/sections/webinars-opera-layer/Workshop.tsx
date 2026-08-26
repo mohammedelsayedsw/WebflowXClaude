@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { Countdown } from "./Countdown";
+
+/** Registration closes at the end of 31 August 2026, UTC. */
+const REGISTRATION_CLOSES = "2026-08-31T23:59:59Z";
 
 /**
  * Holds the #workshop anchor in place.
@@ -95,9 +99,21 @@ export function Workshop() {
             </p>
           </Reveal>
 
+          <Reveal delay={0.12}>
+            <div className="mt-9 md:mt-11">
+              <Countdown deadline={REGISTRATION_CLOSES} />
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.16}>
+            <p className="mt-5 font-head text-white text-[16px] md:text-[18px] leading-relaxed max-w-[52ch] mx-auto">
+              Register now and pick a date that suits you later.
+            </p>
+          </Reveal>
+
           {/* w-full on the Reveal: it is a flex item under items-center, so
               without it the wrapper shrinks to the form's intrinsic width. */}
-          <Reveal delay={0.16} className="w-full">
+          <Reveal delay={0.22} className="w-full">
             <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
               <HubSpotForm
                 portalId="25724996"

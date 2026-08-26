@@ -10,14 +10,16 @@ import { SPEAKERS, SpeakerPhoto } from "./panel";
  */
 export function HeroPanel() {
   return (
-    <div className="grid grid-cols-2 gap-3 md:gap-4">
+    // capped rather than filling the column, so the boxes stay a supporting
+    // element next to the headline. Phones are already narrower than the cap.
+    <div className="grid grid-cols-2 gap-3 md:gap-3.5 max-w-[360px]">
       {SPEAKERS.map((s) => (
         <div
           key={s.name}
-          className="flex h-full flex-col rounded-[4px] border border-white/12 bg-white/[0.04] p-3 md:p-3.5"
+          className="flex h-full flex-col rounded-[4px] border border-white/12 bg-white/[0.04] p-2.5 md:p-3"
         >
           <SpeakerPhoto speaker={s} className="w-full aspect-square" />
-          <div className="mt-3">
+          <div className="mt-2.5">
             <div className="font-head text-white text-[13px] md:text-[14px] leading-[1.2]">
               {s.name}
             </div>

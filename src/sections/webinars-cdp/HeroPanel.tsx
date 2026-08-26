@@ -10,9 +10,11 @@ import { SPEAKERS, SpeakerPhoto } from "./panel";
  */
 export function HeroPanel() {
   return (
-    // capped rather than filling the column, so the boxes stay a supporting
+    // Capped rather than filling the column, so the boxes stay a supporting
     // element next to the headline. Phones are already narrower than the cap.
-    <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-[360px] lg:translate-x-[50px]">
+    // The shift holds back until xl: between lg and xl the column is not wide
+    // enough for it, and the right pair would run off the edge.
+    <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-[360px] lg:translate-x-[20px] xl:translate-x-[100px]">
       {SPEAKERS.map((s) => (
         <div
           key={s.name}

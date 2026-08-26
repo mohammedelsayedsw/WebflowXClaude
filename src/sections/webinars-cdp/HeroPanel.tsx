@@ -18,12 +18,8 @@ export function HeroPanel() {
           key={s.name}
           className="flex h-full flex-col rounded-[4px] border border-white/12 bg-white/[0.04] p-2.5 md:p-3"
         >
-          {/* a small square rather than a full-width one, so the box stays a
-              label with a face on it */}
-          <SpeakerPhoto
-            speaker={s}
-            className="w-[84px] md:w-[92px] aspect-square"
-          />
+          {/* runs the full width of the box, in to the padding on both sides */}
+          <SpeakerPhoto speaker={s} className="w-full aspect-square" />
           <div className="mt-2.5">
             <div className="font-head text-white text-[13px] md:text-[14px] leading-[1.2]">
               {s.name}

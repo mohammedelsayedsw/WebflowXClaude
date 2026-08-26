@@ -81,11 +81,10 @@ export function Hero() {
 
             <Reveal delay={0.1}>
               <p className="mt-3 sm:mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[44rem] text-white/85">
-                Sportland&apos;s case. More email orders and a better return
-                on paid media, on a smaller marketing budget. Their team joins
-                Bloomreach and scandiweb to share what worked, what
-                didn&apos;t, and what they&apos;d tell a retailer starting out
-                today.
+                More email orders and a better return on paid media, on a
+                smaller marketing budget. Sportland&apos;s team joins Bloomreach
+                and scandiweb to share what worked, what didn&apos;t, and what
+                they&apos;d tell a retailer starting out today.
               </p>
             </Reveal>
 

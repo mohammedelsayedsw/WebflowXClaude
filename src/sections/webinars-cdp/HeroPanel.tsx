@@ -8,21 +8,28 @@ import { assetUrl } from "@/lib/assets";
  * than above it, one under each person. Add a third and a fourth by extending
  * this list and swapping the image.
  */
-const NAMES: { name: string; role: string; company: string }[] = [
+const NAMES: {
+  name: string;
+  role: string;
+  company: string;
+  /** optical nudge in px, to line a column up with the person above it */
+  nudge?: number;
+}[] = [
   {
     name: "Hugo Habodasz",
     role: "Senior Success Manager",
     company: "Bloomreach",
   },
   {
-    name: "Liis Veersalu",
-    role: "Head of Group Marketing & Communications",
+    name: "Algirdas Zalagaitis",
+    role: "Head of eCommerce",
     company: "Sportland",
   },
   {
     name: "Glebs Vrevsky",
     role: "Board Member & co-CEO",
     company: "scandiweb",
+    nudge: 5,
   },
 ];
 
@@ -32,7 +39,12 @@ export function HeroPanel() {
     // itself and centres. Otherwise the names span the full column while the
     // photo sits letterboxed in the middle of it, and each name drifts left of
     // the person it belongs to.
-    <div className="relative w-fit mx-auto lg:w-full lg:mx-0 max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden">
+    // the whole panel, shot and names together, nudged on a transform so
+    // nothing around it shifts
+    <div
+      className="relative w-fit mx-auto lg:w-full lg:mx-0 max-[380px]:max-h-0 max-[380px]:overflow-hidden max-[380px]:hidden"
+      style={{ transform: "translate(10px, 5px)" }}
+    >
       {/* The shot is a cut-out, so it fades out at the bottom with a mask
           rather than a coloured overlay. That keeps the hero's gradient
           showing through instead of banding against a flat colour, and it
@@ -43,12 +55,16 @@ export function HeroPanel() {
             "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 92%)",
           maskImage:
             "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 92%)",
+          // scaled and nudged on the transform, so the layout box and the
+          // names underneath stay exactly where they are
+          transform: "translateX(15px) scale(1.5)",
+          transformOrigin: "bottom center",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={assetUrl("/webinars/cdp/panel-hugo-liis-glebs.webp")}
-          alt="Hugo Habodasz of Bloomreach, Liis Veersalu of Sportland and Glebs Vrevsky of scandiweb"
+          src={assetUrl("/webinars/cdp/panel-hugo-algirdas-glebs.webp")}
+          alt="Hugo Habodasz of Bloomreach, Algirdas Zalagaitis of Sportland and Glebs Vrevsky of scandiweb"
           className="w-auto max-w-full lg:w-full h-auto max-h-[22vh] sm:max-h-[30vh] lg:max-h-[60vh] object-contain object-bottom"
         />
       </div>
@@ -66,16 +82,27 @@ export function HeroPanel() {
           gridAutoFlow: "column",
         }}
       >
-        {NAMES.map((p) => (
-          <Fragment key={p.name}>
-            <div className="font-head text-white text-[13px] md:text-[15px] leading-[1.2]">
-              {p.name}
-            </div>
-            <div className="text-white/55 text-[11px] md:text-[13px] leading-snug mt-1">
-              {p.company}
-            </div>
-          </Fragment>
-        ))}
+        {NAMES.map((p) => {
+          const nudge = p.nudge
+            ? { transform: `translateX(${p.nudge}px)` }
+            : undefined;
+          return (
+            <Fragment key={p.name}>
+              <div
+                className="font-head text-white text-[13px] md:text-[15px] leading-[1.2]"
+                style={nudge}
+              >
+                {p.name}
+              </div>
+              <div
+                className="text-white/55 text-[11px] md:text-[13px] leading-snug mt-1"
+                style={nudge}
+              >
+                {p.company}
+              </div>
+            </Fragment>
+          );
+        })}
       </div>
     </div>
   );

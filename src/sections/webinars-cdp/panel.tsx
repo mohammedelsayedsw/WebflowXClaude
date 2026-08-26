@@ -21,7 +21,7 @@ export const SPEAKERS: Speaker[] = [
   {
     name: "Algirdas Zalagaitis",
     role: "Head of eCommerce",
-    company: "Sportland International Group",
+    company: "Sportland",
     photo: "/webinars/cdp/algirdas-zalagaitis.webp",
   },
   {

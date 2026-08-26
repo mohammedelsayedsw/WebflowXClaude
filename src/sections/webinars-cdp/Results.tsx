@@ -59,7 +59,10 @@ export function Results() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] leading-[1.06] tracking-[-0.01em]">
-              What changed after switching to Bloomreach
+              What changed{" "}
+              <span style={{ color: "var(--sw-mint)" }}>
+                after switching to Bloomreach
+              </span>
             </h2>
           </Reveal>
         </div>

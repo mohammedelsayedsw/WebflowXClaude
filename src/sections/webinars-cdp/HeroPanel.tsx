@@ -12,7 +12,7 @@ export function HeroPanel() {
   return (
     // capped rather than filling the column, so the boxes stay a supporting
     // element next to the headline. Phones are already narrower than the cap.
-    <div className="grid grid-cols-2 gap-3 md:gap-3.5 max-w-[360px]">
+    <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-[360px] lg:translate-x-[20px]">
       {SPEAKERS.map((s) => (
         <div
           key={s.name}

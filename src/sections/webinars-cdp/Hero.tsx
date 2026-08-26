@@ -74,7 +74,9 @@ export function Hero() {
             <Reveal delay={0.05}>
               <h1 className="mt-2 md:mt-3 font-head text-white text-[clamp(23px,3.9vh,29px)] sm:text-[36px] md:text-[44px] lg:text-[clamp(38px,min(4.6vh,3.4vw),60px)] leading-[1.05] tracking-[-0.025em]">
                 How Sportland runs{" "}
-                <span style={{ color: "var(--sw-mint)" }}>personalization</span>{" "}
+                <span style={{ color: "var(--sw-mint)" }}>
+                  AI&nbsp;personalization
+                </span>{" "}
                 across three Baltic states, and what it took
               </h1>
             </Reveal>

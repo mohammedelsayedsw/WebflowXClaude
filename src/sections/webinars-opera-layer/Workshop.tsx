@@ -7,11 +7,11 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
 /**
  * Holds the #workshop anchor in place.
  *
- * The browser jumps to the anchor as soon as the element exists, but the
- * HubSpot form in the CTA above this one loads afterwards and grows, which
- * pushes this section down and leaves the reader looking at the tail of that
- * form and half this heading. This re-applies the jump while the page settles,
- * and gives up the moment the reader scrolls, so it never fights them.
+ * The browser jumps to the anchor as soon as the element exists, but this
+ * section's own HubSpot form loads afterwards and grows, which shifts the
+ * block and leaves the reader looking at half this heading. This re-applies
+ * the jump while the page settles, and gives up the moment the reader
+ * scrolls, so it never fights them.
  *
  * It matters for the printed QR code, which lands people straight on #workshop.
  */

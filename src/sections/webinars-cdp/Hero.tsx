@@ -74,19 +74,18 @@ export function Hero() {
             <Reveal delay={0.05}>
               <h1 className="mt-2 md:mt-3 font-head text-white text-[clamp(23px,3.9vh,29px)] sm:text-[36px] md:text-[44px] lg:text-[clamp(38px,min(4.6vh,3.4vw),60px)] leading-[1.05] tracking-[-0.025em]">
                 How Sportland runs{" "}
-                <span style={{ color: "var(--sw-mint)" }}>
-                  AI&nbsp;personalization
-                </span>{" "}
+                <span style={{ color: "var(--sw-mint)" }}>personalization</span>{" "}
                 across three Baltic states, and what it took
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-3 sm:mt-4 md:mt-5 text-[15px] sm:text-[16px] md:text-[18px] leading-[1.45] max-w-[44rem] text-white/85">
-                Sportland grew email orders and paid ROAS while cutting spend.
-                Their team joins Bloomreach and scandiweb to share what worked,
-                what didn&apos;t, and what they&apos;d tell a retailer starting
-                out today.
+                Sportland&apos;s case. More email orders and a better return
+                on paid media, on a smaller marketing budget. Their team joins
+                Bloomreach and scandiweb to share what worked, what
+                didn&apos;t, and what they&apos;d tell a retailer starting out
+                today.
               </p>
             </Reveal>
 

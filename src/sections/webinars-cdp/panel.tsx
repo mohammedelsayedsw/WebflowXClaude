@@ -18,9 +18,12 @@ export const SPEAKERS: Speaker[] = [
     company: "Sportland",
     photo: "/webinars/cdp/liis-veersalu.webp",
   },
-  // Algirdas Zalagaitis, Head of eCommerce, Sportland - hidden until his
-  // photo arrives. Restore this entry and put Speakers.tsx back to
-  // lg:grid-cols-4 when it does.
+  {
+    name: "Algirdas Zalagaitis",
+    role: "Head of eCommerce",
+    company: "Sportland International Group",
+    photo: "/webinars/cdp/algirdas-zalagaitis.webp",
+  },
   {
     name: "Hugo Habodasz",
     role: "Senior Success Manager",

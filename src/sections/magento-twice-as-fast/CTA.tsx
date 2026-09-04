@@ -19,8 +19,7 @@ export function CTA() {
             </h2>
             <p className="mt-6 text-white/80 max-w-[46ch] text-[16px] md:text-[17px] leading-relaxed">
               Leave your email and we&apos;ll keep you posted on everything
-              around the reveal, before and on {REVEAL_LABEL}. Same store, same
-              platform, same catalog. Twice the speed.
+              around the reveal, before and on {REVEAL_LABEL}.
             </p>
           </Reveal>
 

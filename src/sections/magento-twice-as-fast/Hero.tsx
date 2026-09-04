@@ -42,7 +42,7 @@ export function Hero() {
 
       <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-40 md:pt-48 pb-16 md:pb-24 w-full">
         <motion.div {...enter(0.3)} className="label-code text-white/55">
-          Magento · {REVEAL_LABEL}, 2026
+          {REVEAL_LABEL}, 2026
         </motion.div>
 
         <h1 className="mt-6 md:mt-8 font-head text-white">
@@ -64,7 +64,7 @@ export function Hero() {
             >
               &times;2
             </span>{" "}
-            faster.
+            faster
           </motion.span>
         </h1>
 
@@ -72,7 +72,7 @@ export function Hero() {
           {...enter(1.1)}
           className="mt-6 md:mt-8 font-head text-white/85 text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15]"
         >
-          Faster than Shopify.
+          Faster than Shopify
         </motion.p>
 
         <motion.div {...enter(1.35)} className="mt-10 md:mt-12">

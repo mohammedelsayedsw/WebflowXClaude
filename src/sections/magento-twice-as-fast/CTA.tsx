@@ -12,7 +12,7 @@ const FORM_ID = "3138576e-e2b3-4dac-8ff3-1039ab9428ba";
 
 export function CTA() {
   return (
-    <section id="cta" className="relative z-10 border-t border-white/10 py-28 md:py-40">
+    <section id="cta" className="relative z-10 py-28 md:py-40">
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>

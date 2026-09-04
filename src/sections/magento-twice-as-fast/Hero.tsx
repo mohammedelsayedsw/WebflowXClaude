@@ -1,134 +1,97 @@
 "use client";
 
 import { ArrowDown } from "lucide-react";
-import { Reveal } from "@/components/primitives/Reveal";
+import { motion } from "motion/react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Countdown } from "./Countdown";
 import { REVEAL_AT, REVEAL_LABEL } from "./reveal";
+import { scrollToForm } from "./scrollToForm";
 
-function HeroBg() {
-  return (
-    <>
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(900px 620px at 18% 22%, #2a3380 0%, transparent 55%)," +
-            "radial-gradient(800px 580px at 85% 82%, #070a1e 0%, transparent 52%)," +
-            "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
-        }}
-      />
-      <div aria-hidden className="absolute inset-0 -z-10 grid-backdrop opacity-40" />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-70 mix-blend-overlay"
-        style={{
-          background:
-            "radial-gradient(620px 900px at 28% 62%, rgba(7, 10, 30, 0.85), transparent 60%)," +
-            "radial-gradient(540px 720px at 72% 28%, rgba(63, 74, 175, 0.22), transparent 60%)",
-          filter: "blur(50px)",
-        }}
-      />
-    </>
-  );
-}
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-/**
- * Scroll down to the sign-up form.
- *
- * The app sets `scroll-behavior: smooth` on <html> while <body> carries the
- * overflow, and in Chrome that combination leaves every smooth scroll doing
- * nothing: a plain `href="#cta"` updates the address bar and the page stays
- * put. It affects the other pages in this app too, so rather than change the
- * global rule from a campaign page, this one animates its own scroll and asks
- * for each step instantly.
- */
-function scrollToForm(e: React.MouseEvent<HTMLAnchorElement>) {
-  const cta = document.getElementById("cta");
-  if (!cta) return;
-
-  e.preventDefault();
-  const from = window.scrollY;
-  const to = from + cta.getBoundingClientRect().top;
-  const started = performance.now();
-
-  const step = (now: number) => {
-    const t = Math.min(1, (now - started) / 600);
-    const eased = 1 - Math.pow(1 - t, 3);
-    window.scrollTo({ top: from + (to - from) * eased, behavior: "instant" });
-    if (t < 1) window.requestAnimationFrame(step);
-  };
-  window.requestAnimationFrame(step);
-  window.history.replaceState(null, "", "#cta");
-}
+/** Each line of the hero arrives out of a blur, a beat after the galaxy. */
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 18, filter: "blur(10px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  transition: { duration: 1.1, delay, ease: EASE },
+});
 
 export function Hero() {
   return (
     <section
       id="reveal"
-      className="relative -mt-[60px] md:-mt-[75px] overflow-hidden min-h-screen flex flex-col"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex flex-col overflow-hidden"
     >
-      <HeroBg />
+      {/* keep the type legible where the galaxy is brightest */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(5,7,15,0.78) 0%, rgba(5,7,15,0.45) 38%, rgba(5,7,15,0) 68%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(5,7,15,0) 30%, rgba(5,7,15,0.7) 58%, rgba(5,7,15,0.92) 100%)",
+        }}
+      />
 
-      <div className="flex-1 flex items-center">
-        <div className="wrap relative z-10 pt-32 md:pt-44 pb-20 md:pb-28 w-full">
-          <Reveal>
-            <div className="label-code text-white/55">
-              Magento · {REVEAL_LABEL}, 2026
-            </div>
-          </Reveal>
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-40 md:pt-48 pb-16 md:pb-24 w-full">
+        <motion.div {...enter(0.3)} className="label-code text-white/55">
+          Magento · {REVEAL_LABEL}, 2026
+        </motion.div>
 
-          <Reveal delay={0.07}>
-            <h1 className="mt-7 md:mt-9 font-head text-white text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[1.02] tracking-[-0.015em] max-w-[16ch]">
-              We made Magento{" "}
-              <span style={{ color: "var(--sw-mint)" }}>&times;2 faster.</span>
-            </h1>
-          </Reveal>
+        <h1 className="mt-6 md:mt-8 font-head text-white">
+          <motion.span
+            {...enter(0.55)}
+            className="block text-[22px] sm:text-[26px] md:text-[32px] lg:text-[36px] leading-[1.1] tracking-[-0.005em] text-white/75"
+          >
+            We made Magento
+          </motion.span>
+          <motion.span
+            {...enter(0.8)}
+            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[150px] lg:text-[190px] xl:text-[220px] leading-[0.92] tracking-[-0.035em]"
+          >
+            <span
+              style={{
+                color: "var(--sw-mint)",
+                textShadow: "0 0 56px rgba(110,247,110,0.32)",
+              }}
+            >
+              &times;2
+            </span>{" "}
+            faster.
+          </motion.span>
+        </h1>
 
-          <Reveal delay={0.14}>
-            <p className="mt-6 md:mt-7 font-head text-white/85 text-[24px] sm:text-[28px] md:text-[34px] leading-[1.12]">
-              Faster than Shopify.
-            </p>
-          </Reveal>
+        <motion.p
+          {...enter(1.1)}
+          className="mt-6 md:mt-8 font-head text-white/85 text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15]"
+        >
+          Faster than Shopify.
+        </motion.p>
 
-          <Reveal delay={0.21}>
-            <ul className="mt-12 md:mt-14 max-w-[30ch]">
-              {["No new platform.", "No replatforming.", "Your Magento."].map(
-                (line, i) => (
-                  <li
-                    key={line}
-                    className="border-l border-white/15 pl-5 py-2.5 font-head text-[20px] md:text-[26px] leading-[1.2]"
-                    style={{ color: i === 2 ? "#ffffff" : "rgba(255,255,255,0.6)" }}
-                  >
-                    {line}
-                  </li>
-                )
-              )}
-            </ul>
-          </Reveal>
-
-          <Reveal delay={0.28}>
-            <p className="mt-12 md:mt-14 text-white/80 text-[16px] md:text-[18px]">
-              See it yourself on {REVEAL_LABEL}.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.35}>
-            <div className="mt-7 md:mt-9">
-              <Countdown deadline={REVEAL_AT} />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.42}>
-            <div className="mt-12 md:mt-14">
-              <a href="#cta" onClick={scrollToForm} className={btnPrimary}>
-                Stay updated
-                <ArrowDown className="h-4 w-4" />
-              </a>
-            </div>
-          </Reveal>
-        </div>
+        <motion.div {...enter(1.35)} className="mt-10 md:mt-12">
+          <a href="#cta" onClick={scrollToForm} className={btnPrimary}>
+            Stay updated
+            <ArrowDown className="h-4 w-4" />
+          </a>
+        </motion.div>
       </div>
+
+      <motion.div {...enter(1.7)} className="relative z-10 border-t border-white/10">
+        <div className="wrap py-5 md:py-6 flex items-center justify-between gap-6">
+          <Countdown deadline={REVEAL_AT} variant="compact" />
+          <div className="label-code text-white/40 hidden sm:flex items-center gap-2">
+            Scroll
+            <ArrowDown className="h-3 w-3" />
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

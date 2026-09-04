@@ -4,11 +4,8 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { REVEAL_LABEL } from "./reveal";
 
-/* TODO: swap in a dedicated campaign form once one exists in HubSpot. This GUID
-   is scandiweb's single-field email form (portal 25724996, EU1) reused here so
-   the page captures on day one; a campaign-specific form would let the reveal
-   send be segmented from ordinary contact submissions. */
-const FORM_ID = "3138576e-e2b3-4dac-8ff3-1039ab9428ba";
+/** The campaign's own HubSpot form (portal 25724996, EU1). */
+const FORM_ID = "5f475c17-5dba-4005-a483-b780927c5c45";
 
 export function CTA() {
   return (

@@ -48,7 +48,7 @@ export function Hero() {
         <h1 className="mt-6 md:mt-8 font-head text-white">
           <motion.span
             {...enter(0.55)}
-            className="block text-[22px] sm:text-[26px] md:text-[32px] lg:text-[36px] leading-[1.1] tracking-[-0.005em] text-white/75"
+            className="block font-normal tracking-normal text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15] text-white/85"
           >
             We made Magento
           </motion.span>

@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
  *
  * A few thousand motes stream along the beam; it is brightest where it passes
  * behind the headline and softens toward both edges of the screen. A soft glow
- * follows the axis and a bloom marks the crossing. The pointer nudges the beam,
+ * follows the axis and a bloom marks the crossing; no hard line. The pointer nudges the beam,
  * and moving the pointer into it doubles the flow: the one place the page says
  * "x2" without words. A thin field of fixed stars stays behind every section;
  * the beam fades out as the hero scrolls away.
@@ -213,22 +213,6 @@ export function Beam() {
         along.addColorStop(1, "rgba(60,90,220,0)");
         ctx.fillStyle = along;
         ctx.fillRect(-1, -1, 2, 2);
-        ctx.restore();
-
-        // a fine bright spine along the beam, brightest at the crossing
-        ctx.save();
-        ctx.translate(hx, hy);
-        ctx.rotate(ang);
-        const spine = ctx.createLinearGradient(-L * 0.8, 0, L * 0.8, 0);
-        spine.addColorStop(0, "rgba(120,160,255,0)");
-        spine.addColorStop(0.5, `rgba(230,240,255,${0.55 * g * ease})`);
-        spine.addColorStop(1, "rgba(120,160,255,0)");
-        ctx.strokeStyle = spine;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(-L * 0.8, 0);
-        ctx.lineTo(L * 0.8, 0);
-        ctx.stroke();
         ctx.restore();
 
         // bloom at the crossing

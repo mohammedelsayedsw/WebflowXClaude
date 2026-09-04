@@ -18,7 +18,7 @@ export function CTA() {
           <Reveal>
             <div className="label-code text-white/55 mb-5">One email, on the day</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[16ch]">
-              Stay <span style={{ color: "var(--sw-mint)" }}>updated</span>.
+              Stay <span style={{ color: "var(--sw-mint)" }}>updated</span>
             </h2>
             <p className="mt-6 text-white/80 max-w-[46ch] text-[16px] md:text-[17px] leading-relaxed">
               Leave your email and we&apos;ll send you the link on {REVEAL_LABEL},

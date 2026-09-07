@@ -10,7 +10,7 @@ const FACTS: { title: string; body: string }[] = [
   {
     title: "Patched is not protected",
     body:
-      "The first known victim ran 2.4.6-p15 with the July and August 2026 security patches applied and a clean patch status. Sansec reproduced the attack on clean 2.4.7, 2.4.8, and 2.4.9.",
+      "The first known victim ran 2.4.6-p15 with the July and August 2026 security patches applied and a clean patch status. The attack has been reproduced on clean 2.4.7, 2.4.8, and 2.4.9.",
   },
   {
     title: "No login required",
@@ -33,8 +33,7 @@ export function Facts() {
     <section id="what-we-know" className="relative z-10 py-24 md:py-32">
       <div className="wrap">
         <Reveal>
-          <div className="label-code text-white/45">What we know · from Sansec&apos;s analysis, updated September 6</div>
-          <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch]">
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch]">
             What StyleSmuggler is
           </h2>
         </Reveal>

@@ -32,8 +32,8 @@ const SETUP: Question[] = [
     options: ["Adobe Commerce Cloud", "Own infrastructure or another host", "ReadyMage", "Not sure"],
   },
   {
-    key: "shield",
-    label: "Is Sansec Shield running on the store",
+    key: "protection",
+    label: "Is any protection against StyleSmuggler in place",
     options: ["Yes", "No", "Not sure"],
   },
 ];
@@ -62,12 +62,12 @@ function firstRead(a: Answers): { label: string; text: string }[] {
       text: "Affected. Every current release is, patched or not.",
     });
   }
-  if (a.shield === "Yes") {
+  if (a.protection === "Yes") {
     out.push({
       label: "Protection",
-      text: "Sansec Shield has blocked this attack since September 5. We still look for anything that got in before.",
+      text: "Good. We confirm it covers both stages of the attack and look for anything that got in before.",
     });
-  } else if (a.shield) {
+  } else if (a.protection) {
     out.push({
       label: "Protection",
       text: "No known block in place. The temporary protection comes first.",
@@ -89,7 +89,7 @@ function firstRead(a: Answers): { label: string; text: string }[] {
   if (a.hosting === "ReadyMage") {
     out.push({
       label: "Hosting",
-      text: "ReadyMage includes Sansec malware protection. We confirm the store is covered.",
+      text: "ReadyMage includes malware protection at the hosting level. We confirm the store is covered.",
     });
   }
   return out;
@@ -260,8 +260,8 @@ export function Check() {
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[44ch]">
               A few questions about your store. You get a first read straight
-              away, and the 24/7 team replies with what we see from the
-              outside and what to do next.
+              away, and scandiweb replies with what we see from the outside and
+              what to do next.
             </p>
           </Reveal>
 
@@ -441,7 +441,7 @@ export function Check() {
                         Thanks, {contact.firstname.trim()}. We take it from here
                       </h3>
                       <p className="mt-4 text-white/75 text-[15px] leading-relaxed">
-                        The 24/7 team checks {contact.website.trim()} from the outside and
+                        scandiweb checks {contact.website.trim()} from the outside and
                         replies to {contact.email.trim()}.
                       </p>
 
@@ -475,7 +475,7 @@ export function Check() {
             </div>
             {step < 3 && (
               <p className="label-code text-white/45 mt-3 px-1">
-                Read by the 24/7 Magento team, weekend included.
+                Read by scandiweb&apos;s Magento engineers, weekend included.
               </p>
             )}
           </Reveal>

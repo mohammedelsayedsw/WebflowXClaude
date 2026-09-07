@@ -2,9 +2,9 @@
 
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { NEXT_BULLETIN, SANSEC_URL, UPDATED_LABEL, UPDATED_SHORT } from "./status";
-import { scrollToForm } from "./scrollToForm";
+import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
+import { CALL_URL, NEXT_BULLETIN, SANSEC_URL, UPDATED_LABEL, UPDATED_SHORT } from "./status";
+import { scrollToId } from "./scrollTo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -64,21 +64,25 @@ export function Hero() {
           On September 5, Sansec disclosed StyleSmuggler: an unauthenticated
           remote code execution flaw in every current version of Magento and
           Adobe Commerce, 2.4.9 included. Attacks began September 4. There is
-          no official Adobe patch yet.
-        </motion.p>
-
-        <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a href="#cta" onClick={scrollToForm} className={btnPrimary}>
-            Request an emergency check
-            <ArrowDown className="h-4 w-4" />
-          </a>
+          no official Adobe patch yet.{" "}
           <a
             href={SANSEC_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/75 hover:text-white transition"
+            className="inline-flex items-baseline gap-1 text-white/70 underline underline-offset-4 decoration-white/30 hover:text-white transition"
           >
-            Read Sansec&apos;s advisory
+            Sansec&apos;s advisory
+            <ArrowUpRight className="h-3.5 w-3.5 self-center" />
+          </a>
+        </motion.p>
+
+        <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center gap-4">
+          <a href="#check" onClick={scrollToId("check")} className={btnPrimary}>
+            Check if your store has been affected
+            <ArrowDown className="h-4 w-4" />
+          </a>
+          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>
+            Have a call about security
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </motion.div>

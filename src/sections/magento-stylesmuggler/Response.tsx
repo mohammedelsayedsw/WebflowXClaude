@@ -26,12 +26,16 @@ export function Response() {
       <div className="wrap">
         <Reveal>
           <div className="label-code text-white/45">
-            For every scandiweb Magento and Adobe Commerce client · since September 5
+            For every scandiweb Magento and Adobe Commerce client
           </div>
           <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
             What the 24/7 team does on{" "}
             <span style={{ color: "var(--sw-mint)" }}>your store</span>
           </h2>
+          <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">
+            Every client heard from us on the day of the disclosure. Since then,
+            on each store:
+          </p>
         </Reveal>
 
         <ol className="mt-12 md:mt-16 border-t border-white/10">
@@ -58,8 +62,8 @@ export function Response() {
         <Reveal delay={0.3}>
           <p className="mt-8 md:mt-10 text-white/55 text-[14px] md:text-[15px] leading-relaxed max-w-[64ch]">
             Some protective changes can temporarily affect features or
-            integrations. We check those dependencies before touching anything
-            and keep disruption to a minimum.
+            integrations. We check those dependencies first and keep disruption
+            to a minimum.
           </p>
         </Reveal>
       </div>

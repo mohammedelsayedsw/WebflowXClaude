@@ -1,19 +1,16 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { NEXT_BULLETIN, SANSEC_URL, UPDATED_SHORT } from "./status";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { NEXT_BULLETIN, UPDATED_SHORT } from "./status";
+import { scrollToId } from "./scrollTo";
 
 const FACTS: { title: string; body: string }[] = [
   {
-    title: "Every current version",
-    body:
-      "Sansec reproduced the full attack on clean Magento Open Source 2.4.7, 2.4.8, and 2.4.9. Adobe Commerce is affected the same way.",
-  },
-  {
     title: "Patched is not protected",
     body:
-      "The first known victim ran 2.4.6-p15 with the July and August 2026 security patches applied and a clean patch status.",
+      "The first known victim ran 2.4.6-p15 with the July and August 2026 security patches applied and a clean patch status. Sansec reproduced the attack on clean 2.4.7, 2.4.8, and 2.4.9.",
   },
   {
     title: "No login required",
@@ -58,19 +55,14 @@ export function Facts() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-10 md:mt-12 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-4">
+          <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-x-10 gap-y-6">
             <p className="font-head font-semibold text-white text-[18px] md:text-[22px] leading-[1.25] max-w-[34ch]">
               This alert does not mean your store has been compromised. It means
               the check has to happen now.
             </p>
-            <a
-              href={SANSEC_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/75 hover:text-white transition"
-            >
-              Full analysis and indicators at sansec.io
-              <ArrowUpRight className="h-4 w-4" />
+            <a href="#check" onClick={scrollToId("check")} className={btnPrimary}>
+              Check if your store has been affected
+              <ArrowDown className="h-4 w-4" />
             </a>
           </div>
         </Reveal>

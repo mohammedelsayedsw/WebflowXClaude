@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 const TITLE = "StyleSmuggler: Magento zero-day emergency response";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "Sansec disclosed StyleSmuggler on September 5, 2026: unauthenticated remote code execution on every current Magento and Adobe Commerce version, with no official patch yet. scandiweb's 24/7 team checks stores for compromise, applies temporary protection, and tests checkout. Request the check.";
+  "Sansec disclosed StyleSmuggler on September 5, 2026: unauthenticated remote code execution on every current Magento and Adobe Commerce version, with no official patch yet. scandiweb's 24/7 team checks stores for compromise, applies temporary protection, and tests checkout. Check if your store has been affected, or have a call about security.";
 
 export const metadata: Metadata = {
   title: TITLE,

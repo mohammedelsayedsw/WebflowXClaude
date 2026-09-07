@@ -15,6 +15,11 @@ const enter = (delay: number) => ({
   transition: { duration: 1.1, delay, ease: EASE },
 });
 
+/* Sized so the first line sits on one line across the full container on
+   desktop; below that the browser balances the wrap. */
+const H1_SIZE =
+  "text-[36px] sm:text-[48px] md:text-[56px] lg:text-[62px] leading-[1.02] tracking-[-0.025em]";
+
 export function Hero() {
   return (
     <section
@@ -32,22 +37,20 @@ export function Hero() {
         }}
       />
 
-      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-36 md:pt-44 pb-14 md:pb-20 w-full">
-        <motion.div {...enter(0.25)} className="label-code text-white/55 flex items-center gap-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--sw-red)] pulse-red" />
+      <div className="wrap relative z-10 flex-1 flex flex-col items-center justify-end md:justify-center text-center pt-36 md:pt-44 pb-14 md:pb-20 w-full">
+        <motion.div {...enter(0.25)} className="label-code text-white/55 flex items-center justify-center gap-3">
+          <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-[var(--sw-red)] pulse-red" />
           Security alert · StyleSmuggler · updated {UPDATED_LABEL}
         </motion.div>
 
-        <h1 className="mt-6 md:mt-8 font-head text-white">
-          <motion.span
-            {...enter(0.5)}
-            className="block text-[38px] sm:text-[52px] md:text-[68px] lg:text-[84px] leading-[1.0] tracking-[-0.025em] max-w-[15ch]"
-          >
-            Magento <span className="whitespace-nowrap">zero-day</span> under active attack
+        <h1 className="mt-6 md:mt-8 font-head text-white w-full">
+          <motion.span {...enter(0.5)} className={`block ${H1_SIZE}`}>
+            <span className="inline-block whitespace-nowrap">Magento zero-day</span>{" "}
+            <span className="inline-block whitespace-nowrap">under active attack</span>
           </motion.span>
           <motion.span
             {...enter(0.8)}
-            className="block mt-3 md:mt-5 text-[38px] sm:text-[52px] md:text-[68px] lg:text-[84px] leading-[1.0] tracking-[-0.025em]"
+            className={`block mt-2 md:mt-3 ${H1_SIZE}`}
             style={{
               color: "var(--sw-mint)",
               textShadow: "0 0 48px rgba(110,247,110,0.25)",
@@ -59,20 +62,21 @@ export function Hero() {
 
         <motion.p
           {...enter(1.05)}
-          className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch]"
+          className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]"
         >
-          StyleSmuggler, disclosed on September 5, is an unauthenticated
-          remote code execution flaw in every current version of Magento and
-          Adobe Commerce, 2.4.9 included. Attacks began September 4. There is
-          no official Adobe patch yet.
+          A <span className="whitespace-nowrap">zero-day</span> is a security hole
+          that attackers found before a fix exists. StyleSmuggler is one. It lets
+          anyone take control of a Magento or Adobe Commerce store, no password
+          needed. Every current version is affected. Attacks began September 4,
+          and Adobe has no fix out yet.
         </motion.p>
 
-        <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center gap-4">
-          <a href="#check" onClick={scrollToId("check")} className={btnPrimary}>
+        <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
+          <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
             Check if your store has been affected
             <ArrowDown className="h-4 w-4" />
           </a>
-          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>
+          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
             Have a call about security
             <ArrowUpRight className="h-4 w-4" />
           </a>
@@ -82,8 +86,8 @@ export function Hero() {
       <motion.div {...enter(1.6)} className="relative z-10 border-t border-white/10">
         <div className="wrap py-5 md:py-6 flex items-center justify-between gap-6">
           <div className="label-code text-white/60">
-            No official Adobe patch as of {UPDATED_SHORT}
-            <span className="hidden sm:inline"> · next Adobe bulletin {NEXT_BULLETIN}</span>
+            No fix from Adobe as of {UPDATED_SHORT}
+            <span className="hidden sm:inline"> · Adobe&apos;s next security update is due {NEXT_BULLETIN}</span>
           </div>
           <div className="label-code text-white/40 hidden sm:flex items-center gap-2">
             Scroll

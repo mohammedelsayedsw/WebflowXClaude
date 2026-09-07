@@ -26,9 +26,8 @@ export function Call() {
               <span style={{ color: "var(--sw-mint)" }}>security</span>
             </h2>
             <p className="mt-6 text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[50ch]">
-              Where your store stands on StyleSmuggler, what protection is in
-              place, and what to do about the next one. Pick a slot that suits
-              you.
+              Where your store stands on StyleSmuggler, what protects it now,
+              and how to be ready for the next one. Pick a time that suits you.
             </p>
             <div className="mt-9">
               <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnPrimary}>
@@ -45,10 +44,9 @@ export function Call() {
                 scandiweb also runs ReadyMage
               </h3>
               <p className="mt-4 text-white/75 text-[15px] md:text-[16px] leading-relaxed max-w-[40ch]">
-                Managed Magento and Adobe Commerce hosting, with malware
-                protection, a WAF, and DDoS defense built in. The place to be
-                for the next{" "}
-                <span className="whitespace-nowrap">zero-day</span>.
+                Magento and Adobe Commerce hosting, managed for you, with malware
+                protection, a firewall, and DDoS defense built in. Built for the
+                next <span className="whitespace-nowrap">zero-day</span>.
               </p>
               <div className="mt-7">
                 <a href={READYMAGE_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>

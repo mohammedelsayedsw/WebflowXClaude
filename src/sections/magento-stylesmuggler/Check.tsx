@@ -52,49 +52,6 @@ type Status = "idle" | "submitting" | "error";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function firstRead(a: Answers): { label: string; text: string }[] {
-  const out: { label: string; text: string }[] = [];
-  if (a.version === "Not sure") {
-    out.push({ label: "Version", text: "We will find out which version you run." });
-  } else if (a.version) {
-    out.push({
-      label: "Version",
-      text: "Your version is affected. All current versions are, updated or not.",
-    });
-  }
-  if (a.protection === "Yes") {
-    out.push({
-      label: "Protection",
-      text: "Good. We make sure it blocks both steps of the attack, and look for anything that got in before.",
-    });
-  } else if (a.protection) {
-    out.push({
-      label: "Protection",
-      text: "Nothing is blocking the attack yet. That comes first.",
-    });
-  }
-  if (a.emails === "Yes") {
-    out.push({
-      label: "Emails",
-      text: "Those emails are a known sign of an attack attempt. We treat this as urgent.",
-    });
-  } else if (a.emails === "No") {
-    out.push({
-      label: "Emails",
-      text: "A good sign, but not proof. The attack also works when no email goes out.",
-    });
-  } else if (a.emails) {
-    out.push({ label: "Emails", text: "We check the store's mail log." });
-  }
-  if (a.hosting === "ReadyMage") {
-    out.push({
-      label: "Hosting",
-      text: "ReadyMage has malware protection built in. We confirm your store is covered.",
-    });
-  }
-  return out;
-}
-
 const inputClass =
   "block w-full rounded-[2px] border border-white/18 bg-white/[0.04] px-3.5 py-3 text-[14px] text-white placeholder:text-white/38 outline-none transition focus:border-[var(--sw-mint)]/55 focus:bg-white/[0.06]";
 
@@ -245,8 +202,6 @@ export function Check() {
       setStatus("error");
     }
   };
-
-  const read = firstRead(answers);
 
   return (
     <section id="check" className="relative z-10 py-24 md:py-32 border-t border-white/10">
@@ -446,23 +401,6 @@ export function Check() {
                         visible externally on {contact.website.trim()}, and email{" "}
                         {contact.email.trim()} with recommended next steps.
                       </p>
-
-                      {read.length > 0 && (
-                        <div className="mt-7">
-                          <div className="label-code text-white/55">Initial assessment, from your answers</div>
-                          <dl className="mt-3 border-t border-white/10">
-                            {read.map((r) => (
-                              <div
-                                key={r.label}
-                                className="grid grid-cols-[92px_1fr] gap-x-4 py-3.5 border-b border-white/10"
-                              >
-                                <dt className="label-code text-white/45 pt-0.5">{r.label}</dt>
-                                <dd className="text-[14px] text-white/85 leading-relaxed">{r.text}</dd>
-                              </div>
-                            ))}
-                          </dl>
-                        </div>
-                      )}
 
                       <div className="mt-8">
                         <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>

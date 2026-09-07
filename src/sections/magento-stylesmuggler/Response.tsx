@@ -25,10 +25,7 @@ export function Response() {
     <section id="response" className="relative z-10 bg-[var(--sw-black)] py-24 md:py-32">
       <div className="wrap">
         <Reveal>
-          <div className="label-code text-white/45">
-            For scandiweb Magento and Adobe Commerce clients
-          </div>
-          <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
+          <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
             How we’re protecting{" "}
             <span style={{ color: "var(--sw-mint)" }}>your store</span>
           </h2>
@@ -57,13 +54,6 @@ export function Response() {
             </Reveal>
           ))}
         </ol>
-
-        <Reveal delay={0.3}>
-          <p className="mt-8 md:mt-10 text-white/55 text-[14px] md:text-[15px] leading-relaxed max-w-[64ch]">
-            Some changes may temporarily affect features or integrations. We
-            check these dependencies and work to keep disruption to a minimum.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

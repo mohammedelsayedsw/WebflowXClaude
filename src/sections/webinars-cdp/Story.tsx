@@ -30,15 +30,13 @@ export function Story() {
 
             <Reveal delay={0.1}>
               <p className="mt-6 md:mt-7 text-[var(--sw-black)]/75 text-[16px] md:text-[18px] leading-[1.6] max-w-[60ch]">
-                Sportland is the leading sportswear retailer in the Baltics.
-                It runs five markets, each with distinct store views,
-                languages, and product ranges. Their marketing was tied to a
-                standalone
-                email tool that could not keep up with the automation and
-                personalization they wanted. Instead of moving to another email
-                service, they rebuilt the foundation, migrating from Klaviyo to
-                Bloomreach and unifying customer data across every market on one
-                platform.
+                Sportland is the leading sportswear retailer in the Baltics,
+                running several markets with distinct store views, languages,
+                and product ranges. Their ambitions around automation,
+                personalization, and customer data grew beyond what a standalone
+                email setup could support, so they rebuilt the foundation and
+                moved to a unified platform, with customer data from every
+                market in one place.
               </p>
             </Reveal>
           </div>

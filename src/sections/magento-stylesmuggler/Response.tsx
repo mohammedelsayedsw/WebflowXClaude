@@ -1,0 +1,72 @@
+"use client";
+
+import { Reveal } from "@/components/primitives/Reveal";
+
+const STEPS: { title: string; body: string }[] = [
+  {
+    title: "Check for compromise",
+    body:
+      "Hidden background processes, planted cron entries, poisoned failure reports, the file drops Sansec has documented. If we find anything, you hear about it first.",
+  },
+  {
+    title: "Apply temporary protection",
+    body:
+      "We block the known attack path on your store now and help develop the official fix. When Adobe ships a patch, we apply it.",
+  },
+  {
+    title: "Test the shopping journey",
+    body:
+      "Cart and checkout by hand, then the core automated tests, so the protective change does not cost you an order.",
+  },
+];
+
+export function Response() {
+  return (
+    <section id="response" className="relative z-10 bg-[var(--sw-black)] py-24 md:py-32">
+      <div className="wrap">
+        <Reveal>
+          <div className="label-code text-white/45">
+            For every scandiweb Magento and Adobe Commerce client
+          </div>
+          <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
+            What the 24/7 team does on{" "}
+            <span style={{ color: "var(--sw-mint)" }}>your store</span>
+          </h2>
+          <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">
+            Every client heard from us on the day of the disclosure. Since then,
+            on each store:
+          </p>
+        </Reveal>
+
+        <ol className="mt-12 md:mt-16 border-t border-white/10">
+          {STEPS.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.1}>
+              <li className="grid grid-cols-[56px_1fr] md:grid-cols-[120px_minmax(0,5fr)_minmax(0,7fr)] gap-x-4 md:gap-x-12 gap-y-3 py-8 md:py-10 border-b border-white/10">
+                <div
+                  className="font-head text-[40px] md:text-[64px] leading-none tabular-nums row-span-2 md:row-span-1"
+                  style={{ color: "var(--sw-mint)" }}
+                >
+                  {i + 1}
+                </div>
+                <h3 className="font-head font-semibold text-white text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.01em] self-start">
+                  {s.title}
+                </h3>
+                <p className="text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[56ch] col-start-2 md:col-start-3">
+                  {s.body}
+                </p>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal delay={0.3}>
+          <p className="mt-8 md:mt-10 text-white/55 text-[14px] md:text-[15px] leading-relaxed max-w-[64ch]">
+            Some protective changes can temporarily affect features or
+            integrations. We check those dependencies first and keep disruption
+            to a minimum.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

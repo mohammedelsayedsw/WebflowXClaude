@@ -28,23 +28,23 @@ const SETUP: Question[] = [
   },
   {
     key: "hosting",
-    label: "Where the store runs",
-    options: ["Adobe Commerce Cloud", "Own infrastructure or another host", "ReadyMage", "Not sure"],
+    label: "Where the store is hosted",
+    options: ["Adobe Commerce Cloud", "Our own servers or another host", "ReadyMage", "Not sure"],
   },
   {
     key: "protection",
-    label: "Is any protection against StyleSmuggler in place",
+    label: "Has anything been done to block this attack",
     options: ["Yes", "No", "Not sure"],
   },
 ];
 
 const EMAILS: Question = {
   key: "emails",
-  label: "Unexpected “Payment Transaction Failed Reminder” emails",
+  label: "Unexpected “Payment Transaction Failed Reminder” emails from your store",
   options: ["Yes", "No", "Not sure"],
 };
 
-const STEP_NAMES = ["Your store", "Your setup", "Since September 4"];
+const STEP_NAMES = ["Your store", "Your setup", "Warning signs"];
 
 type Contact = { website: string; email: string; firstname: string };
 type Answers = Record<string, string>;
@@ -55,41 +55,41 @@ const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function firstRead(a: Answers): { label: string; text: string }[] {
   const out: { label: string; text: string }[] = [];
   if (a.version === "Not sure") {
-    out.push({ label: "Version", text: "We identify the version from the outside." });
+    out.push({ label: "Version", text: "We will find out which version you run." });
   } else if (a.version) {
     out.push({
       label: "Version",
-      text: "Affected. Every current release is, patched or not.",
+      text: "Your version is affected. All current versions are, updated or not.",
     });
   }
   if (a.protection === "Yes") {
     out.push({
       label: "Protection",
-      text: "Good. We confirm it covers both stages of the attack and look for anything that got in before.",
+      text: "Good. We make sure it blocks both steps of the attack, and look for anything that got in before.",
     });
   } else if (a.protection) {
     out.push({
       label: "Protection",
-      text: "No known block in place. The temporary protection comes first.",
+      text: "Nothing is blocking the attack yet. That comes first.",
     });
   }
   if (a.emails === "Yes") {
     out.push({
       label: "Emails",
-      text: "A listed indicator of an attempt. We treat this as urgent.",
+      text: "Those emails are a known sign of an attack attempt. We treat this as urgent.",
     });
   } else if (a.emails === "No") {
     out.push({
       label: "Emails",
-      text: "A good sign, not proof. The attack also works when no email is delivered.",
+      text: "A good sign, but not proof. The attack also works when no email goes out.",
     });
   } else if (a.emails) {
-    out.push({ label: "Emails", text: "We check the mail log." });
+    out.push({ label: "Emails", text: "We check the store's mail log." });
   }
   if (a.hosting === "ReadyMage") {
     out.push({
       label: "Hosting",
-      text: "ReadyMage includes malware protection at the hosting level. We confirm the store is covered.",
+      text: "ReadyMage has malware protection built in. We confirm your store is covered.",
     });
   }
   return out;
@@ -253,15 +253,15 @@ export function Check() {
       <div className="wrap">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/45">Free check · no admin access needed</div>
+            <div className="label-code text-white/45">Free check · no access to your store needed</div>
             <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
               Check if your store has been{" "}
               <span style={{ color: "var(--sw-mint)" }}>affected</span>
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[44ch]">
-              A few questions about your store. You get a first read straight
-              away, and scandiweb replies with what we see from the outside and
-              what to do next.
+              Answer a few questions. You get a first read right away, and
+              scandiweb replies with what we see from the outside and what to
+              do next.
             </p>
           </Reveal>
 
@@ -406,11 +406,11 @@ export function Check() {
                         onChange={(v) => setAnswer(EMAILS.key, v)}
                         error={errors[EMAILS.key]}
                       />
-                      <Field id="ss-notes" label="Anything else unusual (optional)">
+                      <Field id="ss-notes" label="Anything else that looked odd (optional)">
                         <textarea
                           id="ss-notes"
                           rows={3}
-                          placeholder="Unknown admin users, unexplained slowdowns, failed deployments, anything that looked off"
+                          placeholder="Admin users you did not create, a slower store, failed deployments"
                           value={notes}
                           onChange={(e) => setNotes(e.target.value)}
                           className={`${inputClass} resize-y`}

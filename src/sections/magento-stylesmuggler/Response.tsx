@@ -4,19 +4,19 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const STEPS: { title: string; body: string }[] = [
   {
-    title: "Check for compromise",
+    title: "Look for signs of a break-in",
     body:
-      "Hidden background processes, planted cron entries, poisoned failure reports, and the file drops seen in confirmed attacks. If we find anything, you hear about it first.",
+      "Hidden programs, changed schedules, planted files: the traces this attack leaves behind. If we find anything, you hear about it first.",
   },
   {
-    title: "Apply temporary protection",
+    title: "Block the attack",
     body:
-      "We block the known attack path on your store now and help develop the official fix. When Adobe ships a patch, we apply it.",
+      "We close the door the attackers use, today, and help work on the official fix. When Adobe releases it, we install it.",
   },
   {
-    title: "Test the shopping journey",
+    title: "Make sure shopping still works",
     body:
-      "Cart and checkout by hand, then the core automated tests, so the protective change does not cost you an order.",
+      "We test the cart and checkout by hand and run our automated tests, so the fix never costs you an order.",
   },
 ];
 
@@ -33,8 +33,8 @@ export function Response() {
             <span style={{ color: "var(--sw-mint)" }}>your store</span>
           </h2>
           <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">
-            Every client heard from us on the day of the disclosure. Since then,
-            on each store:
+            Every client heard from us on the day the flaw became public. On
+            each store, we:
           </p>
         </Reveal>
 
@@ -61,9 +61,8 @@ export function Response() {
 
         <Reveal delay={0.3}>
           <p className="mt-8 md:mt-10 text-white/55 text-[14px] md:text-[15px] leading-relaxed max-w-[64ch]">
-            Some protective changes can temporarily affect features or
-            integrations. We check those dependencies first and keep disruption
-            to a minimum.
+            Blocking the attack can affect some features or integrations for a
+            short time. We check for that first and keep any disruption small.
           </p>
         </Reveal>
       </div>

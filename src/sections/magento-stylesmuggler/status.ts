@@ -8,5 +8,5 @@ export const UPDATED_SHORT = "September 7";
 export const NEXT_BULLETIN = "September 8";
 export const SANSEC_URL = "https://sansec.io/research/stylesmuggler";
 export const READYMAGE_URL = "https://readymage.com/";
-/** scandiweb's booking link, the same one the Meet Magento France page uses. */
-export const CALL_URL = "https://calendly.com/scandi-bd/30min";
+/** The Magento security call booking page. */
+export const CALL_URL = "https://calendly.com/scandi-bd/magento-security";

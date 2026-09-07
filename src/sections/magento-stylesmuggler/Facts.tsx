@@ -36,6 +36,10 @@ export function Facts() {
           <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[18ch]">
             What this means for your store
           </h2>
+          <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[56ch]">
+            Every current version of Magento Open Source and Adobe Commerce is
+            affected. That is well over 100,000 stores worldwide.
+          </p>
         </Reveal>
 
         <div className="mt-12 md:mt-16 border-t border-white/10">

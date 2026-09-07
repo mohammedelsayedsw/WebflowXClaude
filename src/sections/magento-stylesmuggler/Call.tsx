@@ -20,14 +20,14 @@ export function Call() {
       <div className="wrap relative">
         <div className="grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/55">Talk to us</div>
+            <div className="label-code text-white/55">Talk to our team</div>
             <h2 className="mt-5 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
-              Have a call with scandiweb about{" "}
-              <span style={{ color: "var(--sw-mint)" }}>security</span>
+              Not sure what your store{" "}
+              <span style={{ color: "var(--sw-mint)" }}>needs?</span>
             </h2>
             <p className="mt-6 text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[50ch]">
-              Where your store stands on StyleSmuggler, what protects it now,
-              and how to be ready for the next one. Pick a time that suits you.
+              Speak with our Magento team about your current protection, the
+              checks your store needs, and how to respond to StyleSmuggler.
             </p>
             <div className="mt-9">
               <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnPrimary}>
@@ -39,18 +39,22 @@ export function Call() {
 
           <Reveal delay={0.15}>
             <div className="md:pt-2 md:border-l md:border-white/10 md:pl-12">
-              <div className="label-code text-white/55">Hosting</div>
+              <div className="label-code text-white/55">Managed Magento hosting</div>
               <h3 className="mt-5 font-head font-semibold text-white text-[22px] md:text-[26px] leading-[1.15]">
-                scandiweb also runs ReadyMage
+                Ongoing protection with ReadyMage
               </h3>
               <p className="mt-4 text-white/75 text-[15px] md:text-[16px] leading-relaxed max-w-[40ch]">
-                Magento and Adobe Commerce hosting, managed for you, with malware
-                protection, a firewall, and DDoS defense built in. Built for the
-                next <span className="whitespace-nowrap">zero-day</span>.
+                ReadyMage is scandiweb’s managed hosting for Magento and Adobe
+                Commerce, with malware protection, a firewall, and DDoS defense
+                built in.
+              </p>
+              <p className="mt-3 text-white/75 text-[15px] md:text-[16px] leading-relaxed max-w-[40ch]">
+                Talk to us about how your hosting can support your store’s
+                security beyond this incident.
               </p>
               <div className="mt-7">
                 <a href={READYMAGE_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>
-                  readymage.com
+                  Explore ReadyMage
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>

@@ -3,28 +3,28 @@
 import { ArrowDown } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { NEXT_BULLETIN, UPDATED_SHORT } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const FACTS: { title: string; body: string }[] = [
   {
-    title: "Updates did not help",
+    title: "Recent updates may not protect you",
     body:
-      "The first store hit had all of Adobe's July and August security updates installed. Being up to date does not protect you from this one.",
+      "The attack has affected a store with Adobe’s July and August security updates installed. Even if your store is up to date, it needs to be checked.",
   },
   {
-    title: "No password needed",
+    title: "Attackers do not need a login",
     body:
-      "The attacker needs no account and no login. They send a crafted request to your store, and the store runs their code without anyone noticing.",
+      "The vulnerability allows attackers to run malicious code without a customer or administrator account.",
   },
   {
-    title: "They get everything",
+    title: "Your store and its data could be at risk",
     body:
-      "Once inside, the attacker controls the store and can read or delete the whole database: customers, orders, everything.",
+      "A successful attack could allow someone to access sensitive data, modify your store, or install malware.",
   },
   {
-    title: "No fix from Adobe yet",
-    body: `As of ${UPDATED_SHORT} there is no patch and no official workaround. Adobe's next security update is due ${NEXT_BULLETIN}. It is not confirmed to fix this.`,
+    title: "Protection and investigation both matter",
+    body:
+      "Temporary protection can help block new attacks. Your team also needs to check whether attackers gained access before that protection was in place.",
   },
 ];
 
@@ -55,12 +55,12 @@ export function Facts() {
 
         <Reveal delay={0.2}>
           <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-x-10 gap-y-6">
-            <p className="font-head font-semibold text-white text-[18px] md:text-[22px] leading-[1.25] max-w-[34ch]">
-              This alert does not mean your store has been hacked. It means you
-              need to check now.
+            <p className="font-head font-semibold text-white text-[18px] md:text-[22px] leading-[1.25] max-w-[38ch]">
+              This alert does not mean your store has been compromised. It means
+              you should check your exposure and take protective action now.
             </p>
             <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-              Check if your store has been affected
+              Get a free security check
               <ArrowDown className="h-4 w-4" />
             </a>
           </div>

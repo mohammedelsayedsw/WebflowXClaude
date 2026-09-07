@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
-import { CALL_URL, NEXT_BULLETIN, UPDATED_LABEL, UPDATED_SHORT } from "./status";
+import { CALL_URL, NEXT_BULLETIN, SANSEC_URL, UPDATED_LABEL } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -15,10 +15,8 @@ const enter = (delay: number) => ({
   transition: { duration: 1.1, delay, ease: EASE },
 });
 
-/* Sized so the first line sits on one line across the full container on
-   desktop; below that the browser balances the wrap. */
 const H1_SIZE =
-  "text-[36px] sm:text-[48px] md:text-[56px] lg:text-[62px] leading-[1.02] tracking-[-0.025em]";
+  "text-[36px] sm:text-[48px] md:text-[58px] lg:text-[68px] leading-[1.02] tracking-[-0.025em]";
 
 export function Hero() {
   return (
@@ -40,13 +38,12 @@ export function Hero() {
       <div className="wrap relative z-10 flex-1 flex flex-col items-center justify-end md:justify-center text-center pt-36 md:pt-44 pb-14 md:pb-20 w-full">
         <motion.div {...enter(0.25)} className="label-code text-white/55 flex items-center justify-center gap-3">
           <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-[var(--sw-red)] pulse-red" />
-          Security alert · StyleSmuggler · updated {UPDATED_LABEL}
+          Security alert · StyleSmuggler · Updated {UPDATED_LABEL}
         </motion.div>
 
         <h1 className="mt-6 md:mt-8 font-head text-white w-full">
           <motion.span {...enter(0.5)} className={`block ${H1_SIZE}`}>
-            <span className="inline-block whitespace-nowrap">Magento zero-day</span>{" "}
-            <span className="inline-block whitespace-nowrap">under active attack</span>
+            A critical Magento vulnerability.
           </motion.span>
           <motion.span
             {...enter(0.8)}
@@ -56,43 +53,55 @@ export function Hero() {
               textShadow: "0 0 48px rgba(110,247,110,0.25)",
             }}
           >
-            scandiweb is on it
+            Our team is on it.
           </motion.span>
         </h1>
 
         <motion.p
           {...enter(1.05)}
-          className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]"
+          className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
         >
-          A <span className="whitespace-nowrap">zero-day</span> is a security hole
-          that attackers found before a fix exists. StyleSmuggler is one. It lets
-          anyone take control of a Magento or Adobe Commerce store, no password
-          needed. Every current version is affected. Attacks began September 4,
-          and Adobe has no fix out yet.
+          Attackers are exploiting a newly discovered security flaw called
+          StyleSmuggler. A successful attack could give them control of your
+          store and access to customer and order data.
+        </motion.p>
+        <motion.p
+          {...enter(1.15)}
+          className="mt-4 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
+        >
+          scandiweb’s team is checking stores for signs of compromise and
+          applying temporary protection while an official fix is pending.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
           <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Check if your store has been affected
+            Get a free security check
             <ArrowDown className="h-4 w-4" />
           </a>
           <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Have a call about security
+            Talk to our team
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </motion.div>
       </div>
 
       <motion.div {...enter(1.6)} className="relative z-10 border-t border-white/10">
-        <div className="wrap py-5 md:py-6 flex items-center justify-between gap-6">
-          <div className="label-code text-white/60">
-            No fix from Adobe as of {UPDATED_SHORT}
-            <span className="hidden sm:inline"> · Adobe&apos;s next security update is due {NEXT_BULLETIN}</span>
-          </div>
-          <div className="label-code text-white/40 hidden sm:flex items-center gap-2">
-            Scroll
-            <ArrowDown className="h-3 w-3" />
-          </div>
+        <div className="wrap py-5 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-10">
+          <p className="text-[13px] md:text-[14px] leading-relaxed text-white/65 max-w-[78ch]">
+            <span className="label-code text-white/55 mr-2">Patch status</span>
+            The latest Sansec advisory reports no official Adobe fix. Adobe’s next
+            security release is scheduled for {NEXT_BULLETIN}, but a fix for
+            StyleSmuggler has not been confirmed.
+          </p>
+          <a
+            href={SANSEC_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 shrink-0 font-head font-semibold text-[14px] text-white/75 hover:text-white transition"
+          >
+            Read the security advisory
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       </motion.div>
     </section>

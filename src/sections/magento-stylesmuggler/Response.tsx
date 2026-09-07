@@ -4,19 +4,19 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const STEPS: { title: string; body: string }[] = [
   {
-    title: "Look for signs of a break-in",
+    title: "Check for signs of compromise",
     body:
-      "Hidden programs, changed schedules, planted files: the traces this attack leaves behind. If we find anything, you hear about it first.",
+      "We inspect your store for malicious files, suspicious background activity, and other known signs of this attack. If we find anything concerning, we’ll explain what we found and the next steps.",
   },
   {
-    title: "Block the attack",
+    title: "Apply temporary protection",
     body:
-      "We close the door the attackers use, today, and help work on the official fix. When Adobe releases it, we install it.",
+      "We apply protective measures against the known attack and check how they affect your store. Once an official fix is available, we’ll review, test, and install it.",
   },
   {
-    title: "Make sure shopping still works",
+    title: "Test the shopping journey",
     body:
-      "We test the cart and checkout by hand and run our automated tests, so the fix never costs you an order.",
+      "We manually test key shopping steps, including cart and checkout, and run our core automated tests to check that the protective changes work with your store.",
   },
 ];
 
@@ -26,15 +26,14 @@ export function Response() {
       <div className="wrap">
         <Reveal>
           <div className="label-code text-white/45">
-            For every scandiweb Magento and Adobe Commerce client
+            For scandiweb Magento and Adobe Commerce clients
           </div>
           <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
-            What scandiweb does on{" "}
+            How we’re protecting{" "}
             <span style={{ color: "var(--sw-mint)" }}>your store</span>
           </h2>
           <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">
-            Every client heard from us on the day the flaw became public. On
-            each store, we:
+            Our team is treating this as a priority, with three areas of focus:
           </p>
         </Reveal>
 
@@ -61,8 +60,8 @@ export function Response() {
 
         <Reveal delay={0.3}>
           <p className="mt-8 md:mt-10 text-white/55 text-[14px] md:text-[15px] leading-relaxed max-w-[64ch]">
-            Blocking the attack can affect some features or integrations for a
-            short time. We check for that first and keep any disruption small.
+            Some changes may temporarily affect features or integrations. We
+            check these dependencies and work to keep disruption to a minimum.
           </p>
         </Reveal>
       </div>

@@ -253,15 +253,16 @@ export function Check() {
       <div className="wrap">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/45">Free check · no access to your store needed</div>
+            <div className="label-code text-white/45">Free initial check · No store access required</div>
             <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
-              Check if your store has been{" "}
-              <span style={{ color: "var(--sw-mint)" }}>affected</span>
+              Find out what to{" "}
+              <span style={{ color: "var(--sw-mint)" }}>check next</span>
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[44ch]">
-              Answer a few questions. You get a first read right away, and
-              scandiweb replies with what we see from the outside and what to
-              do next.
+              Share your store address and answer a few questions to get an
+              initial assessment. Our Magento engineers will review your
+              submission, check what is visible externally, and email you
+              recommended next steps.
             </p>
           </Reveal>
 
@@ -319,7 +320,7 @@ export function Check() {
                       }}
                       noValidate
                     >
-                      <Field id="ss-website" label="Store address" error={errors.website}>
+                      <Field id="ss-website" label="Store URL" error={errors.website}>
                         <input
                           id="ss-website"
                           type="text"
@@ -425,7 +426,7 @@ export function Check() {
                           disabled={status === "submitting"}
                           className={`${btnPrimary} w-full sm:w-auto disabled:opacity-60`}
                         >
-                          {status === "submitting" ? "Sending" : "Check my store"}
+                          {status === "submitting" ? "Sending" : "Get my initial assessment"}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       </div>
@@ -441,13 +442,14 @@ export function Check() {
                         Thanks, {contact.firstname.trim()}. We take it from here
                       </h3>
                       <p className="mt-4 text-white/75 text-[15px] leading-relaxed">
-                        scandiweb checks {contact.website.trim()} from the outside and
-                        replies to {contact.email.trim()}.
+                        Our Magento engineers review your submission, check what is
+                        visible externally on {contact.website.trim()}, and email{" "}
+                        {contact.email.trim()} with recommended next steps.
                       </p>
 
                       {read.length > 0 && (
                         <div className="mt-7">
-                          <div className="label-code text-white/55">First read, from your answers</div>
+                          <div className="label-code text-white/55">Initial assessment, from your answers</div>
                           <dl className="mt-3 border-t border-white/10">
                             {read.map((r) => (
                               <div
@@ -464,7 +466,7 @@ export function Check() {
 
                       <div className="mt-8">
                         <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={btnSecondary}>
-                          Have a call about security
+                          Talk to our team
                           <ArrowUpRight className="h-4 w-4" />
                         </a>
                       </div>
@@ -475,7 +477,7 @@ export function Check() {
             </div>
             {step < 3 && (
               <p className="label-code text-white/45 mt-3 px-1">
-                Read by scandiweb&apos;s Magento engineers, weekend included.
+                Reviewed by scandiweb’s Magento engineers, including on weekends.
               </p>
             )}
           </Reveal>

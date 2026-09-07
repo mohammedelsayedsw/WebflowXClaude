@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 // The root layout applies the `%s | scandiweb` template, so the page title
 // carries no suffix of its own. OG and Twitter titles are not templated.
-const TITLE = "StyleSmuggler: Magento zero-day emergency response";
+const TITLE = "StyleSmuggler: a critical Magento vulnerability";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "StyleSmuggler is a security hole in every current Magento and Adobe Commerce version. Attackers are using it now, and Adobe has no fix yet. scandiweb checks stores for break-ins, blocks the attack, and keeps checkout working. Check if your store has been affected, or have a call about security.";
+  "Attackers are exploiting a newly discovered Magento and Adobe Commerce security flaw called StyleSmuggler. scandiweb is checking stores for signs of compromise and applying temporary protection while an official fix is pending. Get a free security check or talk to our team.";
 
 export const metadata: Metadata = {
   title: TITLE,

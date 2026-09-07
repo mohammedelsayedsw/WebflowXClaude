@@ -6,7 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 const points: string[] = [
   "What a CDP and marketing automation do, in plain words",
   "How Sportland grew revenue on a smaller marketing budget",
-  "Why Sportland moved off Klaviyo to Bloomreach",
+  "Why Sportland moved to a unified platform",
   "Personalization across every market, run from one platform",
   "Where retail personalization is heading, and what AI changes",
   "What the build really takes, and what to automate",

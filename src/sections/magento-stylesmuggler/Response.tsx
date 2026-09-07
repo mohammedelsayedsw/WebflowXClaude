@@ -6,7 +6,7 @@ const STEPS: { title: string; body: string }[] = [
   {
     title: "Check for compromise",
     body:
-      "Hidden background processes, planted cron entries, poisoned failure reports, the file drops Sansec has documented. If we find anything, you hear about it first.",
+      "Hidden background processes, planted cron entries, poisoned failure reports, and the file drops seen in confirmed attacks. If we find anything, you hear about it first.",
   },
   {
     title: "Apply temporary protection",
@@ -29,7 +29,7 @@ export function Response() {
             For every scandiweb Magento and Adobe Commerce client
           </div>
           <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
-            What the 24/7 team does on{" "}
+            What scandiweb does on{" "}
             <span style={{ color: "var(--sw-mint)" }}>your store</span>
           </h2>
           <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[52ch]">

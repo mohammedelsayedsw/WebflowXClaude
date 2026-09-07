@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
-import { CALL_URL, NEXT_BULLETIN, SANSEC_URL, UPDATED_LABEL, UPDATED_SHORT } from "./status";
+import { CALL_URL, NEXT_BULLETIN, UPDATED_LABEL, UPDATED_SHORT } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -43,7 +43,7 @@ export function Hero() {
             {...enter(0.5)}
             className="block text-[38px] sm:text-[52px] md:text-[68px] lg:text-[84px] leading-[1.0] tracking-[-0.025em] max-w-[15ch]"
           >
-            A Magento <span className="whitespace-nowrap">zero-day</span> is being exploited right now
+            Magento <span className="whitespace-nowrap">zero-day</span> under active attack
           </motion.span>
           <motion.span
             {...enter(0.8)}
@@ -53,7 +53,7 @@ export function Hero() {
               textShadow: "0 0 48px rgba(110,247,110,0.25)",
             }}
           >
-            Our 24/7 team is on it
+            scandiweb is on it
           </motion.span>
         </h1>
 
@@ -61,19 +61,10 @@ export function Hero() {
           {...enter(1.05)}
           className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch]"
         >
-          On September 5, Sansec disclosed StyleSmuggler: an unauthenticated
+          StyleSmuggler, disclosed on September 5, is an unauthenticated
           remote code execution flaw in every current version of Magento and
           Adobe Commerce, 2.4.9 included. Attacks began September 4. There is
-          no official Adobe patch yet.{" "}
-          <a
-            href={SANSEC_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-baseline gap-1 text-white/70 underline underline-offset-4 decoration-white/30 hover:text-white transition"
-          >
-            Sansec&apos;s advisory
-            <ArrowUpRight className="h-3.5 w-3.5 self-center" />
-          </a>
+          no official Adobe patch yet.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center gap-4">

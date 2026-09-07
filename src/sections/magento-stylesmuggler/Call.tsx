@@ -42,12 +42,12 @@ export function Call() {
             <div className="md:pt-2 md:border-l md:border-white/10 md:pl-12">
               <div className="label-code text-white/55">Hosting</div>
               <h3 className="mt-5 font-head font-semibold text-white text-[22px] md:text-[26px] leading-[1.15]">
-                The same team runs ReadyMage
+                scandiweb also runs ReadyMage
               </h3>
               <p className="mt-4 text-white/75 text-[15px] md:text-[16px] leading-relaxed max-w-[40ch]">
-                Managed Magento and Adobe Commerce hosting from scandiweb, with
-                Sansec malware protection, a WAF, and DDoS defense built in. The
-                place to be for the next{" "}
+                Managed Magento and Adobe Commerce hosting, with malware
+                protection, a WAF, and DDoS defense built in. The place to be
+                for the next{" "}
                 <span className="whitespace-nowrap">zero-day</span>.
               </p>
               <div className="mt-7">

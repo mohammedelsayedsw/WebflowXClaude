@@ -61,16 +61,10 @@ export function Hero() {
           {...enter(1.05)}
           className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
         >
-          Attackers are exploiting a newly discovered security flaw called
-          StyleSmuggler. A successful attack could give them control of your
-          store and access to customer and order data.
-        </motion.p>
-        <motion.p
-          {...enter(1.15)}
-          className="mt-4 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
-        >
-          scandiweb’s team is checking stores for signs of compromise and
-          applying temporary protection while an official fix is pending.
+          Attackers are exploiting a newly discovered flaw called StyleSmuggler
+          that can give them control of your store and its customer data.
+          scandiweb is checking stores for signs of compromise and applying
+          temporary protection while an official fix is pending.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">

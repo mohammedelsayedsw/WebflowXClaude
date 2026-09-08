@@ -87,16 +87,17 @@ export function Hero() {
 
               <Reveal delay={0.05}>
                 {/* The breaks are set on purpose from md up, so the headline
-                    reads as launches / the data entry / the returns, and the
-                    green phrase stays whole on its own line. Phones wrap
-                    naturally. */}
+                    reads as launches / the data entry and returns / what it
+                    cost you. "returns" belongs with the other two symptoms, so
+                    it sits on line two in white, and the green carries the
+                    consequence on its own. Phones wrap naturally. */}
                 <h1 className="font-head text-white text-[30px] sm:text-[38px] md:text-[44px] lg:text-[clamp(34px,min(5.4vh,3.8vw),48px)] leading-[1.08] tracking-[-0.02em] text-balance md:[text-wrap:initial]">
                   Slow product launches,
                   <br className="hidden md:block" />{" "}
-                  hours of data entry, and
+                  hours of data entry, and returns
                   <br className="hidden md:block" />{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
-                    returns you could have avoided
+                    you could have avoided
                   </span>
                 </h1>
               </Reveal>

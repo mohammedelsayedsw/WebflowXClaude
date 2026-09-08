@@ -1,40 +1,18 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Lockup } from "./Lockup";
 
 /**
- * TODO: insert the HubSpot formId for this webinar, then replace the placeholder
- * below with <HubSpotForm portalId="25724996" formId="..." region="eu1"
- * submitText="Save your seat" />. The placeholder keeps the layout honest in the
- * meantime and must not go live as the registration path.
+ * The real registration form, replacing the placeholder that stood here while
+ * the form ID was pending.
+ *
+ * HubSpotForm loads the same v2 embed script the snippet uses, and passes empty
+ * `css` and `cssRequired` so HubSpot ships no stylesheet of its own. The look
+ * comes from `.hubspot-form-wrapper .hbspt-form *` in globals.css, which is why
+ * this reads as part of the page rather than a HubSpot form dropped onto it.
  */
-function FormPlaceholder() {
-  const fields = ["First name", "Last name", "Work email", "Company"];
-  return (
-    <div className="rounded-[4px] border border-white/15 bg-white/[0.04] p-6 md:p-7">
-      <div className="grid gap-4 sm:grid-cols-2">
-        {fields.map((f) => (
-          <label key={f} className="flex flex-col gap-2">
-            <span className="font-head text-[11px] font-medium uppercase tracking-[0.05em] text-white/55">
-              {f}
-            </span>
-            <span
-              aria-hidden
-              className="h-11 rounded-[2px] border border-white/15 bg-white/[0.05]"
-            />
-          </label>
-        ))}
-      </div>
-      <div className="mt-6 h-12 rounded-[2px] border border-[var(--sw-beige)]/60 bg-transparent flex items-center justify-center font-head font-semibold text-[17px] text-[var(--sw-beige)]/70">
-        Save your seat
-      </div>
-      <p className="mt-4 label-code text-[var(--sw-orange)]">
-        Placeholder form, HubSpot form ID pending
-      </p>
-    </div>
-  );
-}
 
 export function CTA() {
   return (
@@ -83,13 +61,13 @@ export function CTA() {
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              One hour, four real examples, and a free PIM prototype
-              {/* break set from md up, so the prototype offer gets line two to
-                  itself. Phones wrap naturally. */}
+              In one hour we&apos;ll work through four common problems in a live
+              system.
+              {/* break set from md up, so the prototype offer gets its own
+                  line. Phones wrap naturally. */}
               <br className="hidden md:block" />{" "}
-              <span className="whitespace-nowrap">
-                built on your own catalog.
-              </span>
+              Afterwards you can request a free PIM prototype on your own
+              catalog.
             </p>
           </Reveal>
 
@@ -97,13 +75,19 @@ export function CTA() {
               without it the wrapper shrinks to the form's intrinsic width. */}
           <Reveal delay={0.2} className="w-full">
             <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <FormPlaceholder />
+              <HubSpotForm
+                portalId="25724996"
+                formId="1a9ed7a5-66ca-4c97-9d52-cc743fcd2ca4"
+                region="eu1"
+                submitText="Save your seat"
+              />
             </div>
           </Reveal>
 
           <Reveal delay={0.26}>
             <p className="mt-5 text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-              Free. The recording goes to everyone who registers.
+              Can&apos;t join live? Register and we&apos;ll send you the
+              recording.
             </p>
           </Reveal>
 

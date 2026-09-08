@@ -30,7 +30,8 @@ const FACTS: { title: string; body: string; link?: { label: string; href: string
   {
     title: "Older versions get no patch",
     body:
-      "Adobe’s hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no fix, and the only way to close the hole for good is to upgrade.",
+      "Adobe’s hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no fix, and the only way to close the hole for good is to upgrade. For 2.2.0 to 2.4.3, scandiweb has rebuilt the hotfix in the meantime.",
+    link: { label: "Get the patch for 2.2.0 to 2.4.3", href: "#pdf" },
   },
 ];
 
@@ -62,6 +63,7 @@ export function Facts() {
                   {f.link && (
                     <a
                       href={f.link.href}
+                      onClick={f.link.href.startsWith("#") ? scrollToId(f.link.href.slice(1)) : undefined}
                       className="mt-3 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/80 hover:text-white transition"
                     >
                       {f.link.label}

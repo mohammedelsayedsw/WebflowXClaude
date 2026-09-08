@@ -29,7 +29,7 @@ const FAQS: Q[] = [
   },
   {
     q: "Is the fix available for my version?",
-    a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good.",
+    a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good. For Magento 2.2.0 to 2.4.3, scandiweb has rebuilt Adobe’s hotfix in the meantime; the PDF on this page comes with the patch bundle.",
   },
   {
     q: "How do I know if my store has been hacked?",

@@ -40,15 +40,3 @@ export function Lockup({ size = 1 }: { size?: number }) {
     </div>
   );
 }
-
-/** Platinum partner badge, used as proof at the foot of the hero. */
-export function PartnerBadge() {
-  return (
-    /* eslint-disable-next-line @next/next/no-img-element */
-    <img
-      src={assetUrl("/webinars/pimcore/pimcore-platinum-partner.png")}
-      alt="scandiweb is a Pimcore Platinum Solution Partner"
-      className="w-auto shrink-0 h-[58px] sm:h-[66px] lg:h-[78px]"
-    />
-  );
-}

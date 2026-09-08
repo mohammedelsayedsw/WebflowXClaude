@@ -2,6 +2,7 @@
 
 import { Hero } from "@/sections/webinars-pimcore/Hero";
 import { Takeaways } from "@/sections/webinars-pimcore/Takeaways";
+import { Basics } from "@/sections/webinars-pimcore/Basics";
 import { Problem } from "@/sections/webinars-pimcore/Problem";
 import { Costs } from "@/sections/webinars-pimcore/Costs";
 import { Covered } from "@/sections/webinars-pimcore/Covered";
@@ -16,6 +17,7 @@ export default function Page() {
     <main className="min-h-screen flex flex-col">
       <Hero />
       <Covered />
+      <Basics />
       <Problem />
       <Costs />
       <Demos />

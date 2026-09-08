@@ -8,12 +8,17 @@ import { assetUrl } from "@/lib/assets";
  * and they sit on one optical baseline.
  */
 export function Lockup({ size = 1 }: { size?: number }) {
-  const brands: { src: string; alt: string; h: number }[] = [
+  const brands: { src: string; alt: string; h: number; nudge?: number }[] = [
     { src: "/shared/logos/scandiweb.svg", alt: "scandiweb", h: 19 },
     // 20% up on the 21 it shared with scandiweb. The two were matched on
     // optical weight, which left the Pimcore mark reading smaller than it
     // should for a co-brand at the foot of the page.
-    { src: "/webinars/pimcore/logo-pimcore.png", alt: "Pimcore", h: 25.2 },
+    //
+    // The nudge is optical, not geometric. Flex centres the two boxes, but the
+    // Pimcore wordmark sits high inside its own artwork, so centred boxes leave
+    // it reading a hair above scandiweb's baseline. `nudge` is the same escape
+    // hatch CaseLockup uses for the same reason.
+    { src: "/webinars/pimcore/logo-pimcore.png", alt: "Pimcore", h: 25.2, nudge: 1 },
   ];
 
   return (
@@ -36,6 +41,7 @@ export function Lockup({ size = 1 }: { size?: number }) {
             style={{
               height: `${b.h * size}px`,
               filter: "brightness(0) invert(1)",
+              transform: b.nudge ? `translateY(${b.nudge}px)` : undefined,
             }}
           />
         </span>

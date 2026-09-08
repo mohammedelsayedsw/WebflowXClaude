@@ -12,14 +12,14 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
  *
  * The form is rendered by the shared HubSpotForm embed; its look comes from
  * `.hubspot-form-wrapper` in globals.css, the same dark inputs and mint focus
- * as the check form further down.
+ * as the rest of the page.
  */
 const PORTAL_ID = "25724996";
 const PDF_FORM_ID = "9cf3ef20-5b6e-4586-a964-d4e4dd1f2071";
 
 const INSIDE: string[] = [
+  "41 patch files, one per Magento version from 2.2.0 to 2.4.3-p3",
   "Which versions Adobe’s hotfix covers, and which get nothing",
-  "The patch bundle: 41 patch files, one per Magento version from 2.2.0 to 2.4.3-p3",
   "What to check for before you patch, and how to apply it in 4 steps",
 ];
 
@@ -31,13 +31,13 @@ export function Download() {
           <Reveal>
             <div className="label-code text-white/55">Running 2.2.0 to 2.4.3?</div>
             <h2 className="mt-5 font-head text-white text-[34px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[16ch]">
-              Get the fix Adobe{" "}
+              Download the patch Adobe{" "}
               <span style={{ color: "var(--sw-mint)" }}>didn’t ship</span>
             </h2>
             <p className="mt-6 text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[50ch]">
               Adobe’s hotfix stops at Commerce 2.4.4 and Open Source 2.4.6.
               scandiweb rebuilt it for 41 older versions. Leave your email and
-              we send you the PDF with the patch bundle.
+              we send you the patch bundle with a short guide.
             </p>
             <ul className="mt-8 border-t border-white/10">
               {INSIDE.map((item) => (
@@ -58,12 +58,11 @@ export function Download() {
                 portalId={PORTAL_ID}
                 formId={PDF_FORM_ID}
                 region="eu1"
-                submitText="Send me the PDF"
+                submitText="Download patch"
               />
               <p className="mt-4 text-white/55 text-[13px] md:text-[14px] leading-relaxed">
-                One email, no sequence. Apply the patch on staging first, and
-                check the store for a break-in if it has been online since
-                September 4.
+                Apply the patch on staging first, and check the store for a
+                break-in if it has been online since September 4.
               </p>
             </div>
           </Reveal>

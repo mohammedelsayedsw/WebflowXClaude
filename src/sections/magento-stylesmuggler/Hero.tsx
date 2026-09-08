@@ -62,12 +62,13 @@ export function Hero() {
           className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
         >
           A new Magento flaw, StyleSmuggler, is being exploited. scandiweb is
-          checking stores and installing Adobe’s fix.
+          installing Adobe’s fix and has rebuilt it for the versions Adobe
+          left out.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
-          <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Get a free security check
+          <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
+            Download patch
             <ArrowDown className="h-4 w-4" />
           </a>
           <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>

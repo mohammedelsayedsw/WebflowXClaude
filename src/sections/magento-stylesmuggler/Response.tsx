@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { PATCH_DATE } from "./status";
 
 const STEPS: { title: string; body: string }[] = [
   {
@@ -9,9 +10,9 @@ const STEPS: { title: string; body: string }[] = [
       "We inspect your store for malicious files, suspicious background activity, and other known signs of this attack. If we find anything concerning, we’ll explain what we found and the next steps.",
   },
   {
-    title: "Apply temporary protection",
+    title: "Install the fix",
     body:
-      "We apply protective measures against the known attack and check how they affect your store. Once an official fix is available, we’ll review, test, and install it.",
+      `We review, test, and install Adobe’s ${PATCH_DATE} hotfix, rotate the encryption key and credentials as Adobe requires, and keep temporary protection in place until that is done. Stores on a version Adobe no longer patches keep the protection and get an upgrade plan.`,
   },
   {
     title: "Test the shopping journey",

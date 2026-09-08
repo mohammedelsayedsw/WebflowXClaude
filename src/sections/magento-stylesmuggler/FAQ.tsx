@@ -1,9 +1,10 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { NEXT_BULLETIN } from "./status";
+import { ArrowUpRight } from "lucide-react";
+import { ADOBE_BULLETIN, CVE, PATCH_DATE, UPGRADE_URL } from "./status";
 
-type Q = { q: string; a: string };
+type Q = { q: string; a: string; link?: { label: string; href: string } };
 
 const FAQS: Q[] = [
   {
@@ -12,11 +13,11 @@ const FAQS: Q[] = [
   },
   {
     q: "Which versions are affected?",
-    a: "Every current version, including 2.4.9. The attack has been reproduced on clean 2.4.7, 2.4.8, and 2.4.9 installations, and the first confirmed victim ran 2.4.6 with the latest security patches installed.",
+    a: "Every version from 2.4.4 up to 2.4.9, including the latest patch levels, and older versions are affected too. The first confirmed victim ran 2.4.6 with the latest security patches installed.",
   },
   {
     q: "My store has all the latest security patches. Am I safe?",
-    a: "No. The first confirmed victim had Adobe’s July and August 2026 security updates installed. There is no patch for this flaw yet, so being up to date does not cover it.",
+    a: `Not unless the ${PATCH_DATE} hotfix is installed. The first confirmed victim had Adobe’s July and August 2026 security updates installed. Even with the hotfix in place, a store that was attacked before it went in still needs to be checked.`,
   },
   {
     q: "How many stores are affected?",
@@ -24,7 +25,12 @@ const FAQS: Q[] = [
   },
   {
     q: "Is there an official fix from Adobe?",
-    a: `Not yet. Adobe has confirmed it is working on a patch but has not given a date. Adobe’s next scheduled security release is ${NEXT_BULLETIN}, and it is not confirmed to include a fix for StyleSmuggler.`,
+    a: `Yes. Adobe published an emergency hotfix on ${PATCH_DATE} (bulletin ${ADOBE_BULLETIN}, ${CVE}, the highest severity rating). It ships as a composer patch, not a full release, and Adobe also requires rotating your encryption key and credentials.`,
+  },
+  {
+    q: "Is the fix available for my version?",
+    a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good.",
+    link: { label: "Fixed-price Magento upgrade", href: UPGRADE_URL },
   },
   {
     q: "How do I know if my store has been hacked?",
@@ -32,15 +38,15 @@ const FAQS: Q[] = [
   },
   {
     q: "What should I do right now?",
-    a: "Three things: have someone check the store for signs of compromise, put temporary protection in place against the known attack, and test cart and checkout afterwards. If you have a Magento partner, ask them today. If not, use the free check on this page or book a call.",
+    a: "Three things: install Adobe’s hotfix and rotate your encryption key and credentials, have someone check the store for signs of compromise, and test cart and checkout afterwards. If you have a Magento partner, ask them today. If not, use the free check on this page or book a call.",
   },
   {
     q: "Do I need to take my store offline?",
     a: "Usually not. Temporary protection can be put in place while the store keeps selling. Taking a store offline is a last resort for a store that is confirmed compromised.",
   },
   {
-    q: "What happens once Adobe releases the patch?",
-    a: "The patch has to be reviewed, tested, and installed on your store, and the temporary protection stays in place until that is done. Installing the patch does not remove a backdoor that was planted earlier, so the check for compromise still matters.",
+    q: "Does installing the patch make my store safe?",
+    a: "It closes the hole for new attacks. It does not remove a backdoor planted earlier, and it does not undo credentials an attacker already read. That is why Adobe requires rotating the encryption key and every credential it protected, and why the check for compromise still matters.",
   },
   {
     q: "Does this affect Hyvä, PWA, or headless stores?",
@@ -97,9 +103,18 @@ export function FAQ() {
                       +
                     </span>
                   </summary>
-                  <p className="pb-6 pr-12 text-[15px] md:text-[16px] text-white/75 leading-relaxed max-w-[64ch]">
-                    {f.a}
-                  </p>
+                  <div className="pb-6 pr-12 max-w-[64ch]">
+                    <p className="text-[15px] md:text-[16px] text-white/75 leading-relaxed">{f.a}</p>
+                    {f.link && (
+                      <a
+                        href={f.link.href}
+                        className="mt-3 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/80 hover:text-white transition"
+                      >
+                        {f.link.label}
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
                 </details>
               </Reveal>
             ))}

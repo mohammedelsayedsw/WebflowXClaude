@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 const TITLE = "StyleSmuggler: a critical Magento vulnerability";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "Attackers are exploiting a newly discovered Magento and Adobe Commerce security flaw called StyleSmuggler. scandiweb is checking stores for signs of compromise and applying temporary protection while an official fix is pending. Get a free security check or talk to our team.";
+  "Attackers are exploiting a newly discovered Magento and Adobe Commerce security flaw called StyleSmuggler. Adobe released an emergency hotfix on September 7; Magento Open Source stores below 2.4.6 get no patch. scandiweb checks stores for signs of compromise, installs the fix, and protects stores that cannot be patched. Get a free security check or talk to our team.";
 
 export const metadata: Metadata = {
   title: TITLE,

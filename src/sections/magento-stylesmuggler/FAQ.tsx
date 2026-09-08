@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { ArrowUpRight } from "lucide-react";
-import { ADOBE_BULLETIN, CVE, PATCH_DATE } from "./status";
+import { ADOBE_BULLETIN, CALL_URL, CVE, PATCH_DATE } from "./status";
 
 type Q = { q: string; a: string; link?: { label: string; href: string } };
 
@@ -38,6 +38,7 @@ const FAQS: Q[] = [
   {
     q: "What should I do right now?",
     a: "Three things: install Adobe’s hotfix and rotate your encryption key and credentials, have someone check the store for signs of compromise, and test cart and checkout afterwards. If you have a Magento partner, ask them today. If not, start with the free security check on this page or book a call.",
+    link: { label: "Book a call", href: CALL_URL },
   },
   {
     q: "Do I need to take my store offline?",
@@ -54,6 +55,7 @@ const FAQS: Q[] = [
   {
     q: "I am not a scandiweb client. Can you help?",
     a: "Yes. Start with the free security check on this page or book a call. If your store needs work, we agree on the scope with you first.",
+    link: { label: "Book a call", href: CALL_URL },
   },
 ];
 
@@ -104,6 +106,8 @@ export function FAQ() {
                     {f.link && (
                       <a
                         href={f.link.href}
+                        target={f.link.href.startsWith("http") ? "_blank" : undefined}
+                        rel={f.link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         className="mt-3 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/80 hover:text-white transition"
                       >
                         {f.link.label}

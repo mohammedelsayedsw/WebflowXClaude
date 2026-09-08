@@ -68,7 +68,7 @@ export function CTA() {
                     breaks at a separator and never mid-phrase. */}
                 <span className="whitespace-nowrap">Free webinar</span> &middot;{" "}
                 <span className="whitespace-nowrap">22 October</span> &middot;{" "}
-                <span className="whitespace-nowrap">1:00 PM Riga (10:00 GMT)</span> &middot;{" "}
+                <span className="whitespace-nowrap">10:00 GMT</span> &middot;{" "}
                 <span className="whitespace-nowrap">60 minutes</span>
               </span>
             </div>

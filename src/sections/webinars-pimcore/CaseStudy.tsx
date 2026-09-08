@@ -20,11 +20,17 @@ type Fig = {
   caption: string;
 };
 
-/** All three lead with the result, so all three figures are green. */
+/*
+ * All three lead with the result, so all three figures are green.
+ *
+ * Two of them used to restate the heading: it already says "One system" and
+ * "hours of work became minutes", so a stat saying the same twice earns
+ * nothing. These say what the heading does not.
+ */
 const FIGURES: Fig[] = [
-  { value: "One system", caption: "for every product update" },
+  { from: "20", to: "1", caption: "times the same product is entered" },
   { value: "New markets", caption: "without extra manual work" },
-  { from: "Hours", to: "minutes", caption: "to get one product ready to sell" },
+  { value: "Now live", caption: "products the ERP used to block" },
 ];
 
 const CASE_URL =

@@ -48,7 +48,7 @@ function OfferLine() {
       </span>
       <p className="font-head font-semibold text-white text-[13.5px] sm:text-[14px] md:text-[15px] leading-[1.35]">
         {/* the break is deliberate: the offer reads on two even lines */}
-        Every attendee can get a free
+        Every attendee can request a free
         <br />
         PIM prototype after the webinar
       </p>

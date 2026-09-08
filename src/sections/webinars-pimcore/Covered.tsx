@@ -5,16 +5,15 @@ import { Reveal } from "@/components/primitives/Reveal";
 
 const POINTS: React.ReactNode[] = [
   "Where fragmented product data drains hours and revenue",
-  "What a single source of truth looks like in practice, not in theory",
+  "What it looks like when all your product details live in one place",
   "Real examples of each problem being solved",
-  "Why most AI get stuck on product data, and what fixes that",
+  "Why AI gives wrong answers when your product data is a mess, and what fixes that",
   "How multilingual catalogs stay current as you add markets",
   // held together so "systems" never sits alone on its own line
   <>
     What a PIM project takes, and why it does not mean{" "}
     <span className="whitespace-nowrap">replacing your systems</span>
   </>,
-  "Real examples from catalogs of 80,000 products and more",
   "Live Q&A with the team",
 ];
 

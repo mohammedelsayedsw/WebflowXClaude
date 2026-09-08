@@ -61,8 +61,8 @@ export function CTA() {
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              In one hour we&apos;ll work through four common problems in a live
-              system.
+              In one hour we&apos;ll show you four common problems and real
+              examples of the fix.
               {/* break set from md up, so the prototype offer gets its own
                   line. Phones wrap naturally. */}
               <br className="hidden md:block" />{" "}

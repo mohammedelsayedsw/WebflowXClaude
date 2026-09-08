@@ -10,7 +10,10 @@ import { assetUrl } from "@/lib/assets";
 export function Lockup({ size = 1 }: { size?: number }) {
   const brands: { src: string; alt: string; h: number }[] = [
     { src: "/shared/logos/scandiweb.svg", alt: "scandiweb", h: 19 },
-    { src: "/webinars/pimcore/logo-pimcore.png", alt: "Pimcore", h: 21 },
+    // 20% up on the 21 it shared with scandiweb. The two were matched on
+    // optical weight, which left the Pimcore mark reading smaller than it
+    // should for a co-brand at the foot of the page.
+    { src: "/webinars/pimcore/logo-pimcore.png", alt: "Pimcore", h: 25.2 },
   ];
 
   return (

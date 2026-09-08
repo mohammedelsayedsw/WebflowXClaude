@@ -31,7 +31,7 @@ const FACTS: { title: string; body: string; link?: { label: string; href: string
     title: "Older versions get no patch",
     body:
       "Adobe’s hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no fix, and the only way to close the hole for good is to upgrade. For 2.2.0 to 2.4.3, scandiweb has rebuilt the hotfix in the meantime.",
-    link: { label: "Get the patch for 2.2.0 to 2.4.3", href: "#pdf" },
+    link: { label: "Download the patch for 2.2.0 to 2.4.3", href: "#pdf" },
   },
 ];
 
@@ -82,8 +82,8 @@ export function Facts() {
               This alert does not mean your store has been compromised. It means
               you should check your exposure and take protective action now.
             </p>
-            <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-              Get a free security check
+            <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
+              Download patch
               <ArrowDown className="h-4 w-4" />
             </a>
           </div>

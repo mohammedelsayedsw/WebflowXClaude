@@ -29,15 +29,15 @@ const FAQS: Q[] = [
   },
   {
     q: "Is the fix available for my version?",
-    a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good. For Magento 2.2.0 to 2.4.3, scandiweb has rebuilt Adobe’s hotfix in the meantime; the PDF on this page comes with the patch bundle.",
+    a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good. For Magento 2.2.0 to 2.4.3, scandiweb has rebuilt Adobe’s hotfix in the meantime; download the patch on this page.",
   },
   {
     q: "How do I know if my store has been hacked?",
-    a: "From the outside you often cannot tell. Known signs include unexpected “Payment Transaction Failed Reminder” emails, unfamiliar background processes on the server, new scheduled tasks, and unknown files in the report and temp folders. Someone needs to look at the server. The free check on this page is the first step.",
+    a: "From the outside you often cannot tell. Known signs include unexpected “Payment Transaction Failed Reminder” emails, unfamiliar background processes on the server, new scheduled tasks, and unknown files in the report and temp folders. Someone needs to look at the server. If you do not have a Magento partner, book a call with our team.",
   },
   {
     q: "What should I do right now?",
-    a: "Three things: install Adobe’s hotfix and rotate your encryption key and credentials, have someone check the store for signs of compromise, and test cart and checkout afterwards. If you have a Magento partner, ask them today. If not, use the free check on this page or book a call.",
+    a: "Three things: install Adobe’s hotfix and rotate your encryption key and credentials, have someone check the store for signs of compromise, and test cart and checkout afterwards. If you have a Magento partner, ask them today. If not, download the patch on this page or book a call.",
   },
   {
     q: "Do I need to take my store offline?",
@@ -53,7 +53,7 @@ const FAQS: Q[] = [
   },
   {
     q: "I am not a scandiweb client. Can you help?",
-    a: "Yes. Start with the free check on this page or book a call. If your store needs work, we agree on the scope with you first.",
+    a: "Yes. Download the patch on this page or book a call. If your store needs work, we agree on the scope with you first.",
   },
 ];
 

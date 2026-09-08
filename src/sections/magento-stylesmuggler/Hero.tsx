@@ -61,10 +61,8 @@ export function Hero() {
           {...enter(1.05)}
           className="mt-7 md:mt-9 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[64ch]"
         >
-          Attackers are exploiting a newly discovered flaw called StyleSmuggler
-          that can give them control of your store and its customer data.
-          scandiweb is checking stores for signs of compromise and installing
-          Adobe’s emergency fix, released {PATCH_DATE}.
+          A new Magento flaw, StyleSmuggler, is being exploited. scandiweb is
+          checking stores and installing Adobe’s fix.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">

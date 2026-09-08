@@ -44,8 +44,8 @@ export function Facts() {
             What this means for your store
           </h2>
           <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[56ch]">
-            Every version from 2.4.4 up to 2.4.9 is affected, and older ones are
-            not safe either. That is well over 100,000 stores worldwide.
+            Every version from 2.4.4 to 2.4.9 is affected. That is well over
+            100,000 stores worldwide.
           </p>
         </Reveal>
 

@@ -83,9 +83,6 @@ export function FAQ() {
               Common{" "}
               <span style={{ color: "var(--sw-mint)" }}>questions</span>
             </h2>
-            <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[40ch]">
-              If yours is not here, ask it in the free check or on a call.
-            </p>
           </Reveal>
 
           <div className="border-t border-white/10">

@@ -14,6 +14,10 @@ import { assetUrl } from "@/lib/assets";
 /**
  * The logo wall.
  *
+ * The order is by shape, not by name. Each row takes one compact mark, one of
+ * middling width and one long wordmark, so no row is three wide wordmarks and
+ * no row is three roundels. Twelve marks fill the three by four exactly.
+ *
  * `h` is the drawn height in pixels, tuned per mark rather than shared, because
  * a single height makes a wide wordmark like Statista shout and a square mark
  * like Nissan disappear. The heights run roughly as height x sqrt(aspect) held
@@ -27,16 +31,22 @@ import { assetUrl } from "@/lib/assets";
  * inside the mark, into a solid blob.
  */
 const LOGOS: { src: string; alt: string; h: number }[] = [
+  // Row 1
   { src: "burger-king.png", alt: "Burger King", h: 44 },
   { src: "audi.png", alt: "Audi", h: 27 },
   { src: "gabor.png", alt: "Gabor", h: 21 },
+  // Row 2
+  { src: "nissan.png", alt: "Nissan", h: 40 },
   { src: "vespa.png", alt: "Vespa", h: 27 },
   { src: "fritz-kola.png", alt: "fritz-kola", h: 24 },
-  { src: "statista.png", alt: "Statista", h: 20 },
+  // Row 3
   { src: "suzuki.png", alt: "Suzuki", h: 36 },
-  { src: "nissan.png", alt: "Nissan", h: 40 },
+  { src: "wainbee.png", alt: "Wainbee", h: 26 },
+  { src: "statista.png", alt: "Statista", h: 20 },
+  // Row 4
   { src: "beauty-works.png", alt: "Beauty Works", h: 38 },
   { src: "raiffeisen-salzburg.png", alt: "Raiffeisen Salzburg", h: 28 },
+  { src: "rockar.png", alt: "Rockar", h: 21 },
 ];
 
 export function Basics() {
@@ -100,10 +110,9 @@ export function Basics() {
 
             {/*
               Flex rather than a fixed grid. Three across from md up and two on
-              a phone, and a trailing part-row centres itself instead of leaving
-              a lone mark hanging under the first column. Ten marks were
-              supplied for the twelve slots a strict three-by-four would need,
-              so the last row carries one, centred.
+              a phone. Twelve marks fill the rows exactly; the centring is kept
+              so a future odd number lands centred rather than hanging under
+              the first column.
             */}
             <ul className="flex flex-wrap justify-center gap-x-6 gap-y-9 md:gap-y-11">
               {LOGOS.map((l, i) => (

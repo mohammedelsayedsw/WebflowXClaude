@@ -430,9 +430,22 @@ export function Check() {
               </AnimatePresence>
             </div>
             {step < 3 && (
-              <p className="label-code text-white/45 mt-3 px-1">
-                Reviewed by scandiweb’s Magento engineers, including on weekends.
-              </p>
+              <>
+                <p className="label-code text-white/45 mt-3 px-1">
+                  Reviewed by scandiweb’s Magento engineers, including on weekends.
+                </p>
+                <p className="mt-4 px-1 text-white/65 text-[14px] md:text-[15px] leading-relaxed">
+                  Rather talk first?{" "}
+                  <a
+                    href={CALL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 underline underline-offset-4 decoration-white/40 hover:decoration-white hover:text-white transition"
+                  >
+                    Book a call with our Magento team
+                  </a>
+                </p>
+              </>
             )}
           </Reveal>
         </div>

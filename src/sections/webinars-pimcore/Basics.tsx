@@ -52,7 +52,7 @@ const LOGOS: { src: string; alt: string; h: number }[] = [
 export function Basics() {
   return (
     <section
-      id="the-platform"
+      id="what-pim-is"
       className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
@@ -65,7 +65,7 @@ export function Basics() {
               <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
                 <span className="text-white/55">2</span>
                 <span className="h-px w-6 bg-white/15" />
-                <span>The platform</span>
+                <span>What PIM is</span>
               </div>
             </Reveal>
 

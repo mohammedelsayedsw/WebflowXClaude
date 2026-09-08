@@ -75,8 +75,13 @@ export function Hero() {
               <Reveal>
                 <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-[clamp(12px,2.2vh,24px)]">
                   <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                    {/* TODO: replace both placeholders once the slot is confirmed */}
-                    Free webinar &middot; [Date TBC] &middot; [Time TBC] &middot; 60 minutes
+                    {/* Each part is held whole, so the line can only break at a
+                        separator. Without this the phone wrap left "minutes"
+                        alone on its own line. */}
+                    <span className="whitespace-nowrap">Free webinar</span> &middot;{" "}
+                    <span className="whitespace-nowrap">22 October</span> &middot;{" "}
+                    <span className="whitespace-nowrap">1:00 PM Riga (10:00 GMT)</span> &middot;{" "}
+                    <span className="whitespace-nowrap">60 minutes</span>
                   </span>
                 </div>
               </Reveal>

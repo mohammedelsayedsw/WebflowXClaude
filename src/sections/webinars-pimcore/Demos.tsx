@@ -136,7 +136,7 @@ function DemoTabs({
     <div className="hidden md:block">
       <div
         role="tablist"
-        aria-label="Live demo scenarios"
+        aria-label="Example scenarios"
         onKeyDown={onKeyDown}
         className="grid grid-cols-4 gap-3 md:gap-4"
       >
@@ -201,7 +201,7 @@ function DemoTabs({
   );
 }
 
-/** Below md the same four demos read better as an accordion, one open at a time. */
+/** Below md the same four examples read better as an accordion, one open at a time. */
 function DemoAccordion({
   active,
   setActive,
@@ -307,14 +307,14 @@ export function Demos() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              Four problems{" "}
-              <span className="text-[var(--sw-blue)]">solved live</span>
+              What the fix{" "}
+              <span className="text-[var(--sw-blue)]">looks like</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              Each demo starts from a situation you will recognize and ends
-              with the problem gone, in a working system with real records.
+              For each one, we&apos;ll show a real example of how it is handled
+              in a working system.
             </p>
           </Reveal>
         </div>
@@ -326,7 +326,7 @@ export function Demos() {
 
         <Reveal delay={0.2}>
           <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            All four demos run in Pimcore, on a real catalog.
+            All four examples run in Pimcore, on real product records.
           </p>
         </Reveal>
       </div>

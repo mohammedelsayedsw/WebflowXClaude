@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
-import { CALL_URL, NEXT_BULLETIN, SANSEC_URL, UPDATED_LABEL } from "./status";
+import { ADOBE_BULLETIN, ADOBE_BULLETIN_URL, CALL_URL, CVE, PATCH_DATE, SANSEC_URL, UPDATED_LABEL } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -63,8 +63,8 @@ export function Hero() {
         >
           Attackers are exploiting a newly discovered flaw called StyleSmuggler
           that can give them control of your store and its customer data.
-          scandiweb is checking stores for signs of compromise and applying
-          temporary protection while an official fix is pending.
+          scandiweb is checking stores for signs of compromise and installing
+          Adobe’s emergency fix, released {PATCH_DATE}.
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
@@ -83,19 +83,31 @@ export function Hero() {
         <div className="wrap py-5 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-10">
           <p className="text-[13px] md:text-[14px] leading-relaxed text-white/65 max-w-[78ch]">
             <span className="label-code text-white/55 mr-2">Patch status</span>
-            The latest Sansec advisory reports no official Adobe fix. Adobe’s next
-            security release is scheduled for {NEXT_BULLETIN}, but a fix for
-            StyleSmuggler has not been confirmed.
+            Adobe released an emergency hotfix on {PATCH_DATE} ({ADOBE_BULLETIN},{" "}
+            {CVE}). It covers Magento Open Source 2.4.6 to 2.4.9 and Adobe
+            Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or
+            older get no patch.
           </p>
-          <a
-            href={SANSEC_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 shrink-0 font-head font-semibold text-[14px] text-white/75 hover:text-white transition"
-          >
-            Read the security advisory
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 shrink-0">
+            <a
+              href={ADOBE_BULLETIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-head font-semibold text-[14px] text-white/75 hover:text-white transition"
+            >
+              Adobe’s bulletin
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <a
+              href={SANSEC_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-head font-semibold text-[14px] text-white/75 hover:text-white transition"
+            >
+              Security advisory
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </section>

@@ -1,15 +1,16 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { PATCH_DATE, UPGRADE_URL } from "./status";
 import { scrollToId } from "./scrollTo";
 
-const FACTS: { title: string; body: string }[] = [
+const FACTS: { title: string; body: string; link?: { label: string; href: string } }[] = [
   {
     title: "Recent updates may not protect you",
     body:
-      "The attack has affected a store with Adobe’s July and August security updates installed. Even if your store is up to date, it needs to be checked.",
+      `The attack has affected a store with Adobe’s July and August security updates installed. Only the ${PATCH_DATE} hotfix closes the hole, and installing it does not undo a break-in that happened before.`,
   },
   {
     title: "Attackers do not need a login",
@@ -24,7 +25,13 @@ const FACTS: { title: string; body: string }[] = [
   {
     title: "Protection and investigation both matter",
     body:
-      "Temporary protection can help block new attacks. Your team also needs to check whether attackers gained access before that protection was in place.",
+      "The hotfix blocks new attacks. Your team also needs to check whether attackers gained access before it was installed, and to rotate the encryption key and credentials, as Adobe requires.",
+  },
+  {
+    title: "Older versions get no patch",
+    body:
+      "Adobe’s hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no fix, and the only way to close the hole for good is to upgrade.",
+    link: { label: "Fixed-price Magento upgrade", href: UPGRADE_URL },
   },
 ];
 
@@ -37,8 +44,8 @@ export function Facts() {
             What this means for your store
           </h2>
           <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[56ch]">
-            Every current version of Magento Open Source and Adobe Commerce is
-            affected. That is well over 100,000 stores worldwide.
+            Every version from 2.4.4 up to 2.4.9 is affected, and older ones are
+            not safe either. That is well over 100,000 stores worldwide.
           </p>
         </Reveal>
 
@@ -49,9 +56,20 @@ export function Facts() {
                 <h3 className="font-head font-semibold text-white text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.01em]">
                   {f.title}
                 </h3>
-                <p className="text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[58ch]">
-                  {f.body}
-                </p>
+                <div>
+                  <p className="text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[58ch]">
+                    {f.body}
+                  </p>
+                  {f.link && (
+                    <a
+                      href={f.link.href}
+                      className="mt-3 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white/80 hover:text-white transition"
+                    >
+                      {f.link.label}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
               </div>
             </Reveal>
           ))}

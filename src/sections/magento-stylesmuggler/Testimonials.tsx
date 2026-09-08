@@ -3,30 +3,22 @@
 import { Reveal } from "@/components/primitives/Reveal";
 
 /** Client replies to the September 6 alert, quoted as written. */
-const QUOTES: { quote: string; name: string; role: string; company: string }[] = [
+const QUOTES: { quote: string; company: string }[] = [
   {
     quote:
       "Thank you for the proactive response. Please proceed with the assessment and any required mitigation activities as outlined in your email.",
-    name: "Glenn Jope",
-    role: "Vice-President, Information Technology",
     company: "Purdys Chocolatier",
   },
   {
     quote: "Thanks, I appreciate the proactive approach here. Please keep us updated.",
-    name: "Nicolai Grevstad",
-    role: "Global Ecommerce Manager",
     company: "Airthings",
   },
   {
     quote: "Thank you very much for your support on this.",
-    name: "Brian Roche",
-    role: "Interim CTO",
     company: "Beauty Works",
   },
   {
     quote: "Thanks all. We greatly appreciate the proactive response.",
-    name: "Melanie Roy",
-    role: "Director, Digital & Direct Sales",
     company: "Purdys Chocolatier",
   },
 ];
@@ -50,17 +42,12 @@ export function Testimonials() {
 
           <div className="border-t border-white/10">
             {QUOTES.map((q, i) => (
-              <Reveal key={q.name + q.company} delay={i * 0.06}>
+              <Reveal key={q.company + i} delay={i * 0.06}>
                 <figure className="py-7 md:py-8 border-b border-white/10">
                   <blockquote className="font-head font-semibold text-white text-[19px] md:text-[22px] leading-[1.3] tracking-[-0.005em] max-w-[52ch]">
                     “{q.quote}”
                   </blockquote>
-                  <figcaption className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="text-[14px] text-white/85">{q.name}</span>
-                    <span className="label-code text-white/45">
-                      {q.role} · {q.company}
-                    </span>
-                  </figcaption>
+                  <figcaption className="mt-4 label-code text-white/55">{q.company}</figcaption>
                 </figure>
               </Reveal>
             ))}

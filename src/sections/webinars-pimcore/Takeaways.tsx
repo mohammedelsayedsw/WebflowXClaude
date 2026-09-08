@@ -21,7 +21,7 @@ const ITEMS: {
   {
     icon: MonitorPlay,
     lead: "How the fix works",
-    body: "See the most common problems fixed, step by step",
+    body: "See real examples of product data problems being solved",
   },
   {
     icon: FolderCheck,

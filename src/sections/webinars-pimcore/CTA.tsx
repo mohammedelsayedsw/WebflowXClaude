@@ -64,8 +64,12 @@ export function CTA() {
           <Reveal>
             <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6">
               <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                {/* TODO: replace both placeholders once the slot is confirmed */}
-                Free webinar &middot; [Date TBC] &middot; [Time TBC] &middot; 60 minutes
+                {/* Held whole per part, as in the hero, so a narrow screen
+                    breaks at a separator and never mid-phrase. */}
+                <span className="whitespace-nowrap">Free webinar</span> &middot;{" "}
+                <span className="whitespace-nowrap">22 October</span> &middot;{" "}
+                <span className="whitespace-nowrap">1:00 PM Riga (10:00 GMT)</span> &middot;{" "}
+                <span className="whitespace-nowrap">60 minutes</span>
               </span>
             </div>
           </Reveal>
@@ -79,7 +83,7 @@ export function CTA() {
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              One hour, four live demos, and a free PIM prototype
+              One hour, four real examples, and a free PIM prototype
               {/* break set from md up, so the prototype offer gets line two to
                   itself. Phones wrap naturally. */}
               <br className="hidden md:block" />{" "}

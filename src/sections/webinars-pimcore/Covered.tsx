@@ -6,11 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 const POINTS: React.ReactNode[] = [
   "Where fragmented product data drains hours and revenue",
   "What a single source of truth looks like in practice, not in theory",
-  // held together so the line breaks before it, never inside the hyphen
-  <>
-    Live demos, from a rejected marketplace listing to a clean{" "}
-    <span className="whitespace-nowrap">multi-channel launch</span>
-  </>,
+  "Real examples of each problem being solved",
   "Why most AI get stuck on product data, and what fixes that",
   "How multilingual catalogs stay current as you add markets",
   // held together so "systems" never sits alone on its own line

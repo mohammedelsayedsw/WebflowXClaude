@@ -44,14 +44,14 @@ export function Testimonials() {
       <div className="wrap">
         <div className="grid gap-10 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
           <Reveal>
-            <div className="label-code text-white/45">Client replies · September 6 to 8</div>
+            <div className="label-code text-white/45">Client replies</div>
             <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
               What clients{" "}
               <span style={{ color: "var(--sw-mint)" }}>said</span>
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[40ch]">
               Every scandiweb Magento and Adobe Commerce client heard from us on
-              the day the flaw became public. Some of the replies, as written.
+              the day the flaw became public.
             </p>
           </Reveal>
 

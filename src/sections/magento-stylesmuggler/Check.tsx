@@ -225,16 +225,13 @@ export function Check() {
       <div className="wrap">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/45">Free initial check · No store access required</div>
-            <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
-              Find out what to{" "}
-              <span style={{ color: "var(--sw-mint)" }}>check next</span>
+            <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
+              Get a free{" "}
+              <span style={{ color: "var(--sw-mint)" }}>security check</span>
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[44ch]">
-              Share your store address and answer a few questions to get an
-              initial assessment. Our Magento engineers will review your
-              submission, check what is visible externally, and email you
-              recommended next steps.
+              Share your store address, answer a few questions, and our Magento
+              engineers email you what to do next.
             </p>
           </Reveal>
 

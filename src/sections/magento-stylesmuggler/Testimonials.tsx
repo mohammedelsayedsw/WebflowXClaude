@@ -24,13 +24,6 @@ const QUOTES: { quote: string; name: string; role: string; company: string }[] =
     company: "Beauty Works",
   },
   {
-    quote:
-      "We are keeping the block in place. I was able to place an order and it sounds like we are safer to keep it in place.",
-    name: "Stephanie Cohen",
-    role: "Director of Marketing",
-    company: "Country Casual Teak",
-  },
-  {
     quote: "Thanks all. We greatly appreciate the proactive response.",
     name: "Melanie Roy",
     role: "Director, Digital & Direct Sales",

@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { PATCH_DATE, UPGRADE_URL } from "./status";
+import { PATCH_DATE } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const FACTS: { title: string; body: string; link?: { label: string; href: string } }[] = [
@@ -31,7 +31,6 @@ const FACTS: { title: string; body: string; link?: { label: string; href: string
     title: "Older versions get no patch",
     body:
       "Adobe’s hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no fix, and the only way to close the hole for good is to upgrade.",
-    link: { label: "Fixed-price Magento upgrade", href: UPGRADE_URL },
   },
 ];
 

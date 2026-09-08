@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { ArrowUpRight } from "lucide-react";
-import { ADOBE_BULLETIN, CVE, PATCH_DATE, UPGRADE_URL } from "./status";
+import { ADOBE_BULLETIN, CVE, PATCH_DATE } from "./status";
 
 type Q = { q: string; a: string; link?: { label: string; href: string } };
 
@@ -30,7 +30,6 @@ const FAQS: Q[] = [
   {
     q: "Is the fix available for my version?",
     a: "The hotfix covers Magento Open Source 2.4.6 to 2.4.9 and Adobe Commerce 2.4.4 to 2.4.9. Magento Open Source stores on 2.4.5 or older get no patch from Adobe. For those, temporary protection buys time, and an upgrade closes the hole for good.",
-    link: { label: "Fixed-price Magento upgrade", href: UPGRADE_URL },
   },
   {
     q: "How do I know if my store has been hacked?",

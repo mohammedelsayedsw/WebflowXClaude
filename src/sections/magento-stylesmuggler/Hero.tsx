@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
-import { ADOBE_BULLETIN, ADOBE_BULLETIN_URL, CALL_URL, CVE, PATCH_DATE, SANSEC_URL, UPDATED_LABEL } from "./status";
+import { ADOBE_BULLETIN, ADOBE_BULLETIN_URL, CVE, PATCH_DATE, SANSEC_URL, UPDATED_LABEL } from "./status";
 import { scrollToId } from "./scrollTo";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -67,13 +67,13 @@ export function Hero() {
         </motion.p>
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
-          <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Download patch
+          <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
+            Get a free security check
             <ArrowDown className="h-4 w-4" />
           </a>
-          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Talk to our team
-            <ArrowUpRight className="h-4 w-4" />
+          <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
+            Download a patch for older Magento
+            <ArrowDown className="h-4 w-4" />
           </a>
         </motion.div>
       </div>

@@ -6,6 +6,7 @@ import { Facts } from "@/sections/magento-stylesmuggler/Facts";
 import { Response } from "@/sections/magento-stylesmuggler/Response";
 import { Download } from "@/sections/magento-stylesmuggler/Download";
 import { Testimonials } from "@/sections/magento-stylesmuggler/Testimonials";
+import { Check } from "@/sections/magento-stylesmuggler/Check";
 import { FAQ } from "@/sections/magento-stylesmuggler/FAQ";
 import { Call } from "@/sections/magento-stylesmuggler/Call";
 
@@ -18,6 +19,7 @@ export default function Page() {
       <Response />
       <Download />
       <Testimonials />
+      <Check />
       <FAQ />
       <Call />
     </main>

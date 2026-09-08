@@ -82,8 +82,8 @@ export function Facts() {
               This alert does not mean your store has been compromised. It means
               you should check your exposure and take protective action now.
             </p>
-            <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-              Download patch
+            <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
+              Get a free security check
               <ArrowDown className="h-4 w-4" />
             </a>
           </div>

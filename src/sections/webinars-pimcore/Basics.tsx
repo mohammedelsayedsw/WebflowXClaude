@@ -90,7 +90,10 @@ export function Basics() {
           {/* RIGHT · who runs on it */}
           <div>
             <Reveal delay={0.1}>
-              <div className="label-code mb-7 md:mb-9 text-white/55">
+              {/* Centred over the wall, which centres its own rows, so the
+                  label sits on the same axis as the marks under it rather than
+                  hanging off the left edge of a centred block. */}
+              <div className="label-code mb-7 md:mb-9 text-white/55 text-center">
                 Brands using Pimcore
               </div>
             </Reveal>

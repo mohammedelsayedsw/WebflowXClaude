@@ -78,9 +78,10 @@ export function Hero() {
                     {/* Each part is held whole, so the line can only break at a
                         separator. Without this the phone wrap left "minutes"
                         alone on its own line. */}
-                    <span className="whitespace-nowrap">Free webinar</span> &middot;{" "}
+                    <span className="whitespace-nowrap">Free webinar on product data</span>{" "}
+                    &middot;{" "}
                     <span className="whitespace-nowrap">22 October</span> &middot;{" "}
-                    <span className="whitespace-nowrap">1:00 PM Riga (10:00 GMT)</span> &middot;{" "}
+                    <span className="whitespace-nowrap">10:00 GMT</span> &middot;{" "}
                     <span className="whitespace-nowrap">60 minutes</span>
                   </span>
                 </div>
@@ -88,12 +89,13 @@ export function Hero() {
 
               <Reveal delay={0.05}>
                 {/* The breaks are set on purpose from md up, so the headline
-                    reads as launches / hours lost / the returns, and the green
-                    phrase stays whole on its own line. Phones wrap naturally. */}
+                    reads as launches / the data entry / the returns, and the
+                    green phrase stays whole on its own line. Phones wrap
+                    naturally. */}
                 <h1 className="font-head text-white text-[30px] sm:text-[38px] md:text-[44px] lg:text-[clamp(34px,min(5.4vh,3.8vw),48px)] leading-[1.08] tracking-[-0.02em] text-balance md:[text-wrap:initial]">
                   Slow product launches,
                   <br className="hidden md:block" />{" "}
-                  hours lost to manual data entry, and
+                  hours of data entry, and
                   <br className="hidden md:block" />{" "}
                   <span style={{ color: "var(--sw-mint)" }}>
                     returns you could have avoided

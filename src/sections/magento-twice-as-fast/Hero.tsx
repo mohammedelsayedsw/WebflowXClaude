@@ -99,7 +99,7 @@ export function Hero() {
               <Countdown deadline={REVEAL_AT} variant="medium" />
             </motion.div>
             <motion.div {...enter(1.6)} id="cta" className="mt-10 md:mt-9 max-w-[520px]">
-              <div className="label-code text-white/70 mb-3">Stay updated</div>
+              <div className="label-code text-white/70 mb-3">Be the first to be notified</div>
               <HubSpotForm
                 portalId="25724996"
                 formId={SIGNUP_FORM_ID}

@@ -8,6 +8,11 @@
  *
  * Visual styling lives in `app/globals.css` under `.hubspot-form-wrapper .hbspt-form *`
  * – keeps the dark-theme look of the original hand-built form.
+ *
+ * `variant="card"` (default) is the framed panel used in CTA sections.
+ * `variant="inline"` drops the frame and lays the fields out in one row
+ * (`.hubspot-form-inline` in globals.css); meant for single-field forms
+ * that sit inside a hero.
  */
 
 import { useEffect, useRef } from "react";
@@ -38,12 +43,14 @@ export function HubSpotForm({
   formId,
   region = "eu1",
   submitText,
+  variant = "card",
 }: {
   portalId: string;
   formId: string;
   region?: string;
   /** Override the HubSpot form's submit button label (this instance only). */
   submitText?: string;
+  variant?: "card" | "inline";
 }) {
   const targetId = `hs-form-${formId}`;
   const created = useRef(false);
@@ -52,8 +59,16 @@ export function HubSpotForm({
     if (created.current) return;
 
     const relabel = () => {
-      if (!submitText) return;
       const root = document.getElementById(targetId);
+      if (variant === "inline") {
+        // The inline row hides HubSpot's labels, so the placeholder names the field.
+        root?.querySelectorAll<HTMLInputElement>("input.hs-input[placeholder]").forEach((el) => {
+          if (!el.getAttribute("aria-label")) {
+            el.setAttribute("aria-label", el.placeholder.replace(/\*\s*$/, ""));
+          }
+        });
+      }
+      if (!submitText) return;
       const btn = root?.querySelector(
         'input[type="submit"], button[type="submit"], .hs-button'
       );
@@ -95,15 +110,23 @@ export function HubSpotForm({
       window.clearInterval(id);
       window.clearTimeout(timeout);
     };
-  }, [portalId, formId, region, targetId, submitText]);
+  }, [portalId, formId, region, targetId, submitText, variant]);
 
   return (
     <div
-      className="hubspot-form-wrapper rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-7 md:p-8"
-      style={{
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.04)",
-      }}
+      className={
+        variant === "inline"
+          ? "hubspot-form-wrapper hubspot-form-inline"
+          : "hubspot-form-wrapper rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-7 md:p-8"
+      }
+      style={
+        variant === "inline"
+          ? undefined
+          : {
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.04)",
+            }
+      }
     >
       <Script
         id="hubspot-embed-loader"

@@ -462,6 +462,42 @@
   letter-spacing: 0 !important;
 }
 
+/* Inline variant: no frame, the field and the button share one row.
+   Built for single-field forms inside a hero (magento/twice-as-fast). */
+.hubspot-form-inline form {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+.hubspot-form-inline .hs-form-field {
+  flex: 1 1 160px !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+.hubspot-form-inline .hs-form-field > label {
+  display: none !important;
+}
+.hubspot-form-inline input[type="text"],
+.hubspot-form-inline input[type="email"] {
+  height: 48px !important;
+  padding: 0 14px !important;
+  font-size: 15px !important;
+}
+.hubspot-form-inline .hs-submit,
+.hubspot-form-inline .actions {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+.hubspot-form-inline input[type="submit"],
+.hubspot-form-inline .hs-button {
+  width: auto !important;
+}
+.hubspot-form-inline .hs_error_rollup {
+  flex-basis: 100% !important;
+  order: 10 !important;
+}
+
 /* Trust-logos marquee — single-line horizontal infinite scroll */
 @keyframes sw-marquee {
   0%   { transform: translateX(0); }

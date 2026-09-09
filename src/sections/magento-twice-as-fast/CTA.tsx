@@ -2,10 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { REVEAL_LABEL } from "./reveal";
-
-/** The campaign's own HubSpot form (portal 25724996, EU1). */
-const FORM_ID = "5f475c17-5dba-4005-a483-b780927c5c45";
+import { REVEAL_LABEL, SIGNUP_FORM_ID } from "./reveal";
 
 export function CTA() {
   return (
@@ -26,7 +23,7 @@ export function CTA() {
           <Reveal delay={0.15}>
             <HubSpotForm
               portalId="25724996"
-              formId={FORM_ID}
+              formId={SIGNUP_FORM_ID}
               region="eu1"
               submitText="Notify me"
             />

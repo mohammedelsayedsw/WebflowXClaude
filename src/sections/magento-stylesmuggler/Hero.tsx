@@ -68,7 +68,7 @@ export function Hero() {
 
         <motion.div {...enter(1.3)} className="mt-9 md:mt-11 flex flex-wrap items-center justify-center gap-4">
           <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-            Get a free security check
+            Get a free security consultation
             <ArrowDown className="h-4 w-4" />
           </a>
           <a href="#pdf" onClick={scrollToId("pdf")} className={`${btnSecondary} h-auto min-h-12 py-3 w-full sm:w-auto`}>

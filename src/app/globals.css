@@ -497,6 +497,22 @@
   flex-basis: 100% !important;
   order: 10 !important;
 }
+/* On phones the row has no room: the field and the button stack, full width. */
+@media (max-width: 639px) {
+  .hubspot-form-inline form {
+    flex-direction: column !important;
+  }
+  .hubspot-form-inline .hs-form-field,
+  .hubspot-form-inline .hs-submit,
+  .hubspot-form-inline .actions {
+    flex: none !important;
+    width: 100% !important;
+  }
+  .hubspot-form-inline input[type="submit"],
+  .hubspot-form-inline .hs-button {
+    width: 100% !important;
+  }
+}
 
 /* Trust-logos marquee — single-line horizontal infinite scroll */
 @keyframes sw-marquee {

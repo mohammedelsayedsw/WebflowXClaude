@@ -16,9 +16,8 @@ const enter = (delay: number) => ({
 
 /**
  * The whole page is this one fold. The headline runs full width; under it,
- * two columns on desktop and one stack on mobile: the subline and the three
- * "no replatforming" lines on the left, the timer and the sign-up on the
- * right. The sign-up is the campaign's HubSpot form (email only) as one row.
+ * two columns on desktop and one stack on mobile: the subline on the left,
+ * the timer and the sign-up on the right. The sign-up is the campaign's HubSpot form (email only) as one row.
  */
 export function Hero() {
   return (
@@ -92,15 +91,6 @@ export function Hero() {
             >
               Faster than Shopify
             </motion.p>
-            <motion.div {...enter(1.3)} className="mt-7 md:mt-9">
-              <div className="label-code text-white/45 mb-3">Before you ask</div>
-              <p className="font-head text-white/85 text-[19px] md:text-[22px] leading-[1.35]">
-                No new platform. No replatforming.{" "}
-                <span className="lg:block" style={{ color: "var(--sw-mint)" }}>
-                  Your Magento.
-                </span>
-              </p>
-            </motion.div>
           </div>
 
           <div className="lg:col-span-6">

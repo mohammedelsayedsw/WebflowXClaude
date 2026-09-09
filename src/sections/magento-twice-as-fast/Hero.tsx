@@ -15,9 +15,10 @@ const enter = (delay: number) => ({
 });
 
 /**
- * The whole page is this one fold: the date, the claim, the sign-up and the
- * countdown rail. The sign-up is the campaign's HubSpot form (email only)
- * rendered as a single row where the "Stay updated" button used to be.
+ * The whole page is this one fold. The headline runs full width; under it,
+ * two columns on desktop and one stack on mobile: the subline and the three
+ * "no replatforming" lines on the left, the timer and the sign-up on the
+ * right. The sign-up is the campaign's HubSpot form (email only) as one row.
  */
 export function Hero() {
   return (
@@ -34,19 +35,28 @@ export function Hero() {
             "linear-gradient(90deg, rgba(5,7,15,0.78) 0%, rgba(5,7,15,0.45) 38%, rgba(5,7,15,0) 68%)",
         }}
       />
+      {/* and where the timer and the sign-up sit, below the beam's crossing */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(5,7,15,0) 46%, rgba(5,7,15,0.5) 62%, rgba(5,7,15,0.72) 100%)",
+        }}
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 md:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(5,7,15,0) 30%, rgba(5,7,15,0.7) 58%, rgba(5,7,15,0.92) 100%)",
+            "linear-gradient(180deg, rgba(5,7,15,0) 22%, rgba(5,7,15,0.7) 50%, rgba(5,7,15,0.92) 100%)",
         }}
       />
 
       {/* On desktop the headline and the paddings follow the viewport height, so the
-          whole fold, rail included, fits a 768px-tall laptop; the top padding never
-          drops below what clears the absolute header. */}
-      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-40 md:pt-[clamp(176px,21vh,192px)] pb-16 md:pb-[clamp(40px,8vh,96px)] w-full">
+          whole fold fits a 768px-tall laptop; the top padding never drops below what
+          clears the absolute header. */}
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-32 md:pt-[clamp(170px,21vh,192px)] pb-16 md:pb-[clamp(40px,8vh,96px)] w-full">
         <motion.div {...enter(0.3)} className="label-code text-white/55">
           {REVEAL_LABEL}, 2026
         </motion.div>
@@ -60,7 +70,7 @@ export function Hero() {
           </motion.span>
           <motion.span
             {...enter(0.8)}
-            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[length:min(150px,24vh)] lg:text-[length:min(190px,25vh)] xl:text-[length:min(220px,26vh)] leading-[0.92] tracking-[-0.035em]"
+            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[length:min(150px,24vh)] lg:text-[length:min(190px,25vh)] xl:text-[length:min(220px,25vh)] leading-[0.92] tracking-[-0.035em]"
           >
             <span
               style={{
@@ -74,30 +84,43 @@ export function Hero() {
           </motion.span>
         </h1>
 
-        <motion.p
-          {...enter(1.1)}
-          className="mt-6 md:mt-8 font-head text-white/85 text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15]"
-        >
-          Faster than Shopify
-        </motion.p>
+        <div className="mt-6 md:mt-10 grid gap-y-8 lg:grid-cols-12 lg:gap-x-12 items-start">
+          <div className="lg:col-span-6">
+            <motion.p
+              {...enter(1.1)}
+              className="font-head text-white/85 text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15]"
+            >
+              Faster than Shopify
+            </motion.p>
+            <motion.div {...enter(1.3)} className="mt-7 md:mt-9">
+              <div className="label-code text-white/45 mb-3">Before you ask</div>
+              <p className="font-head text-white/85 text-[19px] md:text-[22px] leading-[1.35]">
+                No new platform. No replatforming.{" "}
+                <span className="lg:block" style={{ color: "var(--sw-mint)" }}>
+                  Your Magento.
+                </span>
+              </p>
+            </motion.div>
+          </div>
 
-        <motion.div {...enter(1.35)} id="cta" className="mt-10 md:mt-12 max-w-[520px]">
-          <div className="label-code text-white/55 mb-3">Stay updated</div>
-          <HubSpotForm
-            portalId="25724996"
-            formId={SIGNUP_FORM_ID}
-            region="eu1"
-            submitText="Notify me"
-            variant="inline"
-          />
-        </motion.div>
-      </div>
-
-      <motion.div {...enter(1.7)} className="relative z-10 border-t border-white/10">
-        <div className="wrap py-5 md:py-6 flex items-center">
-          <Countdown deadline={REVEAL_AT} variant="compact" />
+          <div className="lg:col-span-6">
+            <motion.div {...enter(1.45)}>
+              <div className="label-code text-white/70 mb-3">See it yourself in</div>
+              <Countdown deadline={REVEAL_AT} variant="medium" />
+            </motion.div>
+            <motion.div {...enter(1.6)} id="cta" className="mt-8 md:mt-9 max-w-[520px]">
+              <div className="label-code text-white/70 mb-3">Stay updated</div>
+              <HubSpotForm
+                portalId="25724996"
+                formId={SIGNUP_FORM_ID}
+                region="eu1"
+                submitText="Notify me"
+                variant="inline"
+              />
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

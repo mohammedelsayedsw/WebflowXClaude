@@ -72,6 +72,13 @@ type Answers = Record<string, string>;
 type Status = "idle" | "submitting" | "error";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/** The HubSpot form rejects free email providers (BLOCKED_EMAIL). Catch the common ones at step 1. */
+const FREE_MAIL = new Set([
+  "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "hotmail.com", "hotmail.co.uk",
+  "outlook.com", "live.com", "msn.com", "icloud.com", "me.com", "aol.com", "protonmail.com",
+  "proton.me", "gmx.com", "gmx.de", "mail.com", "yandex.com", "inbox.lv", "mail.ru",
+]);
+const WORK_EMAIL_MSG = "Use your work email. Free email addresses are not accepted here.";
 
 const inputClass =
   "block w-full rounded-[2px] border border-white/18 bg-white/[0.04] px-3.5 py-3 text-[14px] text-white placeholder:text-white/38 outline-none transition focus:border-[var(--sw-mint)]/55 focus:bg-white/[0.06]";
@@ -157,7 +164,9 @@ export function Check() {
     const e: Record<string, string> = {};
     if (s === 0) {
       if (!contact.website.trim()) e.website = "Enter the store address";
-      if (!EMAIL_OK.test(contact.email.trim())) e.email = "Enter a work email";
+      const em = contact.email.trim().toLowerCase();
+      if (!EMAIL_OK.test(em)) e.email = "Enter a valid email address";
+      else if (FREE_MAIL.has(em.split("@")[1])) e.email = WORK_EMAIL_MSG;
       if (!contact.firstname.trim()) e.firstname = "Enter your first name";
     }
     if (s === 1) {
@@ -212,8 +221,18 @@ export function Check() {
         setStep(3);
         return;
       }
-      const body = (await res.json().catch(() => null)) as { message?: string } | null;
-      setErrorMsg(body?.message || "The request did not go through. Try again.");
+      const body = (await res.json().catch(() => null)) as
+        | { message?: string; errors?: { errorType?: string; message?: string }[] }
+        | null;
+      const type = body?.errors?.[0]?.errorType;
+      if (type === "BLOCKED_EMAIL" || type === "INVALID_EMAIL") {
+        // HubSpot refused the address: send the visitor back to step 1 with the reason under the field.
+        setErrors({ email: type === "BLOCKED_EMAIL" ? WORK_EMAIL_MSG : "Enter a valid email address" });
+        setStatus("idle");
+        setStep(0);
+        return;
+      }
+      setErrorMsg(body?.errors?.[0]?.message || body?.message || "The request did not go through. Try again.");
       setStatus("error");
     } catch {
       setErrorMsg("Network error. Try again.");

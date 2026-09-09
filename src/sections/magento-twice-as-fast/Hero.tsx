@@ -55,7 +55,7 @@ export function Hero() {
       {/* On desktop the headline and the paddings follow the viewport height, so the
           whole fold fits a 768px-tall laptop; the top padding never drops below what
           clears the absolute header. */}
-      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-32 md:pt-[clamp(170px,21vh,192px)] pb-16 md:pb-[clamp(40px,8vh,96px)] w-full">
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-32 md:pt-[clamp(170px,21vh,192px)] pb-10 md:pb-[clamp(40px,8vh,96px)] w-full">
         <motion.div {...enter(0.3)} className="label-code text-white/55">
           {REVEAL_LABEL}, 2026
         </motion.div>
@@ -83,7 +83,7 @@ export function Hero() {
           </motion.span>
         </h1>
 
-        <div className="mt-6 md:mt-10 grid gap-y-8 lg:grid-cols-12 lg:gap-x-12 items-start">
+        <div className="mt-6 md:mt-10 grid gap-y-10 lg:grid-cols-12 lg:gap-x-12 items-start">
           <div className="lg:col-span-6">
             <motion.p
               {...enter(1.1)}
@@ -98,7 +98,7 @@ export function Hero() {
               <div className="label-code text-white/70 mb-3">See it yourself in</div>
               <Countdown deadline={REVEAL_AT} variant="medium" />
             </motion.div>
-            <motion.div {...enter(1.6)} id="cta" className="mt-8 md:mt-9 max-w-[520px]">
+            <motion.div {...enter(1.6)} id="cta" className="mt-10 md:mt-9 max-w-[520px]">
               <div className="label-code text-white/70 mb-3">Stay updated</div>
               <HubSpotForm
                 portalId="25724996"

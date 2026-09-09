@@ -10,7 +10,8 @@ import { useEffect, useState } from "react";
  * does not jump into place once the real figures arrive.
  *
  * `compact` is a one-line reading for a rail; `medium` is the timer that sits
- * inside the hero fold; `large` is a section centrepiece.
+ * inside the hero fold (four equal columns on phones, a colon-separated row
+ * from `sm` up); `large` is a section centrepiece.
  */
 type Variant = "compact" | "medium" | "large";
 
@@ -23,7 +24,7 @@ const SIZES: Record<Exclude<Variant, "compact">, { num: string; colon: string; g
     live: "text-[40px] md:text-[64px]",
   },
   medium: {
-    num: "text-[40px] sm:text-[48px] lg:text-[56px] xl:text-[64px]",
+    num: "text-[44px] sm:text-[48px] lg:text-[56px] xl:text-[64px]",
     colon: "text-[32px] sm:text-[40px] lg:text-[48px] xl:text-[56px]",
     gap: "gap-2.5 sm:gap-3 lg:gap-4",
     label: "mt-2",
@@ -79,6 +80,7 @@ export function Countdown({
   }
 
   const size = SIZES[variant];
+  const medium = variant === "medium";
 
   if (left === 0) {
     return (
@@ -96,19 +98,23 @@ export function Countdown({
       role="timer"
       aria-live="off"
       aria-label="Time left until the reveal"
-      className={`flex items-start tabular-nums ${size.gap}`}
+      className={
+        medium
+          ? `grid grid-cols-4 sm:flex sm:items-start tabular-nums ${size.gap}`
+          : `flex items-start tabular-nums ${size.gap}`
+      }
     >
       {units.map((u, i) => (
         <div key={u.label} className={`flex items-start ${size.gap}`}>
           {i > 0 && (
             <span
               aria-hidden
-              className={`font-head leading-none text-white/15 select-none ${size.colon}`}
+              className={`font-head leading-none text-white/15 select-none ${size.colon} ${medium ? "hidden sm:block" : ""}`}
             >
               :
             </span>
           )}
-          <div className="text-center">
+          <div className={medium ? "text-left sm:text-center" : "text-center"}>
             <div
               className={`font-head leading-none tracking-[-0.03em] text-white ${size.num}`}
               style={{ textShadow: "0 0 40px rgba(143,182,255,0.35)" }}

@@ -1,11 +1,9 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
 import { motion } from "motion/react";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Countdown } from "./Countdown";
-import { REVEAL_AT, REVEAL_LABEL } from "./reveal";
-import { scrollToForm } from "./scrollToForm";
+import { REVEAL_AT, REVEAL_LABEL, SIGNUP_FORM_ID } from "./reveal";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -16,6 +14,11 @@ const enter = (delay: number) => ({
   transition: { duration: 1.1, delay, ease: EASE },
 });
 
+/**
+ * The whole page is this one fold: the date, the claim, the sign-up and the
+ * countdown rail. The sign-up is the campaign's HubSpot form (email only)
+ * rendered as a single row where the "Stay updated" button used to be.
+ */
 export function Hero() {
   return (
     <section
@@ -40,7 +43,10 @@ export function Hero() {
         }}
       />
 
-      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-40 md:pt-48 pb-16 md:pb-24 w-full">
+      {/* On desktop the headline and the paddings follow the viewport height, so the
+          whole fold, rail included, fits a 768px-tall laptop; the top padding never
+          drops below what clears the absolute header. */}
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-40 md:pt-[clamp(176px,21vh,192px)] pb-16 md:pb-[clamp(40px,8vh,96px)] w-full">
         <motion.div {...enter(0.3)} className="label-code text-white/55">
           {REVEAL_LABEL}, 2026
         </motion.div>
@@ -54,7 +60,7 @@ export function Hero() {
           </motion.span>
           <motion.span
             {...enter(0.8)}
-            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[150px] lg:text-[190px] xl:text-[220px] leading-[0.92] tracking-[-0.035em]"
+            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[length:min(150px,24vh)] lg:text-[length:min(190px,25vh)] xl:text-[length:min(220px,26vh)] leading-[0.92] tracking-[-0.035em]"
           >
             <span
               style={{
@@ -75,21 +81,21 @@ export function Hero() {
           Faster than Shopify
         </motion.p>
 
-        <motion.div {...enter(1.35)} className="mt-10 md:mt-12">
-          <a href="#cta" onClick={scrollToForm} className={btnPrimary}>
-            Stay updated
-            <ArrowDown className="h-4 w-4" />
-          </a>
+        <motion.div {...enter(1.35)} id="cta" className="mt-10 md:mt-12 max-w-[520px]">
+          <div className="label-code text-white/55 mb-3">Stay updated</div>
+          <HubSpotForm
+            portalId="25724996"
+            formId={SIGNUP_FORM_ID}
+            region="eu1"
+            submitText="Notify me"
+            variant="inline"
+          />
         </motion.div>
       </div>
 
       <motion.div {...enter(1.7)} className="relative z-10 border-t border-white/10">
-        <div className="wrap py-5 md:py-6 flex items-center justify-between gap-6">
+        <div className="wrap py-5 md:py-6 flex items-center">
           <Countdown deadline={REVEAL_AT} variant="compact" />
-          <div className="label-code text-white/40 hidden sm:flex items-center gap-2">
-            Scroll
-            <ArrowDown className="h-3 w-3" />
-          </div>
         </div>
       </motion.div>
     </section>

@@ -26,7 +26,7 @@ export function Call() {
               <span style={{ color: "var(--sw-mint)" }}>needs?</span>
             </h2>
             <p className="mt-6 text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[50ch]">
-              Speak with our Magento team about your current protection, the
+              Speak with our Magento security team about your current protection, the
               checks your store needs, and how to respond to StyleSmuggler.
             </p>
             <div className="mt-9">

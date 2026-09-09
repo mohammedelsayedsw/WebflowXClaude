@@ -83,7 +83,7 @@ export function Facts() {
               you should check your exposure and take protective action now.
             </p>
             <a href="#check" onClick={scrollToId("check")} className={`${btnPrimary} h-auto min-h-12 py-3 w-full sm:w-auto`}>
-              Get a free security check
+              Get a free security consultation
               <ArrowDown className="h-4 w-4" />
             </a>
           </div>

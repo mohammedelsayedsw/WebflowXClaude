@@ -247,7 +247,7 @@ export function Check() {
           <Reveal>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
               Get a free{" "}
-              <span style={{ color: "var(--sw-mint)" }}>security check</span>
+              <span style={{ color: "var(--sw-mint)" }}>security consultation</span>
             </h2>
             <p className="mt-6 text-white/75 text-[15px] md:text-[17px] leading-relaxed max-w-[44ch]">
               Share your store address and answer a few questions. It helps our
@@ -415,7 +415,7 @@ export function Check() {
                           disabled={status === "submitting"}
                           className={`${btnPrimary} w-full sm:w-auto disabled:opacity-60`}
                         >
-                          {status === "submitting" ? "Sending" : "Get a free security check"}
+                          {status === "submitting" ? "Sending" : "Get a free security consultation"}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       </div>
@@ -431,10 +431,9 @@ export function Check() {
                         Thanks, {contact.firstname.trim()}. We have what we need for the call
                       </h3>
                       <p className="mt-4 text-white/75 text-[15px] leading-relaxed">
-                        Our Magento engineers go through your answers and what is
-                        visible externally on {contact.website.trim()} before we speak,
-                        and reach you at {contact.email.trim()} to set up the call. If
-                        you would rather pick a time now, book it below.
+                        Our Magento security team goes through your answers before we
+                        speak and reaches you at {contact.email.trim()} to set up the
+                        call. If you would rather pick a time now, book it below.
                       </p>
 
                       <div className="mt-8">
@@ -450,9 +449,6 @@ export function Check() {
             </div>
             {step < 3 && (
               <>
-                <p className="label-code text-white/45 mt-3 px-1">
-                  Reviewed by scandiweb’s Magento engineers, including on weekends.
-                </p>
                 <p className="mt-4 px-1 text-white/65 text-[14px] md:text-[15px] leading-relaxed">
                   Rather talk first?{" "}
                   <a
@@ -461,7 +457,7 @@ export function Check() {
                     rel="noopener noreferrer"
                     className="text-white/90 underline underline-offset-4 decoration-white/40 hover:decoration-white hover:text-white transition"
                   >
-                    Book a call with our Magento team
+                    Book a call with our Magento security team
                   </a>
                 </p>
               </>

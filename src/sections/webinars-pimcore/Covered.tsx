@@ -6,7 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 const POINTS: React.ReactNode[] = [
   "Where fragmented product data drains hours and revenue",
   "What it looks like when all your product details live in one place",
-  "Real examples of each problem being solved",
+  "Real examples of common product data problems being solved",
   "Why AI gives wrong answers when your product data is a mess, and what fixes that",
   "How multilingual catalogs stay current as you add markets",
   // held together so "systems" never sits alone on its own line

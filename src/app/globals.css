@@ -393,22 +393,85 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+/* The consent tick sits a little away from the fields above it. It is a note
+   about the fields, not another one of them, and at the same 18px spacing it
+   read as a fifth field with a strange label. */
+.hubspot-form-wrapper .hs-fieldtype-booleancheckbox {
+  margin-top: 2px !important;
+}
+/* The box and its sentence on one row, so the second line of the sentence
+   starts under the first and not under the box. HubSpot ships this label as a
+   block, which wrapped "and organization with Pimcore" back beneath the tick.
+   align-items: flex-start keeps the box on the first line as the text grows. */
 .hubspot-form-wrapper ul.inputs-list > li label,
+.hubspot-form-wrapper label.hs-form-booleancheckbox-display,
 .hubspot-form-wrapper .hs-fieldtype-booleancheckbox > label,
 .hubspot-form-wrapper .hs-fieldtype-checkbox > label {
-  color: rgba(255, 255, 255, 0.75) !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  color: rgba(255, 255, 255, 0.6) !important;
   font-family: var(--font-golos), "Golos Text", ui-sans-serif, system-ui, sans-serif !important;
-  font-size: 13px !important;
+  font-size: 12.5px !important;
   font-weight: 400 !important;
+  line-height: 1.5 !important;
   text-transform: none !important;
   letter-spacing: 0 !important;
+  margin: 0 !important;
 }
+.hubspot-form-wrapper ul.inputs-list > li label > span {
+  flex: 1 1 auto !important;
+}
+/* Drawn rather than accented. accent-color only colours a box that is already
+   ticked, so an empty one stayed the browser's white square and sat on the dark
+   panel like a hole. This is the same 1px border, 2px radius and translucent
+   fill as the text inputs, so the form reads as one thing. */
 .hubspot-form-wrapper input[type="checkbox"],
 .hubspot-form-wrapper input[type="radio"] {
-  accent-color: var(--sw-mint) !important;
-  margin-right: 8px !important;
-  width: auto !important;
-  background: transparent !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  flex: 0 0 auto !important;
+  width: 16px !important;
+  height: 16px !important;
+  /* Optical, not geometric: centred on a 12.5px line the box reads high, and
+     the tick should sit on the text's own line. */
+  margin: 2px 0 0 0 !important;
+  padding: 0 !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
+}
+.hubspot-form-wrapper input[type="radio"] {
+  border-radius: 50% !important;
+}
+.hubspot-form-wrapper input[type="checkbox"]:hover,
+.hubspot-form-wrapper input[type="radio"]:hover {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+.hubspot-form-wrapper input[type="checkbox"]:checked,
+.hubspot-form-wrapper input[type="radio"]:checked {
+  background-color: var(--sw-mint) !important;
+  border-color: var(--sw-mint) !important;
+}
+/* The tick, dark on mint, drawn rather than a font glyph so it is the same at
+   every zoom and needs nothing loaded. */
+.hubspot-form-wrapper input[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2310132c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' d='M3.5 8.4l3 3 6-6.4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 11px 11px !important;
+}
+.hubspot-form-wrapper input[type="radio"]:checked {
+  box-shadow: inset 0 0 0 3px var(--sw-black) !important;
+}
+.hubspot-form-wrapper input[type="checkbox"]:focus-visible,
+.hubspot-form-wrapper input[type="radio"]:focus-visible {
+  outline: none !important;
+  border-color: rgba(110, 247, 110, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(110, 247, 110, 0.15) !important;
 }
 .hubspot-form-wrapper .hs-submit,
 .hubspot-form-wrapper .actions {

@@ -14,7 +14,9 @@ const enter = (delay: number) => ({
   transition: { duration: 1.1, delay, ease: EASE },
 });
 
-/** The two short lines above the timer and the sign-up. */
+/** The line above the timer carries the claim, so it runs larger than the sign-up label. */
+const SUBLINE =
+  "font-head font-bold uppercase text-white/90 text-[15px] md:text-[18px] leading-[1.45] tracking-[0.03em] text-balance";
 const EYEBROW =
   "font-head font-bold uppercase text-white/90 text-[13px] md:text-[14px] leading-[1.5] tracking-[0.04em] text-balance";
 
@@ -81,7 +83,7 @@ export function Hero() {
         </h1>
 
         <motion.div {...enter(0.85)} className="mt-8 md:mt-[clamp(28px,4vh,44px)]">
-          <div className={EYEBROW}>Faster than Shopify. See it for yourself in</div>
+          <div className={SUBLINE}>Faster than Shopify. See it for yourself in</div>
           <div className="mt-3 md:mt-4">
             <Countdown deadline={REVEAL_AT} variant="medium" />
           </div>

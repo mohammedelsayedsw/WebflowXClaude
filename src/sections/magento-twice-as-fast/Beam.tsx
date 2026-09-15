@@ -162,10 +162,11 @@ export function Beam() {
       pointer.x += (pointer.tx - pointer.x) * 0.04;
       pointer.y += (pointer.ty - pointer.y) * 0.04;
 
-      // Beam geometry: the crossing sits just right of the headline; the beam
-      // runs off the top-right one way and off the bottom-left the other.
-      const hx = w * (mobile ? 0.5 : 0.64) + pointer.x * 22;
-      const hy = h * (mobile ? 0.34 : 0.46) - scroll * 0.35 + pointer.y * 14;
+      // Beam geometry: on desktop the crossing sits in the upper right, clear of
+      // the single text column on the left; the beam runs off the top-right one
+      // way and off the bottom-left the other.
+      const hx = w * (mobile ? 0.5 : 0.76) + pointer.x * 22;
+      const hy = h * (mobile ? 0.3 : 0.36) - scroll * 0.35 + pointer.y * 14;
       const ang = mobile ? -Math.PI * 0.4 : -Math.PI * 0.19;
       const ux = Math.cos(ang);
       const uy = Math.sin(ang);

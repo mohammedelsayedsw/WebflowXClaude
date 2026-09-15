@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
  * does not jump into place once the real figures arrive.
  *
  * `compact` is a one-line reading for a rail; `medium` is the timer that sits
- * inside the hero fold (four equal columns on phones, a colon-separated row
- * from `sm` up); `large` is a section centrepiece.
+ * inside the hero fold (four labelled columns, no colons: left-aligned on
+ * phones, centred from `sm` up); `large` is a section centrepiece.
  */
 type Variant = "compact" | "medium" | "large";
 
@@ -26,7 +26,7 @@ const SIZES: Record<Exclude<Variant, "compact">, { num: string; colon: string; g
   medium: {
     num: "text-[44px] sm:text-[48px] lg:text-[56px] xl:text-[64px]",
     colon: "text-[32px] sm:text-[40px] lg:text-[48px] xl:text-[56px]",
-    gap: "gap-2.5 sm:gap-3 lg:gap-4",
+    gap: "gap-2.5 sm:gap-7 lg:gap-9",
     label: "mt-2",
     live: "text-[32px] md:text-[44px]",
   },
@@ -106,10 +106,10 @@ export function Countdown({
     >
       {units.map((u, i) => (
         <div key={u.label} className={`flex items-start ${size.gap}`}>
-          {i > 0 && (
+          {i > 0 && !medium && (
             <span
               aria-hidden
-              className={`font-head leading-none text-white/15 select-none ${size.colon} ${medium ? "hidden sm:block" : ""}`}
+              className={`font-head leading-none text-white/15 select-none ${size.colon}`}
             >
               :
             </span>

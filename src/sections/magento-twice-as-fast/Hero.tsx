@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Countdown } from "./Countdown";
-import { REVEAL_AT, REVEAL_LABEL, SIGNUP_FORM_ID } from "./reveal";
+import { REVEAL_AT, SIGNUP_FORM_ID } from "./reveal";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -14,10 +14,15 @@ const enter = (delay: number) => ({
   transition: { duration: 1.1, delay, ease: EASE },
 });
 
+/** The two short lines above the timer and the sign-up. */
+const EYEBROW =
+  "font-head font-bold uppercase text-white/90 text-[13px] md:text-[14px] leading-[1.5] tracking-[0.04em] text-balance";
+
 /**
- * The whole page is this one fold. The headline runs full width; under it,
- * two columns on desktop and one stack on mobile: the subline on the left,
- * the timer and the sign-up on the right. The sign-up is the campaign's HubSpot form (email only) as one row.
+ * The whole page is this one fold, and everything sits in one left column:
+ * the two-line headline (white, then the green "2x faster"), a line, the
+ * timer, a line, the sign-up. The galaxy keeps the right side. The sign-up is
+ * the campaign's HubSpot form (email only) as one row.
  */
 export function Hero() {
   return (
@@ -52,64 +57,50 @@ export function Hero() {
         }}
       />
 
-      {/* On desktop the headline and the paddings follow the viewport height, so the
-          whole fold fits a 768px-tall laptop; the top padding never drops below what
-          clears the absolute header. */}
-      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-32 md:pt-[clamp(170px,21vh,192px)] pb-10 md:pb-[clamp(40px,8vh,96px)] w-full">
-        <motion.div {...enter(0.3)} className="label-code text-white/55">
-          {REVEAL_LABEL}, 2026
-        </motion.div>
-
-        <h1 className="mt-6 md:mt-8 font-head text-white">
+      {/* On desktop the headline, the gaps and the paddings follow the viewport
+          height, so the whole column fits a 668px-tall laptop; the top padding
+          never drops below what clears the absolute header. */}
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-end md:justify-center pt-28 md:pt-[clamp(150px,18vh,176px)] pb-10 md:pb-[clamp(40px,8vh,96px)] w-full">
+        <h1 className="font-head font-bold text-white">
           <motion.span
-            {...enter(0.55)}
-            className="block font-normal tracking-normal text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15] text-white/85"
+            {...enter(0.3)}
+            className="block text-[34px] sm:text-[46px] md:text-[length:min(76px,9.5vh)] lg:text-[length:min(92px,10.5vh)] leading-[1.05] tracking-[-0.02em]"
           >
             We made Magento
           </motion.span>
           <motion.span
-            {...enter(0.8)}
-            className="block mt-2 md:mt-3 text-[74px] sm:text-[108px] md:text-[length:min(150px,24vh)] lg:text-[length:min(190px,25vh)] xl:text-[length:min(220px,25vh)] leading-[0.92] tracking-[-0.035em]"
+            {...enter(0.55)}
+            className="block mt-1 md:mt-2 text-[72px] sm:text-[100px] md:text-[length:min(150px,20vh)] lg:text-[length:min(180px,22vh)] xl:text-[length:min(200px,22vh)] leading-[0.95] tracking-[-0.035em]"
+            style={{
+              color: "var(--sw-mint)",
+              textShadow: "0 0 56px rgba(110,247,110,0.28)",
+            }}
           >
-            <span
-              style={{
-                color: "var(--sw-mint)",
-                textShadow: "0 0 56px rgba(110,247,110,0.32)",
-              }}
-            >
-              &times;2
-            </span>{" "}
-            faster
+            2x faster
           </motion.span>
         </h1>
 
-        <div className="mt-6 md:mt-10 grid gap-y-10 lg:grid-cols-12 lg:gap-x-12 items-start">
-          <div className="lg:col-span-6">
-            <motion.p
-              {...enter(1.1)}
-              className="font-head text-white/85 text-[22px] sm:text-[26px] md:text-[32px] leading-[1.15]"
-            >
-              Faster than Shopify
-            </motion.p>
+        <motion.div {...enter(0.85)} className="mt-8 md:mt-[clamp(28px,4vh,44px)]">
+          <div className={EYEBROW}>Faster than Shopify. See it for yourself in</div>
+          <div className="mt-3 md:mt-4">
+            <Countdown deadline={REVEAL_AT} variant="medium" />
           </div>
+        </motion.div>
 
-          <div className="lg:col-span-6">
-            <motion.div {...enter(1.45)}>
-              <div className="label-code text-white/70 mb-3">See it yourself in</div>
-              <Countdown deadline={REVEAL_AT} variant="medium" />
-            </motion.div>
-            <motion.div {...enter(1.6)} id="cta" className="mt-10 md:mt-9 max-w-[520px]">
-              <div className="label-code text-white/70 mb-3">Be the first to be notified</div>
-              <HubSpotForm
-                portalId="25724996"
-                formId={SIGNUP_FORM_ID}
-                region="eu1"
-                submitText="Notify me"
-                variant="inline"
-              />
-            </motion.div>
-          </div>
-        </div>
+        <motion.div
+          {...enter(1.1)}
+          id="cta"
+          className="mt-8 md:mt-[clamp(24px,4vh,40px)] max-w-[560px]"
+        >
+          <div className={`${EYEBROW} mb-3`}>Be the first to experience it</div>
+          <HubSpotForm
+            portalId="25724996"
+            formId={SIGNUP_FORM_ID}
+            region="eu1"
+            submitText="Join waiting list"
+            variant="inline"
+          />
+        </motion.div>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
@@ -27,6 +28,9 @@ const SECONDARY_LINKS = [
   { label: "Team", href: "https://scandiweb.com/team" },
   { label: "Careers", href: "https://scandiweb.com/careers", external: true },
 ];
+
+/** Routes (without the /solutions basePath) that show the logo only: no menu, no drawer. */
+const MENULESS_ROUTES = ["/magento/twice-as-fast"];
 
 const CTA = {
   text: "Custom enterprise software 2-10x faster at up to 90% lower cost",
@@ -55,6 +59,8 @@ const CloseIcon = () => (
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const menu = !MENULESS_ROUTES.includes(pathname.replace(/\/$/, ""));
 
   useEffect(() => {
     if (open) {
@@ -86,6 +92,7 @@ export function Header() {
               className="h-[18px] md:h-5 w-auto block"
             />
           </a>
+          {menu && (
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -110,12 +117,13 @@ export function Header() {
               {open ? <CloseIcon /> : <HamburgerIcon />}
             </span>
           </button>
+          )}
         </div>
       </header>
 
       {/* Drawer – LP-styled (dark navy, mint accent, beige outline CTA) */}
       <AnimatePresence>
-        {open && (
+        {menu && open && (
           <>
             <motion.div
               initial={{ opacity: 0 }}

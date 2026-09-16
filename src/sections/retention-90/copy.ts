@@ -3,6 +3,13 @@ import { assetUrl } from "@/lib/assets";
 
 export type Question = { k: string; q: string; h: string; o: [string, number][] };
 
+export const CAMPAIGN_SHOTS = [
+  { lbl: "Sale", file: "asset-26.webp", alt: "Sportland sale campaign email" },
+  { lbl: "Last chance", file: "asset-27.webp", alt: "CircuitMess last-chance campaign email" },
+  { lbl: "Launch", file: "asset-28.webp", alt: "Sportland launch campaign email" },
+  { lbl: "Winback", file: "asset-29.webp", alt: "CircuitMess winback campaign email" },
+];
+
 export const COPY = {
  questions: [
   {k:"rev", q:"What does your store do in monthly revenue?", h:"",
@@ -88,20 +95,6 @@ export const COPY = {
 export const QUESTIONS: Question[] = COPY.questions.map((q) => ({
   k: q.k, q: q.q, h: q.h, o: q.o.map((o) => [o[0], o[1]] as [string, number]),
 }));
-
-export const FLOW_META = [
-  { logo: "circuitmess.webp", inv: true, shots: ["asset-11.webp", "asset-12.webp", "asset-13.webp", "asset-14.webp"] },
-  { logo: "christmas-tree-world.webp", inv: false, shots: ["asset-15.webp", "asset-16.webp", "asset-17.webp", "asset-18.webp"] },
-  { logo: "felco.webp", inv: false, shots: ["asset-19.webp", "asset-20.webp", "asset-21.webp", "asset-22.webp"] },
-  { logo: "", inv: false, shots: ["asset-23.webp", "asset-24.webp", "asset-25.webp"] },
-  { logo: "", inv: false, shots: ["asset-26.webp", "asset-27.webp", "asset-28.webp", "asset-29.webp"] },
-].map((m) => ({ ...m, logo: m.logo ? img(m.logo) : "", shots: m.shots.map(img) }));
-
-export const MATCH_ASSETS = {
-  small: { shot: img("mynextmattress-email.webp") },
-  mid: { shot: img("christmas-tree-world-campaign-email.webp") },
-  large: { shot: img("felco-email.webp") },
-};
 
 export function img(file: string): string {
   return assetUrl(`/retention-90/${file}`);

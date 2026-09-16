@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COPY, MATCH_ASSETS, T, img } from "./copy";
+import { COPY, T, img } from "./copy";
 import { computeLeak, computeScore, fmt, fmtK, gapTiers } from "./scoring";
-import { HOST_NAME } from "./status";
+import { HOST_NAME, HOST_PHOTO, HOST_TITLE } from "./status";
 
 type Props = {
   store: string;
@@ -86,14 +86,14 @@ export function Summary({ store, answers, labels, onBook }: Props) {
 
           <Chart answers={answers} leak={leak} />
           <Gaps answers={answers} labels={labels} />
-          <Match rev={answers.rev} />
+          <Proof />
           <Tiles answers={answers} leak={leak} />
 
           <div className={"dcta" + (critical ? " critical" : "")}>
             <h3>{T(COPY.cta.h, { store })}</h3>
             <p>{T(COPY.cta.p, { store })}</p>
             <button className="btn big" onClick={onBook}>Fix my revenue leak →</button>
-            <div><span className="host"><img src={img("andres-reitsnik.webp")} alt="" /><span>You’ll speak directly with <b>{HOST_NAME}</b>, who leads the lifecycle team.</span></span></div>
+            <div><span className="host"><img src={img(HOST_PHOTO)} alt="" /><span>You’ll speak directly with <b>{HOST_NAME}</b>, {HOST_TITLE}.</span></span></div>
           </div>
         </div>
       </div>
@@ -227,17 +227,24 @@ function Gaps({ answers, labels }: { answers: Record<string, number>; labels: Re
   );
 }
 
-/* ---------- comparable brand ---------- */
-function Match({ rev }: { rev: number }) {
-  const key = rev <= 100000 ? "small" : rev <= 700000 ? "mid" : "large";
-  const c = COPY.match[key];
+/* ---------- proof: testimonial + case numbers ---------- */
+const NUMS = [
+  ["£1.2M", "email revenue in 3 months, Christmas Tree World"],
+  ["€150K/mo", "lifecycle revenue from zero, FELCO"],
+  ["+24%", "email revenue from rebuilt flows, CircuitMess"],
+  ["£12.75", "back per £1 on the first email send, MyNextMattress"],
+];
+function Proof() {
   return (
-    <div className="dcard">
-      <h3>{COPY.matchUI.title}</h3>
-      <div className="cs">{COPY.matchUI.why}</div>
-      <div className="pmatch">
-        <div className="pshot"><img src={MATCH_ASSETS[key].shot} alt="" /></div>
-        <div><div className="pk">{c.k}</div><div className="pd">{c.d}</div><p>{c.p}</p></div>
+    <div className="dcard sproof">
+      <h3>Brands that made the same bet</h3>
+      <div className="cs">Real accounts, measured results.</div>
+      <div className="squote">
+        <blockquote>“We decided to give scandiweb full ownership towards our eCommerce ecosystem. It was the right choice.”</blockquote>
+        <div className="swho"><b>Oskar Röös</b>, CIO, Byggmax · $1B/yr, 160+ stores · +15% AOV from the test programme</div>
+      </div>
+      <div className="snums">
+        {NUMS.map(([n, l]) => <div key={n}><b>{n}</b><span>{l}</span></div>)}
       </div>
     </div>
   );

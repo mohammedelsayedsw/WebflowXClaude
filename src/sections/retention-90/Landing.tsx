@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { COPY, FLOW_META, img } from "./copy";
+import { CAMPAIGN_SHOTS, COPY, img } from "./copy";
 import { cleanDomain, validDomain } from "./scoring";
-import { HOST_NAME } from "./status";
+import { LIFECYCLE_LEAD } from "./status";
 
 type StartFn = (store?: string) => void;
 
@@ -79,23 +79,23 @@ export function Cases() {
       <h2 className="sec">We make the bet because we’ve done it before.</h2>
       <p className="secsub">Real brands. Real emails. Real results.</p>
       <div className="cases">
-        <div className="case"><div className="shot"><img src={img("christmas-tree-world-campaign-email.webp")} alt="Christmas Tree World campaign email" /></div><div className="body">
-          <div className="clogo"><img className="tall" src={img("christmas-tree-world.webp")} alt="Christmas Tree World" /></div>
+        <div className="case"><div className="body">
+          <div className="cname">Christmas Tree World</div>
           <span className="tag">Seasonal D2C · UK</span>
           <div className="kn">£1.2M</div><div className="kd">email revenue in the first 3 months</div>
           <p>Flows, campaigns, templates and segmentation rebuilt. Browse, cart and checkout flows added. £190 back per £1 spent.</p></div></div>
-        <div className="case"><div className="shot"><img src={img("felco-email.webp")} alt="FELCO email" /></div><div className="body">
-          <div className="clogo"><img src={img("felco.webp")} alt="FELCO" /></div>
+        <div className="case"><div className="body">
+          <div className="cname">FELCO</div>
           <span className="tag">Tools · 5 markets</span>
           <div className="kn">€150K/mo</div><div className="kd">lifecycle revenue, from zero</div>
           <p>Every core flow (welcome, browse, cart, checkout, post-purchase) built, localised and live in 5 markets and 3 languages in 30 days. SMS added for high-intent moments.</p></div></div>
-        <div className="case"><div className="shot"><img src={img("circuitmess-email.webp")} alt="CircuitMess email" /></div><div className="body">
-          <div className="clogo"><img src={img("circuitmess.webp")} alt="CircuitMess" className="inv" /></div>
+        <div className="case"><div className="body">
+          <div className="cname">CircuitMess</div>
           <span className="tag">D2C · STEM kits</span>
           <div className="kn">+24%</div><div className="kd">email revenue from rebuilt flows</div>
           <p>51 templates rebuilt as a design system, core sequences rebuilt with stronger triggers, continuous A/B testing on design, copy and CTAs.</p></div></div>
-        <div className="case"><div className="shot"><img src={img("mynextmattress-email.webp")} alt="MyNextMattress email" /></div><div className="body">
-          <div className="clogo"><img src={img("mynextmattress.webp")} alt="MyNextMattress" style={{ height: 18 }} /></div>
+        <div className="case"><div className="body">
+          <div className="cname">MyNextMattress</div>
           <span className="tag">D2C · from zero</span>
           <div className="kn">£12.75</div><div className="kd">back per £1 on the first ever email send</div>
           <p>No prior email activity. Three BFCM campaigns built end to end, strategy, copy, design and setup, to prove the channel before a single flow was built.</p></div></div>
@@ -104,7 +104,7 @@ export function Cases() {
         <img className="face" src={img("oskar-r-s.webp")} alt="Oskar Röös" />
         <div>
           <blockquote>“We decided to give scandiweb full ownership towards our eCommerce ecosystem. It was the right choice.”</blockquote>
-          <div className="who"><span><b>Oskar Röös</b>CIO, Byggmax · $1B/yr, 160+ stores · abandoned cart, welcome and winback flows, SMS, 1:1 personalisation · +15% AOV from the test programme</span><img className="bl" src={img("byggmax.webp")} alt="Byggmax" /></div>
+          <div className="who"><span><b>Oskar Röös</b>CIO, Byggmax · $1B/yr, 160+ stores · abandoned cart, welcome and winback flows, SMS, 1:1 personalisation · +15% AOV from the test programme</span></div>
         </div>
       </div>
       <div className="crostrip">
@@ -131,27 +131,16 @@ export function Steps({ onStart }: { onStart: StartFn }) {
 }
 
 export function Flows() {
-  const [i, setI] = useState(0);
-  const f = COPY.flows[i];
-  const m = FLOW_META[i];
   return (
     <section className="blk alt"><div className="wrap">
-      <h2 className="sec">Here’s what that work actually looks like.</h2>
-      <p className="secsub">Live client flows. Real accounts. Built in each brand’s own voice.</p>
-      <div className="tabs">
-        {COPY.flows.map((fl, j) => (
-          <button key={fl.n} className={"tab" + (j === i ? " on" : "")} onClick={() => setI(j)}>{fl.n}</button>
-        ))}
-      </div>
+      <h2 className="sec">Recent work</h2>
+      <p className="secsub">Live client campaigns. Real accounts. Built in each brand’s own voice.</p>
       <div className="gal">
-        {m.shots.map((s, k) => (
-          <div className="shot" key={s}><span>{f.lbl[k]}</span><img src={s} alt={`${f.brand} ${f.n} email ${k + 1}`} /></div>
+        {CAMPAIGN_SHOTS.map((c) => (
+          <div className="shot" key={c.lbl}><span>{c.lbl}</span><img src={img(c.file)} alt={c.alt} /></div>
         ))}
       </div>
-      <div className="galnote">
-        {m.logo ? <span className="glogo"><img src={m.logo} alt={f.brand} className={m.inv ? "inv" : ""} /></span> : <b>{f.brand}</b>}
-        <span>{f.note}</span>
-      </div>
+      <div className="galnote"><b>Sportland · CircuitMess</b><span>Campaign templates built as a reusable system, the monthly sends that sit on top of the flows.</span></div>
     </div></section>
   );
 }
@@ -167,10 +156,10 @@ export function Team() {
       <p className="secsub">Strategy, copy, design and build, all under one roof. One team accountable for performance.</p>
       <div className="team">
         <div className="lead-card">
-          <img src={img("andres-reitsnik.webp")} alt={HOST_NAME} />
+          <img src={img("andres-reitsnik.webp")} alt={LIFECYCLE_LEAD} />
           <div className="lb">
             <div className="role">Growth Strategy Owner · Lifecycle lead</div>
-            <h3>{HOST_NAME}</h3>
+            <h3>{LIFECYCLE_LEAD}</h3>
             <p style={{ marginTop: 10 }}>8+ years in lifecycle and retention.<br />Owns the strategy, baseline and performance scorecard from day one.</p>
           </div>
         </div>
@@ -179,10 +168,8 @@ export function Team() {
           <p>Email strategists, copywriters, designers and mar-tech developers, the people who will be inside your account.</p>
           <div className="faces">{FACES.map((f) => <img key={f} src={img(f)} alt="" />)}</div>
           <div className="certs">
-            <span className="lbl">Trained &amp; certified by</span>
-            {CERTS.map(([f, a]) => <img key={f} src={img(f)} alt={a} />)}
-            <span className="lbl" style={{ marginTop: 8 }}>Platform expertise</span>
-            {PLATFORMS.map(([f, a]) => <img key={f} src={img(f)} alt={a} />)}
+            <div className="crow"><span className="lbl">Trained &amp; certified by</span><div className="clogos">{CERTS.map(([f, a]) => <img key={f} src={img(f)} alt={a} />)}</div></div>
+            <div className="crow"><span className="lbl">Platform expertise</span><div className="clogos">{PLATFORMS.map(([f, a]) => <img key={f} src={img(f)} alt={a} />)}</div></div>
           </div>
         </div>
       </div>

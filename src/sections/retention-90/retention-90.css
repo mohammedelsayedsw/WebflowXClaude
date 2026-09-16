@@ -1252,6 +1252,75 @@
 .r90 .case .clogo{display:flex;width:max-content}
 .r90 .case .tag{display:table}
 
+/* =============================================================
+   Round 7: summary proof block, logo-only cases, "Recent work" grid
+   ============================================================= */
+/* case studies without screenshots */
+.r90 .cases{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;padding-top:0}
+.r90 .case{padding:28px 24px 28px 0!important;border-top:1px solid var(--line2)!important}
+.r90 .case+.case{border-left:1px solid var(--line2)!important;padding-left:24px!important}
+.r90 .case .body{padding:0}
+.r90 .case .clogo{height:44px;margin-bottom:18px}
+.r90 .case .clogo img{height:24px!important;max-width:150px}
+.r90 .case .clogo img.tall{height:36px!important}
+@media(max-width:1000px){
+  .r90 .cases{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .r90 .case+.case{border-left:0!important;padding-left:0!important}
+  .r90 .case:nth-child(even){border-left:1px solid var(--line2)!important;padding-left:24px!important}
+}
+@media(max-width:640px){
+  .r90 .cases{grid-template-columns:1fr!important}
+  .r90 .case,.r90 .case:nth-child(even){border-left:0!important;padding:28px 0!important;text-align:center}
+  .r90 .case .clogo{margin-left:auto;margin-right:auto}
+  .r90 .case .tag{margin-left:auto;margin-right:auto}
+  .r90 .case p{max-width:34ch;margin-left:auto;margin-right:auto}
+}
+/* recent work grid */
+.r90 .gal{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px}
+.r90 .gal .shot{height:auto!important;aspect-ratio:3/4;border:1px solid var(--line2)!important;overflow:hidden}
+.r90 .gal .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.r90 .gal .shot::after{display:none}
+@media(max-width:900px){.r90 .gal{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px}}
+@media(max-width:400px){.r90 .gal{gap:10px}}
+.r90 .galnote{flex-wrap:wrap;gap:6px 16px}
+/* summary proof block */
+.r90 .sproof .squote{padding:22px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.r90 .sproof blockquote{font-size:clamp(17px,1.6vw,21px);font-weight:600;line-height:1.4;color:#fff;margin:0 0 10px;max-width:760px}
+.r90 .sproof .swho{font-size:13.5px;color:var(--mut2);line-height:1.5}
+.r90 .sproof .swho b{color:#fff}
+.r90 .snums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:4px}
+.r90 .snums>div{padding:22px 20px 22px 0;border-left:1px solid var(--line2);padding-left:20px}
+.r90 .snums>div:first-child{border-left:0;padding-left:0}
+.r90 .snums b{display:block;font-size:28px;font-weight:700;color:var(--sw-mint);letter-spacing:-.02em;line-height:1;margin-bottom:8px}
+.r90 .snums span{font-size:13px;line-height:1.45;color:var(--mut2)}
+@media(max-width:760px){
+  .r90 .snums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r90 .snums>div:nth-child(3){border-left:0;padding-left:0}
+  .r90 .snums>div:nth-child(n+3){border-top:1px solid var(--line2)}
+}
+@media(max-width:420px){
+  .r90 .snums{grid-template-columns:1fr}
+  .r90 .snums>div{border-left:0!important;padding-left:0!important;border-top:1px solid var(--line2)}
+  .r90 .snums>div:first-child{border-top:0}
+}
+.r90 .snums b{color:var(--sw-mint)!important}
+@media(max-width:640px){.r90 .case .tag{margin:0 auto 12px!important}.r90 .case .kd{max-width:34ch;margin-left:auto;margin-right:auto}}
+
+/* =============================================================
+   Round 9: brand names as type, certification grid
+   ============================================================= */
+.r90 .case .cname{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.2;margin-bottom:16px;min-height:0}
+@media(max-width:640px){.r90 .case .cname{text-align:center}}
+.r90 .quote .who{padding-right:0}
+/* certs: label + logo grid per row */
+.r90 .certs{display:block!important;padding-top:20px!important;border-top:1px solid var(--line2)!important}
+.r90 .certs .crow{padding:16px 0;border-bottom:1px solid var(--line2)}
+.r90 .certs .crow:last-child{border-bottom:0;padding-bottom:0}
+.r90 .certs .crow .lbl{display:block;width:auto;margin:0 0 14px!important}
+.r90 .certs .clogos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 20px;align-items:center}
+.r90 .certs .clogos img{height:22px!important;width:auto;max-width:100%;max-height:22px;object-fit:contain;object-position:left center;justify-self:start;opacity:.8!important}
+@media(max-width:480px){.r90 .certs .clogos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 
 body.noscroll{overflow:hidden}
 

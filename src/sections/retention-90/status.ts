@@ -9,11 +9,14 @@ export const PIXEL_CONTENT = "Retention Score";
 export const DL_EVENT = "retention_scan_request";
 export const VERTICAL = "retention";
 
-/* HubSpot meetings link for the booking modal. Empty = placeholder box shown. */
-export const CALENDAR_URL = "";
+/* Calendly event for the booking modal. Empty = holding message shown. */
+export const CALENDAR_URL = "https://calendly.com/nika-zhgheria-scandiweb/growth-intro-meeting";
 
-export const HOST_NAME = "Andres Reitsnik";
-export const HOST_TITLE = "Lifecycle Lead";
+/* Who takes the call (modal + summary). The lifecycle lead on the team section is separate. */
+export const HOST_NAME = "Nika Z.";
+export const HOST_TITLE = "our Business Growth Manager";
+export const HOST_PHOTO = "nika.webp";
+export const LIFECYCLE_LEAD = "Andres Reitsnik";
 export const LEGAL_ENTITY = "scandiweb SIA";
 
 export const PAGE_URL = "https://scandiweb.com/solutions/retention-90";

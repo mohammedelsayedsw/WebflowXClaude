@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { QUESTIONS, img } from "./copy";
 import { computeLeak, computeScore, fmtK } from "./scoring";
-import { CALENDAR_URL, HOST_NAME, HOST_TITLE } from "./status";
+import { CALENDAR_URL, HOST_NAME, HOST_PHOTO, HOST_TITLE } from "./status";
 
 type Props = {
   open: boolean;
@@ -65,7 +65,7 @@ export function BookingModal(props: Props) {
         <button ref={closeRef} className="x" onClick={onClose} aria-label="Close">&times;</button>
         <h2 id="modal-h">Let’s fix the leak in 90 days</h2>
         <div className="who">
-          <img src={img("andres-reitsnik.webp")} alt={HOST_NAME} />
+          <img src={img(HOST_PHOTO)} alt={HOST_NAME} />
           <p className="lead">30 minutes with <b>{HOST_NAME}</b>, {HOST_TITLE}. We’ll review your current setup, validate the numbers from your scan, and confirm whether the 90-day test makes sense for your store.</p>
         </div>
         {scanned && (

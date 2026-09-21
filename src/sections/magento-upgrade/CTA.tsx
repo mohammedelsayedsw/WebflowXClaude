@@ -4,73 +4,54 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { TrustLogos } from "@/sections/ac-open-source/TrustLogos";
-import { assetUrl } from "@/lib/assets";
 
-const A = "/magento/upgrade";
+const stats: { n: string; label: string }[] = [
+  { n: "2,100+", label: "eCommerce projects delivered" },
+  { n: "894+", label: "Adobe certifications on the team" },
+  { n: "700+", label: "Brands trust scandiweb" },
+  { n: "$4B+", label: "Processed for clients yearly" },
+];
 
+/**
+ * The closing section. It has no ground of its own: the loop from the hero
+ * comes back round behind it (see Loop.tsx, which looks for #cta).
+ */
 export function CTA() {
   return (
-    <section
-      id="cta"
-      className="relative pt-28 md:pt-40 pb-10 md:pb-12 overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(900px 600px at 20% 20%, #2a3380 0%, transparent 55%)," +
-          "radial-gradient(700px 500px at 80% 80%, #070a1e 0%, transparent 52%)," +
-          "radial-gradient(1200px 800px at 50% 50%, #1a2060 0%, #141a48 40%, #10132c 80%, #0a0d24 100%)",
-      }}
-    >
+    <section id="cta" className="relative z-10 pt-28 md:pt-40 pb-10 md:pb-12 overflow-hidden">
+      {/* hold the type and the form clear of the loop behind them */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(5,7,15,0.72) 0%, rgba(5,7,15,0.35) 60%, rgba(5,7,15,0) 100%)",
+        }}
+      />
+
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">
-              free estimate · no commitment
-            </div>
-            <h2 className="font-head text-white text-[32px] md:text-[48px] lg:text-[58px] leading-[1.05] max-w-[18ch]">
-              Get your{" "}
-              <span className="text-[var(--sw-mint)]">free estimate</span>.
+            <h2 className="font-head font-bold text-white text-[36px] md:text-[52px] lg:text-[68px] leading-[1.02] tracking-[-0.02em] max-w-[14ch]">
+              Make every future Magento upgrade{" "}
+              <span
+                style={{
+                  color: "var(--sw-mint)",
+                  textShadow: "0 0 56px rgba(110,247,110,0.28)",
+                }}
+              >
+                free
+              </span>
             </h2>
-            <p className="mt-6 text-white/80 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
-              Send your domain and current version. We reply in 48 hours with
-              your exact fixed price, your timeline, and a risk register. No live
-              changes, no admin access.
-            </p>
 
-            <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
-              <blockquote className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] tracking-[-0.005em]">
-                &ldquo;Fixed price, fixed scope. You approve the number{" "}
-                <span className="text-[var(--sw-mint)]">
-                  before we touch anything
-                </span>
-                .&rdquo;
-              </blockquote>
-              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
-                <img
-                  src={assetUrl(`${A}/team/aigars.png`)}
-                  alt="Aigars Pavlovics"
-                  className="h-14 w-14 rounded-full object-cover shrink-0"
-                  style={{ border: "1px solid rgba(230,231,239,0.2)" }}
-                />
-                <div>
-                  <div className="text-white text-[15px] font-medium">
-                    Aigars Pavlovics
-                  </div>
-                  <div className="label-code text-white/55 mt-0.5">
-                    Co-Founder, scandiweb
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <ul className="mt-10 space-y-2.5 text-[13px] md:text-[14px] text-white/75">
+            <ul className="mt-10 space-y-3.5 text-[16px] md:text-[18px] text-white/85">
               {[
-                "We reply within 48 hours",
-                "Free estimate, no commitment, no admin access",
-                "Your store details stay confidential",
-                "Price locked before any work starts",
-              ].map((t, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-[var(--sw-mint)] shrink-0" />
+                "Your exact version, and what breaks on 2.4.9",
+                "A fixed price to get there",
+                "A first step, no commitment",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <Check className="h-5 w-5 mt-1 text-[var(--sw-mint)] shrink-0" />
                   <span>{t}</span>
                 </li>
               ))}
@@ -80,17 +61,28 @@ export function CTA() {
           <Reveal delay={0.15}>
             <HubSpotForm
               portalId="25724996"
-              formId="097a15ac-beeb-4993-ab0f-21fdcd398119"
+              formId="854369a6-646b-45cf-b8ed-0001e32bd732"
               region="eu1"
+              submitText="Get free Magento upgrades"
             />
-            <p className="label-code text-white/45 mt-3 px-1">
-              We reply within 48 hours.
-            </p>
           </Reveal>
         </div>
+
+        <Reveal delay={0.1}>
+          <dl className="mt-20 md:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-x-8">
+            {stats.map((s) => (
+              <div key={s.label} className="border-t border-white/15 pt-5 pb-8">
+                <dd className="font-head font-bold text-white text-[40px] md:text-[56px] leading-none tracking-[-0.03em] tabular-nums">
+                  {s.n}
+                </dd>
+                <dt className="mt-3 text-white/55 text-[14px] md:text-[15px]">{s.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
 
-      <div className="mt-12 md:mt-16">
+      <div className="relative mt-6 md:mt-10">
         <TrustLogos />
       </div>
     </section>

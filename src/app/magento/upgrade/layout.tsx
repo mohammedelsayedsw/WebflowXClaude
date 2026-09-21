@@ -1,25 +1,30 @@
 import type { Metadata } from "next";
 
+// The root layout applies the `%s | scandiweb` template, so the page title
+// carries no suffix of its own. OG and Twitter titles are not templated.
+const TITLE = "Free Magento upgrades, forever";
+const SHARE_TITLE = `${TITLE} | scandiweb`;
+const DESCRIPTION =
+  "Perpetual by scandiweb: every Magento 2.4.x release and every security patch applied to your store at no charge, for as long as scandiweb is your development team.";
+
 export const metadata: Metadata = {
-  title: "Fixed-price Magento upgrade from $990",
-  description:
-    "Senior Magento engineers upgrade your store on a locked scope and timeline. Start with a free estimate that gives you your exact fixed price in 48 hours, no live changes, no admin access.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: "https://scandiweb.com/solutions/magento/upgrade",
   },
   openGraph: {
-    title: "Fixed-price Magento upgrade from $990 | scandiweb",
-    description:
-      "Fixed price, fixed scope, fixed timeline. scandiweb upgrades Magento and Adobe Commerce stores on a price locked before work starts. Free 48-hour estimate first.",
+    title: SHARE_TITLE,
+    description: DESCRIPTION,
     url: "https://scandiweb.com/solutions/magento/upgrade",
     siteName: "scandiweb",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fixed-price Magento upgrade from $990 | scandiweb",
+    title: SHARE_TITLE,
     description:
-      "Senior Magento engineers upgrade your store on a locked price and timeline. Free estimate in 48 hours.",
+      "Every Magento release. Every security patch. $0, for as long as scandiweb builds your store.",
   },
 };
 

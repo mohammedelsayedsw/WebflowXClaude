@@ -6,81 +6,65 @@ type Q = { q: string; a: string };
 
 const faqs: Q[] = [
   {
-    q: "Do I need to change my agency?",
-    a: "No. Use us on the next upgrade and keep your team. Many clients use the free estimate to compare against, or push, their current vendor.",
+    q: "How can the upgrades be free?",
+    a: "The engineers applying the release are already on your store. There is no discovery phase, no handover and no fresh scoping, which is where most of an agency upgrade quote goes. scandiweb carries that cost inside the retainer.",
   },
   {
-    q: "Do you make live changes for the estimate?",
-    a: "No. The estimate needs no live changes and no admin access, just your domain and current version. We analyze from public and shared signals.",
+    q: "What does working with scandiweb cost?",
+    a: "Perpetual sits inside your monthly development retainer, sized to your store and your roadmap. Bringing your store current is quoted once as onboarding, at a fixed price. Both numbers are in your compatibility report before you commit.",
   },
   {
-    q: "Is the price really fixed?",
-    a: "Yes. Scope and price are locked before work starts. You approve the cost up front and there is no scope creep.",
+    q: "I am joining from another agency. What happens first?",
+    a: "We scope bringing your store current, once, at a fixed price you approve before any work starts. How far back your version sits and how much custom code carries forward decide that price. From the day Perpetual begins, upgrades stop being billable.",
   },
   {
-    q: "What about custom modules and ERP integrations?",
-    a: "They are reviewed and adjusted so they keep working. The estimate confirms which custom modules and integrations need work, and what each takes.",
+    q: "Will my store go down or lose data?",
+    a: "The upgrade is built and tested on a staging copy while production keeps selling, then deployed in a window you pick. Your catalog, customers and order history arrive intact, and a rollback stays ready through go-live.",
   },
   {
-    q: "How long does it take?",
-    a: "It depends on the store. Most upgrades run from a few days to a few weeks. The estimate gives you the exact timeline before you commit.",
+    q: "Will an upgrade affect my search rankings?",
+    a: "It can. Version jumps change URL structures and template markup. Our SEO team reviews redirects and structured data on staging, then measures Core Web Vitals before and after go-live.",
   },
   {
-    q: "Which versions do you handle?",
-    a: "Magento 2 and Adobe Commerce, any version behind, including Magento 1 to 2 migrations.",
+    q: "I am on Magento 1. Does Perpetual apply to me?",
+    a: "Magento 1 to Magento 2 is a replatform with a data and design migration, quoted on its own from $35,000. Once your store is live on 2.4.9, Perpetual begins from there.",
   },
   {
-    q: "Is this an AI upgrade?",
-    a: "AI-assisted analysis compresses the compatibility scan and code review. Senior Magento engineers run the execution and sign off every change.",
+    q: "How do I check which Magento version I am on?",
+    a: "The version number sits in the footer of your Magento admin, or run bin/magento --version on your server. If neither is reachable, send us your store URL and we will identify it.",
   },
 ];
 
+/** Questions as rows between hairlines; the answers stay closed until asked for. */
 export function FAQ() {
   return (
-    <section
-      id="faq"
-      className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden"
-    >
-      <div className="wrap relative">
-        <div className="grid gap-12 md:gap-16 lg:grid-cols-[1fr_2fr] items-start">
+    <section id="faq" className="relative z-10 bg-lp-bright py-28 md:py-36">
+      <div className="wrap">
+        <div className="grid gap-10 md:gap-16 lg:grid-cols-[1fr_2fr] items-start">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">
-              what people ask first
-            </div>
-            <h2 className="font-head text-white text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[18ch]">
-              Questions,{" "}
-              <span style={{ color: "var(--sw-mint)" }}>answered</span>.
+            <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[64px] leading-[1.02] tracking-[-0.02em] max-w-[12ch]">
+              Questions about Perpetual
             </h2>
-            <p className="mt-7 text-[15px] md:text-[17px] text-white/80 leading-relaxed max-w-[44ch]">
-              If yours isn&apos;t here, put it on the free estimate. We&apos;ll
-              answer it then.
-            </p>
           </Reveal>
 
-          <div className="space-y-3 md:space-y-4">
+          <div className="border-b border-[var(--sw-black)]/12">
             {faqs.map((f, i) => (
               <Reveal key={f.q} delay={i * 0.05}>
-                <details
-                  className="group rounded-[4px] border border-white/10 px-6 py-5 md:px-7 md:py-6 open:bg-white/[0.03]"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 60%), rgba(16,19,44,0.45)",
-                  }}
-                >
-                  <summary className="cursor-pointer list-none flex items-start justify-between gap-4">
-                    <span className="font-head text-white text-[16px] md:text-[18px] leading-[1.3]">
+                <details className="group border-t border-[var(--sw-black)]/12">
+                  <summary className="cursor-pointer list-none flex items-start justify-between gap-6 py-6 md:py-7 [&::-webkit-details-marker]:hidden">
+                    <span className="font-head font-semibold text-[var(--sw-black)] text-[18px] md:text-[22px] leading-[1.25]">
                       {f.q}
                     </span>
                     <span
                       aria-hidden
-                      className="shrink-0 mt-1 h-5 w-5 rounded-full border border-white/40 grid place-items-center text-white/70 group-open:rotate-45 transition"
+                      className="shrink-0 mt-0.5 font-head text-[26px] leading-none text-[var(--sw-blue)] group-open:rotate-45 transition"
                     >
                       +
                     </span>
                   </summary>
-                  <div className="mt-4 text-[14px] md:text-[15px] text-white/75 leading-relaxed">
+                  <p className="pb-7 -mt-1 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-relaxed max-w-[62ch]">
                     {f.a}
-                  </div>
+                  </p>
                 </details>
               </Reveal>
             ))}

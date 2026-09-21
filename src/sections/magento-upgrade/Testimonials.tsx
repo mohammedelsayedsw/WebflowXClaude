@@ -1,125 +1,124 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
 const base = "/magento/upgrade/team";
 
-type Quote = {
-  quote: string;
-  name: string;
-  title: string;
-  photo?: string;
-};
-
-const lead: Quote = {
-  quote:
-    "Partnering with scandiweb's team allowed us to bring a site to market that has 3 to 4 times better performance than any other site.",
-  name: "Jason Barney",
-  title: "eCommerce Technology Consultant, PUMA",
-  photo: `${base}/jason-barney.png`,
-};
+type Quote = { quote: string; name: string; title: string; photo: string };
 
 const quotes: Quote[] = [
   {
     quote:
-      "Our first Magento project with another partner failed. scandiweb stepped in, rebuilt the site, and has kept it secure and high-performing ever since. We have worked together for more than ten years and have many ideas and plans for the future.",
+      "For more than 10 years, scandiweb has supported our Magento platform with top talent, helping us reach our strategic goals.",
     name: "Jonathan Chan",
     title: "Head of Global IT, Lafayette 148 NY",
     photo: `${base}/jonathan-chan.png`,
   },
   {
     quote:
-      "scandiweb helped us understand and implement our eCommerce platform on Magento. They repeatedly went above and beyond on design and process decisions, and I would not hesitate to recommend them to any organization that wants an eCommerce solution done quickly and correctly.",
+      "Partnering with scandiweb’s team allowed us to bring a Magento 2 site to market that has 3 to 4 times better performance than any other site.",
+    name: "Jason Barney",
+    title: "eCommerce Technology Consultant, PUMA",
+    photo: `${base}/jason-barney.png`,
+  },
+  {
+    quote:
+      "They repeatedly went above and beyond on design and process decisions.",
     name: "Erik Klepper",
     title: "Head of News Agency Applications, Thomson Reuters",
     photo: `${base}/erik-klepper.jpg`,
   },
 ];
 
-function Avatar({ photo, name }: { photo?: string; name: string }) {
-  if (!photo) {
-    return (
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--sw-blue)]/10 font-head text-[15px] text-[var(--sw-blue)]">
-        {name
-          .split(" ")
-          .map((w) => w[0])
-          .slice(0, 2)
-          .join("")}
-      </div>
-    );
-  }
-  return (
-    <img
-      src={assetUrl(photo)}
-      alt={name}
-      className="h-11 w-11 rounded-full object-cover shrink-0"
-      style={{ border: "1px solid rgba(11,12,26,0.12)" }}
-    />
-  );
-}
+const ROTATE_MS = 8000;
 
+/**
+ * One quote on screen at a time, set large; the names underneath switch it.
+ * It moves on by itself until someone picks a name.
+ */
 export function Testimonials() {
+  const [at, setAt] = useState(0);
+  const [held, setHeld] = useState(false);
+
+  useEffect(() => {
+    if (held) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setInterval(
+      () => setAt((i) => (i + 1) % quotes.length),
+      ROTATE_MS
+    );
+    return () => window.clearInterval(t);
+  }, [held]);
+
+  const q = quotes[at];
+
   return (
-    <section id="testimonials" className="bg-lp-bright py-28 md:py-36">
+    <section id="testimonials" className="relative z-10 py-28 md:py-40">
       <div className="wrap">
         <Reveal>
-          <div className="label-code text-[var(--sw-black)]/55 mb-5">
-            testimonials
+          <h2 className="label-code text-white/55">What our clients say</h2>
+          <div className="mt-8 md:mt-10 min-h-[300px] sm:min-h-[260px] md:min-h-[300px] lg:min-h-[280px]">
+            <AnimatePresence mode="wait">
+              <motion.blockquote
+                key={q.name}
+                initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="font-head font-bold text-white text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] tracking-[-0.02em] max-w-[24ch] md:max-w-[26ch]"
+              >
+                &ldquo;{q.quote}&rdquo;
+              </motion.blockquote>
+            </AnimatePresence>
           </div>
-          <h2 className="font-head text-[var(--sw-black)] text-[32px] md:text-[44px] lg:text-[52px] leading-[1.05] max-w-[24ch]">
-            What clients say after the{" "}
-            <span className="text-[var(--sw-blue)]">upgrade</span>.
-          </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <figure className="mt-12 md:mt-16 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8 md:p-12">
-            <span
-              aria-hidden
-              className="font-head text-[56px] leading-none text-[var(--sw-blue)]"
-            >
-              &ldquo;
-            </span>
-            <blockquote className="mt-2 max-w-[60ch] font-head text-[var(--sw-black)] text-[22px] md:text-[34px] leading-[1.18]">
-              {lead.quote}
-            </blockquote>
-            <figcaption className="mt-8 flex items-center gap-4">
-              <Avatar photo={lead.photo} name={lead.name} />
-              <div>
-                <div className="font-head text-[var(--sw-black)] text-[16px]">
-                  {lead.name}
-                </div>
-                <div className="label-code text-[var(--sw-black)]/55 mt-0.5">
-                  {lead.title}
-                </div>
-              </div>
-            </figcaption>
-          </figure>
+          <div
+            role="group"
+            aria-label="Choose a client quote"
+            className="mt-10 md:mt-14 grid sm:grid-cols-3 gap-x-8"
+          >
+            {quotes.map((c, i) => {
+              const on = i === at;
+              return (
+                <button
+                  key={c.name}
+                  type="button"
+                  aria-pressed={on}
+                  onClick={() => {
+                    setAt(i);
+                    setHeld(true);
+                  }}
+                  className={`group flex items-center gap-4 border-t py-5 text-left transition cursor-pointer ${
+                    on ? "" : "opacity-55 hover:opacity-90"
+                  }`}
+                  style={{
+                    borderTopColor: on ? "var(--sw-mint)" : "rgba(255,255,255,0.15)",
+                  }}
+                >
+                  <img
+                    src={assetUrl(c.photo)}
+                    alt=""
+                    className="h-11 w-11 rounded-full object-cover shrink-0"
+                    style={{ border: "1px solid rgba(230,231,239,0.2)" }}
+                  />
+                  <span>
+                    <span className="block font-head text-white text-[15px] md:text-[16px]">
+                      {c.name}
+                    </span>
+                    <span className="block text-white/55 text-[13px] leading-snug mt-0.5">
+                      {c.title}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </Reveal>
-
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {quotes.map((q, i) => (
-            <Reveal key={q.name} delay={i * 0.08}>
-              <figure className="h-full rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-8 flex flex-col">
-                <blockquote className="font-head text-[var(--sw-black)] text-[19px] md:text-[22px] leading-snug flex-1">
-                  &ldquo;{q.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6 pt-6 border-t border-[var(--sw-black)]/10 flex items-center gap-4">
-                  <Avatar photo={q.photo} name={q.name} />
-                  <div>
-                    <div className="font-head text-[var(--sw-black)] text-[15px]">
-                      {q.name}
-                    </div>
-                    <div className="label-code text-[var(--sw-black)]/55 mt-0.5">
-                      {q.title}
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { TrustLogos } from "@/sections/ac-open-source/TrustLogos";
+import { TrustLogos } from "./TrustLogos";
 
 const stats: { n: string; label: string }[] = [
   { n: "2,100+", label: "eCommerce projects delivered" },

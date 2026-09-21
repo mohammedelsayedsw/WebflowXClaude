@@ -15,13 +15,11 @@ const enter = (delay: number) => ({
 
 const EYEBROW =
   "font-head font-bold uppercase text-white/70 text-[13px] md:text-[14px] leading-[1.5] tracking-[0.14em]";
-const SUBLINE =
-  "font-head font-bold uppercase text-white/90 text-[15px] md:text-[18px] leading-[1.45] tracking-[0.03em] text-balance";
 
 /**
  * One fold, one left column, the same build as magento/twice-as-fast: a white
- * line over one giant green word, a line under it, the two ways on. The loop
- * keeps the right side.
+ * line over one giant green word, then the two ways on. The loop keeps the
+ * right side.
  */
 export function Hero() {
   return (
@@ -76,13 +74,6 @@ export function Hero() {
 
         <motion.div
           {...enter(0.9)}
-          className={`${SUBLINE} mt-7 md:mt-[clamp(24px,4vh,40px)]`}
-        >
-          Every release. Every security patch. $0.
-        </motion.div>
-
-        <motion.div
-          {...enter(1.15)}
           className="mt-8 md:mt-[clamp(24px,4.5vh,44px)] flex flex-col sm:flex-row gap-3 sm:gap-4"
         >
           <a href="#cta" onClick={scrollToSection("cta")} className={btnPrimary}>

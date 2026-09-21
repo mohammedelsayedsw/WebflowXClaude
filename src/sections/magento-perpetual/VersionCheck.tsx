@@ -41,11 +41,13 @@ function read(r: Release, now: number) {
 }
 
 /* The section runs on four type styles and no more: the heading, the small
-   label, the figure and the sentence. Both columns use the same three. */
+   label, the figure and the sentence. Both columns use the same three. The
+   sentence stays on one line from `sm` up: the left column is the wider one,
+   and the columns only sit side by side from `lg`, where it has room. */
 const LABEL = "label-code text-white/55";
 const FIGURE =
   "mt-5 font-head font-bold leading-[0.86] tracking-[-0.04em] tabular-nums text-[88px] sm:text-[120px] md:text-[150px] lg:text-[180px]";
-const LINE = "mt-6 text-white/75 text-[17px] md:text-[19px] leading-snug max-w-[40ch]";
+const LINE = "mt-6 text-white/75 text-[17px] md:text-[19px] leading-snug sm:whitespace-nowrap";
 
 /**
  * Pick a release. Left: how many days it has been out of support (or has
@@ -108,7 +110,7 @@ export function VersionCheck() {
         </Reveal>
 
         <Reveal delay={0.14}>
-          <div className="mt-14 md:mt-20 grid gap-14 md:gap-10 md:grid-cols-2">
+          <div className="mt-14 md:mt-20 grid gap-14 lg:gap-12 lg:grid-cols-[1.35fr_1fr]">
             <div aria-live="polite">
               <div className={LABEL}>
                 {release.replatform ? release.name : `Magento ${release.name}`}
@@ -140,13 +142,7 @@ export function VersionCheck() {
                 $0
               </div>
               <p className={LINE}>
-                {release.replatform ? (
-                  <>Replatform to Magento {LATEST}: from $35,000</>
-                ) : (
-                  <>
-                    Market rate: <s>$15,000 to $35,000</s>
-                  </>
-                )}
+                Market rate: <s>$15,000 to $35,000</s>
               </p>
             </div>
           </div>

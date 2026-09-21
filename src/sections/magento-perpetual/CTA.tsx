@@ -67,7 +67,7 @@ export function CTA() {
           <Reveal delay={0.15}>
             <HubSpotForm
               portalId="25724996"
-              formId="854369a6-646b-45cf-b8ed-0001e32bd732"
+              formId="3f982745-1c30-449f-b01c-08c37992053f"
               region="eu1"
               submitText="Get free Magento upgrades"
             />

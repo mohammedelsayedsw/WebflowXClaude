@@ -1,9 +1,16 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { TrustLogos } from "./TrustLogos";
+
+/** What the reader can expect once the form is in. No prices here. */
+const steps = [
+  "You send the form",
+  "We invite you to an intro call",
+  "We review your store for Magento 2.4.9",
+  "You get a compatibility report and decide",
+];
 
 const stats: { n: string; label: string }[] = [
   { n: "2,100+", label: "eCommerce projects delivered" },
@@ -44,24 +51,23 @@ export function CTA() {
               </span>
             </h2>
 
-            <p className="mt-8 md:mt-10 text-[16px] md:text-[18px] text-white/85 max-w-[44ch]">
-              Send us your store URL. We send back a report with:
+            <p className="mt-8 md:mt-10 text-[16px] md:text-[18px] text-white/85">
+              What happens after you send the form:
             </p>
-            <ul className="mt-5 space-y-3.5 text-[16px] md:text-[18px] text-white/85">
-              {[
-                "What your store needs to run on Magento 2.4.9",
-                "A fixed price for that upgrade",
-                "Your monthly price, with every future upgrade included",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3">
-                  <Check className="h-5 w-5 mt-1 text-[var(--sw-mint)] shrink-0" />
+            <ol className="mt-5 space-y-3.5 text-[16px] md:text-[18px] text-white/85">
+              {steps.map((t, i) => (
+                <li key={t} className="flex items-baseline gap-3">
+                  <span
+                    aria-hidden
+                    className="w-5 shrink-0 font-head font-bold tabular-nums"
+                    style={{ color: "var(--sw-mint)" }}
+                  >
+                    {i + 1}
+                  </span>
                   <span>{t}</span>
                 </li>
               ))}
-            </ul>
-            <p className="mt-6 text-[16px] md:text-[18px] text-white/85">
-              You commit to nothing until you approve it.
-            </p>
+            </ol>
           </Reveal>
 
           <Reveal delay={0.15}>

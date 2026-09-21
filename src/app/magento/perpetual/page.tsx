@@ -24,8 +24,8 @@ export default function Page() {
       <Hero />
       <VersionCheck />
       <Covered />
-      <HowItWorks />
       <Cases />
+      <HowItWorks />
       <Testimonials />
       <FAQ />
       <CTA />

@@ -44,11 +44,14 @@ export function CTA() {
               </span>
             </h2>
 
-            <ul className="mt-10 space-y-3.5 text-[16px] md:text-[18px] text-white/85">
+            <p className="mt-8 md:mt-10 text-[16px] md:text-[18px] text-white/85 max-w-[44ch]">
+              Send us your store URL. We send back a report with:
+            </p>
+            <ul className="mt-5 space-y-3.5 text-[16px] md:text-[18px] text-white/85">
               {[
-                "Your exact version, and what breaks on 2.4.9",
-                "A fixed price to get there",
-                "A first step, no commitment",
+                "What your store needs to run on Magento 2.4.9",
+                "A fixed price for that upgrade",
+                "Your monthly price, with every future upgrade included",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
                   <Check className="h-5 w-5 mt-1 text-[var(--sw-mint)] shrink-0" />
@@ -56,6 +59,9 @@ export function CTA() {
                 </li>
               ))}
             </ul>
+            <p className="mt-6 text-[16px] md:text-[18px] text-white/85">
+              You commit to nothing until you approve it.
+            </p>
           </Reveal>
 
           <Reveal delay={0.15}>

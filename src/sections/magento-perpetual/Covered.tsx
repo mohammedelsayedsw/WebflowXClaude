@@ -2,20 +2,18 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 
-type Row = { item: string; usual: string; perpetual: string; zero?: boolean };
+type Row = { item: string; usual: string; perpetual: string };
 
 const rows: Row[] = [
   {
     item: "Version upgrade to 2.4.9",
     usual: "$15,000 to $35,000",
     perpetual: "$0",
-    zero: true,
   },
   {
     item: "Every security patch",
     usual: "Around $1,000 each",
     perpetual: "$0",
-    zero: true,
   },
   {
     item: "Extension and custom code repair",
@@ -36,7 +34,8 @@ const rows: Row[] = [
 
 /**
  * What the program covers, and what the same line costs elsewhere, as one
- * table: no cards, hairlines only. The condition sits right under it, in full.
+ * table: no cards, hairlines only. Every cell is set at one size; the columns
+ * differ by weight and colour alone. The condition sits right under it, in full.
  */
 export function Covered() {
   return (
@@ -61,15 +60,15 @@ export function Covered() {
 
           {rows.map((r, i) => (
             <Reveal key={r.item} delay={i * 0.07}>
-              <div className="grid grid-cols-2 md:grid-cols-[1.3fr_1fr_1fr] gap-x-8 gap-y-3 items-baseline py-6 md:py-7 border-t border-[var(--sw-black)]/12">
-                <div className="col-span-2 md:col-span-1 font-head font-semibold text-[var(--sw-black)] text-[19px] md:text-[22px] leading-[1.2]">
+              <div className="grid grid-cols-2 md:grid-cols-[1.3fr_1fr_1fr] gap-x-8 gap-y-3 items-baseline py-5 md:py-6 border-t border-[var(--sw-black)]/12 text-[17px] md:text-[19px] leading-[1.3]">
+                <div className="col-span-2 md:col-span-1 font-head font-semibold text-[var(--sw-black)]">
                   {r.item}
                 </div>
                 <div>
                   <div className="md:hidden label-code text-[var(--sw-black)]/50 mb-1.5">
                     The usual agency
                   </div>
-                  <div className="text-[var(--sw-black)]/55 text-[16px] md:text-[18px]">
+                  <div className="font-head text-[var(--sw-black)]/55">
                     {r.usual}
                   </div>
                 </div>
@@ -77,13 +76,7 @@ export function Covered() {
                   <div className="md:hidden label-code text-[var(--sw-blue)] mb-1.5">
                     With Perpetual
                   </div>
-                  <div
-                    className={
-                      r.zero
-                        ? "font-head font-bold text-[var(--sw-blue)] text-[40px] md:text-[56px] leading-[0.9] tracking-[-0.03em]"
-                        : "font-head font-semibold text-[var(--sw-blue)] text-[17px] md:text-[20px] leading-[1.25]"
-                    }
-                  >
+                  <div className="font-head font-semibold text-[var(--sw-blue)]">
                     {r.perpetual}
                   </div>
                 </div>

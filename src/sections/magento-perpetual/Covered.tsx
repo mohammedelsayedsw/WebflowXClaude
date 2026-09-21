@@ -91,18 +91,10 @@ export function Covered() {
             <h3 className="font-head text-[var(--sw-black)] text-[24px] md:text-[32px] leading-[1.1]">
               The condition
             </h3>
-            <div className="max-w-[60ch]">
-              <p className="text-[var(--sw-black)]/80 text-[17px] md:text-[19px] leading-relaxed">
-                Perpetual runs for as long as scandiweb is your development
-                team, inside your monthly retainer. Joining from another agency?
-                Bringing your store current is scoped once, at a fixed price you
-                approve first.
-              </p>
-              <p className="mt-5 text-[var(--sw-black)]/50 text-[13px] leading-relaxed">
-                Usual agency figures are the ranges scandiweb quotes for the same
-                work outside the program.
-              </p>
-            </div>
+            <p className="max-w-[60ch] text-[var(--sw-black)]/80 text-[17px] md:text-[19px] leading-relaxed">
+              Perpetual runs for as long as scandiweb is your development team,
+              inside your monthly retainer.
+            </p>
           </div>
         </Reveal>
       </div>

@@ -1337,3 +1337,5 @@ body.noscroll{overflow:hidden}
 .r90 .screen{min-height:70vh}
 .r90 #screen-summary{min-height:auto}
 .r90 .modal{z-index:10000}
+/* honeypot: off-screen, not display:none (some bots skip hidden fields) */
+.r90 .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important}

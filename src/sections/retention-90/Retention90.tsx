@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt } from "./scoring";
-import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, NOTIFY_CC, PIXEL_CONTENT, VERTICAL } from "./status";
+import { DL_EVENT, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
@@ -26,10 +26,9 @@ export function Retention90() {
   const [qi, setQi] = useState(-1);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [labels, setLabels] = useState<Record<string, string>>({});
-  const [leadName, setLeadName] = useState("");
-  const [leadEmail, setLeadEmail] = useState("");
   const [book, setBook] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
+  const [bookingUrl, setBookingUrl] = useState("");
 
   useEffect(() => { window.scrollTo(0, 0); }, [screen, qi]);
 
@@ -57,27 +56,27 @@ export function Retention90() {
     if (qi > (store ? 0 : -1)) setQi(qi - 1); else setScreen("lp");
   }, [screen, qi, store]);
 
-  const submitGate = useCallback((name: string, email: string) => {
-    setLeadName(name); setLeadEmail(email);
+  const submitGate = useCallback((name: string, email: string, honeypot: string) => {
     const score = computeScore(answers), leak = computeLeak(answers);
     const payload: Record<string, string> = {
-      _subject: LEAD_SUBJECT + store,
-      _template: "table",
-      _cc: NOTIFY_CC,
       name, email, store,
       vertical: VERTICAL,
       retentionScore: score + "/100",
       estimatedOpportunity: fmt(leak) + "/mo",
       consent: "yes",
+      company_website: honeypot,
     };
     QUESTIONS.forEach((Q) => { payload[Q.q] = labels[Q.k] || ""; });
     const P = new URLSearchParams(window.location.search);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => { const v = P.get(k); if (v) payload[k] = v; });
     payload.page = window.location.href.split("?")[0];
 
-    /* 1. straight to the inbox */
+    /* 1. our own gate: blocklist, honeypot, rate limits, then formsubmit + a booking link */
     try {
-      fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
+      fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
+        .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string }>)
+        .then((j) => { if (j && j.bookingUrl) setBookingUrl(j.bookingUrl); })
+        .catch(() => {});
     } catch {}
     /* 2. Meta, same Lead event the audit funnels fire */
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: PIXEL_CONTENT, value: leak, currency: "USD" }); } catch {}
@@ -115,7 +114,7 @@ export function Retention90() {
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} />}
       {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onBook={openBook} />}
-      <BookingModal open={book} onClose={closeBook} store={store} leadName={leadName} leadEmail={leadEmail} answers={answers} labels={labels} />
+      <BookingModal open={book} onClose={closeBook} store={store} bookingUrl={bookingUrl} answers={answers} />
     </div>
   );
 }

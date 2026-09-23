@@ -1,48 +1,25 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { QUESTIONS, img } from "./copy";
+import { img } from "./copy";
 import { computeLeak, computeScore, fmtK } from "./scoring";
-import { CALENDAR_URL, HOST_NAME, HOST_PHOTO, HOST_TITLE } from "./status";
+import { HOST_NAME, HOST_PHOTO, HOST_TITLE } from "./status";
 
 type Props = {
   open: boolean;
   onClose: () => void;
   store: string;
-  leadName: string;
-  leadEmail: string;
+  /* Returned by /api/retention/submit only for submissions that passed every check.
+     Empty = holding message; the public Calendly URL never reaches the browser. */
+  bookingUrl: string;
   answers: Record<string, number>;
-  labels: Record<string, string>;
 };
 
-/* Everything the scan already knows, handed to the scheduler so nothing is retyped. */
-function calendarURL(p: Omit<Props, "open" | "onClose">): string {
-  const full = (p.leadName || "").trim();
-  const first = full.split(" ")[0] || "";
-  const last = full.split(" ").slice(1).join(" ");
-  const q: Record<string, string> = {};
-  if (/hubspot/i.test(CALENDAR_URL)) { q.firstName = first; q.lastName = last; q.email = p.leadEmail; q.company = p.store; }
-  else if (/calendly/i.test(CALENDAR_URL)) { q.name = full; q.email = p.leadEmail; q.a1 = p.store; }
-  else { q.name = full; q.email = p.leadEmail; }
-  q.store = p.store;
-  const scanned = p.answers.rev != null;
-  if (scanned) {
-    q.score = String(computeScore(p.answers));
-    q.opportunity = String(computeLeak(p.answers));
-    q.scan = QUESTIONS.map((Q) => Q.k + "=" + (p.labels[Q.k] || "")).join("; ");
-  }
-  q.utm_source = "retention-scan"; q.utm_medium = "summary-modal";
-  q.utm_content = scanned ? "score-" + computeScore(p.answers) : "no-scan";
-  const qs = Object.entries(q).filter(([, v]) => v !== "" && v != null).map(([k, v]) => encodeURIComponent(k) + "=" + encodeURIComponent(v)).join("&");
-  return CALENDAR_URL + (CALENDAR_URL.indexOf("?") > -1 ? "&" : "?") + qs;
-}
-
 export function BookingModal(props: Props) {
-  const { open, onClose, store, answers } = props;
+  const { open, onClose, store, answers, bookingUrl: url } = props;
   const closeRef = useRef<HTMLButtonElement>(null);
   const scanned = answers.rev != null;
-  const url = useMemo(() => (CALENDAR_URL ? calendarURL(props) : ""), [props]);
   /* Portal to <body>: the page <main> is an isolated stacking context and the site footer
      paints above it, so a fixed overlay inside <main> would sit under the footer. */
   const [mounted, setMounted] = useState(false);

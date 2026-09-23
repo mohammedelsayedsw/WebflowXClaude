@@ -84,7 +84,7 @@ export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
 type GateProps = {
   store: string;
   onBack: () => void;
-  onSubmit: (name: string, email: string) => void;
+  onSubmit: (name: string, email: string, honeypot: string) => void;
 };
 
 export function Gate({ store, onBack, onSubmit }: GateProps) {
@@ -93,13 +93,14 @@ export function Gate({ store, onBack, onSubmit }: GateProps) {
   const [consent, setConsent] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [consentErr, setConsentErr] = useState(false);
+  const [hp, setHp] = useState("");
 
   const submit = () => {
     const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
     setEmailErr(!ok);
     if (!ok) return;
     if (!consent) { setConsentErr(true); return; }
-    onSubmit(name.trim(), email.trim());
+    onSubmit(name.trim(), email.trim(), hp);
   };
 
   return (
@@ -114,6 +115,8 @@ export function Gate({ store, onBack, onSubmit }: GateProps) {
         <h2>Your Retention Score is ready.</h2>
         <p>Enter your email to see your score now and get the full breakdown, including your estimated revenue gap, 90-day upside, and the flows with the biggest opportunity.</p>
         <input type="text" placeholder="First name" autoComplete="given-name" value={name} onChange={(e) => setName(e.target.value)} />
+        {/* honeypot: hidden from people, filled by bots; checked server-side */}
+        <div className="hp" aria-hidden="true"><input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} /></div>
         <input type="email" placeholder="Work email" autoComplete="email" required className={emailErr ? "err" : ""} value={email}
           onChange={(e) => { setEmail(e.target.value); setEmailErr(false); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         <label className="consent" style={consentErr ? { color: "#ff8f83" } : undefined}>

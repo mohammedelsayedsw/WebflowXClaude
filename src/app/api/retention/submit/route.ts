@@ -75,7 +75,7 @@ async function bookingUrl(name: string, email: string, store: string): Promise<s
       const r = await fetch("https://api.calendly.com/scheduling_links", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ max_event_count: 1, owner: `https://api.calendly.com/event_types/${CALENDLY_EVENT_TYPE}`, owner_type: "EventType" }),
+        body: JSON.stringify({ max_event_count: 1, owner: `https://api.calendly.com/event_types/${process.env.CALENDLY_EVENT_TYPE || CALENDLY_EVENT_TYPE}`, owner_type: "EventType" }),
         signal: TIMEOUT(),
       });
       const j = (await r.json()) as { resource?: { booking_url?: string } };

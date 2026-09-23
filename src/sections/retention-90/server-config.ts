@@ -11,9 +11,6 @@ export const BLOCKED_SUBJECT = "Blocked retention attempt: ";
 export const CALENDLY_EVENT_TYPE = "6155663e-f4f4-4dd9-abda-dd582af12273";
 export const CALENDLY_PUBLIC_URL = "https://calendly.com/nika-zhgheria-scandiweb/growth-intro-meeting";
 
-/* Minimum seconds between page load and submit. A human needs 60 s for 8 questions. */
-export const MIN_SECONDS_ON_PAGE = 20;
-
 /* Rate limits (per worker isolate, best effort until KV is bound). */
 export const RATE = {
   ip: { max: 2, windowMs: 24 * 3600 * 1000 },

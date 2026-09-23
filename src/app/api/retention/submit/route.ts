@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
-  LEAD_SUBJECT, MIN_SECONDS_ON_PAGE, NOTIFY_CC, RATE,
+  LEAD_SUBJECT, NOTIFY_CC, RATE,
 } from "@/sections/retention-90/server-config";
 
 export const runtime = "nodejs";
@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
    which one fired; only a passing submission also gets bookingUrl. */
 
 type Body = Record<string, string>;
-type Reason = "honeypot" | "too_fast" | "email_blocked" | "store_blocked" | "rate_ip" | "rate_email" | "rate_store" | "invalid";
+type Reason = "honeypot" | "email_blocked" | "store_blocked" | "rate_ip" | "rate_email" | "rate_store" | "invalid";
 
 const OK = { ok: true } as const;
 const TIMEOUT = () => AbortSignal.timeout(8000);
@@ -103,10 +103,6 @@ export async function POST(req: NextRequest) {
 
   /* 1. honeypot */
   if (String(body.company_website || "").trim()) { await logBlocked("honeypot", meta); return NextResponse.json(OK); }
-  /* 2. time on page */
-  const t0 = Number(body.t0 || 0);
-  const secs = t0 > 0 ? (Date.now() - t0) / 1000 : -1;
-  if (secs >= 0 && secs < MIN_SECONDS_ON_PAGE) { await logBlocked("too_fast", { ...meta, seconds: secs.toFixed(1) }); return NextResponse.json(OK); }
   /* 3-4. blocklists */
   if (emailBlocked(email)) { await logBlocked("email_blocked", meta); return NextResponse.json(OK); }
   if (storeBlocked(store)) { await logBlocked("store_blocked", meta); return NextResponse.json(OK); }
@@ -117,7 +113,7 @@ export async function POST(req: NextRequest) {
 
   /* 9. passed: forward the lead with the two fields formsubmit never gave us */
   const lead: Record<string, string> = {};
-  for (const [k, v] of Object.entries(body)) if (!["company_website", "t0"].includes(k)) lead[k] = String(v);
+  for (const [k, v] of Object.entries(body)) if (k !== "company_website") lead[k] = String(v);
   lead._subject = LEAD_SUBJECT + store; lead._template = "table"; lead._cc = NOTIFY_CC;
   lead.ip = ip; lead.user_agent = ua; lead.country = country;
   try {

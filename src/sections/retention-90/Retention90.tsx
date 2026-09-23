@@ -29,7 +29,6 @@ export function Retention90() {
   const [book, setBook] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
   const [bookingUrl, setBookingUrl] = useState("");
-  const [t0] = useState(() => Date.now());
 
   useEffect(() => { window.scrollTo(0, 0); }, [screen, qi]);
 
@@ -66,7 +65,6 @@ export function Retention90() {
       estimatedOpportunity: fmt(leak) + "/mo",
       consent: "yes",
       company_website: honeypot,
-      t0: String(t0),
     };
     QUESTIONS.forEach((Q) => { payload[Q.q] = labels[Q.k] || ""; });
     const P = new URLSearchParams(window.location.search);
@@ -92,7 +90,7 @@ export function Retention90() {
       hsq.push(["trackPageView"]);
     } catch {}
     setScreen("summary");
-  }, [answers, labels, store, t0]);
+  }, [answers, labels, store]);
 
   const openBook = useCallback(() => setBook(true), []);
   const closeBook = useCallback(() => setBook(false), []);

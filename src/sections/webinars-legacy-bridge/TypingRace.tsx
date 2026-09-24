@@ -59,10 +59,12 @@ export function TypingRace() {
   const [leftDone, setLeftDone] = useState(false);
 
   const root = useRef<HTMLDivElement>(null);
-  // Bumped on every run. Each async loop checks it before every paint, which
-  // is how a replay stops the run already in flight rather than racing it.
+  // Bumped when the run must stop. Each async loop checks it before every
+  // paint, so unmounting ends the run in flight rather than racing it.
   const runId = useRef(0);
   const started = useRef(false);
+  // The loop waits on this rather than animating to an empty room.
+  const visible = useRef(false);
 
   const showFinished = useCallback(() => {
     setLeft(REDUCED_LEFT);
@@ -77,72 +79,91 @@ export function TypingRace() {
     const id = ++runId.current;
     const live = () => runId.current === id;
 
-    setLeft(["", "", "", ""]);
-    setLeftField(0);
-    setRightPhase("idle");
-    setRightShown(0);
-    setRightDone(false);
-    setLeftDone(false);
+    /** One pass of the race, from both screens empty to both finished. */
+    const pass = async () => {
+      setLeft(["", "", "", ""]);
+      setLeftField(0);
+      setRightPhase("idle");
+      setRightShown(0);
+      setRightDone(false);
+      setLeftDone(false);
 
-    // The person. One character at a time, with a wrong one early on.
-    const typist = async () => {
-      const out = ["", "", "", ""];
-      for (let f = 0; f < FIELDS.length; f++) {
-        if (!live()) return;
-        setLeftField(f);
-        const v = FIELDS[f].value;
-
-        for (let i = 0; i < v.length; i++) {
+      // The person. One character at a time, with a wrong one early on.
+      const typist = async () => {
+        const out = ["", "", "", ""];
+        for (let f = 0; f < FIELDS.length; f++) {
           if (!live()) return;
+          setLeftField(f);
+          const v = FIELDS[f].value;
 
-          if (f === 0 && i === TYPO_AT) {
-            out[f] = v.slice(0, i) + TYPO_CHAR;
+          for (let i = 0; i < v.length; i++) {
+            if (!live()) return;
+
+            if (f === 0 && i === TYPO_AT) {
+              out[f] = v.slice(0, i) + TYPO_CHAR;
+              setLeft([...out]);
+              await sleep(560); // noticing it
+              if (!live()) return;
+              out[f] = v.slice(0, i);
+              setLeft([...out]); // backspace
+              await sleep(260);
+              if (!live()) return;
+            }
+
+            out[f] = v.slice(0, i + 1);
             setLeft([...out]);
-            await sleep(560); // noticing it
-            if (!live()) return;
-            out[f] = v.slice(0, i);
-            setLeft([...out]); // backspace
-            await sleep(260);
-            if (!live()) return;
+            await sleep(rand(140, 260));
           }
-
-          out[f] = v.slice(0, i + 1);
-          setLeft([...out]);
-          await sleep(rand(140, 260));
+          await sleep(1000); // looking back at the PDF
         }
-        await sleep(1000); // looking back at the PDF
-      }
-      if (live()) setLeftDone(true);
-    };
+        if (live()) setLeftDone(true);
+      };
 
-    // The other way, one step at a time. The left screen types for the better
-    // part of a minute, so there is room to let each step here be read.
-    const filler = async () => {
-      setRightPhase("prompt");
-      await sleep(1500);
-      if (!live()) return;
-
-      setRightPhase("uploaded");
-      await sleep(1500);
-      if (!live()) return;
-
-      setRightPhase("reading");
-      await sleep(1700);
-      if (!live()) return;
-
-      setRightPhase("filling");
-      for (let i = 0; i < FIELDS.length; i++) {
+      // The other way, one step at a time. The left screen types for the
+      // better part of a minute, so there is room to let each step be read.
+      const filler = async () => {
+        setRightPhase("prompt");
+        await sleep(1500);
         if (!live()) return;
-        setRightShown(i + 1);
-        await sleep(420);
-      }
-      await sleep(400);
-      if (!live()) return;
-      setRightPhase("done");
-      setRightDone(true);
+
+        setRightPhase("uploaded");
+        await sleep(1500);
+        if (!live()) return;
+
+        setRightPhase("reading");
+        await sleep(1700);
+        if (!live()) return;
+
+        setRightPhase("filling");
+        for (let i = 0; i < FIELDS.length; i++) {
+          if (!live()) return;
+          setRightShown(i + 1);
+          await sleep(420);
+        }
+        await sleep(400);
+        if (!live()) return;
+        setRightPhase("done");
+        setRightDone(true);
+      };
+
+      await Promise.all([typist(), filler()]);
     };
 
-    await Promise.all([typist(), filler()]);
+    /*
+     * Round again after a pause. The right screen finishes while the left one
+     * is still typing, and that moment is the whole argument, so anyone who
+     * arrives partway through gets to see it come round rather than finding
+     * two finished screens.
+     *
+     * It idles while the section is off screen rather than animating to an
+     * empty room, and picks up when it comes back.
+     */
+    while (live()) {
+      await pass();
+      if (!live()) return;
+      await sleep(4000);
+      while (live() && !visible.current) await sleep(400);
+    }
   }, []);
 
   useEffect(() => {
@@ -155,6 +176,7 @@ export function TypingRace() {
     const io = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
+          visible.current = e.isIntersecting;
           if (e.isIntersecting && !started.current) {
             started.current = true;
             void play();
@@ -174,10 +196,6 @@ export function TypingRace() {
     };
   }, [play, showFinished]);
 
-  const leftCaption = rightDone
-    ? "Still typing, one document at a time"
-    : "A person types every letter";
-
   return (
     <div ref={root} className="mt-10 md:mt-14">
       <div className="grid gap-6 md:gap-5 lg:gap-6 md:grid-cols-2 md:items-start">
@@ -188,7 +206,7 @@ export function TypingRace() {
           </div>
 
           <ScreenShell screenId="AP4010" title="Invoice entry">
-            <div className="mt-3 md:mt-4 flex flex-col">
+            <div className="mt-3 md:mt-4 min-h-[7em] flex flex-col">
               {FIELDS.map((f, i) => (
                 <DotRow key={f.label} label={f.label}>
                   <span>
@@ -206,56 +224,66 @@ export function TypingRace() {
           </ScreenShell>
 
           <p className="mt-3 text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug">
-            {leftCaption}
+            You or a colleague typing every document by hand
           </p>
         </div>
 
         {/* RIGHT - read and filled */}
         <div>
-          <div className="mb-3 font-head font-bold text-[13px] md:text-[14px] uppercase tracking-[0.12em] text-[#1f8a3b]">
+          <div className="mb-3 font-head font-bold text-[13px] md:text-[14px] uppercase tracking-[0.12em] text-[var(--sw-blue)]">
             With LegacyBridge
           </div>
 
           <div className="relative">
             <ScreenShell screenId="AP4010" title="Invoice entry">
-              <div className="mt-3 md:mt-4 flex flex-col">
-                {FIELDS.map((f, i) => (
-                  <DotRow key={f.label} label={f.label}>
-                    <span
-                      className={
-                        "transition-opacity duration-200 " +
-                        (i < rightShown ? "opacity-100" : "opacity-0")
-                      }
-                    >
-                      {i < rightShown ? f.value : " "}
-                    </span>
-                  </DotRow>
-                ))}
+              {/* One state at a time. The field rows belong to the finished
+                  entry, so each earlier step is a screen carrying a single
+                  line rather than a set of empty fields with a caption under
+                  them. The box stays four rows tall throughout, so the screen
+                  never changes size and stays level with the one beside it. */}
+              <div className="mt-3 md:mt-4 min-h-[7em] flex flex-col justify-center">
+                {rightPhase === "filling" || rightPhase === "done" ? (
+                  <div className="flex flex-col">
+                    {FIELDS.map((f, i) => (
+                      <DotRow key={f.label} label={f.label}>
+                        <span
+                          className={
+                            "transition-opacity duration-200 " +
+                            (i < rightShown ? "opacity-100" : "opacity-0")
+                          }
+                        >
+                          {i < rightShown ? f.value : " "}
+                        </span>
+                      </DotRow>
+                    ))}
+                  </div>
+                ) : (
+                  <div>
+                    {rightPhase === "prompt" ? (
+                      <div className="flex items-center gap-2">
+                        <span className="text-[#7dffb0]">Upload the document</span>
+                        <Caret />
+                      </div>
+                    ) : null}
+
+                    {rightPhase === "uploaded" ? (
+                      <span className="text-[#7dffb0]">INV-48120.pdf uploaded</span>
+                    ) : null}
+
+                    {rightPhase === "reading" ? (
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#7dffb0]">Processing...</span>
+                        <span className="h-[3px] w-24 md:w-32 bg-[#3bf07a]/20 overflow-hidden rounded-[2px]">
+                          <span className="block h-full bg-[#7dffb0] sw-progress-slow" />
+                        </span>
+                      </div>
+                    ) : null}
+                  </div>
+                )}
               </div>
 
-              {/* One status line at a time, in a row of fixed height so the
-                  screen never changes size as the steps go by. */}
+              {/* Only the finished entry has an approval line under it. */}
               <div className="mt-4 md:mt-5 min-h-[1.75em]">
-                {rightPhase === "prompt" ? (
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#7dffb0]">Upload the document</span>
-                    <Caret />
-                  </div>
-                ) : null}
-
-                {rightPhase === "uploaded" ? (
-                  <span className="text-[#7dffb0]">INV-48120.pdf uploaded</span>
-                ) : null}
-
-                {rightPhase === "reading" ? (
-                  <div className="flex items-center gap-3">
-                    <span className="text-[#7dffb0]">Processing...</span>
-                    <span className="h-[3px] w-24 md:w-32 bg-[#3bf07a]/20 overflow-hidden rounded-[2px]">
-                      <span className="block h-full bg-[#7dffb0] sw-progress-slow" />
-                    </span>
-                  </div>
-                ) : null}
-
                 {rightPhase === "done" ? (
                   <div className="flex items-center gap-2.5 sw-pulse-line">
                     <span className="text-[#7dffb0]">Waiting for your approval</span>
@@ -281,20 +309,17 @@ export function TypingRace() {
             ) : null}
           </div>
 
-          <p className="mt-3 text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug">
-            Filled in and waiting for your team, while the left side is still
-            typing
+          <p
+            className={
+              "mt-3 min-h-[1.5em] text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug transition-opacity duration-500 " +
+              (rightDone ? "opacity-100" : "opacity-0")
+            }
+          >
+            Filled in automatically and waiting for your approval
           </p>
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={() => void play()}
-        className="mt-6 text-[var(--sw-blue)] text-[14px] underline underline-offset-4 hover:opacity-80"
-      >
-        Replay
-      </button>
     </div>
   );
 }

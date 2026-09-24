@@ -3,6 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { Badges } from "./Badges";
 import { Eyebrow } from "./Eyebrow";
 import { HERO_EYEBROW_PARTS } from "./details";
 import { GreenScreen } from "./GreenScreen";
@@ -144,9 +145,12 @@ export function Hero() {
               </Reveal>
             </div>
 
-            {/* RIGHT - the visual */}
+            {/* RIGHT - the visual, with the certifications under it */}
             <Reveal delay={0.18}>
-              <HeroVisual />
+              <div>
+                <HeroVisual />
+                <Badges className="mt-5 md:mt-6" />
+              </div>
             </Reveal>
           </div>
         </div>

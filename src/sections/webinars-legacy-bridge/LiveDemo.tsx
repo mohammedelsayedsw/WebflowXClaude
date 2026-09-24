@@ -104,8 +104,7 @@ export function LiveDemo() {
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-[66ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             In the webinar we follow one document from the moment it arrives
-            until its details are saved in the AS/400. The screen below shows
-            the example we&apos;ll use.
+            until its details are saved in the AS/400.
           </p>
         </Reveal>
 
@@ -146,7 +145,15 @@ export function LiveDemo() {
             </ScreenShell>
           </Reveal>
 
-          <div className="grid gap-3 md:gap-4">
+          <div className="grid gap-3 md:gap-4 content-start">
+            {/* Says what the three boxes are before the eye reaches them, so
+                they read as a set of cases rather than three claims. */}
+            <Reveal delay={0.18}>
+              <p className="text-[var(--sw-black)]/45 text-[13px] md:text-[14px] leading-snug">
+                The cases we will go through
+              </p>
+            </Reveal>
+
             {CARDS.map((c, i) => {
               const on = i === active;
               return (

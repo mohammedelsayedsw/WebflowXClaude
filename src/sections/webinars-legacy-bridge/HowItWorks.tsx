@@ -18,7 +18,7 @@ import { STEP_ICONS } from "./StepIcons";
 const STEPS: { title: string; body: string }[] = [
   {
     title: "A PDF arrives",
-    body: "An order or invoice comes in by email",
+    body: "An order or invoice lands in your team's inbox as a PDF attachment",
   },
   {
     title: "The software reads the PDF",
@@ -167,7 +167,7 @@ export function HowItWorks() {
                 <div className="mt-3 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight text-balance">
                   {s.title}
                 </div>
-                <p className="mt-2.5 text-white/65 text-[14px] md:text-[15px] leading-relaxed">
+                <p className="mt-2.5 max-w-[34ch] text-white/65 text-[14px] md:text-[15px] leading-relaxed text-balance">
                   {s.body}
                 </p>
               </li>

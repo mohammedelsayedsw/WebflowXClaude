@@ -13,27 +13,27 @@ const DOCS: { icon: typeof FileText; title: string; body: string }[] = [
   {
     icon: FileText,
     title: "Supplier invoices",
-    body: "Bills from suppliers that your finance team enters",
+    body: "Checks each invoice for missing details and fills in your finance screens",
   },
   {
     icon: ShoppingCart,
     title: "Customer orders",
-    body: "Orders that customers send by email or as a PDF",
+    body: "Takes orders that arrive by email and fills in the right order screens",
   },
   {
     icon: Truck,
     title: "Purchase orders",
-    body: "Orders your company sends to its suppliers",
+    body: "Finds the products and quantities in supplier documents and fills in the order",
   },
   {
     icon: ClipboardList,
     title: "Work orders",
-    body: "Jobs with dates and quantities for your team",
+    body: "Reads dates and quantities from work instructions and fills in your production screens",
   },
   {
     icon: HeartPulse,
     title: "Insurance claims",
-    body: "Forms from customers asking the insurer to pay",
+    body: "Goes through every screen a claim needs and holds it until a person checks it",
   },
 ];
 
@@ -53,7 +53,7 @@ export function AnyDocument() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[22ch]">
+          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[28ch]">
             One tool for{" "}
             <span style={{ color: "var(--sw-mint)" }}>every document</span> your
             team types into the AS/400

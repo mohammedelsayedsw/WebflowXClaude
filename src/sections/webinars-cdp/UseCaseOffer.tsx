@@ -48,10 +48,15 @@ export function UseCaseOffer() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[16ch]">
+              {/* The 16ch cap only applies from md up. On a phone it was
+                  narrower than the column it sat in, about 230px inside 350px,
+                  and that was what pushed the title onto a third line. The
+                  looser cap below md still stops it running out as one long
+                  line on a wide phone or a small tablet. */}
+              <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[24ch] md:max-w-[16ch]">
                 Your first{" "}
                 <span style={{ color: "var(--sw-mint)" }}>AI personalization</span>{" "}
-                use case.
+                use case
               </h2>
             </Reveal>
 

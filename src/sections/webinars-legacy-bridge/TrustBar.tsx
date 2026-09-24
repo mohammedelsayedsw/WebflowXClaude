@@ -3,10 +3,13 @@
 import { assetUrl } from "@/lib/assets";
 
 /**
- * The trust bar that closes the hero. Same marquee as the other webinar pages,
- * with the line the brief asks for in place of the usual "Trusted by 700+"
- * because here it has a second job: saying that LegacyBridge is part of
- * scandiweb, which is the reason the logos belong on this page at all.
+ * The trust bar that closes the hero, identical to the one on the other
+ * webinar pages.
+ *
+ * It carried the brief's "LegacyBridge is part of scandiweb" line for a while.
+ * That made the bar read as a sentence about the product rather than the row
+ * of brands it is everywhere else on the site, so it is back to the standard
+ * heading. The co-brand lockup above it already says whose page this is.
  */
 export function TrustBar() {
   const logos: { src: string; alt: string; h: number }[] = [
@@ -31,9 +34,8 @@ export function TrustBar() {
       }}
     >
       <div className="wrap py-[clamp(14px,2.5vh,32px)] flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-        <div className="text-white/80 text-[13px] md:text-[15px] leading-[1.45] shrink-0 max-w-[46ch]">
-          LegacyBridge is part of scandiweb, the team behind systems for PUMA,
-          The New York Times, The Met and more than 500 other organizations.
+        <div className="font-head font-bold text-white text-[14px] md:text-[18px] leading-[1.35] shrink-0">
+          Trusted by 700+ leading brands worldwide
         </div>
         <div className="relative flex-1 overflow-hidden" aria-label="Client logos">
           <div className="sw-marquee-track flex items-center gap-x-12 md:gap-x-16">

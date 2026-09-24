@@ -10,22 +10,29 @@
  * comes back across.
  */
 
-const BADGES: { src: string; alt: string }[] = [
+/* Per badge height, as the trust bar does it. The three seals are
+   circles and the PCI mark is a wide landscape lockup, so matching them on
+   height alone left it reading far heavier than the rest of the row. */
+const BADGES: { src: string; alt: string; h: number }[] = [
   {
     src: "https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/69b159f45ee7b675bf186570_ISO%209001.svg",
     alt: "ISO 9001 certified",
+    h: 52,
   },
   {
     src: "https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/69b159f4f74db6f5d5c588f0_ISO%2027001.svg",
     alt: "ISO/IEC 27001 certified",
+    h: 52,
   },
   {
     src: "https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/69b159f4beec80dfc273e1f0_ISO%2027017.svg",
     alt: "ISO/IEC 27017 certified",
+    h: 52,
   },
   {
     src: "https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/69b159f4510babc0e1b3d84a_PCI%20DSS.svg",
     alt: "PCI DSS compliant infrastructure",
+    h: 40,
   },
 ];
 
@@ -42,7 +49,7 @@ export function Badges({ className = "" }: { className?: string }) {
           alt={b.alt}
           loading="lazy"
           className="w-auto"
-          style={{ height: "52px" }}
+          style={{ height: `${b.h}px` }}
         />
       ))}
     </div>

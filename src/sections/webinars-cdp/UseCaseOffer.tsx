@@ -67,20 +67,24 @@ export function UseCaseOffer() {
             <dl className="mt-10 md:mt-12 flex flex-col gap-6 md:gap-7">
               {deliverables.map((d, i) => (
                 <Reveal key={d.label} delay={0.15 + i * 0.07}>
-                  <div className="flex items-baseline gap-5 md:gap-6">
-                    {/* Left aligned inside the fixed box, not right aligned:
-                        right alignment left a third of the box empty in front
-                        of every digit, so the figures sat indented from the
-                        heading and the subtitle instead of starting on the
-                        same line as them. The fixed width still keeps the
-                        three labels aligned with each other. */}
+                  <div className="flex items-center gap-4 md:gap-5">
+                    {/* 0.6em is the width of the widest digit at this size, so
+                        the labels line up with nothing left over. The box was
+                        1.2em, twice what it needed, and that spare half em sat
+                        between every figure and its label as a gap wide enough
+                        to read as a column break. tabular-nums is kept but is
+                        not enough on its own here: in Golos Text the 1 renders
+                        wider than the 5, so without a set width the labels
+                        disagree by 2px. */}
                     <dt
-                      className="font-head text-[40px] md:text-[52px] leading-none tracking-[-0.02em] shrink-0 w-[1.2em] text-left tabular-nums"
+                      className="font-head text-[40px] md:text-[52px] leading-none tracking-[-0.02em] shrink-0 w-[0.6em] tabular-nums"
                       style={{ color: "var(--sw-mint)" }}
                     >
                       {d.figure}
                     </dt>
-                    <dd className="text-white/85 text-[16px] md:text-[19px] leading-snug max-w-[24ch]">
+                    {/* No max-width: these are short lines and each one should
+                        hold together on a single line wherever it fits. */}
+                    <dd className="text-white/85 text-[16px] md:text-[19px] leading-snug text-pretty">
                       {d.label}
                     </dd>
                   </div>

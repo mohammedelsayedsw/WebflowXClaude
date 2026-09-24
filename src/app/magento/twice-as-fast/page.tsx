@@ -10,6 +10,8 @@ import { CTA } from "@/sections/magento-twice-as-fast/CTA";
  * store for the treatment, or join the waiting list for the reveal. The
  * pinned lines and the large countdown stay in src/sections/magento-twice-as-fast
  * for when the page grows again.
+ *
+ * Sections, top to bottom: reveal (hero), nominate, cta (waiting list).
  */
 export default function Page() {
   return (

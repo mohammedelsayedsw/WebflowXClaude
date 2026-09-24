@@ -6,7 +6,9 @@ import { Reveal } from "@/components/primitives/Reveal";
 const ITEMS: { q: string; a: string }[] = [
   {
     q: "Not sure if your company has an AS/400?",
-    a: "If your team works in black screens with green text and uses F-keys to move around, it probably does. Choose “not sure” on the form and we’ll check with you.",
+    // The naming sentence moved here out of the hero, where it was a muted
+    // note slowing the first read down. It belongs to this question anyway.
+    a: "AS/400 is also called IBM i, iSeries or System i. If your team works in black screens with green text and uses F-keys to move around, it probably does. Choose “not sure” on the form and we’ll check with you.",
   },
   {
     q: "Does it work with custom RPG or COBOL applications?",

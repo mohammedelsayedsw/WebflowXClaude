@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Eyebrow } from "./Eyebrow";
+import { HERO_EYEBROW_PARTS } from "./details";
 import { GreenScreen } from "./GreenScreen";
-import { Lockup } from "./Lockup";
 import { PaperDoc } from "./PaperDoc";
 import { TrustBar } from "./TrustBar";
 
@@ -89,13 +89,7 @@ export function Hero() {
             {/* LEFT - copy */}
             <div className="max-w-[46rem]">
               <Reveal>
-                <Eyebrow className="mb-[clamp(10px,1.8vh,20px)]" />
-              </Reveal>
-
-              <Reveal delay={0.04}>
-                <div className="mb-[clamp(12px,2vh,22px)]">
-                  <Lockup size={0.85} />
-                </div>
+                <Eyebrow parts={HERO_EYEBROW_PARTS} className="mb-[clamp(12px,2.2vh,24px)]" />
               </Reveal>
 
               <Reveal delay={0.08}>
@@ -125,20 +119,6 @@ export function Hero() {
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
-              </Reveal>
-
-              <Reveal delay={0.26}>
-                <p className="mt-[clamp(10px,1.6vh,18px)] text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-                  Can&apos;t join live? Register and we&apos;ll send you the
-                  recording.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.3}>
-                <p className="mt-[clamp(8px,1.2vh,14px)] max-w-[52ch] text-white/45 text-[12px] md:text-[13px] leading-relaxed">
-                  AS/400 is also called IBM i, iSeries or System i. This webinar
-                  is for companies that run one.
-                </p>
               </Reveal>
 
               <Reveal delay={0.34}>

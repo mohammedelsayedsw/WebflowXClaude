@@ -77,7 +77,7 @@ export function AnyDocument() {
                   <d.icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                 </span>
                 <div>
-                  <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-tight">
+                  <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-tight text-balance">
                     {d.title}
                   </div>
                   <p className="mt-2 text-white/65 text-[14px] md:text-[15px] leading-relaxed">

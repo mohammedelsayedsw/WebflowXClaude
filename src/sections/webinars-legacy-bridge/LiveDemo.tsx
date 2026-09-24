@@ -24,8 +24,8 @@ const CARDS: { title: string; body: string }[] = [
     body: "The software marks it, and a person decides what to enter",
   },
   {
-    title: "When the AS/400 won't accept a detail",
-    body: "The software pauses and shows your team the AS/400 message",
+    title: "When the AS/400 shows an error",
+    body: "For example, a supplier number it doesn't know. The software stops, and your team sees the error and fixes it.",
   },
 ];
 
@@ -139,7 +139,7 @@ export function LiveDemo() {
                 ) : null}
                 {active === 2 ? (
                   <span className="text-[#ffb057]">
-                    AMOUNT NOT ACCEPTED, ENTRY HELD
+                    SUPPLIER NOT FOUND, ENTRY HELD
                   </span>
                 ) : null}
               </div>
@@ -162,7 +162,7 @@ export function LiveDemo() {
                         : "border-[var(--sw-black)]/10 hover:border-[var(--sw-black)]/25")
                     }
                   >
-                    <div className="font-head font-bold text-[var(--sw-black)] text-[16px] md:text-[18px] leading-tight">
+                    <div className="font-head font-bold text-[var(--sw-black)] text-[16px] md:text-[18px] leading-tight text-balance">
                       {c.title}
                     </div>
                     <p className="mt-2 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">

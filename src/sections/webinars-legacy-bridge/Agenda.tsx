@@ -1,49 +1,24 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 /**
- * The run of the hour. Time on the left, title in bold, one line under it.
+ * What the hour covers, as a checklist.
  *
- * Copy is the brief's, unchanged. The en dashes in the times are the only ones
- * on the page, which is what they are for.
+ * It was a timetable, with a start and end time against every item and a line
+ * of description under each. That is a schedule, and nobody reads a schedule
+ * to decide whether to attend. The same block on the Pimcore page is a list of
+ * things you will come away knowing, so this follows it: one line each, no
+ * timings, no descriptions.
  */
-const ITEMS: { time: string; title: string; body: string }[] = [
-  {
-    time: "0:00–0:04",
-    title: "Welcome and introduction",
-    body: "What we'll cover today, plus a quick poll on how much manual entry your team handles",
-  },
-  {
-    time: "0:04–0:13",
-    title: "The AS/400 isn't the problem",
-    body: "Why companies keep IBM i running, where the manual work around it comes from, and why general-purpose automation tools struggle with green-screen applications",
-  },
-  {
-    time: "0:13–0:30",
-    title: "Live demo: processing a dental claim",
-    body: "A dental claim followed from arrival to a completed entry in the claims screen. LegacyBridge reads the form, checks the data, fills the screen and waits for human approval before anything is submitted. You'll also see how it handles an unclear field and a value the system rejects",
-  },
-  {
-    time: "0:30–0:35",
-    title: "Same flow, any document",
-    body: "How the same steps apply to supplier invoices, customer orders, work orders and any other document your team enters by hand",
-  },
-  {
-    time: "0:35–0:42",
-    title: "Security and control",
-    body: "What LegacyBridge is and isn't allowed to do, how the approval step works, and how every action is recorded in the audit trail",
-  },
-  {
-    time: "0:42–0:48",
-    title: "Getting started: the two-week pilot",
-    body: "How a pilot on one of your own document workflows is set up, what it measures and what's needed from your team",
-  },
-  {
-    time: "0:48–1:00",
-    title: "Q&A",
-    body: "Bring your questions about your own IBM i environment",
-  },
+const POINTS: string[] = [
+  "Why many teams still type orders and invoices into the AS/400 by hand",
+  "A live demo of a PDF going from the inbox into the AS/400",
+  "What happens when part of the PDF is hard to read, or the AS/400 shows an error",
+  "How a person on your team checks the details before they are saved",
+  "How to test the software on your own documents for two weeks",
+  "Time for your questions",
 ];
 
 export function Agenda() {
@@ -53,7 +28,7 @@ export function Agenda() {
       className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
-        <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.55fr] lg:items-start">
+        <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <div>
             <Reveal>
               <div className="label-code mb-4 inline-flex items-center gap-3 text-white">
@@ -64,27 +39,24 @@ export function Agenda() {
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-                What we&apos;ll cover in{" "}
-                <span style={{ color: "var(--sw-mint)" }}>60 minutes</span>
+                What we&apos;ll cover{" "}
+                <span style={{ color: "var(--sw-mint)" }}>during the webinar</span>
               </h2>
             </Reveal>
           </div>
 
-          <ul className="flex flex-col">
-            {ITEMS.map((item, i) => (
-              <Reveal key={item.time} delay={i * 0.06}>
-                <li className="grid gap-1 sm:grid-cols-[auto_1fr] sm:gap-x-6 border-b border-white/10 py-4 md:py-5">
-                  <span className="font-mono text-[12px] md:text-[13px] leading-[1.6] text-[var(--sw-mint)] sm:w-[7.5rem] whitespace-nowrap">
-                    {item.time}
+          <ul className="flex flex-col gap-4 md:gap-5">
+            {POINTS.map((item, i) => (
+              <Reveal key={item} delay={i * 0.06}>
+                <li className="flex gap-4 border-b border-white/10 pb-4 md:pb-5">
+                  <Check
+                    className="mt-0.5 h-5 w-5 shrink-0"
+                    style={{ color: "var(--sw-mint)" }}
+                    strokeWidth={2}
+                  />
+                  <span className="text-white/75 text-[16px] md:text-[18px] leading-snug text-pretty">
+                    {item}
                   </span>
-                  <div>
-                    <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-tight">
-                      {item.title}
-                    </div>
-                    <p className="mt-1.5 text-white/65 text-[14px] md:text-[15px] leading-relaxed">
-                      {item.body}
-                    </p>
-                  </div>
                 </li>
               </Reveal>
             ))}

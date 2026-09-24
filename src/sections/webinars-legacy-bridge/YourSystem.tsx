@@ -1,64 +1,88 @@
 "use client";
 
-import { Reveal } from "@/components/primitives/Reveal";
-
 /**
- * The shortest section on the page, and deliberately so. It answers the one
- * objection an IT manager raises first, then gets out of the way.
+ * One statement, given a band of its own.
+ *
+ * This is the objection an IT reader raises first, and it is answered in a
+ * single line. It was three cards and a heading, which gave a one sentence
+ * point the weight of a section; as a slim band between two green rules it
+ * reads in the moment it takes to scroll past.
+ *
+ * The check draws itself and the text follows. Under prefers-reduced-motion
+ * both are painted finished.
  */
-/* Written as what stays true rather than as a list of absences. The facts are
-   the same ones the brief states; a run of lines each opening with "No" is the
-   negative listing the writing rules rule out. */
-const UNCHANGED = [
-  "Your application, programs and data stay exactly as they are",
-  "It works through the screens your team already uses, so there is nothing new to connect",
-  "Packaged and custom RPG or COBOL applications are both supported",
-];
+
+import { useEffect, useRef, useState } from "react";
 
 export function YourSystem() {
+  const [on, setOn] = useState(false);
+  const root = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setOn(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setOn(true)),
+      { threshold: 0.4 }
+    );
+    if (root.current) io.observe(root.current);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
+      ref={root}
       id="your-system"
-      className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
+      className="relative bg-[var(--sw-black)] scroll-mt-20"
+      style={{
+        borderTop: "1px solid rgba(110, 247, 110, 0.35)",
+        borderBottom: "1px solid rgba(110, 247, 110, 0.35)",
+      }}
     >
-      <div className="wrap relative">
-        <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
-            <Reveal>
-              <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-                <span className="text-[var(--sw-black)]/55">6</span>
-                <span className="h-px w-6 bg-[var(--sw-black)]/20" />
-                <span>Your system</span>
-              </div>
-            </Reveal>
+      <div className="wrap">
+        <div className="flex items-center gap-5 md:gap-8 min-h-[160px] py-8">
+          {/* A screen with a check on it. The screen is the same shape as the
+              AS/400 visuals above, so the band reads as being about them. */}
+          <svg
+            viewBox="0 0 48 48"
+            className="h-12 w-12 md:h-14 md:w-14 shrink-0"
+            fill="none"
+            stroke="var(--sw-mint)"
+            strokeWidth={1.6}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <rect x="3" y="7" width="42" height="29" rx="2.5" opacity="0.75" />
+            <path d="M18 41h12M24 36v5" opacity="0.6" />
+            <path
+              d="M15 21.5l6.5 6.5L33.5 16"
+              strokeWidth={2.6}
+              style={{
+                strokeDasharray: 34,
+                strokeDashoffset: on ? 0 : 34,
+                transition: "stroke-dashoffset .55s ease-out",
+              }}
+            />
+          </svg>
 
-            <Reveal delay={0.05}>
-              <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[16ch]">
-                Your AS/400{" "}
-                <span className="text-[var(--sw-blue)]">stays as it is</span>
-              </h2>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-[58ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-                LegacyBridge works through the same screens your team uses
-                today, and your programs and data do not change.
-              </p>
-            </Reveal>
+          <div
+            style={{
+              opacity: on ? 1 : 0,
+              transform: on ? "translateY(0)" : "translateY(6px)",
+              transition: "opacity .5s ease-out .45s, transform .5s ease-out .45s",
+            }}
+          >
+            <p className="font-head font-bold text-white text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.15] tracking-[-0.01em]">
+              Your AS/400 stays exactly as it is
+            </p>
+            <p className="mt-2 text-white/65 text-[14px] md:text-[16px] leading-relaxed max-w-[72ch]">
+              The software uses the same screens your team uses today, so your
+              programs and data do not change
+            </p>
           </div>
-
-          <Reveal delay={0.16}>
-            <ul className="flex flex-col gap-3 md:gap-4">
-              {UNCHANGED.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-[4px] border border-[var(--sw-black)]/10 bg-white px-5 py-4 md:px-6 md:py-5 text-[var(--sw-black)]/80 text-[15px] md:text-[16px] leading-snug"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
       </div>
     </section>

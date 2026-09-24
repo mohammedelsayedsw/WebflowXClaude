@@ -8,10 +8,8 @@ import { LiveDemo } from "@/sections/webinars-legacy-bridge/LiveDemo";
 import { AnyDocument } from "@/sections/webinars-legacy-bridge/AnyDocument";
 import { YourSystem } from "@/sections/webinars-legacy-bridge/YourSystem";
 import { Security } from "@/sections/webinars-legacy-bridge/Security";
-import { Pilot } from "@/sections/webinars-legacy-bridge/Pilot";
 import { WhoShouldJoin } from "@/sections/webinars-legacy-bridge/WhoShouldJoin";
 import { Host } from "@/sections/webinars-legacy-bridge/Host";
-import { Questions } from "@/sections/webinars-legacy-bridge/Questions";
 import { CTA } from "@/sections/webinars-legacy-bridge/CTA";
 import { HashScroll } from "@/components/site/HashScroll";
 
@@ -27,10 +25,8 @@ export default function Page() {
       <AnyDocument />
       <YourSystem />
       <Security />
-      <Pilot />
       <WhoShouldJoin />
       <Host />
-      <Questions />
       <CTA />
     </main>
   );

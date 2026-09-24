@@ -6,23 +6,23 @@ import { Reveal } from "@/components/primitives/Reveal";
 const AUDIENCE: { icon: typeof Calculator; lead: string; body: string }[] = [
   {
     icon: Calculator,
-    lead: "Finance and accounts payable",
-    body: "AP managers and clerks, typing supplier invoices into the AS/400 every week",
+    lead: "Finance teams",
+    body: "Managers and clerks who type supplier invoices into the AS/400",
   },
   {
     icon: Headset,
-    lead: "Order desk and customer service",
-    body: "Order desk managers and staff, turning emailed orders into entries line by line",
+    lead: "Order desk teams",
+    body: "Managers and staff who type emailed orders into the AS/400 line by line",
   },
   {
     icon: ClipboardList,
-    lead: "Claims and operations",
-    body: "Claims leads and operations managers, watching queues grow in busy periods",
+    lead: "Operations teams",
+    body: "Managers who watch the pile of documents grow in busy weeks",
   },
   {
     icon: Server,
-    lead: "IT teams running IBM i",
-    body: "IT managers and IBM i specialists, looking for a way to cut manual entry without changing the system",
+    lead: "IT teams",
+    body: "People who look after the AS/400 and want less typing without changing it",
   },
 ];
 
@@ -35,7 +35,7 @@ export function WhoShouldJoin() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code mb-4 inline-flex items-center gap-3 text-white">
-            <span className="text-white/55">9</span>
+            <span className="text-white/55">7</span>
             <span className="h-px w-6 bg-white/20" />
             <span>The audience</span>
           </div>

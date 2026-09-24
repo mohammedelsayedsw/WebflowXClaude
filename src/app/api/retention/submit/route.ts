@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
-  LEAD_SUBJECT, NOTIFY_CC, RATE,
+  NOTIFY_CC, RATE,
 } from "@/sections/retention-90/server-config";
 
 export const runtime = "nodejs";
@@ -9,7 +9,8 @@ export const dynamic = "force-dynamic";
 
 /* Server-side gate between the Retention Score form and the two third parties
    (formsubmit, Calendly). Every check answers 200 {ok:true} so a caller cannot tell
-   which one fired; only a passing submission also gets bookingUrl. */
+   which one fired; only a passing submission also gets bookingUrl. Leads are posted to
+   formsubmit by the browser, not here, so lead delivery never depends on this route. */
 
 type Body = Record<string, string>;
 type Reason = "honeypot" | "email_blocked" | "store_blocked" | "rate_ip" | "rate_email" | "rate_store" | "invalid";
@@ -83,10 +84,10 @@ async function logBlocked(req: NextRequest, reason: Reason, meta: Record<string,
   return relay(req, { _subject: BLOCKED_SUBJECT + reason, _template: "table", _cc: NOTIFY_CC, reason, ...meta });
 }
 
-/* Same body for every outcome; the relay result rides in a header so a failing relay is
-   visible from a browser (curl/devtools) without server-log access. */
-function done(relayResult: string, bookingUrl?: string) {
-  const res = NextResponse.json(bookingUrl ? { ok: true, bookingUrl } : OK);
+/* Same body shape for every outcome; only a pass carries bookingUrl (and the ip/country
+   the browser adds to the lead email). The relay result rides in a header. */
+function done(relayResult: string, pass?: { bookingUrl: string; ip: string; country: string }) {
+  const res = NextResponse.json(pass ? { ok: true, ...pass } : OK);
   res.headers.set("x-relay", relayResult);
   return res;
 }
@@ -136,11 +137,7 @@ export async function POST(req: NextRequest) {
   if (limited("email:" + (await sha(email)), RATE.email.max, RATE.email.windowMs)) return done(await logBlocked(req, "rate_email", meta));
   if (limited("store:" + store, RATE.store.max, RATE.store.windowMs)) return done(await logBlocked(req, "rate_store", meta));
 
-  /* 9. passed: forward the lead with the two fields formsubmit never gave us */
-  const lead: Record<string, string> = {};
-  for (const [k, v] of Object.entries(body)) if (k !== "company_website") lead[k] = String(v);
-  lead._subject = LEAD_SUBJECT + store; lead._template = "table"; lead._cc = NOTIFY_CC;
-  lead.ip = ip; lead.user_agent = ua; lead.country = country;
-  const relayResult = await relay(req, lead);
-  return done(relayResult, await bookingUrl(name, email, store));
+  /* 9. passed. The lead email itself is sent by the browser (the path proven since launch);
+     the server only decides and hands back the booking link plus ip/country to attach. */
+  return done("pass", { bookingUrl: await bookingUrl(name, email, store), ip, country });
 }

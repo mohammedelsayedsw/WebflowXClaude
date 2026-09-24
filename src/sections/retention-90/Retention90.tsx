@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt } from "./scoring";
-import { DL_EVENT, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
+import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
@@ -71,12 +71,21 @@ export function Retention90() {
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => { const v = P.get(k); if (v) payload[k] = v; });
     payload.page = window.location.href.split("?")[0];
 
-    /* 1. our own gate: blocklist, honeypot, rate limits, then formsubmit + a booking link */
+    /* 1. gate decides (blocklists, honeypot, rate limits) and returns the booking link.
+          On pass the browser sends the lead to formsubmit itself, adding the ip/country the
+          gate saw. If the gate is unreachable, the lead is still sent (fail open), no booking link. */
+    const sendLead = (extra: Record<string, string>) => {
+      const lead: Record<string, string> = { ...payload, ...extra, _subject: LEAD_SUBJECT + store, _template: "table", _cc: NOTIFY_CC };
+      delete lead.company_website;
+      return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(lead) }).catch(() => {});
+    };
     try {
       fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
-        .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string }>)
-        .then((j) => { if (j && j.bookingUrl) setBookingUrl(j.bookingUrl); })
-        .catch(() => {});
+        .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string; ip?: string; country?: string }>)
+        .then((j) => {
+          if (j && j.bookingUrl) { setBookingUrl(j.bookingUrl); sendLead({ ip: j.ip || "", country: j.country || "", user_agent: navigator.userAgent }); }
+        })
+        .catch(() => { sendLead({ gate: "unreachable", user_agent: navigator.userAgent }); });
     } catch {}
     /* 2. Meta, same Lead event the audit funnels fire */
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: PIXEL_CONTENT, value: leak, currency: "USD" }); } catch {}

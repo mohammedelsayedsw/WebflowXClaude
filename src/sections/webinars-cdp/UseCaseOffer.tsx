@@ -68,9 +68,15 @@ export function UseCaseOffer() {
               {deliverables.map((d, i) => (
                 <Reveal key={d.label} delay={0.15 + i * 0.07}>
                   <div className="flex items-baseline gap-5 md:gap-6">
+                    {/* Left aligned inside the fixed box, not right aligned:
+                        right alignment left a third of the box empty in front
+                        of every digit, so the figures sat indented from the
+                        heading and the subtitle instead of starting on the
+                        same line as them. The fixed width still keeps the
+                        three labels aligned with each other. */}
                     <dt
-                      className="font-head text-[40px] md:text-[52px] leading-none tracking-[-0.02em] shrink-0 w-[1.2em] text-right tabular-nums"
-                      style={{ color: "var(--sw-orange)" }}
+                      className="font-head text-[40px] md:text-[52px] leading-none tracking-[-0.02em] shrink-0 w-[1.2em] text-left tabular-nums"
+                      style={{ color: "var(--sw-mint)" }}
                     >
                       {d.figure}
                     </dt>

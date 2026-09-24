@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
-  LEAD_SUBJECT, NOTIFY_CC, RATE,
+  NOTIFY_CC, RATE,
 } from "@/sections/retention-90/server-config";
 
 export const runtime = "nodejs";
@@ -9,7 +9,8 @@ export const dynamic = "force-dynamic";
 
 /* Server-side gate between the Retention Score form and the two third parties
    (formsubmit, Calendly). Every check answers 200 {ok:true} so a caller cannot tell
-   which one fired; only a passing submission also gets bookingUrl. */
+   which one fired; only a passing submission also gets bookingUrl. Leads are posted to
+   formsubmit by the browser, not here, so lead delivery never depends on this route. */
 
 type Body = Record<string, string>;
 type Reason = "honeypot" | "email_blocked" | "store_blocked" | "rate_ip" | "rate_email" | "rate_store" | "invalid";
@@ -53,17 +54,42 @@ async function sha(s: string): Promise<string> {
   return Array.from(new Uint8Array(d)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-/* ---------- log: console (Webflow Cloud logs) + email row, never a lead row ---------- */
-async function logBlocked(reason: Reason, meta: Record<string, string>) {
-  console.log(JSON.stringify({ event: "retention_blocked", reason, ...meta, at: new Date().toISOString() }));
+/* ---------- relay to formsubmit ----------
+   formsubmit's AJAX endpoint validates the calling site through Origin / Referer / a
+   browser User-Agent; a bare server fetch is rejected. Forward the visitor's headers. */
+async function relay(req: NextRequest, payload: Record<string, string>): Promise<string> {
+  const origin = req.headers.get("origin") || "https://scandiweb.com";
+  const referer = req.headers.get("referer") || "https://scandiweb.com/solutions/retention-90";
+  const ua = req.headers.get("user-agent") || "Mozilla/5.0 (compatible; scandiweb-retention-gate)";
   try {
-    await fetch(FORM_ENDPOINT, {
+    const r = await fetch(FORM_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ _subject: BLOCKED_SUBJECT + reason, _template: "table", _cc: NOTIFY_CC, reason, ...meta }),
+      headers: { "Content-Type": "application/json", Accept: "application/json", Origin: origin, Referer: referer, "User-Agent": ua },
+      body: JSON.stringify(payload),
       signal: TIMEOUT(),
     });
-  } catch { /* logging must never break the response */ }
+    const text = await r.text();
+    const ok = r.ok && /"success"\s*:\s*"?true/.test(text);
+    if (!ok) console.log(JSON.stringify({ event: "formsubmit_rejected", status: r.status, body: text.slice(0, 300) }));
+    return ok ? "ok" : `fail:${r.status}`;
+  } catch (e) {
+    console.log(JSON.stringify({ event: "formsubmit_failed", error: String(e) }));
+    return "fail:network";
+  }
+}
+
+/* ---------- log: console (Webflow Cloud logs) + email row, never a lead row ---------- */
+async function logBlocked(req: NextRequest, reason: Reason, meta: Record<string, string>): Promise<string> {
+  console.log(JSON.stringify({ event: "retention_blocked", reason, ...meta, at: new Date().toISOString() }));
+  return relay(req, { _subject: BLOCKED_SUBJECT + reason, _template: "table", _cc: NOTIFY_CC, reason, ...meta });
+}
+
+/* Same body shape for every outcome; only a pass carries bookingUrl (and the ip/country
+   the browser adds to the lead email). The relay result rides in a header. */
+function done(relayResult: string, pass?: { bookingUrl: string; ip: string; country: string }) {
+  const res = NextResponse.json(pass ? { ok: true, ...pass } : OK);
+  res.headers.set("x-relay", relayResult);
+  return res;
 }
 
 /* ---------- Calendly: single-use link when a token is present ---------- */
@@ -89,7 +115,7 @@ async function bookingUrl(name: string, email: string, store: string): Promise<s
 
 export async function POST(req: NextRequest) {
   let body: Body;
-  try { body = (await req.json()) as Body; } catch { return NextResponse.json(OK); }
+  try { body = (await req.json()) as Body; } catch { return done("skip"); }
 
   const ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
   const ua = req.headers.get("user-agent") || "";
@@ -99,26 +125,19 @@ export async function POST(req: NextRequest) {
   const name = String(body.name || "").trim();
   const meta = { email, store, name, ip, user_agent: ua, country };
 
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !store) { await logBlocked("invalid", meta); return NextResponse.json(OK); }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !store) return done(await logBlocked(req, "invalid", meta));
 
   /* 1. honeypot */
-  if (String(body.company_website || "").trim()) { await logBlocked("honeypot", meta); return NextResponse.json(OK); }
+  if (String(body.company_website || "").trim()) return done(await logBlocked(req, "honeypot", meta));
   /* 3-4. blocklists */
-  if (emailBlocked(email)) { await logBlocked("email_blocked", meta); return NextResponse.json(OK); }
-  if (storeBlocked(store)) { await logBlocked("store_blocked", meta); return NextResponse.json(OK); }
+  if (emailBlocked(email)) return done(await logBlocked(req, "email_blocked", meta));
+  if (storeBlocked(store)) return done(await logBlocked(req, "store_blocked", meta));
   /* 6-8. rate limits */
-  if (ip !== "unknown" && limited("ip:" + ip, RATE.ip.max, RATE.ip.windowMs)) { await logBlocked("rate_ip", meta); return NextResponse.json(OK); }
-  if (limited("email:" + (await sha(email)), RATE.email.max, RATE.email.windowMs)) { await logBlocked("rate_email", meta); return NextResponse.json(OK); }
-  if (limited("store:" + store, RATE.store.max, RATE.store.windowMs)) { await logBlocked("rate_store", meta); return NextResponse.json(OK); }
+  if (ip !== "unknown" && limited("ip:" + ip, RATE.ip.max, RATE.ip.windowMs)) return done(await logBlocked(req, "rate_ip", meta));
+  if (limited("email:" + (await sha(email)), RATE.email.max, RATE.email.windowMs)) return done(await logBlocked(req, "rate_email", meta));
+  if (limited("store:" + store, RATE.store.max, RATE.store.windowMs)) return done(await logBlocked(req, "rate_store", meta));
 
-  /* 9. passed: forward the lead with the two fields formsubmit never gave us */
-  const lead: Record<string, string> = {};
-  for (const [k, v] of Object.entries(body)) if (k !== "company_website") lead[k] = String(v);
-  lead._subject = LEAD_SUBJECT + store; lead._template = "table"; lead._cc = NOTIFY_CC;
-  lead.ip = ip; lead.user_agent = ua; lead.country = country;
-  try {
-    await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(lead), signal: TIMEOUT() });
-  } catch (e) { console.log(JSON.stringify({ event: "formsubmit_failed", error: String(e) })); }
-
-  return NextResponse.json({ ok: true, bookingUrl: await bookingUrl(name, email, store) });
+  /* 9. passed. The lead email itself is sent by the browser (the path proven since launch);
+     the server only decides and hands back the booking link plus ip/country to attach. */
+  return done("pass", { bookingUrl: await bookingUrl(name, email, store), ip, country });
 }

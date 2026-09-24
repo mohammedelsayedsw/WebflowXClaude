@@ -3,7 +3,6 @@
 import { Loop } from "@/sections/magento-perpetual/Loop";
 import { Hero } from "@/sections/magento-perpetual/Hero";
 import { Future } from "@/sections/magento-perpetual/Future";
-import { Covered } from "@/sections/magento-perpetual/Covered";
 import { HowItWorks } from "@/sections/magento-perpetual/HowItWorks";
 import { Cases } from "@/sections/magento-perpetual/Cases";
 import { Testimonials } from "@/sections/magento-perpetual/Testimonials";
@@ -23,7 +22,6 @@ export default function Page() {
       <Loop />
       <Hero />
       <Future />
-      <Covered />
       <Cases />
       <HowItWorks />
       <Testimonials />

@@ -109,12 +109,6 @@ export function Hero() {
                 </p>
               </Reveal>
 
-              <Reveal delay={0.16}>
-                <p className="mt-[clamp(6px,1.2vh,12px)] max-w-[54ch] text-[14px] md:text-[15px] leading-[1.45] italic text-white/60">
-                  If this sounds too good to be true, join us and watch it live
-                </p>
-              </Reveal>
-
               <Reveal delay={0.22}>
                 <div className="mt-[clamp(20px,3.4vh,40px)]">
                   <a href="#cta" className={`${btnPrimary} py-3`} style={{ height: "auto" }}>

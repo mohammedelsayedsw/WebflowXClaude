@@ -10,8 +10,7 @@ import { Lockup } from "./Lockup";
  *
  * The HubSpot form is still to come, so this is the placeholder the house rules
  * call for rather than a form wired to a guessed id. It is laid out as the real
- * one will be, including the qualifying question, so swapping it is one import
- * and one component:
+ * one will be, so swapping it is one import and one component:
  *
  *   <HubSpotForm portalId="25724996" formId="<id>" region="eu1"
  *                submitText="Save your seat" />
@@ -41,25 +40,6 @@ function FormPlaceholder() {
             <div className="h-11 rounded-[4px] border border-white/15 bg-white/[0.06]" />
           </div>
         ))}
-
-        {/* The question that decides whether a registration is worth anything.
-            Shown here so the placeholder cannot be mistaken for the finished
-            form and shipped without it. */}
-        <div className="mt-1">
-          <div className="label-code text-white/60 mb-2">
-            Does your company use an AS/400 (IBM i) system?
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {["Yes", "No", "Not sure"].map((o) => (
-              <span
-                key={o}
-                className="rounded-[4px] border border-white/15 bg-white/[0.06] px-4 py-2 text-white/70 text-[14px]"
-              >
-                {o}
-              </span>
-            ))}
-          </div>
-        </div>
 
         <div className="mt-2 h-12 rounded-[4px] border border-white/60 flex items-center justify-center font-head font-bold text-white text-[15px]">
           Save your seat

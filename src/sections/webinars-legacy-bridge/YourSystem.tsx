@@ -8,6 +8,10 @@
  * point the weight of a section; as a slim band between two green rules it
  * reads in the moment it takes to scroll past.
  *
+ * Light, against the dark sections either side of it. It sits in the middle of
+ * the page's longest dark run, where another dark band would have scrolled
+ * past unnoticed.
+ *
  * The check draws itself and the text follows. Under prefers-reduced-motion
  * both are painted finished.
  */
@@ -35,10 +39,13 @@ export function YourSystem() {
     <section
       ref={root}
       id="your-system"
-      className="relative bg-[var(--sw-black)] scroll-mt-20"
+      className="relative bg-lp-bright scroll-mt-20"
       style={{
-        borderTop: "1px solid rgba(110, 247, 110, 0.35)",
-        borderBottom: "1px solid rgba(110, 247, 110, 0.35)",
+        // The mint reads as a highlight on dark and as a smear on this
+        // background, so the rules take the darker green the light sections
+        // already use for a check.
+        borderTop: "1px solid rgba(31, 138, 59, 0.45)",
+        borderBottom: "1px solid rgba(31, 138, 59, 0.45)",
       }}
     >
       <div className="wrap">
@@ -49,14 +56,14 @@ export function YourSystem() {
             viewBox="0 0 48 48"
             className="h-12 w-12 md:h-14 md:w-14 shrink-0"
             fill="none"
-            stroke="var(--sw-mint)"
+            stroke="#1f8a3b"
             strokeWidth={1.6}
             strokeLinecap="round"
             strokeLinejoin="round"
             aria-hidden
           >
-            <rect x="3" y="7" width="42" height="29" rx="2.5" opacity="0.75" />
-            <path d="M18 41h12M24 36v5" opacity="0.6" />
+            <rect x="3" y="7" width="42" height="29" rx="2.5" opacity="0.55" />
+            <path d="M18 41h12M24 36v5" opacity="0.45" />
             <path
               d="M15 21.5l6.5 6.5L33.5 16"
               strokeWidth={2.6}
@@ -75,12 +82,12 @@ export function YourSystem() {
               transition: "opacity .5s ease-out .45s, transform .5s ease-out .45s",
             }}
           >
-            <p className="font-head font-bold text-white text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.15] tracking-[-0.01em]">
+            <p className="font-head font-bold text-[var(--sw-black)] text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.15] tracking-[-0.01em]">
               Your AS/400 stays exactly as it is
             </p>
-            <p className="mt-2 text-white/65 text-[14px] md:text-[16px] leading-relaxed max-w-[72ch]">
-              The software uses the same screens your team uses today, so your
-              programs and data do not change
+            <p className="mt-2 text-[var(--sw-black)]/70 text-[14px] md:text-[16px] leading-relaxed max-w-[76ch]">
+              The software types into the same AS/400 your team uses today, so
+              your programs and data do not change.
             </p>
           </div>
         </div>

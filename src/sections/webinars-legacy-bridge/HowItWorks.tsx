@@ -25,8 +25,8 @@ const STEPS: { title: string; body: string }[] = [
     body: "It finds the details and checks them against rules your team sets",
   },
   {
-    title: "The AS/400 screen is filled in",
-    body: "The details go into the right screen, and it stops before saving",
+    title: "The details are typed in",
+    body: "The software types them into the AS/400 and stops before saving",
   },
   {
     title: "Your team approves",
@@ -164,7 +164,7 @@ export function HowItWorks() {
                   <Icon on={on} />
                 </div>
 
-                <div className="mt-3 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight">
+                <div className="mt-3 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight text-balance">
                   {s.title}
                 </div>
                 <p className="mt-2.5 text-white/65 text-[14px] md:text-[15px] leading-relaxed">

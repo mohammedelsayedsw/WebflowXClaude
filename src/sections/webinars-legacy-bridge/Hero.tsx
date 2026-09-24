@@ -135,7 +135,7 @@ export function Hero() {
                       Dmitrijs Tarasovs
                     </div>
                     <div className="text-white/55 text-[12px] md:text-[13px] leading-snug">
-                      Founder and CEO of LegacyBridge
+                      Founder of LegacyBridge
                     </div>
                   </div>
                 </div>

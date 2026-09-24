@@ -39,7 +39,7 @@ export function Host() {
                   Dmitrijs Tarasovs
                 </div>
                 <div className="mt-1 text-[var(--sw-black)]/60 text-[14px] md:text-[15px]">
-                  Founder and CEO of LegacyBridge
+                  Founder of LegacyBridge
                 </div>
                 <p className="mt-4 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
                   Dmitrijs spent almost five years at scandiweb as a lead

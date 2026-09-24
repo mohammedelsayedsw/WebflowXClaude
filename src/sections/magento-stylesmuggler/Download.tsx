@@ -36,8 +36,9 @@ export function Download() {
             </h2>
             <p className="mt-6 text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[50ch]">
               Adobe’s hotfix stops at Commerce 2.4.4 and Open Source 2.4.6.
-              scandiweb rebuilt it for 41 older versions. Leave your email and
-              we send you the patch bundle with a short guide.
+              scandiweb rebuilt it for 41 older versions, and the security
+              advisory now points to it. Leave your email and we send you the
+              patch bundle with a short guide.
             </p>
             <ul className="mt-8 border-t border-white/10">
               {INSIDE.map((item) => (

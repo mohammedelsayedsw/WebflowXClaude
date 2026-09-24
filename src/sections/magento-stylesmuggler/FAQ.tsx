@@ -41,6 +41,14 @@ const FAQS: Q[] = [
     link: { label: "Book a call", href: CALL_URL },
   },
   {
+    q: "I installed the patch but still get “Payment Transaction Failed” emails. Is the store hacked?",
+    a: "Not necessarily. On a patched store, an unauthenticated request to the PayPal checkout API can still trigger that email with no payment behind it, so the messages alone are not proof of a break-in. Treat them as a reason to check the server, not as proof either way.",
+  },
+  {
+    q: "Are the attacks still going on?",
+    a: "Yes. New variants have appeared since the hotfix, with different file names and hiding places, and stores were still being compromised in the second week of September. A store that was online and unpatched between September 4 and the day it was patched needs a check, not just the patch.",
+  },
+  {
     q: "Do I need to take my store offline?",
     a: "Usually not. Temporary protection can be put in place while the store keeps selling. Taking a store offline is a last resort for a store that is confirmed compromised.",
   },

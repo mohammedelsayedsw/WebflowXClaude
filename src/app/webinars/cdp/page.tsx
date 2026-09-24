@@ -11,10 +11,14 @@ import { Format } from "@/sections/webinars-cdp/Format";
 import { Speakers } from "@/sections/webinars-cdp/Speakers";
 import { CTA } from "@/sections/webinars-cdp/CTA";
 import { UseCaseOffer } from "@/sections/webinars-cdp/UseCaseOffer";
+import { HashScroll } from "@/components/site/HashScroll";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
+      {/* Lets scandiweb.com/solutions/webinars/cdp#use-case land on the form,
+          which the QR code on the printed pieces points at. */}
+      <HashScroll />
       <Hero />
       <Covered />
       <Story />

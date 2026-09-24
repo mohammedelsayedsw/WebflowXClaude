@@ -8,7 +8,7 @@ import { NOMINATE_FORM_ID, REVEAL_LABEL, STORES } from "./reveal";
 /**
  * Nominate a store. The blue sweep from the first build of this page comes
  * back as the ground behind the form. Left: the ask and the promise. Right:
- * the nomination form (name, email, store URL).
+ * the nomination form (name, email, store URL). No eyebrow above the heading.
  */
 export function Nominate() {
   return (

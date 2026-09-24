@@ -2,7 +2,7 @@
 
 import { Loop } from "@/sections/magento-perpetual/Loop";
 import { Hero } from "@/sections/magento-perpetual/Hero";
-import { VersionCheck } from "@/sections/magento-perpetual/VersionCheck";
+import { Future } from "@/sections/magento-perpetual/Future";
 import { Covered } from "@/sections/magento-perpetual/Covered";
 import { HowItWorks } from "@/sections/magento-perpetual/HowItWorks";
 import { Cases } from "@/sections/magento-perpetual/Cases";
@@ -22,7 +22,7 @@ export default function Page() {
     <main className="relative isolate min-h-screen flex flex-col bg-[#05070f]">
       <Loop />
       <Hero />
-      <VersionCheck />
+      <Future />
       <Covered />
       <Cases />
       <HowItWorks />

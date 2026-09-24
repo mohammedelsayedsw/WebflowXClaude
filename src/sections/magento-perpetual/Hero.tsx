@@ -80,11 +80,11 @@ export function Hero() {
             Get free Magento upgrades
           </a>
           <a
-            href="#version"
-            onClick={scrollToSection("version")}
+            href="#future"
+            onClick={scrollToSection("future")}
             className={btnSecondary}
           >
-            Check your version
+            See what you save
           </a>
         </motion.div>
       </div>

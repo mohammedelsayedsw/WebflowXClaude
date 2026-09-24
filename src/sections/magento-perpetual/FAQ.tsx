@@ -26,10 +26,6 @@ const faqs: Q[] = [
     a: "It can. Version jumps change URL structures and template markup. Our SEO team reviews redirects and structured data on staging, then measures Core Web Vitals before and after go-live.",
   },
   {
-    q: "I am on Magento 1. Does Perpetual apply to me?",
-    a: "Magento 1 to Magento 2 is a replatform with a data and design migration, quoted on its own from $35,000. Once your store is live on 2.4.9, Perpetual begins from there.",
-  },
-  {
     q: "How do I check which Magento version I am on?",
     a: "The version number sits in the footer of your Magento admin, or run bin/magento --version on your server. If neither is reachable, send us your store URL and we will identify it.",
   },

@@ -19,14 +19,17 @@ export function Problem() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
+          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[26ch]">
             Someone on your team types{" "}
             <span className="text-[var(--sw-blue)]">every document in by hand</span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mt-6 max-w-[62ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
+          {/* No width cap: the line fits the content column whole, and the
+              62ch it used to carry broke it in two for no reason. Narrower
+              screens still wrap it as they need to. */}
+          <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             Your AS/400 has no way to open a PDF, so a person has to read each
             one and type it in.
           </p>

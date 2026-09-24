@@ -3,8 +3,8 @@
  * page. Update the dates when Adobe or the researchers publish something new;
  * the hero, the facts, the FAQ and the metadata all read from here.
  */
-export const UPDATED_LABEL = "September 8, 2026";
-export const UPDATED_SHORT = "September 8";
+export const UPDATED_LABEL = "September 24, 2026";
+export const UPDATED_SHORT = "September 24";
 /** Adobe's emergency hotfix for StyleSmuggler. */
 export const PATCH_DATE = "September 7";
 export const ADOBE_BULLETIN = "APSB26-146";

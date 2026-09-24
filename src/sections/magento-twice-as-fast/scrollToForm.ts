@@ -1,5 +1,5 @@
 /**
- * Scroll down to the sign-up form.
+ * Scroll down to a section of this page (the sign-up form by default).
  *
  * The app sets `scroll-behavior: smooth` on <html> while <body> carries the
  * overflow, and in Chrome that combination leaves every smooth scroll doing
@@ -8,8 +8,16 @@
  * global rule from a campaign page, this one animates its own scroll and asks
  * for each step instantly.
  */
+export function scrollTo(id: string) {
+  return (e: React.MouseEvent<HTMLAnchorElement>) => scrollToId(e, id);
+}
+
 export function scrollToForm(e: React.MouseEvent<HTMLAnchorElement>) {
-  const cta = document.getElementById("cta");
+  scrollToId(e, "cta");
+}
+
+function scrollToId(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+  const cta = document.getElementById(id);
   if (!cta) return;
 
   e.preventDefault();
@@ -24,5 +32,5 @@ export function scrollToForm(e: React.MouseEvent<HTMLAnchorElement>) {
     if (t < 1) window.requestAnimationFrame(step);
   };
   window.requestAnimationFrame(step);
-  window.history.replaceState(null, "", "#cta");
+  window.history.replaceState(null, "", `#${id}`);
 }

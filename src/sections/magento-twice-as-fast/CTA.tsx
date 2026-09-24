@@ -2,34 +2,42 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { REVEAL_LABEL, SIGNUP_FORM_ID } from "./reveal";
+import { Countdown } from "./Countdown";
+import { REVEAL_AT, REVEAL_LABEL, SIGNUP_FORM_ID } from "./reveal";
 
+const EYEBROW =
+  "font-head font-bold uppercase text-white/90 text-[13px] md:text-[14px] leading-[1.5] tracking-[0.04em] text-balance";
+
+/**
+ * The waiting list. The reveal date and the timer on the left, the email-only
+ * sign-up as one row on the right, the same row the hero carried before the
+ * nomination section took its place.
+ */
 export function CTA() {
   return (
     <section id="cta" className="relative z-10 py-28 md:py-40">
       <div className="wrap relative">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">Stay in the loop</div>
-            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[16ch]">
-              Stay <span style={{ color: "var(--sw-mint)" }}>updated</span>
+            <div className="label-code text-white/55 mb-5">The reveal</div>
+            <h2 className="font-head text-white text-[36px] md:text-[52px] lg:text-[64px] leading-[1.02] tracking-[-0.02em] max-w-[14ch]">
+              See it yourself on{" "}
+              <span style={{ color: "var(--sw-mint)" }}>{REVEAL_LABEL}.</span>
             </h2>
-            <p className="mt-6 text-white/80 max-w-[46ch] text-[16px] md:text-[17px] leading-relaxed">
-              Leave your email and we&apos;ll keep you posted on everything
-              around the reveal, before and on {REVEAL_LABEL}.
-            </p>
+            <div className="mt-8 md:mt-10">
+              <Countdown deadline={REVEAL_AT} variant="medium" />
+            </div>
           </Reveal>
 
           <Reveal delay={0.15}>
+            <div className={`${EYEBROW} mb-3`}>Be the first to experience it</div>
             <HubSpotForm
               portalId="25724996"
               formId={SIGNUP_FORM_ID}
               region="eu1"
-              submitText="Notify me"
+              submitText="Join waiting list"
+              variant="inline"
             />
-            <p className="label-code text-white/45 mt-3 px-1">
-              We&apos;ll email you whenever there&apos;s news.
-            </p>
           </Reveal>
         </div>
       </div>

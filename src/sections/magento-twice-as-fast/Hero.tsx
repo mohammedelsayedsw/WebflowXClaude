@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { btnPrimary, btnSecondary } from "@/components/primitives/buttonStyles";
 import { Countdown } from "./Countdown";
-import { REVEAL_AT, SIGNUP_FORM_ID } from "./reveal";
+import { REVEAL_AT } from "./reveal";
+import { scrollTo } from "./scrollToForm";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -17,14 +18,11 @@ const enter = (delay: number) => ({
 /** The line above the timer carries the claim, so it runs larger than the sign-up label. */
 const SUBLINE =
   "font-head font-bold uppercase text-white/90 text-[15px] md:text-[18px] leading-[1.45] tracking-[0.03em] text-balance";
-const EYEBROW =
-  "font-head font-bold uppercase text-white/90 text-[13px] md:text-[14px] leading-[1.5] tracking-[0.04em] text-balance";
-
 /**
- * The whole page is this one fold, and everything sits in one left column:
- * the two-line headline (white, then the green "2x faster"), a line, the
- * timer, a line, the sign-up. The galaxy keeps the right side. The sign-up is
- * the campaign's HubSpot form (email only) as one row.
+ * The fold, everything in one left column: the two-line headline (white,
+ * then the green "2x faster"), a line, the timer, then the two ways on:
+ * nominate a store, or join the waiting list. Both are sections below. The
+ * galaxy keeps the right side.
  */
 export function Hero() {
   return (
@@ -91,17 +89,14 @@ export function Hero() {
 
         <motion.div
           {...enter(1.1)}
-          id="cta"
-          className="mt-8 md:mt-[clamp(24px,4vh,40px)] max-w-[560px]"
+          className="mt-8 md:mt-[clamp(24px,4.5vh,44px)] flex flex-col sm:flex-row gap-3 sm:gap-4"
         >
-          <div className={`${EYEBROW} mb-3`}>Be the first to experience it</div>
-          <HubSpotForm
-            portalId="25724996"
-            formId={SIGNUP_FORM_ID}
-            region="eu1"
-            submitText="Join waiting list"
-            variant="inline"
-          />
+          <a href="#nominate" onClick={scrollTo("nominate")} className={btnPrimary}>
+            Nominate a store
+          </a>
+          <a href="#cta" onClick={scrollTo("cta")} className={btnSecondary}>
+            Join waiting list
+          </a>
         </motion.div>
       </div>
     </section>

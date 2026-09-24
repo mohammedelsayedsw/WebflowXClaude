@@ -13,27 +13,27 @@ const DOCS: { icon: typeof FileText; title: string; body: string }[] = [
   {
     icon: FileText,
     title: "Supplier invoices",
-    body: "Read the invoice and prepare the entry in your accounts payable screens",
+    body: "Bills from suppliers that your finance team enters",
   },
   {
     icon: ShoppingCart,
     title: "Customer orders",
-    body: "Turn emailed and PDF orders into entries in your order screens",
+    body: "Orders that customers send by email or as a PDF",
   },
   {
     icon: Truck,
     title: "Purchase orders",
-    body: "Read supplier documents and prepare the purchase order",
+    body: "Orders your company sends to its suppliers",
   },
   {
     icon: ClipboardList,
     title: "Work orders",
-    body: "Read instructions, dates and quantities and prepare the work order",
+    body: "Jobs with dates and quantities for your team",
   },
   {
     icon: HeartPulse,
     title: "Insurance claims",
-    body: "Follow the required screen sequence and hold the claim for review",
+    body: "Forms from customers asking the insurer to pay",
   },
 ];
 
@@ -48,14 +48,15 @@ export function AnyDocument() {
           <div className="label-code mb-4 inline-flex items-center gap-3 text-white">
             <span className="text-white/55">5</span>
             <span className="h-px w-6 bg-white/20" />
-            <span>Any document</span>
+            <span>Document types</span>
           </div>
         </Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[22ch]">
-            Any document your team types{" "}
-            <span style={{ color: "var(--sw-mint)" }}>into the AS/400</span>
+            One tool for{" "}
+            <span style={{ color: "var(--sw-mint)" }}>every document</span> your
+            team types into the AS/400
           </h2>
         </Reveal>
 
@@ -90,8 +91,8 @@ export function AnyDocument() {
 
         <Reveal delay={0.4}>
           <p className="mt-8 md:mt-10 text-white/70 text-[16px] md:text-[18px] leading-relaxed">
-            If your team types a different document into the AS/400, bring it to
-            the Q&amp;A.
+            Does your team type a different document into the AS/400? Ask us
+            about it during the webinar.
           </p>
         </Reveal>
       </div>

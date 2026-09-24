@@ -11,7 +11,7 @@ export function Host() {
       <div className="wrap relative">
         <Reveal>
           <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-            <span className="text-[var(--sw-black)]/55">10</span>
+            <span className="text-[var(--sw-black)]/55">8</span>
             <span className="h-px w-6 bg-[var(--sw-black)]/20" />
             <span>Your host</span>
           </div>
@@ -20,7 +20,7 @@ export function Host() {
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
             Meet the person{" "}
-            <span className="text-[var(--sw-blue)]">who built it</span>
+            <span className="text-[var(--sw-blue)]">who built the software</span>
           </h2>
         </Reveal>
 
@@ -39,14 +39,13 @@ export function Host() {
                   Dmitrijs Tarasovs
                 </div>
                 <div className="mt-1 text-[var(--sw-black)]/60 text-[14px] md:text-[15px]">
-                  Founder of LegacyBridge
+                  Founder and CEO of LegacyBridge
                 </div>
-                {/* Left as a marked placeholder on purpose. The brief rules out
-                    inventing credentials, so nothing stands here until his own
-                    two sentences arrive. */}
-                <p className="mt-4 font-mono text-[13px] leading-relaxed text-[var(--sw-orange)]">
-                  [ADD: two short sentences from Dmitrijs, for example his
-                  background and what he has built]
+                <p className="mt-4 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+                  Dmitrijs spent almost five years at scandiweb as a lead
+                  software engineer, connecting online stores to the business
+                  systems behind them. In 2025 he started LegacyBridge so teams
+                  can stop typing documents into the AS/400.
                 </p>
               </div>
             </div>
@@ -58,9 +57,6 @@ export function Host() {
                 &ldquo;We built LegacyBridge so nobody has to retype an invoice
                 again.&rdquo;
               </blockquote>
-              <figcaption className="mt-4 text-[var(--sw-black)]/55 text-[14px] md:text-[15px]">
-                Dmitrijs Tarasovs
-              </figcaption>
             </figure>
           </Reveal>
         </div>

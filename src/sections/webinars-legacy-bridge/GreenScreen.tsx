@@ -4,9 +4,9 @@
  * The AS/400 screen, the visual the whole page rests on.
  *
  * Anyone who works on an IBM i has to recognise this at a glance, so it copies
- * the things that make the screen what it is rather than suggesting them: a
- * black field, monospaced green text, a title row with a screen id, labels run
- * out to their input with dot leaders, and the F-key legend along the bottom.
+ * the things that make the screen what it is rather than suggesting them. The
+ * frame, the title row, the dot leaders and the F-key legend come from
+ * ScreenShell, which the race screens in the problem section share.
  *
  * Values arrive one at a time, because the point being made is that the screen
  * fills itself in. When the last one lands the cursor rests on the approve
@@ -15,6 +15,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { Caret, DotRow, ScreenShell } from "./ScreenShell";
 
 export type ScreenField = {
   label: string;
@@ -22,8 +23,6 @@ export type ScreenField = {
   /** Marks the row as the one needing a person, drawn in amber with a note. */
   flag?: string;
 };
-
-const FKEYS = "F3=Exit   F5=Refresh   F12=Cancel";
 
 export function GreenScreen({
   screenId,
@@ -76,52 +75,28 @@ export function GreenScreen({
   const filled = shown >= fields.length;
 
   return (
-    <div
-      ref={root}
-      className={`rounded-[4px] border border-[var(--sw-mint)]/25 bg-black overflow-hidden ${className}`}
-      style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.6), 0 24px 60px rgba(0,0,0,0.45)" }}
-    >
-      {/* The whole screen is one live region: a screen reader hears the
-          finished entry once, not a value at a time as they arrive. */}
-      <div
-        className="font-mono text-[#3bf07a] p-4 md:p-5 text-[11px] md:text-[12.5px] leading-[1.75]"
-        aria-live="polite"
-      >
-        <div className="flex justify-between gap-4 text-[#3bf07a]/70">
-          <span>{screenId}</span>
-          <span className="hidden sm:inline">AS/400</span>
-        </div>
-
-        <div className="mt-1 text-center uppercase tracking-[0.12em] text-[#7dffb0]">
-          {title}
-        </div>
-
-        <div className="mt-3 md:mt-4 flex flex-col">
+    <div ref={root}>
+      <ScreenShell screenId={screenId} title={title} className={className}>
+        {/* The whole screen is one live region: a screen reader hears the
+            finished entry once, not a value at a time as they arrive. */}
+        <div className="mt-3 md:mt-4 flex flex-col" aria-live="polite">
           {fields.map((f, i) => {
             const visible = i < shown;
             return (
-              <div key={f.label} className="flex items-baseline gap-2">
-                <span className="shrink-0">{f.label}</span>
-                {/* The dot leader takes the slack, so every value starts at the
-                    same column however long its label is. */}
-                <span
-                  aria-hidden
-                  className="min-w-0 flex-1 overflow-hidden whitespace-nowrap text-[#3bf07a]/35"
-                >
-                  {". ".repeat(60)}
-                </span>
+              <DotRow key={f.label} label={f.label}>
                 <span
                   className={
-                    "shrink-0 transition-opacity duration-200 " +
+                    "transition-opacity duration-200 " +
                     (visible ? "opacity-100" : "opacity-0") +
                     (f.flag ? " text-[#ffb057]" : "")
                   }
                 >
-                  {/* The underscore keeps the row at full height while the
-                      field is still empty, so nothing shifts as values land. */}
+                  {/* The non-breaking space keeps the row at full height while
+                      the field is still empty, so nothing shifts as values
+                      land. */}
                   {visible ? f.value : " "}
                 </span>
-              </div>
+              </DotRow>
             );
           })}
         </div>
@@ -139,18 +114,9 @@ export function GreenScreen({
           }
         >
           <span className="text-[#7dffb0]">{approveLabel}</span>
-          {/* The cursor resting on the approve line. It is the one thing on
-              the screen still moving once the entry is ready. */}
-          <span
-            aria-hidden
-            className="inline-block h-[1.05em] w-[0.6em] bg-[#7dffb0] sw-caret"
-          />
+          <Caret />
         </div>
-
-        <div className="mt-3 md:mt-4 border-t border-[#3bf07a]/20 pt-2 text-[#3bf07a]/55 truncate">
-          {FKEYS}
-        </div>
-      </div>
+      </ScreenShell>
     </div>
   );
 }

@@ -1,111 +1,120 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { scrollToSection } from "./scrollToSection";
 
-/**
- * What the years ahead cost. Adobe has shipped one platform release a year
- * since 2023 (2.4.6, 2.4.7, 2.4.8, 2.4.9) and security patches through the
- * year. The market figures are the low end of what scandiweb quotes for the
- * same work outside the program: a version upgrade from $15,000, a security
- * patch cycle around $1,000, three patch cycles a year.
- */
-const HORIZONS = [3, 5, 10];
-const DEFAULT_YEARS = 5;
-const RELEASE_FROM = 15000;
-const PATCH = 1000;
-const PATCHES_A_YEAR = 3;
+/** Enough years that nobody sees the row end. */
+const YEARS = 40;
+/** Pixels the row travels per second. Slow enough to read, fast enough to notice. */
+const SPEED = 18;
 
-const LABEL = "label-code text-white/55";
-const FIGURE =
-  "mt-5 font-head font-bold leading-[0.86] tracking-[-0.04em] tabular-nums text-[72px] sm:text-[104px] md:text-[128px] lg:text-[160px]";
-const LINE = "mt-6 text-white/75 text-[17px] md:text-[19px] leading-snug sm:whitespace-nowrap";
+/* The row starts where `.wrap` starts and runs off the right edge of the
+   screen. Percentages resolve against the row's own width, which leaves the
+   page scrollbar out, so the first year lines up with the heading. */
+const GUTTER = "max(clamp(1.25rem, 4vw, 3rem), calc((100% - 1280px) / 2 + 3rem))";
 
 /**
- * Pick how long the store stays on Magento. Left: what that many years of
- * upgrades cost at market rate. Right: what they cost with Perpetual. Whatever
- * version the reader runs today, every release ahead of them is the same $0.
+ * The years ahead as one row, every one of them $0, drifting slowly to the
+ * left for as long as the page is open. No control: the point is that the
+ * answer is the same for every year, so there is nothing to pick. The row
+ * fades out at the right edge and never reaches its end. Reduced-motion
+ * readers get the row standing still.
  */
 export function Future() {
-  const [years, setYears] = useState(DEFAULT_YEARS);
-  const releases = years;
-  const patches = years * PATCHES_A_YEAR;
-  const market = releases * RELEASE_FROM + patches * PATCH;
+  const track = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // the track is as wide as its content; the overflow is against the clip around it
+    const clip = el.parentElement;
+    if (!clip) return;
+    const distance = el.scrollWidth - clip.clientWidth;
+    if (distance <= 0) return;
+    const anim = el.animate(
+      [{ transform: "translateX(0)" }, { transform: `translateX(-${distance}px)` }],
+      { duration: (distance / SPEED) * 1000, easing: "linear", fill: "forwards" }
+    );
+    const pause = () => anim.pause();
+    const play = () => anim.play();
+    el.addEventListener("pointerenter", pause);
+    el.addEventListener("pointerleave", play);
+    return () => {
+      anim.cancel();
+      el.removeEventListener("pointerenter", pause);
+      el.removeEventListener("pointerleave", play);
+    };
+  }, []);
+
+  const first = new Date().getFullYear() + 1;
+  const years = Array.from({ length: YEARS }, (_, i) => first + i);
 
   return (
-    <section id="future" className="relative z-10 py-28 md:py-36">
+    <section id="future" className="relative z-10 py-28 md:py-36 overflow-hidden">
       <div className="wrap">
         <Reveal>
-          <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.02] tracking-[-0.02em] max-w-[18ch]">
-            Adobe ships a new Magento every year
+          <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.02] tracking-[-0.02em] max-w-[16ch]">
+            Every year, a new Magento release.
+            <br />
+            <span
+              style={{
+                color: "var(--sw-mint)",
+                textShadow: "0 0 56px rgba(110,247,110,0.28)",
+              }}
+            >
+              Every year, $0.
+            </span>
           </h2>
+          <p className="mt-7 md:mt-8 text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-[52ch]">
+            An agency quotes $15,000 to $35,000 for each one. With Perpetual,
+            every one is included.
+          </p>
         </Reveal>
+      </div>
 
-        <Reveal delay={0.08}>
-          <div className={`${LABEL} mt-10 md:mt-14 mb-4`}>
-            How long will you run your store on Magento?
-          </div>
+      <Reveal delay={0.1}>
+        <div
+          aria-label={`Every year from ${first}: $0`}
+          className="mt-14 md:mt-20 overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(90deg, #000 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(90deg, #000 70%, transparent 100%)",
+          }}
+        >
           <div
-            role="group"
-            aria-label="Years on Magento"
-            className="flex flex-wrap gap-2 md:gap-2.5"
+            ref={track}
+            className="flex w-max"
+            style={{ paddingLeft: GUTTER, paddingRight: GUTTER }}
           >
-            {HORIZONS.map((y) => {
-              const on = y === years;
-              return (
-                <button
-                  key={y}
-                  type="button"
-                  aria-pressed={on}
-                  onClick={() => setYears(y)}
-                  className={`h-11 md:h-12 px-4 md:px-5 rounded-[2px] border font-head font-semibold text-[15px] md:text-[17px] tabular-nums transition cursor-pointer ${
-                    on
-                      ? "border-white bg-white text-[var(--sw-black)]"
-                      : "border-white/25 text-white/75 hover:border-white/60 hover:text-white"
-                  }`}
+            {years.map((y) => (
+              <div
+                key={y}
+                className="shrink-0 w-[170px] md:w-[220px] border-l border-white/15 pl-5 md:pl-6 pr-6"
+              >
+                <div className="label-code text-white/55 tabular-nums">{y}</div>
+                <div
+                  className="mt-4 font-head font-bold leading-[0.9] tracking-[-0.04em] text-[64px] md:text-[88px] tabular-nums"
+                  style={{
+                    color: "var(--sw-mint)",
+                    textShadow: "0 0 40px rgba(110,247,110,0.22)",
+                  }}
                 >
-                  {y} years
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.14}>
-          <div className="mt-14 md:mt-20 grid gap-14 lg:gap-12 lg:grid-cols-[1.35fr_1fr]">
-            <div aria-live="polite">
-              <div className={LABEL}>Next {years} years at market rate</div>
-              <div
-                className={`${FIGURE} text-white/55 line-through decoration-[6px] md:decoration-[10px]`}
-                style={{ textDecorationColor: "rgba(224,79,79,0.85)" }}
-              >
-                ${market.toLocaleString("en-US")}+
+                  $0
+                </div>
+                <div className="mt-4 text-white/55 text-[14px] md:text-[15px] leading-snug">
+                  Release and patches
+                </div>
               </div>
-              <p className={LINE}>
-                {releases} version upgrades and around {patches} security patches,
-                each quoted again
-              </p>
-            </div>
-
-            <div>
-              <div className={LABEL}>Next {years} years with Perpetual</div>
-              <div
-                className={FIGURE}
-                style={{
-                  color: "var(--sw-mint)",
-                  textShadow: "0 0 56px rgba(110,247,110,0.28)",
-                }}
-              >
-                $0
-              </div>
-              <p className={LINE}>Every release and every patch, included</p>
-            </div>
+            ))}
           </div>
-        </Reveal>
+        </div>
+      </Reveal>
 
-        <Reveal delay={0.18}>
+      <div className="wrap">
+        <Reveal delay={0.16}>
           <div className="mt-14 md:mt-20">
             <a href="#cta" onClick={scrollToSection("cta")} className={btnPrimary}>
               Get free Magento upgrades

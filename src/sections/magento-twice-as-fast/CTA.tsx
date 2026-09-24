@@ -19,10 +19,9 @@ export function CTA() {
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <Reveal>
-            <div className="label-code text-white/55 mb-5">The reveal</div>
             <h2 className="font-head text-white text-[36px] md:text-[52px] lg:text-[64px] leading-[1.02] tracking-[-0.02em] max-w-[14ch]">
-              See it yourself on{" "}
-              <span style={{ color: "var(--sw-mint)" }}>{REVEAL_LABEL}.</span>
+              See it for yourself on{" "}
+              <span style={{ color: "var(--sw-mint)" }}>{REVEAL_LABEL}</span>
             </h2>
             <div className="mt-8 md:mt-10">
               <Countdown deadline={REVEAL_AT} variant="medium" />

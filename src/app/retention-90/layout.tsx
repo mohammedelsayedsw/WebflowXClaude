@@ -28,6 +28,15 @@ n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElemen
 s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','421756528598953');fbq('track','PageView');`}
       </Script>
+      {/* LinkedIn Insight Tag, partner 2329169 (Scandiweb V2). The site GTM container already
+          loads it; this only loads it when GTM did not, so the Lead conversion never depends on GTM. */}
+      <Script id="r90-li-insight" strategy="afterInteractive">
+        {`(function(){var p='2329169';window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];
+if(window._linkedin_data_partner_ids.indexOf(p)<0)window._linkedin_data_partner_ids.push(p);
+setTimeout(function(){if(window.lintrk)return;window.lintrk=function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[];
+var s=document.getElementsByTagName('script')[0],b=document.createElement('script');b.type='text/javascript';b.async=true;
+b.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.insertBefore(b,s)},3000)})();`}
+      </Script>
       {/* HubSpot EU1, portal 25724996: attaches the scan to the contact timeline */}
       <Script id="hs-script-loader" strategy="afterInteractive" src="https://js-eu1.hs-scripts.com/25724996.js" />
       <Header />

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt } from "./scoring";
-import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
+import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
@@ -16,6 +16,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     fbq?: (...args: unknown[]) => void;
+    lintrk?: (action: string, data: { conversion_id: number }) => void;
     _hsq?: unknown[];
   }
 }
@@ -89,6 +90,8 @@ export function Retention90() {
     } catch {}
     /* 2. Meta, same Lead event the audit funnels fire */
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: PIXEL_CONTENT, value: leak, currency: "USD" }); } catch {}
+    /* 2b. LinkedIn: event-specific Lead conversion (Insight Tag already on the page) */
+    try { if (typeof window.lintrk === "function") window.lintrk("track", { conversion_id: LI_CONVERSION_ID }); } catch {}
     /* 3. GTM / GA4 */
     try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: DL_EVENT, vertical: VERTICAL, retention_score: score, estimated_opportunity: leak, store }); } catch {}
     /* 4. HubSpot: identify the contact so the scan attaches to the timeline */

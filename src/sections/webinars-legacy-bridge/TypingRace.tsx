@@ -25,9 +25,16 @@ const FIELDS = [
   { label: "Due date", value: "14/11/26" },
 ];
 
-/** Where the mistyped character goes, and what gets typed by accident. */
-const TYPO_AT = 4;
-const TYPO_CHAR = "S";
+/**
+ * Where the typist slips, keyed by field: the position in the value, and what
+ * they hit instead. Two of them, so the left screen loses time the way real
+ * typing does rather than once as a gag, and the amount is a good place for
+ * the second because a wrong digit in a figure is the one that matters.
+ */
+const TYPOS: Record<number, { at: number; char: string }> = {
+  0: { at: 4, char: "S" }, // NORDS, meant NORDI
+  2: { at: 3, char: "9" }, // 12,9, meant 12,4
+};
 
 /** How far the left screen has got when the animation is not run at all. */
 const REDUCED_LEFT = ["NORDIC SUPPLY AB", "INV-481", "", ""];
@@ -96,11 +103,13 @@ export function TypingRace() {
           setLeftField(f);
           const v = FIELDS[f].value;
 
+          const typo = TYPOS[f];
+
           for (let i = 0; i < v.length; i++) {
             if (!live()) return;
 
-            if (f === 0 && i === TYPO_AT) {
-              out[f] = v.slice(0, i) + TYPO_CHAR;
+            if (typo && i === typo.at) {
+              out[f] = v.slice(0, i) + typo.char;
               setLeft([...out]);
               await sleep(560); // noticing it
               if (!live()) return;
@@ -123,10 +132,7 @@ export function TypingRace() {
       // better part of a minute, so there is room to let each step be read.
       const filler = async () => {
         setRightPhase("prompt");
-        // Long enough to be read without holding up the rest. A second and a
-        // half was gone before anyone had looked across from the screen on the
-        // left; four and a half left the screen sitting there.
-        await sleep(2500);
+        await sleep(500);
         if (!live()) return;
 
         setRightPhase("uploaded");

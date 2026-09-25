@@ -5,9 +5,8 @@ import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Badges } from "./Badges";
 import { Eyebrow } from "./Eyebrow";
+import { HeroVisual } from "./HeroVisual";
 import { HERO_EYEBROW_PARTS } from "./details";
-import { GreenScreen } from "./GreenScreen";
-import { PaperDoc } from "./PaperDoc";
 import { TrustBar } from "./TrustBar";
 
 function HeroBg() {
@@ -34,45 +33,6 @@ function HeroBg() {
         }}
       />
     </>
-  );
-}
-
-/**
- * The invoice and the screen, side by side, with the values from one landing in
- * the other. This is the page's argument in a single picture, so it gets the
- * larger half of the hero.
- */
-function HeroVisual() {
-  return (
-    // Side by side only once there is room for it. Sharing a phone's width
-    // between the two left the screen around 200px across, where the dot
-    // leaders collapse and the field values wrap, which is the one thing this
-    // visual cannot afford. Stacked, the document sits above the screen and
-    // the eye still travels from one to the other.
-    <div className="relative">
-      <div className="flex flex-col gap-3 sm:grid sm:grid-cols-[0.72fr_1fr] sm:gap-4 sm:items-center">
-        <PaperDoc
-          className="w-full max-w-[280px] sm:max-w-none"
-          kind="Invoice"
-          reference="NORDIC SUPPLY AB"
-          rows={[
-            { label: "Invoice no", value: "INV-48120" },
-            { label: "Amount", value: "12 480.00" },
-            { label: "Due", value: "14/11/26" },
-          ]}
-        />
-        <GreenScreen
-          screenId="AP4010"
-          title="Invoice entry"
-          fields={[
-            { label: "Supplier", value: "NORDIC SUPPLY AB" },
-            { label: "Invoice no", value: "INV-48120" },
-            { label: "Amount", value: "12,480.00" },
-            { label: "Due date", value: "14/11/26" },
-          ]}
-        />
-      </div>
-    </div>
   );
 }
 

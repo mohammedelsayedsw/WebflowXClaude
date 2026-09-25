@@ -110,7 +110,13 @@ export function HowItWorks() {
             return (
               <li
                 key={s.title}
-                className="relative md:pr-5"
+                /* pr-3, not pr-5. The column is 278px and the step one body
+                   needs a shade over two lines' worth at 15px, so the extra
+                   8px of gutter was the difference between two lines and
+                   three. The grid's own 24px gap still separates the columns,
+                   and the connecting line is positioned off that gap rather
+                   than off this padding. */
+                className="relative md:pr-3"
                 style={{
                   opacity: on ? 1 : 0,
                   transform: on ? "translateY(0)" : "translateY(10px)",

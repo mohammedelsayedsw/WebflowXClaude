@@ -85,9 +85,10 @@ type GateProps = {
   store: string;
   onBack: () => void;
   onSubmit: (name: string, email: string, honeypot: string) => void;
+  onError?: (kind: string) => void;
 };
 
-export function Gate({ store, onBack, onSubmit }: GateProps) {
+export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
@@ -98,8 +99,8 @@ export function Gate({ store, onBack, onSubmit }: GateProps) {
   const submit = () => {
     const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
     setEmailErr(!ok);
-    if (!ok) return;
-    if (!consent) { setConsentErr(true); return; }
+    if (!ok) { onError?.("email"); return; }
+    if (!consent) { setConsentErr(true); onError?.("consent"); return; }
     onSubmit(name.trim(), email.trim(), hp);
   };
 

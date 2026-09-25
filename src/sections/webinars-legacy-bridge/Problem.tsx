@@ -38,12 +38,6 @@ export function Problem() {
         <Reveal delay={0.14}>
           <TypingRace />
         </Reveal>
-
-        <Reveal delay={0.26}>
-          <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            Queues grow, and skilled people spend their day on data entry.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

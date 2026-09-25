@@ -13,27 +13,27 @@ const DOCS: { icon: typeof FileText; title: string; body: string }[] = [
   {
     icon: FileText,
     title: "Supplier invoices",
-    body: "Checks each invoice for missing details and fills in your finance screens",
+    body: "Checks each invoice for missing details and fills in your finance screens.",
   },
   {
     icon: ShoppingCart,
     title: "Customer orders",
-    body: "Takes orders that arrive by email and fills in the right order screens",
+    body: "Takes orders that arrive by email and fills in the right order screens.",
   },
   {
     icon: Truck,
     title: "Purchase orders",
-    body: "Finds the products and quantities in supplier documents and fills in the order",
+    body: "Finds the products and quantities in supplier documents and fills in the order.",
   },
   {
     icon: ClipboardList,
     title: "Work orders",
-    body: "Reads dates and quantities from work instructions and fills in your production screens",
+    body: "Reads dates and quantities from work instructions and fills in your production screens.",
   },
   {
     icon: HeartPulse,
     title: "Insurance claims",
-    body: "Goes through every screen a claim needs and holds it until a person checks it",
+    body: "Goes through every screen a claim needs and holds it until a person checks it.",
   },
 ];
 

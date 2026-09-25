@@ -18,19 +18,19 @@ import { STEP_ICONS } from "./StepIcons";
 const STEPS: { title: string; body: string }[] = [
   {
     title: "A PDF arrives",
-    body: "An order or invoice lands in your team's inbox as a PDF attachment",
+    body: "An order or invoice lands in your team's inbox as a PDF attachment.",
   },
   {
-    title: "The software reads the PDF",
-    body: "It finds the details and checks them against rules your team sets",
+    title: "LegacyBridge reads the document",
+    body: "It finds the details and checks them against rules your team sets.",
   },
   {
     title: "The details are typed in",
-    body: "The software types them into the AS/400 and stops before saving",
+    body: "The software types them into the AS/400 and stops before saving.",
   },
   {
     title: "Your team approves",
-    body: "A person checks the details and presses Enter to save them",
+    body: "A person checks the details and presses Enter to save them.",
   },
 ];
 

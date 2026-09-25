@@ -13,11 +13,13 @@ import { Reveal } from "@/components/primitives/Reveal";
  * timings, no descriptions.
  */
 const POINTS: string[] = [
-  "Why many teams still type orders and invoices into the AS/400 by hand",
+  "Why companies keep the AS/400, and where all the typing around it comes from",
+  "Why most automation tools struggle with AS/400 screens",
   "A live demo of a PDF going from the inbox into the AS/400",
   "What happens when part of the PDF is hard to read, or the AS/400 shows an error",
-  "How a person on your team checks the details before they are saved",
-  "How to test the software on your own documents for two weeks",
+  "How the software handles invoices, orders and any other document your team types in by hand",
+  "What the software is and isn't allowed to do, and how your team approves each entry",
+  "Webinar registrants only: a free two-week test on your own documents",
   "Time for your questions",
 ];
 

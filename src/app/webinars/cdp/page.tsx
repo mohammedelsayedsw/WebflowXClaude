@@ -9,7 +9,6 @@ import { Takeaways } from "@/sections/webinars-cdp/Takeaways";
 import { WhoShouldJoin } from "@/sections/webinars-cdp/WhoShouldJoin";
 import { Format } from "@/sections/webinars-cdp/Format";
 import { Speakers } from "@/sections/webinars-cdp/Speakers";
-import { CTA } from "@/sections/webinars-cdp/CTA";
 import { UseCaseOffer } from "@/sections/webinars-cdp/UseCaseOffer";
 import { HashScroll } from "@/components/site/HashScroll";
 
@@ -28,7 +27,6 @@ export default function Page() {
       <Speakers />
       <Takeaways />
       <WhoShouldJoin />
-      <CTA />
       <UseCaseOffer />
     </main>
   );

@@ -7,22 +7,22 @@ const CARDS: { icon: typeof ShieldCheck; title: string; body: string }[] = [
   {
     icon: UserCheck,
     title: "Nothing is submitted without a person",
-    body: "Every prepared entry waits for your team to approve it",
+    body: "Every prepared entry waits for your team to approve it.",
   },
   {
     icon: ShieldCheck,
     title: "You decide what it may do",
-    body: "Access, permissions and the approval step are agreed with your team before anything runs",
+    body: "Access, permissions and the approval step are agreed with your team before anything runs.",
   },
   {
     icon: FileClock,
     title: "Every action is recorded",
-    body: "The audit trail shows each entry and who approved it",
+    body: "The audit trail shows each entry and who approved it.",
   },
   {
     icon: BadgeCheck,
     title: "Certified for security",
-    body: "The company behind LegacyBridge holds ISO 9001, ISO/IEC 27001 and ISO/IEC 27017, on PCI DSS-compliant infrastructure",
+    body: "The company behind LegacyBridge holds ISO 9001, ISO/IEC 27001 and ISO/IEC 27017, on PCI DSS-compliant infrastructure.",
   },
 ];
 

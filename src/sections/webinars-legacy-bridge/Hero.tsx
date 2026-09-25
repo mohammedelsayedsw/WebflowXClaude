@@ -55,7 +55,7 @@ export function Hero() {
 
               <Reveal delay={0.08}>
                 <h1 className="font-head text-white text-[30px] sm:text-[38px] md:text-[44px] lg:text-[clamp(34px,min(5.4vh,3.8vw),48px)] leading-[1.08] tracking-[-0.02em] text-balance">
-                  Get PDFs into your{" "}
+                  Get documents into your{" "}
                   <span style={{ color: "var(--sw-mint)" }}>AS/400</span> without
                   typing
                 </h1>

@@ -132,7 +132,7 @@ export function TypingRace() {
       // better part of a minute, so there is room to let each step be read.
       const filler = async () => {
         setRightPhase("prompt");
-        await sleep(500);
+        await sleep(1500);
         if (!live()) return;
 
         setRightPhase("uploaded");

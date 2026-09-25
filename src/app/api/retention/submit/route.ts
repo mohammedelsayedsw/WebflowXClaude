@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
-  NOTIFY_CC, RATE,
+  NOTIFY_CC,
 } from "@/sections/retention-90/server-config";
 
 export const runtime = "nodejs";
@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
    formsubmit by the browser, not here, so lead delivery never depends on this route. */
 
 type Body = Record<string, string>;
-type Reason = "honeypot" | "email_blocked" | "store_blocked" | "rate_ip" | "rate_email" | "rate_store" | "invalid";
+type Reason = "honeypot" | "email_blocked" | "store_blocked" | "invalid";
 
 const OK = { ok: true } as const;
 const TIMEOUT = () => AbortSignal.timeout(8000);
@@ -37,21 +37,6 @@ function emailBlocked(email: string): boolean {
 function storeBlocked(store: string): boolean {
   const s = store.toLowerCase().replace(/^www\./, "");
   return blocklist().stores.some((x) => x.toLowerCase() === s);
-}
-
-/* ---------- rate limits: in-memory per isolate (upgrade to KV when bound) ---------- */
-const hits = new Map<string, number[]>();
-function limited(key: string, max: number, windowMs: number): boolean {
-  const now = Date.now();
-  const arr = (hits.get(key) || []).filter((t) => now - t < windowMs);
-  if (arr.length >= max) { hits.set(key, arr); return true; }
-  arr.push(now); hits.set(key, arr);
-  if (hits.size > 5000) hits.clear();
-  return false;
-}
-async function sha(s: string): Promise<string> {
-  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s.toLowerCase()));
-  return Array.from(new Uint8Array(d)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 /* ---------- relay to formsubmit ----------
@@ -132,10 +117,9 @@ export async function POST(req: NextRequest) {
   /* 3-4. blocklists */
   if (emailBlocked(email)) return done(await logBlocked(req, "email_blocked", meta));
   if (storeBlocked(store)) return done(await logBlocked(req, "store_blocked", meta));
-  /* 6-8. rate limits */
-  if (ip !== "unknown" && limited("ip:" + ip, RATE.ip.max, RATE.ip.windowMs)) return done(await logBlocked(req, "rate_ip", meta));
-  if (limited("email:" + (await sha(email)), RATE.email.max, RATE.email.windowMs)) return done(await logBlocked(req, "rate_email", meta));
-  if (limited("store:" + store, RATE.store.max, RATE.store.windowMs)) return done(await logBlocked(req, "rate_store", meta));
+  /* No rate limits, by decision (Marko, 25 Sep): shared office / carrier IPs, two people from
+     one store and repeat scans are normal traffic, and a block here silently drops the lead.
+     Only the honeypot and the two blocklists decide. */
 
   /* 9. passed. The lead email itself is sent by the browser (the path proven since launch);
      the server only decides and hands back the booking link plus ip/country to attach. */

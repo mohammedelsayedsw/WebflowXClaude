@@ -123,10 +123,10 @@ export function TypingRace() {
       // better part of a minute, so there is room to let each step be read.
       const filler = async () => {
         setRightPhase("prompt");
-        // Long enough to actually be read. This is the line that sets up
-        // everything after it, and at a second and a half it was gone before
-        // anyone had looked across from the screen on the left.
-        await sleep(4500);
+        // Long enough to be read without holding up the rest. A second and a
+        // half was gone before anyone had looked across from the screen on the
+        // left; four and a half left the screen sitting there.
+        await sleep(2500);
         if (!live()) return;
 
         setRightPhase("uploaded");

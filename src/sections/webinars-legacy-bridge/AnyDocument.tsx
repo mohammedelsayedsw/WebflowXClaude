@@ -1,12 +1,14 @@
 "use client";
 
 import {
+  ArrowUpRight,
   ClipboardList,
   FileText,
   HeartPulse,
   ShoppingCart,
   Truck,
 } from "lucide-react";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const DOCS: { icon: typeof FileText; title: string; body: string }[] = [
@@ -89,11 +91,23 @@ export function AnyDocument() {
           ))}
         </ul>
 
+        {/* The line and the button share a row, so the question and the way to
+            answer it are one thing. The button sits on the right edge of the
+            grid above. On a phone they stack, line first, button full width. */}
         <Reveal delay={0.4}>
-          <p className="mt-8 md:mt-10 text-white/70 text-[16px] md:text-[18px] leading-relaxed">
-            Does your team type a different document into the AS/400? Ask us
-            about it during the webinar.
-          </p>
+          <div className="mt-8 md:mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
+            <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
+              Does your team type at least one of these documents by hand? Join
+              the webinar and watch it go into the AS/400 by itself.
+            </p>
+            <a
+              href="#cta"
+              className={`${btnPrimary} w-full justify-center md:w-auto md:shrink-0`}
+            >
+              Save your seat
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

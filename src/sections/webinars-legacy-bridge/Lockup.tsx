@@ -24,9 +24,12 @@ export function Lockup({ size = 1 }: { size?: number }) {
       <span aria-hidden className="font-head text-white/35 text-[13px] leading-none">
         &times;
       </span>
+      {/* 10% over the 17 it shared with the scandiweb mark. The two were
+          matched on height, which left the wordmark reading smaller than the
+          logo beside it. */}
       <span
         className="font-head font-bold text-white/90 leading-none tracking-[-0.01em]"
-        style={{ fontSize: `${17 * size}px` }}
+        style={{ fontSize: `${18.7 * size}px` }}
       >
         LegacyBridge
       </span>

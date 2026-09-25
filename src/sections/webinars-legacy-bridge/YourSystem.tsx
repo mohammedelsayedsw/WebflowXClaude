@@ -85,7 +85,7 @@ export function YourSystem() {
             <p className="font-head font-bold text-[var(--sw-black)] text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] leading-[1.15] tracking-[-0.01em]">
               Your AS/400 stays exactly as it is
             </p>
-            <p className="mt-2 text-[var(--sw-black)]/70 text-[14px] md:text-[16px] leading-relaxed max-w-[76ch]">
+            <p className="mt-2 text-[var(--sw-black)]/70 text-[14px] md:text-[16px] leading-relaxed">
               The software types into the same AS/400 your team uses today, so
               your programs and data do not change.
             </p>

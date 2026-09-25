@@ -17,11 +17,11 @@ import { STEP_ICONS } from "./StepIcons";
 
 const STEPS: { title: string; body: string }[] = [
   {
-    title: "A PDF arrives",
-    body: "An order or invoice lands in your team's inbox as a PDF attachment.",
+    title: "A doc arrives",
+    body: "An order or invoice lands in your team's inbox as a PDF, scan or email.",
   },
   {
-    title: "LegacyBridge reads the document",
+    title: "LegacyBridge reads the doc",
     body: "It finds the details and checks them against rules your team sets.",
   },
   {
@@ -86,14 +86,16 @@ export function HowItWorks() {
           <div className="label-code mb-4 inline-flex items-center gap-3 text-white">
             <span className="text-white/55">3</span>
             <span className="h-px w-6 bg-white/20" />
-            <span>How it works</span>
+            <span>The solution</span>
           </div>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
-            From the inbox to the{" "}
-            <span style={{ color: "var(--sw-mint)" }}>AS/400 screen</span>
+          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[26ch]">
+            LegacyBridge, the software that{" "}
+            <span style={{ color: "var(--sw-mint)" }}>
+              types your PDFs into the AS/400
+            </span>
           </h2>
         </Reveal>
 

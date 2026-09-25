@@ -19,5 +19,4 @@ export const CTA_EYEBROW_PARTS = [
   "Free webinar for companies running AS/400 (IBM i)",
   WEBINAR_DATE,
   WEBINAR_TIME,
-  "60 minutes",
 ];

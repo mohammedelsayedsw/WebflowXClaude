@@ -28,8 +28,14 @@ const LINES: { doc: string; label: string; value: string }[] = [
   { doc: "Due 14/11/26", label: "Due date", value: "14/11/26" },
 ];
 
-/** Height of one attachment row, in px. The scan line steps by this. */
-const ROW = 26;
+/**
+ * Height of one attachment row. It shrinks with the window, because the hero
+ * has to hold the email, the screen and the logo row in one viewport, and this
+ * is the measurement that drives most of the height. The scan line steps by
+ * it, which is why it is a CSS variable rather than a number: the arithmetic
+ * stays in CSS and JS only says which row the line has reached.
+ */
+const ROW = "clamp(13px, 2.3vh, 26px)";
 const STEP_MS = 900;
 const HOLD_MS = 2000;
 
@@ -88,11 +94,15 @@ export function HeroVisual() {
   return (
     <div ref={root} className="flex flex-col gap-3">
       {/* TOP - the email and its attachment */}
-      <div className="rounded-[4px] border border-white/12 bg-white/[0.04] p-4 md:p-5">
+      <div
+        className="rounded-[4px] border border-white/12 bg-white/[0.04]"
+        style={{ padding: "clamp(8px, 1.7vh, 20px)" }}
+      >
         <div className="flex items-center gap-3">
           <span
             aria-hidden
-            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] border border-white/10 bg-white/[0.05] text-white/70"
+            className="inline-flex shrink-0 items-center justify-center rounded-[4px] border border-white/10 bg-white/[0.05] text-white/70"
+            style={{ height: "clamp(22px, 3.6vh, 32px)", width: "clamp(22px, 3.6vh, 32px)" }}
           >
             <Mail className="h-4 w-4" strokeWidth={1.75} />
           </span>
@@ -108,18 +118,21 @@ export function HeroVisual() {
 
         {/* The attachment. White, because it is a document and everything
             around it is not. */}
-        <div className="mt-3 md:mt-4 rounded-[4px] bg-white overflow-hidden">
+        <div
+          className="rounded-[4px] bg-white overflow-hidden"
+          style={{ marginTop: "clamp(6px, 1.4vh, 16px)" }}
+        >
           <div className="px-3 py-2 border-b border-[var(--sw-black)]/10 font-mono text-[10px] md:text-[11px] tracking-[0.04em] text-[var(--sw-black)]/55">
             INVOICE &middot; INV-48120.pdf
           </div>
 
-          <div className="relative px-3 py-2">
+          <div className="relative px-3 py-2" style={{ ["--row" as string]: ROW }}>
             {LINES.map((l, i) => (
               <div
                 key={l.doc}
                 className="flex items-center font-mono text-[11px] md:text-[12.5px] transition-colors duration-200"
                 style={{
-                  height: ROW,
+                  height: "var(--row)",
                   color: i < shown ? "#12702f" : "rgba(16,19,44,0.75)",
                   background: i < shown ? "rgba(110,247,110,0.22)" : "transparent",
                   borderRadius: 2,
@@ -136,7 +149,7 @@ export function HeroVisual() {
               aria-hidden
               className="pointer-events-none absolute left-2 right-2 h-px"
               style={{
-                top: 8 + shown * ROW,
+                top: `calc(8px + ${shown} * var(--row))`,
                 background: "#3bf07a",
                 boxShadow: "0 0 6px 1px rgba(59,240,122,0.85)",
                 opacity: filled ? 0 : 1,
@@ -148,8 +161,8 @@ export function HeroVisual() {
       </div>
 
       {/* BOTTOM - the screen the values land in */}
-      <ScreenShell screenId="AP4010" title="Invoice entry">
-        <div className="mt-3 md:mt-4 flex flex-col" aria-live="polite">
+      <ScreenShell screenId="AP4010" title="Invoice entry" dense>
+        <div className="flex flex-col" style={{ marginTop: "clamp(6px, 1.4vh, 16px)" }} aria-live="polite">
           {LINES.map((l, i) => (
             <DotRow key={l.label} label={l.label}>
               <span
@@ -164,7 +177,7 @@ export function HeroVisual() {
           ))}
         </div>
 
-        <div className="mt-4 md:mt-5 min-h-[1.75em]">
+        <div className="min-h-[1.75em]" style={{ marginTop: "clamp(7px, 1.6vh, 20px)" }}>
           {filled ? (
             <div className="flex items-center gap-2.5">
               <span className="text-[#7dffb0]">Waiting for your approval</span>

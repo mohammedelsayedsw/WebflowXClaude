@@ -15,18 +15,38 @@ export function ScreenShell({
   title,
   children,
   className = "",
+  dense = false,
 }: {
   screenId: string;
   title: string;
   children: React.ReactNode;
   className?: string;
+  /**
+   * Tighter padding and leading, tied to viewport height. The hero has to fit
+   * a screen, a document and the logo row into one viewport, so there it
+   * shrinks with the window; everywhere else the screen keeps its full size.
+   */
+  dense?: boolean;
 }) {
   return (
     <div
       className={`rounded-[4px] border border-[var(--sw-mint)]/25 bg-black overflow-hidden ${className}`}
       style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.6), 0 24px 60px rgba(0,0,0,0.45)" }}
     >
-      <div className="font-mono text-[#3bf07a] p-4 md:p-5 text-[11px] md:text-[12.5px] leading-[1.75]">
+      <div
+        className={
+          "font-mono text-[#3bf07a] text-[11px] md:text-[12.5px] " +
+          (dense ? "" : "p-4 md:p-5 leading-[1.75]")
+        }
+        style={
+          dense
+            ? {
+                padding: "clamp(7px, 1.6vh, 20px)",
+                lineHeight: "clamp(1.25, 2.2vh, 1.75)",
+              }
+            : undefined
+        }
+      >
         <div className="flex justify-between gap-4 text-[#3bf07a]/70">
           <span>{screenId}</span>
           <span className="hidden sm:inline">AS/400</span>
@@ -38,7 +58,10 @@ export function ScreenShell({
 
         {children}
 
-        <div className="mt-3 md:mt-4 border-t border-[#3bf07a]/20 pt-2 text-[#3bf07a]/55 truncate">
+        <div
+          className="border-t border-[#3bf07a]/20 pt-2 text-[#3bf07a]/55 truncate"
+          style={dense ? { marginTop: "clamp(6px, 1.4vh, 16px)" } : undefined}
+        >
           {FKEYS}
         </div>
       </div>

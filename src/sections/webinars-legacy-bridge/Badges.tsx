@@ -13,6 +13,11 @@
 /* Per badge height, as the trust bar does it. The three seals are
    circles and the PCI mark is a wide landscape lockup, so matching them on
    height alone left it reading far heavier than the rest of the row. */
+/**
+ * Heights are the cap, not the size. In the hero the badges have to share one
+ * viewport with the email, the screen and the logo row, so they shrink with
+ * the window and only reach these numbers when there is room.
+ */
 const BADGES: { src: string; alt: string; h: number }[] = [
   {
     src: "https://cdn.prod.website-files.com/61387043ab1e4143deac1e21/69b159f45ee7b675bf186570_ISO%209001.svg",
@@ -39,7 +44,8 @@ const BADGES: { src: string; alt: string; h: number }[] = [
 export function Badges({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`flex flex-wrap items-center justify-end gap-x-6 gap-y-4 ${className}`}
+      className={`flex flex-wrap items-center justify-end gap-x-6 ${className}`}
+      style={{ rowGap: "clamp(8px, 1.4vh, 16px)" }}
     >
       {BADGES.map((b) => (
         /* eslint-disable-next-line @next/next/no-img-element */
@@ -49,7 +55,7 @@ export function Badges({ className = "" }: { className?: string }) {
           alt={b.alt}
           loading="lazy"
           className="w-auto"
-          style={{ height: `${b.h}px` }}
+          style={{ height: `clamp(${b.h * 0.66}px, ${b.h / 7.4}vh, ${b.h}px)` }}
         />
       ))}
     </div>

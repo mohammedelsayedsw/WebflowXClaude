@@ -103,7 +103,7 @@ export function Hero() {
             <Reveal delay={0.18}>
               <div>
                 <HeroVisual />
-                <Badges className="mt-5 md:mt-6" />
+                <Badges className="mt-[clamp(10px,1.7vh,24px)]" />
               </div>
             </Reveal>
           </div>

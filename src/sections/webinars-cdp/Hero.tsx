@@ -5,6 +5,7 @@ import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
 import { TrustLogos } from "./TrustLogos";
 import { HeroPanel } from "./HeroPanel";
+import { RECORDING_URL } from "./recording";
 import { Lockup } from "./Lockup";
 
 function HeroBg() {
@@ -96,8 +97,18 @@ export function Hero() {
 
             <Reveal delay={0.22}>
               <div className="mt-7 md:mt-9 flex flex-wrap items-center gap-3">
-                <a href="#cta" className={btnPrimary}>
-                  Save your seat
+                {/* The recording link is still to come, so until it is set the
+                    button renders without an href. It looks the same and goes
+                    nowhere, rather than being a live link to the top of the
+                    page. Setting RECORDING_URL turns it on. */}
+                <a
+                  href={RECORDING_URL || undefined}
+                  aria-disabled={RECORDING_URL ? undefined : true}
+                  target={RECORDING_URL ? "_blank" : undefined}
+                  rel={RECORDING_URL ? "noopener" : undefined}
+                  className={btnPrimary}
+                >
+                  Watch now
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
 
 export function CTA() {
   return (
@@ -46,21 +45,6 @@ export function CTA() {
             </h2>
           </Reveal>
 
-          {/* w-full on the Reveal: it is a flex item under items-center, so
-              without it the wrapper shrinks to the form's intrinsic width. */}
-          <Reveal delay={0.2} className="w-full">
-            {/* Registration form. Styling comes from `.hubspot-form-wrapper` in
-                globals.css, which already matches this design system, so the
-                embed does not read as a HubSpot form. */}
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <HubSpotForm
-                portalId="25724996"
-                formId="47da245c-6de1-413a-bfbf-4b4a649ff7a8"
-                region="eu1"
-                submitText="Save your seat"
-              />
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>

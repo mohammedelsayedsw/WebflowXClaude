@@ -11,13 +11,6 @@ export const BLOCKED_SUBJECT = "Blocked retention attempt: ";
 export const CALENDLY_EVENT_TYPE = "6155663e-f4f4-4dd9-abda-dd582af12273";
 export const CALENDLY_PUBLIC_URL = "https://calendly.com/nika-zhgheria-scandiweb/growth-intro-meeting";
 
-/* Rate limits (per worker isolate, best effort until KV is bound). */
-export const RATE = {
-  ip: { max: 2, windowMs: 24 * 3600 * 1000 },
-  email: { max: 1, windowMs: 7 * 24 * 3600 * 1000 },
-  store: { max: 1, windowMs: 7 * 24 * 3600 * 1000 },
-};
-
 /* Blocklist. Extend without a deploy via env RETENTION_BLOCKLIST, a JSON object with the
    same three keys. Matching is case-insensitive.
    - emails: exact addresses

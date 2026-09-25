@@ -5,7 +5,7 @@ import { CAMPAIGN_SHOTS, COPY, img } from "./copy";
 import { cleanDomain, validDomain } from "./scoring";
 import { LIFECYCLE_LEAD } from "./status";
 
-type StartFn = (store?: string) => void;
+type StartFn = (store?: string, where?: string) => void;
 
 export function Hero({ onStart }: { onStart: StartFn }) {
   const [url, setUrl] = useState("");
@@ -14,7 +14,7 @@ export function Hero({ onStart }: { onStart: StartFn }) {
     const v = cleanDomain(url);
     if (!validDomain(v)) { setErr(COPY.quizUI.urlErr); return; }
     setErr("");
-    onStart(v);
+    onStart(v, "hero");
   };
   return (
     <div className="hero"><div className="wrap">
@@ -125,7 +125,7 @@ export function Steps({ onStart }: { onStart: StartFn }) {
         <div className="step"><h3>We build the new system</h3><p>We rebuild the core flows your business needs, using your existing customer, product, and order data.</p></div>
         <div className="step"><h3>We test it head-to-head</h3><p>Your current setup and ours are measured against the same baseline for 90 days. If we do not improve performance by the agreed target, the guarantee kicks in.</p></div>
       </div>
-      <div className="sec-cta"><button className="btn big" onClick={() => onStart()}>Scan my store first →</button></div>
+      <div className="sec-cta"><button className="btn big" onClick={() => onStart(undefined, "steps")}>Scan my store first →</button></div>
     </div></section>
   );
 }
@@ -245,7 +245,7 @@ export function Call({ onStart }: { onStart: StartFn }) {
     <div className="ctaband"><div className="wrap">
       <h2>Find out how much revenue your flows are leaving behind.</h2>
       <p>Scan your store and get your Retention Score, revenue gap and biggest opportunities. No sales call required.</p>
-      <button className="btn big" onClick={() => onStart()}>Scan my store →</button>
+      <button className="btn big" onClick={() => onStart(undefined, "call")}>Scan my store →</button>
     </div></div>
   );
 }

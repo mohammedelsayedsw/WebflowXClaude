@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt } from "./scoring";
@@ -9,6 +9,7 @@ import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms 
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { BookingModal } from "./BookingModal";
+import { setTestMode, track, trackLanding, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
 
 type Screen = "lp" | "quiz" | "gate" | "summary";
 
@@ -30,10 +31,32 @@ export function Retention90() {
   const [book, setBook] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
   const [bookingUrl, setBookingUrl] = useState("");
+  const stepRef = useRef("lp");
+  const qShownAt = useRef(0);
+  const bookAt = useRef(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [screen, qi]);
 
-  const startQuiz = useCallback((s?: string) => {
+  /* ---- funnel analytics (hub collector + dataLayer) ---- */
+  const step = screen === "lp" ? "lp" : screen === "quiz" ? (qi < 0 ? "store" : "q" + (qi + 1)) : screen === "gate" ? "gate" : book ? "book" : "summary";
+  stepRef.current = step;
+  useEffect(() => {
+    trackLanding();
+    const offs = [watchOutbound(), watchCalendly(), watchExit(() => stepRef.current)];
+    return () => offs.forEach((f) => f());
+  }, []);
+  useEffect(() => {
+    if (screen !== "lp") return;
+    return watchFolds(document.getElementById("screen-lp"));
+  }, [screen]);
+  useEffect(() => {
+    if (screen === "quiz" && qi >= 0) { qShownAt.current = Date.now(); track("q_view", { k: QUESTIONS[qi].k, n: qi + 1 }); }
+    if (screen === "gate") track("gate_view");
+    if (screen === "summary") track("summary_view");
+  }, [screen, qi]);
+
+  const startQuiz = useCallback((s?: string, where = "cta") => {
+    track("start", { where, store: s ? 1 : 0 });
     if (!quizStarted) {
       setQuizStarted(true);
       try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "quiz_start", vertical: VERTICAL }); } catch {}
@@ -44,21 +67,25 @@ export function Retention90() {
     setScreen("quiz");
   }, [quizStarted, store]);
 
-  const onStore = useCallback((s: string) => { setStore(s); setQi(0); }, []);
+  const onStore = useCallback((s: string) => { track("store"); setStore(s); setQi(0); }, []);
 
   const onPick = useCallback((key: string, value: number, label: string) => {
+    track("q_ans", { k: key, n: qi + 1, a: label, v: value, sec: Math.round((Date.now() - qShownAt.current) / 100) / 10 });
     setAnswers((a) => ({ ...a, [key]: value }));
     setLabels((l) => ({ ...l, [key]: label }));
     if (qi + 1 < QUESTIONS.length) setQi(qi + 1); else setScreen("gate");
   }, [qi]);
 
   const quizBack = useCallback(() => {
+    track("back", { from: stepRef.current });
     if (screen === "gate") { setScreen("quiz"); setQi(QUESTIONS.length - 1); return; }
     if (qi > (store ? 0 : -1)) setQi(qi - 1); else setScreen("lp");
   }, [screen, qi, store]);
 
   const submitGate = useCallback((name: string, email: string, honeypot: string) => {
     const score = computeScore(answers), leak = computeLeak(answers);
+    if (/@example\.com$/i.test(email)) setTestMode(true);
+    track("submit", { score, leak, store, hp: honeypot ? 1 : 0 });
     const payload: Record<string, string> = {
       name, email, store,
       vertical: VERTICAL,
@@ -84,9 +111,10 @@ export function Retention90() {
       fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
         .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string; ip?: string; country?: string }>)
         .then((j) => {
+          track("gate_result", { pass: j && j.bookingUrl ? 1 : 0, country: (j && j.country) || "" });
           if (j && j.bookingUrl) { setBookingUrl(j.bookingUrl); sendLead({ ip: j.ip || "", country: j.country || "", user_agent: navigator.userAgent }); }
         })
-        .catch(() => { sendLead({ gate: "unreachable", user_agent: navigator.userAgent }); });
+        .catch(() => { track("gate_result", { pass: "unreachable" }); sendLead({ gate: "unreachable", user_agent: navigator.userAgent }); });
     } catch {}
     /* 2. Meta, same Lead event the audit funnels fire */
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: PIXEL_CONTENT, value: leak, currency: "USD" }); } catch {}
@@ -104,8 +132,9 @@ export function Retention90() {
     setScreen("summary");
   }, [answers, labels, store]);
 
-  const openBook = useCallback(() => setBook(true), []);
-  const closeBook = useCallback(() => setBook(false), []);
+  const openBook = useCallback(() => { bookAt.current = Date.now(); track("book_open"); setBook(true); }, []);
+  const closeBook = useCallback(() => { track("book_close", { sec: Math.round((Date.now() - bookAt.current) / 1000) }); setBook(false); }, []);
+  const onGateError = useCallback((kind: string) => track("gate_err", { kind }), []);
 
   return (
     <div className="r90">
@@ -124,7 +153,7 @@ export function Retention90() {
         </div>
       )}
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
-      {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} />}
+      {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
       {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onBook={openBook} />}
       <BookingModal open={book} onClose={closeBook} store={store} bookingUrl={bookingUrl} answers={answers} />
     </div>

@@ -8,6 +8,9 @@ export const FORM_ENDPOINT = "https://formsubmit.co/ajax/9d1b2680c9cd3f7648a0432
 export const NOTIFY_CC = "marcusopt@gmail.com";
 export const LEAD_SUBJECT = "New Retention Score request: ";
 export const PIXEL_CONTENT = "Retention Score";
+/* LinkedIn Campaign Manager, account Scandiweb V2 (506797827):
+   conversion "Retention Score request [event: retention_scan_request]", category Lead, event-specific. */
+export const LI_CONVERSION_ID = 30790906;
 export const DL_EVENT = "retention_scan_request";
 export const VERTICAL = "retention";
 

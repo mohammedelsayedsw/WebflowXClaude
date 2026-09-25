@@ -96,9 +96,12 @@ export function AnyDocument() {
             grid above. On a phone they stack, line first, button full width. */}
         <Reveal delay={0.4}>
           <div className="mt-8 md:mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
+            {/* The break is deliberate: the question and the answer to it get
+                a line each rather than running together. */}
             <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
-              Does your team type at least one of these documents by hand? Join
-              the webinar and watch it go into the AS/400 by itself.
+              Does your team type at least one of these documents by hand?
+              <br />
+              Join the webinar and watch it go into the AS/400 by itself.
             </p>
             <a
               href="#cta"

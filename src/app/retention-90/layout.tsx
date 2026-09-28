@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Header } from "@/components/site/Header";
 
 const TITLE = "We’ll increase your email revenue by 15%, or you don’t pay until we do";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
@@ -39,7 +38,13 @@ b.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.inse
       </Script>
       {/* HubSpot EU1, portal 25724996: attaches the scan to the contact timeline */}
       <Script id="hs-script-loader" strategy="afterInteractive" src="https://js-eu1.hs-scripts.com/25724996.js" />
-      <Header />
+      {/* This route runs its own header and footer (sections/retention-90/SiteChrome). The
+          global Webflow footer comes from the root layout, and the Hachly "Reinis" chat and
+          Intercom are injected site-wide by GTM, so all three are hidden here, on this route
+          only. The chat scripts still load; the clean fix is a GTM exception on tags 359 / 28. */}
+      <style>{`.footer_block{display:none!important}
+#hachly-ai-container{display:none!important}
+.intercom-lightweight-app,.intercom-launcher,.intercom-launcher-frame,#intercom-container{display:none!important}`}</style>
       {children}
     </>
   );

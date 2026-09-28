@@ -63,8 +63,16 @@ export function Hero() {
 
               <Reveal delay={0.12}>
                 <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[54ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-pretty">
-                  LegacyBridge reads incoming documents, checks the
-                  information, fills in the correct AS/400 screens and waits for
+                  {/* The three lines are set by hand from xl up: "information,"
+                      opens the second line and "your team" the third. xl, not
+                      lg: between 1024 and 1280 the left column is too narrow to
+                      hold the second line, and forcing the breaks there splits
+                      the sentence into five ragged lines instead of three.
+                      Below xl it wraps on its own. */}
+                  LegacyBridge reads incoming documents, checks the{" "}
+                  <br className="hidden xl:inline" />
+                  information, fills in the correct AS/400 screens and waits for{" "}
+                  <br className="hidden xl:inline" />
                   your team to approve.
                 </p>
               </Reveal>

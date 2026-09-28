@@ -22,7 +22,7 @@ const STEPS: { title: string; body: string }[] = [
   },
   {
     title: "LegacyBridge reads the doc",
-    body: "It finds the details and checks them against rules your team sets.",
+    body: "It finds the details and checks the information.",
   },
   {
     title: "The details are typed in",

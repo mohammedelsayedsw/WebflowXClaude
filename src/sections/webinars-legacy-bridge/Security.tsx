@@ -6,8 +6,8 @@ import { Reveal } from "@/components/primitives/Reveal";
 const CARDS: { icon: typeof ShieldCheck; title: string; body: string }[] = [
   {
     icon: UserCheck,
-    title: "Nothing is submitted without a person",
-    body: "Every prepared entry waits for your team to approve it.",
+    title: "Human approval from the first entry",
+    body: "Each entry can wait for your team to approve it before it's submitted.",
   },
   {
     icon: ShieldCheck,

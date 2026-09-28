@@ -55,17 +55,17 @@ export function Hero() {
 
               <Reveal delay={0.08}>
                 <h1 className="font-head text-white text-[30px] sm:text-[38px] md:text-[44px] lg:text-[clamp(34px,min(5.4vh,3.8vw),48px)] leading-[1.08] tracking-[-0.02em] text-balance">
-                  Get documents into your{" "}
-                  <span style={{ color: "var(--sw-mint)" }}>AS/400</span> without
-                  typing
+                  Get PDFs into your{" "}
+                  <span style={{ color: "var(--sw-mint)" }}>AS/400 (IBM i)</span>{" "}
+                  without typing
                 </h1>
               </Reveal>
 
               <Reveal delay={0.12}>
                 <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[54ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-pretty">
-                  A document that takes your team up to 15 minutes to type can
-                  go into your AS/400 in under 10 seconds. And yes, it&apos;s
-                  real.
+                  LegacyBridge reads incoming documents, checks the
+                  information, fills in the correct AS/400 screens and waits for
+                  your team to approve.
                 </p>
               </Reveal>
 

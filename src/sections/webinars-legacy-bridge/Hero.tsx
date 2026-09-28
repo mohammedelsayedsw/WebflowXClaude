@@ -6,7 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { Badges } from "./Badges";
 import { Eyebrow } from "./Eyebrow";
 import { HeroVisual } from "./HeroVisual";
-import { HERO_EYEBROW_PARTS } from "./details";
+import { EYEBROW_PARTS } from "./details";
 import { TrustBar } from "./TrustBar";
 
 function HeroBg() {
@@ -50,7 +50,7 @@ export function Hero() {
             {/* LEFT - copy */}
             <div className="max-w-[46rem]">
               <Reveal>
-                <Eyebrow parts={HERO_EYEBROW_PARTS} className="mb-[clamp(12px,2.2vh,24px)]" />
+                <Eyebrow parts={EYEBROW_PARTS} className="mb-[clamp(12px,2.2vh,24px)]" />
               </Reveal>
 
               <Reveal delay={0.08}>
@@ -62,17 +62,9 @@ export function Hero() {
               </Reveal>
 
               <Reveal delay={0.12}>
-                <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[54ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-pretty">
-                  {/* The three lines are set by hand from xl up: "information,"
-                      opens the second line and "your team" the third. xl, not
-                      lg: between 1024 and 1280 the left column is too narrow to
-                      hold the second line, and forcing the breaks there splits
-                      the sentence into five ragged lines instead of three.
-                      Below xl it wraps on its own. */}
-                  LegacyBridge reads incoming documents, checks the{" "}
-                  <br className="hidden xl:inline" />
-                  information, fills in the correct AS/400 screens and waits for{" "}
-                  <br className="hidden xl:inline" />
+                <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[54ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-balance">
+                  LegacyBridge reads incoming documents, checks the
+                  information, fills in the correct AS/400 screens and waits for
                   your team to approve.
                 </p>
               </Reveal>

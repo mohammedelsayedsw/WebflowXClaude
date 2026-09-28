@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { Eyebrow } from "./Eyebrow";
-import { CTA_EYEBROW_PARTS } from "./details";
+import { EYEBROW_PARTS } from "./details";
 import { Lockup } from "./Lockup";
 
 /**
@@ -80,7 +80,7 @@ export function CTA() {
       <div className="wrap relative">
         <div className="max-w-[860px] mx-auto text-center flex flex-col items-center">
           <Reveal>
-            <Eyebrow parts={CTA_EYEBROW_PARTS} className="mb-6" />
+            <Eyebrow parts={EYEBROW_PARTS} className="mb-6" />
           </Reveal>
 
           <Reveal delay={0.08}>

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Get documents into your AS/400 (IBM i) without typing | scandiweb",
+    absolute: "Get PDFs into your AS/400 (IBM i) without typing | scandiweb",
   },
   description:
-    "Watch documents fill in your AS/400 (IBM i) screens while your team approves every entry. Free 60-minute webinar with a live demo.",
+    "Watch documents fill in your AS/400 (IBM i) screens and wait for your team to approve. Free 60-minute webinar with a live demo.",
   alternates: {
     canonical: "https://scandiweb.com/solutions/webinars/legacy-bridge",
   },

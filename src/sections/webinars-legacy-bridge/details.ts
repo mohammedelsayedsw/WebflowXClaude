@@ -6,17 +6,10 @@ export const WEBINAR_DATE = "27 October";
 export const WEBINAR_TIME = "15:00 GMT";
 
 /**
- * Two eyebrows, not one.
+ * One eyebrow, used by both the hero and the final CTA.
  *
- * The hero's is cut to what is worth a glance, because the H1 under it already
- * names the AS/400 and the hero has three seconds to land. The final CTA
- * restates who the session is for and how long it runs, since by then the
- * reader has scrolled the page and is deciding whether to register.
+ * The CTA's used to restate who the session is for and how long it runs. It is
+ * the same line in both places now, so the two cannot drift and the reader
+ * meets the same short promise at the top of the page and at the form.
  */
-export const HERO_EYEBROW_PARTS = ["Free webinar", WEBINAR_DATE, WEBINAR_TIME];
-
-export const CTA_EYEBROW_PARTS = [
-  "Free webinar for companies running AS/400 (IBM i)",
-  WEBINAR_DATE,
-  WEBINAR_TIME,
-];
+export const EYEBROW_PARTS = ["Free webinar", WEBINAR_DATE, WEBINAR_TIME];

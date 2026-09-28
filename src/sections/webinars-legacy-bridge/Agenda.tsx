@@ -19,7 +19,7 @@ const POINTS: string[] = [
   "What happens when part of the PDF is hard to read, or the AS/400 shows an error",
   "How the software handles invoices, orders and any other document your team types in by hand",
   "What the software is and isn't allowed to do, and how your team approves each entry",
-  "Webinar registrants only: a free two-week test on your own documents",
+  "How to try it on your own documents for two weeks, with no upfront cost",
   "Time for your questions",
 ];
 

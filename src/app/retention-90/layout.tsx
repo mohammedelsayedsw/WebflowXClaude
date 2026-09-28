@@ -41,10 +41,15 @@ b.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.inse
       {/* This route runs its own header and footer (sections/retention-90/SiteChrome). The
           global Webflow footer comes from the root layout, and the Hachly "Reinis" chat and
           Intercom are injected site-wide by GTM, so all three are hidden here, on this route
-          only. The chat scripts still load; the clean fix is a GTM exception on tags 359 / 28. */}
+          only. The chat scripts still load; the clean fix is a GTM exception on tags 359 / 28.
+          HubSpot web interactives (site-wide banners/pop-ups such as "We made Magento 2x
+          faster") are hidden too; HubSpot tracking itself keeps running for the lead identify.
+          Clean fix for those: exclude this URL in each CTA's targeting in HubSpot. */}
       <style>{`.footer_block{display:none!important}
 #hachly-ai-container{display:none!important}
-.intercom-lightweight-app,.intercom-launcher,.intercom-launcher-frame,#intercom-container{display:none!important}`}</style>
+.intercom-lightweight-app,.intercom-launcher,.intercom-launcher-frame,#intercom-container{display:none!important}
+#hs-web-interactives-top-push-anchor,#hs-web-interactives-top-anchor,#hs-web-interactives-bottom-anchor,#hs-web-interactives-floating-container,#hs-interactives-modal-overlay{display:none!important}
+.hs-web-interactives-top-banner-open .r90 .r90h{translate:none!important}`}</style>
       {children}
     </>
   );

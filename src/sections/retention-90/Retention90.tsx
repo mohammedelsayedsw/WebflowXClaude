@@ -9,6 +9,7 @@ import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms 
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { BookingModal } from "./BookingModal";
+import { R90Footer, R90Header } from "./SiteChrome";
 import { setTestMode, track, trackLanding, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
 
 type Screen = "lp" | "quiz" | "gate" | "summary";
@@ -138,6 +139,7 @@ export function Retention90() {
 
   return (
     <div className="r90">
+      <R90Header showCta={screen === "lp"} onCta={() => startQuiz(undefined, "header")} />
       {screen === "lp" && (
         <div id="screen-lp">
           <Hero onStart={startQuiz} />
@@ -155,6 +157,7 @@ export function Retention90() {
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
       {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onBook={openBook} />}
+      <R90Footer />
       <BookingModal open={book} onClose={closeBook} store={store} bookingUrl={bookingUrl} answers={answers} />
     </div>
   );

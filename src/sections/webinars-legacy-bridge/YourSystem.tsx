@@ -86,8 +86,8 @@ export function YourSystem() {
               Your AS/400 stays exactly as it is
             </p>
             <p className="mt-2 text-[var(--sw-black)]/70 text-[14px] md:text-[16px] leading-relaxed">
-              The software types into the same AS/400 your team uses today, so
-              your programs and data do not change.
+              The software uses the same screens your team uses today, so
+              nothing is migrated and your programs stay as they are.
             </p>
           </div>
         </div>

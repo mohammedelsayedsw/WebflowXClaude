@@ -8,22 +8,21 @@ const KEYS = "ABCDEF";
 
 type QuizProps = {
   store: string;
-  qi: number; // -1 = URL step
+  qi: number; // QUESTIONS.length = URL step (last, before the email gate)
   onStore: (s: string) => void;
   onPick: (key: string, value: number, label: string) => void;
   onBack: () => void;
 };
 
 export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(store);
   const [err, setErr] = useState("");
   const urlRef = useRef<HTMLInputElement>(null);
   const total = QUESTIONS.length + 1;
-  const stepn = store ? qi + 1 : qi + 2;
-  const pct = Math.round((Math.max(0, stepn - 1) / total) * 100);
-  const Q = qi >= 0 ? QUESTIONS[qi] : null;
+  const pct = Math.round((qi / total) * 100);
+  const Q = qi < QUESTIONS.length ? QUESTIONS[qi] : null;
 
-  useEffect(() => { if (qi === -1) urlRef.current?.focus(); }, [qi]);
+  useEffect(() => { if (qi === QUESTIONS.length) urlRef.current?.focus(); }, [qi]);
 
   useEffect(() => {
     if (!Q) return;
@@ -54,6 +53,7 @@ export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
             <>
               <div className="qn">{COPY.quizUI.urlLabel}</div>
               <div className="qq">{COPY.quizUI.urlQ}</div>
+              {COPY.quizUI.urlH ? <div className="qh">{COPY.quizUI.urlH}</div> : null}
               <div className="qurl">
                 <input ref={urlRef} type="text" placeholder="yourstore.com" value={url}
                   onChange={(e) => setUrl(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") urlGo(); }} />
@@ -63,7 +63,7 @@ export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
             </>
           ) : (
             <>
-              <div className="qn">{T(COPY.quizUI.qLabel, { n: qi + 1, total: QUESTIONS.length })}{store ? ` · ${store}` : ""}</div>
+              <div className="qn">{T(COPY.quizUI.qLabel, { n: qi + 1, total: QUESTIONS.length })}</div>
               <div className="qq">{Q.q}</div>
               {Q.h ? <div className="qh">{Q.h}</div> : <div style={{ height: 14 }} />}
               <div className="opts">

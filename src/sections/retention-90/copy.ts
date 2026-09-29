@@ -30,7 +30,7 @@ export const COPY = {
    o:[["Nobody, really",0],["Me / someone in-house, part-time",1],["A freelancer",2],["An agency",2]]}
  ],
  quizUI: {
-  urlQ:"What's your store URL?", urlH:"", urlLabel:"First things first", urlBtn:"Start the scan →", urlErr:"Enter your store URL, e.g. yourstore.com",
+  urlQ:"What's your store URL?", urlH:"We use it to benchmark your answers against stores like yours.", urlLabel:"Last step", urlBtn:"See my score →", urlErr:"Enter your store URL, e.g. yourstore.com",
   qLabel:"Question {n} of {total}"
  },
  bands: {

@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COPY, T, img } from "./copy";
+import { COPY, T } from "./copy";
 import { computeLeak, computeScore, fmt, fmtK, gapTiers } from "./scoring";
-import { HOST_NAME, HOST_PHOTO, HOST_TITLE } from "./status";
 
 type Props = {
   store: string;
   answers: Record<string, number>;
   labels: Record<string, string>;
-  onBook: () => void;
+  onFix: () => void;
 };
 
 function useCountUp(target: number, dur: number) {
@@ -28,7 +27,7 @@ function useCountUp(target: number, dur: number) {
   return v;
 }
 
-export function Summary({ store, answers, labels, onBook }: Props) {
+export function Summary({ store, answers, labels, onFix }: Props) {
   const score = computeScore(answers);
   const leak = computeLeak(answers);
   const critical = score < 40;
@@ -44,9 +43,7 @@ export function Summary({ store, answers, labels, onBook }: Props) {
   return (
     <div id="screen-summary">
       <div className="inner">
-        <div className="dtop">
-          <button className="btn" onClick={onBook}>Fix my revenue leak</button>
-        </div>
+        <div className="dtop" />
         <div className="scanline"><span className="lbl">RETENTION SCAN</span><span className="dom">{store}</span><span className="dt">{date}</span></div>
         <div className="subline">Benchmarked against 2026 lifecycle performance data across 183,000 ecommerce brands</div>
         <div className="dgrid">
@@ -83,17 +80,17 @@ export function Summary({ store, answers, labels, onBook }: Props) {
               </ul>
             </details>
           </div>
+          <div className="sumcta"><button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button></div>
 
           <Chart answers={answers} leak={leak} />
+          <div className="sumcta"><button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button></div>
           <Gaps answers={answers} labels={labels} />
+          <div className="sumcta"><button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button></div>
           <Proof />
           <Tiles answers={answers} leak={leak} />
 
           <div className={"dcta" + (critical ? " critical" : "")}>
-            <h3>{T(COPY.cta.h, { store })}</h3>
-            <p>{T(COPY.cta.p, { store })}</p>
-            <button className="btn big" onClick={onBook}>Fix my revenue leak →</button>
-            <div><span className="host"><img src={img(HOST_PHOTO)} alt="" /><span>You’ll speak directly with <b>{HOST_NAME}</b>, {HOST_TITLE}.</span></span></div>
+            <button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button>
           </div>
         </div>
       </div>

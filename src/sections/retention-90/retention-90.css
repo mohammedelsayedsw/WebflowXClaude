@@ -1373,3 +1373,39 @@ body.noscroll{overflow:hidden}
   .r90 .r90f-certs img.pci{height:30px}
   .r90 .r90f-bot{flex-direction:column;gap:6px}
 }
+
+/* =============================================================
+   NEW FLOW: entry fold -> quiz (URL last) -> gate -> summary -> fix page
+   ============================================================= */
+/* entry: one fold, headline + start button */
+.r90 #screen-lp .hero{min-height:100svh;display:flex;align-items:center;padding:96px 0 64px!important}
+.r90 #screen-lp .hero .wrap{width:100%}
+@media(min-width:641px){.r90 #screen-lp .hero h1{font-size:clamp(40px,5.2vw,68px)!important;line-height:1.05!important;max-width:1000px;margin-left:auto;margin-right:auto}}
+.r90 #screen-lp .startbtn{margin-top:34px;font-size:19px!important;padding:19px 44px!important}
+@media(max-width:640px){
+  .r90 #screen-lp .hero{padding:84px 0 48px!important}
+  .r90 #screen-lp .startbtn{width:100%;margin-top:28px}
+}
+/* quiz options in the CTA colour */
+.r90 .opt{border:1.5px solid var(--sw-mint)!important;background:rgba(110,247,110,.06)!important;color:#fff!important;font-weight:600!important}
+.r90 .opt .key{background:var(--sw-mint)!important;border-color:var(--sw-mint)!important;color:#0b0e22!important;font-weight:700!important}
+.r90 .opt:hover,.r90 .opt:focus-visible{background:var(--sw-mint)!important;color:#0b0e22!important;border-color:var(--sw-mint)!important}
+.r90 .opt:hover .key,.r90 .opt:focus-visible .key{background:#0b0e22!important;color:var(--sw-mint)!important;border-color:#0b0e22!important}
+/* summary: a fix button after each of the first folds; bottom box keeps only its button */
+.r90 .sumcta{grid-column:1/-1;text-align:center;margin:6px 0 10px}
+.r90 #screen-summary .dcta{background:none!important;border:0!important;box-shadow:none!important;padding:8px 0 0!important;text-align:center}
+.r90 #screen-summary .dcta::before,.r90 #screen-summary .dcta::after{display:none!important}
+/* fix page */
+.r90 #screen-fix{padding-top:0!important}
+.r90 #screen-fix .fixhero{padding:128px 0 88px!important}
+.r90 .fixhero .btn.big{margin-top:6px}
+.r90 .backscore{display:inline-block;margin-bottom:26px;font-size:14px;color:rgba(230,231,239,.7)!important;text-decoration:none}
+.r90 .backscore:hover{color:#fff!important}
+.r90 .recap{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 12px;margin:4px auto 26px;max-width:760px}
+.r90 .recap span{font-size:14px;color:rgba(230,231,239,.8);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 14px}
+.r90 .recap b{color:#fff}
+.r90 #screen-fix .sec-cta{margin-top:40px;text-align:center}
+@media(max-width:640px){
+  .r90 #screen-fix .fixhero{padding:96px 0 64px!important}
+  .r90 .recap span{font-size:13px}
+}

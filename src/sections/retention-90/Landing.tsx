@@ -1,32 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { CAMPAIGN_SHOTS, COPY, img } from "./copy";
-import { cleanDomain, validDomain } from "./scoring";
+import { CAMPAIGN_SHOTS, img } from "./copy";
 import { LIFECYCLE_LEAD } from "./status";
 
-type StartFn = (store?: string, where?: string) => void;
+/* Label on every booking button of the fix page (and the header while on it). */
+export const LIFT_CTA = "Lift my revenue";
 
-export function Hero({ onStart }: { onStart: StartFn }) {
-  const [url, setUrl] = useState("");
-  const [err, setErr] = useState("");
-  const go = () => {
-    const v = cleanDomain(url);
-    if (!validDomain(v)) { setErr(COPY.quizUI.urlErr); return; }
-    setErr("");
-    onStart(v, "hero");
-  };
+type BookFn = (where: string) => void;
+
+function BookBtn({ onBook, where }: { onBook: BookFn; where: string }) {
+  return <div className="sec-cta"><button className="btn big" onClick={() => onBook(where)}>{LIFT_CTA} &rarr;</button></div>;
+}
+
+/* Entry: one fold, headline + one button into the quiz (Q1 is revenue). */
+export function EntryHero({ onStart }: { onStart: (where: string) => void }) {
   return (
     <div className="hero"><div className="wrap">
+      <h1>We’ll increase your email revenue by at least 15%.<br /><span className="h1-accent">Or you don’t pay.</span></h1>
+      <button className="btn big startbtn" onClick={() => onStart("hero")}>Start my scan &rarr;</button>
+    </div></div>
+  );
+}
+
+/* Fix page hero: the offer, a recap of the visitor's scan, and the booking button. */
+export function FixHero({ store, score, upside, onBack, onBook }: { store: string; score: number; upside: string; onBack: () => void; onBook: BookFn }) {
+  return (
+    <div className="hero fixhero"><div className="wrap">
+      <a href="#" className="backscore" onClick={(e) => { e.preventDefault(); onBack(); }}>&larr; Back to my score</a>
       <h1>We’ll increase your email revenue by 15%<br /><span className="h1-accent">Or you don’t pay until we do.</span></h1>
       <p className="lead">We rebuild and optimize your email flows, then put them head-to-head against what you’re running today. If we don’t improve results by at least 15% within 90 days, you pay nothing. We’ll keep working for free until we do.</p>
-      <div className="urlbox">
-        <input type="text" id="hero-url" placeholder="yourstore.com" autoComplete="url" value={url}
-          onChange={(e) => setUrl(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") go(); }} />
-        <button className="btn" onClick={go}>Scan my store →</button>
+      <div className="recap">
+        {store ? <span>Your scan: <b>{store}</b></span> : null}
+        <span>Retention Score <b>{score}/100</b></span>
+        <span>Estimated upside <b>{upside}/mo</b></span>
       </div>
-      <div className="urlerr" id="hero-err">{err}</div>
-      <div className="sub-note">60-second scan · instant Retention Score · no call required</div>
+      <button className="btn big" onClick={() => onBook("hero")}>{LIFT_CTA} &rarr;</button>
+      <div className="sub-note">30-minute call · we validate your scan numbers · no prep needed</div>
     </div></div>
   );
 }
@@ -59,7 +68,7 @@ export function Proof() {
   );
 }
 
-export function Facts() {
+export function Facts({ onBook }: { onBook?: BookFn }) {
   return (
     <section className="blk"><div className="wrap">
       <h2 className="sec">You’re losing orders right now.<br /> Lost revenue. Lost profit. Every day</h2>
@@ -69,6 +78,7 @@ export function Facts() {
         <div className="card"><div className="kn">41%</div><div className="kd">of email revenue comes from flows, just 5% of sends</div><p>If your revenue is mostly campaign blasts, the highest-margin machine in your stack is switched off.</p></div>
         <div className="card"><div className="kn">&lt;1%</div><div className="kd">the new normal campaign click rate since bot filtering</div><p>Blasting harder stopped working in 2024. Flows triggered by what a customer actually did are what still compounds.</p></div>
       </div>
+      {onBook ? <BookBtn onBook={onBook} where="facts" /> : null}
     </div></section>
   );
 }
@@ -115,7 +125,7 @@ export function Cases() {
   );
 }
 
-export function Steps({ onStart }: { onStart: StartFn }) {
+export function Steps({ onBook }: { onBook: BookFn }) {
   return (
     <section className="blk"><div className="wrap">
       <h2 className="sec">How the bet works</h2>
@@ -125,7 +135,7 @@ export function Steps({ onStart }: { onStart: StartFn }) {
         <div className="step"><h3>We build the new system</h3><p>We rebuild the core flows your business needs, using your existing customer, product, and order data.</p></div>
         <div className="step"><h3>We test it head-to-head</h3><p>Your current setup and ours are measured against the same baseline for 90 days. If we do not improve performance by the agreed target, the guarantee kicks in.</p></div>
       </div>
-      <div className="sec-cta"><button className="btn big" onClick={() => onStart(undefined, "steps")}>Scan my store first →</button></div>
+      <BookBtn onBook={onBook} where="steps" />
     </div></section>
   );
 }
@@ -149,7 +159,7 @@ const FACES = ["asset.webp", "asset-2.webp", "asset-3.webp", "asset-4.webp", "as
 const CERTS = [["cxl.webp", "CXL"], ["nielsen-norman-group.webp", "Nielsen Norman Group"], ["baymard-institute.webp", "Baymard Institute"]];
 const PLATFORMS = [["klaviyo.webp", "Klaviyo"], ["bloomreach.webp", "Bloomreach"], ["braze.webp", "Braze"], ["dotdigital.webp", "Dotdigital"], ["omnisend.webp", "Omnisend"], ["mailchimp.webp", "Mailchimp"]];
 
-export function Team() {
+export function Team({ onBook }: { onBook?: BookFn }) {
   return (
     <section className="blk"><div className="wrap">
       <h2 className="sec">The team behind the results</h2>
@@ -173,6 +183,7 @@ export function Team() {
           </div>
         </div>
       </div>
+      {onBook ? <BookBtn onBook={onBook} where="team" /> : null}
     </div></section>
   );
 }
@@ -240,12 +251,12 @@ export function Objections() {
   );
 }
 
-export function Call({ onStart }: { onStart: StartFn }) {
+export function Call({ onBook }: { onBook: BookFn }) {
   return (
     <div className="ctaband"><div className="wrap">
-      <h2>Find out how much revenue your flows are leaving behind.</h2>
-      <p>Scan your store and get your Retention Score, revenue gap and biggest opportunities. No sales call required.</p>
-      <button className="btn big" onClick={() => onStart(undefined, "call")}>Scan my store →</button>
+      <h2>You’ve seen the gap. Let’s close it in 90 days.</h2>
+      <p>30 minutes with Nika Z., our Business Growth Manager. We’ll validate the numbers from your scan and confirm whether the 90-day test fits your store.</p>
+      <button className="btn big" onClick={() => onBook("call")}>{LIFT_CTA} &rarr;</button>
     </div></div>
   );
 }

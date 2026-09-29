@@ -3,16 +3,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
-import { computeLeak, computeScore, fmt } from "./scoring";
+import { computeLeak, computeScore, fmt, fmtK } from "./scoring";
 import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
-import { Call, Cases, Facts, Flows, Hero, Objections, Proof, Steps, Team, Terms } from "./Landing";
+import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { BookingModal } from "./BookingModal";
 import { R90Footer, R90Header } from "./SiteChrome";
 import { setTestMode, track, trackLanding, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
 
-type Screen = "lp" | "quiz" | "gate" | "summary";
+type Screen = "lp" | "quiz" | "gate" | "summary" | "fix";
 
 declare global {
   interface Window {
@@ -26,7 +26,7 @@ declare global {
 export function Retention90() {
   const [screen, setScreen] = useState<Screen>("lp");
   const [store, setStore] = useState("");
-  const [qi, setQi] = useState(-1);
+  const [qi, setQi] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [labels, setLabels] = useState<Record<string, string>>({});
   const [book, setBook] = useState(false);
@@ -39,7 +39,7 @@ export function Retention90() {
   useEffect(() => { window.scrollTo(0, 0); }, [screen, qi]);
 
   /* ---- funnel analytics (hub collector + dataLayer) ---- */
-  const step = screen === "lp" ? "lp" : screen === "quiz" ? (qi < 0 ? "store" : "q" + (qi + 1)) : screen === "gate" ? "gate" : book ? "book" : "summary";
+  const step = book ? "book" : screen === "lp" ? "lp" : screen === "quiz" ? (qi >= QUESTIONS.length ? "store" : "q" + (qi + 1)) : screen;
   stepRef.current = step;
   useEffect(() => {
     trackLanding();
@@ -47,41 +47,41 @@ export function Retention90() {
     return () => offs.forEach((f) => f());
   }, []);
   useEffect(() => {
-    if (screen !== "lp") return;
-    return watchFolds(document.getElementById("screen-lp"));
+    if (screen !== "fix") return;
+    return watchFolds(document.getElementById("screen-fix"));
   }, [screen]);
   useEffect(() => {
-    if (screen === "quiz" && qi >= 0) { qShownAt.current = Date.now(); track("q_view", { k: QUESTIONS[qi].k, n: qi + 1 }); }
+    if (screen === "quiz" && qi < QUESTIONS.length) { qShownAt.current = Date.now(); track("q_view", { k: QUESTIONS[qi].k, n: qi + 1 }); }
     if (screen === "gate") track("gate_view");
     if (screen === "summary") track("summary_view");
+    if (screen === "quiz" && qi === QUESTIONS.length) track("store_view");
   }, [screen, qi]);
 
-  const startQuiz = useCallback((s?: string, where = "cta") => {
-    track("start", { where, store: s ? 1 : 0 });
+  const startQuiz = useCallback((where = "hero") => {
+    track("start", { where });
     if (!quizStarted) {
       setQuizStarted(true);
       try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "quiz_start", vertical: VERTICAL }); } catch {}
     }
-    const st = s || store;
-    if (s) setStore(s);
-    setQi(st ? 0 : -1);
+    setQi(0);
     setScreen("quiz");
-  }, [quizStarted, store]);
+  }, [quizStarted]);
 
-  const onStore = useCallback((s: string) => { track("store"); setStore(s); setQi(0); }, []);
+  /* URL step comes after Q8; the email gate follows it. */
+  const onStore = useCallback((s: string) => { track("store"); setStore(s); setScreen("gate"); }, []);
 
   const onPick = useCallback((key: string, value: number, label: string) => {
     track("q_ans", { k: key, n: qi + 1, a: label, v: value, sec: Math.round((Date.now() - qShownAt.current) / 100) / 10 });
     setAnswers((a) => ({ ...a, [key]: value }));
     setLabels((l) => ({ ...l, [key]: label }));
-    if (qi + 1 < QUESTIONS.length) setQi(qi + 1); else setScreen("gate");
+    setQi(qi + 1);
   }, [qi]);
 
   const quizBack = useCallback(() => {
     track("back", { from: stepRef.current });
-    if (screen === "gate") { setScreen("quiz"); setQi(QUESTIONS.length - 1); return; }
-    if (qi > (store ? 0 : -1)) setQi(qi - 1); else setScreen("lp");
-  }, [screen, qi, store]);
+    if (screen === "gate") { setScreen("quiz"); setQi(QUESTIONS.length); return; }
+    if (qi > 0) setQi(qi - 1); else setScreen("lp");
+  }, [screen, qi]);
 
   const submitGate = useCallback((name: string, email: string, honeypot: string) => {
     const score = computeScore(answers), leak = computeLeak(answers);
@@ -133,30 +133,42 @@ export function Retention90() {
     setScreen("summary");
   }, [answers, labels, store]);
 
-  const openBook = useCallback(() => { bookAt.current = Date.now(); track("book_open"); setBook(true); }, []);
+  const openBook = useCallback((where: string) => { bookAt.current = Date.now(); track("book_open", { where }); setBook(true); }, []);
+  const goFix = useCallback(() => { track("fix_view"); setScreen("fix"); }, []);
+  const backToScore = useCallback(() => { track("back", { from: "fix" }); setScreen("summary"); }, []);
   const closeBook = useCallback(() => { track("book_close", { sec: Math.round((Date.now() - bookAt.current) / 1000) }); setBook(false); }, []);
   const onGateError = useCallback((kind: string) => track("gate_err", { kind }), []);
 
   return (
     <div className="r90">
-      <R90Header showCta={screen === "lp"} onCta={() => startQuiz(undefined, "header")} />
+      <R90Header
+        showCta={screen === "summary" || screen === "fix"}
+        label={screen === "fix" ? LIFT_CTA : "Fix my revenue leak"}
+        onCta={() => (screen === "fix" ? openBook("header") : goFix())}
+      />
       {screen === "lp" && (
         <div id="screen-lp">
-          <Hero onStart={startQuiz} />
-          <Proof />
-          <Facts />
-          <Cases />
-          <Steps onStart={startQuiz} />
-          <Flows />
-          <Team />
-          <Terms />
-          <Objections />
-          <Call onStart={startQuiz} />
+          <EntryHero onStart={startQuiz} />
         </div>
       )}
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
-      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onBook={openBook} />}
+      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} />}
+      {screen === "fix" && (
+        /* children map 1:1 to FOLDS in track.ts */
+        <div id="screen-fix">
+          <FixHero store={store} score={computeScore(answers)} upside={fmtK(computeLeak(answers))} onBack={backToScore} onBook={openBook} />
+          <Proof />
+          <Facts onBook={openBook} />
+          <Cases />
+          <Steps onBook={openBook} />
+          <Flows />
+          <Team onBook={openBook} />
+          <Terms />
+          <Objections />
+          <Call onBook={openBook} />
+        </div>
+      )}
       <R90Footer />
       <BookingModal open={book} onClose={closeBook} store={store} bookingUrl={bookingUrl} answers={answers} />
     </div>

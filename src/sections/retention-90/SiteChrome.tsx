@@ -16,7 +16,7 @@ const CERTS: [string, string, string?][] = [
   ["69b159f4510babc0e1b3d84a_PCI%20DSS.svg", "PCI DSS", "pci"],
 ];
 
-export function R90Header({ showCta, onCta }: { showCta: boolean; onCta: () => void }) {
+export function R90Header({ showCta, onCta, label }: { showCta: boolean; onCta: () => void; label: string }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 24);
@@ -29,7 +29,7 @@ export function R90Header({ showCta, onCta }: { showCta: boolean; onCta: () => v
       <div className="wrap r90h-in">
         <img className="r90h-logo" src={assetUrl("/shared/logos/scandiweb.svg")} alt="scandiweb" />
         <button className={"btn r90h-cta" + (showCta ? "" : " off")} onClick={onCta} tabIndex={showCta ? 0 : -1} aria-hidden={!showCta}>
-          Fix my revenue leak <span className="arr">&rarr;</span>
+          {label} <span className="arr">&rarr;</span>
         </button>
       </div>
     </header>

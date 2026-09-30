@@ -2,9 +2,9 @@
  * Single source of truth for the reveal moment. Change these two values to move
  * the campaign date; the hero, the countdown and the sign-up all read from here.
  *
- * 09:00 UTC on 6 October 2026.
+ * 17:00 Riga time (EEST, UTC+3) on 6 October 2026, i.e. 14:00 UTC.
  */
-export const REVEAL_AT = "2026-10-06T09:00:00Z";
+export const REVEAL_AT = "2026-10-06T14:00:00Z";
 export const REVEAL_LABEL = "October 6";
 
 /** The campaign's own HubSpot sign-up form (portal 25724996, EU1). */

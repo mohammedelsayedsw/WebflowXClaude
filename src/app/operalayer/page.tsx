@@ -1,14 +1,14 @@
 "use client";
 
 import { Story } from "@/sections/operalayer/Story";
-import { Apps } from "@/sections/operalayer/Apps";
+import { Results } from "@/sections/operalayer/Results";
 import { Cta } from "@/sections/operalayer/shared/Cta";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
       <Story />
-      <Apps />
+      <Results />
       <Cta
         heading={
           <>

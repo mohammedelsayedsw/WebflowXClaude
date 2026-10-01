@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Get PDFs into your AS/400 (IBM i) without typing | scandiweb",
+    absolute: "A virtual operator for your AS/400 (IBM i) | Free webinar | scandiweb",
   },
   description:
     "Watch documents fill in your AS/400 (IBM i) screens and wait for your team to approve. Free 60-minute webinar with a live demo.",

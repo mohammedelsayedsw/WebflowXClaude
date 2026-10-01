@@ -47,7 +47,7 @@ export function Host() {
                 Dmitrijs spent almost five years at scandiweb as a lead software
                 engineer, connecting online stores to the business systems
                 behind them. In 2025 he started LegacyBridge so teams can stop
-                typing documents into the AS/400.
+                typing documents into the AS/400 (IBM&nbsp;i).
               </p>
             </div>
           </div>

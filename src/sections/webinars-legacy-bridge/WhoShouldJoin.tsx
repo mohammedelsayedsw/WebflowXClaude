@@ -7,12 +7,12 @@ const AUDIENCE: { icon: typeof Calculator; lead: string; body: string }[] = [
   {
     icon: Calculator,
     lead: "Finance teams",
-    body: "Managers and clerks who type supplier invoices into the AS/400",
+    body: "Managers and clerks who type supplier invoices into the AS/400 (IBM\u00a0i)",
   },
   {
     icon: Headset,
     lead: "Order desk teams",
-    body: "Managers and staff who type emailed orders into the AS/400 line by line",
+    body: "Managers and staff who type emailed orders into the AS/400 (IBM\u00a0i) line by line",
   },
   {
     icon: ClipboardList,
@@ -22,7 +22,7 @@ const AUDIENCE: { icon: typeof Calculator; lead: string; body: string }[] = [
   {
     icon: Server,
     lead: "IT teams",
-    body: "People who look after the AS/400 and want less typing without changing it",
+    body: "People who look after the AS/400 (IBM\u00a0i) and want less typing without changing it",
   },
 ];
 
@@ -62,7 +62,7 @@ export function WhoShouldJoin() {
                   <div className="font-head font-bold text-[var(--sw-black)] text-[17px] md:text-[19px] leading-tight text-balance">
                     {a.lead}
                   </div>
-                  <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+                  <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed text-balance">
                     {a.body}
                   </p>
                 </div>

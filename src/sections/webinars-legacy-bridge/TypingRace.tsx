@@ -16,7 +16,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Caret, DotRow, ScreenShell } from "./ScreenShell";
+import { ApproveButton, Caret, DotRow, ScreenShell } from "./ScreenShell";
 
 const FIELDS = [
   { label: "Supplier", value: "NORDIC SUPPLY AB" },
@@ -296,9 +296,7 @@ export function TypingRace() {
                 {rightPhase === "done" ? (
                   <div className="flex items-center gap-2.5 sw-pulse-line">
                     <span className="text-[#7dffb0]">Waiting for your approval</span>
-                    <span className="rounded-[2px] border border-[#7dffb0] px-1.5 text-[#7dffb0] text-[10px] md:text-[11px] leading-[1.6]">
-                      Enter
-                    </span>
+                    <ApproveButton />
                   </div>
                 ) : null}
               </div>

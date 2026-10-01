@@ -12,7 +12,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { Caret, DotRow, ScreenShell } from "./ScreenShell";
+import { ApproveButton, Caret, DotRow, ScreenShell } from "./ScreenShell";
 
 const CARDS: { title: string; body: string }[] = [
   {
@@ -24,7 +24,7 @@ const CARDS: { title: string; body: string }[] = [
     body: "The software marks it, and a person decides what to enter",
   },
   {
-    title: "When the AS/400 shows an error",
+    title: "When the AS/400 (IBM\u00a0i) shows an error",
     body: "For example, a supplier number it doesn't know. The software stops, and your team sees the error and fixes it.",
   },
 ];
@@ -104,7 +104,7 @@ export function LiveDemo() {
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-[66ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             In the webinar we follow one document from the moment it arrives
-            until its details are saved in the AS/400.
+            until its details are saved in the AS/400 (IBM&nbsp;i).
           </p>
         </Reveal>
 
@@ -128,8 +128,9 @@ export function LiveDemo() {
                   height as the cards cycle. */}
               <div className="mt-4 md:mt-5 min-h-[1.75em]">
                 {active === 0 ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <span className="text-[#7dffb0]">Waiting for your approval</span>
+                    <ApproveButton />
                     <Caret />
                   </div>
                 ) : null}

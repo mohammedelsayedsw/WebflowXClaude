@@ -30,8 +30,8 @@ export function Problem() {
               62ch it used to carry broke it in two for no reason. Narrower
               screens still wrap it as they need to. */}
           <p className="mt-6 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            Your AS/400 has no way to open a PDF, so a person has to read each
-            one and type it in.
+            Your AS/400 (IBM&nbsp;i) can&apos;t read incoming documents, so a person
+            has to read each one and type it in.
           </p>
         </Reveal>
 

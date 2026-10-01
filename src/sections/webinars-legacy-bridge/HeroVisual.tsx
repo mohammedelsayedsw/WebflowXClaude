@@ -18,7 +18,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mail } from "lucide-react";
-import { Caret, DotRow, ScreenShell } from "./ScreenShell";
+import { ApproveButton, Caret, DotRow, ScreenShell } from "./ScreenShell";
 
 /** One row of the attachment, and the field on the screen it lands in. */
 const LINES: { doc: string; label: string; value: string }[] = [
@@ -181,9 +181,7 @@ export function HeroVisual() {
           {filled ? (
             <div className="flex items-center gap-2.5">
               <span className="text-[#7dffb0]">Waiting for your approval</span>
-              <span className="rounded-[2px] border border-[#7dffb0] px-1.5 text-[#7dffb0] text-[10px] md:text-[11px] leading-[1.6]">
-                Enter
-              </span>
+              <ApproveButton />
               <Caret />
             </div>
           ) : null}

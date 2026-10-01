@@ -37,7 +37,7 @@ const LINES: { doc: string; label: string; value: string }[] = [
  */
 const ROW = "clamp(13px, 2.3vh, 26px)";
 const STEP_MS = 900;
-const HOLD_MS = 2000;
+const HOLD_MS = 3500;
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 

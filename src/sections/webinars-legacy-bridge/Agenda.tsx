@@ -12,14 +12,17 @@ import { Reveal } from "@/components/primitives/Reveal";
  * things you will come away knowing, so this follows it: one line each, no
  * timings, no descriptions.
  */
+/* A "\n" in an item is a line break on wide screens only (xl and up), where
+   the column is wide enough to hold the first line whole. Below that it is an
+   ordinary space and the line wraps as it needs to. */
 const POINTS: string[] = [
-  "Why companies keep the AS/400 (IBM\u00a0i), and why so much is still typed in by hand",
+  "Why companies keep the AS/400 (IBM\u00a0i), and why so much is\nstill typed in by hand",
   "Why most automation tools struggle with the system's screens",
   "A live demo of a document going from the inbox into the system",
   "What happens when part of a document is hard to read, or the system shows an error",
   "How the software handles invoices, orders and any other document your team types in by hand",
   "What the software is and isn't allowed to do, and how your team approves each entry",
-  "How a two-week test on your own documents works",
+  "How to get a two-week test on your own documents",
   "Time for your questions",
 ];
 
@@ -56,7 +59,7 @@ export function Agenda() {
                     style={{ color: "var(--sw-mint)" }}
                     strokeWidth={2}
                   />
-                  <span className="text-white/75 text-[16px] md:text-[18px] leading-snug text-pretty">
+                  <span className="text-white/75 text-[16px] md:text-[18px] leading-snug text-pretty xl:whitespace-pre-line">
                     {item}
                   </span>
                 </li>

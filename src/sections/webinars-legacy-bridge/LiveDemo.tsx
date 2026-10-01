@@ -127,7 +127,7 @@ export function LiveDemo() {
 
               {/* One row, whatever the case, so the screen does not change
                   height as the cards cycle. */}
-              <div className="mt-4 md:mt-5 min-h-[1.75em]">
+              <div className="mt-2 md:mt-3 mb-2 min-h-[1.75em]">
                 {active === 0 ? (
                   <div className="flex items-center gap-2.5">
                     <span className="text-[#7dffb0]">Waiting for your approval</span>

@@ -49,7 +49,7 @@ function FourWeeks() {
   );
 }
 
-export function Cta({ heading, body }: { heading: React.ReactNode; body: string }) {
+export function Cta({ heading, body, weeks = true }: { heading: React.ReactNode; body: string; weeks?: boolean }) {
   return (
     <section
       id="cta"
@@ -64,7 +64,7 @@ export function Cta({ heading, body }: { heading: React.ReactNode; body: string 
           <div>
             <h2 className="font-head text-white text-[36px] md:text-[52px] leading-[1.05] max-w-[14ch]">{heading}</h2>
             <p className="mt-6 text-white/70 text-[17px] md:text-[19px] leading-relaxed max-w-[38ch]">{body}</p>
-            <FourWeeks />
+            {weeks && <FourWeeks />}
           </div>
           <HubSpotForm portalId="25724996" formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6" region="eu1" />
         </div>

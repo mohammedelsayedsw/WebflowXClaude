@@ -10,6 +10,7 @@ import { Rhythm } from "@/sections/operalayer/Rhythm";
 import { ModuleMenu } from "@/sections/operalayer/ModuleMenu";
 import { PillarFaq, PillarCta } from "@/sections/operalayer/PillarClose";
 
+/** OperaLayer pillar; module pages live in the sibling folders. */
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">

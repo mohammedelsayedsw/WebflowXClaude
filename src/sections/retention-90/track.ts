@@ -55,6 +55,18 @@ export function track(ev: string, props: Props = {}) {
   try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "r90_" + ev, r90_sid: s, ...props }); } catch {}
 }
 
+/* Backup copy of a lead (name, email, store, score) to the hub collector, which keeps it in a
+   separate auth-protected file. The only event that carries contact details. */
+export function trackLead(lead: Record<string, string>) {
+  if (typeof window === "undefined") return;
+  const body = JSON.stringify({ sid: session(), ev: "lead", ts: Date.now(), ...(testMode ? { test: 1 } : {}), ...lead });
+  try {
+    if (!(navigator.sendBeacon && navigator.sendBeacon(TRACK_ENDPOINT, new Blob([body], { type: "text/plain" })))) {
+      fetch(TRACK_ENDPOINT, { method: "POST", body, keepalive: true, mode: "no-cors", headers: { "Content-Type": "text/plain" } }).catch(() => {});
+    }
+  } catch {}
+}
+
 /* Called once on mount: page context (source, device, timezone, referrer). */
 export function trackLanding() {
   const P = new URLSearchParams(window.location.search);
@@ -131,6 +143,10 @@ export function watchCalendly(): () => void {
       "calendly.event_scheduled": "cal_booked",
     };
     if (map[ev]) track(map[ev]);
+    /* a confirmed booking is the conversion that matters most: tell Meta too */
+    if (ev === "calendly.event_scheduled") {
+      try { const w = window as unknown as { fbq?: (...a: unknown[]) => void }; if (typeof w.fbq === "function") w.fbq("track", "Schedule", { content_name: "Retention Score call" }); } catch {}
+    }
   };
   window.addEventListener("message", h);
   return () => window.removeEventListener("message", h);

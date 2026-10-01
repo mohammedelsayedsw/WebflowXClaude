@@ -10,7 +10,7 @@ import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { BookingModal } from "./BookingModal";
 import { R90Footer, R90Header } from "./SiteChrome";
-import { setTestMode, track, trackLanding, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
+import { setTestMode, track, trackLanding, trackLead, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
 
 type Screen = "lp" | "quiz" | "gate" | "summary" | "fix";
 
@@ -106,7 +106,12 @@ export function Retention90() {
     const sendLead = (extra: Record<string, string>) => {
       const lead: Record<string, string> = { ...payload, ...extra, _subject: LEAD_SUBJECT + store, _template: "table", _cc: NOTIFY_CC };
       delete lead.company_website;
-      return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(lead) }).catch(() => {});
+      /* backup copy in the hub (auth-protected there), independent of the email */
+      trackLead({ name: lead.name, email: lead.email, store: lead.store, score: lead.retentionScore, leak: lead.estimatedOpportunity, country: lead.country || "" });
+      /* record what formsubmit answered, so a silent stop shows up in the hub the same day */
+      return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(lead) })
+        .then((r) => (r.json() as Promise<{ success?: string | boolean; message?: string }>).catch(() => ({} as { success?: string; message?: string })).then((j) => track("lead_mail", { pass: r.status, kind: String(j.success) === "true" ? "ok" : String(j.message || "unknown").slice(0, 100) })))
+        .catch((e) => track("lead_mail", { pass: 0, kind: "network: " + String(e).slice(0, 80) }));
     };
     try {
       fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })

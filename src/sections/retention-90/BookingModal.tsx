@@ -16,6 +16,13 @@ type Props = {
   answers: Record<string, number>;
 };
 
+/* Calendly sends calendly.* postMessage events (viewed, date picked, booked) only to an
+   embedding page it can identify; without these two params the hub and Meta never see a booking. */
+function embedUrl(url: string): string {
+  const host = typeof window !== "undefined" ? window.location.hostname : "scandiweb.com";
+  return url + (url.includes("?") ? "&" : "?") + "embed_domain=" + encodeURIComponent(host) + "&embed_type=Inline";
+}
+
 export function BookingModal(props: Props) {
   const { open, onClose, store, answers, bookingUrl: url } = props;
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -52,7 +59,7 @@ export function BookingModal(props: Props) {
         )}
         <div className="calwrap">
           {url ? (
-            <iframe src={url} title="Booking calendar" loading="lazy" />
+            <iframe src={embedUrl(url)} title="Booking calendar" loading="lazy" />
           ) : (
             <div className="ph">Booking calendar is being connected.<br />We have your scan and your email. <b>{HOST_NAME}</b> will send you a booking link.</div>
           )}

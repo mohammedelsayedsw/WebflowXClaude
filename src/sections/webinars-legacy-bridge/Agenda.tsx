@@ -14,9 +14,9 @@ import { Reveal } from "@/components/primitives/Reveal";
  */
 const POINTS: string[] = [
   "Why companies keep the AS/400 (IBM\u00a0i), and why so much is still typed in by hand",
-  "Why most automation tools struggle with AS/400 (IBM\u00a0i) screens",
-  "A live demo of a document going from the inbox into the AS/400 (IBM\u00a0i)",
-  "What happens when part of a document is hard to read, or the AS/400 (IBM\u00a0i) shows an error",
+  "Why most automation tools struggle with the system's screens",
+  "A live demo of a document going from the inbox into the system",
+  "What happens when part of a document is hard to read, or the system shows an error",
   "How the software handles invoices, orders and any other document your team types in by hand",
   "What the software is and isn't allowed to do, and how your team approves each entry",
   "How a two-week test on your own documents works",

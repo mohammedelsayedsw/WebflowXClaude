@@ -103,7 +103,8 @@ export function LiveDemo() {
 
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-[66ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-            In the webinar we follow one document from the moment it arrives
+            In the webinar we follow one document from the moment it arrives{" "}
+            <br className="hidden md:block" />
             until its details are saved in the AS/400 (IBM&nbsp;i).
           </p>
         </Reveal>

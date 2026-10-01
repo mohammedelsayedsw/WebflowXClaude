@@ -62,7 +62,6 @@ export function TypingRace() {
   const [leftField, setLeftField] = useState(0);
   const [rightPhase, setRightPhase] = useState<RightPhase>("idle");
   const [rightShown, setRightShown] = useState(0);
-  const [rightDone, setRightDone] = useState(false);
   const [leftDone, setLeftDone] = useState(false);
 
   const root = useRef<HTMLDivElement>(null);
@@ -78,7 +77,6 @@ export function TypingRace() {
     setLeftField(1);
     setRightPhase("done");
     setRightShown(FIELDS.length);
-    setRightDone(true);
     setLeftDone(false);
   }, []);
 
@@ -92,7 +90,6 @@ export function TypingRace() {
       setLeftField(0);
       setRightPhase("idle");
       setRightShown(0);
-      setRightDone(false);
       setLeftDone(false);
 
       // The person. One character at a time, with a wrong one early on.
@@ -152,7 +149,6 @@ export function TypingRace() {
         await sleep(400);
         if (!live()) return;
         setRightPhase("done");
-        setRightDone(true);
       };
 
       await Promise.all([typist(), filler()]);
@@ -316,12 +312,7 @@ export function TypingRace() {
             ) : null}
           </div>
 
-          <p
-            className={
-              "mt-3 min-h-[1.5em] text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug transition-opacity duration-500 " +
-              (rightDone ? "opacity-100" : "opacity-0")
-            }
-          >
+          <p className="mt-3 text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug">
             Filled in automatically and waiting for your approval
           </p>
         </div>

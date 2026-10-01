@@ -56,7 +56,7 @@ export function AnyDocument() {
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[28ch]">
-            One tool for the{" "}
+            One tool for{" "}
             <span style={{ color: "var(--sw-mint)" }}>different documents</span>{" "}
             your team types into the AS/400 (IBM&nbsp;i)
           </h2>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const title = "Supplier Purchasing Intelligence for Business Central";
+const title = "Supplier Purchasing Intelligence for Business Central | OperaLayer";
 const description =
   "OperaLayer gives buyers one view of seasonal commitments, deliveries, and invoices across every supplier brand, on top of Microsoft Business Central. Built by scandiweb.";
 

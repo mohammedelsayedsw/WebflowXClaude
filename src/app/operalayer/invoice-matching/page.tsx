@@ -1,25 +1,23 @@
 "use client";
 
-import { Hero } from "@/sections/operalayer-invoice-matching/Hero";
-import { Morning } from "@/sections/operalayer-invoice-matching/Morning";
-import { HowItWorks } from "@/sections/operalayer-invoice-matching/HowItWorks";
-import { Review } from "@/sections/operalayer-invoice-matching/Review";
-import { Results } from "@/sections/operalayer-invoice-matching/Results";
-import { Questions } from "@/sections/operalayer-invoice-matching/Questions";
-import { Closing } from "@/sections/operalayer-invoice-matching/Closing";
-import { Modules } from "@/sections/operalayer/shared/Modules";
+import { Story } from "@/sections/operalayer-invoice-matching/Story";
+import { Result } from "@/sections/operalayer-invoice-matching/Result";
+import { Cta } from "@/sections/operalayer/shared/Cta";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
-      <Hero />
-      <Morning />
-      <HowItWorks />
-      <Review />
-      <Results />
-      <Modules current="invoice-matching" heading="More OperaLayer modules" />
-      <Questions />
-      <Closing />
+      <Story />
+      <Result />
+      <Cta
+        heading={
+          <>
+            Let your team check{" "}
+            <span className="text-[var(--sw-mint)]">only the exceptions</span>
+          </>
+        }
+        body="Tell us how supplier invoices reach your team today, and we will show you what the app would do with them."
+      />
     </main>
   );
 }

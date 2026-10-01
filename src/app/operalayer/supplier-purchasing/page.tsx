@@ -1,25 +1,23 @@
 "use client";
 
-import { Hero } from "@/sections/operalayer-supplier-purchasing/Hero";
-import { BeforeSources } from "@/sections/operalayer-supplier-purchasing/BeforeSources";
-import { SeasonView } from "@/sections/operalayer-supplier-purchasing/SeasonView";
-import { VarianceFlags } from "@/sections/operalayer-supplier-purchasing/VarianceFlags";
-import { Forecasting } from "@/sections/operalayer-supplier-purchasing/Forecasting";
-import { FAQ } from "@/sections/operalayer-supplier-purchasing/FAQ";
-import { CTA } from "@/sections/operalayer-supplier-purchasing/CTA";
-import { Modules } from "@/sections/operalayer/shared/Modules";
+import { Story } from "@/sections/operalayer-supplier-purchasing/Story";
+import { Result } from "@/sections/operalayer-supplier-purchasing/Result";
+import { Cta } from "@/sections/operalayer/shared/Cta";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
-      <Hero />
-      <BeforeSources />
-      <SeasonView />
-      <VarianceFlags />
-      <Forecasting />
-      <Modules current="supplier-purchasing" heading="More OperaLayer modules" />
-      <FAQ />
-      <CTA />
+      <Story />
+      <Result />
+      <Cta
+        heading={
+          <>
+            See your season in{" "}
+            <span className="text-[var(--sw-mint)]">one clear view</span>
+          </>
+        }
+        body="Tell us how your buyers track supplier orders today, and we will show you what the app would look like on your data."
+      />
     </main>
   );
 }

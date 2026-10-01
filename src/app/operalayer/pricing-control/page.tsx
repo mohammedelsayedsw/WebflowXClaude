@@ -1,25 +1,23 @@
 "use client";
 
-import { Hero } from "@/sections/operalayer-pricing-control/Hero";
-import { Spreadsheet } from "@/sections/operalayer-pricing-control/Spreadsheet";
-import { PriceBuild } from "@/sections/operalayer-pricing-control/PriceBuild";
-import { Schedule } from "@/sections/operalayer-pricing-control/Schedule";
-import { CaseResult } from "@/sections/operalayer-pricing-control/CaseResult";
-import { PricingFaq } from "@/sections/operalayer-pricing-control/PricingFaq";
-import { PricingCta } from "@/sections/operalayer-pricing-control/PricingCta";
-import { Modules } from "@/sections/operalayer/shared/Modules";
+import { Story } from "@/sections/operalayer-pricing-control/Story";
+import { Result } from "@/sections/operalayer-pricing-control/Result";
+import { Cta } from "@/sections/operalayer/shared/Cta";
 
 export default function Page() {
   return (
     <main className="min-h-screen flex flex-col">
-      <Hero />
-      <Spreadsheet />
-      <PriceBuild />
-      <Schedule />
-      <CaseResult />
-      <Modules current="pricing-control" heading="More OperaLayer modules" />
-      <PricingFaq />
-      <PricingCta />
+      <Story />
+      <Result />
+      <Cta
+        heading={
+          <>
+            Put your pricing rules{" "}
+            <span className="text-[var(--sw-mint)]">in one place</span>
+          </>
+        }
+        body="Show us the spreadsheet you price from today, and we will show you the app that takes its place."
+      />
     </main>
   );
 }

@@ -16,6 +16,7 @@ export function ScreenShell({
   children,
   className = "",
   dense = false,
+  softShadow = false,
 }: {
   screenId: string;
   title: string;
@@ -27,11 +28,20 @@ export function ScreenShell({
    * shrinks with the window; everywhere else the screen keeps its full size.
    */
   dense?: boolean;
+  /**
+   * A lighter drop shadow. The full one is tuned for the dark hero; under two
+   * screens side by side on a light section it reads as a smudge.
+   */
+  softShadow?: boolean;
 }) {
   return (
     <div
       className={`rounded-[4px] border border-[var(--sw-mint)]/25 bg-black overflow-hidden ${className}`}
-      style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.6), 0 24px 60px rgba(0,0,0,0.45)" }}
+      style={{
+        boxShadow: softShadow
+          ? "0 0 0 1px rgba(0,0,0,0.6), 0 12px 28px rgba(0,0,0,0.16)"
+          : "0 0 0 1px rgba(0,0,0,0.6), 0 24px 60px rgba(0,0,0,0.45)",
+      }}
     >
       <div
         className={

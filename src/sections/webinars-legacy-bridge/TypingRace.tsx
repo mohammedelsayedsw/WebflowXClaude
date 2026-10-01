@@ -210,7 +210,7 @@ export function TypingRace() {
             Today
           </div>
 
-          <ScreenShell screenId="AP4010" title="Invoice entry">
+          <ScreenShell screenId="AP4010" title="Invoice entry" softShadow>
             <div className="mt-3 md:mt-4 min-h-[7em] flex flex-col">
               {FIELDS.map((f, i) => (
                 <DotRow key={f.label} label={f.label}>
@@ -225,7 +225,7 @@ export function TypingRace() {
             </div>
             {/* Held empty so both screens are the same height and the race is
                 read side by side rather than as two different objects. */}
-            <div className="mt-4 md:mt-5 min-h-[1.75em]" aria-hidden />
+            <div className="mt-2 md:mt-3 mb-2 min-h-[1.75em]" aria-hidden />
           </ScreenShell>
 
           <p className="mt-3 text-[var(--sw-black)]/55 text-[13px] md:text-[14px] leading-snug">
@@ -240,7 +240,7 @@ export function TypingRace() {
           </div>
 
           <div className="relative">
-            <ScreenShell screenId="AP4010" title="Invoice entry">
+            <ScreenShell screenId="AP4010" title="Invoice entry" softShadow>
               {/* One state at a time. The field rows belong to the finished
                   entry, so each earlier step is a screen carrying a single
                   line rather than a set of empty fields with a caption under
@@ -288,7 +288,7 @@ export function TypingRace() {
               </div>
 
               {/* Only the finished entry has an approval line under it. */}
-              <div className="mt-4 md:mt-5 min-h-[1.75em]">
+              <div className="mt-2 md:mt-3 mb-2 min-h-[1.75em]">
                 {rightPhase === "done" ? (
                   <div className="flex items-center gap-2.5 sw-pulse-line">
                     <span className="text-[#7dffb0]">Waiting for your approval</span>

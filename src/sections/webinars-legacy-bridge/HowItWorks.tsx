@@ -4,7 +4,7 @@
  * The four steps, revealed in order with the line drawing between them.
  *
  * The sequence is the argument: the document arrives, it is read, the screen
- * is filled, and only then does a person press Enter. Showing all four at once
+ * is filled, and only then does a person approve it. Showing all four at once
  * would flatten that into a list, so each one waits for the line to reach it.
  *
  * Under prefers-reduced-motion every step, icon and line segment is painted at
@@ -26,11 +26,11 @@ const STEPS: { title: string; body: string }[] = [
   },
   {
     title: "The details are typed in",
-    body: "The software types them into the AS/400 and stops before saving.",
+    body: "The software types them into the AS/400 (IBM\u00a0i) and stops before saving.",
   },
   {
     title: "Your team approves",
-    body: "A person checks the details and presses Enter to save them.",
+    body: "A person checks the details and approves them.",
   },
 ];
 
@@ -94,7 +94,7 @@ export function HowItWorks() {
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[26ch]">
             LegacyBridge, the software that{" "}
             <span style={{ color: "var(--sw-mint)" }}>
-              types your PDFs into the AS/400
+              types your documents into the AS/400 (IBM&nbsp;i)
             </span>
           </h2>
         </Reveal>

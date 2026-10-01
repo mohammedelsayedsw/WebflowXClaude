@@ -58,7 +58,7 @@ export function AnyDocument() {
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[28ch]">
             One tool for the{" "}
             <span style={{ color: "var(--sw-mint)" }}>different documents</span>{" "}
-            your team types into the AS/400
+            your team types into the AS/400 (IBM&nbsp;i)
           </h2>
         </Reveal>
 
@@ -101,7 +101,7 @@ export function AnyDocument() {
             <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
               Does your team type at least one of these documents by hand?
               <br />
-              Join the webinar and watch it go into the AS/400 by itself.
+              Join the webinar and watch it go into the AS/400 (IBM&nbsp;i) by itself.
             </p>
             <a
               href="#cta"

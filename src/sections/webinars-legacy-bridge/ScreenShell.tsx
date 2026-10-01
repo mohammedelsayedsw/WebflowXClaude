@@ -94,6 +94,19 @@ export function DotRow({
   );
 }
 
+/**
+ * The control beside "Waiting for your approval". Filled, so it reads as a
+ * button to click rather than a key to press. It is part of the picture and
+ * does nothing.
+ */
+export function ApproveButton() {
+  return (
+    <span className="rounded-[2px] border border-[#7dffb0] bg-[#7dffb0] px-2 font-bold text-black text-[10px] md:text-[11px] leading-[1.6]">
+      Approve
+    </span>
+  );
+}
+
 /** The block cursor that rests at the point of entry. */
 export function Caret({ className = "" }: { className?: string }) {
   return (

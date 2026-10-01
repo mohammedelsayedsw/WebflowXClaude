@@ -85,16 +85,16 @@ export function CTA() {
 
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[20ch] mx-auto">
-              See the AS/400 screen{" "}
+              See the AS/400 (IBM&nbsp;i) screen{" "}
               <span style={{ color: "var(--sw-mint)" }}>fill itself in</span>,
               live
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
+            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto text-balance">
               Watch the full demo and ask the founder about your own AS/400
-              setup.
+              (IBM&nbsp;i) setup.
             </p>
           </Reveal>
 

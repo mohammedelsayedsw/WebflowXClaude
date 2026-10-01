@@ -18,6 +18,8 @@ export default function OperaLayerLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
+      {/* pages that open on a light hero mark it .ol-light; the shared header is white by default */}
+      <style>{`body:has(.ol-light) header img{filter:brightness(0);opacity:.9}body:has(.ol-light) header button{color:#10132c}`}</style>
       <Header />
       {children}
     </>

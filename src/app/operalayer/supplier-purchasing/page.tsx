@@ -35,7 +35,7 @@ export default function Page() {
       <OLHeader
         links={[
           { id: "results", label: "Results" },
-          { id: "demo", label: "Demo" },
+          { id: "example", label: "Example" },
           { id: "how", label: "How it works" },
           { id: "before", label: "Before and after" },
         ]}
@@ -49,7 +49,7 @@ export default function Page() {
           </>
         }
         body="Buyers see every supplier brand's season in one place, and every invoice is checked against the order the supplier confirmed."
-        secondary={{ id: "demo", label: "See it work" }}
+        secondary={{ id: "example", label: "See an example" }}
       />
       <section id="results" className="relative pt-8 pb-16 md:pb-24 scroll-mt-20">
         <div className="wrap">

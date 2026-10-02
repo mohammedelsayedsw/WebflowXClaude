@@ -45,7 +45,7 @@ export function WhatItIs() {
 
 export function Demo() {
   return (
-    <section id="demo" className="relative py-24 md:py-32 scroll-mt-20 overflow-hidden">
+    <section id="example" className="relative py-24 md:py-32 scroll-mt-20 overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/3 h-[60%]" style={{ background: "radial-gradient(800px 400px at 50% 50%, rgba(63,74,175,0.28), transparent 70%)" }} />
       <div className="wrap relative">
         <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-8 lg:gap-12 items-end">

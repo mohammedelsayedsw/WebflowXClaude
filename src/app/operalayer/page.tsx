@@ -34,7 +34,7 @@ export default function Page() {
       <OLHeader
         links={[
           { id: "what", label: "What it is" },
-          { id: "demo", label: "Demo" },
+          { id: "example", label: "Example" },
           { id: "how", label: "How it works" },
           { id: "apps", label: "Apps" },
         ]}
@@ -47,7 +47,7 @@ export default function Page() {
           </>
         }
         body="OperaLayer takes the work that falls between your systems and sends a person only what needs a decision. Your ERP stays as it is."
-        secondary={{ id: "demo", label: "See it work" }}
+        secondary={{ id: "example", label: "See an example" }}
       />
       <WhatItIs />
       <Demo />

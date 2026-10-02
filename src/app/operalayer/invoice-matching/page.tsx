@@ -33,7 +33,7 @@ export default function Page() {
       <OLHeader
         links={[
           { id: "results", label: "Results" },
-          { id: "demo", label: "Demo" },
+          { id: "example", label: "Example" },
           { id: "how", label: "How it works" },
           { id: "faq", label: "Questions" },
         ]}
@@ -47,7 +47,7 @@ export default function Page() {
           </>
         }
         body="Every supplier invoice is read and checked against its purchase order in Navision, so your team only looks at the ones that need a decision."
-        secondary={{ id: "demo", label: "See it work" }}
+        secondary={{ id: "example", label: "See an example" }}
       />
       <Results />
       <Demo />

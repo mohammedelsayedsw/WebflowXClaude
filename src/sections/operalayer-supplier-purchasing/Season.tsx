@@ -137,7 +137,7 @@ export function SeasonWindow() {
 
 export function Demo() {
   return (
-    <section id="demo" className="relative py-24 md:py-32 scroll-mt-20 overflow-hidden">
+    <section id="example" className="relative py-24 md:py-32 scroll-mt-20 overflow-hidden">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-1/4 h-[70%]"

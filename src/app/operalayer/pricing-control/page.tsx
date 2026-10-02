@@ -35,7 +35,7 @@ export default function Page() {
       <OLHeader
         links={[
           { id: "results", label: "Results" },
-          { id: "demo", label: "Demo" },
+          { id: "example", label: "Example" },
           { id: "how", label: "How it works" },
           { id: "faq", label: "Questions" },
         ]}
@@ -49,7 +49,7 @@ export default function Page() {
           </>
         }
         body="Pricing Control works out the price of every product in every US state from one set of rules, and sends approved updates to your store on schedule."
-        secondary={{ id: "demo", label: "See it work" }}
+        secondary={{ id: "example", label: "See an example" }}
       />
 
       <section id="results" className="relative py-24 md:py-32 scroll-mt-20">

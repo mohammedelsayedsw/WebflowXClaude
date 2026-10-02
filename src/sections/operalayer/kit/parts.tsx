@@ -63,7 +63,7 @@ export function useSeq(n: number, gap = 550, start = 400, amount = 0.2) {
   return { ref, t };
 }
 
-/* ---------- Header: scandiweb | OperaLayer, section links, one CTA ---------- */
+/* ---------- Header: scandiweb logo, section links, one CTA ---------- */
 
 export function OLHeader({ links }: { links: { id: string; label: string }[] }) {
   const [scrolled, setScrolled] = useState(false);
@@ -83,10 +83,6 @@ export function OLHeader({ links }: { links: { id: string; label: string }[] }) 
         <div className="flex items-center gap-3 sm:gap-4 min-w-0">
           <a href="https://scandiweb.com/" aria-label="scandiweb">
             <img src={assetUrl("/shared/logos/scandiweb.svg")} alt="scandiweb" className="h-[13px] sm:h-[15px] md:h-[17px] w-auto" />
-          </a>
-          <span aria-hidden className="h-[20px] md:h-[24px] w-px bg-white/35" />
-          <a href={assetUrl("/operalayer")} className="font-head font-semibold text-white text-[16px] md:text-[19px] tracking-[-0.01em]">
-            OperaLayer
           </a>
         </div>
         <nav className="flex items-center gap-7 text-[15px] text-white/75 font-head font-medium">
@@ -142,12 +138,12 @@ export function OLHero({
         <h1 className="m-0">
           <motion.span
             {...enter(0.3)}
-            className={`block bg-clip-text text-transparent leading-[0.9] tracking-[-0.055em] px-[0.05em] pb-[0.06em] ${
+            className={`block bg-clip-text text-transparent font-[family-name:var(--font-inter)] font-medium leading-[0.92] tracking-[-0.065em] px-[0.05em] pb-[0.08em] ${
               small ? "text-[52px] sm:text-[80px] md:text-[104px] lg:text-[120px]" : "text-[72px] sm:text-[112px] md:text-[150px] lg:text-[176px]"
             }`}
             style={{
-              backgroundImage: "linear-gradient(180deg, #ffffff 0%, #dfe6ff 45%, #6ef76e 115%)",
-              filter: "drop-shadow(0 0 40px rgba(110,247,110,0.18))",
+              backgroundImage: "linear-gradient(180deg, #ffffff 10%, #e6e9ff 55%, #9aa6f5 100%)",
+              filter: "drop-shadow(0 0 48px rgba(123,134,232,0.35))",
             }}
           >
             {name}

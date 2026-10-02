@@ -9,16 +9,16 @@ import { Check } from "lucide-react";
  * "agrees", coral for "needs a person".
  */
 export const OL = {
-  bg: "#0f1014",
-  panel: "#16171d",
-  line: "rgba(255,255,255,0.08)",
-  text: "#ececf1",
-  dim: "rgba(236,236,241,0.55)",
-  faint: "rgba(236,236,241,0.35)",
-  violet: "#7c6cf6",
-  mint: "#4ade80",
-  coral: "#f87171",
-  amber: "#fbbf24",
+  bg: "#0b0e1d",
+  panel: "#080b18",
+  line: "rgba(255,255,255,0.09)",
+  text: "#f2f2f7",
+  dim: "rgba(242,242,247,0.6)",
+  faint: "rgba(242,242,247,0.38)",
+  violet: "#7b86e8",
+  mint: "#6ef76e",
+  coral: "#ff5a31",
+  amber: "#7b86e8",
 };
 
 export const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -27,8 +27,8 @@ export function Logo({ size = 1 }: { size?: number }) {
   return (
     <span className="inline-flex items-center gap-2" style={{ fontSize: `${size}em` }}>
       <span
-        className="inline-flex flex-col justify-center gap-[3px] rounded-[6px] px-[5px]"
-        style={{ width: "1.6em", height: "1.6em", background: "linear-gradient(135deg,#3b3a63,#26253f)" }}
+        className="inline-flex flex-col justify-center gap-[3px] rounded-[2px] px-[5px]"
+        style={{ width: "1.6em", height: "1.6em", background: "#1a1f45" }}
       >
         <span className="block h-[3px] rounded-full" style={{ background: OL.violet }} />
         <span className="block h-[3px] rounded-full bg-white/70" />
@@ -54,11 +54,11 @@ export function Window({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[10px] ${className}`}
+      className={`relative overflow-hidden rounded-[4px] ${className}`}
       style={{
         background: OL.bg,
         color: OL.text,
-        boxShadow: "0 0 0 1px rgba(255,255,255,0.07), 0 40px 100px -30px rgba(16,19,44,0.55), 0 12px 30px -12px rgba(16,19,44,0.35)",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.1), 0 50px 120px -40px rgba(0,0,0,0.9), 0 0 80px -30px rgba(63,74,175,0.45)",
         ...style,
       }}
     >
@@ -84,7 +84,7 @@ export function Pill({ tone, children }: { tone: "mint" | "coral" | "amber" | "v
   const c = tone === "dim" ? OL.dim : OL[tone];
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full px-2 py-[2px] whitespace-nowrap font-medium"
+      className="inline-flex items-center gap-1 rounded-[2px] px-2 py-[2px] whitespace-nowrap font-medium"
       style={{ fontSize: "0.82em", color: c, background: `color-mix(in srgb, ${c} 13%, transparent)`, boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${c} 28%, transparent)` }}
     >
       {children}
@@ -95,7 +95,7 @@ export function Pill({ tone, children }: { tone: "mint" | "coral" | "amber" | "v
 export function Tick({ on, delay = 0 }: { on: boolean; delay?: number }) {
   return (
     <motion.span
-      className="inline-flex items-center justify-center rounded-full shrink-0"
+      className="inline-flex items-center justify-center rounded-[2px] shrink-0"
       style={{ width: "1.5em", height: "1.5em" }}
       initial={false}
       animate={{ backgroundColor: on ? OL.mint : "rgba(255,255,255,0.07)", scale: on ? [0.7, 1.12, 1] : 1 }}

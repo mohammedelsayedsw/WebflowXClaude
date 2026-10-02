@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/site/Header";
 
 const title = "OperaLayer: Apps for the Work Between Your Systems";
 const description =
@@ -12,16 +11,9 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: `${title} | scandiweb`, description },
 };
 
-/** Default shell for all routes under `/operalayer/*` (mounted at `/solutions/operalayer/...` on scandiweb.com via Next.js basePath): site Header + page content. Footer stays in root layout. */
+/** All /operalayer pages bring their own header (scandiweb | OperaLayer with section links). Footer stays in the root layout. */
 export default function OperaLayerLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <>
-      {/* pages that open on a light hero mark it .ol-light; the shared header is white by default */}
-      <style>{`body:has(.ol-light) header img{filter:brightness(0);opacity:.9}body:has(.ol-light) header button{color:#10132c}`}</style>
-      <Header />
-      {children}
-    </>
-  );
+  return <div className="bg-[#05070f] text-white">{children}</div>;
 }

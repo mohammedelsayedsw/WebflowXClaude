@@ -63,7 +63,7 @@ function Paper({ lit }: { lit: number }) {
             className="absolute inset-0"
             initial={false}
             animate={{ opacity: lit > i ? 1 : 0 }}
-            style={{ background: "rgba(124,108,246,0.12)", boxShadow: `inset 2px 0 0 ${OL.violet}` }}
+            style={{ background: "rgba(123,134,232,0.12)", boxShadow: `inset 2px 0 0 ${OL.violet}` }}
           />
           <span className="relative truncate">{l.name}</span>
           <span className="relative text-right font-mono">{l.qty}</span>
@@ -83,7 +83,7 @@ function Paper({ lit }: { lit: number }) {
   );
 }
 
-function Workspace() {
+export function Workspace() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
   const reduce = useReducedMotion();
@@ -111,8 +111,8 @@ function Workspace() {
             {NAV.map((n) => (
               <div
                 key={n.label}
-                className="flex items-center gap-[0.7em] rounded-[6px] px-[0.7em] py-[0.55em]"
-                style={{ background: n.active ? "rgba(124,108,246,0.16)" : "transparent", color: n.active ? OL.text : OL.dim }}
+                className="flex items-center gap-[0.7em] rounded-[2px] px-[0.7em] py-[0.55em]"
+                style={{ background: n.active ? "rgba(123,134,232,0.16)" : "transparent", color: n.active ? OL.text : OL.dim }}
               >
                 <n.icon style={{ width: "1.1em", height: "1.1em" }} />
                 <span className="flex-1 truncate">{n.label}</span>
@@ -148,7 +148,7 @@ function Workspace() {
                   <span style={{ color: OL.dim }}>Line items checked against Navision</span>
                   <Pill tone="mint">88% confident</Pill>
                 </div>
-                <div className="rounded-[8px] overflow-hidden" style={{ boxShadow: `0 0 0 1px ${OL.line}` }}>
+                <div className="rounded-[2px] overflow-hidden" style={{ boxShadow: `0 0 0 1px ${OL.line}` }}>
                   <div className="grid grid-cols-[minmax(0,1fr)_5em_5.5em_2em] gap-x-[0.8em] px-[1em] py-[0.6em]" style={{ background: OL.panel, color: OL.faint, fontSize: "0.85em" }}>
                     <span>Item</span>
                     <span className="text-right">Qty</span>
@@ -177,7 +177,7 @@ function Workspace() {
                   ))}
                 </div>
 
-                <div className="rounded-[8px] px-[1em] py-[0.4em]" style={{ boxShadow: `0 0 0 1px ${OL.line}` }}>
+                <div className="rounded-[2px] px-[1em] py-[0.4em]" style={{ boxShadow: `0 0 0 1px ${OL.line}` }}>
                   {[
                     ["Net", "274,00 €"],
                     ["VAT 19%", "52,06 €"],
@@ -192,11 +192,11 @@ function Workspace() {
                 <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-[0.6em]">
                   <span style={{ color: OL.dim }}>{ready ? "2 of 2 lines agree with the order" : "Checking lines…"}</span>
                   <motion.span
-                    className="inline-flex items-center gap-[0.5em] rounded-[6px] px-[1em] py-[0.6em] font-semibold"
+                    className="inline-flex items-center gap-[0.5em] rounded-[2px] px-[1em] py-[0.6em] font-semibold"
                     initial={false}
                     animate={{
-                      backgroundColor: posted ? OL.mint : ready ? OL.violet : "rgba(255,255,255,0.06)",
-                      color: posted ? "#0f1014" : ready ? "#ffffff" : OL.faint,
+                      backgroundColor: posted ? OL.mint : ready ? "#f8f4ef" : "rgba(255,255,255,0.06)",
+                      color: posted || ready ? "#05070f" : OL.faint,
                     }}
                   >
                     {posted ? "Posted" : "Export to Navision"} <ArrowRight style={{ width: "1em", height: "1em" }} />
@@ -217,7 +217,7 @@ export function Hero() {
       className="ol-light relative overflow-hidden"
       style={{
         background:
-          "radial-gradient(1200px 600px at 50% 100%, rgba(124,108,246,0.16), transparent 70%), linear-gradient(180deg, #ffffff 0%, #f5f4f8 100%)",
+          "radial-gradient(1200px 600px at 50% 100%, rgba(123,134,232,0.16), transparent 70%), linear-gradient(180deg, #ffffff 0%, #f5f4f8 100%)",
       }}
     >
       <div className="wrap w-full pt-32 md:pt-44 pb-16 md:pb-24 text-center">

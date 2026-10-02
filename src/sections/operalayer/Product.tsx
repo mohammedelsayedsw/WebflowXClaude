@@ -21,7 +21,7 @@ function useSteps(n: number, gap = 550) {
 }
 
 /* 1. Reads any document */
-function ReadVisual() {
+export function ReadVisual() {
   const { ref, t } = useSteps(5, 420);
   const docs = [
     { title: "RECHNUNG", who: "Cascade Cable Works", color: "#c8581f", lang: "German" },
@@ -111,7 +111,7 @@ function ReadVisual() {
 }
 
 /* 2. Checks every line against the ERP */
-function CheckVisual() {
+export function CheckVisual() {
   const { ref, t } = useSteps(4, 600);
   const rows = [
     { label: "Item", inv: "FX-MP-1006", po: "FX-MP-1006", ok: true },
@@ -158,7 +158,7 @@ function CheckVisual() {
             </motion.div>
           ))}
           <motion.div
-            className="mt-[4%] flex items-center justify-between gap-3 rounded-[8px] px-[1em] py-[0.8em]"
+            className="mt-[4%] flex items-center justify-between gap-3 rounded-[2px] px-[1em] py-[0.8em]"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: t >= 4 ? 1 : 0, y: t >= 4 ? 0 : 6 }}
             style={{ background: "rgba(248,113,113,0.1)", boxShadow: `inset 0 0 0 1px rgba(248,113,113,0.3)` }}
@@ -173,7 +173,7 @@ function CheckVisual() {
 }
 
 /* 3. A person handles only the exceptions */
-function ApproveVisual() {
+export function ApproveVisual() {
   const { ref, t } = useSteps(3, 900);
   const rows = [
     { who: "Ferrum Metalworks Ltd", what: "Price 192,00 € above the order", tone: "coral" as const },
@@ -204,11 +204,11 @@ function ApproveVisual() {
                 </div>
                 {i === 0 ? (
                   <motion.span
-                    className="inline-flex items-center gap-1 rounded-[6px] px-[0.9em] py-[0.45em] font-semibold"
+                    className="inline-flex items-center gap-1 rounded-[2px] px-[0.9em] py-[0.45em] font-semibold"
                     initial={false}
                     animate={{
-                      backgroundColor: done ? OL.mint : t >= 1 ? OL.violet : "rgba(255,255,255,0.06)",
-                      color: done ? "#0f1014" : "#fff",
+                      backgroundColor: done ? OL.mint : t >= 1 ? "#f8f4ef" : "rgba(255,255,255,0.06)",
+                      color: t >= 1 ? "#05070f" : "#fff",
                       scale: t === 1 ? [1, 0.94, 1] : 1,
                     }}
                     transition={{ duration: 0.35 }}
@@ -217,7 +217,7 @@ function ApproveVisual() {
                     {done ? "Approved" : "Approve"}
                   </motion.span>
                 ) : (
-                  <span className="rounded-[6px] px-[0.9em] py-[0.45em]" style={{ background: "rgba(255,255,255,0.06)", color: OL.dim }}>
+                  <span className="rounded-[2px] px-[0.9em] py-[0.45em]" style={{ background: "rgba(255,255,255,0.06)", color: OL.dim }}>
                     Review
                   </span>
                 )}
@@ -235,7 +235,7 @@ function ApproveVisual() {
 }
 
 /* 4. One live view */
-function SeeVisual() {
+export function SeeVisual() {
   const { ref, t } = useSteps(4, 300);
   const tiles = [
     { k: "Money at risk", v: "6 080 €", s: "13 invoices with open mismatches", tone: OL.coral },
@@ -248,7 +248,7 @@ function SeeVisual() {
       <Window title="Dashboard">
         <div className="p-[4%]">
           <motion.div
-            className="rounded-[8px] px-[4%] py-[3.5%] flex flex-wrap items-center gap-x-[2em] gap-y-1"
+            className="rounded-[2px] px-[4%] py-[3.5%] flex flex-wrap items-center gap-x-[2em] gap-y-1"
             style={{ background: "rgba(248,113,113,0.08)", boxShadow: "inset 0 0 0 1px rgba(248,113,113,0.35)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: t >= 1 ? 1 : 0 }}
@@ -271,7 +271,7 @@ function SeeVisual() {
             {tiles.map((x, i) => (
               <motion.div
                 key={x.k}
-                className="rounded-[8px] p-[6%]"
+                className="rounded-[2px] p-[6%]"
                 style={{ background: OL.panel, boxShadow: `inset 0 0 0 1px ${OL.line}` }}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: t >= 2 ? 1 : 0, y: t >= 2 ? 0 : 8 }}

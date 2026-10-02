@@ -66,12 +66,11 @@ export function Familiar() {
   return (
     <section
       id="familiar"
-      className="relative py-28 md:py-40 overflow-hidden scroll-mt-10"
-      style={{ background: "radial-gradient(1000px 600px at 80% 0%, #1d2566 0%, transparent 60%), #10132c" }}
+      className="relative py-24 md:py-36 overflow-hidden scroll-mt-20"
     >
       <div className="wrap" ref={ref}>
-        <h2 className="font-head text-white text-[30px] md:text-[40px] leading-[1.1] max-w-[22ch]">
-          Sound familiar? This is what leaders told us this year.
+        <h2 className="font-head text-white text-[38px] md:text-[54px] lg:text-[60px] leading-[1.03] tracking-[-0.025em] max-w-[18ch]">
+          What leaders told us this year
         </h2>
 
         <div className="mt-14 md:mt-20 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1.58fr)] gap-10 lg:gap-16">

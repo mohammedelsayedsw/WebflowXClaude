@@ -9,9 +9,9 @@ import { Reveal } from "@/components/primitives/Reveal";
 /**
  * The demo and its stores run on scandiweb.com subdomains and set their pass
  * cookie for scandiweb.com, so the embed works on scandiweb.com (same site).
- * On any other host the panes stay empty; set this to false there.
+ * Off by request (2026-10-05): the demo opens in a new tab from the still.
  */
-const EMBED = true;
+const EMBED = false;
 
 /**
  * The live before-and-after store. On wide screens it runs inside the page;

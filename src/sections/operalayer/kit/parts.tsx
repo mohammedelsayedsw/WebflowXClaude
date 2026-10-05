@@ -236,11 +236,11 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
 export function Contact({ title, body }: { title: string; body: string }) {
   return (
     <section id="contact" className="relative overflow-hidden scroll-mt-4 min-h-[100svh] flex items-center">
-      <LayerField contained plane={0.4} density={0.55} />
+      <LayerField contained plane={0.35} line={false} />
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg, rgba(5,7,15,0.2) 0%, rgba(5,7,15,0.7) 50%, rgba(5,7,15,0.95) 100%)" }} />
       <div className="wrap relative z-10 w-full py-24 md:py-28">
         <Rise className="text-center max-w-[56rem] mx-auto">
-          <h2 className="font-head text-white text-[52px] sm:text-[72px] md:text-[96px] leading-[0.95] tracking-[-0.045em]" style={{ textShadow: "0 0 60px rgba(110,247,110,0.22)" }}>
+          <h2 className="font-[family-name:var(--font-inter)] font-medium text-white text-[52px] sm:text-[72px] md:text-[96px] leading-[0.95] tracking-[-0.06em]" style={{ textShadow: "0 0 60px rgba(123,134,232,0.3)" }}>
             {title}
           </h2>
           <p className="mt-6 text-white/80 text-[18px] md:text-[20px] leading-[1.55] max-w-[38rem] mx-auto">{body}</p>

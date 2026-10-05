@@ -1,7 +1,7 @@
 "use client";
 
 import { assetUrl } from "@/lib/assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DEMO_URL } from "./data";
 import { btnPrimary } from "./Hero";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -20,6 +20,17 @@ const EMBED = true;
  */
 export function Demo() {
   const [loaded, setLoaded] = useState(false);
+  // The demo posts its own height ({ ns: "expedio-embed", height }), so the frame fits it with no inner scroll.
+  const [height, setHeight] = useState(980);
+  useEffect(() => {
+    const on = (e: MessageEvent) => {
+      if (e.origin !== new URL(DEMO_URL).origin) return;
+      const d = e.data as { ns?: string; height?: number };
+      if (d?.ns === "expedio-embed" && typeof d.height === "number") setHeight(Math.max(600, Math.ceil(d.height)));
+    };
+    window.addEventListener("message", on);
+    return () => window.removeEventListener("message", on);
+  }, []);
   return (
     <section id="demo" className="relative z-10 py-24 md:py-36 scroll-mt-4">
       <div className="wrap">
@@ -59,7 +70,9 @@ export function Demo() {
                 title="Magento and Expedio demo"
                 loading="lazy"
                 onLoad={() => setLoaded(true)}
-                className="relative block w-full h-[980px] border-0"
+                className="relative block w-full border-0"
+                style={{ height }}
+                scrolling="no"
               />
             </div>
           </div>

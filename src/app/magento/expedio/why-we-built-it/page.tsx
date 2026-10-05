@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
+import { EXPEDIO_SHARE_IMAGE } from "@/sections/magento-expedio/share";
 import { btnPrimary, btnSecondary } from "@/sections/magento-expedio/Hero";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SiteHeader } from "@/sections/magento-expedio/SiteHeader";
 
+const WHY_DESCRIPTION =
+  "A page reaches a shopper in two halves. Modern themes fixed the second half. Expedio fixes the first.";
+const WHY_URL = "https://scandiweb.com/solutions/magento/expedio/why-we-built-it";
+
 export const metadata: Metadata = {
   title: "Why we built Expedio",
-  description: "A page reaches a shopper in two halves. Modern themes fixed the second half. Expedio fixes the first.",
-  alternates: { canonical: "https://scandiweb.com/solutions/magento/expedio/why-we-built-it" },
+  description: WHY_DESCRIPTION,
+  alternates: { canonical: WHY_URL },
+  openGraph: {
+    title: "Why we built Expedio | scandiweb",
+    description: WHY_DESCRIPTION,
+    url: WHY_URL,
+    siteName: "scandiweb",
+    type: "article",
+    images: [EXPEDIO_SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why we built Expedio | scandiweb",
+    description: WHY_DESCRIPTION,
+    images: [EXPEDIO_SHARE_IMAGE.url],
+  },
 };
 
 /*

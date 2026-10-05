@@ -702,3 +702,23 @@
 @media (prefers-reduced-motion: reduce) {
   .sw-progress-slow { animation: none; width: 100%; }
 }
+
+/* magento/expedio: tokens and form styles the Expedio page uses */
+:root { --sw-ink: #05070f; --magento: #8a90ad; }
+.expedio .mint { color: var(--sw-mint); }
+.expedio .label-code:not([class*="text-"]) { color: inherit; }
+.expedio .hair-t { border-top: 1px solid rgba(255,255,255,.1); }
+.expedio .hair-b { border-bottom: 1px solid rgba(255,255,255,.1); }
+.line-field {
+  display: block; width: 100%; margin-top: 10px; padding: 6px 0 12px;
+  background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #fff; font-size: 20px; font-family: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
+  outline: none; transition: border-color .25s, box-shadow .25s;
+}
+.line-field::placeholder { color: rgba(255,255,255,.28); }
+.line-field:focus { border-bottom-color: var(--sw-mint); box-shadow: 0 1px 0 0 var(--sw-mint), 0 12px 24px -16px rgba(110,247,110,.6); }
+.tabs-scroll { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.22) transparent; }
+.tabs-scroll::-webkit-scrollbar { height: 2px; }
+.tabs-scroll::-webkit-scrollbar-track { background: transparent; }
+.tabs-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,.22); }
+@media (min-width: 768px) { .tabs-scroll { scrollbar-width: none; } .tabs-scroll::-webkit-scrollbar { display: none; } }

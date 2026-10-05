@@ -32,6 +32,9 @@ const SECONDARY_LINKS = [
 /** Routes (without the /solutions basePath) that show the logo only: no menu, no drawer. */
 const MENULESS_ROUTES = ["/magento/twice-as-fast"];
 
+/** Routes (prefix match, without basePath) that render their own header, so this one is not shown. */
+const HEADERLESS_PREFIXES = ["/magento/expedio"];
+
 const CTA = {
   text: "Custom enterprise software 2-10x faster at up to 90% lower cost",
   cta: "Discover what's possible",
@@ -61,6 +64,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const menu = !MENULESS_ROUTES.includes(pathname.replace(/\/$/, ""));
+  const headerless = HEADERLESS_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 
   useEffect(() => {
     if (open) {
@@ -75,6 +79,8 @@ export function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  if (headerless) return null;
 
   return (
     <>

@@ -217,8 +217,8 @@ export function Contact() {
       <div className="wrap relative z-10 w-full py-24 md:py-28">
         <Reveal className="text-center max-w-[56rem] mx-auto">
           <div className="label-code text-white/70">Available to all Magento merchants</div>
-          <h2 className="mt-5 text-[52px] sm:text-[72px] md:text-[96px] leading-[0.95] tracking-[-0.045em]" style={{ textShadow: "0 0 60px rgba(110,247,110,0.25)" }}>
-            Get Expedio
+          <h2 className="mt-5 text-[44px] sm:text-[60px] md:text-[80px] leading-[0.98] tracking-[-0.04em] [text-wrap:balance]" style={{ textShadow: "0 0 60px rgba(110,247,110,0.25)" }}>
+            Talk to us about Expedio
           </h2>
           <p className="mt-6 text-white/80 text-[18px] md:text-[20px] leading-[1.55] max-w-[38rem] mx-auto">
             Leave your details and the scandiweb team will get in touch.
@@ -257,6 +257,14 @@ export function Contact() {
                 {state === "error" && (
                   <span className="text-[#ff5a31] text-[14px]">That did not go through. Please try again, or email kristaps.gailitis@scandiweb.com.</span>
                 )}
+                <a
+                  href="https://calendly.com/scandi-bd/magento-expedio-30-min-intro-call"
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-2 text-[15px] text-white/70 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white font-[family-name:var(--font-golos)]"
+                >
+                  Or book a 30-minute call
+                </a>
               </div>
             </form>
             )}

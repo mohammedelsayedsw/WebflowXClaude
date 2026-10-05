@@ -7,11 +7,11 @@ import { btnPrimary } from "./Hero";
 import { Reveal } from "@/components/primitives/Reveal";
 
 /**
- * The demo's stores only load with a pass cookie set as SameSite=Lax, which
- * browsers drop inside another site's iframe, so an embed shows empty panes.
- * Flip this once the demo server sets the cookie as SameSite=None; Secure; Partitioned.
+ * The demo and its stores run on scandiweb.com subdomains and set their pass
+ * cookie for scandiweb.com, so the embed works on scandiweb.com (same site).
+ * On any other host the panes stay empty; set this to false there.
  */
-const EMBED = false;
+const EMBED = true;
 
 /**
  * The live before-and-after store. On wide screens it runs inside the page;

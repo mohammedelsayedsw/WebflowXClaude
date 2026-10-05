@@ -66,4 +66,4 @@ export const WORK = [
   { label: "First request after a restart", magento: "832 ms", expedio: "87 ms" },
 ];
 
-export const DEMO_URL = "https://expedio.37-27-237-253.sslip.io/";
+export const DEMO_URL = "https://expedio-demo.scandiweb.com/";

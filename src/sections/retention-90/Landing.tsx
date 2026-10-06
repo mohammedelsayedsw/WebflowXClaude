@@ -155,7 +155,7 @@ export function Flows() {
   );
 }
 
-const FACES = ["asset.webp", "asset-2.webp", "asset-3.webp", "asset-4.webp", "asset-5.webp", "asset-6.webp", "asset-7.webp", "asset-8.webp", "asset-9.webp"];
+const FACES = ["asset-3.webp", "asset-4.webp", "asset-5.webp", "asset-6.webp", "asset-7.webp", "asset-8.webp", "asset-9.webp"];
 const CERTS = [["cxl.webp", "CXL"], ["nielsen-norman-group.webp", "Nielsen Norman Group"], ["baymard-institute.webp", "Baymard Institute"]];
 const PLATFORMS = [["klaviyo.webp", "Klaviyo"], ["bloomreach.webp", "Bloomreach"], ["braze.webp", "Braze"], ["dotdigital.webp", "Dotdigital"], ["omnisend.webp", "Omnisend"], ["mailchimp.webp", "Mailchimp"]];
 

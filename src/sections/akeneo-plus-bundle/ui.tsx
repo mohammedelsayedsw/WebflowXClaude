@@ -1,6 +1,6 @@
 "use client";
 
-/** Shared bits for /akeneo/plus-bundle (retrigger after #725): eyebrow, section shells, colours for light sections. */
+/** Shared bits for /akeneo/plus-bundle (retrigger after #728): eyebrow, section shells, colours for light sections. */
 
 export const LAVENDER = "#f0f1fa";
 export const LINE_LIGHT = "border-[#dfe1f0]";

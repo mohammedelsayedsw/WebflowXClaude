@@ -240,7 +240,7 @@ export function Report() {
 
           {state === "sent" ? (
             <p className="mt-10 text-white text-[22px] font-semibold font-[family-name:var(--font-golos)] max-w-[36rem]">
-              Thank you. The PDF is on its way to your email.
+              Thank you. We will email you the PDF within 24 hours.
             </p>
           ) : (
           <form onSubmit={onSubmit} className="mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-7 max-w-[36rem]">
@@ -258,6 +258,7 @@ export function Report() {
               <button type="submit" disabled={state === "sending"} className={`${btnPrimary} !h-14 !px-12 disabled:opacity-60`}>
                 {state === "sending" ? "Sending" : "Send me the PDF"}
               </button>
+              <span className="text-white/60 text-[14px]">We email the PDF within 24 hours of your request.</span>
               {state === "error" && (
                 <span className="text-[#ff5a31] text-[14px]">That did not go through. Please try again.</span>
               )}

@@ -81,7 +81,7 @@ export function Hero() {
               <Reveal delay={0.34}>
                 <div className="mt-[clamp(16px,2.6vh,30px)] flex items-center gap-3 border-t border-white/10 pt-[clamp(12px,2vh,20px)]">
                   <img
-                    src={assetUrl("/webinars/legacy-bridge/dmitrijs-tarasovs.jpg")}
+                    src={assetUrl("/webinars/legacy-bridge/dmitrijs-tarasovs-face.jpg")}
                     alt=""
                     aria-hidden
                     className="h-10 w-10 md:h-11 md:w-11 shrink-0 rounded-[4px] border border-white/15 object-cover"

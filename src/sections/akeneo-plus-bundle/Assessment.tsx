@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { Check } from "lucide-react";
+import { btnLight } from "@/components/primitives/buttonStyles";
 import { calculate, periodLabel, useSavings } from "./Savings";
 import { HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID } from "./status";
+import { BODY_DARK, Eyebrow, H2_DARK } from "./ui";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FREE_MAIL = new Set([
@@ -14,16 +16,16 @@ const FREE_MAIL = new Set([
 const WORK_EMAIL_MSG = "Use your work email";
 
 const INPUT =
-  "mt-2 w-full h-12 rounded-[2px] border border-white/20 bg-white/[0.04] px-4 text-white text-[16px] placeholder:text-white/35 outline-none focus:border-[var(--sw-beige)] transition";
-const LABEL = "text-white/80 text-[14px] font-medium";
+  "mt-2 w-full h-12 rounded-[2px] border border-[#c9cdeb] bg-white px-4 text-[var(--sw-black)] text-[16px] placeholder:text-[var(--sw-black)]/35 outline-none focus:border-[var(--sw-blue)] transition";
+const LABEL = "font-head font-semibold text-[var(--sw-black)] text-[14px]";
 
 type Fields = { firstname: string; company: string; email: string; licence: string; renewal: string };
 
 const INCLUDED = [
-  "Estimated annual and three-year savings, with ongoing costs",
-  "Migration cost and expected payback",
-  "Coverage of the features your team uses",
-  "A recommended timeline and any gaps to resolve",
+  "Your saving per year and over three years, after service costs",
+  "Migration cost and payback period",
+  "Which of your features are covered, and any gaps",
+  "A timeline that fits your renewal date",
 ];
 
 export function Assessment() {
@@ -113,7 +115,7 @@ export function Assessment() {
     <label className="block">
       <span className={LABEL}>
         {label}
-        {optional && <span className="ml-2 text-white/40 font-normal">Optional</span>}
+        {optional && <span className="block mt-0.5 font-body font-normal text-[12px] text-[var(--sw-black)]/55">Optional</span>}
       </span>
       <input
         name={k}
@@ -123,78 +125,72 @@ export function Assessment() {
         className={`${INPUT} ${errors[k] ? "border-[var(--sw-red)]" : ""}`}
         {...props}
       />
-      {errors[k] && <span className="mt-1.5 block text-[13px] text-[var(--sw-red)]">{errors[k]}</span>}
+      {errors[k] && <span className="mt-1.5 block text-[13px] text-[#c62f2f]">{errors[k]}</span>}
     </label>
   );
 
   return (
-    <section
-      id="cta"
-      className="relative z-10 py-24 md:py-32 border-t border-white/10"
-      style={{
-        background:
-          "radial-gradient(60% 70% at 15% 30%, rgba(63,74,175,0.28) 0%, rgba(5,7,15,0) 70%), var(--sw-black)",
-      }}
-    >
-      <div className="wrap grid gap-12 lg:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] items-start">
+    <section id="cta" className="relative z-10 bg-[var(--sw-black)] py-24 md:py-28">
+      <div className="wrap grid gap-12 lg:gap-16 lg:grid-cols-2 items-start">
         <Reveal>
-          <div className="label-code text-white/45">Free savings assessment</div>
-          <h2 className="mt-6 font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05] max-w-[16ch]">
+          <Eyebrow tone="mint">Free savings assessment</Eyebrow>
+          <h2 className={`${H2_DARK} max-w-[18ch]`}>
             Find out what you save{" "}
-            <span style={{ color: "var(--sw-mint)" }}>before your renewal</span>
+            <span style={{ color: "var(--sw-mint)" }}>before your next renewal</span>
           </h2>
-          <p className="mt-6 text-white/70 text-[15px] md:text-[17px] leading-relaxed max-w-[46ch]">
-            Get a free Akeneo savings assessment based on your current setup. It includes
-          </p>
-          <ul className="mt-5 border-t border-white/10 max-w-[520px]">
+          <p className={`${BODY_DARK} mt-6 max-w-[48ch]`}>Send us your setup. The written assessment covers</p>
+          <ul className="mt-5 grid gap-3">
             {INCLUDED.map((t) => (
-              <li key={t} className="flex gap-3 py-3 border-b border-white/10 text-white/85 text-[15px] md:text-[16px]">
-                <span aria-hidden style={{ color: "var(--sw-mint)" }}>✓</span>
+              <li key={t} className="flex gap-3 text-white text-[16px]">
+                <Check aria-hidden className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "var(--sw-mint)" }} strokeWidth={2.5} />
                 {t}
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-white/55 text-[14px]">There is no commitment to migrate</p>
+          <div className="mt-9 inline-flex items-center gap-3 border px-5 py-4 rounded-[2px]" style={{ borderColor: "rgba(110,247,110,0.5)", background: "rgba(110,247,110,0.06)" }}>
+            <span className="grid place-items-center h-7 w-7 rounded-full" style={{ background: "var(--sw-mint)" }}>
+              <Check aria-hidden className="h-4 w-4 text-[var(--sw-black)]" strokeWidth={3} />
+            </span>
+            <span className="font-head font-bold text-white text-[18px]">No commitment to migrate</span>
+          </div>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-8">
+          <div className="bg-white rounded-[2px] p-6 md:p-8">
             {status === "done" ? (
               <div role="status" className="py-10">
-                <div className="label-code" style={{ color: "var(--sw-mint)" }}>Request sent</div>
-                <h3 className="mt-4 font-head font-semibold text-white text-[26px] md:text-[30px] leading-[1.15]">
+                <div className="font-head font-bold uppercase text-[12px] tracking-[0.16em] text-[var(--sw-blue)]">Request sent</div>
+                <h3 className="mt-4 font-head font-bold text-[var(--sw-black)] text-[26px] md:text-[30px] leading-[1.15]">
                   Thanks, {f.firstname.trim()}
                 </h3>
-                <p className="mt-4 text-white/75 text-[16px] leading-relaxed max-w-[44ch]">
-                  scandiweb will email {f.email.trim()} to ask for anything missing and arrange the
-                  assessment.
+                <p className="mt-4 text-[var(--sw-black)]/70 text-[16px] leading-relaxed max-w-[44ch]">
+                  scandiweb will email {f.email.trim()} to ask for anything missing and set up the assessment.
                 </p>
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="grid gap-5">
-                <h3 className="font-head font-semibold text-white text-[22px]">Your Akeneo setup</h3>
+                <h3 className="font-head font-bold text-[var(--sw-black)] text-[22px]">Your Akeneo setup</h3>
                 <div className="grid sm:grid-cols-2 gap-5">
-                  {field("firstname", "Name", { autoComplete: "given-name" })}
-                  {field("email", "Work email", { type: "email", autoComplete: "email" })}
+                  {field("firstname", "Name", { autoComplete: "name" })}
+                  {field("company", "Company", { autoComplete: "organization" })}
                 </div>
-                {field("company", "Company", { autoComplete: "organization" })}
+                {field("email", "Work email", { type: "email", autoComplete: "email" })}
                 <div className="grid sm:grid-cols-2 gap-5">
-                  {field("licence", `Annual license cost (${currency === "USD" ? "$" : "€"})`, { inputMode: "numeric", placeholder: String(licence) }, true)}
+                  {field("licence", `Annual license cost (${currency === "USD" ? "$" : "€"})`, { inputMode: "numeric", placeholder: licence.toLocaleString("en-US") }, true)}
                   {field("renewal", "License renewal date", { type: "date" }, true)}
                 </div>
                 {status === "error" && (
-                  <p role="alert" className="text-[14px] text-[var(--sw-red)]">{errorMsg}</p>
+                  <p role="alert" className="text-[14px] text-[#c62f2f]">{errorMsg}</p>
                 )}
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className={`${btnPrimary} w-full h-auto min-h-12 py-3 disabled:opacity-60`}
+                  className={`${btnLight} w-full h-auto min-h-12 py-3 disabled:opacity-60`}
                 >
                   {status === "submitting" ? "Sending" : "Get my free savings assessment"}
                 </button>
-                <p className="text-white/50 text-[13px] leading-relaxed">
-                  Not sure of your license cost or renewal date? Send what you know and we follow up
-                  for the rest.
+                <p className="text-[var(--sw-black)]/60 text-[13px] leading-relaxed">
+                  Don&apos;t know your license cost or renewal date? Leave them blank and we will ask.
                 </p>
               </form>
             )}

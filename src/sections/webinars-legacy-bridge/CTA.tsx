@@ -1,58 +1,16 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "./Eyebrow";
 import { EYEBROW_PARTS } from "./details";
 import { Lockup } from "./Lockup";
 
 /**
- * Registration.
- *
- * The HubSpot form is still to come, so this is the placeholder the house rules
- * call for rather than a form wired to a guessed id. It is laid out as the real
- * one will be, so swapping it is one import and one component:
- *
- *   <HubSpotForm portalId="25724996" formId="<id>" region="eu1"
- *                submitText="Save your seat" />
- *
- * The fields are inert and not focusable, so nobody can type into something
- * that would go nowhere.
+ * Registration. The HubSpot form renders unstyled by HubSpot (empty `css` and
+ * `cssRequired` in HubSpotForm); the look comes from
+ * `.hubspot-form-wrapper .hbspt-form *` in globals.css.
  */
-/* TODO: insert HubSpot formId, then replace FormPlaceholder with <HubSpotForm>. */
-const FIELDS = ["First name", "Last name", "Business email", "Company"];
-
-function FormPlaceholder() {
-  return (
-    <div
-      className="hubspot-form-wrapper rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-7 md:p-8"
-      style={{
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.04)",
-      }}
-    >
-      <div
-        aria-hidden
-        className="flex flex-col gap-4"
-      >
-        {FIELDS.map((f) => (
-          <div key={f}>
-            <div className="label-code text-white/60 mb-2">{f}</div>
-            <div className="h-11 rounded-[4px] border border-white/15 bg-white/[0.06]" />
-          </div>
-        ))}
-
-        <div className="mt-2 h-12 rounded-[4px] border border-white/60 flex items-center justify-center font-head font-bold text-white text-[15px]">
-          Save your seat
-        </div>
-      </div>
-
-      <p className="mt-5 font-mono text-[12px] leading-relaxed text-[var(--sw-orange)]">
-        [Placeholder. The HubSpot registration form goes here once the form ID
-        is available.]
-      </p>
-    </div>
-  );
-}
 
 export function CTA() {
   return (
@@ -102,7 +60,12 @@ export function CTA() {
               without it the wrapper shrinks to the form's intrinsic width. */}
           <Reveal delay={0.2} className="w-full">
             <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <FormPlaceholder />
+              <HubSpotForm
+                portalId="25724996"
+                formId="6f775a13-d110-4293-943c-86bbc43e2e84"
+                region="eu1"
+                submitText="Save your seat"
+              />
             </div>
           </Reveal>
 

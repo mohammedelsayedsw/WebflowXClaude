@@ -10,7 +10,7 @@ export function Costs() {
   const mint = { color: "var(--sw-mint)" };
 
   return (
-    <section id="costs" className="relative z-10 bg-[var(--sw-black)] py-24 md:py-28">
+    <section id="costs" className="relative z-10 bg-[var(--sw-black)] py-16 md:py-28">
       <div className="wrap grid gap-14 lg:grid-cols-2 lg:gap-24 items-start">
         <Reveal>
           <Eyebrow tone="mint">Cost model</Eyebrow>
@@ -32,7 +32,7 @@ export function Costs() {
 
         <div className="grid gap-5">
           <Reveal>
-            <div className="border border-white/25 rounded-[2px] p-8">
+            <div className="border border-white/25 rounded-[2px] p-6 md:p-8">
               <div className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={mint}>One-off</div>
               <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3">
                 <h3 className="font-head font-bold text-white text-[22px] md:text-[24px]">Migration</h3>
@@ -44,7 +44,7 @@ export function Costs() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="border border-white/25 rounded-[2px] p-8">
+            <div className="border border-white/25 rounded-[2px] p-6 md:p-8">
               <div className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={mint}>Every year</div>
               <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3">
                 <h3 className="font-head font-bold text-white text-[22px] md:text-[24px]">Service</h3>

@@ -130,7 +130,7 @@ export function Assessment() {
   );
 
   return (
-    <section id="cta" className="relative z-10 bg-[var(--sw-black)] py-24 md:py-28">
+    <section id="cta" className="relative z-10 bg-[var(--sw-black)] py-16 md:py-28">
       <div className="wrap grid gap-12 lg:gap-16 lg:grid-cols-2 items-start">
         <Reveal>
           <Eyebrow tone="mint">Free savings assessment</Eyebrow>

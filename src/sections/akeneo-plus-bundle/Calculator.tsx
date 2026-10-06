@@ -67,31 +67,31 @@ export function Calculator() {
         How much could you save?
       </h2>
 
-      <div className="mt-5 md:mt-6 bg-[var(--sw-black)] p-5 md:p-6" aria-live="polite" aria-atomic="true">
-        <div className="text-white/80 text-[14px]">
+      <div className="mt-5 md:mt-6 p-5 md:p-6 border border-[#dfe1f0]" style={{ background: LAVENDER }} aria-live="polite" aria-atomic="true">
+        <div className="text-[var(--sw-black)]/70 text-[14px]">
           {positive ? `Estimated net saving over ${period}` : r.netSaving < 0 ? `Estimated extra cost over ${period}` : `No net saving over ${period}`}
         </div>
         <div
           className="mt-2 font-head font-bold text-[40px] md:text-[52px] leading-none tracking-[-0.03em]"
-          style={{ color: positive ? "var(--sw-mint)" : "var(--sw-orange)" }}
+          style={{ color: positive ? "var(--sw-blue)" : "var(--sw-orange)" }}
         >
           {money(Math.abs(r.netSaving))}
         </div>
-        <div className="mt-2 text-white/70 text-[13px]">After migration and the yearly service</div>
-        <div className="mt-5 pt-5 border-t border-white/15">
+        <div className="mt-2 text-[var(--sw-black)]/60 text-[13px]">After migration and the yearly service</div>
+        <div className="mt-5 pt-5 border-t border-[#d3d6ee]">
           {r.paybackMonths === null ? (
-            <p className="text-white/80 text-[14px]">The yearly service costs as much as your license or more.</p>
+            <p className="text-[var(--sw-black)]/70 text-[14px]">The yearly service costs as much as your license or more.</p>
           ) : (
             <>
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-white/80 text-[14px]">Migration paid back in</span>
-                <span className="font-head font-bold text-[22px] md:text-[26px] whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
+                <span className="text-[var(--sw-black)]/70 text-[14px]">Migration paid back in</span>
+                <span className="font-head font-bold text-[22px] md:text-[26px] whitespace-nowrap text-[var(--sw-black)]">
                   {r.paybackMonths.toFixed(1)} months
                 </span>
               </div>
-              <p className="mt-2 text-white text-[14px]">
+              <p className="mt-2 text-[var(--sw-black)] text-[14px]">
                 {beyond ? "After payback" : "After that"}, you save{" "}
-                <strong style={{ color: "var(--sw-mint)" }}>{money(r.annualSaving / 12)}/month</strong>
+                <strong className="text-[var(--sw-blue)]">{money(r.annualSaving / 12)}/month</strong>
               </p>
             </>
           )}

@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // The October 6 teaser became the Expedio page (2026-10-06).
+        source: "/magento/twice-as-fast",
+        destination: "/magento/expedio",
+        permanent: false,
+      },
+      {
         // EU-wide reframe: /widerrufsbutton -> /eu-withdrawal-button (renamed 2026-06-19).
         source: "/widerrufsbutton",
         destination: "/eu-withdrawal-button",

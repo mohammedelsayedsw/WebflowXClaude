@@ -17,7 +17,7 @@ const INPUT =
   "mt-2 w-full h-12 rounded-[2px] border border-white/20 bg-white/[0.04] px-4 text-white text-[16px] placeholder:text-white/35 outline-none focus:border-[var(--sw-beige)] transition";
 const LABEL = "text-white/80 text-[14px] font-medium";
 
-type Fields = { firstname: string; website: string; email: string; licence: string; renewal: string };
+type Fields = { firstname: string; company: string; email: string; licence: string; renewal: string };
 
 const INCLUDED = [
   "Estimated annual and three-year savings, with ongoing costs",
@@ -28,7 +28,7 @@ const INCLUDED = [
 
 export function Assessment() {
   const { licence, years, currency, money } = useSavings();
-  const [f, setF] = useState<Fields>({ firstname: "", website: "", email: "", licence: "", renewal: "" });
+  const [f, setF] = useState<Fields>({ firstname: "", company: "", email: "", licence: "", renewal: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "error" | "done">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -41,7 +41,7 @@ export function Assessment() {
   const validate = () => {
     const e: Partial<Record<keyof Fields, string>> = {};
     if (!f.firstname.trim()) e.firstname = "Enter your name";
-    if (!f.website.trim()) e.website = "Enter your company website";
+    if (!f.company.trim()) e.company = "Enter your company";
     const em = f.email.trim().toLowerCase();
     if (!EMAIL_OK.test(em)) e.email = "Enter a valid email address";
     else if (FREE_MAIL.has(em.split("@")[1])) e.email = WORK_EMAIL_MSG;
@@ -78,7 +78,7 @@ export function Assessment() {
             fields: [
               { objectTypeId: "0-1", name: "firstname", value: f.firstname.trim() },
               { objectTypeId: "0-1", name: "email", value: f.email.trim() },
-              { objectTypeId: "0-1", name: "website", value: f.website.trim() },
+              { objectTypeId: "0-1", name: "company", value: f.company.trim() },
               { objectTypeId: "0-1", name: "message", value: message },
             ],
             context: { hutk, pageUri: window.location.href, pageName: document.title },
@@ -177,7 +177,7 @@ export function Assessment() {
                   {field("firstname", "Name", { autoComplete: "given-name" })}
                   {field("email", "Work email", { type: "email", autoComplete: "email" })}
                 </div>
-                {field("website", "Company website", { autoComplete: "url", placeholder: "company.com" })}
+                {field("company", "Company", { autoComplete: "organization" })}
                 <div className="grid sm:grid-cols-2 gap-5">
                   {field("licence", `Annual license cost (${currency === "USD" ? "$" : "€"})`, { inputMode: "numeric", placeholder: String(licence) }, true)}
                   {field("renewal", "License renewal date", { type: "date" }, true)}

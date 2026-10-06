@@ -11,8 +11,8 @@ export const YEARS = [1, 2, 3, 4, 5] as const;
 export const DEFAULT_YEARS = 3;
 
 export const HUBSPOT_PORTAL_ID = "25724996";
-/** firstname, email, website, message (all required). The calculator inputs travel in `message`. */
-export const HUBSPOT_FORM_ID = "e0c4052e-523c-4d24-a008-feb45b6b85dd";
+/** "[Contact form] Akeneo Plus Bundle assessment": firstname, company, email required; message optional and carries the calculator inputs. */
+export const HUBSPOT_FORM_ID = "1c6ae1b0-04d0-4a01-aef9-06a06845c763";
 
 export const AKENEO_SERVICES_URL = "https://scandiweb.com/services/akeneo-pim-implementation";
 export const AKENEO_AWARD_URL =

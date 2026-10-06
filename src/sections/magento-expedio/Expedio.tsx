@@ -216,7 +216,7 @@ export function Contact() {
       />
       <div className="wrap relative z-10 w-full py-24 md:py-28">
         <Reveal className="text-center max-w-[56rem] mx-auto">
-          <div className="label-code text-white/70">Available to all Magento merchants</div>
+          <div className="label-code !text-[13px] md:!text-[14px] !tracking-[0.24em]" style={{ color: "#ffffff" }}>Available to all Magento merchants</div>
           <h2 className="mt-5 text-[52px] sm:text-[72px] md:text-[96px] leading-[0.95] tracking-[-0.045em]" style={{ textShadow: "0 0 60px rgba(110,247,110,0.25)" }}>
             Get Expedio
           </h2>

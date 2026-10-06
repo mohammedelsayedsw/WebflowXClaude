@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 
 export function Host() {
   return (
@@ -29,13 +30,12 @@ export function Host() {
             row and the photo can be the size it wants to be. */}
         <Reveal delay={0.12}>
           <div className="mt-10 md:mt-14 flex flex-col gap-6 md:flex-row md:items-center md:gap-9 rounded-[4px] border border-white/10 bg-white/[0.03] p-6 md:p-8">
-            {/* TODO: speaker photo for Dmitrijs Tarasovs, in this 4px box. */}
-            <div
-              aria-hidden
-              className="w-full max-w-[280px] aspect-square md:h-[280px] md:w-[280px] shrink-0 rounded-[4px] border border-white/10 bg-white/[0.06] flex items-center justify-center font-head text-white/35 text-[44px]"
-            >
-              DT
-            </div>
+            <img
+              src={assetUrl("/webinars/legacy-bridge/dmitrijs-tarasovs.jpg")}
+              alt="Dmitrijs Tarasovs"
+              loading="lazy"
+              className="w-full max-w-[280px] aspect-square md:h-[280px] md:w-[280px] shrink-0 rounded-[4px] border border-white/10 object-cover"
+            />
             <div>
               <div className="font-head font-bold text-white text-[22px] md:text-[28px] leading-tight">
                 Dmitrijs Tarasovs

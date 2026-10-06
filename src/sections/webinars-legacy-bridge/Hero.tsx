@@ -3,6 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 import { Badges } from "./Badges";
 import { Eyebrow } from "./Eyebrow";
 import { HeroVisual } from "./HeroVisual";
@@ -79,13 +80,12 @@ export function Hero() {
 
               <Reveal delay={0.34}>
                 <div className="mt-[clamp(16px,2.6vh,30px)] flex items-center gap-3 border-t border-white/10 pt-[clamp(12px,2vh,20px)]">
-                  {/* TODO: speaker photo for Dmitrijs Tarasovs. */}
-                  <span
+                  <img
+                    src={assetUrl("/webinars/legacy-bridge/dmitrijs-tarasovs.jpg")}
+                    alt=""
                     aria-hidden
-                    className="inline-flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-[4px] border border-white/15 bg-white/[0.06] font-head text-white/70 text-[13px]"
-                  >
-                    DT
-                  </span>
+                    className="h-10 w-10 md:h-11 md:w-11 shrink-0 rounded-[4px] border border-white/15 object-cover"
+                  />
                   <div>
                     <div className="font-head text-white text-[14px] md:text-[15px] leading-tight">
                       Dmitrijs Tarasovs

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { assetUrl } from "@/lib/assets";
 import { Calculator } from "./Calculator";
 import { scrollToId } from "./scrollTo";
 import { Eyebrow } from "./ui";
@@ -17,8 +18,39 @@ const enter = (delay: number) => ({
 /** Headline, one line, two facts, one button. The numbers live in the calculator beside it. */
 export function Hero() {
   return (
-    <section id="hero" className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)]">
-      <div className="wrap pt-32 md:pt-[150px] pb-12 md:pb-20 grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] items-start">
+    <section id="hero" className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)] overflow-hidden">
+      {/* scandiweb waves: the scandiweb.com homepage hero loop */}
+      <video
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        src={assetUrl("/akeneo/plus-bundle/hero-waves.mp4")}
+        poster={assetUrl("/akeneo/plus-bundle/hero-waves-poster.jpg")}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        aria-hidden
+        alt=""
+        src={assetUrl("/akeneo/plus-bundle/hero-waves-poster.jpg")}
+        className="absolute inset-0 h-full w-full object-cover hidden motion-reduce:block"
+      />
+      {/* keep the copy legible: dark on the left and bottom, waves show through on the right */}
+      <div
+        aria-hidden
+        className="absolute inset-0 hidden lg:block"
+        style={{ background: "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0.45) 38%, rgba(16,19,44,0) 62%, rgba(16,19,44,0) 100%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 lg:hidden"
+        style={{ background: "linear-gradient(180deg, rgba(16,19,44,0.35) 0%, rgba(16,19,44,0.55) 40%, rgba(16,19,44,0.85) 75%, rgba(16,19,44,0.95) 100%)" }}
+      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
+      <div className="wrap relative pt-32 md:pt-[150px] pb-12 md:pb-20 grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] items-start">
         <div className="lg:pt-20">
           <motion.div {...enter(0.1)}>
             <Eyebrow tone="mint">Akeneo Plus Bundle</Eyebrow>

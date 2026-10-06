@@ -1,0 +1,6 @@
+.akeneo-range { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; cursor: pointer;
+  background: linear-gradient(to right, var(--sw-mint) var(--fill, 50%), rgba(255,255,255,0.15) var(--fill, 50%)); }
+.akeneo-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--sw-beige); border: 3px solid #05070f; box-shadow: 0 0 0 1px var(--sw-beige); }
+.akeneo-range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--sw-beige); border: 3px solid #05070f; }
+.akeneo-range:focus-visible { outline: 2px solid var(--sw-beige); outline-offset: 6px; }

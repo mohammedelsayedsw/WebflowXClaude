@@ -54,7 +54,7 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative z-10 py-24 md:py-28" style={{ background: LAVENDER }}>
+    <section id="faq" className="relative z-10 py-16 md:py-28" style={{ background: LAVENDER }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="wrap grid gap-10 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
         <Reveal>
@@ -62,7 +62,7 @@ export function FAQ() {
           <a
             href="#cta"
             onClick={scrollToId("cta")}
-            className="mt-8 inline-block font-head font-bold text-[16px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] pb-0.5 hover:opacity-80 transition"
+            className="mt-8 inline-block font-head font-bold text-[16px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] py-1 hover:opacity-80 transition"
           >
             Ask about my setup
           </a>

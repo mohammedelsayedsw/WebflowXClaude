@@ -7,7 +7,7 @@ import { AKENEO_AWARD_URL, AKENEO_SERVICES_URL } from "./status";
 import { BODY_LIGHT, Eyebrow, H2_LIGHT, LAVENDER, LINE_LIGHT } from "./ui";
 
 const LINK =
-  "inline-block font-head font-bold text-[15px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] pb-0.5 hover:opacity-80 transition";
+  "inline-block font-head font-bold text-[15px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] py-1 hover:opacity-80 transition";
 
 const POINTS = [
   {
@@ -24,7 +24,7 @@ const POINTS = [
 
 export function Why() {
   return (
-    <section id="why" className="relative z-10 bg-white py-24 md:py-28">
+    <section id="why" className="relative z-10 bg-white py-16 md:py-28">
       <div className="wrap grid gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-20 items-start">
         <div>
           <Reveal>
@@ -65,7 +65,7 @@ export function Why() {
               className="w-full aspect-[4/3] object-cover"
               loading="lazy"
             />
-            <figcaption className="p-8" style={{ background: LAVENDER }}>
+            <figcaption className="p-6 md:p-8" style={{ background: LAVENDER }}>
               <div className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={{ color: "var(--sw-blue)" }}>
                 Akeneo PIM Summit 2020
               </div>

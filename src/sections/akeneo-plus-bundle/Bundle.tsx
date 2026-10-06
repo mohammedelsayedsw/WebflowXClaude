@@ -26,7 +26,7 @@ const FEATURES = [
 
 export function Bundle() {
   return (
-    <section id="bundle" className="relative z-10 py-24 md:py-28" style={{ background: LAVENDER }}>
+    <section id="bundle" className="relative z-10 py-16 md:py-28" style={{ background: LAVENDER }}>
       <div className="wrap">
         <Reveal>
           <Eyebrow>Akeneo Plus Bundle</Eyebrow>
@@ -36,13 +36,15 @@ export function Bundle() {
             Akeneo. The Plus Bundle adds them back.
           </p>
         </Reveal>
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 md:mt-12 grid md:grid-cols-3 gap-3 md:gap-6">
           {FEATURES.map(({ icon: Icon, title, body }, i) => (
             <Reveal key={title} delay={i * 0.07} className="h-full">
-              <div className={`h-full bg-white border ${LINE_LIGHT} rounded-[2px] p-8`}>
-                <Icon aria-hidden className="h-10 w-10" style={{ color: "var(--sw-blue)" }} strokeWidth={1.25} />
-                <h3 className="mt-8 font-head font-bold text-[var(--sw-black)] text-[22px] md:text-[24px] leading-[1.2]">{title}</h3>
-                <p className="mt-4 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">{body}</p>
+              <div className={`h-full bg-white border ${LINE_LIGHT} rounded-[2px] p-5 md:p-8`}>
+                <div className="flex md:block items-center gap-4">
+                  <Icon aria-hidden className="h-8 w-8 md:h-10 md:w-10 shrink-0" style={{ color: "var(--sw-blue)" }} strokeWidth={1.25} />
+                  <h3 className="md:mt-8 font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.2]">{title}</h3>
+                </div>
+                <p className="mt-3 md:mt-4 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">{body}</p>
               </div>
             </Reveal>
           ))}

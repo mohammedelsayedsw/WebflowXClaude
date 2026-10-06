@@ -29,7 +29,7 @@ const ITEMS = [
 
 export function Experience() {
   return (
-    <section id="experience" className="relative z-10 bg-white py-24 md:py-28">
+    <section id="experience" className="relative z-10 bg-white py-16 md:py-28">
       <div className="wrap">
         <Reveal>
           <Eyebrow>Fully managed</Eyebrow>
@@ -39,7 +39,7 @@ export function Experience() {
             compatibility, and support.
           </p>
         </Reveal>
-        <div className="mt-14 grid md:grid-cols-2 gap-x-16">
+        <div className="mt-10 md:mt-14 grid md:grid-cols-2 gap-x-16">
           {ITEMS.map(({ icon: Icon, title, body }, i) => (
             <Reveal key={title} delay={i * 0.07}>
               <div className={`flex gap-6 py-8 border-t ${LINE_LIGHT}`}>

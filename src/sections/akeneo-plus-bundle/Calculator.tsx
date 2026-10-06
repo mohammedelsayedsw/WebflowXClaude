@@ -63,16 +63,16 @@ export function Calculator() {
         </div>
       </div>
 
-      <h2 className={`mt-4 font-head font-bold ${INK} text-[26px] md:text-[30px] leading-[1.15] tracking-[-0.01em]`}>
+      <h2 className={`mt-4 font-head font-bold ${INK} text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.01em]`}>
         How much could you save?
       </h2>
 
-      <div className="mt-6 bg-[var(--sw-black)] p-5 md:p-6" aria-live="polite" aria-atomic="true">
+      <div className="mt-5 md:mt-6 bg-[var(--sw-black)] p-5 md:p-6" aria-live="polite" aria-atomic="true">
         <div className="text-white/80 text-[14px]">
           {positive ? `Estimated net saving over ${period}` : r.netSaving < 0 ? `Estimated extra cost over ${period}` : `No net saving over ${period}`}
         </div>
         <div
-          className="mt-2 font-head font-bold text-[44px] md:text-[52px] leading-none tracking-[-0.03em]"
+          className="mt-2 font-head font-bold text-[40px] md:text-[52px] leading-none tracking-[-0.03em]"
           style={{ color: positive ? "var(--sw-mint)" : "var(--sw-orange)" }}
         >
           {money(Math.abs(r.netSaving))}
@@ -187,11 +187,11 @@ export function Calculator() {
       </div>
 
       <div className={`mt-6 pt-5 border-t ${LINE_LIGHT}`}>
-        <p className={`flex items-center gap-3 font-head font-semibold ${INK} text-[15px]`}>
+        <p className={`hidden sm:flex items-center gap-3 font-head font-semibold ${INK} text-[15px]`}>
           <Check aria-hidden className="h-4 w-4 text-[var(--sw-blue)]" strokeWidth={3} />
           You own the system and the data
         </p>
-        <details className="mt-3" open={open} onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}>
+        <details className="sm:mt-3" open={open} onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}>
           <summary className={`cursor-pointer list-none flex items-center justify-between py-2 font-head font-semibold ${INK} text-[15px] [&::-webkit-details-marker]:hidden`}>
             See costs and assumptions
             <Plus aria-hidden className={`h-4 w-4 transition ${open ? "rotate-45" : ""}`} />

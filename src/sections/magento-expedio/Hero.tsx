@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="wrap relative z-10 w-full flex flex-col items-center pt-24 pb-16 md:pt-[clamp(120px,15vh,170px)] md:pb-[clamp(48px,8vh,96px)]">
-        <motion.div {...enter(0.3)} className="label-code text-white/70">
+        <motion.div {...enter(0.3)} className="label-code !text-[13px] md:!text-[14px] !tracking-[0.24em]" style={{ color: "#ffffff" }}>
           Introducing
         </motion.div>
 

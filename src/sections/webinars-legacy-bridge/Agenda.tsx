@@ -22,7 +22,7 @@ const POINTS: string[] = [
   "What happens when part of a document is hard to read, or the system shows an error",
   "How the software handles invoices, orders and any other document your team types in by hand",
   "What the software is and isn't allowed to do, and how your team approves each entry",
-  "How to get a two-week test on your own documents",
+  "A special offer for attendees: try it on your own documents for one week",
   "Time for your questions",
 ];
 

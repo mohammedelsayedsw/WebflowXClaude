@@ -1,5 +1,6 @@
 "use client";
 
+import { Gift } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 
@@ -50,6 +51,26 @@ export function Host() {
                 typing documents into the AS/400 (IBM&nbsp;i).
               </p>
             </div>
+          </div>
+        </Reveal>
+
+        {/* Attendee offer, styled as an add-on strip to the card above:
+            same width, about a third of its height. */}
+        <Reveal delay={0.18}>
+          <div
+            className="mt-3 flex items-center gap-4 rounded-[4px] border bg-white/[0.03] px-6 py-6 md:px-8 md:py-10"
+            style={{ borderColor: "var(--sw-mint)" }}
+          >
+            <Gift
+              aria-hidden
+              className="h-5 w-5 md:h-6 md:w-6 shrink-0"
+              style={{ color: "var(--sw-mint)" }}
+            />
+            <p className="text-white/85 text-[15px] md:text-[17px] leading-snug">
+              During the webinar, Dmitrijs will share a special offer for
+              attendees to try LegacyBridge on their own documents for one
+              week.
+            </p>
           </div>
         </Reveal>
       </div>

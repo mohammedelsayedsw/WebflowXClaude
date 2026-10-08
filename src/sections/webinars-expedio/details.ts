@@ -27,7 +27,7 @@ export const SPEAKERS = [
   {
     name: "Alfreds Genkins",
     title: "CTO",
-    bio: "",
+    bio: "Leads all of scandiweb's Magento technology. Founded ScandiPWA, the first open-source PWA theme built for Magento, and Ari, the first agent for Magento.",
     photo: "/webinars/expedio/alfreds-genkins.jpg",
     face: "/webinars/expedio/alfreds-genkins-face.jpg",
   },

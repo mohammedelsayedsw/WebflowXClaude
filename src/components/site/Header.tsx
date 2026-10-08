@@ -33,7 +33,7 @@ const SECONDARY_LINKS = [
 const MENULESS_ROUTES = ["/magento/twice-as-fast"];
 
 /** Routes (prefix match, without basePath) that render their own header, so this one is not shown. */
-const HEADERLESS_PREFIXES = ["/magento/expedio"];
+const HEADERLESS_PREFIXES = ["/magento/expedio", "/webinars/expedio"];
 
 const CTA = {
   text: "Custom enterprise software 2-10x faster at up to 90% lower cost",

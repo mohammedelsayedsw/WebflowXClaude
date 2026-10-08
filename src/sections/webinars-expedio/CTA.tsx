@@ -30,13 +30,13 @@ export function CTA() {
 
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[20ch] mx-auto">
-              See Magento run <span style={{ color: "var(--sw-mint)" }}>twice as fast</span>, live
+              Learn how to make your Magento store <span style={{ color: "var(--sw-mint)" }}>twice as fast</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto text-balance">
-              Watch the side-by-side demo and ask the team about your own store.
+              See it live next to stock Magento, and ask the team about your own store.
             </p>
           </Reveal>
 

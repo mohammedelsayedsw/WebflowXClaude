@@ -15,8 +15,18 @@ export const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 export const HUBSPOT_PORTAL = "25724996";
 export const HUBSPOT_FORM_ID = "";
 
-/* TODO before publish: real photos and titles for both speakers. */
+/* TODO before publish: confirm both titles. `photo` is the card portrait, `face` the small hero avatar. */
 export const SPEAKERS = [
-  { name: "Glebs Vrevsky", title: "[CONFIRM title]" },
-  { name: "Alfreds Genkins", title: "[CONFIRM title]" },
+  {
+    name: "Glebs Vrevsky",
+    title: "[CONFIRM title]",
+    photo: "/webinars/expedio/glebs-vrevsky.jpg",
+    face: "/webinars/expedio/glebs-vrevsky-face.jpg",
+  },
+  {
+    name: "Alfreds Genkins",
+    title: "[CONFIRM title]",
+    photo: "/webinars/expedio/alfreds-genkins.jpg",
+    face: "/webinars/expedio/alfreds-genkins-face.jpg",
+  },
 ];

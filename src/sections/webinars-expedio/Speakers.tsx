@@ -2,7 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { SPEAKERS } from "./details";
-import { PhotoPlaceholder } from "./PhotoPlaceholder";
+import { assetUrl } from "@/lib/assets";
 import { SectionLabel } from "./SectionLabel";
 
 export function Speakers() {
@@ -22,7 +22,13 @@ export function Speakers() {
           {SPEAKERS.map((s, i) => (
             <Reveal key={s.name} delay={0.1 + i * 0.07} className="h-full">
               <li className="flex h-full items-center gap-5 md:gap-7 rounded-[4px] border border-[var(--sw-black)]/10 bg-white p-5 md:p-7">
-                <PhotoPlaceholder className="h-28 w-28 sm:h-36 sm:w-36 md:h-40 md:w-40" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetUrl(s.photo)}
+                  alt={s.name}
+                  loading="lazy"
+                  className="h-28 w-28 sm:h-36 sm:w-36 md:h-40 md:w-40 shrink-0 rounded-[4px] border border-[var(--sw-black)]/10 object-cover"
+                />
                 <div>
                   <div className="font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[24px] leading-tight">
                     {s.name}

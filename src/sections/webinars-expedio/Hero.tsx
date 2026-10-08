@@ -3,11 +3,11 @@
 import { ArrowUpRight } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { assetUrl } from "@/lib/assets";
 import { AuroraRain } from "@/sections/magento-expedio/AuroraRain";
 import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
 import { TrustBar } from "@/sections/webinars-legacy-bridge/TrustBar";
 import { EYEBROW_PARTS, SPEAKERS } from "./details";
-import { PhotoPlaceholder } from "./PhotoPlaceholder";
 
 /**
  * The hero sits on the Expedio page's background: the same aurora rain
@@ -21,6 +21,15 @@ export function Hero() {
       className="relative isolate overflow-hidden min-h-[100svh] flex flex-col bg-[var(--sw-ink)]"
     >
       <AuroraRain contained />
+      {/* Darkens the rain on this page only, most behind the copy, so the text reads clearly. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 52%, rgba(5,7,15,0.72) 0%, rgba(5,7,15,0.45) 60%, rgba(5,7,15,0.3) 100%)",
+        }}
+      />
 
       <div className="relative z-10 flex-1 flex items-center">
         <div className="wrap w-full pt-[clamp(104px,14vh,150px)] pb-[clamp(32px,6vh,72px)]">
@@ -58,7 +67,13 @@ export function Hero() {
               <div className="mt-[clamp(22px,3.6vh,40px)] flex flex-wrap justify-center gap-x-8 gap-y-4 border-t border-white/10 pt-[clamp(14px,2.2vh,22px)]">
                 {SPEAKERS.map((s) => (
                   <div key={s.name} className="flex items-center gap-3 text-left">
-                    <PhotoPlaceholder className="h-10 w-10 md:h-11 md:w-11" dark />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={assetUrl(s.face)}
+                      alt=""
+                      aria-hidden
+                      className="h-10 w-10 md:h-11 md:w-11 shrink-0 rounded-[4px] border border-white/15 object-cover"
+                    />
                     <div>
                       <div className="font-head text-white text-[14px] md:text-[15px] leading-tight">
                         {s.name}

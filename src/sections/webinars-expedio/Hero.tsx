@@ -41,15 +41,15 @@ export function Hero() {
             <Reveal delay={0.08}>
               <h1 className="font-head text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[clamp(44px,min(6.6vh,4.6vw),64px)] leading-[1.06] tracking-[-0.025em] text-balance">
                 Make your Magento store{" "}
-                <span style={{ color: "var(--sw-mint)" }}>twice as fast</span> without
+                <span style={{ color: "var(--sw-mint)" }}>2x&nbsp;faster</span> without
                 replatforming
               </h1>
             </Reveal>
 
             <Reveal delay={0.14}>
               <p className="mt-[clamp(14px,2.2vh,24px)] max-w-[60ch] mx-auto text-[16px] md:text-[18px] leading-[1.5] text-white/80 text-balance">
-                Learn how to make your Magento store at least twice as fast, with
-                the same store, design and data.
+                Meet Expedio, which speeds up the part of Magento that builds every
+                page, while your store, design and data stay the same.
               </p>
             </Reveal>
 

@@ -11,7 +11,6 @@ const POINTS: string[] = [
   "A live demo of the same store on Magento and on Expedio, side by side",
   "The benchmark results, page by page",
   "How Expedio works with Hyvä and with any Magento hosting",
-  "How we measure your store and put 2x faster into the contract",
   "Time for your questions",
 ];
 

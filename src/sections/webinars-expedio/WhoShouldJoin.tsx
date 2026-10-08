@@ -39,7 +39,7 @@ export function WhoShouldJoin() {
                   <div className="font-head font-bold text-white text-[17px] md:text-[19px] leading-tight text-balance">
                     {a.lead}
                   </div>
-                  <p className="mt-2.5 text-white/65 text-[14px] md:text-[15px] leading-relaxed text-balance">{a.body}</p>
+                  <p className="mt-1 text-white/65 text-[14px] md:text-[15px] leading-relaxed text-balance">{a.body}</p>
                 </div>
               </li>
             </Reveal>

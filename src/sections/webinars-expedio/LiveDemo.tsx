@@ -38,7 +38,7 @@ export function LiveDemo() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={assetUrl("/magento/expedio/demo.png")}
+              src={assetUrl("/webinars/expedio/demo-side-by-side.jpg")}
               alt="The demo: the same store on Magento and on Expedio, with live timings"
               loading="lazy"
               className="block w-full transition-opacity duration-300 group-hover:opacity-90 motion-reduce:transition-none"

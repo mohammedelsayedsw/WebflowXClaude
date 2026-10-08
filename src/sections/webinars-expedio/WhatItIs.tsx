@@ -52,15 +52,6 @@ export function WhatItIs() {
           ))}
         </ul>
 
-        <Reveal delay={0.3}>
-          <p className="mt-5 text-[var(--sw-black)]/50 text-[13px] md:text-[14px]">
-            Measured with no page cache. Full results are on the{" "}
-            <a href="/solutions/magento/expedio#benchmark" className="underline underline-offset-2 hover:text-[var(--sw-black)]">
-              Expedio page
-            </a>
-            .
-          </p>
-        </Reveal>
       </div>
     </section>
   );

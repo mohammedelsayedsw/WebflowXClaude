@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate -mt-[60px] md:-mt-[75px] overflow-hidden min-h-[100svh] flex flex-col bg-[var(--sw-ink)]"
+      className="relative isolate -mt-[60px] md:-mt-[75px] overflow-hidden hero-fill flex flex-col bg-[var(--sw-ink)]"
     >
       <AuroraRain contained />
       {/* Darkens the rain on this page only, most behind the copy, so the text reads clearly. */}

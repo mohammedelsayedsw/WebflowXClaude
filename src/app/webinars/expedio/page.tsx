@@ -4,7 +4,6 @@ import { MotionConfig } from "motion/react";
 import { HashScroll } from "@/components/site/HashScroll";
 import { Agenda } from "@/sections/webinars-expedio/Agenda";
 import { CTA } from "@/sections/webinars-expedio/CTA";
-import { FullStack } from "@/sections/webinars-expedio/FullStack";
 import { Hero } from "@/sections/webinars-expedio/Hero";
 import { Problem } from "@/sections/webinars-expedio/Problem";
 import { Offer } from "@/sections/webinars-expedio/Offer";
@@ -28,7 +27,6 @@ export default function Page() {
         <Problem />
         <WhatItIs />
         <LiveDemo />
-        <FullStack />
         <WhoShouldJoin />
         <Speakers />
         <Offer />

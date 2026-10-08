@@ -1,9 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
-import { DEMO_URL } from "./details";
 import { SectionLabel } from "./SectionLabel";
 
 export function LiveDemo() {
@@ -30,29 +28,15 @@ export function LiveDemo() {
         </div>
 
         <Reveal delay={0.14} className="mt-10 md:mt-14">
-          <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener"
-            className="group relative block overflow-hidden rounded-[4px] border border-white/15"
-          >
+          <div className="overflow-hidden rounded-[4px] border border-white/15">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={assetUrl("/webinars/expedio/demo-side-by-side.jpg")}
               alt="The demo: the same store on Magento and on Expedio, with live timings"
               loading="lazy"
-              className="block w-full transition-opacity duration-300 group-hover:opacity-90 motion-reduce:transition-none"
+              className="block w-full"
             />
-          </a>
-          <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener"
-            className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-head font-semibold text-white/80 hover:text-white transition"
-          >
-            Try the live demo yourself
-            <ArrowUpRight className="h-4 w-4" style={{ color: "var(--sw-mint)" }} />
-          </a>
+          </div>
         </Reveal>
       </div>
     </section>

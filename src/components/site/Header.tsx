@@ -35,6 +35,9 @@ const MENULESS_ROUTES = ["/magento/twice-as-fast"];
 /** Routes (prefix match, without basePath) that render their own header, so this one is not shown. */
 const HEADERLESS_PREFIXES = ["/magento/expedio"];
 
+/** Routes (without basePath) co-branded with ReadyMage: its logo sits next to scandiweb's, as on /magento/expedio. */
+const READYMAGE_ROUTES = ["/webinars/expedio"];
+
 const CTA = {
   text: "Custom enterprise software 2-10x faster at up to 90% lower cost",
   cta: "Discover what's possible",
@@ -64,6 +67,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const menu = !MENULESS_ROUTES.includes(pathname.replace(/\/$/, ""));
+  const readymage = READYMAGE_ROUTES.includes(pathname.replace(/\/$/, ""));
   const headerless = HEADERLESS_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 
   useEffect(() => {
@@ -98,6 +102,16 @@ export function Header() {
               className="h-[18px] md:h-5 w-auto block"
             />
           </a>
+          {readymage && (
+            <div className="mr-auto ml-3 sm:ml-4 flex items-center gap-3 sm:gap-4">
+              <span aria-hidden className="h-[20px] md:h-[26px] w-px bg-white/35" />
+              <img
+                src={assetUrl("/magento/expedio/readymage.svg")}
+                alt="ReadyMage"
+                className="h-[19px] md:h-[25px] w-auto block translate-y-[2px]"
+              />
+            </div>
+          )}
           {menu && (
           <button
             type="button"

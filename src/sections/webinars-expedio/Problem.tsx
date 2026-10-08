@@ -46,7 +46,9 @@ export function Problem() {
       : {
           strokeDasharray: 1,
           strokeDashoffset: drawn ? 0 : 1,
-          transition: `stroke-dashoffset ${duration}s cubic-bezier(0.65, 0, 0.35, 1) ${delay}s`,
+          // hidden until its own draw starts: a round cap on the hidden dash still paints a dot
+          opacity: drawn ? 1 : 0,
+          transition: `stroke-dashoffset ${duration}s cubic-bezier(0.65, 0, 0.35, 1) ${delay}s, opacity 0s linear ${delay}s`,
         };
   const label = (delay: number): React.CSSProperties =>
     reduce ? {} : { opacity: drawn ? 1 : 0, transition: `opacity 0.5s ease ${delay}s` };

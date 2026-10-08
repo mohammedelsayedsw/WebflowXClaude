@@ -10,7 +10,7 @@ export function Speakers() {
     <section id="the-speakers" className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20">
       <div className="wrap relative">
         <Reveal>
-          <SectionLabel n={6}>The speakers</SectionLabel>
+          <SectionLabel n={7}>The speakers</SectionLabel>
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

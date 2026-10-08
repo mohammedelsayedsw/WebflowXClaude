@@ -13,7 +13,7 @@ export function LiveDemo() {
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <SectionLabel n={3} dark>The live demo</SectionLabel>
+              <SectionLabel n={4} dark>The live demo</SectionLabel>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

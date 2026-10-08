@@ -63,7 +63,7 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.32}>
+            <Reveal delay={0.32} className="w-full">
               <div className="mt-[clamp(22px,3.6vh,40px)] flex flex-wrap justify-center gap-x-8 gap-y-4 border-t border-white/10 pt-[clamp(14px,2.2vh,22px)]">
                 {SPEAKERS.map((s) => (
                   <div key={s.name} className="flex items-center gap-3 text-left">

@@ -6,6 +6,7 @@ import { Agenda } from "@/sections/webinars-expedio/Agenda";
 import { CTA } from "@/sections/webinars-expedio/CTA";
 import { FullStack } from "@/sections/webinars-expedio/FullStack";
 import { Hero } from "@/sections/webinars-expedio/Hero";
+import { Problem } from "@/sections/webinars-expedio/Problem";
 import { Offer } from "@/sections/webinars-expedio/Offer";
 import { LiveDemo } from "@/sections/webinars-expedio/LiveDemo";
 import { Speakers } from "@/sections/webinars-expedio/Speakers";
@@ -24,6 +25,7 @@ export default function Page() {
         <HashScroll />
         <Hero />
         <Agenda />
+        <Problem />
         <WhatItIs />
         <LiveDemo />
         <FullStack />

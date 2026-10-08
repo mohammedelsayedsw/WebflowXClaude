@@ -16,7 +16,7 @@ export function WhoShouldJoin() {
     <section id="the-audience" className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20">
       <div className="wrap relative">
         <Reveal>
-          <SectionLabel n={5} dark>The audience</SectionLabel>
+          <SectionLabel n={6} dark>The audience</SectionLabel>
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

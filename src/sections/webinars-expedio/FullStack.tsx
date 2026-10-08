@@ -21,7 +21,7 @@ export function FullStack() {
         <div className="grid gap-10 md:gap-14 lg:grid-cols-2 lg:items-center">
           <div>
             <Reveal>
-              <SectionLabel n={4}>The full stack</SectionLabel>
+              <SectionLabel n={5}>The full stack</SectionLabel>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

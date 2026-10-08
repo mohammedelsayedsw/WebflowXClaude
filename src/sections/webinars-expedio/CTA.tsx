@@ -4,11 +4,12 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
 import { EYEBROW_PARTS, HUBSPOT_FORM_ID, HUBSPOT_PORTAL } from "./details";
+import { FormPlaceholder } from "./FormPlaceholder";
 import { Lockup } from "./Lockup";
 
 /**
- * Registration. Until HUBSPOT_FORM_ID is set the form area renders nothing,
- * so no placeholder text ever shows on the live page.
+ * Registration. Until HUBSPOT_FORM_ID is set, a disabled look-alike of the
+ * form holds its place.
  */
 export function CTA() {
   return (
@@ -40,13 +41,15 @@ export function CTA() {
             </p>
           </Reveal>
 
-          {HUBSPOT_FORM_ID && (
-            <Reveal delay={0.2} className="w-full">
-              <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+          <Reveal delay={0.2} className="w-full">
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+              {HUBSPOT_FORM_ID ? (
                 <HubSpotForm portalId={HUBSPOT_PORTAL} formId={HUBSPOT_FORM_ID} region="eu1" submitText="Save your seat" />
-              </div>
-            </Reveal>
-          )}
+              ) : (
+                <FormPlaceholder />
+              )}
+            </div>
+          </Reveal>
 
           <Reveal delay={0.26}>
             <p className="mt-8 text-white/60 text-[13px] md:text-[14px] leading-relaxed">

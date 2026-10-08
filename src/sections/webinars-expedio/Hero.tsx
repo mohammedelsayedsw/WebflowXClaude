@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate overflow-hidden min-h-[100svh] flex flex-col bg-[var(--sw-ink)]"
+      className="relative isolate -mt-[60px] md:-mt-[75px] overflow-hidden min-h-[100svh] flex flex-col bg-[var(--sw-ink)]"
     >
       <AuroraRain contained />
       {/* Darkens the rain on this page only, most behind the copy, so the text reads clearly. */}
@@ -50,7 +50,7 @@ export function Hero() {
               <p className="mt-[clamp(14px,2.2vh,24px)] max-w-[60ch] mx-auto text-[16px] md:text-[18px] leading-[1.5] text-white/80 text-balance">
                 Expedio speeds up Magento&apos;s backend, the part that builds each
                 page before a shopper sees it. Your store, design and data stay the
-                same. Watch it run live next to stock Magento.
+                same.
               </p>
             </Reveal>
 

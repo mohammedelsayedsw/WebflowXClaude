@@ -4,11 +4,12 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
 import { EYEBROW_PARTS, HUBSPOT_FORM_ID, HUBSPOT_PORTAL } from "./details";
+import { FormPlaceholder } from "./FormPlaceholder";
 import { Lockup } from "./Lockup";
 
 /**
- * Registration. Until HUBSPOT_FORM_ID is set the form area renders nothing,
- * so no placeholder text ever shows on the live page.
+ * Registration. Until HUBSPOT_FORM_ID is set, a disabled look-alike of the
+ * form holds its place.
  */
 export function CTA() {
   return (
@@ -30,23 +31,25 @@ export function CTA() {
 
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[20ch] mx-auto">
-              See Magento run <span style={{ color: "var(--sw-mint)" }}>twice as fast</span>, live
+              Learn how to make your Magento store <span style={{ color: "var(--sw-mint)" }}>twice as fast</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto text-balance">
-              Watch the side-by-side demo and ask the team about your own store.
+              See it live next to stock Magento, and ask the team about your own store.
             </p>
           </Reveal>
 
-          {HUBSPOT_FORM_ID && (
-            <Reveal delay={0.2} className="w-full">
-              <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+          <Reveal delay={0.2} className="w-full">
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+              {HUBSPOT_FORM_ID ? (
                 <HubSpotForm portalId={HUBSPOT_PORTAL} formId={HUBSPOT_FORM_ID} region="eu1" submitText="Save your seat" />
-              </div>
-            </Reveal>
-          )}
+              ) : (
+                <FormPlaceholder />
+              )}
+            </div>
+          </Reveal>
 
           <Reveal delay={0.26}>
             <p className="mt-8 text-white/60 text-[13px] md:text-[14px] leading-relaxed">

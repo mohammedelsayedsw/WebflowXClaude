@@ -1,14 +1,14 @@
 "use client";
 
-import { Handshake, Server, ShoppingCart, Store } from "lucide-react";
+import { MonitorSmartphone, Server, ShoppingCart, Store } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { SectionLabel } from "./SectionLabel";
 
 const AUDIENCE: { icon: typeof Server; lead: string; body: string }[] = [
-  { icon: ShoppingCart, lead: "eCommerce leads", body: "Managers who watch the store slow down when traffic peaks" },
-  { icon: Server, lead: "CTOs and IT teams", body: "People who look after a Magento 2 or Adobe Commerce store" },
-  { icon: Store, lead: "Store owners", body: "Owners who want a faster store without replatforming" },
-  { icon: Handshake, lead: "Agencies and partners", body: "Teams that build and run Magento stores for clients" },
+  { icon: Store, lead: "Store owners", body: "Owners paying for bigger servers just to get through busy days" },
+  { icon: ShoppingCart, lead: "eCommerce leads", body: "Managers whose store gets slowest on the days that bring the most sales" },
+  { icon: Server, lead: "CTOs and IT teams", body: "People told the only way to a fast store is a costly replatform" },
+  { icon: MonitorSmartphone, lead: "Heads of digital", body: "People responsible for how the store feels to shoppers" },
 ];
 
 export function WhoShouldJoin() {

@@ -34,6 +34,9 @@ export function Speakers() {
                     {s.name}
                   </div>
                   <div className="mt-1.5 text-[var(--sw-black)]/60 text-[15px] md:text-[16px]">{s.title}</div>
+                  {s.bio && (
+                    <p className="mt-3 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">{s.bio}</p>
+                  )}
                 </div>
               </li>
             </Reveal>

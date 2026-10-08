@@ -20,12 +20,14 @@ export const SPEAKERS = [
   {
     name: "Glebs Vrevsky",
     title: "Co-founder",
+    bio: "Works on scandiweb's newest Magento products, including Expedio and Ari, and helps merchants see what they can do for their stores.",
     photo: "/webinars/expedio/glebs-vrevsky.jpg",
     face: "/webinars/expedio/glebs-vrevsky-face.jpg",
   },
   {
     name: "Alfreds Genkins",
     title: "CTO",
+    bio: "",
     photo: "/webinars/expedio/alfreds-genkins.jpg",
     face: "/webinars/expedio/alfreds-genkins-face.jpg",
   },

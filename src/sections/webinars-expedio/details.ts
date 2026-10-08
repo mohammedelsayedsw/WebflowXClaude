@@ -2,7 +2,7 @@
  * The webinar's date, time and registration form, in one place because the
  * hero and the final CTA both show them and must never disagree.
  */
-export const EYEBROW_PARTS = ["Free webinar", "10 October", "14:00 GMT", "60 min"];
+export const EYEBROW_PARTS = ["Free webinar", "10 October", "14:00 GMT"];
 
 /** The Expedio demo: the same store on Magento and on Expedio, side by side. */
 export const DEMO_URL = "https://expedio-demo.scandiweb.com/";

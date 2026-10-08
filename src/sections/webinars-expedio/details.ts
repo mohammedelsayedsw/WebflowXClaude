@@ -15,7 +15,7 @@ export const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 export const HUBSPOT_PORTAL = "25724996";
 export const HUBSPOT_FORM_ID = "";
 
-/* TODO before publish: confirm both titles. `photo` is the card portrait, `face` the small hero avatar. */
+/* TODO before publish: confirm Glebs's title. `photo` is the card portrait, `face` the small hero avatar. */
 export const SPEAKERS = [
   {
     name: "Glebs Vrevsky",
@@ -25,7 +25,7 @@ export const SPEAKERS = [
   },
   {
     name: "Alfreds Genkins",
-    title: "[CONFIRM title]",
+    title: "Creator of Ari",
     photo: "/webinars/expedio/alfreds-genkins.jpg",
     face: "/webinars/expedio/alfreds-genkins-face.jpg",
   },

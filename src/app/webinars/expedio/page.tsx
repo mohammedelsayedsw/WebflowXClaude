@@ -6,7 +6,6 @@ import { Agenda } from "@/sections/webinars-expedio/Agenda";
 import { CTA } from "@/sections/webinars-expedio/CTA";
 import { Hero } from "@/sections/webinars-expedio/Hero";
 import { Problem } from "@/sections/webinars-expedio/Problem";
-import { Offer } from "@/sections/webinars-expedio/Offer";
 import { LiveDemo } from "@/sections/webinars-expedio/LiveDemo";
 import { Speakers } from "@/sections/webinars-expedio/Speakers";
 import { WhatItIs } from "@/sections/webinars-expedio/WhatItIs";
@@ -29,7 +28,6 @@ export default function Page() {
         <LiveDemo />
         <WhoShouldJoin />
         <Speakers />
-        <Offer />
         <CTA />
       </main>
     </MotionConfig>

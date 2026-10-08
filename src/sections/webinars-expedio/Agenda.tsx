@@ -7,9 +7,10 @@ import { SectionLabel } from "./SectionLabel";
 /* TODO before publish: confirm the agenda with the speakers. */
 const POINTS: string[] = [
   "Why most Magento stores are slower than they need to be",
-  "What Expedio changes in Magento's backend, and what stays the same",
+  "What a store that's twice as fast means for your shoppers",
   "A live demo of the same store on Magento and on Expedio, side by side",
-  "The benchmark results, page by page",
+  "How to make your own store at least twice as fast, without replatforming",
+  "What changes for your team, and what stays exactly the same",
   "How Expedio works with Hyvä and with any Magento hosting",
   "Time for your questions",
 ];

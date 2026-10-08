@@ -48,9 +48,8 @@ export function Hero() {
 
             <Reveal delay={0.14}>
               <p className="mt-[clamp(14px,2.2vh,24px)] max-w-[60ch] mx-auto text-[16px] md:text-[18px] leading-[1.5] text-white/80 text-balance">
-                Expedio speeds up Magento&apos;s backend, the part that builds each
-                page before a shopper sees it. Your store, design and data stay the
-                same.
+                Learn how to make your Magento store at least twice as fast, with
+                the same store, design and data.
               </p>
             </Reveal>
 

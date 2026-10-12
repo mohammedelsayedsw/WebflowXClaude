@@ -60,27 +60,68 @@ function Cards() {
   );
 }
 
-/** Packages on the main page: the four cards and a link to the full comparison. */
+const ICON: Record<string, React.ReactNode> = {
+  "self-managed": <path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16" />,
+  "with-ari": (
+    <>
+      <path d="M4 6l6 6-6 6" />
+      <path d="M13 18h7" stroke="var(--sw-mint)" />
+    </>
+  ),
+  review: (
+    <>
+      <circle cx="11" cy="11" r="6" />
+      <path d="M20 20l-4.5-4.5" />
+    </>
+  ),
+  implementation: (
+    <>
+      <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+};
+const SHORT: Record<string, string> = {
+  "self-managed": "The open-source core, installed and run by your own team.",
+  "with-ari": "Ari installs Expedio on a copy of your store, with product support and version updates.",
+  review: "An expert review of your implementation, with a prioritized list of improvements.",
+  implementation: "scandiweb implements, tests and launches it, with 2x speed guaranteed by contract.",
+};
+
+/** Main page: the four ways to adopt Expedio, no prices; prices live on /packages. Mirrors withari.ai/expedio. */
 export function Packages() {
   return (
     <section id="packages" className="relative z-10 py-24 md:py-36 scroll-mt-20">
       <div className="wrap">
         <Reveal className="max-w-[46rem] mx-auto text-center">
-          <div className="label-code !text-[13px] !tracking-[0.24em]" style={{ color: "#fff" }}>Expedio packages</div>
-          <h2 className={`mt-5 ${H2}`}>Choose your Expedio package</h2>
-          <p className="mt-6 text-white/75 text-[18px] md:text-[20px] leading-[1.55]">
-            Expedio is open source. Every package has the same Expedio core. Choose how much help your team needs.
+          <h2 className={H2}>Free for the Magento community</h2>
+          <p className="mt-6 text-white/75 text-[17px] md:text-[19px] leading-[1.6]">
+            The Expedio core is open source. Take it and run it on your own store, or choose how much help you want around
+            it, up to a full implementation with the performance result written into your contract.
           </p>
         </Reveal>
-        <Reveal delay={0.1} className="mt-12">
-          <Cards />
+        <Reveal delay={0.1} className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {PACKAGES.map((p) => (
+            <div
+              key={p.id}
+              className="border p-7"
+              style={
+                p.id === "with-ari"
+                  ? { borderColor: "rgba(110,247,110,.45)", background: "linear-gradient(180deg, rgba(110,247,110,.10), rgba(110,247,110,.02))" }
+                  : { borderColor: "rgba(255,255,255,.12)", background: "rgba(255,255,255,.03)" }
+              }
+            >
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                {ICON[p.id]}
+              </svg>
+              <h3 className="mt-8 text-white text-[20px] md:text-[22px]">{p.name}</h3>
+              <p className="mt-3 text-white/65 text-[15px] leading-[1.6]">{SHORT[p.id]}</p>
+            </div>
+          ))}
         </Reveal>
-        <Reveal className="mt-10 text-center">
-          <a
-            href={PACKAGES_URL}
-            className="inline-flex items-center gap-2 text-[15px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
-          >
-            Compare what each package includes <span aria-hidden>→</span>
+        <Reveal className="mt-12 text-center">
+          <a href={PACKAGES_URL} className={btnPrimary}>
+            See packages and pricing <span aria-hidden>→</span>
           </a>
         </Reveal>
       </div>

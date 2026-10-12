@@ -73,10 +73,3 @@ export const COMPARE: [string, string, string, string, string][] = [
   ["Staging testing and launch", "Your team", "Your team", "Your team", "Done by scandiweb"],
   ["Contractual performance guarantee", "Not included", "Not included", "Not included", "Included"],
 ];
-
-/** What each paid level covers, from the brief. */
-export const TERMS: [string, string][] = [
-  ["With Ari", "Covers the Expedio product and access to version updates. Applying updates to your customized store and general Magento development are separate services."],
-  ["Expert review", "One review of your Expedio implementation and a prioritized list of recommended improvements. Implementing those improvements is separate work."],
-  ["Implementation", "End-to-end implementation, whole-store optimization, testing, and launch. The performance target and how it is measured are defined in your implementation agreement."],
-];

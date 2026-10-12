@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary, btnSecondary } from "./Hero";
 import { assetUrl } from "@/lib/assets";
-import { COMPARE, INSTALL_WITH_ARI_URL, PACKAGES, PACKAGES_URL, TERMS } from "./packageData";
+import { COMPARE, INSTALL_WITH_ARI_URL, PACKAGES, PACKAGES_URL } from "./packageData";
 
 const H2 = "text-[40px] md:text-[56px] lg:text-[64px]";
 
@@ -24,7 +24,16 @@ function Cards() {
               {p.badge}
             </span>
           )}
-          <h3 className="text-white text-[20px] md:text-[22px]">{p.name}</h3>
+          <h3 className="flex items-center gap-2.5 text-white text-[20px] md:text-[22px]">
+            {p.id === "with-ari" ? (
+              <>
+                With
+                <img src={assetUrl("/magento/expedio/ari.svg")} alt="Ari" className="h-[22px] md:h-[24px] w-auto translate-y-[1px]" />
+              </>
+            ) : (
+              p.name
+            )}
+          </h3>
           <div className="mt-6 min-h-[84px]">
             <span
               className="font-[family-name:var(--font-golos)] font-bold text-[40px] leading-none tracking-[-0.03em]"
@@ -175,23 +184,23 @@ export function PackagesDetail() {
                       <td
                         key={i}
                         className="py-4 px-4 text-[14px]"
-                        style={{ color: c === "Not included" ? "rgba(255,255,255,.35)" : c === "Your team" ? "rgba(255,255,255,.65)" : "var(--sw-mint)" }}
+                        style={{ color: c === "Not included" ? "rgba(255,255,255,.3)" : c === "Your team" ? "rgba(255,255,255,.65)" : "var(--sw-mint)" }}
                       >
-                        {c}
+                        {c === "Included" ? (
+                          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-label="Included">
+                            <path d="M5 12.5l4.5 4.5L19 7.5" />
+                          </svg>
+                        ) : c === "Not included" ? (
+                          <span aria-label="Not included" className="inline-block w-3 h-px bg-current align-middle" />
+                        ) : (
+                          c
+                        )}
                       </td>
                     ))}
                   </tr>
                 ))}
               </tbody>
             </table>
-          </Reveal>
-          <Reveal className="mt-14 grid md:grid-cols-3 gap-8">
-            {TERMS.map(([k, v]) => (
-              <div key={k}>
-                <h3 className="text-white text-[18px]">{k}</h3>
-                <p className="mt-3 text-white/60 text-[15px] leading-[1.6]">{v}</p>
-              </div>
-            ))}
           </Reveal>
         </div>
       </section>

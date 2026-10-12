@@ -4,7 +4,6 @@ import { assetUrl } from "@/lib/assets";
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { href: "/solutions/magento/expedio#expedio", label: "What it is" },
   { href: "/solutions/magento/expedio/why-we-built-it", label: "Why we built it" },
   { href: "/solutions/magento/expedio#demo", label: "Demo" },
   { href: "/solutions/magento/expedio#benchmark", label: "Benchmark" },

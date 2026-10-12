@@ -173,7 +173,7 @@ export default function WhyPage() {
             <p>
               Keeping the storefront design still means adapting the templates underneath it, and Expedio removes every
               reasonable inefficiency it finds there. Custom themes and the extensions they touch need implementation and
-              testing, which the Implementation package covers.
+              testing, which the Expedio by scandiweb package covers.
             </p>
           </Reveal>
         </div>

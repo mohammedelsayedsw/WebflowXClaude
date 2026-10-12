@@ -5,7 +5,7 @@ import { EXPEDIO_SHARE_IMAGE } from "@/sections/magento-expedio/share";
 import { SiteHeader } from "@/sections/magento-expedio/SiteHeader";
 
 const DESCRIPTION =
-  "Expedio is open source. Choose a package: Self-managed for free, Support & updates, Expert review, or full Implementation by scandiweb.";
+  "Expedio is open source. Choose a package: Expedio Open Source for free, Expedio Supported, Implementation Audit, or Expedio by scandiweb.";
 const URL = "https://scandiweb.com/solutions/magento/expedio/packages";
 
 export const metadata: Metadata = {

@@ -67,7 +67,7 @@ const QA = [
   },
   {
     q: "How do I get Expedio?",
-    a: "Choose a package. The free version is open source and you install it yourself. Support & updates and Expert review can be bought online. With Implementation, scandiweb adapts Expedio to your store, tests it on a staging copy, and launches it once you approve.",
+    a: "Choose a package. The free version is open source and you install it yourself. With Ari, Ari installs Expedio on a copy of your store and you approve the switch. Expert review and Implementation can be bought online, and with Implementation scandiweb adapts, tests, and launches Expedio on your store.",
   },
 ];
 

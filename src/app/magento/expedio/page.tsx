@@ -1,3 +1,4 @@
+import { AriInstall } from "@/sections/magento-expedio/AriInstall";
 import { AuroraRain } from "@/sections/magento-expedio/AuroraRain";
 import { Benchmarks } from "@/sections/magento-expedio/Benchmarks";
 import { Demo } from "@/sections/magento-expedio/Demo";
@@ -23,6 +24,7 @@ export default function ExpedioPage() {
       <Demo />
       <Benchmarks />
       <Packages />
+      <AriInstall />
       <BuiltBy />
       <HyvaAndExpedio />
       <Report />

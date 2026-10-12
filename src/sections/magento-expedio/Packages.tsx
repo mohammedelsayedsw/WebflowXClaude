@@ -2,19 +2,30 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary, btnSecondary } from "./Hero";
-import { ARI_URL, COMPARE, PACKAGES, PACKAGES_URL, TERMS } from "./packageData";
+import { assetUrl } from "@/lib/assets";
+import { COMPARE, INSTALL_WITH_ARI_URL, PACKAGES, PACKAGES_URL, TERMS } from "./packageData";
 
 const H2 = "text-[40px] md:text-[56px] lg:text-[64px]";
 
 function Cards() {
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 pt-4">
       {PACKAGES.map((p) => (
-        <div key={p.id} id={`pkg-${p.id}`} className="flex flex-col border border-white/12 bg-[rgba(8,11,24,0.88)] backdrop-blur-[10px] p-7">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="text-white text-[20px] md:text-[22px]">{p.name}</h3>
-          </div>
-          <div className="mt-6">
+        <div key={p.id} id={`pkg-${p.id}`} className="relative flex flex-col border border-white/12 bg-[rgba(8,11,24,0.88)] backdrop-blur-[10px] p-7 pt-9">
+          {p.badge && (
+            <span
+              className="absolute -top-3 left-6 h-6 inline-flex items-center px-2.5 text-[12px] font-medium font-[family-name:var(--font-golos)] whitespace-nowrap"
+              style={
+                p.id === "implementation"
+                  ? { background: "var(--sw-mint)", color: "#06210a" }
+                  : { background: "#05070f", color: "var(--sw-mint)", border: "1px solid rgba(110,247,110,.55)" }
+              }
+            >
+              {p.badge}
+            </span>
+          )}
+          <h3 className="text-white text-[20px] md:text-[22px]">{p.name}</h3>
+          <div className="mt-6 min-h-[84px]">
             <span
               className="font-[family-name:var(--font-golos)] font-bold text-[40px] leading-none tracking-[-0.03em]"
               style={{ color: p.price === "Free" ? "#fff" : "var(--sw-mint)" }}
@@ -23,23 +34,25 @@ function Cards() {
             </span>
             {p.then && <div className="mt-2 text-white/55 text-[14px] leading-[1.45]">{p.then}</div>}
           </div>
-          <p className="mt-5 text-white/70 text-[15px] leading-[1.6] flex-1">{p.body}</p>
-          {p.ari && (
+          <p className="mt-4 text-white/70 text-[15px] leading-[1.6] flex-1">{p.body}</p>
+          {p.howAri && (
             <a
-              href={ARI_URL}
+              href={INSTALL_WITH_ARI_URL}
               target="_blank"
               rel="noopener"
               className="mt-5 inline-flex items-center gap-2 self-start text-[14px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
             >
-              Set it up with Ari <span aria-hidden>↗</span>
+              How Ari installs Expedio <span aria-hidden>→</span>
             </a>
           )}
-          <a
-            href={p.cta.href}
-            {...(p.cta.external ? { target: "_blank", rel: "noopener" } : {})}
-            className={`${p.price === "Free" ? btnSecondary : btnPrimary} mt-6 w-full !px-4`}
-          >
-            {p.cta.label}
+          {p.byScandiweb && (
+            <div className="mt-5 flex items-center gap-2.5 text-white/50 text-[13px]">
+              Delivered by
+              <img src={assetUrl("/shared/logos/scandiweb.svg")} alt="scandiweb" className="h-[13px] w-auto opacity-90" />
+            </div>
+          )}
+          <a href={p.cta.href} target="_blank" rel="noopener" className={`${p.price === "Free" ? btnSecondary : btnPrimary} mt-6 w-full !px-4`}>
+            {p.cta.label} <span aria-hidden>↗</span>
           </a>
         </div>
       ))}
@@ -52,8 +65,9 @@ export function Packages() {
   return (
     <section id="packages" className="relative z-10 py-24 md:py-36 scroll-mt-20">
       <div className="wrap">
-        <Reveal className="max-w-[46rem]">
-          <h2 className={H2}>Choose your Expedio package</h2>
+        <Reveal className="max-w-[46rem] mx-auto text-center">
+          <div className="label-code !text-[13px] !tracking-[0.24em]" style={{ color: "#fff" }}>Expedio packages</div>
+          <h2 className={`mt-5 ${H2}`}>Choose your Expedio package</h2>
           <p className="mt-6 text-white/75 text-[18px] md:text-[20px] leading-[1.55]">
             Expedio is open source. Every package has the same Expedio core. Choose how much help your team needs.
           </p>
@@ -61,7 +75,7 @@ export function Packages() {
         <Reveal delay={0.1} className="mt-12">
           <Cards />
         </Reveal>
-        <Reveal className="mt-8">
+        <Reveal className="mt-10 text-center">
           <a
             href={PACKAGES_URL}
             className="inline-flex items-center gap-2 text-[15px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
@@ -80,12 +94,12 @@ export function PackagesDetail() {
     <>
       <section className="relative z-10 pt-40 md:pt-48 pb-16">
         <div className="wrap">
-          <Reveal className="max-w-[48rem]">
-            <div className="label-code text-white/70">Expedio packages</div>
+          <Reveal className="max-w-[48rem] mx-auto text-center">
+            <div className="label-code !text-[13px] !tracking-[0.24em]" style={{ color: "#fff" }}>Expedio packages</div>
             <h1 className="mt-5 text-[48px] sm:text-[64px] md:text-[80px] leading-[0.95] tracking-[-0.045em]">
               Choose your Expedio package
             </h1>
-            <p className="mt-6 text-white/75 text-[18px] md:text-[20px] leading-[1.55] max-w-[40rem]">
+            <p className="mt-6 text-white/75 text-[18px] md:text-[20px] leading-[1.55] max-w-[40rem] mx-auto">
               Expedio is open source. Every package has the same Expedio core. Choose how much help your team needs.
             </p>
           </Reveal>

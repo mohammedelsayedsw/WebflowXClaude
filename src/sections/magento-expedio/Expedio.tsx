@@ -48,10 +48,14 @@ export function WhatItIs() {
       <div className="wrap">
         <Reveal className="max-w-[46rem]">
           <h2 className={H2}>What Expedio is</h2>
-          <p className="mt-6 text-white/80 text-[19px] md:text-[22px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
-            Expedio speeds up Magento&apos;s backend, the part that builds each page before a shopper sees it. Your
-            store, design, and data stay the same. It is built on Liquid, the open-source template language Shopify
-            uses for its themes.
+          <p className="mt-6 text-white/85 text-[19px] md:text-[22px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
+            Merchants who leave Magento for Shopify usually leave for a faster storefront. Expedio brings the best of
+            Shopify&apos;s theme technology to Magento, so the store you already run gets that speed.
+          </p>
+          <p className="mt-5 text-white/65 text-[16px] md:text-[17px] leading-[1.65]">
+            Expedio works under your theme, in the server-side work that builds each page. It is built on Liquid, the
+            open-source template language created by Shopify&apos;s co-founder and used in Shopify themes. Your Hyvä or
+            Luma storefront, your design, and your data stay as they are, and every page answers faster.
           </p>
         </Reveal>
         <Reveal delay={0.1} className="mt-14 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-4">

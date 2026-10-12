@@ -47,7 +47,8 @@ export function Hero() {
         </h1>
 
         <motion.p {...enter(1)} className="mt-5 max-w-[34rem] text-white/75 text-[16px] md:text-[18px] leading-[1.55]">
-          Expedio makes your existing Magento store at least twice as fast. Same store, same data, no replatforming.
+          Expedio makes your Magento store at least 2x faster, with the best of Shopify&apos;s theme technology. Run it
+          yourself for free, or have Ari install it.
         </motion.p>
 
         <motion.a

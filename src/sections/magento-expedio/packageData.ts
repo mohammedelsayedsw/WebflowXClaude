@@ -13,48 +13,59 @@ export type Pkg = {
   badge?: string;
   price: string;
   then?: string;
-  body: string;
-  howAri?: boolean;
+  who: string;
+  included: string;
+  /** one line for the main-page tile */
+  short: string;
+  ariLink?: boolean;
   byScandiweb?: boolean;
   cta: { label: string; href: string };
 };
 
-/** Mirrors withari.ai/expedio/packages. */
+/** Mirrors withari.ai/expedio/packages (checked 2026-10-12). */
 export const PACKAGES: Pkg[] = [
   {
     id: "self-managed",
-    name: "Self-managed",
+    name: "Expedio Open Source",
     price: "Free",
-    body: "The open-source edition of Expedio, to try it on your own store. No support, version updates, review or performance guarantee.",
+    who: "Your developers or Ari",
+    included: "Core package, documentation, step-by-step setup guides and migration skills, with no committed support.",
+    short: "The core, documentation and setup guides, implemented by your developers.",
     cta: { label: "Register", href: REGISTER_URL },
   },
   {
     id: "with-ari",
-    name: "With Ari",
+    name: "Expedio Supported",
     badge: "Supported and updated",
     price: "€990",
     then: "per year",
-    body: "Ari installs Expedio on a copy of your store, and the Expedio team keeps it supported and up to date with product support and version updates.",
-    howAri: true,
+    who: "Your developers or Ari",
+    included: "Version updates, compatibility fixes and product support.",
+    short: "Version updates, compatibility fixes and product support.",
+    ariLink: true,
     cta: { label: "Register", href: REGISTER_URL },
   },
   {
     id: "review",
-    name: "Expert review",
+    name: "Implementation Audit",
     badge: "Expedio team audits",
     price: "€4,900",
     then: "first year, then €990 per year",
-    body: "Product support and version updates, plus an expert review of your implementation with a prioritized list of improvements.",
+    who: "Your developers or agency",
+    included: "Independent review of the implementation, with performance advice. Fixes are priced separately.",
+    short: "An independent review of your implementation, with performance advice.",
     byScandiweb: true,
     cta: { label: "Buy now", href: "https://buy.stripe.com/5kQ28qcjWgohe0tcSG3VC00" },
   },
   {
     id: "implementation",
-    name: "Implementation",
+    name: "Expedio by scandiweb",
     badge: "2x speed guaranteed by contract",
     price: "€19,900",
     then: "with the first year of support, then €990 per year",
-    body: "scandiweb implements and optimizes Expedio across your whole store, tests it, and launches it, with the performance result written into your contract.",
+    who: "scandiweb",
+    included: "Full implementation, optimization, testing and supervised launch, with the Supported plan included.",
+    short: "scandiweb implements, optimizes, tests and launches it, with 2x speed guaranteed by contract.",
     byScandiweb: true,
     cta: { label: "Buy now", href: "https://buy.stripe.com/6oU5kC6ZCdc509D4ma3VC02" },
   },
@@ -63,13 +74,14 @@ export const PACKAGES: Pkg[] = [
 /** Comparison rows: Self-managed, Support & updates, Expert review, Implementation. */
 export const COMPARE: [string, string, string, string, string][] = [
   ["Expedio core", "Included", "Included", "Included", "Included"],
-  ["Documentation and setup guides", "Not included", "Included", "Included", "Included"],
+  ["Documentation and setup guides", "Included", "Included", "Included", "Included"],
+  ["Migration skills", "Included", "Included", "Included", "Included"],
+  ["Version updates and compatibility fixes", "Not included", "Included", "Included", "Included"],
   ["Expedio product support", "Not included", "Included", "Included", "Included"],
-  ["Expedio version updates", "Not included", "Included", "Included", "Included"],
-  ["Installation and theme adaptation", "Your team", "Done by Ari", "Your team", "Done by scandiweb"],
-  ["Expert implementation review", "Not included", "Not included", "Included", "Part of delivery"],
-  ["Performance findings and recommendations", "Not included", "Not included", "Included", "Included"],
-  ["Template and database query optimization", "Your team", "Your team", "Recommendations", "Included"],
-  ["Staging testing and launch", "Your team", "Your team", "Your team", "Done by scandiweb"],
+  ["Installation and theme adaptation", "Your team or Ari", "Your team or Ari", "Your team or agency", "Done by scandiweb"],
+  ["Independent implementation review", "Not included", "Not included", "Included", "Part of delivery"],
+  ["Performance advice", "Not included", "Not included", "Included", "Included"],
+  ["Template and database query optimization", "Your team", "Your team", "Fixes priced separately", "Included"],
+  ["Staging testing and supervised launch", "Your team", "Your team", "Your team", "Done by scandiweb"],
   ["Contractual performance guarantee", "Not included", "Not included", "Not included", "Included"],
 ];

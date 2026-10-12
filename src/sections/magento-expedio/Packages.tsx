@@ -24,16 +24,7 @@ function Cards() {
               {p.badge}
             </span>
           )}
-          <h3 className="flex items-center gap-2.5 text-white text-[20px] md:text-[22px]">
-            {p.id === "with-ari" ? (
-              <>
-                With
-                <img src={assetUrl("/magento/expedio/ari.svg")} alt="Ari" className="h-[22px] md:h-[24px] w-auto translate-y-[1px]" />
-              </>
-            ) : (
-              p.name
-            )}
-          </h3>
+          <h3 className="text-white text-[20px] lg:text-[19px] xl:text-[21px] lg:whitespace-nowrap">{p.name}</h3>
           <div className="mt-6 min-h-[84px]">
             <span
               className="font-[family-name:var(--font-golos)] font-bold text-[40px] leading-none tracking-[-0.03em]"
@@ -43,15 +34,24 @@ function Cards() {
             </span>
             {p.then && <div className="mt-2 text-white/55 text-[14px] leading-[1.45]">{p.then}</div>}
           </div>
-          <p className="mt-4 text-white/70 text-[15px] leading-[1.6] flex-1">{p.body}</p>
-          {p.howAri && (
+          <div className="mt-4 flex-1 grid content-start gap-4">
+            <div>
+              <div className="label-code text-white/45">Who implements</div>
+              <div className="mt-1.5 text-white text-[15px] font-medium">{p.who}</div>
+            </div>
+            <div>
+              <div className="label-code text-white/45">What&apos;s included</div>
+              <p className="mt-1.5 text-white/70 text-[15px] leading-[1.6]">{p.included}</p>
+            </div>
+          </div>
+          {p.ariLink && (
             <a
               href={INSTALL_WITH_ARI_URL}
               target="_blank"
               rel="noopener"
               className="mt-5 inline-flex items-center gap-2 self-start text-[14px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
             >
-              How Ari installs Expedio <span aria-hidden>→</span>
+              Or let Ari install it <span aria-hidden>→</span>
             </a>
           )}
           {p.byScandiweb && (
@@ -90,12 +90,6 @@ const ICON: Record<string, React.ReactNode> = {
     </>
   ),
 };
-const SHORT: Record<string, string> = {
-  "self-managed": "The open-source core, installed and run by your own team.",
-  "with-ari": "Ari installs Expedio on a copy of your store, with product support and version updates.",
-  review: "An expert review of your implementation, with a prioritized list of improvements.",
-  implementation: "scandiweb implements, tests and launches it, with 2x speed guaranteed by contract.",
-};
 
 /** Main page: the four ways to adopt Expedio, no prices; prices live on /packages. Mirrors withari.ai/expedio. */
 export function Packages() {
@@ -123,8 +117,18 @@ export function Packages() {
               <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 {ICON[p.id]}
               </svg>
-              <h3 className="mt-8 text-white text-[20px] md:text-[22px]">{p.name}</h3>
-              <p className="mt-3 text-white/65 text-[15px] leading-[1.6]">{SHORT[p.id]}</p>
+              <h3 className="mt-8 text-white text-[20px] lg:text-[19px] xl:text-[21px] lg:whitespace-nowrap">{p.name}</h3>
+              <p className="mt-3 text-white/65 text-[15px] leading-[1.6]">{p.short}</p>
+              {p.ariLink && (
+                <a
+                  href={INSTALL_WITH_ARI_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
+                >
+                  Can be installed with Ari <span aria-hidden>→</span>
+                </a>
+              )}
             </div>
           ))}
         </Reveal>

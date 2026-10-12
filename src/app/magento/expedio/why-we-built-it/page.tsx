@@ -5,7 +5,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SiteHeader } from "@/sections/magento-expedio/SiteHeader";
 
 const WHY_DESCRIPTION =
-  "A page reaches a shopper in two halves. Modern themes fixed the second half. Expedio fixes the first.";
+  "Merchants who leave Magento for Shopify usually leave for a faster storefront. scandiweb built Expedio so they can have that speed on the store they already run.";
 const WHY_URL = "https://scandiweb.com/solutions/magento/expedio/why-we-built-it";
 
 export const metadata: Metadata = {
@@ -72,7 +72,30 @@ export default function WhyPage() {
             <div className="label-code text-white/70">Expedio</div>
             <h1 className="mt-5 text-[56px] sm:text-[80px] md:text-[104px] leading-[0.92] tracking-[-0.05em]">Why we built it</h1>
             <p className="mt-8 text-white/80 text-[20px] md:text-[24px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium max-w-[40rem]">
-              A page reaches a shopper in two halves. Modern themes fixed the second half. Expedio fixes the first.
+              Merchants who leave Magento for Shopify usually leave for a faster storefront. scandiweb built Expedio so they can have that speed on the store they already run.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Shopify's theme technology */}
+      <section className="relative z-10 py-20 md:py-28">
+        <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <Reveal className="lg:col-span-6">
+            <h2 className={H2}>Shopify&apos;s theme technology, now in Magento</h2>
+          </Reveal>
+          <Reveal delay={0.1} className={`lg:col-span-6 grid gap-5 ${BODY}`}>
+            <p>
+              Shopify storefronts are known for being fast, and much of that comes from how Shopify themes turn data into a
+              page. Expedio brings that approach to Magento. It is built on Liquid, the open-source template language
+              created by Shopify&apos;s co-founder and used in Shopify themes.
+            </p>
+            <p>
+              The store stays on Magento, with its catalog, checkout, admin, and the flexibility that made the merchant
+              choose it. What changes is how the server builds each page, and that is where the time goes.
+            </p>
+            <p className="text-white text-[20px] md:text-[22px] leading-[1.4] font-[family-name:var(--font-golos)] font-semibold">
+              If speed is making you consider Shopify, upgrade Magento first.
             </p>
           </Reveal>
         </div>
@@ -135,6 +158,27 @@ export default function WhyPage() {
         </div>
       </section>
 
+      {/* under the theme */}
+      <section className="relative z-10 py-20 md:py-28">
+        <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <Reveal className="lg:col-span-6">
+            <h2 className={H2}>Under your theme, not on top of it</h2>
+          </Reveal>
+          <Reveal delay={0.1} className={`lg:col-span-6 grid gap-5 ${BODY}`}>
+            <p>
+              Hyvä made the Magento frontend fast. Expedio works one layer deeper, in the server-side work that generates
+              the page beneath the theme. The same Hyvä theme stays, the same Luma stays, and both answer faster, without
+              reinventing the storefront.
+            </p>
+            <p>
+              Keeping the storefront design still means adapting the templates underneath it, and Expedio removes every
+              reasonable inefficiency it finds there. Custom themes and the extensions they touch need implementation and
+              testing, which the Implementation package covers.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* why the baseline is already fast */}
       <section className="relative z-10 py-20 md:py-28">
         <div className="wrap grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -164,6 +208,29 @@ export default function WhyPage() {
         </div>
       </section>
 
+      {/* open source */}
+      <section className="relative z-10 py-20 md:py-28">
+        <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <Reveal className="lg:col-span-6">
+            <h2 className={H2}>Free for the Magento community</h2>
+          </Reveal>
+          <Reveal delay={0.1} className={`lg:col-span-6 ${BODY}`}>
+            <p>
+              The Expedio core is open source. Any merchant, developer, or agency can take it and run it on their own store
+              for free. scandiweb earns from what comes around it: product support and version updates, expert reviews,
+              and implementations with the performance result written into the contract. Ari is one more way in,
+              installing Expedio from a message in chat.
+            </p>
+            <a
+              href="/solutions/magento/expedio/packages"
+              className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)] font-[family-name:var(--font-golos)]"
+            >
+              See the packages <span aria-hidden>→</span>
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="relative z-10 py-24 md:py-36">
         <div className="wrap text-center">
           <h2 className={H2}>See the difference</h2>
@@ -171,8 +238,8 @@ export default function WhyPage() {
             <a href="/solutions/magento/expedio#contact" className={btnPrimary}>
               Get Expedio
             </a>
-            <a href="/solutions/magento/expedio#benchmark" className={btnSecondary}>
-              See the benchmark
+            <a href="/solutions/magento/expedio/packages" className={btnSecondary}>
+              See the packages
             </a>
           </div>
         </div>

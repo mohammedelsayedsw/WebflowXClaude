@@ -1,9 +1,11 @@
+import { AriInstall } from "@/sections/magento-expedio/AriInstall";
 import { AuroraRain } from "@/sections/magento-expedio/AuroraRain";
 import { Benchmarks } from "@/sections/magento-expedio/Benchmarks";
 import { Demo } from "@/sections/magento-expedio/Demo";
 import { BuiltBy, Contact, HyvaAndExpedio, WhatItIs } from "@/sections/magento-expedio/Expedio";
 import { Faq } from "@/sections/magento-expedio/Faq";
 import { Hero } from "@/sections/magento-expedio/Hero";
+import { Packages } from "@/sections/magento-expedio/Packages";
 import { Report } from "@/sections/magento-expedio/Sections";
 import { SiteHeader } from "@/sections/magento-expedio/SiteHeader";
 
@@ -21,6 +23,8 @@ export default function ExpedioPage() {
       <WhatItIs />
       <Demo />
       <Benchmarks />
+      <Packages />
+      <AriInstall />
       <BuiltBy />
       <HyvaAndExpedio />
       <Report />

@@ -4,10 +4,11 @@ import { assetUrl } from "@/lib/assets";
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { href: "/solutions/magento/expedio#expedio", label: "What it is" },
   { href: "/solutions/magento/expedio/why-we-built-it", label: "Why we built it" },
   { href: "/solutions/magento/expedio#demo", label: "Demo" },
   { href: "/solutions/magento/expedio#benchmark", label: "Benchmark" },
+  { href: "/solutions/magento/expedio#ari", label: "Install with Ari" },
+  { href: "/solutions/magento/expedio/packages", label: "Packages" },
 ];
 
 const CTA =
@@ -38,10 +39,10 @@ export function SiteHeader() {
       }`}
     >
       <div className={`wrap flex transition-[height] duration-300 ${scrolled ? "h-[60px] md:h-[68px]" : "h-[64px] md:h-[80px]"} items-center justify-between gap-4`}>
-        <a href="/solutions/magento/expedio" className="flex items-center gap-3 sm:gap-4 min-w-0" aria-label="scandiweb and ReadyMage">
+        <a href="/solutions/magento/expedio" className="flex items-center gap-3 sm:gap-4 min-w-0" aria-label="scandiweb and Ari">
           <img src={assetUrl("/shared/logos/scandiweb.svg")} alt="scandiweb" className="h-[12px] sm:h-[14px] md:h-[17px] w-auto" />
           <span aria-hidden className="h-[20px] md:h-[26px] w-px bg-white/35" />
-          <img src={assetUrl("/magento/expedio/readymage.svg")} alt="ReadyMage" className="h-[16px] sm:h-[19px] md:h-[23px] w-auto translate-y-[2px]" />
+          <img src={assetUrl("/magento/expedio/ari.svg")} alt="Ari" className="h-[18px] sm:h-[21px] md:h-[25px] w-auto" />
         </a>
         <nav className="flex items-center gap-7 text-[15px] text-white/75 font-[family-name:var(--font-golos)] font-medium">
           {LINKS.map((l) => (
@@ -49,7 +50,7 @@ export function SiteHeader() {
               {l.label}
             </a>
           ))}
-          <a href="/solutions/magento/expedio#contact" className={`max-sm:!hidden ${CTA}`}>
+          <a href="/solutions/magento/expedio#packages" className={`max-sm:!hidden ${CTA}`}>
             Get Expedio
           </a>
           <button
@@ -80,7 +81,7 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <a href="/solutions/magento/expedio#contact" onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
+            <a href="/solutions/magento/expedio#packages" onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
               Get Expedio
             </a>
           </nav>

@@ -50,7 +50,8 @@ export function WhatItIs() {
           <h2 className={H2}>What Expedio is</h2>
           <p className="mt-6 text-white/80 text-[19px] md:text-[22px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
             Expedio speeds up Magento&apos;s backend, the part that builds each page before a shopper sees it. Your
-            store, design, and data stay the same.
+            store, design, and data stay the same. It is built on Liquid, the open-source template language Shopify
+            uses for its themes.
           </p>
         </Reveal>
         <Reveal delay={0.1} className="mt-14 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-4">
@@ -221,7 +222,7 @@ export function Contact() {
             Get Expedio
           </h2>
           <p className="mt-6 text-white/80 text-[18px] md:text-[20px] leading-[1.55] max-w-[38rem] mx-auto [text-wrap:balance]">
-            Leave your details and we&apos;ll set up an intro call. We show you how Expedio works and how it can be applied to your store.
+            Leave your details to get the free version, or to set up an intro call about how Expedio can be applied to your store.
           </p>
         </Reveal>
 
@@ -229,7 +230,7 @@ export function Contact() {
           <Reveal delay={0.1}>
             {state === "sent" ? (
               <p className="text-center text-white text-[22px] md:text-[26px] font-semibold font-[family-name:var(--font-golos)]">
-                Thank you. We&apos;ll be in touch to set up your intro call.
+                Thank you. We&apos;ll be in touch shortly.
               </p>
             ) : (
             <form onSubmit={onSubmit} className="grid sm:grid-cols-2 gap-x-10 gap-y-8 text-left">

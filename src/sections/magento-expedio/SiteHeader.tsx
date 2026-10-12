@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/solutions/magento/expedio/why-we-built-it", label: "Why we built it" },
   { href: "/solutions/magento/expedio#demo", label: "Demo" },
   { href: "/solutions/magento/expedio#benchmark", label: "Benchmark" },
+  { href: "/solutions/magento/expedio/packages", label: "Packages" },
 ];
 
 const CTA =
@@ -49,7 +50,7 @@ export function SiteHeader() {
               {l.label}
             </a>
           ))}
-          <a href="/solutions/magento/expedio#contact" className={`max-sm:!hidden ${CTA}`}>
+          <a href="/solutions/magento/expedio#packages" className={`max-sm:!hidden ${CTA}`}>
             Get Expedio
           </a>
           <button
@@ -80,7 +81,7 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <a href="/solutions/magento/expedio#contact" onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
+            <a href="/solutions/magento/expedio#packages" onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
               Get Expedio
             </a>
           </nav>

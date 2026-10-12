@@ -62,8 +62,12 @@ const QA = [
     a: "It is in the contract. We measure your store's key pages before we start, and 2x faster response time is one of the points we commit to.",
   },
   {
+    q: "Is Expedio open source?",
+    a: "Yes. The core of Expedio is free and open source for the Magento community. The paid packages add product support, version updates, an expert review, or a full implementation by scandiweb.",
+  },
+  {
     q: "How do I get Expedio?",
-    a: "Fill in the form below. The scandiweb team adapts Expedio to your store and tests it on a staging copy. Your live store stays as it is until you approve the switch.",
+    a: "Choose a package. The free version is open source and you install it yourself. Support & updates and Expert review can be bought online. With Implementation, scandiweb adapts Expedio to your store, tests it on a staging copy, and launches it once you approve.",
   },
 ];
 

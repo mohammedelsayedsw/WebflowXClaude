@@ -1,7 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { BODY_DARK, H2_DARK } from "./ui";
+import { BODY_DARK, H2_DARK, SECTION_Y } from "./ui";
 
 const STEPS = [
   { title: "We prepare the drafts", body: "FAQ answers, category copy and five articles a month." },
@@ -11,7 +11,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="delivery" className="relative z-10 bg-[var(--sw-black)] py-16 md:py-28">
+    <section id="delivery" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
       <div className="wrap grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
         <Reveal>
           <h2 className={`${H2_DARK} max-w-[16ch]`}>

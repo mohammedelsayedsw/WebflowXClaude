@@ -3,7 +3,7 @@
 import { Plus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { PlanLink } from "./plan";
-import { H2_LIGHT, LINE_LIGHT } from "./ui";
+import { H2_LIGHT, LINE_LIGHT, SECTION_Y } from "./ui";
 
 const FAQS = [
   {
@@ -48,14 +48,14 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative z-10 bg-white py-16 md:py-28">
+    <section id="faq" className={`relative z-10 bg-white ${SECTION_Y}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap grid gap-10 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
+      <div className="wrap grid gap-6 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
         <Reveal>
           <h2 className={`${H2_LIGHT} max-w-[14ch]`}>Questions</h2>
           <PlanLink
             plan="core"
-            className="mt-8 inline-block font-head font-bold text-[16px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] py-1 hover:opacity-80 transition"
+            className="mt-5 md:mt-8 inline-block font-head font-bold text-[16px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] py-1 hover:opacity-80 transition"
           >
             Ask us on a call
           </PlanLink>
@@ -64,7 +64,7 @@ export function FAQ() {
           {FAQS.map((f, i) => (
             <Reveal key={f.q} delay={i * 0.04}>
               <details className={`group border-b ${LINE_LIGHT}`}>
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 py-4 md:py-6 [&::-webkit-details-marker]:hidden">
                   <span className="font-head font-bold text-[var(--sw-black)] text-[17px] md:text-[18px] leading-[1.3]">{f.q}</span>
                   <Plus aria-hidden className="h-5 w-5 shrink-0 text-[var(--sw-blue)] group-open:rotate-45 transition" />
                 </summary>

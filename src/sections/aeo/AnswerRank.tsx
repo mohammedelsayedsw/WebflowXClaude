@@ -4,13 +4,13 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 import { ANSWERRANK_URL } from "./status";
-import { BODY_LIGHT, H2_LIGHT, LINE_LIGHT } from "./ui";
+import { BODY_LIGHT, H2_LIGHT, LINE_LIGHT, SECTION_Y } from "./ui";
 
 const TRACKED = ["Mentions and recommendations", "Competitors in the same answers", "Sources AI tools cite", "How AI describes your brand"];
 
 export function AnswerRank() {
   return (
-    <section id="answerrank" className="relative z-10 bg-white py-16 md:py-28">
+    <section id="answerrank" className={`relative z-10 bg-white ${SECTION_Y}`}>
       <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 items-center">
         <Reveal>
           <h2 className={`${H2_LIGHT} max-w-[16ch]`}>See your brand in AI answers</h2>

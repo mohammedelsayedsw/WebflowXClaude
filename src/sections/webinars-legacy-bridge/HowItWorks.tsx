@@ -116,7 +116,7 @@ export function HowItWorks() {
                    three. The grid's own 24px gap still separates the columns,
                    and the connecting line is positioned off that gap rather
                    than off this padding. */
-                className="relative md:pr-3"
+                className="relative grid grid-cols-[36px_minmax(0,1fr)] gap-x-4 md:block md:pr-3"
                 style={{
                   opacity: on ? 1 : 0,
                   transform: on ? "translateY(0)" : "translateY(10px)",
@@ -168,16 +168,21 @@ export function HowItWorks() {
                   {i + 1}
                 </span>
 
-                <div className="mt-5">
-                  <Icon on={on} />
-                </div>
+                {/* Phones: number and its line in a narrow left column, the
+                    icon and words beside it, so the line never crosses the
+                    icon. From md up the steps sit side by side as before. */}
+                <div className="min-w-0">
+                  <div className="md:mt-5">
+                    <Icon on={on} />
+                  </div>
 
-                <div className="mt-3 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight text-balance">
-                  {s.title}
+                  <div className="mt-3 font-head font-bold text-white text-[17px] md:text-[18px] leading-tight text-balance">
+                    {s.title}
+                  </div>
+                  <p className="mt-2.5 max-w-[34ch] text-white/65 text-[14px] md:text-[15px] leading-relaxed text-balance">
+                    {s.body}
+                  </p>
                 </div>
-                <p className="mt-2.5 max-w-[34ch] text-white/65 text-[14px] md:text-[15px] leading-relaxed text-balance">
-                  {s.body}
-                </p>
               </li>
             );
           })}

@@ -203,7 +203,7 @@ export function TypingRace() {
 
   return (
     <div ref={root} className="mt-10 md:mt-14">
-      <div className="grid gap-6 md:gap-5 lg:gap-6 md:grid-cols-2 md:items-start">
+      <div className="grid grid-cols-1 gap-6 md:gap-5 lg:gap-6 md:grid-cols-2 md:items-start">
         {/* LEFT - by hand */}
         <div>
           <div className="mb-3 font-head font-bold text-[13px] md:text-[14px] uppercase tracking-[0.12em] text-[var(--sw-orange)]">

@@ -1,14 +1,11 @@
 "use client";
 
 import { PlanProvider } from "@/sections/aeo/plan";
-import { PageHeader } from "@/sections/aeo/PageHeader";
 import { Hero } from "@/sections/aeo/Hero";
-import { Gap } from "@/sections/aeo/Gap";
 import { Included } from "@/sections/aeo/Included";
-import { Delivery } from "@/sections/aeo/Delivery";
-import { Exclusions } from "@/sections/aeo/Exclusions";
+import { HowItWorks } from "@/sections/aeo/HowItWorks";
 import { AnswerRank } from "@/sections/aeo/AnswerRank";
-import { Proof } from "@/sections/aeo/Proof";
+import { Results } from "@/sections/aeo/Results";
 import { Leader } from "@/sections/aeo/Leader";
 import { FAQ } from "@/sections/aeo/FAQ";
 import { Interest } from "@/sections/aeo/Interest";
@@ -16,15 +13,12 @@ import { Interest } from "@/sections/aeo/Interest";
 export default function Page() {
   return (
     <PlanProvider>
-      <PageHeader />
-      <main className="relative isolate flex min-h-screen flex-col bg-white font-body text-[16px] leading-[1.6] text-[var(--sw-black)]">
+      <main className="relative isolate min-h-screen flex flex-col bg-[var(--sw-black)] font-body">
         <Hero />
-        <Gap />
         <Included />
-        <Delivery />
-        <Exclusions />
+        <HowItWorks />
         <AnswerRank />
-        <Proof />
+        <Results />
         <Leader />
         <FAQ />
         <Interest />

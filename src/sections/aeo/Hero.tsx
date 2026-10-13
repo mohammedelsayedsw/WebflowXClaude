@@ -1,77 +1,120 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
-import { Reveal } from "@/components/primitives/Reveal";
+import { motion } from "motion/react";
+import { Check } from "lucide-react";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
+import { assetUrl } from "@/lib/assets";
 import { PlanLink } from "./plan";
-import { scrollToId } from "./scrollTo";
 import { BETTERANSWER_URL, PLANS } from "./status";
-import { Arrow, BTN_DARK, BTN_LIGHT, BTN_SIZE, Eyebrow, LINE_DARK, LINK, WRAP } from "./ui";
+import { Eyebrow, LINE_LIGHT } from "./ui";
 
-const CARD_LIST = [
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, delay, ease: EASE },
+});
+
+const IN_THE_BOX = [
   "AI visibility and competitor tracking",
-  "Website content tailored to AI search questions",
-  "Five AI visibility article drafts per month",
-  "Monthly AI visibility and progress report",
+  "Website content for AI search questions",
+  "Five article drafts a month",
+  "Monthly progress report",
 ];
 
+/** Headline, one line, two facts, one button. The package and price sit in the card beside it. */
 export function Hero() {
   return (
-    <section id="hero" className="relative z-10 bg-white py-12 lg:py-20">
-      <div className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-14 items-start`}>
-        <Reveal>
-          <Eyebrow className="mb-5 text-[13px] min-[26.3125rem]:text-[14px]">For existing scandiweb clients</Eyebrow>
-          <h1 className="max-w-[850px] text-wrap font-head font-bold text-[var(--sw-black)] text-[43px] min-[26.3125rem]:text-[48px] md:text-[clamp(46px,4.5vw,65px)] leading-[1.06] tracking-[-0.035em]">
-            The minimum coverage your business needs for <span className="text-[var(--sw-blue)]">AI search</span>
-          </h1>
-          <p className="mt-7 max-w-[620px] text-[21px] md:text-[23px] font-medium leading-[1.5]">
-            Make visibility in ChatGPT and other AI tools part of running your business.
-          </p>
-          <p className="mt-6 max-w-[650px] text-[18px] md:text-[17px] lg:text-[19px] leading-[1.6]">
-            Know where your brand appears, where competitors appear instead, and what needs to improve. Get monthly
-            content drafts and a clear action plan, alongside your existing SEO and marketing.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4 min-[26.3125rem]:gap-6">
-            <PlanLink plan="core" className={`${BTN_LIGHT} ${BTN_SIZE} text-[16px] min-[26.3125rem]:text-[17px]`}>
-              Request a call <Arrow />
-            </PlanLink>
-            <a href="#coverage" onClick={scrollToId("coverage")} className={`${LINK} text-[15px] font-semibold`}>
-              See what’s included
-            </a>
-          </div>
-          <p className="mt-4 max-w-[560px] text-[14px]">Or ask your scandiweb account manager about AI Visibility Core.</p>
-          <p className="mt-8 text-[14px]">
-            Delivered by{" "}
-            <a href={BETTERANSWER_URL} target="_blank" rel="noopener noreferrer" className={`${LINK} font-semibold`}>
-              BetterAnswer.ai
-            </a>
-            , part of <strong className="font-semibold">scandiweb</strong>
-          </p>
-        </Reveal>
+    <section id="hero" className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)] overflow-hidden">
+      {/* scandiweb waves: the scandiweb.com homepage hero loop */}
+      <video
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        src={assetUrl("/aeo/hero-waves.mp4")}
+        poster={assetUrl("/aeo/hero-waves-poster.jpg")}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        aria-hidden
+        alt=""
+        src={assetUrl("/aeo/hero-waves-poster.jpg")}
+        className="absolute inset-0 h-full w-full object-cover hidden motion-reduce:block"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 hidden lg:block"
+        style={{ background: "linear-gradient(90deg, rgba(16,19,44,0.8) 0%, rgba(16,19,44,0.45) 38%, rgba(16,19,44,0) 62%, rgba(16,19,44,0) 100%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 lg:hidden"
+        style={{ background: "linear-gradient(180deg, rgba(16,19,44,0.35) 0%, rgba(16,19,44,0.55) 40%, rgba(16,19,44,0.85) 75%, rgba(16,19,44,0.95) 100%)" }}
+      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-        <Reveal delay={0.1}>
-          <aside aria-label="AI Visibility Core package" className="bg-[var(--sw-black)] p-[26px] min-[26.3125rem]:p-7 md:p-6 lg:p-8 text-white lg:mt-2">
-            <h2 className="mb-4 font-head font-bold text-white text-[28px] leading-[1.06] tracking-[-0.025em]">{PLANS.core.name}</h2>
-            <div className="font-head font-bold text-[48px] min-[24.4375rem]:text-[52px] leading-[1.1] tracking-[-0.04em]">
-              {PLANS.core.price}
-              <span className="font-body font-normal text-[16px] tracking-normal"> / month</span>
+      <div className="wrap relative pt-32 md:pt-[180px] pb-14 md:pb-28 grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+        <div>
+          <motion.div {...enter(0.1)}>
+            <Eyebrow tone="mint">{PLANS.core.name}</Eyebrow>
+          </motion.div>
+          <motion.h1
+            {...enter(0.2)}
+            className="mt-5 font-head font-bold text-white text-[40px] sm:text-[56px] lg:text-[64px] xl:text-[68px] leading-[1.02] tracking-[-0.03em]"
+          >
+            <span className="lg:inline-block lg:whitespace-nowrap">The minimum coverage</span>{" "}
+            <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
+              for AI search
+            </span>
+          </motion.h1>
+          <motion.p {...enter(0.3)} className="mt-5 md:mt-6 text-white/80 text-[17px] md:text-[20px] leading-relaxed max-w-[44ch]">
+            See where ChatGPT and other AI tools recommend you, where they pick competitors, and what to fix.
+          </motion.p>
+          <motion.ul {...enter(0.35)} className="mt-6 grid gap-2.5">
+            {["Works alongside your SEO agency", "Drafts your team approves and publishes"].map((t) => (
+              <li key={t} className="flex items-center gap-2.5 font-head font-semibold text-white text-[16px]">
+                <Check aria-hidden className="h-5 w-5 shrink-0" style={{ color: "var(--sw-mint)" }} strokeWidth={3} />
+                {t}
+              </li>
+            ))}
+          </motion.ul>
+          <motion.div {...enter(0.45)} className="mt-8 md:mt-10">
+            <PlanLink plan="core" className={`${btnPrimary} w-full sm:w-auto h-auto min-h-12 py-3`}>
+              Request a call
+            </PlanLink>
+          </motion.div>
+        </div>
+
+        <motion.div {...enter(0.3)}>
+          <div className="bg-white rounded-[2px] p-6 md:p-8 lg:ml-auto lg:max-w-[440px]">
+            <Eyebrow>Monthly package</Eyebrow>
+            <div className="mt-4 flex items-baseline gap-2">
+              <span className="font-head font-bold text-[var(--sw-blue)] text-[52px] md:text-[60px] leading-none tracking-[-0.03em]">
+                {PLANS.core.price}
+              </span>
+              <span className="text-[var(--sw-black)]/60 text-[16px]">/ month</span>
             </div>
-            <ul className="mt-7 mb-3">
-              {CARD_LIST.map((t) => (
-                <li key={t} className={`flex items-baseline gap-3 border-t ${LINE_DARK} py-[17px] text-[16px] leading-[1.45]`}>
-                  <span aria-hidden className="shrink-0 font-bold text-[var(--sw-mint)]">+</span>
+            <ul className={`mt-7 border-t ${LINE_LIGHT}`}>
+              {IN_THE_BOX.map((t) => (
+                <li key={t} className={`flex items-center gap-3 border-b ${LINE_LIGHT} py-3.5 text-[15px] md:text-[16px] text-[var(--sw-black)]`}>
+                  <Check aria-hidden className="h-4 w-4 shrink-0 text-[var(--sw-blue)]" strokeWidth={3} />
                   {t}
                 </li>
               ))}
             </ul>
-            <a href="#coverage" onClick={scrollToId("coverage")} className={`${LINK} mb-7 inline-flex items-center gap-1 text-[14px]`}>
-              See everything included <ArrowDown aria-hidden className="h-3.5 w-3.5" />
-            </a>
-            <PlanLink plan="core" className={`${BTN_DARK} ${BTN_SIZE} w-full`}>
-              Request a call <Arrow />
-            </PlanLink>
-            <p className="mt-4 text-[13px] leading-[1.5] text-[#dadcf1]">Drafts for your team or agency to approve and publish.</p>
-          </aside>
-        </Reveal>
+            <p className="mt-5 text-[13px] text-[var(--sw-black)]/60">
+              Delivered by{" "}
+              <a href={BETTERANSWER_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[var(--sw-blue)]">
+                BetterAnswer.ai
+              </a>
+              , part of scandiweb
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

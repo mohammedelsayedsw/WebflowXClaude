@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { btnLight } from "@/components/primitives/buttonStyles";
 import { usePlan } from "./plan";
-import { BETTERANSWER_URL, HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID, PLANS, type Plan } from "./status";
-import { Arrow, BTN_LIGHT, BTN_SIZE, Eyebrow, H2_LIGHT, LINE_LIGHT, LINK, SECTION, WRAP } from "./ui";
+import { HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID, PLANS, type Plan } from "./status";
+import { BODY_DARK, H2_DARK } from "./ui";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FREE_MAIL = new Set([
@@ -14,14 +15,13 @@ const FREE_MAIL = new Set([
 const WORK_EMAIL_MSG = "Use your work email";
 
 const INTRO: Record<Plan, string> = {
-  core: "Request a call about AI Visibility Core. We’ll review your current coverage and explain how the subscription fits your business.",
-  leader:
-    "Request a call with our AI Search Strategist about a tailored program for your industry, competitors, and commercial goals.",
+  core: "We look at your current coverage and show how the package fits.",
+  leader: "We look at your industry, competitors and goals, and scope a program.",
 };
 
-const LABEL = "mb-2 block text-[14px] font-semibold";
+const LABEL = "font-head font-semibold text-[var(--sw-black)] text-[13px]";
 const INPUT =
-  "block w-full min-h-12 rounded-[2px] border border-[#7e83a0] bg-white p-3 text-[16px] text-[var(--sw-black)] placeholder:text-[var(--sw-black)]/45 outline-none focus:border-[var(--sw-blue)] transition";
+  "mt-1.5 block w-full h-11 rounded-[2px] border border-[#c9cdeb] bg-white px-4 text-[var(--sw-black)] text-[16px] placeholder:text-[var(--sw-black)]/35 outline-none focus:border-[var(--sw-blue)] transition";
 
 type Fields = { email: string; website: string; notes: string };
 
@@ -104,48 +104,34 @@ export function Interest() {
     errors[k] && <span className="mt-1.5 block text-[13px] text-[#c62f2f]">{errors[k]}</span>;
 
   return (
-    <section id="interest" className={`relative z-10 border-t ${LINE_LIGHT} bg-white ${SECTION}`}>
-      <div className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-2 lg:gap-20 items-start`}>
+    <section id="interest" className="relative z-10 bg-[var(--sw-black)] py-16 md:py-28">
+      <div className="wrap grid gap-8 lg:gap-16 lg:grid-cols-2 items-start">
         <Reveal>
-          <Eyebrow>For existing scandiweb clients</Eyebrow>
-          <h2 className={H2_LIGHT}>
-            Speak with an
-            <br />
-            <span className="text-[var(--sw-blue)]">AI search strategist</span>
+          <h2 className={H2_DARK}>
+            Talk to an{" "}
+            <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
+              AI search strategist
+            </span>
           </h2>
-          <p className="mt-8 max-w-[600px] text-[20px] leading-[1.6]">{INTRO[plan]}</p>
-          <p className="mt-8 max-w-[540px] leading-[1.6]">
-            <strong className="mb-2 inline-block font-semibold">Already in touch with your account manager?</strong>
-            <br />
-            Ask them about AI Visibility Core. They can bring our AI search team into the conversation.
-          </p>
-          <p className="mt-6 max-w-[540px] text-[14px]">
-            Delivered by{" "}
-            <a href={BETTERANSWER_URL} target="_blank" rel="noopener noreferrer" className={`${LINK} font-semibold`}>
-              BetterAnswer.ai
-            </a>
-            , part of scandiweb.
-          </p>
+          <p className={`${BODY_DARK} mt-5 md:mt-6 max-w-[42ch]`}>{INTRO[plan]}</p>
+          <p className="mt-6 text-white/55 text-[14px] max-w-[42ch]">Already a scandiweb client? Your account manager can set up the call.</p>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className={`border ${LINE_LIGHT} bg-white p-6 md:p-8`}>
+        <Reveal delay={0.15}>
+          <div className="bg-white rounded-[2px] p-5 md:p-7">
             {status === "done" ? (
-              <div role="status" className="py-6">
-                <h3 className="font-head font-bold text-[var(--sw-black)] text-[26px] leading-[1.15] tracking-[-0.025em]">
-                  Request sent
-                </h3>
-                <p className="mt-4 max-w-[44ch] leading-[1.6]">
+              <div role="status" className="py-10">
+                <h3 className="font-head font-bold text-[var(--sw-black)] text-[26px] md:text-[30px] leading-[1.15]">Request sent</h3>
+                <p className="mt-4 text-[var(--sw-black)]/70 text-[16px] leading-relaxed max-w-[44ch]">
                   scandiweb will email {f.email.trim()} to arrange the call about {PLANS[plan].name}.
                 </p>
               </div>
             ) : (
-              <form onSubmit={submit} noValidate aria-label="AI visibility call request">
-                <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 md:gap-5">
-                  <div className="mb-5">
-                    <label htmlFor="aeo-email" className={LABEL}>Work email</label>
+              <form onSubmit={submit} noValidate aria-label="AI visibility call request" className="grid gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <label className="block">
+                    <span className={LABEL}>Work email</span>
                     <input
-                      id="aeo-email"
                       type="email"
                       autoComplete="email"
                       placeholder="you@company.com"
@@ -155,11 +141,10 @@ export function Interest() {
                       className={`${INPUT} ${errors.email ? "border-[var(--sw-red)]" : ""}`}
                     />
                     {error("email")}
-                  </div>
-                  <div className="mb-5">
-                    <label htmlFor="aeo-website" className={LABEL}>Your website</label>
+                  </label>
+                  <label className="block">
+                    <span className={LABEL}>Website</span>
                     <input
-                      id="aeo-website"
                       type="text"
                       inputMode="url"
                       autoComplete="url"
@@ -170,10 +155,10 @@ export function Interest() {
                       className={`${INPUT} ${errors.website ? "border-[var(--sw-red)]" : ""}`}
                     />
                     {error("website")}
-                  </div>
+                  </label>
                 </div>
-                <div className="mb-5">
-                  <label htmlFor="aeo-plan" className={LABEL}>I’m interested in</label>
+                <label className="block">
+                  <span className={LABEL}>Interested in</span>
                   <select
                     id="aeo-plan"
                     value={plan}
@@ -186,34 +171,31 @@ export function Interest() {
                       </option>
                     ))}
                   </select>
-                </div>
-                <div className="mb-5">
-                  <label htmlFor="aeo-notes" className={LABEL}>
-                    Anything you’d like us to know? <span className="font-normal">(optional)</span>
-                  </label>
+                </label>
+                <label className="block">
+                  <span className={LABEL}>
+                    Notes <span className="font-normal text-[var(--sw-black)]/50">(optional)</span>
+                  </span>
                   <textarea
-                    id="aeo-notes"
                     value={f.notes}
                     onChange={set("notes")}
-                    placeholder="Your account manager, current SEO setup, or questions for our team"
-                    className={`${INPUT} min-h-[88px] resize-y`}
+                    placeholder="Your current SEO setup or questions"
+                    className={`${INPUT} h-24 py-3 resize-y`}
                   />
-                </div>
+                </label>
                 {status === "error" && (
-                  <p role="alert" className="mb-4 text-[14px] text-[#c62f2f]">
+                  <p role="alert" className="text-[14px] text-[#c62f2f]">
                     {errorMsg}
                   </p>
                 )}
-                <div className="flex flex-wrap items-center gap-6">
-                  <button
-                    type="submit"
-                    disabled={status === "submitting"}
-                    className={`${BTN_LIGHT} ${BTN_SIZE} w-full md:w-auto cursor-pointer disabled:opacity-60`}
-                  >
-                    {status === "submitting" ? "Sending" : "Request a call"} <Arrow />
-                  </button>
-                  <p className="min-w-[180px] flex-1 text-[14px] leading-[1.5]">A conversation, with no commitment to subscribe.</p>
-                </div>
+                <button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className={`${btnLight} w-full h-auto min-h-12 py-3 px-4 cursor-pointer disabled:opacity-60`}
+                >
+                  {status === "submitting" ? "Sending" : "Request a call"}
+                </button>
+                <p className="text-center text-[13px] text-[var(--sw-black)]/50">No commitment to subscribe</p>
               </form>
             )}
           </div>

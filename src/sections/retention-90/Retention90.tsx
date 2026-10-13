@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt, fmtK } from "./scoring";
-import { DL_EVENT, FORM_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
+import { DL_EVENT, FORM_ENDPOINT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
-import { Summary } from "./Summary";
+import { SMS_CONSENT, Summary } from "./Summary";
+import { buildOmni, OMNI_BAND_HEAD } from "./omni";
 import { BookingModal } from "./BookingModal";
 import { R90Footer, R90Header } from "./SiteChrome";
 import { setTestMode, track, trackLanding, trackLead, watchCalendly, watchExit, watchFolds, watchOutbound } from "./track";
@@ -35,6 +36,7 @@ export function Retention90() {
   const stepRef = useRef("lp");
   const qShownAt = useRef(0);
   const bookAt = useRef(0);
+  const leadRef = useRef<{ name: string; email: string; tags: string[] }>({ name: "", email: "", tags: [] });
 
   useEffect(() => { window.scrollTo(0, 0); }, [screen, qi]);
 
@@ -43,7 +45,13 @@ export function Retention90() {
   stepRef.current = step;
   useEffect(() => {
     trackLanding();
-    const offs = [watchOutbound(), watchCalendly(), watchExit(() => stepRef.current)];
+    /* a booking tags the contact r90-booked in Omnisend, which ends the nurture flow */
+    const onBooked = () => {
+      const { email, tags } = leadRef.current;
+      if (!email) return;
+      fetch(UPDATE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true, body: JSON.stringify({ kind: "booked", email, tags }) }).catch(() => {});
+    };
+    const offs = [watchOutbound(), watchCalendly(onBooked), watchExit(() => stepRef.current)];
     return () => offs.forEach((f) => f());
   }, []);
   useEffect(() => {
@@ -86,6 +94,8 @@ export function Retention90() {
   const submitGate = useCallback((name: string, email: string, honeypot: string) => {
     const score = computeScore(answers), leak = computeLeak(answers);
     if (/@example\.com$/i.test(email)) setTestMode(true);
+    const omni = buildOmni(store, answers, labels, score, leak, OMNI_BAND_HEAD(score));
+    leadRef.current = { name, email, tags: omni.tags };
     track("submit", { score, leak, store, hp: honeypot ? 1 : 0 });
     const payload: Record<string, string> = {
       name, email, store,
@@ -114,7 +124,7 @@ export function Retention90() {
         .catch((e) => track("lead_mail", { pass: 0, kind: "network: " + String(e).slice(0, 80) }));
     };
     try {
-      fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
+      fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...payload, omni }) })
         .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string; ip?: string; country?: string }>)
         .then((j) => {
           track("gate_result", { pass: j && j.bookingUrl ? 1 : 0, country: (j && j.country) || "" });
@@ -138,6 +148,23 @@ export function Retention90() {
     setScreen("summary");
   }, [answers, labels, store]);
 
+  /* Optional SMS opt-in from the score screen. Until Omnisend is wired, the number reaches the
+     team as its own lead email; the hub only gets a PII-free event. */
+  const onSms = useCallback((phone: string) => {
+    track("sms_optin", { cc: (phone.match(/^\+(\d{1,3})/) || [])[1] || "" });
+    const body: Record<string, string> = {
+      name: leadRef.current.name, email: leadRef.current.email, store, phone,
+      sms_consent: SMS_CONSENT, sms_consent_at: new Date().toISOString(), page: window.location.href.split("?")[0],
+      _subject: "SMS opt-in: " + store, _template: "table", _cc: NOTIFY_CC,
+    };
+    fetch(UPDATE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind: "sms", email: leadRef.current.email, phone, tags: leadRef.current.tags }) })
+      .then((r) => track("sms_omni", { pass: r.status, res: r.headers.get("x-omnisend") || "" })).catch(() => track("sms_omni", { pass: 0 }));
+    return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) })
+      .then((r) => { track("sms_mail", { pass: r.status }); return r.ok; })
+      .catch(() => { track("sms_mail", { pass: 0 }); return false; });
+  }, [store]);
+  const onSmsEvent = useCallback((ev: string, props: Record<string, string | number> = {}) => track(ev, props), []);
+
   const openBook = useCallback((where: string) => { bookAt.current = Date.now(); track("book_open", { where }); setBook(true); }, []);
   const goFix = useCallback(() => { track("fix_view"); setScreen("fix"); }, []);
   const backToScore = useCallback(() => { track("back", { from: "fix" }); setScreen("summary"); }, []);
@@ -158,7 +185,7 @@ export function Retention90() {
       )}
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
-      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} />}
+      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} onSms={onSms} onSmsEvent={onSmsEvent} />}
       {screen === "fix" && (
         /* children map 1:1 to FOLDS in track.ts */
         <div id="screen-fix">

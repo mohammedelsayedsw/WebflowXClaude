@@ -36,6 +36,13 @@ setTimeout(function(){if(window.lintrk)return;window.lintrk=function(a,b){window
 var s=document.getElementsByTagName('script')[0],b=document.createElement('script');b.type='text/javascript';b.async=true;
 b.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.insertBefore(b,s)},3000)})();`}
       </Script>
+      {/* Omnisend (brand 6acda3b7160c976a2a289b79, "Scandiweb.com (demand)"): store connection +
+          page views. Contacts and consent are written server-side in api/retention/submit. */}
+      <Script id="r90-omnisend" strategy="afterInteractive">
+        {`window.omnisend=window.omnisend||[];omnisend.push(["brandID","6acda3b7160c976a2a289b79"]);omnisend.push(["track","$pageViewed"]);
+!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
+var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();`}
+      </Script>
       {/* HubSpot EU1, portal 25724996: attaches the scan to the contact timeline */}
       <Script id="hs-script-loader" strategy="afterInteractive" src="https://js-eu1.hs-scripts.com/25724996.js" />
       {/* This route runs its own header and footer (sections/retention-90/SiteChrome). The

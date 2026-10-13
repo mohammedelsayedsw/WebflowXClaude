@@ -132,7 +132,7 @@ export function watchExit(getStep: () => string): () => void {
 }
 
 /* Calendly posts lifecycle messages to the parent page while its iframe is open. */
-export function watchCalendly(): () => void {
+export function watchCalendly(onBooked?: () => void): () => void {
   const h = (e: MessageEvent) => {
     if (typeof e.origin !== "string" || !/calendly\.com$/.test(new URL(e.origin).hostname)) return;
     const ev = e.data && typeof e.data === "object" ? (e.data as { event?: string }).event : "";
@@ -145,6 +145,7 @@ export function watchCalendly(): () => void {
     if (map[ev]) track(map[ev]);
     /* a confirmed booking is the conversion that matters most: tell Meta too */
     if (ev === "calendly.event_scheduled") {
+      try { onBooked?.(); } catch {}
       try { const w = window as unknown as { fbq?: (...a: unknown[]) => void }; if (typeof w.fbq === "function") w.fbq("track", "Schedule", { content_name: "Retention Score call" }); } catch {}
     }
   };

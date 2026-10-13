@@ -21,3 +21,8 @@ export const BLOCKLIST = {
   localParts: ["^kauslunde$", "^(kaus|kais|klaus).*lunde"],
   stores: ["kaus.dk", "kais.dk", "kauslunde.dk"],
 };
+
+/* Omnisend API key, brand "Scandiweb.com (demand)". TEMPORARY fallback committed at Marko's
+   request (13 Oct 2026) until an env var is available. env OMNISEND_API_KEY wins when set.
+   Rotate this key in Omnisend once it moves to env: the repo is public. */
+export const OMNISEND_API_KEY_FALLBACK = "6acda3b7160c976a2a289b79-OoKM8xT4FE3thK8jAXLsDHTozIQzGLf9BhylNwVytBNYj7JTHd";

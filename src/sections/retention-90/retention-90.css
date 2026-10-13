@@ -1409,3 +1409,18 @@ body.noscroll{overflow:hidden}
   .r90 #screen-fix .fixhero{padding:96px 0 64px!important}
   .r90 .recap span{font-size:13px}
 }
+
+/* optional SMS opt-in on the score screen */
+.r90 .smscard{grid-column:1/-1;padding:22px 24px!important}
+.r90 .smscard h3{font-size:18px;font-weight:600;color:var(--fg,#fff);margin:0 0 4px}
+.r90 .smscard p{font-size:14px;line-height:1.5;color:var(--fg2);margin:0 0 14px}
+.r90 .smscard .smsrow{display:flex;gap:10px;flex-wrap:wrap}
+.r90 .smscard input[type=tel]{flex:1 1 220px;min-width:0;padding:13px 14px;border-radius:12px;border:1px solid var(--line3);background:rgba(255,255,255,.04);color:var(--fg,#fff);font:inherit;font-size:16px}
+.r90 .smscard input[type=tel]:focus{outline:none;border-color:var(--sw-mint)}
+.r90 .smscard .btn{flex:0 0 auto;padding:13px 20px!important}
+.r90 .smscard .consent{display:flex;gap:10px;align-items:flex-start;text-align:left;font-size:12px;line-height:1.45;color:var(--mut2);margin:12px 0 0}
+.r90 .smscard .consent input{accent-color:var(--sw-mint);width:16px;height:16px;margin-top:1px;flex:0 0 auto}
+.r90 .smscard .smserr{font-size:13px;color:#ff8f83;margin-top:10px}
+.r90 .smscard.done{font-size:15px;color:var(--fg2)}
+.r90 .smscard.done b{color:var(--sw-mint)}
+@media(max-width:520px){.r90 .smscard .btn{width:100%}}

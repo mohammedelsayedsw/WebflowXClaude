@@ -9,7 +9,55 @@ type Props = {
   answers: Record<string, number>;
   labels: Record<string, string>;
   onFix: () => void;
+  onSms?: (phone: string) => Promise<boolean>;
+  onSmsEvent?: (ev: string, props?: Record<string, string | number>) => void;
 };
+
+/* Optional SMS opt-in, shown after the score. Separate, unticked consent (SMS needs its own). */
+export const SMS_CONSENT =
+  "Yes, text me my booking link and one follow-up from scandiweb. Up to 2 messages. Reply STOP to opt out. Message and data rates may apply.";
+
+export function normPhone(v: string) {
+  let p = v.replace(/[\s().-]/g, "");
+  if (p.startsWith("00")) p = "+" + p.slice(2);
+  return p;
+}
+
+function SmsOptIn({ onSms, onEvent }: { onSms: (phone: string) => Promise<boolean>; onEvent?: (ev: string, props?: Record<string, string | number>) => void }) {
+  const [phone, setPhone] = useState("");
+  const [ok, setOk] = useState(false);
+  const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+  const submit = () => {
+    const p = normPhone(phone);
+    if (!/^\+[1-9]\d{6,14}$/.test(p)) { setErr("Enter your mobile with the country code, like +44 7700 900123."); onEvent?.("sms_err", { kind: "phone" }); return; }
+    if (!ok) { setErr("Tick the box so we're allowed to text you."); onEvent?.("sms_err", { kind: "consent" }); return; }
+    setErr(""); setBusy(true);
+    onSms(p).then(() => { setDone(true); setBusy(false); });
+  };
+  if (done) return (
+    <div className="dcard smscard done"><b>Saved.</b> We&rsquo;ll text you at {normPhone(phone)}. Reply STOP anytime.</div>
+  );
+  return (
+    <div className="dcard smscard">
+      <div className="smshead">
+        <h3>Prefer a text?</h3>
+        <p>Add your mobile and Nika will text you a link to book your 30-minute walkthrough. Optional.</p>
+      </div>
+      <div className="smsrow">
+        <input type="tel" inputMode="tel" autoComplete="tel" placeholder="+44 7700 900123" value={phone}
+          onChange={(e) => { setPhone(e.target.value); setErr(""); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
+        <button className="btn" disabled={busy} onClick={submit}>{busy ? "Saving..." : "Add my number"}</button>
+      </div>
+      <label className="consent">
+        <input type="checkbox" checked={ok} onChange={(e) => { setOk(e.target.checked); setErr(""); }} />
+        <span>{SMS_CONSENT}</span>
+      </label>
+      {err ? <div className="smserr">{err}</div> : null}
+    </div>
+  );
+}
 
 function useCountUp(target: number, dur: number) {
   const [v, setV] = useState(0);
@@ -27,7 +75,7 @@ function useCountUp(target: number, dur: number) {
   return v;
 }
 
-export function Summary({ store, answers, labels, onFix }: Props) {
+export function Summary({ store, answers, labels, onFix, onSms, onSmsEvent }: Props) {
   const score = computeScore(answers);
   const leak = computeLeak(answers);
   const critical = score < 40;
@@ -81,6 +129,7 @@ export function Summary({ store, answers, labels, onFix }: Props) {
             </details>
           </div>
           <div className="sumcta"><button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button></div>
+          {onSms ? <SmsOptIn onSms={onSms} onEvent={onSmsEvent} /> : null}
 
           <Chart answers={answers} leak={leak} />
           <div className="sumcta"><button className="btn big" onClick={onFix}>Fix my revenue leak &rarr;</button></div>

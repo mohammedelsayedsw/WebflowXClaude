@@ -3,6 +3,7 @@ import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
   NOTIFY_CC,
 } from "@/sections/retention-90/server-config";
+import { cleanProps, cleanTags, omnisendUpsert } from "@/sections/retention-90/omnisend-server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -12,7 +13,7 @@ export const dynamic = "force-dynamic";
    which one fired; only a passing submission also gets bookingUrl. Leads are posted to
    formsubmit by the browser, not here, so lead delivery never depends on this route. */
 
-type Body = Record<string, string>;
+type Body = Record<string, string> & { omni?: { props?: unknown; tags?: unknown } };
 type Reason = "honeypot" | "email_blocked" | "store_blocked" | "invalid";
 
 const OK = { ok: true } as const;
@@ -123,5 +124,16 @@ export async function POST(req: NextRequest) {
 
   /* 9. passed. The lead email itself is sent by the browser (the path proven since launch);
      the server only decides and hands back the booking link plus ip/country to attach. */
-  return done("pass", { bookingUrl: await bookingUrl(name, email, store), ip, country });
+  const link = await bookingUrl(name, email, store);
+  /* 10. Omnisend: subscribe the contact with consent, scan answers as r90_* properties and
+     band/focus tags. Starts the confirm + nurture flow. No key in env = logged no-op. */
+  const omni = await omnisendUpsert({
+    email, firstName: name, subscribeEmail: true,
+    tags: cleanTags(body.omni?.tags),
+    props: { ...cleanProps(body.omni?.props), r90_book_url: link, r90_country: country },
+    consent: { ip, userAgent: ua, source: "scandiweb-retention-90" },
+  });
+  const res = done("pass", { bookingUrl: link, ip, country });
+  res.headers.set("x-omnisend", omni);
+  return res;
 }

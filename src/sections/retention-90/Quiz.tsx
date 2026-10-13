@@ -122,7 +122,7 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           onChange={(e) => { setEmail(e.target.value); setEmailErr(false); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         <label className="consent" style={consentErr ? { color: "#ff8f83" } : undefined}>
           <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setConsentErr(false); }} />
-          <span>Email me my full breakdown and, if there’s a strong fit, one follow-up from the lifecycle team. Unsubscribe anytime.</span>
+          <span>Email me my full breakdown, plus a few short emails with case studies and fixes from the scandiweb lifecycle team. Unsubscribe anytime.</span>
         </label>
         <button className="btn big" style={{ width: "100%" }} onClick={submit}>Show my score →</button>
         <p className="priv">No spam. No list selling. Your data stays private.</p>

@@ -2,6 +2,8 @@
 
 /* The Calendly link and the blocklists live server-side in server-config.ts. */
 export const SUBMIT_ENDPOINT = "/solutions/api/retention/submit";
+/* Omnisend follow-ups (SMS opt-in, booked) */
+export const UPDATE_ENDPOINT = "/solutions/api/retention/update";
 /* Lead email goes straight from the browser to formsubmit (same as since launch). The
    gate above only decides whether this submission may send, and hands back the booking link. */
 export const FORM_ENDPOINT = "https://formsubmit.co/ajax/9d1b2680c9cd3f7648a04329a9ece4aa";

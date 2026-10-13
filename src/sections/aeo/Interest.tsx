@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { Plus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { btnLight } from "@/components/primitives/buttonStyles";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { usePlan } from "./plan";
 import { HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID, PLANS, type Plan } from "./status";
-import { BODY_DARK, H2_DARK } from "./ui";
+import { BODY_DARK, H2_DARK, SECTION_Y } from "./ui";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FREE_MAIL = new Set([
@@ -18,19 +19,26 @@ const INTRO: Record<Plan, string> = {
   core: "We look at your current coverage and show how the package fits.",
   leader: "We look at your industry, competitors and goals, and scope a program.",
 };
+const PRICE_LINE: Record<Plan, string> = {
+  core: `${PLANS.core.price} / month`,
+  leader: `from ${PLANS.leader.price} / month`,
+};
 
-const LABEL = "font-head font-semibold text-[var(--sw-black)] text-[13px]";
+const LABEL = "block text-[13px] text-white/60";
 const INPUT =
-  "mt-1.5 block w-full h-11 rounded-[2px] border border-[#c9cdeb] bg-white px-4 text-[var(--sw-black)] text-[16px] placeholder:text-[var(--sw-black)]/35 outline-none focus:border-[var(--sw-blue)] transition";
+  "mt-1.5 block w-full h-12 rounded-[2px] border border-white/20 bg-white/[0.04] px-4 text-[16px] text-white placeholder:text-white/30 outline-none focus:border-[var(--sw-mint)] focus:bg-white/[0.06] transition";
+const ERROR = "mt-1.5 block text-[13px] text-[#ff8a8a]";
 
 type Fields = { email: string; website: string; notes: string };
 
+/** One centred column on the dark ground: plan choice as two options with their prices, two fields, an optional note, one button. */
 export function Interest() {
   const { plan, setPlan } = usePlan();
   const [f, setF] = useState<Fields>({ email: "", website: "", notes: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "error" | "done">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [noteOpen, setNoteOpen] = useState(false);
 
   const set = (k: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setF((s) => ({ ...s, [k]: e.target.value }));
@@ -100,105 +108,140 @@ export function Interest() {
     }
   };
 
-  const error = (k: keyof Fields) =>
-    errors[k] && <span className="mt-1.5 block text-[13px] text-[#c62f2f]">{errors[k]}</span>;
-
   return (
-    <section id="interest" className="relative z-10 bg-[var(--sw-black)] py-16 md:py-28">
-      <div className="wrap grid gap-8 lg:gap-16 lg:grid-cols-2 items-start">
-        <Reveal>
+    <section id="interest" className={`relative z-10 overflow-hidden bg-[var(--sw-black)] ${SECTION_Y}`}>
+      {/* one soft glow so the dark reads as space, not a flat block */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[560px] w-[1000px] max-w-[160%] -translate-x-1/2 -translate-y-1/3"
+        style={{ background: "radial-gradient(closest-side, rgba(63,74,175,0.45), rgba(63,74,175,0))" }}
+      />
+      <div className="wrap relative">
+        <Reveal className="mx-auto max-w-[640px] text-center">
           <h2 className={H2_DARK}>
             Talk to an{" "}
             <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
               AI search strategist
             </span>
           </h2>
-          <p className={`${BODY_DARK} mt-5 md:mt-6 max-w-[42ch]`}>{INTRO[plan]}</p>
-          <p className="mt-6 text-white/55 text-[14px] max-w-[42ch]">Already a scandiweb client? Your account manager can set up the call.</p>
+          <p className={`${BODY_DARK} mt-4`}>{INTRO[plan]}</p>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <div className="bg-white rounded-[2px] p-5 md:p-7">
-            {status === "done" ? (
-              <div role="status" className="py-10">
-                <h3 className="font-head font-bold text-[var(--sw-black)] text-[26px] md:text-[30px] leading-[1.15]">Request sent</h3>
-                <p className="mt-4 text-[var(--sw-black)]/70 text-[16px] leading-relaxed max-w-[44ch]">
-                  scandiweb will email {f.email.trim()} to arrange the call about {PLANS[plan].name}.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={submit} noValidate aria-label="AI visibility call request" className="grid gap-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <label className="block">
-                    <span className={LABEL}>Work email</span>
-                    <input
-                      type="email"
-                      autoComplete="email"
-                      placeholder="you@company.com"
-                      value={f.email}
-                      onChange={set("email")}
-                      aria-invalid={!!errors.email}
-                      className={`${INPUT} ${errors.email ? "border-[var(--sw-red)]" : ""}`}
-                    />
-                    {error("email")}
-                  </label>
-                  <label className="block">
-                    <span className={LABEL}>Website</span>
-                    <input
-                      type="text"
-                      inputMode="url"
-                      autoComplete="url"
-                      placeholder="company.com"
-                      value={f.website}
-                      onChange={set("website")}
-                      aria-invalid={!!errors.website}
-                      className={`${INPUT} ${errors.website ? "border-[var(--sw-red)]" : ""}`}
-                    />
-                    {error("website")}
-                  </label>
+        <Reveal delay={0.1} className="mx-auto mt-8 md:mt-10 max-w-[640px]">
+          {status === "done" ? (
+            <div role="status" className="border-t border-white/15 pt-8 text-center">
+              <h3 className="font-head font-bold text-white text-[26px] leading-[1.15]">Request sent</h3>
+              <p className="mt-3 text-white/70 text-[16px]">
+                scandiweb will email {f.email.trim()} to arrange the call about {PLANS[plan].name}.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={submit} noValidate aria-label="AI visibility call request">
+              <fieldset>
+                <legend className="sr-only">Interested in</legend>
+                <div className="grid grid-cols-2 gap-3">
+                  {(Object.keys(PLANS) as Plan[]).map((p) => {
+                    const on = plan === p;
+                    return (
+                      <label
+                        key={p}
+                        className={`relative cursor-pointer rounded-[2px] border px-4 py-3.5 md:px-5 md:py-4 text-left transition ${
+                          on ? "border-[var(--sw-mint)] bg-[rgba(110,247,110,0.06)]" : "border-white/20 hover:border-white/40"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="aeo-plan"
+                          value={p}
+                          checked={on}
+                          onChange={() => setPlan(p)}
+                          className="sr-only"
+                        />
+                        <span
+                          aria-hidden
+                          className={`absolute right-3 top-3 md:right-4 md:top-4 h-3.5 w-3.5 rounded-full border transition ${
+                            on ? "border-[var(--sw-mint)] bg-[var(--sw-mint)]" : "border-white/35"
+                          }`}
+                        />
+                        <span className="block pr-5 font-head font-semibold text-white text-[15px] md:text-[16px] leading-[1.25]">
+                          {PLANS[p].name}
+                        </span>
+                        <span className="mt-1 block text-[13px] text-white/55">{PRICE_LINE[p]}</span>
+                      </label>
+                    );
+                  })}
                 </div>
+              </fieldset>
+
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <label className="block">
-                  <span className={LABEL}>Interested in</span>
-                  <select
-                    id="aeo-plan"
-                    value={plan}
-                    onChange={(e) => setPlan(e.target.value as Plan)}
-                    className={`${INPUT} cursor-pointer`}
-                  >
-                    {(Object.keys(PLANS) as Plan[]).map((p) => (
-                      <option key={p} value={p}>
-                        {PLANS[p].name}
-                      </option>
-                    ))}
-                  </select>
+                  <span className={LABEL}>Work email</span>
+                  <input
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@company.com"
+                    value={f.email}
+                    onChange={set("email")}
+                    aria-invalid={!!errors.email}
+                    className={`${INPUT} ${errors.email ? "border-[#ff8a8a]" : ""}`}
+                  />
+                  {errors.email && <span className={ERROR}>{errors.email}</span>}
                 </label>
                 <label className="block">
-                  <span className={LABEL}>
-                    Notes <span className="font-normal text-[var(--sw-black)]/50">(optional)</span>
-                  </span>
+                  <span className={LABEL}>Website</span>
+                  <input
+                    type="text"
+                    inputMode="url"
+                    autoComplete="url"
+                    placeholder="company.com"
+                    value={f.website}
+                    onChange={set("website")}
+                    aria-invalid={!!errors.website}
+                    className={`${INPUT} ${errors.website ? "border-[#ff8a8a]" : ""}`}
+                  />
+                  {errors.website && <span className={ERROR}>{errors.website}</span>}
+                </label>
+              </div>
+
+              {noteOpen ? (
+                <label className="mt-4 block">
+                  <span className={LABEL}>Note</span>
                   <textarea
+                    autoFocus
                     value={f.notes}
                     onChange={set("notes")}
                     placeholder="Your current SEO setup or questions"
-                    className={`${INPUT} h-24 py-3 resize-y`}
+                    className={`${INPUT} h-24 py-3 resize-none`}
                   />
                 </label>
-                {status === "error" && (
-                  <p role="alert" className="text-[14px] text-[#c62f2f]">
-                    {errorMsg}
-                  </p>
-                )}
+              ) : (
                 <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  className={`${btnLight} w-full h-auto min-h-12 py-3 px-4 cursor-pointer disabled:opacity-60`}
+                  type="button"
+                  onClick={() => setNoteOpen(true)}
+                  className="mt-4 inline-flex items-center gap-1.5 py-1 font-head font-semibold text-[14px] text-white/70 hover:text-white transition"
                 >
-                  {status === "submitting" ? "Sending" : "Request a call"}
+                  <Plus aria-hidden className="h-4 w-4" />
+                  Add a note
                 </button>
-                <p className="text-center text-[13px] text-[var(--sw-black)]/50">No commitment to subscribe</p>
-              </form>
-            )}
-          </div>
+              )}
+
+              {status === "error" && (
+                <p role="alert" className="mt-4 text-[14px] text-[#ff8a8a]">
+                  {errorMsg}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className={`${btnPrimary} mt-6 w-full cursor-pointer disabled:opacity-60`}
+              >
+                {status === "submitting" ? "Sending" : "Request a call"}
+              </button>
+              <p className="mt-4 text-center text-[13px] text-white/45">
+                No commitment. Already a scandiweb client? Your account manager can set up the call.
+              </p>
+            </form>
+          )}
         </Reveal>
       </div>
     </section>

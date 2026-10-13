@@ -55,7 +55,7 @@ export function Problem() {
 
   return (
     <section id="the-problem" className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20">
-      <div className="wrap relative grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:items-center">
+      <div className="wrap relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:items-center">
         <div>
         <Reveal>
           <SectionLabel n={2} dark>The problem</SectionLabel>

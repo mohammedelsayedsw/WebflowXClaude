@@ -47,7 +47,7 @@ export function Hero() {
 
       <div className="flex-1 flex items-start lg:items-center">
         <div className="wrap relative z-10 pt-[calc(116px+clamp(10px,2.4vh,34px))] md:pt-[calc(124px+clamp(12px,3vh,40px))] pb-[clamp(16px,2.6vh,44px)] w-full">
-          <div className="grid gap-8 lg:gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
             {/* LEFT - copy */}
             <div className="max-w-[46rem]">
               <Reveal>

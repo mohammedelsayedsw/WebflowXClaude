@@ -111,7 +111,7 @@ export function LiveDemo() {
 
         <div
           ref={root}
-          className="mt-10 md:mt-14 grid gap-8 lg:gap-12 lg:grid-cols-[1fr_1fr] lg:items-center"
+          className="mt-10 md:mt-14 grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-[1fr_1fr] lg:items-center"
         >
           <Reveal delay={0.14}>
             <ScreenShell screenId="CL2200" title="Claim entry">
@@ -147,7 +147,7 @@ export function LiveDemo() {
             </ScreenShell>
           </Reveal>
 
-          <div className="grid gap-3 md:gap-4 content-start">
+          <div className="grid grid-cols-1 gap-3 md:gap-4 content-start">
             {/* Says what the three boxes are before the eye reaches them, so
                 they read as a set of cases rather than three claims. */}
             <Reveal delay={0.18}>

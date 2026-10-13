@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: URL },
   openGraph: { title: SHARE_TITLE, description: DESCRIPTION, url: URL, siteName: "scandiweb", type: "website" },
   twitter: { card: "summary_large_image", title: SHARE_TITLE, description: DESCRIPTION },
+  // Not public: shared directly with scandiweb clients and former leads only.
+  robots: { index: false, follow: false },
 };
 
 /** No site Header here: the page renders its own sticky header (light page, in-page links). Footer stays in root layout. */

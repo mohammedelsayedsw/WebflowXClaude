@@ -1,59 +1,47 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { assetUrl } from "@/lib/assets";
 import { ANSWERRANK_URL } from "./status";
-import { Eyebrow, H2_LIGHT, LINE_LIGHT, LINK, SECTION, WRAP } from "./ui";
+import { BODY_LIGHT, H2_LIGHT, LINE_LIGHT } from "./ui";
 
-const TRACKED = [
-  "Brand mentions and recommendations",
-  "Competitor presence in monitored answers",
-  "Sources cited by AI tools",
-  "Changes in visibility and brand descriptions",
-];
+const TRACKED = ["Mentions and recommendations", "Competitors in the same answers", "Sources AI tools cite", "How AI describes your brand"];
 
 export function AnswerRank() {
   return (
-    <section id="answerrank" className={`relative z-10 bg-white ${SECTION}`}>
-      <div className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-2 lg:gap-20 items-start`}>
+    <section id="answerrank" className="relative z-10 bg-white py-16 md:py-28">
+      <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 items-center">
         <Reveal>
-          <Eyebrow>Powered by AnswerRank</Eyebrow>
-          <h2 className={H2_LIGHT}>
-            See how your brand appears in <span className="text-[var(--sw-blue)]">AI answers</span>
-          </h2>
-          <p className="mt-8 max-w-[600px] text-[20px] leading-[1.6]">
-            A shared view of the questions we monitor, the competitors appearing alongside you, and changes in how your
-            business is described.
+          <h2 className={`${H2_LIGHT} max-w-[16ch]`}>See your brand in AI answers</h2>
+          <p className={`${BODY_LIGHT} mt-5 max-w-[40ch]`}>
+            Tracked in{" "}
+            <a href={ANSWERRANK_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[var(--sw-blue)]">
+              AnswerRank
+            </a>
+            , shared with your team.
           </p>
-          <ul className="my-8">
+          <ul className="mt-7 grid gap-3">
             {TRACKED.map((t) => (
-              <li key={t} className={`border-t ${LINE_LIGHT} py-3.5`}>
+              <li key={t} className="flex items-center gap-3 text-[16px] text-[var(--sw-black)]">
+                <Check aria-hidden className="h-4 w-4 shrink-0 text-[var(--sw-blue)]" strokeWidth={3} />
                 {t}
               </li>
             ))}
           </ul>
-          <p className="text-[14px] leading-[1.5]">
-            AnswerRank provides the tracking. BetterAnswer.ai turns the findings into content drafts, recommendations, and
-            your monthly progress report.
-          </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <figure className={`border ${LINE_LIGHT} bg-[var(--sw-beige)] p-4 md:p-5`}>
+          <figure>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={assetUrl("/aeo/answerrank-dashboard.png")}
-              alt="AnswerRank product preview showing a brand-visibility dashboard"
+              alt="AnswerRank dashboard with brand visibility over time and an industry ranking"
               width={1920}
               height={1141}
               loading="lazy"
-              className={`block h-auto w-full border ${LINE_LIGHT} bg-white`}
+              className={`block h-auto w-full rounded-[2px] border ${LINE_LIGHT} shadow-[0_24px_60px_-30px_rgba(16,19,44,0.35)]`}
             />
-            <figcaption className="mt-4 text-[13px]">
-              Public AnswerRank product preview. Illustrative product data, not results from AI Visibility Core.{" "}
-              <a href={ANSWERRANK_URL} target="_blank" rel="noopener noreferrer" className={LINK}>
-                Explore AnswerRank
-              </a>
-            </figcaption>
+            <figcaption className="mt-3 text-[13px] text-[var(--sw-black)]/50">Illustrative AnswerRank data</figcaption>
           </figure>
         </Reveal>
       </div>

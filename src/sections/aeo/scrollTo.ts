@@ -1,12 +1,11 @@
-/** In-page links do not scroll on their own in this app (smooth scroll on html, overflow on body), so each link scrolls itself, clear of the sticky page header. */
+/** In-page links do not scroll on their own in this app (smooth scroll on html, overflow on body), so each link scrolls itself. */
 export function scrollToId(id: string) {
   return (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    const header = document.getElementById("aeo-header")?.offsetHeight ?? 0;
     const from = window.scrollY;
-    const to = from + target.getBoundingClientRect().top - header;
+    const to = from + target.getBoundingClientRect().top;
     const started = performance.now();
     const step = (now: number) => {
       const t = Math.min(1, (now - started) / 700);

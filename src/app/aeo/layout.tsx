@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/site/Header";
 
 const TITLE = "AI Visibility Core | €1,000/month";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
@@ -16,7 +17,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** No site Header here: the page renders its own sticky header (light page, in-page links). Footer stays in root layout. */
+/** Site Header + page content. Footer stays in root layout. */
 export default function AeoLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

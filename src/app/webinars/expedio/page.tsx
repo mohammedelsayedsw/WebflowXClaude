@@ -13,7 +13,7 @@ import { WhoShouldJoin } from "@/sections/webinars-expedio/WhoShouldJoin";
 
 /**
  * scandiweb x ReadyMage webinar on Expedio. The site Header (from the webinars
- * layout) adds the ReadyMage logo on this route; the footer comes from the root layout.
+ * layout) adds the Ari logo on this route; the footer comes from the root layout.
  * MotionConfig drops the scroll-in movement for prefers-reduced-motion.
  */
 export default function Page() {

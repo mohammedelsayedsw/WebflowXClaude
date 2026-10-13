@@ -65,13 +65,13 @@ export function Hero() {
             <Reveal delay={0.32} className="w-full">
               <div className="mt-[clamp(22px,3.6vh,40px)] flex flex-wrap justify-center gap-x-8 gap-y-4 border-t border-white/10 pt-[clamp(14px,2.2vh,22px)]">
                 {SPEAKERS.map((s) => (
-                  <div key={s.name} className="flex items-center gap-3 text-left">
+                  <div key={s.name} className="flex items-center gap-4 text-left">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={assetUrl(s.face)}
                       alt=""
                       aria-hidden
-                      className="h-10 w-10 md:h-11 md:w-11 shrink-0 rounded-[4px] border border-white/15 object-cover"
+                      className="h-14 w-14 md:h-16 md:w-16 shrink-0 rounded-[4px] border border-white/15 object-cover"
                     />
                     <div>
                       <div className="font-head text-white text-[14px] md:text-[15px] leading-tight">

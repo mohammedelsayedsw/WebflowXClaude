@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://scandiweb.com/solutions/webinars/expedio",
   },
-  // noindex until the HubSpot registration form is in place
-  robots: { index: false, follow: false },
 };
 
 export default function ExpedioWebinarLayout({ children }: Readonly<{ children: React.ReactNode }>) {

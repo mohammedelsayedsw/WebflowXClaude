@@ -1,17 +1,12 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
-import { EYEBROW_PARTS, HUBSPOT_FORM_ID, HUBSPOT_PORTAL } from "./details";
-import { FormPlaceholder } from "./FormPlaceholder";
+import { EYEBROW_PARTS, RESTREAM_REGISTRATION_URL } from "./details";
 import { Lockup } from "./Lockup";
 import { Stars } from "./Stars";
 
-/**
- * Registration. Until HUBSPOT_FORM_ID is set, a disabled look-alike of the
- * form holds its place.
- */
+/** Registration: the Restream registration page, embedded. */
 export function CTA() {
   return (
     <section
@@ -45,11 +40,13 @@ export function CTA() {
 
           <Reveal delay={0.2} className="w-full">
             <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              {HUBSPOT_FORM_ID ? (
-                <HubSpotForm portalId={HUBSPOT_PORTAL} formId={HUBSPOT_FORM_ID} region="eu1" submitText="Save your seat" />
-              ) : (
-                <FormPlaceholder />
-              )}
+              <iframe
+                src={RESTREAM_REGISTRATION_URL}
+                title="Expedio Live registration"
+                allow="camera; microphone; fullscreen; autoplay"
+                loading="lazy"
+                className="block w-full max-w-[420px] h-[720px] mx-auto border-0 rounded-[12px]"
+              />
             </div>
           </Reveal>
 

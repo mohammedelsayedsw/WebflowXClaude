@@ -31,10 +31,9 @@ const STAGE: Record<
     sky: "#141a41",
     text: "right",
     role: "Board member",
-    breakBefore: "see what",
     highlights: [
       { title: "15+ years", caption: "Working with Magento stores" },
-      { title: "Ari", caption: "Co-founder" },
+      { title: "Ari & Expedio", caption: "Co-founder" },
     ],
   },
   "Alfreds Genkins": {

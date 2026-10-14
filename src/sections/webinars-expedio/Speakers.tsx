@@ -8,11 +8,21 @@ import { assetUrl } from "@/lib/assets";
    The section heading sits in the first speaker's copy, above the name. */
 const STAGE: Record<
   string,
-  { photo: string; text: "left" | "right"; highlights?: { title: string; caption: string }[] }
+  {
+    photo: string;
+    text: "left" | "right";
+    /** Role shown here, when it differs from the hero's. */
+    role?: string;
+    /** On wider screens the bio breaks before this phrase, to balance the lines. */
+    breakBefore?: string;
+    highlights?: { title: string; caption: string }[];
+  }
 > = {
   "Glebs Vrevsky": {
     photo: "/webinars/expedio/glebs-vrevsky-stage.jpg",
     text: "right",
+    role: "Board member",
+    breakBefore: "see what",
     highlights: [
       { title: "15+ years", caption: "Working with Magento stores" },
       { title: "Ari", caption: "Co-founder" },
@@ -23,7 +33,7 @@ const STAGE: Record<
     text: "left",
     highlights: [
       { title: "ScandiPWA & Satoshi", caption: "Creator" },
-      { title: "Ari", caption: "Founder of the first\nagent for Magento" },
+      { title: "10+ years", caption: "Building for Magento" },
     ],
   },
 };
@@ -59,10 +69,20 @@ export function Speakers() {
                         {s.name}
                       </div>
                       <div className="mt-2 font-head text-[16px] md:text-[18px]" style={{ color: "var(--sw-mint)" }}>
-                        {s.title} at scandiweb
+                        {stage.role ?? s.title} at scandiweb
                       </div>
                       {s.bio && (
-                        <p className="mt-4 text-white/75 text-[15px] md:text-[17px] leading-relaxed">{s.bio}</p>
+                        <p className="mt-4 text-white/75 text-[15px] md:text-[17px] leading-relaxed">
+                          {stage.breakBefore && s.bio.includes(stage.breakBefore) ? (
+                            <>
+                              {s.bio.slice(0, s.bio.indexOf(stage.breakBefore))}
+                              <br className="hidden sm:inline" />
+                              {s.bio.slice(s.bio.indexOf(stage.breakBefore))}
+                            </>
+                          ) : (
+                            s.bio
+                          )}
+                        </p>
                       )}
                       {stage.highlights && (
                         <dl className="mt-6 grid grid-cols-2 border-t border-white/20">

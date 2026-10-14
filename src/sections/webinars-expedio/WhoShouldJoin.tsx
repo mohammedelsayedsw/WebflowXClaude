@@ -1,14 +1,14 @@
 "use client";
 
-import { MonitorSmartphone, Server, ShoppingCart, Store } from "lucide-react";
+import { Code, Server, ShoppingCart, Store } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Stars } from "./Stars";
 
 const AUDIENCE: { icon: typeof Server; lead: string; body: string }[] = [
-  { icon: Store, lead: "Store owners", body: "Owners paying for bigger servers just to get through busy days" },
-  { icon: ShoppingCart, lead: "eCommerce leads", body: "Managers whose store gets slowest on the days that bring the most sales" },
-  { icon: Server, lead: "CTOs and IT teams", body: "People told the only way to a fast store is a costly replatform" },
-  { icon: MonitorSmartphone, lead: "Heads of digital", body: "People responsible for how the store feels to shoppers" },
+  { icon: Store, lead: "Store owners", body: "See how to make your Magento store 2x faster without replatforming" },
+  { icon: ShoppingCart, lead: "eCommerce directors", body: "Keep all pages fast on your busiest sales days" },
+  { icon: Server, lead: "CTOs", body: "Speed up Magento one page type at a time, with no big migration" },
+  { icon: Code, lead: "Magento developers", body: "Learn about the free open-source core and setting it up" },
 ];
 
 /**
@@ -23,7 +23,7 @@ export function WhoShouldJoin() {
       <div className="wrap relative">
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            Who this webinar <span style={{ color: "var(--sw-mint)" }}>is for</span>
+            Made for <span style={{ color: "var(--sw-mint)" }}>Magento decision-makers</span>
           </h2>
         </Reveal>
 

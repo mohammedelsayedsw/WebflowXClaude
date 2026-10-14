@@ -102,7 +102,7 @@ export function Speakers() {
                     <div className="sm:w-1/2 sm:max-w-[480px]">
                       {i === 0 && (
                         <h2 className="mb-8 md:mb-12 font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-                          Who&apos;s running <span style={{ color: "var(--sw-mint)" }}>the session</span>
+                          Learn about Expedio <span style={{ color: "var(--sw-mint)" }}>from its creators</span>
                         </h2>
                       )}
                       <div className="font-head font-bold text-white text-[26px] md:text-[34px] lg:text-[40px] leading-[1.05] tracking-[-0.01em]">

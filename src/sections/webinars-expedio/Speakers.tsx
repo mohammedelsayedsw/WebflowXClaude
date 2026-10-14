@@ -4,7 +4,8 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { SPEAKERS } from "./details";
 import { assetUrl } from "@/lib/assets";
 
-/* Each speaker stands on one side of a full-width office picture; the copy sits in the empty side. */
+/* Each speaker stands on one side of a full-width office picture; the copy sits in the empty side.
+   The section heading sits in the first speaker's copy, above the name. */
 const STAGE: Record<string, { photo: string; text: "left" | "right" }> = {
   "Glebs Vrevsky": { photo: "/webinars/expedio/glebs-vrevsky-stage.jpg", text: "right" },
   "Alfreds Genkins": { photo: "/webinars/expedio/alfreds-genkins-stage.jpg", text: "left" },
@@ -12,15 +13,8 @@ const STAGE: Record<string, { photo: string; text: "left" | "right" }> = {
 
 export function Speakers() {
   return (
-    <section id="the-speakers" className="relative bg-lp-bright pt-24 md:pt-32 overflow-hidden scroll-mt-20">
-      <div className="wrap relative">
-        <Reveal delay={0.05}>
-          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            Who&apos;s running <span style={{ color: "var(--sw-blue)" }}>the session</span>
-          </h2>
-        </Reveal>
-      </div>
-      <ul className="mt-10 md:mt-14 flex flex-col">
+    <section id="the-speakers" className="relative bg-lp-bright overflow-hidden scroll-mt-20">
+      <ul className="flex flex-col">
         {SPEAKERS.map((s, i) => {
           const stage = STAGE[s.name];
           const right = stage.text === "right";
@@ -31,14 +25,19 @@ export function Speakers() {
                 <img
                   src={assetUrl(stage.photo)}
                   width={1672}
-                  height={921}
+                  height={901}
                   alt={s.name}
                   loading="lazy"
-                  className={`block w-full aspect-[4/3] sm:aspect-[1672/921] object-cover ${right ? "object-left" : "object-right"}`}
+                  className={`block w-full aspect-[4/3] sm:aspect-[1672/901] object-cover ${right ? "object-left" : "object-right"}`}
                 />
                 <div className="sm:absolute sm:inset-0">
                   <div className={`wrap flex h-full items-center py-6 sm:py-0 ${right ? "sm:justify-end" : ""}`}>
                     <div className="sm:w-1/2 sm:max-w-[480px]">
+                      {i === 0 && (
+                        <h2 className="mb-8 md:mb-12 font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
+                          Who&apos;s running <span style={{ color: "var(--sw-blue)" }}>the session</span>
+                        </h2>
+                      )}
                       <div className="font-head font-bold text-[var(--sw-black)] text-[26px] md:text-[34px] lg:text-[40px] leading-[1.05] tracking-[-0.01em]">
                         {s.name}
                       </div>

@@ -14,14 +14,15 @@ export function LiveDemo() {
           <div className="lg:col-span-7">
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-                Watch both stores <span style={{ color: "var(--sw-blue)" }}>side by side</span>
+                Try <span style={{ color: "var(--sw-blue)" }}>Expedio demo</span> before the webinar
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1} className="lg:col-span-5">
             <p className="text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              In the webinar we run the same store on stock Magento and on Expedio, on the same data and
-              server, and click through both at once so you can see the difference in every page.
+              The same store on stock Magento and on Expedio, with the same data and the same server.
+              Click through both at once and watch the numbers. In the webinar, we&apos;ll explain how
+              Expedio makes those pages faster and what it takes to see the same on your store.
             </p>
           </Reveal>
         </div>

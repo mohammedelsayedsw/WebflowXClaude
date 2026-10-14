@@ -20,7 +20,7 @@ const NOT_INCLUDED = ["Outreach and link building", "Reddit posting", "Review ma
 export function Included() {
   return (
     <section id="coverage" className={`relative z-10 ${SECTION_Y}`} style={{ background: LAVENDER }}>
-      <div className="wrap">
+      <div className="wrap w-full">
         <Reveal>
           <h2 className={H2_LIGHT}>What you get every month</h2>
         </Reveal>

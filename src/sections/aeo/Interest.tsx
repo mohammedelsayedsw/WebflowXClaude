@@ -116,7 +116,7 @@ export function Interest() {
         className="pointer-events-none absolute left-1/2 top-0 h-[560px] w-[1000px] max-w-[160%] -translate-x-1/2 -translate-y-1/3"
         style={{ background: "radial-gradient(closest-side, rgba(63,74,175,0.45), rgba(63,74,175,0))" }}
       />
-      <div className="wrap relative">
+      <div className="wrap w-full relative">
         <Reveal className="mx-auto max-w-[640px] text-center">
           <h2 className={H2_DARK}>
             Talk to an{" "}
@@ -124,10 +124,10 @@ export function Interest() {
               AI search strategist
             </span>
           </h2>
-          <p className={`${BODY_DARK} mt-4`}>{INTRO[plan]}</p>
+          <p className={`${BODY_DARK} mt-4 max-md:[@media(max-height:700px)]:mt-2`}>{INTRO[plan]}</p>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-8 md:mt-10 max-w-[640px]">
+        <Reveal delay={0.1} className="mx-auto mt-8 max-md:[@media(max-height:700px)]:mt-5 md:mt-10 max-w-[640px]">
           {status === "done" ? (
             <div role="status" className="border-t border-white/15 pt-8 text-center">
               <h3 className="font-head font-bold text-white text-[26px] leading-[1.15]">Request sent</h3>
@@ -145,7 +145,7 @@ export function Interest() {
                     return (
                       <label
                         key={p}
-                        className={`relative cursor-pointer rounded-[2px] border px-4 py-3.5 md:px-5 md:py-4 text-left transition ${
+                        className={`relative cursor-pointer rounded-[2px] border px-4 py-3.5 max-md:[@media(max-height:700px)]:py-2.5 md:px-5 md:py-4 text-left transition ${
                           on ? "border-[var(--sw-mint)] bg-[rgba(110,247,110,0.06)]" : "border-white/20 hover:border-white/40"
                         }`}
                       >
@@ -173,7 +173,7 @@ export function Interest() {
                 </div>
               </fieldset>
 
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <div className="mt-5 grid gap-4 max-md:[@media(max-height:700px)]:gap-3 sm:grid-cols-2">
                 <label className="block">
                   <span className={LABEL}>Work email</span>
                   <input
@@ -233,11 +233,11 @@ export function Interest() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className={`${btnPrimary} mt-6 w-full cursor-pointer disabled:opacity-60`}
+                className={`${btnPrimary} mt-6 max-md:[@media(max-height:700px)]:mt-4 w-full cursor-pointer disabled:opacity-60`}
               >
                 {status === "submitting" ? "Sending" : "Request a call"}
               </button>
-              <p className="mt-4 text-center text-[13px] text-white/45">
+              <p className="mt-4 max-md:[@media(max-height:700px)]:mt-3 text-center text-[13px] text-white/45">
                 No commitment. Already a scandiweb client? Your account manager can set up the call.
               </p>
             </form>

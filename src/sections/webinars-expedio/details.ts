@@ -20,14 +20,14 @@ export const SPEAKERS = [
   {
     name: "Glebs Vrevsky",
     title: "Co-founder",
-    bio: "Works on scandiweb's newest Magento products, including Expedio and Ari, and helps merchants see what they can do for their stores.",
+    bio: "Glebs works with merchants every day on how to get more out of the Magento store they already have. With 15+ years in eCommerce, he works closely with agile teams to plan and launch AI-driven solutions, focusing on practical use cases.",
     photo: "/webinars/expedio/glebs-vrevsky.jpg",
     face: "/webinars/expedio/glebs-vrevsky-face.jpg",
   },
   {
     name: "Alfreds Genkins",
     title: "CTO",
-    bio: "Leads all of scandiweb's Magento technology. Founded ScandiPWA, the first open-source PWA theme built for Magento, and Ari, the first agent for Magento.",
+    bio: "Leads all of scandiweb's Magento technology. Created ScandiPWA, the first open-source PWA theme built for Magento, and Ari, the first agent for Magento.",
     photo: "/webinars/expedio/alfreds-genkins.jpg",
     face: "/webinars/expedio/alfreds-genkins-face.jpg",
   },

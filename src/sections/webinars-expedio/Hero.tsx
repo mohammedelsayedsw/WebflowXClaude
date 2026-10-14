@@ -82,6 +82,19 @@ export function Hero() {
                     </div>
                   </div>
                 ))}
+                {/* A third speaker, unnamed until the webinar. Hero only, not in the speakers section. */}
+                <div className="flex items-center gap-4 text-left">
+                  <div
+                    aria-hidden
+                    className="h-14 w-14 md:h-16 md:w-16 shrink-0 rounded-[4px] border border-white/15 bg-white/5 flex items-center justify-center font-head text-[26px] md:text-[30px] leading-none"
+                    style={{ color: "var(--sw-mint)" }}
+                  >
+                    ?
+                  </div>
+                  <div className="font-head text-white text-[14px] md:text-[15px] leading-tight">
+                    Secret guest
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>

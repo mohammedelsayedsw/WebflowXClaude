@@ -150,7 +150,7 @@ export function Benchmark() {
     <section id="the-benchmark" className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20">
       <Stars />
       <div className="wrap relative grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:gap-14 lg:items-start">
-        <div className="lg:sticky lg:top-28">
+        <div>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
               The <span style={{ color: "var(--sw-mint)" }}>benchmark</span>

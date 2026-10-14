@@ -28,13 +28,13 @@ export function CTA() {
 
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[20ch] mx-auto">
-              Learn how to make your Magento store <span style={{ color: "var(--sw-mint)" }}>twice as fast</span>
+              Find out how Expedio can make your store <span style={{ color: "var(--sw-mint)" }}>2x faster</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto text-balance">
-              See it live next to stock Magento, and ask the team about your own store.
+              Get all your questions answered by the team that built Expedio.
             </p>
           </Reveal>
 
@@ -45,7 +45,7 @@ export function CTA() {
                 title="Expedio Live registration"
                 allow="camera; microphone; fullscreen; autoplay"
                 loading="lazy"
-                className="block w-full max-w-[420px] h-[720px] mx-auto border-0 rounded-[12px]"
+                className="block w-full max-w-[420px] h-[600px] mx-auto border-0 rounded-[12px]"
               />
             </div>
           </Reveal>

@@ -48,7 +48,7 @@ export function Speakers() {
                   className={`block w-full aspect-[4/3] sm:aspect-[1672/841] object-cover ${right ? "object-left" : "object-right"}`}
                 />
                 <div className="sm:absolute sm:inset-0">
-                  <div className={`wrap flex h-full items-center py-6 sm:py-0 ${right ? "sm:justify-end" : ""}`}>
+                  <div className={`wrap flex h-full py-6 sm:py-0 ${right ? "sm:justify-end" : ""} ${i === 0 ? "items-center sm:items-start sm:pt-[7%]" : "items-center"}`}>
                     <div className="sm:w-1/2 sm:max-w-[480px]">
                       {i === 0 && (
                         <h2 className="mb-8 md:mb-12 font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

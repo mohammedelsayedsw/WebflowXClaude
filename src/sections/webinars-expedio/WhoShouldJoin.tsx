@@ -2,6 +2,7 @@
 
 import { MonitorSmartphone, Server, ShoppingCart, Store } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { Stars } from "./Stars";
 
 const AUDIENCE: { icon: typeof Server; lead: string; body: string }[] = [
   { icon: Store, lead: "Store owners", body: "Owners paying for bigger servers just to get through busy days" },
@@ -18,6 +19,7 @@ const AUDIENCE: { icon: typeof Server; lead: string; body: string }[] = [
 export function WhoShouldJoin() {
   return (
     <section id="the-audience" className="relative bg-[var(--sw-black)] border-t border-white/10 py-24 md:py-32 overflow-hidden scroll-mt-20">
+      <Stars />
       <div className="wrap relative">
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

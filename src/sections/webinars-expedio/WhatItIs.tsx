@@ -27,7 +27,7 @@ function cardsPath(grid: HTMLElement) {
 }
 
 /**
- * The four benchmark figures on a dark section. One aurora canvas (the
+ * The four benchmark figures on a light section. One aurora canvas (the
  * hero's background) runs behind the whole row, clipped to the four cards,
  * so each card shows its own slice of the same continuous picture. A dark
  * tint inside the cards keeps the type clearly readable.
@@ -46,15 +46,15 @@ export function WhatItIs() {
   }, []);
 
   return (
-    <section id="the-product" className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20">
+    <section id="the-product" className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20">
       <div className="wrap relative">
         <Reveal delay={0.05}>
-          <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            The same store, <span style={{ color: "var(--sw-mint)" }}>at least twice as fast</span>
+          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
+            The same store, <span className="text-[var(--sw-blue)]">at least twice as fast</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mt-6 max-w-[64ch] text-white/70 text-[16px] md:text-[18px] leading-relaxed">
+          <p className="mt-6 max-w-[64ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             Expedio speeds up the part of Magento that builds each page, so every page answers faster
             without changing your store, design or data.
           </p>
@@ -72,7 +72,7 @@ export function WhatItIs() {
             </div>
 
             {STATS.map((s, i) => (
-              <div key={s.title} data-stat-card className="rounded-[4px] border border-white/10 p-6 md:p-8">
+              <div key={s.title} data-stat-card className="rounded-[4px] p-6 md:p-8">
                 <div
                   className="font-head font-bold text-[52px] md:text-[60px] leading-none tracking-[-0.04em] whitespace-nowrap"
                   style={{ color: "var(--sw-mint)", textShadow: "0 2px 18px rgba(5,7,15,0.6)" }}

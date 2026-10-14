@@ -1,5 +1,5 @@
 /**
- * The webinar's date, time and registration form, in one place because the
+ * The webinar's date, time and registration link, in one place because the
  * hero and the final CTA both show them and must never disagree.
  */
 export const EYEBROW_PARTS = ["Free webinar", "10 November", "14:00 GMT"];
@@ -7,13 +7,8 @@ export const EYEBROW_PARTS = ["Free webinar", "10 November", "14:00 GMT"];
 /** The Expedio demo: the same store on Magento and on Expedio, side by side. */
 export const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 
-/**
- * HubSpot registration form. Empty until the form exists: the CTA renders
- * nothing in the form area while it is empty, and the page stays noindex
- * (see app/webinars/expedio/layout.tsx) until the form works.
- */
-export const HUBSPOT_PORTAL = "25724996";
-export const HUBSPOT_FORM_ID = "";
+/** Restream registration page, embedded in the final CTA as the sign-up form. */
+export const RESTREAM_REGISTRATION_URL = "https://studio.restream.io/webinar/wpnm-ydbn-ulr";
 
 /* `photo` is the card portrait, `face` the small hero avatar. */
 export const SPEAKERS = [

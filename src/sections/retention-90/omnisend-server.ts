@@ -34,11 +34,14 @@ export async function omnisendUpsert(c: Upsert): Promise<string> {
   const key = process.env.OMNISEND_API_KEY || OMNISEND_API_KEY_FALLBACK;
   if (!key) { console.log(JSON.stringify({ event: "omnisend_skipped", reason: "no_key" })); return "skip:no_key"; }
   const createdAt = new Date().toISOString();
-  const identifiers: unknown[] = [c.subscribeEmail ? {
+  /* Omnisend rejects an email identifier without channels.email (400 "Email channel is
+     required"). Follow-ups (SMS opt-in, booking) fire in the same funnel session right
+     after the opt-in, so they repeat the subscribed status; only the submit records consent. */
+  const identifiers: unknown[] = [{
     type: "email", id: c.email,
     channels: { email: { status: "subscribed" } },
-    consent: { source: c.consent.source, ip: c.consent.ip, userAgent: c.consent.userAgent, createdAt },
-  } : { type: "email", id: c.email }];
+    ...(c.subscribeEmail ? { consent: { source: c.consent.source, ip: c.consent.ip, userAgent: c.consent.userAgent, createdAt } } : {}),
+  }];
   if (c.phone) identifiers.push({
     type: "phone", id: c.phone,
     channels: { sms: { status: c.sms ? "subscribed" : "nonSubscribed" } },

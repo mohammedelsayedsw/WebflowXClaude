@@ -22,7 +22,7 @@ const STAGE: Record<
     photo: "/webinars/expedio/alfreds-genkins-stage.jpg",
     text: "left",
     highlights: [
-      { title: "ScandiPWA + Satoshi", caption: "Creator" },
+      { title: "ScandiPWA & Satoshi", caption: "Creator" },
       { title: "Ari", caption: "Founder of the first\nagent for Magento" },
     ],
   },
@@ -59,7 +59,7 @@ export function Speakers() {
                         {s.name}
                       </div>
                       <div className="mt-2 font-head text-[16px] md:text-[18px]" style={{ color: "var(--sw-blue)" }}>
-                        {s.title}
+                        {s.title} at scandiweb
                       </div>
                       {s.bio && (
                         <p className="mt-4 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">{s.bio}</p>

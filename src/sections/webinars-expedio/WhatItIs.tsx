@@ -56,7 +56,7 @@ export function WhatItIs() {
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-[64ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
             Expedio speeds up the part of Magento that builds each page, so every page answers faster
-            without changing your store, design or data.
+            without changing your store, design, or data.
           </p>
         </Reveal>
 

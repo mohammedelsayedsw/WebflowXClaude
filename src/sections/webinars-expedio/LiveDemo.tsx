@@ -10,7 +10,7 @@ export function LiveDemo() {
   return (
     <section id="the-demo" className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20">
       <div className="wrap relative">
-        <div className="grid gap-6 lg:grid-cols-12 lg:gap-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:gap-12 lg:items-start">
           <div className="lg:col-span-7">
             <Reveal delay={0.05}>
               <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

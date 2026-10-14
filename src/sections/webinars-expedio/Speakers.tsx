@@ -19,6 +19,8 @@ const STAGE: Record<
     text: "left" | "right";
     /** Role shown here, when it differs from the hero's. */
     role?: string;
+    /** The whole line under the name, replacing "<role> at scandiweb". */
+    titleLine?: string;
     /** On wider screens the bio breaks before this phrase, to balance the lines. */
     breakBefore?: string;
     highlights?: { title: string; caption: string }[];
@@ -42,8 +44,9 @@ const STAGE: Record<
     tablet: "/webinars/expedio/alfreds-genkins-tablet.jpg",
     sky: "#0b1232",
     text: "left",
+    titleLine: "Expedio creator",
     highlights: [
-      { title: "ScandiPWA & Satoshi", caption: "Creator" },
+      { title: "Expedio & Ari", caption: "Creator" },
       { title: "10+ years", caption: "Building for Magento" },
     ],
   },
@@ -109,7 +112,7 @@ export function Speakers() {
                         {s.name}
                       </div>
                       <div className="mt-2 font-head text-[16px] md:text-[18px]" style={{ color: "var(--sw-mint)" }}>
-                        {stage.role ?? s.title} at scandiweb
+                        {stage.titleLine ?? `${stage.role ?? s.title} at scandiweb`}
                       </div>
                       {s.bio && (
                         <p className="mt-4 text-white/75 text-[15px] md:text-[17px] leading-relaxed">

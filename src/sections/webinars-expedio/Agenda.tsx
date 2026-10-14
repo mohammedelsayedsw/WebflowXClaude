@@ -7,7 +7,7 @@ import { Stars } from "./Stars";
 const POINTS: string[] = [
   "Why most Magento stores are slower than they need to be, and how much more you could earn with a faster store",
   "A live side-by-side demo of stock Magento and Expedio on real stores",
-  "Expedio tech - how it builds pages, and how your design and data stay the same",
+  "Expedio tech – how it builds pages, and how your design and data stay the same",
   "Moving your store over to Expedio",
   "What's included in the free open-source package",
   "Setting up Expedio with Ari, the first agent for Magento",

@@ -101,7 +101,7 @@ export function WhatItIs() {
                 className="mt-6 font-head font-bold text-white text-[19px] md:text-[20px] leading-[1.25] text-balance"
                 style={{ textShadow: "0 1px 12px rgba(5,7,15,0.7)" }}
               >
-                Expedio is now open source
+                Expedio is now open-source
               </h3>
             </div>
           </div>

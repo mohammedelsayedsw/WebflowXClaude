@@ -8,7 +8,7 @@ const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 
 export function LiveDemo() {
   return (
-    <section id="the-demo" className="relative bg-[#F9F8F4] py-24 md:py-32 overflow-hidden scroll-mt-20">
+    <section id="the-demo" className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20">
       <div className="wrap relative">
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-12 lg:items-end">
           <div className="lg:col-span-7">

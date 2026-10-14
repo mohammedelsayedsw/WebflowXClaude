@@ -6,7 +6,11 @@ import { EYEBROW_PARTS, RESTREAM_REGISTRATION_URL } from "./details";
 import { Lockup } from "./Lockup";
 import { Stars } from "./Stars";
 
-/** Registration: the Restream registration page, embedded. */
+/**
+ * Registration: the Restream registration page, embedded. From lg up the frame
+ * is 900px wide, past Restream's own breakpoint (~880px), so it shows the
+ * banner and the form side by side; below that it is Restream's phone layout.
+ */
 export function CTA() {
   return (
     <section
@@ -21,7 +25,7 @@ export function CTA() {
     >
       <Stars />
       <div className="wrap relative">
-        <div className="max-w-[860px] mx-auto text-center flex flex-col items-center">
+        <div className="max-w-[900px] mx-auto text-center flex flex-col items-center">
           <Reveal>
             <Eyebrow parts={EYEBROW_PARTS} className="mb-6" />
           </Reveal>
@@ -39,13 +43,13 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.2} className="w-full">
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] lg:max-w-[900px] mx-auto text-left">
               <iframe
                 src={RESTREAM_REGISTRATION_URL}
                 title="Expedio Live registration"
                 allow="camera; microphone; fullscreen; autoplay"
                 loading="lazy"
-                className="block w-full max-w-[420px] h-[600px] mx-auto border-0 rounded-[12px]"
+                className="block w-full max-w-[420px] h-[600px] lg:max-w-[900px] lg:h-[560px] mx-auto border-0 rounded-[12px]"
               />
             </div>
           </Reveal>

@@ -11,7 +11,7 @@ const TRACKED = ["Mentions and recommendations", "Competitors in the same answer
 export function AnswerRank() {
   return (
     <section id="answerrank" className={`relative z-10 bg-white ${SECTION_Y}`}>
-      <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 items-center">
+      <div className="wrap w-full grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 items-center">
         <Reveal>
           <h2 className={`${H2_LIGHT} max-w-[16ch]`}>See your brand in AI answers</h2>
           <p className={`${BODY_LIGHT} mt-5 max-w-[40ch]`}>

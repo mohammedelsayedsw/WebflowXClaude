@@ -12,7 +12,7 @@ const STEPS = [
 export function HowItWorks() {
   return (
     <section id="delivery" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
-      <div className="wrap grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
+      <div className="wrap w-full grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
         <Reveal>
           <h2 className={`${H2_DARK} max-w-[16ch]`}>
             Keep your agency. <span style={{ color: "var(--sw-mint)" }}>Add AI search.</span>

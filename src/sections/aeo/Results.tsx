@@ -104,18 +104,18 @@ function IndexBars({ bars }: { bars: Bars }) {
 export function Results() {
   return (
     <section id="proof" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
-      <div className="wrap">
+      <div className="wrap w-full">
         <Reveal>
           <h2 className={H2_DARK}>Results from our AI search work</h2>
         </Reveal>
         <div
-          className="mt-7 md:mt-8 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] scroll-px-[clamp(1.25rem,4vw,3rem)] flex gap-3 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:grid-cols-3 md:grid-rows-[repeat(5,auto)] md:gap-0 md:overflow-visible md:border-t md:border-white/15"
+          className="mt-6 md:mt-[clamp(20px,4vh,32px)] -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] scroll-px-[clamp(1.25rem,4vw,3rem)] flex gap-3 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:grid-cols-3 md:grid-rows-[repeat(5,auto)] md:gap-0 md:overflow-visible md:border-t md:border-white/15"
         >
           {CASES.map((c, i) => (
             <Reveal
               key={c.client}
               delay={i * 0.07}
-              className={`w-[84%] shrink-0 snap-start border border-white/15 p-5 md:w-auto md:border-0 md:row-span-5 md:grid md:grid-rows-subgrid md:gap-0 md:px-8 md:pt-8 md:pb-0 lg:px-10 ${
+              className={`w-[84%] shrink-0 snap-start border border-white/15 p-5 md:w-auto md:border-0 md:row-span-5 md:grid md:grid-rows-subgrid md:gap-0 md:px-8 md:pt-[clamp(20px,4vh,32px)] md:pb-0 lg:px-10 ${
                 i ? "md:border-l md:border-white/15" : "md:pl-0"
               }`}
             >
@@ -127,7 +127,7 @@ export function Results() {
                 <div className="text-[12px] md:text-[13px] text-white/45 md:mt-3">{c.type}</div>
               </div>
               <div
-                className="mt-6 md:mt-7 font-head font-bold text-[48px] md:text-[clamp(44px,4.4vw,64px)] leading-none tracking-[-0.04em]"
+                className="mt-5 md:mt-[clamp(14px,3.5vh,28px)] font-head font-bold text-[44px] md:text-[clamp(40px,min(4.4vw,8.5vh),64px)] leading-none tracking-[-0.04em]"
                 style={{ color: "var(--sw-mint)" }}
               >
                 {c.number}
@@ -135,7 +135,7 @@ export function Results() {
               <p className="mt-3 font-head font-semibold text-white text-[16px] md:text-[18px] leading-[1.3] max-w-[24ch]">
                 {c.label}
               </p>
-              <div className="mt-5">
+              <div className="mt-4 md:mt-[clamp(12px,2.5vh,20px)]">
                 {c.bars && <IndexBars bars={c.bars} />}
                 {c.work && (
                   <ol className="grid">
@@ -148,7 +148,7 @@ export function Results() {
                   </ol>
                 )}
               </div>
-              <p className="mt-5 md:pb-4 border-t border-white/10 pt-4 text-[13px] md:text-[14px] text-white/55">
+              <p className="mt-4 md:mt-[clamp(12px,2.5vh,20px)] md:pb-4 border-t border-white/10 pt-3 md:pt-4 text-[13px] md:text-[14px] text-white/55">
                 {c.support.value && (
                   <span className="mr-1.5 font-head font-semibold text-white">{c.support.value}</span>
                 )}
@@ -157,7 +157,7 @@ export function Results() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-4 md:mt-6 text-[12px] text-white/40 max-w-[80ch]">
+        <p className="mt-4 md:mt-[clamp(12px,2.5vh,24px)] text-[12px] text-white/40 max-w-[80ch]">
           FELCO and Habito figures come from broader client programs and are not a guarantee for AI Visibility Core.
         </p>
       </div>

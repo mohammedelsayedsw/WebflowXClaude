@@ -25,7 +25,10 @@ const IN_THE_BOX = [
 /** Headline, one line, two facts, one button. The package and price sit in the card beside it. */
 export function Hero() {
   return (
-    <section id="hero" className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)] overflow-hidden">
+    <section
+      id="hero"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col justify-center bg-[var(--sw-black)] overflow-hidden"
+    >
       {/* scandiweb waves: the scandiweb.com homepage hero loop */}
       <video
         aria-hidden
@@ -57,14 +60,14 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap relative pt-32 md:pt-[clamp(120px,19vh,180px)] pb-12 md:pb-[clamp(48px,9vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+      <div className="wrap w-full relative pt-[136px] max-md:[@media(max-height:700px)]:pt-[112px] md:pt-[clamp(115px,17vh,160px)] pb-10 md:pb-[clamp(40px,7vh,96px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
         <div>
           <motion.div {...enter(0.1)}>
             <Eyebrow tone="mint">{PLANS.core.name}</Eyebrow>
           </motion.div>
           <motion.h1
             {...enter(0.2)}
-            className="mt-4 md:mt-5 font-head font-bold text-white text-[36px] sm:text-[56px] lg:text-[64px] xl:text-[68px] leading-[1.02] tracking-[-0.03em]"
+            className="mt-4 md:mt-5 font-head font-bold text-white text-[36px] max-md:[@media(max-height:700px)]:text-[32px] sm:text-[56px] lg:text-[64px] xl:text-[68px] leading-[1.02] tracking-[-0.03em]"
           >
             <span className="lg:inline-block lg:whitespace-nowrap">The minimum coverage</span>{" "}
             <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
@@ -74,7 +77,7 @@ export function Hero() {
           <motion.p {...enter(0.3)} className="mt-4 md:mt-6 text-white/80 text-[16px] md:text-[20px] leading-relaxed max-w-[44ch]">
             See where ChatGPT and other AI tools recommend you, where they pick competitors, and what to fix.
           </motion.p>
-          <motion.ul {...enter(0.35)} className="mt-4 md:mt-6 grid gap-2">
+          <motion.ul {...enter(0.35)} className="mt-4 md:mt-6 grid gap-2 max-md:[@media(max-height:700px)]:hidden">
             {["Works alongside your SEO agency", "Drafts your team approves and publishes"].map((t) => (
               <li key={t} className="flex items-center gap-2.5 font-head font-semibold text-white text-[16px]">
                 <Check aria-hidden className="h-5 w-5 shrink-0" style={{ color: "var(--sw-mint)" }} strokeWidth={3} />
@@ -106,7 +109,7 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 md:mt-5 text-[13px] text-[var(--sw-black)]/60">
+            <p className="mt-4 md:mt-5 text-[13px] text-[var(--sw-black)]/60 max-md:[@media(max-height:700px)]:hidden">
               Delivered by{" "}
               <a href={BETTERANSWER_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[var(--sw-blue)]">
                 BetterAnswer.ai

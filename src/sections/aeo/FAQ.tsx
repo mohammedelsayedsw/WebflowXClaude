@@ -50,7 +50,7 @@ export function FAQ() {
   return (
     <section id="faq" className={`relative z-10 bg-white ${SECTION_Y}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap grid gap-6 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
+      <div className="wrap w-full grid gap-6 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
         <Reveal>
           <h2 className={`${H2_LIGHT} max-w-[14ch]`}>Questions</h2>
           <PlanLink

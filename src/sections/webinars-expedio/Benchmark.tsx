@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, RotateCcw } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { Stars } from "./Stars";
 
 const BENCHMARK_URL = "https://www.withari.ai/expedio/benchmark";
 
@@ -147,6 +148,7 @@ export function Benchmark() {
 
   return (
     <section id="the-benchmark" className="relative bg-[var(--sw-black)] py-24 md:py-32 overflow-hidden scroll-mt-20">
+      <Stars />
       <div className="wrap relative grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:gap-14 lg:items-start">
         <div className="lg:sticky lg:top-28">
           <Reveal delay={0.05}>

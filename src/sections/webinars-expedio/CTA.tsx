@@ -6,6 +6,7 @@ import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
 import { EYEBROW_PARTS, HUBSPOT_FORM_ID, HUBSPOT_PORTAL } from "./details";
 import { FormPlaceholder } from "./FormPlaceholder";
 import { Lockup } from "./Lockup";
+import { Stars } from "./Stars";
 
 /**
  * Registration. Until HUBSPOT_FORM_ID is set, a disabled look-alike of the
@@ -23,6 +24,7 @@ export function CTA() {
           "radial-gradient(1400px 900px at 50% 50%, #1a2060 0%, #141a48 35%, #10132c 70%, #0a0d24 100%)",
       }}
     >
+      <Stars />
       <div className="wrap relative">
         <div className="max-w-[860px] mx-auto text-center flex flex-col items-center">
           <Reveal>

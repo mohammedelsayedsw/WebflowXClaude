@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
+import { Stars } from "./Stars";
 
 const POINTS: string[] = [
   "Why most Magento stores are slower than they need to be, and how much more you could earn with a faster store",
@@ -17,6 +18,7 @@ const POINTS: string[] = [
 export function Agenda() {
   return (
     <section id="agenda" className="relative bg-[var(--sw-black)] border-t border-white/10 py-24 md:py-32 overflow-hidden scroll-mt-20">
+      <Stars />
       <div className="wrap relative">
         <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <div>

@@ -6,9 +6,19 @@ import { assetUrl } from "@/lib/assets";
 
 /* Each speaker stands on one side of a full-width office picture; the copy sits in the empty side.
    The section heading sits in the first speaker's copy, above the name. */
-const STAGE: Record<string, { photo: string; text: "left" | "right" }> = {
+const STAGE: Record<
+  string,
+  { photo: string; text: "left" | "right"; highlights?: { title: string; caption: string }[] }
+> = {
   "Glebs Vrevsky": { photo: "/webinars/expedio/glebs-vrevsky-stage.jpg", text: "right" },
-  "Alfreds Genkins": { photo: "/webinars/expedio/alfreds-genkins-stage.jpg", text: "left" },
+  "Alfreds Genkins": {
+    photo: "/webinars/expedio/alfreds-genkins-stage.jpg",
+    text: "left",
+    highlights: [
+      { title: "ScandiPWA + Satoshi", caption: "Creator" },
+      { title: "Ari", caption: "Founder of the first agent for Magento" },
+    ],
+  },
 };
 
 export function Speakers() {
@@ -46,6 +56,18 @@ export function Speakers() {
                       </div>
                       {s.bio && (
                         <p className="mt-4 text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed">{s.bio}</p>
+                      )}
+                      {stage.highlights && (
+                        <dl className="mt-6 grid grid-cols-2 border-t border-[var(--sw-black)]/15">
+                          {stage.highlights.map((h, j) => (
+                            <div key={h.title} className={`pt-4 ${j > 0 ? "border-l border-[var(--sw-black)]/15 pl-5" : "pr-5"}`}>
+                              <dt className="font-head font-bold text-[var(--sw-black)] text-[18px] md:text-[20px] leading-tight">
+                                {h.title}
+                              </dt>
+                              <dd className="mt-1 text-[var(--sw-black)]/60 text-[13px] md:text-[14px] leading-snug">{h.caption}</dd>
+                            </div>
+                          ))}
+                        </dl>
                       )}
                     </div>
                   </div>

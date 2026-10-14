@@ -27,7 +27,7 @@ function cardsPath(grid: HTMLElement) {
 }
 
 /**
- * The four benchmark figures on a light section. One aurora canvas (the
+ * The four benchmark figures and the open-source card on a light section. One aurora canvas (the
  * hero's background) runs behind the whole row, clipped to the four cards,
  * so each card shows its own slice of the same continuous picture. A dark
  * tint inside the cards keeps the type clearly readable.
@@ -61,7 +61,7 @@ export function WhatItIs() {
         </Reveal>
 
         <Reveal delay={0.15} className="mt-10 md:mt-14">
-          <div ref={grid} className="relative isolate grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={grid} className="relative isolate grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 bg-[var(--sw-ink)]"
@@ -72,9 +72,9 @@ export function WhatItIs() {
             </div>
 
             {STATS.map((s, i) => (
-              <div key={s.title} data-stat-card className="rounded-[4px] p-6 md:p-8">
+              <div key={s.title} data-stat-card className="rounded-[4px] p-6 md:p-8 lg:p-6 xl:p-7">
                 <div
-                  className="font-head font-bold text-[52px] md:text-[60px] leading-none tracking-[-0.04em] whitespace-nowrap"
+                  className="font-head font-bold text-[52px] md:text-[60px] lg:text-[48px] xl:text-[56px] leading-none tracking-[-0.04em] whitespace-nowrap"
                   style={{ color: "var(--sw-mint)", textShadow: "0 2px 18px rgba(5,7,15,0.6)" }}
                 >
                   <CountUp to={s.to} decimals={s.decimals} delay={i * 70} />
@@ -88,6 +88,22 @@ export function WhatItIs() {
                 </h3>
               </div>
             ))}
+
+            {/* Fifth card: Expedio is free to use now that it is open source. Spans the row on a two-column grid. */}
+            <div data-stat-card className="rounded-[4px] p-6 md:p-8 lg:p-6 xl:p-7 sm:col-span-2 lg:col-span-1">
+              <div
+                className="font-head font-bold text-[52px] md:text-[60px] lg:text-[48px] xl:text-[56px] leading-none tracking-[-0.04em] whitespace-nowrap"
+                style={{ color: "var(--sw-mint)", textShadow: "0 2px 18px rgba(5,7,15,0.6)" }}
+              >
+                Free
+              </div>
+              <h3
+                className="mt-6 font-head font-bold text-white text-[19px] md:text-[20px] leading-[1.25] text-balance"
+                style={{ textShadow: "0 1px 12px rgba(5,7,15,0.7)" }}
+              >
+                Expedio is now open source
+              </h3>
+            </div>
           </div>
         </Reveal>
       </div>

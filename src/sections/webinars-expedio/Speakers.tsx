@@ -10,27 +10,34 @@ const STAGE: Record<
   string,
   { photo: string; text: "left" | "right"; highlights?: { title: string; caption: string }[] }
 > = {
-  "Glebs Vrevsky": { photo: "/webinars/expedio/glebs-vrevsky-stage.jpg", text: "right" },
+  "Glebs Vrevsky": {
+    photo: "/webinars/expedio/glebs-vrevsky-stage.jpg",
+    text: "right",
+    highlights: [
+      { title: "15+ years", caption: "Working with Magento stores" },
+      { title: "Ari", caption: "Co-founder" },
+    ],
+  },
   "Alfreds Genkins": {
     photo: "/webinars/expedio/alfreds-genkins-stage.jpg",
     text: "left",
     highlights: [
       { title: "ScandiPWA + Satoshi", caption: "Creator" },
-      { title: "Ari", caption: "Founder of the first agent for Magento" },
+      { title: "Ari", caption: "Founder of the first\nagent for Magento" },
     ],
   },
 };
 
 export function Speakers() {
   return (
-    <section id="the-speakers" className="relative bg-lp-bright overflow-hidden scroll-mt-20">
+    <section id="the-speakers" className="relative bg-[#F9F8F4] overflow-hidden scroll-mt-20">
       <ul className="flex flex-col">
         {SPEAKERS.map((s, i) => {
           const stage = STAGE[s.name];
           const right = stage.text === "right";
           return (
             <Reveal key={s.name} delay={0.1 + i * 0.07}>
-              <li className="relative bg-[#f4f1ec]">
+              <li className="relative bg-[#F9F8F4]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={assetUrl(stage.photo)}
@@ -64,7 +71,7 @@ export function Speakers() {
                               <dt className="font-head font-bold text-[var(--sw-black)] text-[18px] md:text-[20px] leading-tight">
                                 {h.title}
                               </dt>
-                              <dd className="mt-1 text-[var(--sw-black)]/60 text-[13px] md:text-[14px] leading-snug">{h.caption}</dd>
+                              <dd className="mt-1 whitespace-pre-line text-[var(--sw-black)]/60 text-[13px] md:text-[14px] leading-snug">{h.caption}</dd>
                             </div>
                           ))}
                         </dl>

@@ -25,10 +25,10 @@ export function Speakers() {
                 <img
                   src={assetUrl(stage.photo)}
                   width={1672}
-                  height={901}
+                  height={841}
                   alt={s.name}
                   loading="lazy"
-                  className={`block w-full aspect-[4/3] sm:aspect-[1672/901] object-cover ${right ? "object-left" : "object-right"}`}
+                  className={`block w-full aspect-[4/3] sm:aspect-[1672/841] object-cover ${right ? "object-left" : "object-right"}`}
                 />
                 <div className="sm:absolute sm:inset-0">
                   <div className={`wrap flex h-full items-center py-6 sm:py-0 ${right ? "sm:justify-end" : ""}`}>

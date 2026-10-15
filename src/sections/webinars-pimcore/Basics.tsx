@@ -61,7 +61,6 @@ export function Basics() {
         <div className="grid gap-12 md:gap-14 lg:gap-20 lg:grid-cols-[1.05fr_1fr] lg:items-center">
           {/* LEFT · what a PIM is */}
           <div>
-
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[18ch]">
                 One place for your{" "}

@@ -43,7 +43,6 @@ export function Takeaways() {
       className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
-
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
             What you&apos;ll get <span className="text-[var(--sw-blue)]">after the webinar</span>

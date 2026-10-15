@@ -114,7 +114,7 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
         <div className="ring-teaser" />
         <div><span className="domchip">{store}</span></div>
         <h2>Your Retention Score is ready.</h2>
-        <p>Enter your email to see your score now and get the full breakdown, including your estimated revenue gap, 90-day upside, and the flows with the biggest opportunity.</p>
+        <p>Enter your email to see your score now, including your estimated revenue gap, 90-day upside, and the flows with the biggest opportunity.</p>
         <input type="text" placeholder="First name" autoComplete="given-name" value={name} onChange={(e) => setName(e.target.value)} />
         {/* honeypot: hidden from people, filled by bots; checked server-side */}
         <div className="hp" aria-hidden="true"><input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} /></div>
@@ -122,7 +122,7 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           onChange={(e) => { setEmail(e.target.value); setEmailErr(false); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         <label className="consent" style={consentErr ? { color: "#ff8f83" } : undefined}>
           <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setConsentErr(false); }} />
-          <span>Email me my full breakdown, plus a few short emails with case studies and fixes from the scandiweb lifecycle team. Unsubscribe anytime.</span>
+          <span>Send me a few short emails with case studies and fixes from the scandiweb lifecycle team. Unsubscribe anytime.</span>
         </label>
         <button className="btn big" style={{ width: "100%" }} onClick={submit}>Show my score →</button>
         <p className="priv">No spam. No list selling. Your data stays private.</p>

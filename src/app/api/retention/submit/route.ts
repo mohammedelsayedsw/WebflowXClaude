@@ -3,6 +3,9 @@ import {
   BLOCKED_SUBJECT, BLOCKLIST, CALENDLY_EVENT_TYPE, CALENDLY_PUBLIC_URL, FORM_ENDPOINT,
   NOTIFY_CC,
 } from "@/sections/retention-90/server-config";
+import { PAGE_URL } from "@/sections/retention-90/status";
+
+const BOOK_PAGE_URL = PAGE_URL + "/book";
 import { cleanProps, cleanTags, omnisendUpsert } from "@/sections/retention-90/omnisend-server";
 
 export const runtime = "nodejs";
@@ -99,6 +102,12 @@ async function bookingUrl(name: string, email: string, store: string): Promise<s
   return base + (base.includes("?") ? "&" : "?") + q.toString();
 }
 
+/* Emails link to our own booking page, which embeds this Calendly link and tags the contact
+   r90-booked in Omnisend once Calendly confirms. Email templates append "&utm_..." to it. */
+function bookPageUrl(cal: string, email: string): string {
+  return BOOK_PAGE_URL + "?" + new URLSearchParams({ e: email, cal }).toString();
+}
+
 export async function POST(req: NextRequest) {
   let body: Body;
   try { body = (await req.json()) as Body; } catch { return done("skip"); }
@@ -130,7 +139,7 @@ export async function POST(req: NextRequest) {
   const omni = await omnisendUpsert({
     email, firstName: name, subscribeEmail: true,
     tags: cleanTags(body.omni?.tags),
-    props: { ...cleanProps(body.omni?.props), r90_book_url: link, r90_country: country },
+    props: { ...cleanProps(body.omni?.props), r90_book_url: bookPageUrl(link, email), r90_country: country },
     consent: { ip, userAgent: ua, source: "scandiweb-retention-90" },
   });
   const res = done("pass", { bookingUrl: link, ip, country });

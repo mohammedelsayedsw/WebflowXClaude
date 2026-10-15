@@ -45,7 +45,7 @@ const DEMOS: Demo[] = [
       "Language versions tracked against the source",
       "Status visible for every market",
     ],
-    after: "A new market launches on current content instead of guesswork",
+    after: "A new market launches on current content",
   },
   {
     n: "4",
@@ -88,7 +88,7 @@ function DemoBody({ demo }: { demo: Demo }) {
                 aria-hidden
                 className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-[4px] bg-[var(--sw-blue)]"
               />
-              {s}
+              <span className="text-pretty">{s}</span>
             </li>
           ))}
         </ul>
@@ -100,7 +100,7 @@ function DemoBody({ demo }: { demo: Demo }) {
 
       <div className="md:pl-7">
         <div className="label-code text-[var(--sw-blue)]">After</div>
-        <p className="mt-2.5 text-[var(--sw-black)] text-[16px] md:text-[18px] leading-relaxed">
+        <p className="mt-2.5 text-[var(--sw-black)] text-[16px] md:text-[18px] leading-relaxed text-pretty">
           {demo.after}
         </p>
       </div>
@@ -305,9 +305,10 @@ export function Demos() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed">
-              For each one, we&apos;ll show a real example of how it is handled
-              in a working system.
+            <p className="mt-6 max-w-[70ch] text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed text-pretty">
+              We&apos;ll take each of the four problems and show how a working
+              Pimcore system handles it. Every example runs on real product
+              records.
             </p>
           </Reveal>
         </div>
@@ -317,11 +318,6 @@ export function Demos() {
           <DemoAccordion active={active} setActive={setActive} />
         </div>
 
-        <Reveal delay={0.2}>
-          <p className="mt-8 md:mt-10 text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed max-w-[70ch]">
-            All four examples run in Pimcore, on real product records.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

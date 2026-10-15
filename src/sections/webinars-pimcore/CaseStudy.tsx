@@ -191,8 +191,8 @@ export function CaseStudy() {
         </div>
 
         <Reveal delay={0.14}>
-          <p className="mt-3 text-white/65 text-[15px] md:text-[17px] leading-relaxed">
-            Our work with Läderach, premium Swiss chocolate, 250+ stores
+          <p className="mt-3 text-white/65 text-[15px] md:text-[17px] leading-relaxed text-pretty">
+            Our work with Läderach, premium Swiss chocolatier, 250+ stores
             worldwide.
           </p>
         </Reveal>

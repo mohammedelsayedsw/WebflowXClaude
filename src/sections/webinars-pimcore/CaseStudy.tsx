@@ -171,12 +171,6 @@ export function CaseStudy() {
 
       <div className="wrap relative">
         <div className="max-w-[68rem]">
-          <Reveal>
-            <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">6</span>
-              <span>From real projects</span>
-            </div>
-          </Reveal>
 
           {/* the case is the only one in this section, so its heading is
               the section heading */}

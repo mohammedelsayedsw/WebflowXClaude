@@ -33,12 +33,6 @@ export function WhoShouldJoin() {
       className="relative bg-lp-bright py-24 md:py-32 overflow-hidden scroll-mt-20"
     >
       <div className="wrap relative">
-        <Reveal>
-          <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-            <span className="text-[var(--sw-black)]/55">7</span>
-            <span>The audience</span>
-          </div>
-        </Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">

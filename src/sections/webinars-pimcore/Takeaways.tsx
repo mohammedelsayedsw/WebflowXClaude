@@ -16,22 +16,22 @@ const ITEMS: {
   {
     icon: Calculator,
     lead: "The real cost",
-    body: "What scattered product data costs you, in hours and in revenue",
+    body: "A way to estimate what scattered product data costs you in hours, and the cost in revenue you have never added up",
   },
   {
     icon: MonitorPlay,
     lead: "How the fix works",
-    body: "See real examples of product data problems being solved",
+    body: "Each problem handled in a working Pimcore system, so you know what to ask for from your own team or vendor",
   },
   {
     icon: FolderCheck,
     lead: "What changed",
-    body: "Real numbers from a brand running multiple markets",
+    body: "Before-and-after with real numbers from a brand running multiple markets",
   },
   {
     icon: Gift,
     lead: "A free PIM prototype",
-    body: "Request one built on your own catalog, yours to keep after the session",
+    body: "Built on your own catalog and yours to keep \u2013 request it after the session",
     accent: true,
   },
 ];
@@ -46,7 +46,7 @@ export function Takeaways() {
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
-            What you <span className="text-[var(--sw-blue)]">walk away with</span>
+            What you&apos;ll get <span className="text-[var(--sw-blue)]">after the webinar</span>
           </h2>
         </Reveal>
 
@@ -73,7 +73,7 @@ export function Takeaways() {
                 <div className="font-head font-bold text-[var(--sw-black)] text-[17px] md:text-[19px] leading-tight">
                   {it.lead}
                 </div>
-                <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+                <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed text-pretty">
                   {it.body}
                 </p>
               </li>

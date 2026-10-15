@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { assetUrl } from "@/lib/assets";
 import { Lockup } from "./Lockup";
 
 /**
@@ -54,20 +55,16 @@ export function CTA() {
 
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              See what your product data is costing you, and{" "}
-              <span style={{ color: "var(--sw-mint)" }}>what fixes it</span>
+              See the cost of product data problems and{" "}
+              <span style={{ color: "var(--sw-mint)" }}>learn the fix</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto">
-              In one hour we&apos;ll show you four common problems and real
-              examples of the fix.
-              {/* break set from md up, so the prototype offer gets its own
-                  line. Phones wrap naturally. */}
-              <br className="hidden md:block" />{" "}
-              Afterwards you can request a free PIM prototype on your own
-              catalog.
+            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto text-balance">
+              In one hour, we&apos;ll walk through four common problems and how
+              each one is fixed in Pimcore. Afterwards, you can request a free PIM prototype built on your
+              own catalog.
             </p>
           </Reveal>
 
@@ -92,8 +89,17 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.32}>
-            <div className="mt-10 md:mt-12 flex justify-center">
+            {/* the Platinum badge repeats the partner status right where
+                people register, next to the co-brand */}
+            <div className="mt-10 md:mt-12 flex items-center justify-center gap-5 md:gap-6">
               <Lockup />
+              <span aria-hidden className="h-10 w-px bg-white/15" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetUrl("/webinars/pimcore/pimcore-platinum-partner.png")}
+                alt="Pimcore Platinum Partner"
+                className="h-14 md:h-16 w-auto"
+              />
             </div>
           </Reveal>
         </div>

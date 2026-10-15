@@ -28,7 +28,23 @@ type Upsert = {
   /* true only on the form submit. Follow-up updates never touch the email status, so a
      later booking or SMS opt-in can't resubscribe someone who unsubscribed. */
   subscribeEmail?: boolean;
+  /* true on follow-ups: Omnisend replaces the whole tag list on upsert, so read the
+     contact's current tags first and add to them (an SMS opt-in then a booking keeps both). */
+  mergeTags?: boolean;
 };
+
+async function currentTags(email: string, key: string): Promise<string[]> {
+  try {
+    const r = await fetch(`${process.env.OMNISEND_API_URL || API}?email=${encodeURIComponent(email)}`, {
+      headers: { Authorization: `Omnisend-API-Key ${key}`, "Omnisend-Version": VERSION, Accept: "application/json" },
+      signal: AbortSignal.timeout(6000),
+    });
+    if (!r.ok) return [];
+    const j = (await r.json()) as { contacts?: { tags?: unknown }[] };
+    const t = j.contacts?.[0]?.tags;
+    return Array.isArray(t) ? t.map(String) : [];
+  } catch { return []; }
+}
 
 export async function omnisendUpsert(c: Upsert): Promise<string> {
   const key = process.env.OMNISEND_API_KEY || OMNISEND_API_KEY_FALLBACK;
@@ -47,7 +63,8 @@ export async function omnisendUpsert(c: Upsert): Promise<string> {
     channels: { sms: { status: c.sms ? "subscribed" : "nonSubscribed" } },
     ...(c.sms ? { consent: { source: c.consent.source + "-sms", ip: c.consent.ip, userAgent: c.consent.userAgent, createdAt } } : {}),
   });
-  const body: Record<string, unknown> = { identifiers, tags: c.tags, customProperties: c.props };
+  const tags = c.mergeTags ? [...new Set([...(await currentTags(c.email, key)), ...c.tags])] : c.tags;
+  const body: Record<string, unknown> = { identifiers, tags, customProperties: c.props };
   if (c.firstName) body.firstName = c.firstName;
   try {
     const r = await fetch(process.env.OMNISEND_API_URL || API, {

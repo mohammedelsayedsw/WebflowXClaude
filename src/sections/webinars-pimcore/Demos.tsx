@@ -300,8 +300,8 @@ export function Demos() {
         <div className="max-w-[68rem]">
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-              What the fix{" "}
-              <span className="text-[var(--sw-blue)]">looks like</span>
+              What <span className="text-[var(--sw-blue)]">the fix</span> looks
+              like
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

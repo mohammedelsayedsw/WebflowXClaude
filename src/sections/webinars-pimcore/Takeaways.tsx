@@ -16,7 +16,7 @@ const ITEMS: {
   {
     icon: Calculator,
     lead: "The real cost",
-    body: "A way to estimate what scattered product data costs you in hours, and the cost in revenue you have never added up",
+    body: "A way to estimate what scattered product data costs you in hours, and the cost in revenue",
   },
   {
     icon: MonitorPlay,
@@ -44,7 +44,7 @@ export function Takeaways() {
     >
       <div className="wrap relative">
         <Reveal delay={0.05}>
-          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[20ch]">
+          <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
             What you&apos;ll get <span className="text-[var(--sw-blue)]">after the webinar</span>
           </h2>
         </Reveal>

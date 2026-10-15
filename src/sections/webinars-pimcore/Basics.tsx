@@ -61,36 +61,31 @@ export function Basics() {
         <div className="grid gap-12 md:gap-14 lg:gap-20 lg:grid-cols-[1.05fr_1fr] lg:items-center">
           {/* LEFT · what a PIM is */}
           <div>
-            <Reveal>
-              <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-                <span className="text-white/55">2</span>
-                <span>What PIM is</span>
-              </div>
-            </Reveal>
 
             <Reveal delay={0.05}>
               <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em] max-w-[18ch]">
-                One place where your{" "}
+                One place for your{" "}
                 <span style={{ color: "var(--sw-mint)" }}>
-                  product details live
+                  product details
                 </span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <p className="mt-6 md:mt-7 text-white/75 text-[16px] md:text-[18px] leading-[1.65] max-w-[60ch]">
-                A product information management system, or PIM, holds every
+                A product information management system, or PIM, keeps every
                 detail about every product in one record. Descriptions, images,
                 specifications, prices, translations. Your website, your
-                marketplaces, your partners and your printed catalogs all pull
-                from that one record, so a change made once reaches all of them.
+                marketplaces, your partners, and your printed catalogs all read
+                from that record, so you change a detail once, and every channel
+                picks it up.
               </p>
             </Reveal>
 
             <Reveal delay={0.15}>
               <p className="mt-5 text-white/75 text-[16px] md:text-[18px] leading-[1.65] max-w-[60ch]">
-                Pimcore is the platform we build these on, and the one every
-                example in this session runs on. scandiweb is a certified
+                Pimcore is one of the main platforms we build these on, and the
+                one every example in this session runs on. scandiweb is also a
                 Pimcore Platinum Solution Partner.
               </p>
             </Reveal>

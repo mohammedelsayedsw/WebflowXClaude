@@ -145,22 +145,11 @@ export function Costs() {
     >
       <div className="wrap relative">
         <div className="max-w-[68rem]">
-          <Reveal>
-            <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
-              <span className="text-white/55">4</span>
-              <span>The price you pay</span>
-            </div>
-          </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
               Where it{" "}
               <span style={{ color: "var(--sw-orange)" }}>costs you</span>
             </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 font-head text-white/80 text-[16px] md:text-[19px] leading-relaxed">
-              It shows up in four places, and nobody ever counts the total.
-            </p>
           </Reveal>
         </div>
 

@@ -298,12 +298,6 @@ export function Demos() {
     >
       <div className="wrap relative">
         <div className="max-w-[68rem]">
-          <Reveal>
-            <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
-              <span className="text-[var(--sw-black)]/55">5</span>
-              <span>The solutions</span>
-            </div>
-          </Reveal>
           <Reveal delay={0.05}>
             <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
               What the fix{" "}

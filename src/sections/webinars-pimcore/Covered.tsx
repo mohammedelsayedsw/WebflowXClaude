@@ -4,10 +4,10 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const POINTS: React.ReactNode[] = [
-  "Where fragmented product data drains hours and revenue",
-  "What it looks like when all your product details live in one place",
-  "Real examples of common product data problems being solved",
-  "Why AI gives wrong answers when your product data is a mess, and what fixes that",
+  "Where fragmented product data costs you hours and revenue",
+  "What it looks like when all your product details are in one place",
+  "Examples of common product data problems being solved",
+  "Why AI gives wrong answers when your product data is inconsistent, and how to fix it",
   "How multilingual catalogs stay current as you add markets",
   // held together so "systems" never sits alone on its own line
   <>
@@ -29,7 +29,6 @@ export function Covered() {
             <Reveal>
               <div className="label-code mb-4 inline-flex items-center gap-3 text-[var(--sw-black)]">
                 <span className="text-[var(--sw-black)]/55">1</span>
-                <span className="h-px w-6 bg-[var(--sw-black)]/20" />
                 <span>The agenda</span>
               </div>
             </Reveal>

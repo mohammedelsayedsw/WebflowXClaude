@@ -105,8 +105,8 @@ export function Hero() {
               <Reveal delay={0.1}>
                 <p className="mt-[clamp(10px,1.8vh,20px)] max-w-[56ch] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.45] text-white/85 text-pretty">
                   If you sell thousands of products across several websites and
-                  markets, you know these problems. We&apos;ll show you
-                  what&apos;s causing them, what they cost, and how to fix them.
+                  markets, you deal with these every week. We&apos;ll show you
+                  where they start and what the fix looks like in practice.
                 </p>
               </Reveal>
 
@@ -136,7 +136,7 @@ export function Hero() {
 
               <Reveal delay={0.26}>
                 <p className="mt-[clamp(10px,1.6vh,18px)] text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-                  Can&apos;t join live? Register and we&apos;ll send you the
+                  Can&apos;t join live? Register, and we&apos;ll send you the
                   recording.
                 </p>
               </Reveal>

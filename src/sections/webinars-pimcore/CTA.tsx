@@ -86,7 +86,7 @@ export function CTA() {
 
           <Reveal delay={0.26}>
             <p className="mt-5 text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-              Can&apos;t join live? Register and we&apos;ll send you the
+              Can&apos;t join live? Register, and we&apos;ll send you the
               recording.
             </p>
           </Reveal>

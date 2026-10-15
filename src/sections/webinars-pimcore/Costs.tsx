@@ -148,7 +148,6 @@ export function Costs() {
           <Reveal>
             <div className="label-code mb-4 inline-flex items-center gap-3 text-white/60">
               <span className="text-white/55">4</span>
-              <span className="h-px w-6 bg-white/15" />
               <span>The price you pay</span>
             </div>
           </Reveal>

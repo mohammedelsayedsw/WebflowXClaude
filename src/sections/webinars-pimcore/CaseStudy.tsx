@@ -171,7 +171,6 @@ export function CaseStudy() {
 
       <div className="wrap relative">
         <div className="max-w-[68rem]">
-
           {/* the case is the only one in this section, so its heading is
               the section heading */}
           <Reveal delay={0.05}>

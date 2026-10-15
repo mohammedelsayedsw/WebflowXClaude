@@ -11,15 +11,15 @@ const SPEAKERS: {
 }[] = [
   {
     name: "Ana Luisa Taylor",
-    role: "Key Account Manager at scandiweb",
+    role: "Key Account Manager",
     photo: "/webinars/pimcore/ana-luisa-taylor-portrait.webp",
-    bio: "Ana leads scandiweb\u2019s PIM practice. She has delivered 50+ product data projects for brands and manufacturers, from the first audit through to the live system.",
+    bio: "Ana leads scandiweb\u2019s PIM practice and has delivered 50+ product data projects for brands and manufacturers, staying on each one from the first audit until the system is live.",
   },
   {
     name: "Maris Skujins",
-    role: "Head of Digital Commerce Strategy at scandiweb",
+    role: "Head of Digital Commerce Strategy",
     photo: "/webinars/pimcore/maris-skujins-portrait.webp",
-    bio: "Maris heads digital commerce strategy at scandiweb. He shapes how companies like Zumiez, Wienerberger, and ABA Labels build and connect the systems their commerce runs on.",
+    bio: "Maris works with retailers and manufacturers to align their commerce systems, from the storefront to the ERP and the PIM in between. He has led that work for Zumiez, Wienerberger, and ABA Labels.",
   },
 ];
 
@@ -33,8 +33,8 @@ export function Speakers() {
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-white text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            Who&apos;s{" "}
-            <span style={{ color: "var(--sw-mint)" }}>running the session</span>
+            Hosted by scandiweb&apos;s{" "}
+            <span style={{ color: "var(--sw-mint)" }}>PIM experts</span>
           </h2>
         </Reveal>
 

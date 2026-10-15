@@ -7,12 +7,12 @@ const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: LineChart,
     lead: "Business leaders",
-    body: "CEO, MD, COO, CFO, or CMO, seeing the cost in thinner margins and launch dates that slip.",
+    body: "CEO, MD, COO, CFO, or CMO. The cost reaches you as thinner margins and missed launch dates.",
   },
   {
     icon: ShoppingCart,
     lead: "eCommerce and digital leads",
-    body: "Head of eCommerce or Digital, watching new channels and markets wait on data that is not ready.",
+    body: "Head of eCommerce or Digital, with new channels and markets on hold because the product data isn't ready.",
   },
   {
     icon: Server,
@@ -22,7 +22,7 @@ const AUDIENCE: { icon: typeof LineChart; lead: string; body: string }[] = [
   {
     icon: ClipboardList,
     lead: "Catalog and product teams",
-    body: "Catalog manager, product information lead, or localization manager, watching the hours disappear.",
+    body: "Catalog manager, product information lead, or localization manager retyping details that already exist elsewhere.",
   },
 ];
 
@@ -36,7 +36,7 @@ export function WhoShouldJoin() {
 
         <Reveal delay={0.05}>
           <h2 className="font-head text-[var(--sw-black)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[46px] leading-[1.05] tracking-[-0.01em]">
-            For whom is <span className="text-[var(--sw-blue)]">the webinar</span>
+            Who should join <span className="text-[var(--sw-blue)]">this webinar</span>
           </h2>
         </Reveal>
 
@@ -54,7 +54,7 @@ export function WhoShouldJoin() {
                   <div className="font-head font-bold text-[var(--sw-black)] text-[17px] md:text-[19px] leading-tight">
                     {a.lead}
                   </div>
-                  <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed">
+                  <p className="mt-2.5 text-[var(--sw-black)]/70 text-[14px] md:text-[15px] leading-relaxed text-pretty">
                     {a.body}
                   </p>
                 </div>

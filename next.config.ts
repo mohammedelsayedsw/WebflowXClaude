@@ -7,9 +7,28 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        // The October 6 teaser became the Expedio page (2026-10-06).
+        // Expedio now lives on the Ari site (2026-10-15). The pages under
+        // src/app/magento/expedio stay in the repo but are no longer reached.
+        // Temporary, so it can be undone without browsers holding on to it.
+        source: "/magento/expedio",
+        destination: "https://www.withari.ai/expedio",
+        permanent: false,
+      },
+      {
+        source: "/magento/expedio/packages",
+        destination: "https://www.withari.ai/expedio/packages",
+        permanent: false,
+      },
+      {
+        source: "/magento/expedio/why-we-built-it",
+        destination: "https://www.withari.ai/expedio/why-we-built-it",
+        permanent: false,
+      },
+      {
+        // The October 6 teaser became the Expedio page (2026-10-06), which
+        // moved to the Ari site, so it goes straight there.
         source: "/magento/twice-as-fast",
-        destination: "/magento/expedio",
+        destination: "https://www.withari.ai/expedio",
         permanent: false,
       },
       {

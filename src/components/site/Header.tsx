@@ -33,7 +33,7 @@ const SECONDARY_LINKS = [
 const MENULESS_ROUTES = ["/magento/twice-as-fast"];
 
 /** Routes (prefix match, without basePath) that render their own header, so this one is not shown. */
-const HEADERLESS_PREFIXES = ["/magento/expedio"];
+const HEADERLESS_PREFIXES = ["/magento/expedio", "/aeo/hotels", "/aeo/clinics"];
 
 /** Routes (without basePath) co-branded with Ari: its logo sits next to scandiweb's. */
 const ARI_ROUTES = ["/webinars/expedio"];

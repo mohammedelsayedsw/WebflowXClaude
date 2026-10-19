@@ -20,7 +20,10 @@ export function AnswerRank() {
         <Reveal>
           <Eyebrow>Powered by AnswerRank</Eyebrow>
           <h2 className={`${H2_LIGHT} mt-4 max-w-[16ch]`}>
-            See how your brand appears in <span style={{ color: "var(--sw-blue)" }}>AI answers</span>
+            See how your brand appears in{" "}
+            <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-blue)" }}>
+              AI answers
+            </span>
           </h2>
           <p className={`${BODY_LIGHT} mt-5 max-w-[44ch] max-md:[@media(max-height:700px)]:hidden`}>
             A shared view of the questions we monitor, the competitors appearing alongside you, and changes in how your

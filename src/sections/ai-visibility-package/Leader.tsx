@@ -17,7 +17,10 @@ export function Leader() {
         <Reveal>
           <Eyebrow>Looking to go further?</Eyebrow>
           <h2 className={`${H2_LIGHT} mt-4 max-w-[16ch]`}>
-            Become an industry leader in <span style={{ color: "var(--sw-blue)" }}>AI search</span>
+            Become an industry leader in{" "}
+            <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-blue)" }}>
+              AI search
+            </span>
           </h2>
           <p className={`${BODY_LIGHT} mt-5 max-w-[50ch] max-md:[@media(max-height:700px)]:hidden`}>
             AI Visibility Core covers the baseline. For merchants who want to lead their industry in AI search, we offer a

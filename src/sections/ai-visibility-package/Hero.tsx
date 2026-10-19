@@ -29,7 +29,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col justify-center bg-[var(--sw-black)] overflow-hidden"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)] overflow-hidden"
     >
       {/* scandiweb waves: the scandiweb.com homepage hero loop */}
       <video
@@ -62,7 +62,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap w-full relative pt-[136px] max-md:[@media(max-height:700px)]:pt-[112px] md:pt-[150px] pb-10 md:pb-[clamp(32px,6vh,96px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+      <div className="wrap w-full relative pt-[148px] max-md:[@media(max-height:700px)]:pt-[132px] md:pt-[clamp(170px,22vh,220px)] pb-12 md:pb-[clamp(48px,8vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
         <div>
           <motion.div {...enter(0.1)}>
             <Eyebrow tone="mint">{PLANS.core.name}</Eyebrow>
@@ -89,7 +89,7 @@ export function Hero() {
           </motion.ul>
           <motion.div {...enter(0.45)} className="mt-8 md:mt-10 hidden lg:block">
             <PlanLink plan="core" className={`${btnPrimary} w-full sm:w-auto h-auto min-h-12 py-3`}>
-              Request a call
+              Get your AI search covered
             </PlanLink>
           </motion.div>
         </div>
@@ -122,7 +122,7 @@ export function Hero() {
               See everything included <ArrowDown aria-hidden className="h-3.5 w-3.5" />
             </a>
             <PlanLink plan="core" className={`${btnLight} mt-5 md:mt-6 w-full h-auto min-h-12 py-3 px-4`}>
-              Request a call
+              Get your AI search covered
             </PlanLink>
             <p className="mt-4 text-center text-[13px] text-[var(--sw-black)]/60 max-md:[@media(max-height:700px)]:hidden">
               Delivered by{" "}

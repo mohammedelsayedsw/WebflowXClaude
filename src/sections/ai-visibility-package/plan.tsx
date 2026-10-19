@@ -9,7 +9,7 @@ const PlanContext = createContext<{ plan: Plan; setPlan: (plan: Plan) => void }>
   setPlan: () => {},
 });
 
-/** The plan picked in the enquiry form. Every "Request a call" link on the page sets it before scrolling there. */
+/** The plan picked in the enquiry form. Every call-to-action on the page sets it before scrolling there. */
 export function PlanProvider({ children }: { children: React.ReactNode }) {
   const [plan, setPlan] = useState<Plan>("core");
   return <PlanContext.Provider value={{ plan, setPlan }}>{children}</PlanContext.Provider>;

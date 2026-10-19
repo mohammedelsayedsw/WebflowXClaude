@@ -7,11 +7,14 @@ import { BODY_LIGHT, Eyebrow, LINE_LIGHT, SECTION_Y } from "./ui";
 export function Problem() {
   return (
     <section id="agency" className={`relative z-10 bg-white ${SECTION_Y}`}>
-      <div className="wrap w-full grid gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-20 items-center">
+      <div className="wrap w-full grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 items-center">
         <Reveal>
           <Eyebrow>The gap in your current coverage</Eyebrow>
-          <h2 className="mt-4 max-w-[14ch] font-head font-bold text-[var(--sw-black)] text-[32px] sm:text-[40px] md:text-[56px] leading-[1.04] tracking-[-0.02em]">
-            You have a marketing plan. <span style={{ color: "var(--sw-blue)" }}>Is AI search covered?</span>
+          <h2 className="mt-4 font-head font-bold text-[var(--sw-black)] text-[32px] sm:text-[40px] md:text-[48px] lg:text-[clamp(40px,3.6vw,56px)] leading-[1.04] tracking-[-0.02em]">
+            You have a marketing plan.{" "}
+            <span className="block lg:whitespace-nowrap" style={{ color: "var(--sw-blue)" }}>
+              Is AI search covered?
+            </span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>

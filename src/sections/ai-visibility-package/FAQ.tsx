@@ -104,11 +104,14 @@ export function FAQ() {
   return (
     <section id="faq" className={`relative z-10 bg-white ${SECTION_Y}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap w-full grid gap-6 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
+      <div className="wrap w-full grid gap-6 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] items-start">
         <Reveal>
           <Eyebrow>Before you decide</Eyebrow>
-          <h2 className={`${H2_LIGHT} mt-4 max-w-[14ch] max-md:[@media(max-height:700px)]:text-[26px]`}>
-            A few <span style={{ color: "var(--sw-blue)" }}>practical questions</span>
+          <h2 className={`${H2_LIGHT} mt-4 max-md:[@media(max-height:700px)]:text-[26px]`}>
+            A few{" "}
+            <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-blue)" }}>
+              practical questions
+            </span>
           </h2>
           <PlanLink
             plan="core"

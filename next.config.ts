@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        // AI Visibility Core moved from /aeo (2026-10-19). Exact match only: /aeo/hotels and /aeo/clinics stay.
+        source: "/aeo",
+        destination: "/ai-visibility-package",
+        permanent: true,
+      },
+      {
         // EU-wide reframe: /widerrufsbutton -> /eu-withdrawal-button (renamed 2026-06-19).
         source: "/widerrufsbutton",
         destination: "/eu-withdrawal-button",

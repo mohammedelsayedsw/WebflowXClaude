@@ -226,7 +226,7 @@ export function Contact() {
             Get Expedio
           </h2>
           <p className="mt-6 text-white/80 text-[18px] md:text-[20px] leading-[1.55] max-w-[38rem] mx-auto [text-wrap:balance]">
-            Leave your details to get the free version, or to set up an intro call about how Expedio can be applied to your store.
+            Leave your details and the scandiweb team will get in touch about Expedio for your store.
           </p>
         </Reveal>
 

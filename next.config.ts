@@ -7,6 +7,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Expedio details live on withari.ai; scandiweb.com keeps only the landing (2026-10-19).
+        source: "/magento/expedio/packages",
+        destination: "https://www.withari.ai/expedio/packages",
+        permanent: false,
+      },
+      {
+        source: "/magento/expedio/why-we-built-it",
+        destination: "https://www.withari.ai/expedio/why-we-built-it",
+        permanent: false,
+      },
+      {
         // The October 6 teaser became the Expedio page (2026-10-06).
         source: "/magento/twice-as-fast",
         destination: "/magento/expedio",

@@ -58,16 +58,24 @@ const QA = [
     a: "Nothing they work with. The admin, catalog, prices, checkout, orders, and the storefront design stay as they are.",
   },
   {
-    q: "How do you make sure my store gets 2x faster?",
-    a: "It is in the contract. We measure your store's key pages before we start, and 2x faster response time is one of the points we commit to.",
+    q: "How much faster will my store get?",
+    a: "At least 2x. In the benchmark, the median page type answered 6.4x faster at peak traffic, and the homepage answered in 20 ms instead of 519 ms. The live demo shows the same store side by side.",
   },
   {
     q: "Is Expedio open source?",
-    a: "Yes. The core of Expedio is free and open source for the Magento community. The paid packages add product support, version updates, an expert review, or a full implementation by scandiweb.",
+    a: "Yes. The Expedio core is free and open source for the Magento community.",
   },
   {
     q: "How do I get Expedio?",
-    a: "Choose a package. Expedio Open Source is free, and your developers or Ari install it. Expedio Supported adds version updates, compatibility fixes, and product support. Implementation Audit and Expedio by scandiweb can be bought online, and with Expedio by scandiweb, scandiweb implements, tests, and launches it on your store.",
+    a: (
+      <>
+        On{" "}
+        <a href="https://www.withari.ai/expedio" className="text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)]">
+          withari.ai/expedio
+        </a>
+        , where you can run it yourself or have Ari install it. To talk to the scandiweb team, use the form below.
+      </>
+    ),
   },
 ];
 

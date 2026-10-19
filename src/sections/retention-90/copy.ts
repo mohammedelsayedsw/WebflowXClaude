@@ -103,3 +103,7 @@ export function img(file: string): string {
 export function T(s: string, v?: Record<string, string | number>): string {
   return String(s ?? "").replace(/\{(\w+)\}/g, (m, k) => (v && v[k] != null ? String(v[k]) : m));
 }
+
+/* SMS needs its own, unticked consent. Shown on the email gate under the optional mobile. */
+export const SMS_CONSENT =
+  "Yes, text me my booking link and one follow-up from scandiweb. Up to 2 messages. Reply STOP to opt out. Message and data rates may apply.";

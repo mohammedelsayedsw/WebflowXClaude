@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CLINIC_CHART, CLINIC_DEMO_TABS, CLINIC_REPORT, CLINIC_WORDS, CLINICS } from "./content-clinics";
-import { Band, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, Proof, Rotator } from "./Sections";
+import { CLINIC_CHART, CLINIC_DEMO_TABS, CLINIC_REPORT, CLINIC_REPORT_INSIDE, CLINIC_REPORT_NOTE, CLINIC_WORDS, CLINICS } from "./content-clinics";
+import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, Proof, Report, Rotator } from "./Sections";
 import { AeoShell } from "./Shell";
 import { Counter, Icon, img, isReduced } from "./ui";
 
@@ -57,32 +57,6 @@ function ChatDemo() {
   );
 }
 
-function Report() {
-  const [t, setT] = useState(0);
-  return (
-    <>
-      <div className="tabs">{CLINIC_REPORT.map((r, i) => <button key={r.tab} type="button" className={"tab" + (i === t ? " on" : "")} onClick={() => setT(i)}>{r.tab}</button>)}</div>
-      <div className="rep rv">
-        <div>
-          <span className="eyebrow">20 prompts × 4 engines × 3 runs</span>
-          <div>{CLINIC_REPORT[t].rows.map(([p, c, l]) => <div key={p} className="prow"><span>{p}</span><span className={"pill " + c}>{l}</span></div>)}</div>
-        </div>
-        <div>
-          <span className="eyebrow">What’s inside</span>
-          <ul className="checks">
-            <li>What each engine says about your clinic today: ChatGPT, Gemini, Perplexity, Google AI</li>
-            <li>Which patient questions you win, and which you lose</li>
-            <li>Who gets named instead of you, and why</li>
-            <li>Where the answers come from: reviews, Reddit, YouTube, listicles, directories</li>
-            <li>Your fix list, highest-impact first</li>
-          </ul>
-          <p className="note">Built by specialists in 3 business days, on your real clinic, city and procedures. Measured monthly after that, so you see the trend, not a one-off screenshot.</p>
-        </div>
-      </div>
-    </>
-  );
-}
-
 /* Share of AI answers naming your clinic, 8% to 47% over six months (illustrative). */
 function AreaChart() {
   const W = 1000, H = 300, PL = 16, PR = 16, PT = 40, PB = 10, max = 55;
@@ -130,9 +104,10 @@ function ClinicsBody() {
         photo="/aeo-lp/c_hero.webp" alt="Modern clinic reception with curved marble desk"
       />
       <Band />
-      <Credibility line="we took a brand from invisible to the top recommendation in AI answers" stats={[["20+ yrs", "growing brands online"], ["$4B+", "client revenue delivered"], ["600+", "eCommerce & digital builds"], ["+110%", "AI-referred traffic, retail brand"]]} />
+      <Cases vertical="clinic" />
+      <Credibility deep line="we took a brand from invisible to the top recommendation in AI answers" stats={[["20+ yrs", "growing brands online"], ["$4B+", "client revenue delivered"], ["600+", "eCommerce & digital builds"], ["+110%", "AI-referred traffic, retail brand"]]} />
 
-      <section className="sec deep" data-fold="demo"><div className="wrap">
+      <section className="sec" data-fold="demo"><div className="wrap">
         <div className="sec-head center rv">
           <span className="eyebrow">How patients choose now</span>
           <h2>Watch how your next patient <span className="mint">chooses.</span></h2>
@@ -169,7 +144,7 @@ function ClinicsBody() {
           <div><span className="eyebrow">What you get</span><h2>Your free <span className="mint">AI Growth Report</span></h2><p className="sub">Pick your vertical. These are the questions your patients already ask.</p></div>
           <span className="flag">Named in 2 of 20 prompts · sample</span>
         </div>
-        <Report />
+        <Report tabs={CLINIC_REPORT} inside={CLINIC_REPORT_INSIDE} note={CLINIC_REPORT_NOTE} />
       </div></section>
 
       <section className="sec" data-fold="maths"><div className="wrap">
@@ -252,7 +227,7 @@ function ClinicsBody() {
         <img className="ph rv" src={img("/aeo-lp/c_tourism.webp")} alt="Premium clinic interior at dusk with city skyline through glass" loading="lazy" />
       </div></section>
 
-      <Proof vertical="clinic" results={CLINICS.results} footer={<div className="measure rv"><span className="eyebrow">We measure across</span><p>ChatGPT · Gemini · Perplexity · Google AI Mode · Copilot</p></div>} />
+      <Proof title={<>We’ve done <span className="mint">this before.</span></>} results={CLINICS.results} footer={<div className="measure rv"><span className="eyebrow">We measure across</span><p>ChatGPT · Gemini · Perplexity · Google AI Mode · Copilot</p></div>} />
       <Leader lead="Your AI Growth Report covers the baseline. For clinics that want to lead their market in AI search, we offer a tailored, hands-on program that goes further." />
       <Faq title="The things clinic owners ask us" items={[
         ["What exactly is the AI Growth Report?", "We run ~20 real patient questions for your procedures and city across ChatGPT, Gemini, Perplexity and Google AI, three times each, and report where you’re named, who gets named instead, where the answers come from, and your fixes in priority order. Built by specialists in 3 business days, not an automated scan."],

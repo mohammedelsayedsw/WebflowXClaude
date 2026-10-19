@@ -6,7 +6,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { FORM_ENDPOINT, HOST, NOTIFY_CC } from "./config";
 import { useAeo } from "./Shell";
 import { track } from "./track";
-import type { Result } from "./types";
+import type { ReportTab, Result } from "./types";
 import { Arrow, Rating, img, isReduced } from "./ui";
 
 /* Primary CTA (opens the quiz) + secondary "Book a 30-min call with Janis". */
@@ -123,9 +123,9 @@ export function Band() {
   );
 }
 
-export function Credibility({ line, stats }: { line: string; stats: [string, string][] }) {
+export function Credibility({ line, stats, deep }: { line: string; stats: [string, string][]; deep?: boolean }) {
   return (
-    <section className="sec tight" data-fold="credibility">
+    <section className={"sec tight" + (deep ? " deep" : "")} data-fold="credibility">
       <div className="wrap">
         <p className="proofline rv"><b>#23 &rarr; #1</b><span>{line}</span></p>
         <div className="stats rv">{stats.map(([b, s]) => <div key={b}><b>{b}</b><span>{s}</span></div>)}</div>
@@ -153,10 +153,10 @@ function Slider({ results }: { results: Result[] }) {
   );
 }
 
-/* "Real clients. Measurable progress." + more results + quote. */
-export function Proof({ vertical, results, footer }: { vertical: string; results: Result[]; footer: ReactNode }) {
+/* "Real clients. Measurable progress.": AI search case studies, high on the page. */
+export function Cases({ vertical }: { vertical: string }) {
   return (
-    <section className="sec" id="results" data-fold="proof">
+    <section className="sec" id="results" data-fold="real-clients">
       <div className="wrap">
         <div className="headrow rv">
           <div><span className="eyebrow">Our work in AI search</span><h2>Real clients.<br /><span className="mint">Measurable progress.</span></h2></div>
@@ -191,7 +191,17 @@ export function Proof({ vertical, results, footer }: { vertical: string; results
           </div>
         </div>
         <p className="src">FELCO and Habito results come from broader client programs with their own scope. They are not a guarantee of results for your {vertical}. Habito’s comparison uses GA4 traffic and conversions from known AI referrers.</p>
-        <span className="eyebrow more-lbl">More results</span>
+      </div>
+    </section>
+  );
+}
+
+/* More results (slider) + client quote + the per-page footer row. */
+export function Proof({ title, results, footer }: { title: ReactNode; results: Result[]; footer: ReactNode }) {
+  return (
+    <section className="sec" data-fold="proof">
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">More results</span><h2>{title}</h2></div>
         <Slider results={results} />
         <div className="quote rv">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -201,6 +211,27 @@ export function Proof({ vertical, results, footer }: { vertical: string; results
         {footer}
       </div>
     </section>
+  );
+}
+
+/* "Your free AI Growth Report": sample prompt rows per tab + what's inside. */
+export function Report({ tabs, inside, note }: { tabs: ReportTab[]; inside: string[]; note: string }) {
+  const [t, setT] = useState(0);
+  return (
+    <>
+      <div className="tabs">{tabs.map((r, i) => <button key={r.tab} type="button" className={"tab" + (i === t ? " on" : "")} onClick={() => { setT(i); track("report_tab", { tab: r.tab }); }}>{r.tab}</button>)}</div>
+      <div className="rep rv">
+        <div>
+          <span className="eyebrow">20 prompts × 4 engines × 3 runs</span>
+          <div>{tabs[t].rows.map(([p, c, l]) => <div key={p} className="prow"><span>{p}</span><span className={"pill " + c}>{l}</span></div>)}</div>
+        </div>
+        <div>
+          <span className="eyebrow">What’s inside</span>
+          <ul className="checks">{inside.map((x) => <li key={x}>{x}</li>)}</ul>
+          <p className="note">{note}</p>
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -8,6 +8,7 @@ import { Arrow } from "./ui";
 
 const URL_RE = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}.*$/i;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const KEYS = "ABCDEFGHIJKL";
 
 function readUtm(): Utm {
   try {
@@ -32,13 +33,16 @@ type Props = {
   onBook: () => void;
 };
 
+/* Retention-style quiz: one question per screen, lettered answers, auto-advance, no back button. */
 export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
   const Q = cfg.quiz;
+  const total = Q.steps.length;
   const [step, setStep] = useState(0);
   const [data, setData] = useState<QuizData>(() => blank(cfg));
   const [bad, setBad] = useState("");
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
+  const [picked, setPicked] = useState("");
   const sentRef = useRef(false);
   const boxRef = useRef<HTMLDivElement>(null);
   const s = Q.steps[step];
@@ -53,13 +57,14 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
   }, [open, step, sent]);
 
   const set = (k: string, v: string | string[]) => setData((d) => ({ ...d, [k]: v }));
-  const go = (n: number) => { setBad(""); setStep(n); };
-  const restart = () => { setData(blank(cfg)); go(0); track("restart"); };
+  const go = (n: number) => { setBad(""); setPicked(""); setStep(n); };
 
   const pick = (key: string, v: string) => {
+    if (picked) return;
     set(key, v);
+    setPicked(v);
     track("q_ans", { step: stepName, pos: step + 1, key, a: v });
-    setTimeout(() => go(step + 1), 200);
+    setTimeout(() => go(step + 1), 220);
   };
   const toggle = (key: string, v: string, cap?: number) => setData((d) => {
     const arr = list(d, key);
@@ -112,15 +117,18 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
     onSent(data);
   };
 
-  const field = (f: Field) => (
+  const field = (f: Field, onEnter?: () => void) => (
     <div key={f.key} className={"fld" + (bad === f.key ? " bad" : "")}>
       <label htmlFor={"aeo-" + f.key}>{f.label}</label>
       {f.area
         ? <textarea id={"aeo-" + f.key} className="inp" placeholder={f.ph || ""} value={str(data, f.key)} onChange={(e) => set(f.key, e.target.value)} />
-        : <input id={"aeo-" + f.key} className="inp" type={f.type || "text"} placeholder={f.ph || ""} value={str(data, f.key)} onChange={(e) => set(f.key, e.target.value)} autoComplete={f.key === "email" ? "email" : f.key === "name" ? "given-name" : "off"} />}
+        : <input id={"aeo-" + f.key} className="inp" type={f.type || "text"} placeholder={f.ph || ""} value={str(data, f.key)} onChange={(e) => set(f.key, e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter" && onEnter) onEnter(); }}
+            autoComplete={f.key === "email" ? "email" : f.key === "name" ? "given-name" : "off"} />}
     </div>
   );
 
+  const pct = sent ? 100 : Math.round((step / total) * 100);
   let body: React.ReactNode;
   if (sent) {
     body = (
@@ -136,53 +144,53 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
       </div>
     );
   } else {
-    const back = step > 0 ? <button type="button" className="btn ghost" onClick={() => go(step - 1)}>Back</button> : null;
     body = (
-      <>
-        <button type="button" className="restart" onClick={restart}>&larr; Start over</button>
-        <div className="prog">{Q.steps.map((_, i) => <i key={i} className={i <= step ? "on" : ""} />)}</div>
-        <div className="qstep" key={step}>
-          <h3>{s.q}</h3>
-          {s.type === "multi" && s.hint ? <p className="qhint">{s.hint}</p> : null}
-          {(s.type === "single" || s.type === "multi") && (
-            <div className="opts">
-              {s.options.map((o) => {
-                const on = s.type === "single" ? str(data, s.key) === o : list(data, s.key).includes(o);
-                const full = s.type === "multi" && !!s.cap && list(data, s.key).length >= s.cap;
-                return (
-                  <button type="button" key={o} className={"opt" + (s.type === "multi" ? " multi" : "") + (on ? " on" : "") + (full && !on ? " dis" : "")}
-                    onClick={() => (s.type === "single" ? pick(s.key, o) : toggle(s.key, o, s.cap))}>
-                    <span className="mk" />{disp(o)}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-          {s.type === "multi" && s.other ? <div style={{ marginTop: 12 }}>{field({ key: s.other.key, label: s.other.label, area: true })}</div> : null}
-          {(s.type === "fields" || s.type === "contact") && <div style={{ marginTop: 18 }}>{s.fields.map(field)}</div>}
-          {s.type === "contact" && (
-            /* honeypot, invisible to people */
+      <div className="qstep" key={step}>
+        <div className="qn">Question {step + 1} of {total}</div>
+        <h3>{s.q}</h3>
+        {s.type === "multi" && s.hint ? <p className="qhint">{s.hint}</p> : null}
+        {(s.type === "single" || s.type === "multi") && (
+          <div className="opts">
+            {s.options.map((o, i) => {
+              const on = s.type === "single" ? picked === o : list(data, s.key).includes(o);
+              const full = s.type === "multi" && !!s.cap && list(data, s.key).length >= s.cap;
+              return (
+                <button type="button" key={o} className={"opt" + (on ? " on" : "") + (full && !on ? " dis" : "")}
+                  onClick={() => (s.type === "single" ? pick(s.key, o) : toggle(s.key, o, s.cap))}>
+                  <span className="key">{KEYS[i]}</span>{disp(o)}
+                </button>
+              );
+            })}
+          </div>
+        )}
+        {s.type === "multi" && <div className="qnav"><button type="button" className="btn grow" onClick={next}>Continue <Arrow /></button></div>}
+        {s.type === "fields" && (
+          <>
+            <div style={{ marginTop: 18 }}>{s.fields.map((f) => field(f, next))}</div>
+            {s.note ? <p className="qnote" style={{ marginTop: -4 }}>{s.note}</p> : null}
+            <div className="qnav"><button type="button" className="btn grow" onClick={next}>Continue <Arrow /></button></div>
+          </>
+        )}
+        {s.type === "contact" && (
+          <>
+            <div style={{ marginTop: 18 }}>{s.fields.map((f) => field(f, submit))}</div>
+            {/* honeypot, invisible to people */}
             <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={str(data, "company_website")} onChange={(e) => set("company_website", e.target.value)} style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }} />
-          )}
-          {s.type === "fields" && s.note ? <p className="qnote" style={{ marginTop: -4 }}>{s.note}</p> : null}
-          {(s.type === "multi" || s.type === "fields") && <div className="qnav">{back}<button type="button" className="btn grow" onClick={next}>Continue</button></div>}
-          {s.type === "single" && back && <div className="qnav">{back}</div>}
-          {s.type === "contact" && (
-            <>
-              <div className="qnav">{back}<button type="button" className="btn grow" onClick={submit} disabled={busy}>{busy ? "Sending…" : Q.submitLabel}</button></div>
-              {bad === "submit" && <p className="qerr">Something went wrong. Please try again.</p>}
-              <p className="qnote">{Q.finalNote}</p>
-            </>
-          )}
-        </div>
-      </>
+            <div className="qnav"><button type="button" className="btn grow" onClick={submit} disabled={busy}>{busy ? "Sending…" : Q.submitLabel} {busy ? null : <Arrow />}</button></div>
+            {bad === "submit" && <p className="qerr">Something went wrong. Please try again.</p>}
+            <p className="qnote">{Q.finalNote}</p>
+          </>
+        )}
+      </div>
     );
   }
 
+  /* No backdrop click-to-close: only the close button (or Esc) closes the quiz. */
   return (
-    <div className={"ov" + (open ? " on" : "")} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }} aria-hidden={!open}>
-      <div className="mdl" role="dialog" aria-modal="true" aria-label="Request form">
+    <div className={"ov" + (open ? " on" : "")} aria-hidden={!open}>
+      <div className="mdl quiz" role="dialog" aria-modal="true" aria-label="Request form">
         <button type="button" className="x" aria-label="Close" onClick={onClose}>&#x2715;</button>
+        <div className="qtop"><div className="qbar"><i style={{ width: pct + "%" }} /></div><span className="qpct">{pct}%</span></div>
         <div className="mdl-in" ref={boxRef}>{body}</div>
       </div>
     </div>

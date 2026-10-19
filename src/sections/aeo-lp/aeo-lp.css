@@ -302,26 +302,25 @@
 .aeolp .mdl .x:hover{border-color:rgba(255,255,255,.5);color:#fff}
 .aeolp .mdl-in{padding:34px 34px 30px}
 @media(max-width:520px){.aeolp .mdl-in{padding:28px 20px 24px}}
-.aeolp .restart{font-size:12.5px;font-weight:500;color:var(--muted)}
-.aeolp .restart:hover{color:#fff}
-.aeolp .prog{display:flex;gap:4px;margin:16px 0 26px}
-.aeolp .prog i{flex:1;height:3px;background:rgba(255,255,255,.12);transition:background .25s}
-.aeolp .prog i.on{background:var(--mint)}
 .aeolp .qstep{animation:aeolp-qin .28s ease}
 @keyframes aeolp-qin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .aeolp .qstep h3{font-size:24px;line-height:1.25;margin-bottom:8px;padding-right:30px}
 .aeolp .qhint{font-size:13.5px;color:var(--muted);margin-bottom:16px}
 .aeolp .opts{display:grid;gap:8px;margin-top:18px}
 .aeolp .qstep .qhint+.opts{margin-top:0}
-.aeolp .opt{display:flex;align-items:center;gap:14px;text-align:left;width:100%;font-size:15.5px;font-weight:500;color:rgba(255,255,255,.9);border:1px solid var(--line2);background:var(--card);border-radius:var(--r);padding:14px 16px;transition:border-color .12s,background .12s}
-.aeolp .opt:hover{border-color:rgba(110,247,110,.6);background:rgba(110,247,110,.05)}
-.aeolp .opt .mk{width:18px;height:18px;flex-shrink:0;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.aeolp .opt.multi .mk{border-radius:2px}
-.aeolp .opt.on{border-color:var(--mint);background:rgba(110,247,110,.08);color:#fff}
-.aeolp .opt.on .mk{border-color:var(--mint);background:var(--mint)}
-.aeolp .opt.on .mk::after{content:"";width:6px;height:6px;border-radius:50%;background:#0b0e22}
-.aeolp .opt.multi.on .mk::after{width:9px;height:5px;border-radius:0;background:none;border-left:2px solid #0b0e22;border-bottom:2px solid #0b0e22;transform:rotate(-45deg) translate(1px,-1px)}
+.aeolp .opt{display:flex;align-items:center;gap:16px;text-align:left;width:100%;font-size:16px;font-weight:600;color:#fff;border:1.5px solid var(--mint);background:rgba(110,247,110,.06);border-radius:var(--r);padding:15px 18px;transition:background .12s,color .12s,border-color .12s}
+.aeolp .opt .key{width:30px;height:30px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:3px;border:1.5px solid var(--mint);background:var(--mint);color:#0b0e22;font-size:12.5px;font-weight:700;transition:background .12s,color .12s,border-color .12s}
+.aeolp .opt:hover,.aeolp .opt:focus-visible,.aeolp .opt.on{background:var(--mint);color:#0b0e22;border-color:var(--mint)}
+.aeolp .opt:hover .key,.aeolp .opt:focus-visible .key,.aeolp .opt.on .key{background:#0b0e22;color:var(--mint);border-color:#0b0e22}
 .aeolp .opt.dis{opacity:.4}
+@media(hover:none){.aeolp .opt:hover:not(.on){background:rgba(110,247,110,.06);color:#fff}.aeolp .opt:hover:not(.on) .key{background:var(--mint);color:#0b0e22;border-color:var(--mint)}}
+.aeolp .qtop{display:flex;align-items:center;gap:12px;padding:22px 66px 0 34px}
+.aeolp .qbar{flex:1;height:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.aeolp .qbar i{display:block;height:100%;background:var(--mint);transition:width .35s ease}
+.aeolp .qpct{font-size:12px;font-weight:600;color:var(--mint);width:36px;text-align:right;font-variant-numeric:tabular-nums}
+.aeolp .quiz .mdl-in{padding-top:22px}
+.aeolp .qn{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+@media(max-width:520px){.aeolp .qtop{padding:20px 62px 0 20px}.aeolp .quiz .mdl-in{padding-top:20px}.aeolp .opt{padding:14px 15px;font-size:15.5px;gap:14px}}
 .aeolp .qnav{display:flex;gap:10px;margin-top:22px}
 .aeolp .qnav .btn{padding:15px 22px}
 .aeolp .qnav .grow{flex:1;justify-content:center}
@@ -429,27 +428,7 @@
 .aeolp .bk-host .ttl{font-size:14px;color:rgba(255,255,255,.7);margin-top:2px}
 .aeolp .bk-host .ev{margin-top:12px}
 body.aeolp-lock{overflow:hidden}
-/* hotels: scorecard, growth bars, industries, PMS row */
-.aeolp .score{border:1px solid var(--line);background:var(--card);box-shadow:var(--inset);border-radius:var(--r)}
-.aeolp .score-top{display:flex;flex-wrap:wrap;align-items:center;gap:20px 40px;padding:36px 40px;border-bottom:1px solid var(--line)}
-.aeolp .score-top .tot{font-size:clamp(64px,7vw,96px);font-weight:600;line-height:.9;letter-spacing:-.04em;color:#fff}
-.aeolp .score-top .tot small{font-size:28px;color:var(--muted);letter-spacing:0;font-weight:500}
-.aeolp .score-top .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffc58a;background:rgba(255,170,80,.12);border:1px solid rgba(255,170,80,.35);padding:5px 10px;border-radius:var(--r);margin-bottom:10px}
-.aeolp .score-top p{color:rgba(255,255,255,.78);font-size:16.5px}
-.aeolp .bars{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;padding:22px 40px 8px}
-.aeolp .bar{padding:14px 0;border-bottom:1px solid var(--line)}
-.aeolp .bar .lbl{display:flex;justify-content:space-between;font-size:15px;color:rgba(255,255,255,.86);margin-bottom:10px}
-.aeolp .bar .lbl b{font-weight:600;font-variant-numeric:tabular-nums}
-.aeolp .bar .tr{height:4px;background:rgba(255,255,255,.08)}
-.aeolp .bar .tr i{display:block;height:100%;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
-.aeolp .score.on .bar .tr i{width:var(--w)}
-.aeolp .score .note{padding:22px 40px 30px;font-size:14.5px;color:var(--muted)}
-.aeolp .score .note span{color:var(--dim)}
-.aeolp .legend{display:flex;gap:18px;font-size:12.5px;color:var(--muted);padding:0 40px}
-.aeolp .legend i{display:inline-block;width:10px;height:4px;margin-right:7px;vertical-align:middle}
-@media(max-width:760px){.aeolp .bars{grid-template-columns:1fr;padding:14px 22px 4px}
-.aeolp .score-top,.aeolp .score .note{padding-left:22px;padding-right:22px}
-.aeolp .legend{padding:0 22px;flex-wrap:wrap}}
+/* hotels: growth bars, industries, PMS row */
 .aeolp .vbars{display:flex;align-items:flex-end;gap:14px;height:200px;margin-top:8px;padding-top:20px}
 .aeolp .vbars div{flex:1;height:0;background:linear-gradient(180deg,var(--mint),rgba(110,247,110,.18));transition:height 1s cubic-bezier(.2,.7,.2,1)}
 .aeolp .vbars.on div{height:var(--h)}
@@ -461,3 +440,6 @@ body.aeolp-lock{overflow:hidden}
 .aeolp .pms{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 40px;font-size:clamp(17px,1.7vw,21px);font-weight:600;color:rgba(255,255,255,.8)}
 .aeolp .case .wmi{display:block;width:auto;max-width:70%}
 .aeolp .case .wmi+.desc{margin-top:12px}
+/* mobile: the sticky bottom CTA replaces the header */
+@media(max-width:980px){.aeolp .hd{display:none}
+.aeolp .hero{padding-top:56px}}

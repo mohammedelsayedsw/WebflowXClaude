@@ -6,7 +6,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { usePlan } from "./plan";
 import { HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID, PLANS, type Plan } from "./status";
-import { BODY_DARK, H2_DARK, SECTION_Y } from "./ui";
+import { BODY_DARK, Eyebrow, H2_DARK, SECTION_Y } from "./ui";
 
 const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FREE_MAIL = new Set([
@@ -16,8 +16,9 @@ const FREE_MAIL = new Set([
 const WORK_EMAIL_MSG = "Use your work email";
 
 const INTRO: Record<Plan, string> = {
-  core: "We look at your current coverage and show how the package fits.",
-  leader: "We look at your industry, competitors and goals, and scope a program.",
+  core: "Request a call about AI Visibility Core. We’ll review your current coverage and explain how the subscription fits your business.",
+  leader:
+    "Request a call with our AI Search Strategist about a tailored program for your industry, competitors, and commercial goals.",
 };
 const PRICE_LINE: Record<Plan, string> = {
   core: `${PLANS.core.price} / month`,
@@ -118,16 +119,19 @@ export function Interest() {
       />
       <div className="wrap w-full relative">
         <Reveal className="mx-auto max-w-[640px] text-center">
-          <h2 className={H2_DARK}>
-            Talk to an{" "}
+          <div className="flex justify-center">
+            <Eyebrow tone="mint">For existing scandiweb clients</Eyebrow>
+          </div>
+          <h2 className={`${H2_DARK} mt-4`}>
+            Speak with an{" "}
             <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
               AI search strategist
             </span>
           </h2>
-          <p className={`${BODY_DARK} mt-4 max-md:[@media(max-height:700px)]:mt-2`}>{INTRO[plan]}</p>
+          <p className={`${BODY_DARK} mt-4 max-md:[@media(max-height:700px)]:hidden`}>{INTRO[plan]}</p>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-8 max-md:[@media(max-height:700px)]:mt-5 md:mt-10 max-w-[640px]">
+        <Reveal delay={0.1} className="mx-auto mt-8 max-md:[@media(max-height:700px)]:mt-5 md:mt-[clamp(20px,4vh,40px)] max-w-[640px]">
           {status === "done" ? (
             <div role="status" className="border-t border-white/15 pt-8 text-center">
               <h3 className="font-head font-bold text-white text-[26px] leading-[1.15]">Request sent</h3>
@@ -233,12 +237,12 @@ export function Interest() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className={`${btnPrimary} mt-6 max-md:[@media(max-height:700px)]:mt-4 w-full cursor-pointer disabled:opacity-60`}
+                className={`${btnPrimary} mt-6 max-md:[@media(max-height:700px)]:mt-4 md:mt-[clamp(14px,3vh,24px)] w-full cursor-pointer disabled:opacity-60`}
               >
                 {status === "submitting" ? "Sending" : "Request a call"}
               </button>
               <p className="mt-4 max-md:[@media(max-height:700px)]:mt-3 text-center text-[13px] text-white/45">
-                No commitment. Already a scandiweb client? Your account manager can set up the call.
+                A conversation, with no commitment to subscribe. Already in touch with your account manager? Ask them about AI Visibility Core.
               </p>
             </form>
           )}

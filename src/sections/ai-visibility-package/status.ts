@@ -1,4 +1,4 @@
-/** Prices, plans, form and outbound links for /aeo. Change them here, nowhere else. */
+/** Prices, plans, form and outbound links for /ai-visibility-package. Change them here, nowhere else. */
 
 export const PLANS = {
   core: { name: "AI Visibility Core", price: "€1,000" },

@@ -5,7 +5,7 @@ const TITLE = "AI Visibility Core | €1,000/month";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
   "Make AI visibility in ChatGPT and other AI tools part of running your business. AI Visibility Core includes AnswerRank tracking, content tailored to AI search questions, and practical recommendations for €1,000/month.";
-const URL = "https://scandiweb.com/solutions/aeo";
+const URL = "https://scandiweb.com/solutions/ai-visibility-package";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 /** Site Header + page content. Footer stays in root layout. */
-export default function AeoLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function AiVisibilityPackageLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
       <Header />

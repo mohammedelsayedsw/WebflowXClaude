@@ -1,6 +1,6 @@
 "use client";
 
-/** Shared bits for /aeo: eyebrow, headings, body text, colours for light sections. Same system as /akeneo/plus-bundle. */
+/** Shared bits for /ai-visibility-package: eyebrow, headings, body text, colours for light sections. Same system as /akeneo/plus-bundle. */
 
 export const LAVENDER = "#f0f1fa";
 export const LINE_LIGHT = "border-[#dfe1f0]";

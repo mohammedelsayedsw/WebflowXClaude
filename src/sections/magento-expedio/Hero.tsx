@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { ARI_EXPEDIO, ARI_GET } from "./ariLinks";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const enter = (delay: number) => ({
@@ -53,17 +54,17 @@ export function Hero() {
 
         <motion.a
           {...enter(1.1)}
-          href="#packages"
+          href={ARI_EXPEDIO}
           className="mt-5 inline-flex items-center gap-2.5 h-9 px-4 border border-[rgba(110,247,110,0.45)] bg-[rgba(5,7,15,0.45)] text-[14px] text-white font-[family-name:var(--font-golos)] font-medium hover:border-[var(--sw-mint)] transition"
         >
           <span style={{ color: "var(--sw-mint)" }} className="font-semibold">New</span>
           <span className="sm:hidden">Now open source</span>
-          <span className="hidden sm:inline">Expedio is now open source. See the packages</span>
+          <span className="hidden sm:inline">Expedio is now open source</span>
           <span aria-hidden>→</span>
         </motion.a>
 
         <motion.div {...enter(1.25)} className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-          <a href="#packages" className={btnPrimary}>
+          <a href={ARI_GET} className={btnPrimary}>
             Get Expedio
           </a>
           <a href="#demo" className={btnSecondary}>

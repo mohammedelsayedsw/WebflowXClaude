@@ -2,13 +2,13 @@
 
 import { assetUrl } from "@/lib/assets";
 import { useEffect, useState } from "react";
+import { ARI_GET, ARI_INSTALL, ARI_WHY } from "./ariLinks";
 
 const LINKS = [
-  { href: "/solutions/magento/expedio/why-we-built-it", label: "Why we built it" },
+  { href: ARI_WHY, label: "Why we built it" },
   { href: "/solutions/magento/expedio#demo", label: "Demo" },
   { href: "/solutions/magento/expedio#benchmark", label: "Benchmark" },
-  { href: "/solutions/magento/expedio#ari", label: "Install with Ari" },
-  { href: "/solutions/magento/expedio/packages", label: "Packages" },
+  { href: ARI_INSTALL, label: "Install with Ari" },
 ];
 
 const CTA =
@@ -50,7 +50,7 @@ export function SiteHeader() {
               {l.label}
             </a>
           ))}
-          <a href="/solutions/magento/expedio#packages" className={`max-sm:!hidden ${CTA}`}>
+          <a href={ARI_GET} className={`max-sm:!hidden ${CTA}`}>
             Get Expedio
           </a>
           <button
@@ -81,7 +81,7 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <a href="/solutions/magento/expedio#packages" onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
+            <a href={ARI_GET} onClick={() => setOpen(false)} className={`mt-8 justify-center ${CTA} !h-12 !text-[17px]`}>
               Get Expedio
             </a>
           </nav>

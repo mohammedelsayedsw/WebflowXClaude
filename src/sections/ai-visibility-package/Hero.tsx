@@ -24,12 +24,12 @@ const IN_THE_BOX: [string, string][] = [
   ["Monthly AI visibility and progress report", "Monthly progress report"],
 ];
 
-/** Headline, one line, two facts, one button. The package, its price and a second button sit in the card beside it. */
+/** One full screen under the site header, content centred: headline, one line, two facts, one button; the package, its price and a second button sit in the card beside it. */
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 -mt-[60px] md:-mt-[75px] bg-[var(--sw-black)] overflow-hidden"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col justify-center bg-[var(--sw-black)] overflow-hidden"
     >
       {/* scandiweb waves: the scandiweb.com homepage hero loop */}
       <video
@@ -62,7 +62,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap w-full relative pt-[148px] max-md:[@media(max-height:700px)]:pt-[132px] md:pt-[clamp(170px,22vh,220px)] pb-12 md:pb-[clamp(48px,8vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+      <div className="wrap w-full relative pt-[148px] max-md:[@media(max-height:700px)]:pt-[132px] md:pt-[150px] pb-12 md:pb-[clamp(48px,8vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
         <div>
           <motion.div {...enter(0.1)}>
             <Eyebrow tone="mint">{PLANS.core.name}</Eyebrow>

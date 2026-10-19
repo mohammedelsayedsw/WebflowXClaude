@@ -113,7 +113,7 @@ function IndexBars({ bars }: { bars: Bars }) {
 export function Results() {
   // Own padding instead of SECTION_Y: the densest section, so it runs tighter on short screens.
   return (
-    <section id="proof" className="relative z-10 flex min-h-svh flex-col justify-center bg-[var(--sw-black)] py-[clamp(32px,6vh,56px)] md:py-[clamp(16px,3vh,96px)]">
+    <section id="proof" className="relative z-10 bg-[var(--sw-black)] py-[clamp(32px,6vh,56px)] md:py-[clamp(24px,4vh,88px)]">
       <div className="wrap w-full">
         <Reveal className="lg:flex lg:items-end lg:justify-between lg:gap-16">
           <div>

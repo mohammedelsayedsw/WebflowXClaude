@@ -24,8 +24,11 @@ export function HowItWorks() {
       <div className="wrap w-full grid gap-10 lg:grid-cols-2 lg:gap-24 items-center">
         <Reveal>
           <Eyebrow tone="mint">Languages and delivery</Eyebrow>
-          <h2 className={`${H2_DARK} mt-4 max-w-[16ch]`}>
-            We prepare the drafts. <span style={{ color: "var(--sw-mint)" }}>Your team publishes.</span>
+          <h2 className={`${H2_DARK} mt-4`}>
+            We prepare the drafts.{" "}
+            <span className="block" style={{ color: "var(--sw-mint)" }}>
+              Your team publishes.
+            </span>
           </h2>
           <p className={`${BODY_DARK} mt-5 md:mt-6 max-w-[44ch]`}>
             Content is delivered as drafts for your team or agency to approve and publish. The approval and publication

@@ -18,8 +18,8 @@ export const H2_LIGHT =
   "font-head font-bold text-[var(--sw-black)] text-[30px] sm:text-[36px] md:text-[48px] leading-[1.05] tracking-[-0.02em]";
 export const H2_DARK =
   "font-head font-bold text-white text-[30px] sm:text-[36px] md:text-[48px] leading-[1.05] tracking-[-0.02em]";
-/** Every section is one full screen, content centred; padding scales with screen height so the content fits short laptops too. */
-export const SECTION_Y = "flex min-h-svh flex-col justify-center py-[clamp(32px,6vh,56px)] md:py-[clamp(40px,7vh,96px)]";
+/** Section padding: modest, scaled to screen height so every section fits one screen without stretching to fill it. */
+export const SECTION_Y = "py-[clamp(32px,6vh,56px)] md:py-[clamp(40px,7vh,88px)]";
 
 export const BODY_LIGHT = "text-[var(--sw-black)]/70 text-[15px] md:text-[17px] leading-relaxed";
 export const BODY_DARK = "text-white/75 text-[15px] md:text-[17px] leading-relaxed";

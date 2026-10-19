@@ -16,9 +16,8 @@ const FREE_MAIL = new Set([
 const WORK_EMAIL_MSG = "Use your work email";
 
 const INTRO: Record<Plan, string> = {
-  core: "Request a call about AI Visibility Core. We’ll review your current coverage and explain how the subscription fits your business.",
-  leader:
-    "Request a call with our AI Search Strategist about a tailored program for your industry, competitors, and commercial goals.",
+  core: "We’ll review your current coverage and explain how AI Visibility Core fits your business.",
+  leader: "We’ll look at your industry, competitors and commercial goals, and scope a tailored program.",
 };
 const PRICE_LINE: Record<Plan, string> = {
   core: `${PLANS.core.price} / month`,
@@ -239,7 +238,7 @@ export function Interest() {
                 disabled={status === "submitting"}
                 className={`${btnPrimary} mt-6 max-md:[@media(max-height:700px)]:mt-4 md:mt-[clamp(14px,3vh,24px)] w-full cursor-pointer disabled:opacity-60`}
               >
-                {status === "submitting" ? "Sending" : "Request a call"}
+                {status === "submitting" ? "Sending" : plan === "leader" ? "Speak with an AI strategist" : "Get your AI search covered"}
               </button>
               <p className="mt-4 max-md:[@media(max-height:700px)]:mt-3 text-center text-[13px] text-white/45">
                 A conversation, with no commitment to subscribe. Already in touch with your account manager? Ask them about AI Visibility Core.

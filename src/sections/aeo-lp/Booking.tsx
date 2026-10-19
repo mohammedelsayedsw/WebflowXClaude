@@ -77,7 +77,7 @@ export function Booking({ cfg, open, onClose, data }: { cfg: FunnelCfg; open: bo
   }, [open, data, cfg]);
 
   return (
-    <div className={"ov" + (open ? " on" : "")} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }} aria-hidden={!open}>
+    <div className={"ov" + (open ? " on" : "")} aria-hidden={!open}>
       <div className={"mdl bk" + (booked ? " booked" : "")} role="dialog" aria-modal="true" aria-label="Book a call">
         <button type="button" className="x" aria-label="Close" onClick={onClose}>&#x2715;</button>
         <div className="bk-grid">

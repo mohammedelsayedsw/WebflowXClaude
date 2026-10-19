@@ -74,7 +74,7 @@ function Footer() {
 function GuideModal({ cfg, i, onClose, onCta }: { cfg: FunnelCfg; i: number | null; onClose: () => void; onCta: () => void }) {
   const g = i === null ? null : cfg.guides[i];
   return (
-    <div className={"ov" + (g ? " on" : "")} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }} aria-hidden={!g}>
+    <div className={"ov" + (g ? " on" : "")} aria-hidden={!g}>
       <div className="mdl" role="dialog" aria-modal="true" aria-label={g?.t || "Guide"}>
         <button type="button" className="x" aria-label="Close" onClick={onClose}>&#x2715;</button>
         {g && (

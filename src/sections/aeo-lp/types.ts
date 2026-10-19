@@ -11,6 +11,8 @@ export type QStep =
 export type QuizData = Record<string, string | string[]>;
 export type Utm = { utm_source: string; utm_medium: string; utm_campaign: string; utm_content: string; angle: string };
 
+export type ReportTab = { tab: string; rows: [string, "red" | "amb" | "ok", string][] };
+
 export type AnswerCard = { q: string; h: string[] };
 export type Result = { n: string; l: string; who: string };
 export type Guide = { k: string; t: string; d: string; stat: string; img: string; body: string[] };

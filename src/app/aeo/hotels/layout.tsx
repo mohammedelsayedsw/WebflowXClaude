@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
-const TITLE = "More guests, more revenue, for free: the 10-Point Growth Audit for hotels";
+const TITLE = "More guests, more revenue, for free: get your hotel named by AI";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "Guests now choose hotels through AI, search and metasearch. Get a free 10-point growth audit: your hotel scored out of 100, where you leak bookings to OTAs, and the fixes in priority order. 3 days, no pitch.";
+  "Travellers now ask ChatGPT, Gemini and Perplexity where to stay. Get a free AI Growth Report: what AI says about your hotel, who gets named instead, and what to fix first. 3 days, no pitch.";
 const URL = "https://scandiweb.com/solutions/aeo/hotels";
 
 export const metadata: Metadata = {

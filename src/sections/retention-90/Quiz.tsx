@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { COPY, QUESTIONS, T, img } from "./copy";
+import { COPY, QUESTIONS, SMS_CONSENT, T, img } from "./copy";
 import { cleanDomain, validDomain } from "./scoring";
 
 const KEYS = "ABCDEF";
@@ -84,9 +84,16 @@ export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
 type GateProps = {
   store: string;
   onBack: () => void;
-  onSubmit: (name: string, email: string, honeypot: string) => void;
+  /* phone is "" unless a valid number was entered AND the SMS box was ticked */
+  onSubmit: (name: string, email: string, honeypot: string, phone: string) => void;
   onError?: (kind: string) => void;
 };
+
+export function normPhone(v: string) {
+  let p = v.trim().replace(/[\s().-]/g, "");
+  if (p.startsWith("00")) p = "+" + p.slice(2);
+  return p;
+}
 
 export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
   const [name, setName] = useState("");
@@ -95,13 +102,22 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
   const [emailErr, setEmailErr] = useState(false);
   const [consentErr, setConsentErr] = useState(false);
   const [hp, setHp] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sms, setSms] = useState(false);
+  const [smsErr, setSmsErr] = useState("");
 
   const submit = () => {
     const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
     setEmailErr(!ok);
     if (!ok) { onError?.("email"); return; }
     if (!consent) { setConsentErr(true); onError?.("consent"); return; }
-    onSubmit(name.trim(), email.trim(), hp);
+    /* mobile is optional; if one is typed it must be valid and have its own SMS consent */
+    const p = normPhone(phone);
+    if (p) {
+      if (!/^\+[1-9]\d{6,14}$/.test(p)) { setSmsErr("Enter your mobile with the country code, like +44 7700 900123, or leave it empty."); onError?.("phone"); return; }
+      if (!sms) { setSmsErr("Tick the SMS box so we're allowed to text you, or leave the mobile empty."); onError?.("sms_consent"); return; }
+    }
+    onSubmit(name.trim(), email.trim(), hp, p && sms ? p : "");
   };
 
   return (
@@ -124,6 +140,17 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setConsentErr(false); }} />
           <span>Send me a few short emails with case studies and fixes from the scandiweb lifecycle team. Unsubscribe anytime.</span>
         </label>
+        <span className="optl">Mobile (optional), so Nika can text you the booking link</span>
+        <input type="tel" inputMode="tel" placeholder="+44 7700 900123" autoComplete="tel" value={phone}
+          className={smsErr && !/SMS box/.test(smsErr) ? "err" : ""}
+          onChange={(e) => { setPhone(e.target.value); setSmsErr(""); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
+        {phone.trim() ? (
+          <label className="consent sms" style={/SMS box/.test(smsErr) ? { color: "#ff8f83" } : undefined}>
+            <input type="checkbox" checked={sms} onChange={(e) => { setSms(e.target.checked); setSmsErr(""); }} />
+            <span>{SMS_CONSENT}</span>
+          </label>
+        ) : null}
+        {smsErr ? <div className="smserr">{smsErr}</div> : null}
         <button className="btn big" style={{ width: "100%" }} onClick={submit}>Show my score →</button>
         <p className="priv">No spam. No list selling. Your data stays private.</p>
         <div className="gproof">

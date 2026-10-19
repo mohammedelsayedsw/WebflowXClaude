@@ -7,7 +7,8 @@ import { computeLeak, computeScore, fmt, fmtK } from "./scoring";
 import { DL_EVENT, FORM_ENDPOINT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
-import { SMS_CONSENT, Summary } from "./Summary";
+import { Summary } from "./Summary";
+import { SMS_CONSENT } from "./copy";
 import { buildOmni, OMNI_BAND_HEAD } from "./omni";
 import { BookingModal } from "./BookingModal";
 import { R90Footer, R90Header } from "./SiteChrome";
@@ -91,12 +92,13 @@ export function Retention90() {
     if (qi > 0) setQi(qi - 1); else setScreen("lp");
   }, [screen, qi]);
 
-  const submitGate = useCallback((name: string, email: string, honeypot: string) => {
+  const submitGate = useCallback((name: string, email: string, honeypot: string, phone: string) => {
     const score = computeScore(answers), leak = computeLeak(answers);
     if (/@example\.com$/i.test(email)) setTestMode(true);
     const omni = buildOmni(store, answers, labels, score, leak, OMNI_BAND_HEAD(score));
     leadRef.current = { name, email, tags: omni.tags };
-    track("submit", { score, leak, store, hp: honeypot ? 1 : 0 });
+    track("submit", { score, leak, store, hp: honeypot ? 1 : 0, sms: phone ? 1 : 0 });
+    if (phone) track("sms_optin", { cc: (phone.match(/^\+(\d{1,3})/) || [])[1] || "", where: "gate" });
     const payload: Record<string, string> = {
       name, email, store,
       vertical: VERTICAL,
@@ -105,6 +107,8 @@ export function Retention90() {
       consent: "yes",
       company_website: honeypot,
     };
+    /* optional mobile, only sent with its own ticked SMS consent */
+    if (phone) { payload.phone = phone; payload.sms_consent = SMS_CONSENT; payload.sms_consent_at = new Date().toISOString(); }
     QUESTIONS.forEach((Q) => { payload[Q.q] = labels[Q.k] || ""; });
     const P = new URLSearchParams(window.location.search);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => { const v = P.get(k); if (v) payload[k] = v; });
@@ -148,22 +152,6 @@ export function Retention90() {
     setScreen("summary");
   }, [answers, labels, store]);
 
-  /* Optional SMS opt-in from the score screen. Until Omnisend is wired, the number reaches the
-     team as its own lead email; the hub only gets a PII-free event. */
-  const onSms = useCallback((phone: string) => {
-    track("sms_optin", { cc: (phone.match(/^\+(\d{1,3})/) || [])[1] || "" });
-    const body: Record<string, string> = {
-      name: leadRef.current.name, email: leadRef.current.email, store, phone,
-      sms_consent: SMS_CONSENT, sms_consent_at: new Date().toISOString(), page: window.location.href.split("?")[0],
-      _subject: "SMS opt-in: " + store, _template: "table", _cc: NOTIFY_CC,
-    };
-    fetch(UPDATE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind: "sms", email: leadRef.current.email, phone, tags: leadRef.current.tags }) })
-      .then((r) => track("sms_omni", { pass: r.status, res: r.headers.get("x-omnisend") || "" })).catch(() => track("sms_omni", { pass: 0 }));
-    return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) })
-      .then((r) => { track("sms_mail", { pass: r.status }); return r.ok; })
-      .catch(() => { track("sms_mail", { pass: 0 }); return false; });
-  }, [store]);
-  const onSmsEvent = useCallback((ev: string, props: Record<string, string | number> = {}) => track(ev, props), []);
 
   const openBook = useCallback((where: string) => { bookAt.current = Date.now(); track("book_open", { where }); setBook(true); }, []);
   const goFix = useCallback(() => { track("fix_view"); setScreen("fix"); }, []);
@@ -185,7 +173,7 @@ export function Retention90() {
       )}
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
-      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} onSms={onSms} onSmsEvent={onSmsEvent} />}
+      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} />}
       {screen === "fix" && (
         /* children map 1:1 to FOLDS in track.ts */
         <div id="screen-fix">

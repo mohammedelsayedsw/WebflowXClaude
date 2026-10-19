@@ -63,7 +63,11 @@ const QA = [
   },
   {
     q: "Is Expedio open source?",
-    a: "Yes. The Expedio core is free and open source for the Magento community.",
+    a: "Yes. The Expedio core is open source, built by scandiweb for the Magento community.",
+  },
+  {
+    q: "What is Ari?",
+    a: "Ari is the first agent for Magento, built by scandiweb. You ask for a change to your store in chat, Ari builds it on a copy of your store, and your team reviews and releases it. Expedio is available on withari.ai, Ari's website.",
   },
   {
     q: "How do I get Expedio?",
@@ -73,7 +77,7 @@ const QA = [
         <a href="https://www.withari.ai/expedio" className="text-[var(--sw-beige)] underline underline-offset-4 decoration-white/30 hover:decoration-[var(--sw-beige)]">
           withari.ai/expedio
         </a>
-        , where you can run it yourself or have Ari install it. To talk to the scandiweb team, use the form below.
+        . To talk to the scandiweb team about your store, use the form below.
       </>
     ),
   },

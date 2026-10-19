@@ -2,13 +2,12 @@
 
 import { assetUrl } from "@/lib/assets";
 import { useEffect, useState } from "react";
-import { ARI_GET, ARI_INSTALL, ARI_WHY } from "./ariLinks";
+import { ARI_GET, ARI_WHY } from "./ariLinks";
 
 const LINKS = [
   { href: ARI_WHY, label: "Why we built it" },
   { href: "/solutions/magento/expedio#demo", label: "Demo" },
   { href: "/solutions/magento/expedio#benchmark", label: "Benchmark" },
-  { href: ARI_INSTALL, label: "Install with Ari" },
 ];
 
 const CTA =

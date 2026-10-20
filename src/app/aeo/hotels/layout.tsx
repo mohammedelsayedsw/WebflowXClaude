@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { AdTags } from "@/sections/aeo-lp/AdTags";
 
 const TITLE = "More guests, more revenue, for free: get your hotel named by AI";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
@@ -30,6 +31,7 @@ n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElemen
 s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','421756528598953');fbq('track','PageView');`}
       </Script>
+      <AdTags id="aeo-hotels" />
       <style>{`.footer_block{display:none!important}
 #hachly-ai-container{display:none!important}
 .intercom-lightweight-app,.intercom-launcher,.intercom-launcher-frame,#intercom-container{display:none!important}

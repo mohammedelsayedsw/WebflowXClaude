@@ -12,6 +12,12 @@ export const NOTIFY_CC = "marcusopt@gmail.com";
    Retention numbers. Flip to true once the hub filters by fn. GTM dataLayer + Meta fire regardless. */
 export const HUB_TRACKING = false;
 
+/* Omnisend wiring (server routes in app/api/aeo). The lead email still goes from the browser to FormSubmit. */
+export const SUBMIT_ENDPOINT = "/solutions/api/aeo/submit";
+export const UPDATE_ENDPOINT = "/solutions/api/aeo/update";
+export const SMS_CONSENT =
+  "Yes, text me my booking link and one follow-up from scandiweb. Up to 2 messages. Reply STOP to opt out. Message and data rates may apply.";
+
 /* Call host for both funnels: Janis on Cal.com. */
 export const HOST = {
   name: "Janis Sarmulis",
@@ -29,4 +35,4 @@ export const GOOGLE_ADS = { id: "AW-879717196", leadSendTo: "AW-879717196/_N_JCL
    still to come from Campaign Manager (check 21234978 / 21234986 first); a null ID fires nothing. */
 export const LINKEDIN = { partner: "2329169", conversion: { "aeo-hotels": null, "aeo-clinics": null } as Record<Funnel, number | null> };
 
-/* Not wired yet (Marko, 20 Oct 2026): HubSpot tracking script + form submit, Omnisend snippet + contact + tags. */
+/* Not wired (Marko, 20 Oct 2026): HubSpot tracking script + form submit. */

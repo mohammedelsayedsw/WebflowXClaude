@@ -3,7 +3,7 @@
 /* Building blocks shared by the hotels and clinics pages. */
 
 import { useEffect, useState, type ReactNode } from "react";
-import { FORM_ENDPOINT, HOST, NOTIFY_CC } from "./config";
+import { HOST } from "./config";
 import { useAeo } from "./Shell";
 import { track } from "./track";
 import type { ReportTab, Result } from "./types";
@@ -335,45 +335,6 @@ export function FinalCta({ title, body, bg }: { title: ReactNode; body: string; 
         <h2>{title}</h2>
         <p className="sub">{body}</p>
         <Ctas where="final-cta" />
-      </div>
-    </section>
-  );
-}
-
-/* Monthly briefing signup: FormSubmit to the same inbox, own subject so the lead skills ignore it. */
-export function Newsletter() {
-  const { cfg } = useAeo();
-  const n = cfg.newsletter;
-  const [email, setEmail] = useState("");
-  const [hp, setHp] = useState("");
-  const [state, setState] = useState<"idle" | "busy" | "ok" | "err">("idle");
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setState("err"); return; }
-    setState("busy");
-    track("newsletter");
-    if (hp) { setState("ok"); return; }
-    try {
-      const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ _cc: NOTIFY_CC, email: email.trim(), page: cfg.fn, _subject: n.subject + email.trim(), _template: "table" }) });
-      setState(r.ok ? "ok" : "err");
-      if (r.ok) setEmail("");
-    } catch { setState("err"); }
-  };
-  return (
-    <section className="sec deep" data-fold="newsletter">
-      <div className="wrap">
-        <div className="news rv">
-          <span className="eyebrow">Monthly briefing</span>
-          <h2>{n.title}</h2>
-          <p>{n.body}</p>
-          <form onSubmit={submit} noValidate>
-            <input className="inp" type="email" placeholder={n.ph} value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" />
-            <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={hp} onChange={(e) => setHp(e.target.value)} style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }} />
-            <button className="btn" type="submit" disabled={state === "busy"}>Subscribe</button>
-          </form>
-          {state === "ok" && <p className="ok" style={{ display: "block" }}>{n.ok}</p>}
-          {state === "err" && <p className="qerr">Please check the email and try again.</p>}
-        </div>
       </div>
     </section>
   );

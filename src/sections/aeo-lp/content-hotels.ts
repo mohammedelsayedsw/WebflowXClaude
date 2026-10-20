@@ -71,13 +71,6 @@ export const HOTELS: FunnelCfg = {
     points: ["Your AI answers, looked at live", "What’s winnable first, and what it’s worth", "No prep needed, no sales deck"],
   },
   pixel: { lead: "AEO Hotels report", call: "AEO Hotels call" },
-  newsletter: {
-    title: "AI visibility for hoteliers, monthly",
-    body: "How travellers now choose hotels through AI answers, and what to do about it. No spam.",
-    ph: "you@yourhotel.com",
-    ok: "You’re in. AI visibility tips, monthly. No spam.",
-    subject: "AEO hotels newsletter signup: ",
-  },
   quiz: {
     submitLabel: "Get my report",
     finalNote: "We’ll only use this to send your report and book your walkthrough. No spam.",

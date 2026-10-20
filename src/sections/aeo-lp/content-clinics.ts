@@ -1,5 +1,5 @@
 import { NOTIFY_CC } from "./config";
-import { str, type FunnelCfg, type ReportTab } from "./types";
+import { list, str, type FunnelCfg, type ReportTab } from "./types";
 
 export const CLINIC_WORDS = ["dental practice", "medspa", "implant clinic", "surgery practice", "hair clinic"];
 
@@ -58,7 +58,7 @@ export const CLINICS: FunnelCfg = {
       "The report tells you which winnable answers are worth the most for your procedures."] },
   ],
   book: {
-    title: "Book a 30-minute call with Janis",
+    title: "Get a call with our AI search strategist",
     body: "A conversation about your clinic: what AI answers when patients ask about your procedures, who gets named instead, and what’s worth fixing first.",
     points: ["Your AI answers, looked at live", "What’s winnable first, and what it’s worth", "No prep needed, no sales deck"],
   },
@@ -81,7 +81,7 @@ export const CLINICS: FunnelCfg = {
       { type: "single", key: "clinicType", q: "What kind of clinic are you?", options: ["Medspa / aesthetic clinic", "Plastic or cosmetic surgery", "Cosmetic / implant dentistry", "Hair restoration", "Dermatology", "Other"] },
       { type: "single", key: "locations", q: "How many locations do you operate?", options: ["1", "2–5", "6–30", "30+"] },
       { type: "single", key: "patientOrigin", q: "Where are your patients mostly from?", options: ["Local (under 50 km)", "National", "International (medical tourism)"] },
-      { type: "single", key: "procedures", q: "Which procedure matters most to your revenue?", options: ["Anti-wrinkle injections / filler", "Laser, skin & RF", "Body contouring", "Facial surgery", "Breast", "Post-weight-loss surgery", "Implants / All-on-4", "Veneers & smile", "Aligners / ortho", "Hair transplant", "Weight loss / GLP-1", "Other"] },
+      { type: "multi", key: "procedures", q: "Which procedures matter most to your revenue?", hint: "Pick up to 3.", cap: 3, options: ["Anti-wrinkle injections / filler", "Laser, skin & RF", "Body contouring", "Facial surgery", "Breast", "Post-weight-loss surgery", "Implants / All-on-4", "Veneers & smile", "Aligners / ortho", "Hair transplant", "Weight loss / GLP-1", "Other"] },
       { type: "single", key: "channels", q: "How do most new patients find you today?", options: ["Google search / maps", "Instagram / TikTok", "Referrals", "Paid ads", "Directories (RealSelf etc.)", "Don't know"] },
       { type: "single", key: "growthProblem", q: "What’s the biggest growth problem right now?", options: ["Not enough consults", "Consults don't convert", "Ads too expensive", "Reviews / reputation", "New location launch", "Competitors everywhere"] },
       { type: "fields", q: "Your clinic details", note: "Your report is built on your real clinic, city and procedures.", fields: [
@@ -99,7 +99,7 @@ export const CLINICS: FunnelCfg = {
       _cc: NOTIFY_CC,
       name: str(d, "name"), email: str(d, "email"), clinic: str(d, "clinic"), website: str(d, "website"),
       clinicType: str(d, "clinicType"), locations: str(d, "locations"), patientOrigin: str(d, "patientOrigin"),
-      procedures: str(d, "procedures"), channels: str(d, "channels"),
+      procedures: list(d, "procedures").join(", "), channels: str(d, "channels"),
       growthProblem: str(d, "growthProblem"), role: str(d, "role"),
       whatsapp: str(d, "whatsapp"), notes: str(d, "notes"),
       utm_source: utm.utm_source, utm_medium: utm.utm_medium, utm_campaign: utm.utm_campaign,
@@ -109,7 +109,7 @@ export const CLINICS: FunnelCfg = {
     }),
     summary: (d) => ({
       clinicType: str(d, "clinicType"), locations: str(d, "locations"), patientOrigin: str(d, "patientOrigin"),
-      procedures: str(d, "procedures"), growthProblem: str(d, "growthProblem"), role: str(d, "role"),
+      procedures: list(d, "procedures").join("|"), growthProblem: str(d, "growthProblem"), role: str(d, "role"),
     }),
   },
 };

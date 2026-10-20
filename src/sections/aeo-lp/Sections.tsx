@@ -9,7 +9,7 @@ import { track } from "./track";
 import type { ReportTab, Result } from "./types";
 import { Arrow, Rating, img, isReduced } from "./ui";
 
-/* Primary CTA (opens the quiz) + secondary "Book a 30-min call with Janis". */
+/* Primary CTA (opens the quiz) + secondary call with Janis. */
 export function Ctas({ where }: { where: string }) {
   const { cfg, openQuiz, openBook } = useAeo();
   return (
@@ -17,7 +17,7 @@ export function Ctas({ where }: { where: string }) {
       <button type="button" className="btn" onClick={() => openQuiz(where)}>{cfg.cta} <Arrow /></button>
       <button type="button" className="btn ghost" onClick={() => openBook(where)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="face" src={img(HOST.photo)} alt="" />Book a 30-min call with Janis
+        <img className="face" src={img(HOST.photo)} alt="" />Get a call with a strategist
       </button>
     </div>
   );
@@ -79,6 +79,33 @@ export function Hero({ h1, lead, fine, photo, alt }: { h1: ReactNode; lead: Reac
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <div className="hero-photo-wrap"><img className="hero-photo" src={img(photo)} alt={alt} /></div>
           <AnswerCard />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Second fold: the promise. Bold on purpose, no small print (Marko, 20 Oct 2026). */
+export function PromiseFold({ noun, lead, q, others, pillars }: { noun: string; lead: string; q: string; others: [string, string]; pillars: [string, string][] }) {
+  return (
+    <section className="sec promise" data-fold="promise">
+      <div className="wrap promise-grid">
+        <div className="rv">
+          <span className="eyebrow">Our promise</span>
+          <h2>Become the <span className="mint">#1 {noun}</span> AI recommends in your city.</h2>
+          <p className="lead">{lead}</p>
+          <ol className="pillars">{pillars.map(([t, d], i) => <li key={t}><em>0{i + 1}</em><div><b>{t}</b><span>{d}</span></div></li>)}</ol>
+          <Ctas where="promise" />
+        </div>
+        <div className="win rv">
+          <div className="win-top"><i /><i /><i /><span>AI assistant</span></div>
+          <p className="q">“{q}”</p>
+          <ol>
+            <li className="me"><b>1</b><span>Your {noun}</span><em>Recommended</em></li>
+            <li><b>2</b><span>{others[0]}</span></li>
+            <li><b>3</b><span>{others[1]}</span></li>
+          </ol>
+          <div className="engines"><span>ChatGPT</span><span>Gemini</span><span>Perplexity</span><span>Google AI</span><span>Copilot</span></div>
         </div>
       </div>
     </section>
@@ -165,7 +192,7 @@ export function Cases({ vertical }: { vertical: string }) {
         <div className="cases rv" data-on>
           <div className="case">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="wmi" src={img("/aeo/logos/felco.svg")} style={{ height: 40 }} alt="FELCO" /><div className="desc">Swiss precision tool manufacturer</div>
+            <img className="wmi" src={img("/aeo-lp/logos/felco.svg")} style={{ height: 40 }} alt="FELCO" /><div className="desc">Swiss precision tool manufacturer</div>
             <div className="big">+1,415%</div><div className="bl">AI traffic growth<br />year over year</div>
             <div className="idx"><div><span>Prior year</span><i style={{ ["--w" as string]: "6.6%" }} /><b>100</b></div><div className="cur"><span>Reported period</span><i style={{ ["--w" as string]: "100%" }} /><b>1,515</b></div></div>
             <p className="ixn">AI traffic index. Prior year = 100.</p>
@@ -174,7 +201,7 @@ export function Cases({ vertical }: { vertical: string }) {
           </div>
           <div className="case">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="wmi" src={img("/aeo/logos/habito.svg")} style={{ height: 26 }} alt="Habito" /><div className="desc">UK digital mortgage broker</div>
+            <img className="wmi" src={img("/aeo-lp/logos/habito.svg")} style={{ height: 26 }} alt="Habito" /><div className="desc">UK digital mortgage broker</div>
             <div className="big">15×</div><div className="bl">Return on AEO investment<br />over three months</div>
             <div className="idx"><div><span>Prior 3 months</span><i style={{ ["--w" as string]: "39%" }} /><b>100</b></div><div className="cur"><span>Measured 3 months</span><i style={{ ["--w" as string]: "100%" }} /><b>255</b></div></div>
             <p className="ixn">AI conversion index. Prior 3 months = 100.</p>
@@ -183,7 +210,7 @@ export function Cases({ vertical }: { vertical: string }) {
           </div>
           <div className="case">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="wmi" src={img("/aeo/logos/byredo.svg")} style={{ height: 19 }} alt="BYREDO" /><div className="desc">Luxury fragrance brand</div>
+            <img className="wmi" src={img("/aeo-lp/logos/byredo.svg")} style={{ height: 19 }} alt="BYREDO" /><div className="desc">Luxury fragrance brand</div>
             <div className="big">Global</div><div className="bl">AI search program</div>
             <p className="bd">A dedicated AEO engagement alongside the brand’s existing partners.</p>
             <ol><li><em>01</em>AI visibility and source tracking</li><li><em>02</em>Category content and FAQ recommendations</li><li><em>03</em>Editorial and retailer opportunities</li></ol>
@@ -252,7 +279,7 @@ export function Leader({ lead }: { lead: string }) {
           <h3 className="people-h">Search expertise, with people you can talk to.</h3>
           <div className="people">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div><img src={img("/aeo/lina-ivanova.jpg")} alt="Lina Ivanova" /><b>Lina Ivanova</b><span>Co-founder &amp; traffic acquisition expert</span></div>
+            <div><img src={img("/aeo-lp/lina.webp")} alt="Lina Ivanova" /><b>Lina Ivanova</b><span>Co-founder &amp; traffic acquisition expert</span></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <div><img src={img(HOST.photoLarge)} alt={HOST.name} /><b>{HOST.name}</b><span>{HOST.role}</span></div>
           </div>

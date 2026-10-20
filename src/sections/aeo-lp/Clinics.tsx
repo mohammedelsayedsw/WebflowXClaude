@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CLINIC_CHART, CLINIC_DEMO_TABS, CLINIC_REPORT, CLINIC_REPORT_INSIDE, CLINIC_REPORT_NOTE, CLINIC_WORDS, CLINICS } from "./content-clinics";
-import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, Proof, Report, Rotator } from "./Sections";
+import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, PromiseFold, Proof, Report, Rotator } from "./Sections";
 import { AeoShell } from "./Shell";
 import { Counter, Icon, img, isReduced } from "./ui";
 
@@ -103,6 +103,7 @@ function ClinicsBody() {
         fine={<>Your free <b>AI Growth Report</b> shows what ChatGPT, Gemini, Perplexity and Google AI say about your clinic today: which patient questions you win, who gets named instead, and the fixes in priority order. 3 days · no pitch.</>}
         photo="/aeo-lp/c_hero.webp" alt="Modern clinic reception with curved marble desk"
       />
+      <PromiseFold noun="clinic" lead="When a patient asks ChatGPT, Gemini or Perplexity who to trust with their procedure, your clinic is the first name they hear. Not a directory. Not the clinic across town. Yours." q="Who is the best implant dentist in [your city]?" others={["The clinic across town", "The chain on the high street"]} pillars={[["Named first", "The top answer for the procedures that drive your revenue, in every major AI engine, in every language patients ask in."], ["Patients arrive pre-sold", "They’ve compared, read the reviews and chosen you before they call. No cost per click, no bidding war."], ["Done for you", "We do all of it, end to end. You approve, we ship, the consults come in."]]} />
       <Band />
       <Cases vertical="clinic" />
       <Credibility deep line="we took a brand from invisible to the top recommendation in AI answers" stats={[["20+ yrs", "growing brands online"], ["$4B+", "client revenue delivered"], ["600+", "eCommerce & digital builds"], ["+110%", "AI-referred traffic, retail brand"]]} />

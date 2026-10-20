@@ -1,7 +1,7 @@
 "use client";
 
 import { HOTEL_GROWTH, HOTEL_REPORT, HOTEL_REPORT_INSIDE, HOTEL_REPORT_NOTE, HOTELS } from "./content-hotels";
-import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, Proof, Report } from "./Sections";
+import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, PromiseFold, Proof, Report } from "./Sections";
 import { AeoShell } from "./Shell";
 import { Counter, Icon, img } from "./ui";
 
@@ -14,6 +14,7 @@ function HotelsBody() {
         fine={<>Your free <b>AI Growth Report</b> shows what ChatGPT, Gemini, Perplexity and Google AI say about your hotel today: which guest questions you win, who gets named instead, and the fixes in priority order. 3 days · no pitch.</>}
         photo="/aeo-lp/h_hero.webp" alt="Doorman at a grand hotel entrance in golden autumn light"
       />
+      <PromiseFold noun="hotel" lead="When a traveller asks ChatGPT, Gemini or Perplexity where to stay, your hotel is the first name they hear. Not an OTA. Not the chain down the road. Yours." q="Where should I stay in [your city]?" others={["The hotel across the square", "The chain by the station"]} pillars={[["Named first", "The top answer for the questions your guests actually ask, in every major AI engine, in every language they ask in."], ["Booked direct", "Guests arrive already decided and book on your site. No OTA in the middle, no commission, and the guest is yours."], ["Done for you", "We do all of it, end to end. You approve, we ship, the bookings come in."]]} />
       <Band />
       <Cases vertical="hotel" />
       <Credibility deep line="we took a travel brand from invisible to the top recommendation in AI answers" stats={[["20+ yrs", "growing brands online"], ["$4B+", "client revenue delivered"], ["600+", "eCommerce & digital builds"], ["+110%", "AI-referred traffic, retail brand"]]} />

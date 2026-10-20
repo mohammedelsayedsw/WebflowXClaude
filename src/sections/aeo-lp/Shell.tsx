@@ -115,6 +115,16 @@ export function AeoShell({ cfg, children }: { cfg: FunnelCfg; children: ReactNod
     return () => { a(); b(); c(); };
   }, [cfg.fn]);
 
+  /* Mobile sticky bar: hidden while the hero buttons are on screen, so the two never show at once. */
+  const [bar, setBar] = useState(false);
+  useEffect(() => {
+    const el = root.current?.querySelector(".hero .ctas");
+    if (!el || typeof IntersectionObserver === "undefined") { setBar(true); return; }
+    const io = new IntersectionObserver(([e]) => setBar(!e.isIntersecting && e.boundingClientRect.top < 0));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const anyOpen = quiz || book || guide !== null;
   useEffect(() => {
     document.body.classList.toggle("aeolp-lock", anyOpen);
@@ -139,7 +149,7 @@ export function AeoShell({ cfg, children }: { cfg: FunnelCfg; children: ReactNod
         <Header label={cfg.headerCta} onCta={() => openQuiz("header")} />
         <main>{children}</main>
         <Footer />
-        <div className="mcta"><button type="button" className="btn block" onClick={() => openQuiz("mobile-bar")}>{cfg.cta} <Arrow /></button></div>
+        <div className={"mcta" + (bar ? " on" : "")} aria-hidden={!bar}><button type="button" className="btn block" onClick={() => openQuiz("mobile-bar")} tabIndex={bar ? 0 : -1}>{cfg.cta} <Arrow /></button></div>
         <GuideModal cfg={cfg} i={guide} onClose={() => setGuide(null)} onCta={() => openQuiz("guide")} />
         <Quiz cfg={cfg} open={quiz} onClose={closeQuiz} onStep={(n) => { stepRef.current = n; }} onSent={setAnswers} onBook={() => openBook("quiz-done")} />
         <Booking cfg={cfg} open={book} onClose={closeBook} data={answers} />

@@ -443,3 +443,52 @@ body.aeolp-lock{overflow:hidden}
 /* mobile: the sticky bottom CTA replaces the header */
 @media(max-width:980px){.aeolp .hd{display:none}
 .aeolp .hero{padding-top:56px}}
+/* desktop hero: first fold fits headline, both CTAs and the fine print */
+@media(min-width:981px){.aeolp .hero{padding:112px 0 64px}
+.aeolp .hero-grid{grid-template-columns:1.15fr .85fr;gap:56px}
+.aeolp .hero h1{font-size:clamp(44px,4.6vw,66px);margin-bottom:20px}
+.aeolp .rating{margin-bottom:22px}
+.aeolp .rating .r b{font-size:30px}
+.aeolp .hero .lead{margin-bottom:28px}
+.aeolp .hero .fine{margin-top:18px}
+.aeolp .hero-photo{height:min(500px,58vh)}
+.aeolp .hero-visual{padding-bottom:32px}}
+@media(min-width:981px) and (max-height:820px){.aeolp .hero{padding-top:100px}
+.aeolp .hero h1{font-size:clamp(42px,4.2vw,58px)}
+.aeolp .hero .lead{font-size:17px}}
+/* mobile sticky bar slides in once the hero buttons are scrolled away */
+.aeolp .mcta{transform:translateY(110%);transition:transform .25s ease}
+.aeolp .mcta.on{transform:none}
+.aeolp .qin{animation:aeolp-qin .2s ease}
+/* promise fold */
+.aeolp .promise{background:radial-gradient(90% 120% at 85% 50%,rgba(110,247,110,.10) 0%,rgba(110,247,110,0) 55%),var(--deep);border-top:1px solid var(--line)}
+.aeolp .promise-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.aeolp .promise h2{font-size:clamp(36px,4.4vw,60px);line-height:1.02;margin-bottom:24px}
+.aeolp .promise .lead{font-size:clamp(18px,1.6vw,21px);color:rgba(255,255,255,.86);margin-bottom:34px;max-width:620px}
+.aeolp .pillars{list-style:none;display:grid;gap:0;margin-bottom:36px;border-top:1px solid var(--line)}
+.aeolp .pillars li{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.aeolp .pillars em{font-style:normal;font-size:13px;font-weight:700;color:var(--mint);letter-spacing:.06em;padding-top:3px;min-width:22px}
+.aeolp .pillars b{display:block;font-size:19px;font-weight:600;color:#fff;margin-bottom:4px}
+.aeolp .pillars span{display:block;font-size:15.5px;line-height:1.55;color:rgba(255,255,255,.7)}
+.aeolp .win{background:var(--elev);border:1px solid rgba(110,247,110,.35);border-radius:var(--r);box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 6px rgba(110,247,110,.05);overflow:hidden}
+.aeolp .win-top{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.aeolp .win-top i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.aeolp .win-top span{margin-left:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.aeolp .win .q{margin:26px 26px 18px;font-size:18px;font-weight:500;color:#fff;line-height:1.4}
+.aeolp .win ol{list-style:none;margin:0 26px}
+.aeolp .win li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;color:rgba(255,255,255,.55)}
+.aeolp .win li b{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid var(--line2);border-radius:var(--r);font-size:13px;color:rgba(255,255,255,.6)}
+.aeolp .win li.me{margin:6px -14px;padding:18px 14px;background:var(--mint);color:#0b0e22;font-size:20px;font-weight:700;border:none;border-radius:var(--r)}
+.aeolp .win li.me b{background:#0b0e22;color:var(--mint);border-color:#0b0e22;font-size:15px;width:34px;height:34px}
+.aeolp .win li.me em{margin-left:auto;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:#0b0e22;color:var(--mint);padding:6px 9px;border-radius:var(--r)}
+.aeolp .win .engines{display:flex;flex-wrap:wrap;gap:8px;padding:20px 26px 24px}
+.aeolp .win .engines span{font-size:12px;font-weight:500;color:rgba(255,255,255,.8);border:1px solid var(--line2);padding:6px 10px;border-radius:var(--r)}
+@media(max-width:980px){.aeolp .promise-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.aeolp .promise-grid>div:first-child{display:contents}
+.aeolp .promise .eyebrow,.aeolp .promise h2,.aeolp .promise .lead{order:1}
+.aeolp .promise .win{order:2;margin-bottom:36px}
+.aeolp .promise .pillars{order:3}
+.aeolp .promise .ctas{order:4}}
+@media(max-width:520px){.aeolp .promise .ctas .btn{width:100%;justify-content:center}
+.aeolp .win .q{margin:22px 18px 14px;font-size:16.5px}.aeolp .win ol{margin:0 18px}.aeolp .win .engines{padding:16px 18px 20px}
+.aeolp .win li.me{font-size:17px;margin:6px -8px;padding:16px 8px}}

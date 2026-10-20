@@ -30,6 +30,9 @@ export async function POST(req: NextRequest) {
 
   const result = await omnisendUpsert({
     email, firstName: name || undefined, subscribeEmail: true,
+    /* Same Omnisend account as retention-90: add to the contact's existing tags instead of
+       replacing them, so a retention lead who also takes an AEO quiz keeps their r90 tags. */
+    mergeTags: true,
     tags: cleanTags([scope.base, ...(Array.isArray(omni.tags) ? omni.tags : []), ...(sms ? [p + "-sms-optin"] : [])], scope),
     props: {
       ...cleanProps(omni.props, scope),

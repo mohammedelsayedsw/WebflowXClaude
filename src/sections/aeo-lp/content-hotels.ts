@@ -1,5 +1,5 @@
 import { NOTIFY_CC } from "./config";
-import { str, type FunnelCfg, type ReportTab } from "./types";
+import { list, str, type FunnelCfg, type ReportTab } from "./types";
 
 export const HOTEL_GROWTH = [34, 42, 48, 60, 72, 88];
 
@@ -66,7 +66,7 @@ export const HOTELS: FunnelCfg = {
       "The result: +39% revenue and +47.8% conversions."] },
   ],
   book: {
-    title: "Book a 30-minute call with Janis",
+    title: "Get a call with our AI search strategist",
     body: "A conversation about your hotel: what AI answers when guests ask where to stay, who gets named instead, and what’s worth fixing first.",
     points: ["Your AI answers, looked at live", "What’s winnable first, and what it’s worth", "No prep needed, no sales deck"],
   },
@@ -91,7 +91,7 @@ export const HOTELS: FunnelCfg = {
       { type: "single", key: "occupancy", q: "Occupancy over the last 12 months?", options: ["Under 50%", "50-70%", "70-85%", "85%+", "Not sure"] },
       { type: "single", key: "channels", q: "Where do most of your bookings come from today?", options: ["OTAs (Booking.com, Expedia)", "Travel agents / partners", "Google / metasearch", "Paid ads", "SEO / organic", "Direct / our website"] },
       { type: "single", key: "struggles", q: "What’s your biggest struggle right now?", options: ["Not named when guests ask AI", "Too dependent on OTAs / low direct", "Low occupancy / seasonality", "Low average rate (ADR)", "Not enough repeat guests", "No time / team for marketing"] },
-      { type: "single", key: "extras", q: "What do you sell beyond rooms?", options: ["Weddings", "Meetings & events", "F&B / restaurant", "Spa & wellness", "Venue / space hire", "Rooms only"] },
+      { type: "multi", key: "extras", q: "What do you sell beyond rooms?", hint: "Pick all that apply.", options: ["Weddings", "Meetings & events", "F&B / restaurant", "Spa & wellness", "Venue / space hire", "Rooms only"] },
       { type: "single", key: "team", q: "Who runs your marketing today?", options: ["In-house team", "External agency", "Freelancers", "Just me", "Nobody, really"] },
       { type: "fields", q: "Your hotel details", note: "Your report is built on your real hotel, city and guests.", fields: [
         { key: "hotel", label: "Hotel name", ph: "e.g. The Marbella Club", req: true },
@@ -108,7 +108,7 @@ export const HOTELS: FunnelCfg = {
       _cc: NOTIFY_CC,
       name: str(d, "name"), email: str(d, "email"), hotel: str(d, "hotel"), website: str(d, "website"),
       propertyType: str(d, "propertyType"), rooms: str(d, "rooms"), occupancy: str(d, "occupancy"),
-      channels: str(d, "channels"), struggles: str(d, "struggles"), extras: str(d, "extras"),
+      channels: str(d, "channels"), struggles: str(d, "struggles"), extras: list(d, "extras").join(", "),
       team: str(d, "team"), role: str(d, "role"), whatsapp: str(d, "whatsapp"), notes: str(d, "notes"),
       utm_source: utm.utm_source, utm_medium: utm.utm_medium, utm_campaign: utm.utm_campaign,
       utm_content: utm.utm_content, angle: utm.angle,

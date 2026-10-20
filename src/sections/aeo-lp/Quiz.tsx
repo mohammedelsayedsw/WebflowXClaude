@@ -163,7 +163,7 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
             })}
           </div>
         )}
-        {s.type === "multi" && <div className="qnav"><button type="button" className="btn grow" onClick={next}>Continue <Arrow /></button></div>}
+        {s.type === "multi" && list(data, s.key).length > 0 && <div className="qnav qin"><button type="button" className="btn grow" onClick={next}>Continue <Arrow /></button></div>}
         {s.type === "fields" && (
           <>
             <div style={{ marginTop: 18 }}>{s.fields.map((f) => field(f, next))}</div>

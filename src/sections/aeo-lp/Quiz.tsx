@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FORM_ENDPOINT } from "./config";
+import { FORM_ENDPOINT, SMS_CONSENT, SUBMIT_ENDPOINT } from "./config";
 import { disp, list, str, type Field, type FunnelCfg, type QuizData, type Utm } from "./types";
 import { adConversions, pushLeadEvent, setTestMode, track, trackLead } from "./track";
 import { Arrow } from "./ui";
 
 const URL_RE = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}.*$/i;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^\+[1-9]\d{6,14}$/;
+const cleanPhone = (v: string) => v.replace(/[\s().-]/g, "");
 const KEYS = "ABCDEFGHIJKL";
 
 function readUtm(): Utm {
@@ -43,6 +45,7 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
   const [picked, setPicked] = useState("");
+  const [sms, setSms] = useState(false);
   const sentRef = useRef(false);
   const boxRef = useRef<HTMLDivElement>(null);
   const s = Q.steps[step];
@@ -88,6 +91,8 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
     const name = str(data, "name").trim(), email = str(data, "email").trim();
     if (!name) { setBad("name"); track("gate_err", { field: "name" }); return; }
     if (!EMAIL_RE.test(email)) { setBad("email"); track("gate_err", { field: "email" }); return; }
+    const phone = cleanPhone(str(data, "whatsapp"));
+    if (sms && !PHONE_RE.test(phone)) { setBad("whatsapp"); track("gate_err", { field: "phone" }); return; }
     if (sentRef.current) return;
     setBad(""); setBusy(true);
     if (/@example\.com$/i.test(email)) setTestMode(true);
@@ -112,6 +117,13 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
     sentRef.current = true;
     track("gate_result", { r: "ok" });
     pushLeadEvent(Q.summary(data));
+    /* Omnisend: subscribe + tags/props + personal booking link (server route; never blocks the lead) */
+    try {
+      fetch(SUBMIT_ENDPOINT, {
+        method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
+        body: JSON.stringify({ funnel: cfg.fn.replace("aeo-", ""), email, name, phone: sms ? phone : "", sms_consent: sms ? "yes" : "", omni: Q.omni(data) }),
+      }).then((r) => track("omni", { res: r.headers.get("x-omnisend") || String(r.status), sms: sms ? 1 : 0 })).catch(() => track("omni", { res: "network" }));
+    } catch {}
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: cfg.pixel.lead }); } catch {}
     adConversions(email);
     setBusy(false); setSent(true); onStep("done");
@@ -125,7 +137,7 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
         ? <textarea id={"aeo-" + f.key} className="inp" placeholder={f.ph || ""} value={str(data, f.key)} onChange={(e) => set(f.key, e.target.value)} />
         : <input id={"aeo-" + f.key} className="inp" type={f.type || "text"} placeholder={f.ph || ""} value={str(data, f.key)} onChange={(e) => set(f.key, e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && onEnter) onEnter(); }}
-            autoComplete={f.key === "email" ? "email" : f.key === "name" ? "given-name" : "off"} />}
+            autoComplete={f.key === "email" ? "email" : f.key === "name" ? "given-name" : f.type === "tel" ? "tel" : "off"} />}
     </div>
   );
 
@@ -174,7 +186,18 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
         )}
         {s.type === "contact" && (
           <>
-            <div style={{ marginTop: 18 }}>{s.fields.map((f) => field(f, submit))}</div>
+            <div style={{ marginTop: 18 }}>{s.fields.map((f) => (
+              <div key={f.key}>
+                {field(f, submit)}
+                {f.key === "whatsapp" && str(data, "whatsapp").trim() ? (
+                  <label className={"smsok" + (bad === "whatsapp" ? " bad" : "")}>
+                    <input type="checkbox" checked={sms} onChange={(e) => { setSms(e.target.checked); setBad(""); }} />
+                    <span>{SMS_CONSENT}</span>
+                  </label>
+                ) : null}
+                {f.key === "whatsapp" && bad === "whatsapp" ? <p className="qerr" style={{ marginTop: -6, marginBottom: 12 }}>Enter your mobile with the country code, like +44 7700 900123, or untick the box.</p> : null}
+              </div>
+            ))}</div>
             {/* honeypot, invisible to people */}
             <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={str(data, "company_website")} onChange={(e) => set("company_website", e.target.value)} style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }} />
             <div className="qnav"><button type="button" className="btn grow" onClick={submit} disabled={busy}>{busy ? "Sending…" : Q.submitLabel} {busy ? null : <Arrow />}</button></div>

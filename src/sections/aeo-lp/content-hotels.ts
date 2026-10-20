@@ -1,5 +1,9 @@
 import { NOTIFY_CC } from "./config";
-import { list, str, type FunnelCfg, type ReportTab } from "./types";
+import { list, slug, str, type FunnelCfg, type ReportTab } from "./types";
+
+/* Omnisend tag suffixes: aeoh-type-<x>, aeoh-struggle-<x> */
+const HOTEL_TYPE: Record<string, string> = { "Independent hotel": "independent", "Boutique hotel": "boutique", "Resort": "resort", "Hotel group / chain": "group", "Serviced apartments": "apartments" };
+const HOTEL_STRUGGLE: Record<string, string> = { "Not named when guests ask AI": "ai", "Too dependent on OTAs / low direct": "ota", "Low occupancy / seasonality": "occupancy", "Low average rate (ADR)": "adr", "Not enough repeat guests": "repeat", "No time / team for marketing": "team" };
 
 export const HOTEL_GROWTH = [34, 42, 48, 60, 72, 88];
 
@@ -93,7 +97,7 @@ export const HOTELS: FunnelCfg = {
       { type: "contact", q: "Where should we send your AI Growth Report?", fields: [
         { key: "name", label: "Your name", ph: "First name" },
         { key: "email", label: "Work email", ph: "you@yourhotel.com", type: "email" },
-        { key: "whatsapp", label: "WhatsApp / phone (optional)", ph: "For your walkthrough reminder only" },
+        { key: "whatsapp", label: "Mobile (optional), so Janis can text you the booking link", ph: "+44 7700 900123", type: "tel" },
         { key: "notes", label: "Anything else? (optional)", area: true }] },
     ],
     /* Same fields and subject as scandiweb.ai/aeo/hotels (HotelLanding.tsx); the lead-processing skills match on the subject. */
@@ -108,6 +112,17 @@ export const HOTELS: FunnelCfg = {
       _subject: "New hotel audit request: " + (str(d, "hotel") || "(no name)"),
       _template: "table",
     }),
+    omni: (d) => {
+      const t = str(d, "propertyType"), st = str(d, "struggles");
+      return {
+        tags: [t && "aeoh-type-" + (HOTEL_TYPE[t] || slug(t)), st && "aeoh-struggle-" + (HOTEL_STRUGGLE[st] || slug(st))].filter(Boolean) as string[],
+        props: {
+          aeoh_hotel: str(d, "hotel"), aeoh_website: str(d, "website"), aeoh_property_type: t, aeoh_rooms: str(d, "rooms"),
+          aeoh_occupancy: str(d, "occupancy"), aeoh_channels: str(d, "channels"), aeoh_struggle: st,
+          aeoh_extras: list(d, "extras").join(", "), aeoh_team: str(d, "team"), aeoh_role: str(d, "role"),
+        },
+      };
+    },
     summary: (d) => ({
       propertyType: str(d, "propertyType"), rooms: str(d, "rooms"), occupancy: str(d, "occupancy"),
       channels: str(d, "channels"), struggles: str(d, "struggles"), team: str(d, "team"), role: str(d, "role"),

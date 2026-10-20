@@ -1,5 +1,5 @@
 import { NOTIFY_CC } from "./config";
-import { list, str, type FunnelCfg, type ReportTab } from "./types";
+import { list, slug, str, type FunnelCfg, type ReportTab } from "./types";
 
 export const CLINIC_WORDS = ["dental practice", "medspa", "implant clinic", "surgery practice", "hair clinic"];
 
@@ -20,6 +20,10 @@ export const CLINIC_REPORT_INSIDE = [
   "Your fix list, highest-impact first",
 ];
 export const CLINIC_REPORT_NOTE = "Built by specialists in 3 business days, on your real clinic, city and procedures. Measured monthly after that, so you see the trend, not a one-off screenshot.";
+
+/* Omnisend tag suffixes: aeoc-type-<x>, aeoc-problem-<x> */
+const CLINIC_TYPE: Record<string, string> = { "Medspa / aesthetic clinic": "medspa", "Plastic or cosmetic surgery": "surgery", "Cosmetic / implant dentistry": "dental", "Hair restoration": "hair", "Dermatology": "derm", "Other": "other" };
+const CLINIC_PROBLEM: Record<string, string> = { "Not enough consults": "consults", "Consults don't convert": "conversion", "Ads too expensive": "ads", "Reviews / reputation": "reviews", "New location launch": "launch", "Competitors everywhere": "competitors" };
 
 export const CLINIC_CHART = [8, 14, 21, 30, 38, 47];
 
@@ -84,7 +88,7 @@ export const CLINICS: FunnelCfg = {
       { type: "contact", q: "Where should we send your AI Growth Report?", fields: [
         { key: "name", label: "Your name", ph: "First name" },
         { key: "email", label: "Work email", ph: "you@yourclinic.com", type: "email" },
-        { key: "whatsapp", label: "WhatsApp / phone (optional)", ph: "For your walkthrough reminder only" },
+        { key: "whatsapp", label: "Mobile (optional), so Janis can text you the booking link", ph: "+44 7700 900123", type: "tel" },
         { key: "notes", label: "Anything else? (optional)", area: true }] },
     ],
     /* Same fields and subject as scandiweb.ai/aeo/clinics (ClinicsLanding.tsx). */
@@ -100,6 +104,17 @@ export const CLINICS: FunnelCfg = {
       _subject: "New clinic AI Growth Report request: " + str(d, "clinic"),
       _template: "table",
     }),
+    omni: (d) => {
+      const t = str(d, "clinicType"), g = str(d, "growthProblem");
+      return {
+        tags: [t && "aeoc-type-" + (CLINIC_TYPE[t] || slug(t)), g && "aeoc-problem-" + (CLINIC_PROBLEM[g] || slug(g))].filter(Boolean) as string[],
+        props: {
+          aeoc_clinic: str(d, "clinic"), aeoc_website: str(d, "website"), aeoc_clinic_type: t, aeoc_locations: str(d, "locations"),
+          aeoc_patient_origin: str(d, "patientOrigin"), aeoc_procedures: list(d, "procedures").join(", "), aeoc_channels: str(d, "channels"),
+          aeoc_problem: g, aeoc_role: str(d, "role"),
+        },
+      };
+    },
     summary: (d) => ({
       clinicType: str(d, "clinicType"), locations: str(d, "locations"), patientOrigin: str(d, "patientOrigin"),
       procedures: list(d, "procedures").join("|"), growthProblem: str(d, "growthProblem"), role: str(d, "role"),

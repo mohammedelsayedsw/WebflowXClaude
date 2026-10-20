@@ -6,19 +6,28 @@ import { OMNISEND_API_KEY_FALLBACK } from "./server-config";
 const API = "https://api.omnisend.com/api/contacts";
 const VERSION = "2026-03-15";
 
-const PROP_RE = /^r90_[a-z0-9_]{1,40}$/;
-const TAG_RE = /^(retention-90|r90-[a-z0-9-]{1,40})$/;
+/* Each funnel only writes its own namespace: base tag + "<prefix>-*" tags and "<prefix>_*" props.
+   Retention-90 is the default scope, so its callers are unchanged. */
+export type OmniScope = { base: string; prefix: string };
+export const R90_SCOPE: OmniScope = { base: "retention-90", prefix: "r90" };
+export const AEOH_SCOPE: OmniScope = { base: "aeo-hotels", prefix: "aeoh" };
+export const AEOC_SCOPE: OmniScope = { base: "aeo-clinics", prefix: "aeoc" };
 
-export function cleanProps(p: unknown): Record<string, string> {
+const propRe = (s: OmniScope) => new RegExp(`^${s.prefix}_[a-z0-9_]{1,40}$`);
+const tagRe = (s: OmniScope) => new RegExp(`^(${s.base}|${s.prefix}-[a-z0-9-]{1,40})$`);
+
+export function cleanProps(p: unknown, scope: OmniScope = R90_SCOPE): Record<string, string> {
   const out: Record<string, string> = {};
   if (!p || typeof p !== "object") return out;
+  const re = propRe(scope);
   for (const [k, v] of Object.entries(p as Record<string, unknown>)) {
-    if (PROP_RE.test(k) && (typeof v === "string" || typeof v === "number")) out[k] = String(v).slice(0, 500);
+    if (re.test(k) && (typeof v === "string" || typeof v === "number")) out[k] = String(v).slice(0, 500);
   }
   return out;
 }
-export function cleanTags(t: unknown): string[] {
-  return Array.isArray(t) ? [...new Set(t.map(String).filter((x) => TAG_RE.test(x)))].slice(0, 20) : [];
+export function cleanTags(t: unknown, scope: OmniScope = R90_SCOPE): string[] {
+  const re = tagRe(scope);
+  return Array.isArray(t) ? [...new Set(t.map(String).filter((x) => re.test(x)))].slice(0, 20) : [];
 }
 
 type Consent = { ip: string; userAgent: string; source: string };

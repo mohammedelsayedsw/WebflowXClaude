@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { HOST } from "./config";
+import { HOST, UPDATE_ENDPOINT } from "./config";
 import type { FunnelCfg, QuizData } from "./types";
 import { str } from "./types";
 import { track } from "./track";
@@ -11,7 +11,7 @@ type CalApi = ((...a: unknown[]) => void) & { ns: Record<string, (...a: unknown[
 type CalWin = Window & { Cal?: CalApi };
 
 /* Cal.com's standard embed loader (app.cal.com/embed/embed.js), namespaced "janis". */
-function loadCal(onBooked: () => void, onReady: () => void): CalApi {
+export function loadCal(onBooked: () => void, onReady: () => void): CalApi {
   const w = window as CalWin;
   if (!w.Cal) {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -40,12 +40,41 @@ function loadCal(onBooked: () => void, onReady: () => void): CalApi {
   return (window as CalWin).Cal!;
 }
 
+/* Janis's calendar, inline, in the site colours. Prefill: name, email, notes. */
+export function mountCal(Cal: CalApi, el: HTMLElement, pre: { name?: string; email?: string; notes?: string }) {
+  el.innerHTML = "";
+  const config: Record<string, string> = { layout: "month_view", theme: "dark" };
+  if (pre.name) config.name = pre.name;
+  if (pre.email) config.email = pre.email;
+  if (pre.notes) config.notes = pre.notes;
+  Cal.ns.janis("inline", { elementOrSelector: el, calLink: HOST.calLink, layout: "month_view", config });
+  Cal.ns.janis("ui", {
+    theme: "dark", hideEventTypeDetails: true, layout: "month_view",
+    cssVarsPerTheme: { dark: { "cal-brand": "#6ef76e", "cal-brand-text": "#0b0e22", "cal-bg": "#171a38", "cal-bg-muted": "#1f2346", "cal-bg-subtle": "#1f2346", "cal-bg-emphasis": "#2b3060", "cal-border": "#3a3f6b", "cal-border-subtle": "#2a2e57", "cal-border-booker": "#2a2e57", "cal-text": "#e6e7ef", "cal-text-emphasis": "#ffffff", "cal-text-muted": "#8d91a8", "cal-text-subtle": "#8d91a8" } },
+  });
+}
+
+/* Booked: Meta Schedule + Omnisend "<prefix>-booked" (stops the selling emails, starts the thank-you). */
+export function reportBooked(cfg: FunnelCfg, email: string, where: string) {
+  track("cal_booked", { where });
+  try { if (typeof window.fbq === "function") window.fbq("track", "Schedule", { content_name: cfg.pixel.call }); } catch {}
+  if (!email) return;
+  try {
+    fetch(UPDATE_ENDPOINT, {
+      method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
+      body: JSON.stringify({ funnel: cfg.fn.replace("aeo-", ""), kind: "booked", email }),
+    }).then((r) => track("book_omni", { res: r.headers.get("x-omnisend") || String(r.status), where })).catch(() => track("book_omni", { res: "network", where }));
+  } catch {}
+}
+
 export function Booking({ cfg, open, onClose, data }: { cfg: FunnelCfg; open: boolean; onClose: () => void; data: QuizData }) {
   const calRef = useRef<HTMLDivElement>(null);
   const mounted = useRef<string | null>(null);
   const [ready, setReady] = useState(false);
   const [booked, setBooked] = useState(false);
   const bookedRef = useRef(false);
+  const emailRef = useRef("");
+  emailRef.current = str(data, "email").trim();
 
   useEffect(() => {
     if (!open || !calRef.current) return;
@@ -54,8 +83,7 @@ export function Booking({ cfg, open, onClose, data }: { cfg: FunnelCfg; open: bo
         if (bookedRef.current) return;
         bookedRef.current = true;
         setBooked(true);
-        track("cal_booked");
-        try { if (typeof window.fbq === "function") window.fbq("track", "Schedule", { content_name: cfg.pixel.call }); } catch {}
+        reportBooked(cfg, emailRef.current, "modal");
       },
       () => { setReady(true); track("cal_view"); },
     );
@@ -64,16 +92,7 @@ export function Booking({ cfg, open, onClose, data }: { cfg: FunnelCfg; open: bo
     const key = name + "|" + email;
     if (mounted.current === key) return;
     mounted.current = key;
-    calRef.current.innerHTML = "";
-    const config: Record<string, string> = { layout: "month_view", theme: "dark" };
-    if (name) config.name = name;
-    if (email) config.email = email;
-    if (co) config.notes = cfg.quiz.companyLabel + ": " + co + (site ? " (" + site + ")" : "");
-    Cal.ns.janis("inline", { elementOrSelector: calRef.current, calLink: HOST.calLink, layout: "month_view", config });
-    Cal.ns.janis("ui", {
-      theme: "dark", hideEventTypeDetails: true, layout: "month_view",
-      cssVarsPerTheme: { dark: { "cal-brand": "#6ef76e", "cal-brand-text": "#0b0e22", "cal-bg": "#171a38", "cal-bg-muted": "#1f2346", "cal-bg-subtle": "#1f2346", "cal-bg-emphasis": "#2b3060", "cal-border": "#3a3f6b", "cal-border-subtle": "#2a2e57", "cal-border-booker": "#2a2e57", "cal-text": "#e6e7ef", "cal-text-emphasis": "#ffffff", "cal-text-muted": "#8d91a8", "cal-text-subtle": "#8d91a8" } },
-    });
+    mountCal(Cal, calRef.current, { name, email, notes: co ? cfg.quiz.companyLabel + ": " + co + (site ? " (" + site + ")" : "") : "" });
   }, [open, data, cfg]);
 
   return (

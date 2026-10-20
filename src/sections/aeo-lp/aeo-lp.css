@@ -484,3 +484,20 @@ body.aeolp-lock{overflow:hidden}
 @media(max-width:520px){.aeolp .promise .ctas .btn{width:100%;justify-content:center}
 .aeolp .win .q{margin:22px 18px 14px;font-size:16.5px}.aeolp .win ol{margin:0 18px}.aeolp .win .engines{padding:16px 18px 20px}
 .aeolp .win li.me{font-size:17px;margin:6px -8px;padding:16px 8px}}
+/* SMS consent under the optional mobile field */
+.aeolp .smsok{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.45;color:var(--muted);margin:-6px 0 16px;cursor:pointer}
+.aeolp .smsok input{accent-color:var(--mint);width:16px;height:16px;margin-top:1px;flex-shrink:0}
+.aeolp .smsok.bad{color:#ff9c90}
+/* booking page (/aeo/{hotels,clinics}/book) */
+.aeolp.bookpg{min-height:100vh;padding:36px 0 56px;background:radial-gradient(100% 60% at 20% 0%,#23306e 0%,#10132c 60%,#0b0e22 100%)}
+.aeolp .bp-logo{height:24px;width:auto;display:block}
+.aeolp .bp-head{display:flex;gap:18px;align-items:center;margin:36px 0 22px;max-width:760px}
+.aeolp .bp-face{width:68px;height:68px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--mint)}
+.aeolp .bp-head h1{font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin-bottom:8px}
+.aeolp .bp-head p{color:rgba(255,255,255,.78);font-size:16px;line-height:1.5}
+.aeolp .bp-head p b{color:#fff;font-weight:600}
+.aeolp .bp-cal{position:relative;min-height:640px;background:var(--elev);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
+.aeolp .bp-cal .ld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px}
+.aeolp .bp-fine{font-size:13px;color:var(--muted);margin-top:12px}
+.aeolp .bp-fine a{color:var(--mint)}
+@media(max-width:600px){.aeolp .bp-head{align-items:flex-start}.aeolp .bp-face{width:56px;height:56px}}

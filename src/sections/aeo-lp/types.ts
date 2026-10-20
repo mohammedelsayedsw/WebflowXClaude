@@ -41,6 +41,9 @@ export type FunnelCfg = {
     lead: (d: QuizData, utm: Utm) => Record<string, string>;
     /* Non-PII answers for dataLayer / hub. */
     summary: (d: QuizData) => Record<string, string>;
+    /* Omnisend: segment tags + aeoh_* / aeoc_* properties. The server adds the base tag, book URL,
+       country, request date and SMS opt-in, and drops anything outside the funnel's namespace. */
+    omni: (d: QuizData) => { tags: string[]; props: Record<string, string> };
   };
 };
 
@@ -50,3 +53,6 @@ export const disp = (v: string) => v.replace(/–/g, "-").replace(/'/g, "’");
 
 export const str = (d: QuizData, k: string) => (typeof d[k] === "string" ? (d[k] as string) : "");
 export const list = (d: QuizData, k: string) => (Array.isArray(d[k]) ? (d[k] as string[]) : []);
+
+/* "Independent hotel" -> "independent-hotel": tag-safe slug for Omnisend */
+export const slug = (v: string) => v.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 30);

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CLINIC_CHART, CLINIC_DEMO_TABS, CLINIC_REPORT, CLINIC_REPORT_INSIDE, CLINIC_REPORT_NOTE, CLINIC_WORDS, CLINICS } from "./content-clinics";
-import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, PromiseFold, Proof, Report, Rotator } from "./Sections";
+import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, PromiseFold, Proof, Report, Rotator } from "./Sections";
 import { AeoShell } from "./Shell";
 import { Counter, Icon, img, isReduced } from "./ui";
 
@@ -239,7 +239,6 @@ function ClinicsBody() {
       ]} />
       <Guides eyebrow="Guides" title={<>See how it’s decided, <span className="mint">and what it’s worth</span></>} />
       <FinalCta title={<>See what the AI says about <span className="mint">your clinic.</span></>} body="Your free AI Growth Report covers what ChatGPT, Gemini, Perplexity and Google AI answer for your procedures in your city: where you’re named, who wins instead, and what to fix first. 3 business days. No pitch." bg="/aeo-lp/c_cta.webp" />
-      <Newsletter />
     </>
   );
 }

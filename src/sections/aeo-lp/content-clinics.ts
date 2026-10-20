@@ -63,13 +63,6 @@ export const CLINICS: FunnelCfg = {
     points: ["Your AI answers, looked at live", "What’s winnable first, and what it’s worth", "No prep needed, no sales deck"],
   },
   pixel: { lead: "AEO Clinics report", call: "AEO Clinics call" },
-  newsletter: {
-    title: "AI visibility for clinic owners, monthly",
-    body: "How patients now choose clinics through AI answers, and what to do about it. No spam.",
-    ph: "you@yourclinic.com",
-    ok: "You’re in. AI visibility tips, monthly. No spam.",
-    subject: "AEO clinics newsletter signup: ",
-  },
   quiz: {
     submitLabel: "Get my report",
     finalNote: "We’ll only use this to send your report and book your walkthrough. No spam.",

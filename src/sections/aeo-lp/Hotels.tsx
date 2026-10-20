@@ -1,7 +1,7 @@
 "use client";
 
 import { HOTEL_GROWTH, HOTEL_REPORT, HOTEL_REPORT_INSIDE, HOTEL_REPORT_NOTE, HOTELS } from "./content-hotels";
-import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, Newsletter, PromiseFold, Proof, Report } from "./Sections";
+import { Band, Cases, Credibility, CtaBtn, Faq, FinalCta, Guides, Hero, Leader, PromiseFold, Proof, Report } from "./Sections";
 import { AeoShell } from "./Shell";
 import { Counter, Icon, img } from "./ui";
 
@@ -125,7 +125,6 @@ function HotelsBody() {
       ]} />
       <Guides eyebrow="Guides & success stories" title={<>See how it’s decided, <span className="mint">and what it’s worth</span></>} />
       <FinalCta title={<>See what the AI says about <span className="mint">your hotel.</span></>} body="Your free AI Growth Report covers what ChatGPT, Gemini, Perplexity and Google AI answer when guests ask where to stay in your city: where you’re named, who wins instead, and what to fix first. 3 business days. No pitch." bg="/aeo-lp/h_cta.webp" />
-      <Newsletter />
     </>
   );
 }

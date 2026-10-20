@@ -29,7 +29,6 @@ export type FunnelCfg = {
   vertical: "clinic" | "hotel";
   book: { title: string; body: string; points: string[] };
   pixel: { lead: string; call: string };
-  newsletter: { title: string; body: string; ph: string; ok: string; subject: string };
   quiz: {
     steps: QStep[];
     submitLabel: string;

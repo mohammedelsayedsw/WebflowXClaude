@@ -266,14 +266,6 @@
 .aeolp .cta h2{margin:0 auto 22px;font-size:clamp(36px,4.6vw,62px)}
 .aeolp .cta .sub{margin:0 auto 40px;color:rgba(255,255,255,.75)}
 @media(max-width:760px){.aeolp .cta{padding:96px 0}}
-.aeolp .news{max-width:760px;margin:0 auto;text-align:center;border:1px solid var(--line);background:var(--card);box-shadow:var(--inset);padding:56px 40px}
-.aeolp .news h2{font-size:clamp(26px,2.8vw,36px);margin:0 auto 12px}
-.aeolp .news p{color:var(--muted);margin-bottom:28px}
-.aeolp .news form{display:flex;gap:10px;max-width:520px;margin:0 auto}
-.aeolp .news input{flex:1;min-width:0}
-.aeolp .news .ok{display:none;color:var(--mint);font-size:14.5px;margin-top:16px}
-@media(max-width:560px){.aeolp .news{padding:40px 20px}
-.aeolp .news form{flex-direction:column}}
 .aeolp .inp{width:100%;background:#10132c;border:1px solid var(--line2);border-radius:var(--r);color:#fff;font:inherit;font-size:16px;padding:14px 15px;transition:border-color .15s,box-shadow .15s}
 .aeolp .inp::placeholder{color:#6d7190}
 .aeolp .inp:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(110,247,110,.14)}

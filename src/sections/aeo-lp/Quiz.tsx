@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FORM_ENDPOINT } from "./config";
 import { disp, list, str, type Field, type FunnelCfg, type QuizData, type Utm } from "./types";
-import { pushLeadEvent, setTestMode, track, trackLead } from "./track";
+import { adConversions, pushLeadEvent, setTestMode, track, trackLead } from "./track";
 import { Arrow } from "./ui";
 
 const URL_RE = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}.*$/i;
@@ -113,6 +113,7 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
     track("gate_result", { r: "ok" });
     pushLeadEvent(Q.summary(data));
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: cfg.pixel.lead }); } catch {}
+    adConversions(email);
     setBusy(false); setSent(true); onStep("done");
     onSent(data);
   };

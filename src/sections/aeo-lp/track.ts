@@ -3,14 +3,17 @@
    fn = "aeo-hotels" | "aeo-clinics" so the hub can split funnels, and (2) to dataLayer as
    aeo_hotels_<event> / aeo_clinics_<event>. No PII in any event except the lead backup. */
 
-import { HUB_TRACKING, type Funnel } from "./config";
+import { GOOGLE_ADS, HUB_TRACKING, LINKEDIN, type Funnel } from "./config";
 
 export const TRACK_ENDPOINT = "https://hub.adiligence.com/track.php";
 
 type Props = Record<string, string | number | boolean | undefined>;
 
-/* Window.dataLayer / Window.fbq are declared globally in sections/retention-90/Retention90.tsx
-   (dataLayer?: unknown[]; fbq?: (...args: unknown[]) => void); this file relies on those. */
+/* Window.dataLayer / fbq / lintrk are declared globally in sections/retention-90/Retention90.tsx;
+   this file relies on those and adds gtag. */
+declare global {
+  interface Window { gtag?: (...args: unknown[]) => void }
+}
 
 let fn: Funnel = "aeo-hotels";
 let sid = "";
@@ -140,4 +143,28 @@ export function watchExit(getStep: () => string): () => void {
   window.addEventListener("pagehide", fire);
   document.addEventListener("visibilitychange", onVis);
   return () => { window.removeEventListener("pagehide", fire); document.removeEventListener("visibilitychange", onVis); };
+}
+
+/* Ad-platform lead conversions, fired once after a successful submit. Skipped in test mode
+   (?notrack=1, li_check, or an @example.com email) so test leads never reach the ad accounts. */
+export function adConversions(email: string) {
+  if (testMode) return;
+  try {
+    const w = window;
+    w.dataLayer = w.dataLayer || [];
+    if (typeof w.gtag !== "function") {
+      w.gtag = function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        (w.dataLayer as unknown[]).push(arguments);
+      };
+    }
+    let id = "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+    try { if (typeof crypto !== "undefined" && crypto.randomUUID) id = crypto.randomUUID(); } catch {}
+    if (email) w.gtag("set", "user_data", { email: email.trim().toLowerCase() });
+    w.gtag("event", "conversion", { send_to: GOOGLE_ADS.leadSendTo, value: GOOGLE_ADS.leadValue, currency: GOOGLE_ADS.currency, transaction_id: id });
+  } catch {}
+  try {
+    const cid = LINKEDIN.conversion[fn];
+    if (cid && typeof window.lintrk === "function") window.lintrk("track", { conversion_id: cid });
+  } catch {}
 }

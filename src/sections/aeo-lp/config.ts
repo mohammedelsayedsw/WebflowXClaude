@@ -21,5 +21,12 @@ export const HOST = {
   calLink: "janis-sarmulis/betteranswer-discovery-call",
 };
 
-/* Not wired yet (Marko, 16 Oct 2026): LinkedIn conversion IDs, HubSpot form submit, Omnisend contact + tags.
-   The scandiweb.ai pages also fired a Google Ads conversion (AW-879717196); not carried over. */
+/* Google Ads: the same lead conversion the scandiweb.ai pages fired (Lovable src/lib/trackLead.ts), so the
+   campaigns keep counting leads. $300 value, enhanced conversions (gtag hashes the email in the browser). */
+export const GOOGLE_ADS = { id: "AW-879717196", leadSendTo: "AW-879717196/_N_JCLzWhe4cEMzWvaMD", leadValue: 300, currency: "USD" };
+
+/* LinkedIn Insight Tag, partner 2329169 (Scandiweb V2, account 506797827). Conversion IDs per funnel are
+   still to come from Campaign Manager (check 21234978 / 21234986 first); a null ID fires nothing. */
+export const LINKEDIN = { partner: "2329169", conversion: { "aeo-hotels": null, "aeo-clinics": null } as Record<Funnel, number | null> };
+
+/* Not wired yet (Marko, 20 Oct 2026): HubSpot tracking script + form submit, Omnisend snippet + contact + tags. */

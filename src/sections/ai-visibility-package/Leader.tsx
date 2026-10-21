@@ -8,7 +8,7 @@ import { PlanLink } from "./plan";
 import { PLANS } from "./status";
 import { BODY_LIGHT, Eyebrow, H2_LIGHT, LAVENDER, LINE_LIGHT, SECTION_Y } from "./ui";
 
-const SCOPE = ["Expert-reviewed content", "Technical improvements", "Outreach and authority building", "Broader market coverage"];
+const SCOPE = ["Expert-reviewed content", "Technical fixes delivered by our team", "Outreach and authority building", "Broader market coverage"];
 
 export function Leader() {
   return (

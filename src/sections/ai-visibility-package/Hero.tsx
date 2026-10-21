@@ -22,6 +22,7 @@ const IN_THE_BOX: [string, string][] = [
   ["Website content tailored to AI search questions", "Content for AI search questions"],
   ["Five AI visibility article drafts per month", "Five article drafts a month"],
   ["Monthly AI visibility and progress report", "Monthly progress report"],
+  ["Technical monitoring of your site, up to 10,000 pages", "Technical site monitoring"],
 ];
 
 /** One full screen under the site header, content centred: headline, one line, two facts, one button; the package, its price and a second button sit in the card beside it. */
@@ -62,14 +63,14 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap w-full relative pt-[148px] max-md:[@media(max-height:700px)]:pt-[132px] md:pt-[150px] pb-12 md:pb-[clamp(48px,8vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+      <div className="wrap w-full relative pt-[140px] max-md:[@media(max-height:700px)]:pt-[132px] md:pt-[140px] pb-12 md:pb-[clamp(48px,8vh,112px)] grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
         <div>
           <motion.div {...enter(0.1)}>
             <Eyebrow tone="mint">{PLANS.core.name}</Eyebrow>
           </motion.div>
           <motion.h1
             {...enter(0.2)}
-            className="mt-4 md:mt-5 font-head font-bold text-white text-wrap text-[34px] max-md:[@media(max-height:700px)]:text-[30px] sm:text-[52px] lg:text-[clamp(40px,min(4.2vw,7.6vh),64px)] leading-[1.04] tracking-[-0.03em]"
+            className="mt-4 md:mt-5 font-head font-bold text-white text-wrap text-[34px] max-md:[@media(max-height:700px)]:text-[30px] sm:text-[52px] lg:text-[clamp(38px,min(4.2vw,7vh),64px)] leading-[1.04] tracking-[-0.03em]"
           >
             The minimum coverage your business needs for{" "}
             <span className="inline-block whitespace-nowrap" style={{ color: "var(--sw-mint)" }}>
@@ -95,7 +96,7 @@ export function Hero() {
         </div>
 
         <motion.div {...enter(0.3)}>
-          <div className="bg-white rounded-[2px] p-5 md:p-[clamp(20px,3.5vh,32px)] lg:ml-auto lg:max-w-[440px]">
+          <div className="bg-white rounded-[2px] p-5 md:p-[clamp(16px,3vh,32px)] lg:ml-auto lg:max-w-[440px]">
             <h2 className="font-head font-bold text-[var(--sw-black)] text-[22px] md:text-[26px] leading-[1.15] tracking-[-0.02em]">
               {PLANS.core.name}
             </h2>
@@ -105,9 +106,9 @@ export function Hero() {
               </span>
               <span className="text-[var(--sw-black)]/60 text-[16px]">/ month</span>
             </div>
-            <ul className={`mt-5 md:mt-7 grid grid-cols-2 gap-x-4 gap-y-3 md:block md:border-t ${LINE_LIGHT}`}>
+            <ul className={`mt-5 md:mt-7 grid grid-cols-2 gap-x-4 gap-y-2 md:block md:border-t ${LINE_LIGHT}`}>
               {IN_THE_BOX.map(([t, short]) => (
-                <li key={t} className={`flex items-start md:items-center gap-2 md:gap-3 md:border-b ${LINE_LIGHT} md:py-[clamp(8px,1.6vh,14px)] text-[14px] leading-snug md:text-[16px] text-[var(--sw-black)]`}>
+                <li key={t} className={`flex items-start md:items-center gap-2 md:gap-3 md:border-b ${LINE_LIGHT} md:py-[clamp(6px,1.2vh,14px)] text-[14px] leading-snug md:text-[15px] xl:text-[16px] text-[var(--sw-black)]`}>
                   <Check aria-hidden className="mt-0.5 md:mt-0 h-4 w-4 shrink-0 text-[var(--sw-blue)]" strokeWidth={3} />
                   <span className="md:hidden">{short}</span>
                   <span className="hidden md:inline">{t}</span>

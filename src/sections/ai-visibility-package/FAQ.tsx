@@ -66,7 +66,7 @@ const FAQS: { q: string; a: Block[] }[] = [
   {
     q: "What happens when you identify a technical issue?",
     a: [
-      "We flag technical issues identified during the review for your technical team. We can also scope the fixes with you. Core does not include custom development or ongoing technical fixes, while technical improvements can form part of a tailored Industry Leader program.",
+      "We monitor your site continuously and report prioritized findings for your technical team every month. Within the Industry Leader package, or on request, our team fixes what is configurable, writes developer-ready tickets for what needs a code release, and verifies every fix against the next crawl.",
     ],
   },
   {

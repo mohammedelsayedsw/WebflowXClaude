@@ -4,19 +4,23 @@ import { AEOC_SCOPE, AEOH_SCOPE, type OmniScope } from "@/sections/retention-90/
 
 export type AeoFunnel = "hotels" | "clinics";
 
-export const AEO: Record<AeoFunnel, { scope: OmniScope; source: string; bookPage: string }> = {
-  hotels: { scope: AEOH_SCOPE, source: "scandiweb-aeo-hotels", bookPage: "https://scandiweb.com/solutions/aeo/hotels/book" },
-  clinics: { scope: AEOC_SCOPE, source: "scandiweb-aeo-clinics", bookPage: "https://scandiweb.com/solutions/aeo/clinics/book" },
+export const AEO: Record<AeoFunnel, { scope: OmniScope; source: string; bookPage: string; confirmPage: string }> = {
+  hotels: { scope: AEOH_SCOPE, source: "scandiweb-aeo-hotels", bookPage: "https://scandiweb.com/solutions/aeo/hotels/book", confirmPage: "https://scandiweb.com/solutions/aeo/hotels/confirmed" },
+  clinics: { scope: AEOC_SCOPE, source: "scandiweb-aeo-clinics", bookPage: "https://scandiweb.com/solutions/aeo/clinics/book", confirmPage: "https://scandiweb.com/solutions/aeo/clinics/confirmed" },
 };
 
 export const funnelOf = (v: unknown): AeoFunnel | null => (v === "hotels" || v === "clinics" ? v : null);
 
 /* Personal link to our booking page; every email button uses it and appends "&utm_...". */
-export function bookUrl(f: AeoFunnel, email: string, name: string): string {
+const personal = (base: string, email: string, name: string) => {
   const q = new URLSearchParams({ e: email });
   if (name) q.set("n", name);
-  return AEO[f].bookPage + "?" + q.toString();
-}
+  return base + "?" + q.toString();
+};
+export const bookUrl = (f: AeoFunnel, email: string, name: string) => personal(AEO[f].bookPage, email, name);
+
+/* Personal link to the confirmed page; the button in the confirmation email (automation 1, first email). */
+export const confirmUrl = (f: AeoFunnel, email: string, name: string) => personal(AEO[f].confirmPage, email, name);
 
 export const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 export const PHONE_RE = /^\+[1-9]\d{6,14}$/;

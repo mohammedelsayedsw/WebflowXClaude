@@ -146,14 +146,12 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
   if (sent) {
     body = (
       <div className="done">
-        <div className="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#0b0e22" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg></div>
-        <h3>{Q.doneTitle}</h3>
-        <p>{Q.doneBody}</p>
-        <p>Want to talk it through sooner? Pick a 30-minute slot with Janis.</p>
-        <div className="ctas" style={{ justifyContent: "center", marginTop: 18 }}>
-          <button type="button" className="btn" onClick={onBook}>Book my 30-minute call <Arrow /></button>
-          <button type="button" className="btn ghost" onClick={onClose}>Done</button>
-        </div>
+        {/* Confirmation step: the confirmation email (Omnisend automation 1) links to /aeo/{funnel}/confirmed */}
+        <div className="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#0b0e22" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg></div>
+        <h3>Check your inbox to confirm.</h3>
+        <p>We sent a confirmation email to <b>{str(data, "email").trim()}</b>. Click the button in it to confirm, and we’ll start on your AI Growth Report.</p>
+        <p className="qnote">Can’t see it in a minute? Check your spam or promotions folder.</p>
+        <button type="button" className="booknow" onClick={onBook}>Or book your call now <Arrow /></button>
       </div>
     );
   } else {

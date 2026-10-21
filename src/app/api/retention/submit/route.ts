@@ -6,6 +6,7 @@ import {
 import { PAGE_URL } from "@/sections/retention-90/status";
 
 const BOOK_PAGE_URL = PAGE_URL + "/book";
+const CONFIRM_PAGE_URL = PAGE_URL + "/confirmed";
 import { cleanProps, cleanTags, omnisendUpsert } from "@/sections/retention-90/omnisend-server";
 
 export const runtime = "nodejs";
@@ -108,6 +109,12 @@ function bookPageUrl(cal: string, email: string): string {
   return BOOK_PAGE_URL + "?" + new URLSearchParams({ e: email, cal }).toString();
 }
 
+/* The button in the confirmation email (automation 1, first email). Same e + cal as the
+   booking link, so the confirmed page can link straight on to the booking page. */
+function confirmPageUrl(cal: string, email: string): string {
+  return CONFIRM_PAGE_URL + "?" + new URLSearchParams({ e: email, cal }).toString();
+}
+
 export async function POST(req: NextRequest) {
   let body: Body;
   try { body = (await req.json()) as Body; } catch { return done("skip"); }
@@ -142,7 +149,7 @@ export async function POST(req: NextRequest) {
   const omni = await omnisendUpsert({
     email, firstName: name, subscribeEmail: true,
     tags: cleanTags([...(Array.isArray(body.omni?.tags) ? body.omni.tags : []), ...(sms ? ["r90-sms-optin"] : [])]),
-    props: { ...cleanProps(body.omni?.props), r90_book_url: bookPageUrl(link, email), r90_country: country, ...(sms ? { r90_sms: "yes" } : {}) },
+    props: { ...cleanProps(body.omni?.props), r90_book_url: bookPageUrl(link, email), r90_confirm_url: confirmPageUrl(link, email), r90_country: country, ...(sms ? { r90_sms: "yes" } : {}) },
     ...(sms ? { phone, sms: true } : {}),
     consent: { ip, userAgent: ua, source: "scandiweb-retention-90" },
   });

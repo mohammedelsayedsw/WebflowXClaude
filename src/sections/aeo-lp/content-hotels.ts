@@ -97,7 +97,7 @@ export const HOTELS: FunnelCfg = {
       { type: "contact", q: "Where should we send your AI Growth Report?", fields: [
         { key: "name", label: "Your name", ph: "First name" },
         { key: "email", label: "Work email", ph: "you@yourhotel.com", type: "email" },
-        { key: "whatsapp", label: "Mobile (optional), so Janis can text you the booking link", ph: "+44 7700 900123", type: "tel" },
+        { key: "whatsapp", label: "Mobile (optional)", ph: "+44 7700 900123", type: "tel" },
         { key: "notes", label: "Anything else? (optional)", area: true }] },
     ],
     /* Same fields and subject as scandiweb.ai/aeo/hotels (HotelLanding.tsx); the lead-processing skills match on the subject. */

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cleanProps, cleanTags, omnisendUpsert } from "@/sections/retention-90/omnisend-server";
-import { AEO, EMAIL_RE, PHONE_RE, bookUrl, clientIp, funnelOf, isTestEmail } from "@/sections/aeo-lp/omni-server";
+import { AEO, EMAIL_RE, PHONE_RE, bookUrl, clientIp, confirmUrl, funnelOf, isTestEmail } from "@/sections/aeo-lp/omni-server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -37,6 +37,7 @@ export async function POST(req: NextRequest) {
     props: {
       ...cleanProps(omni.props, scope),
       [p + "_book_url"]: bookUrl(f, email, name),
+      [p + "_confirm_url"]: confirmUrl(f, email, name),
       [p + "_country"]: country,
       [p + "_request_date"]: new Date().toISOString().slice(0, 10),
       ...(sms ? { [p + "_sms"]: "yes" } : {}),

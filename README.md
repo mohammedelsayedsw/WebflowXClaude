@@ -45,3 +45,5 @@ webflow cloud deploy
 ```
 
 Learn more about [Webflow Cloud deployment](https://developers.webflow.com/webflow-cloud/environment).
+
+Merges to `main` also deploy automatically through Webflow Cloud. If a merge does not show up on scandiweb.com, push a small commit to `main` to trigger a new deploy.

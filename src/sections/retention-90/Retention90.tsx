@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt, fmtK } from "./scoring";
-import { DL_EVENT, FORM_ENDPOINT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
+import { CONFIRM_STEP, DL_EVENT, FORM_ENDPOINT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
@@ -173,7 +173,7 @@ export function Retention90() {
       )}
       {screen === "quiz" && <Quiz store={store} qi={qi} onStore={onStore} onPick={onPick} onBack={quizBack} />}
       {screen === "gate" && <Gate store={store} onBack={quizBack} onSubmit={submitGate} onError={onGateError} />}
-      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} />}
+      {screen === "summary" && <Summary store={store} answers={answers} labels={labels} onFix={goFix} email={CONFIRM_STEP ? leadRef.current.email : undefined} />}
       {screen === "fix" && (
         /* children map 1:1 to FOLDS in track.ts */
         <div id="screen-fix">

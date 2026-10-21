@@ -9,6 +9,8 @@ type Props = {
   answers: Record<string, number>;
   labels: Record<string, string>;
   onFix: () => void;
+  /* the lead's email: shown in the "check your inbox to confirm" banner */
+  email?: string;
 };
 
 
@@ -28,7 +30,7 @@ function useCountUp(target: number, dur: number) {
   return v;
 }
 
-export function Summary({ store, answers, labels, onFix }: Props) {
+export function Summary({ store, answers, labels, onFix, email }: Props) {
   const score = computeScore(answers);
   const leak = computeLeak(answers);
   const critical = score < 40;
@@ -45,6 +47,13 @@ export function Summary({ store, answers, labels, onFix }: Props) {
     <div id="screen-summary">
       <div className="inner">
         <div className="dtop" />
+        {/* Confirmation step: the confirmation email (Omnisend automation 1) links to /retention-90/confirmed */}
+        {email ? (
+          <div className="confirmbar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+            <div><b>Check your inbox to confirm.</b> We sent a confirmation email to <span className="em">{email}</span>. Can&rsquo;t see it in a minute? Check your spam or promotions folder.</div>
+          </div>
+        ) : null}
         <div className="scanline"><span className="lbl">RETENTION SCAN</span><span className="dom">{store}</span><span className="dt">{date}</span></div>
         <div className="subline">Benchmarked against 2026 lifecycle performance data across 183,000 ecommerce brands</div>
         <div className="dgrid">

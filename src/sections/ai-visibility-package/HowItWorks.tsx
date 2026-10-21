@@ -14,7 +14,7 @@ const STEPS = [
   },
   {
     title: "We track what happens next",
-    body: "Whether content is awaiting approval or published, and how it performs in AI search later.",
+    body: "Whether content is awaiting approval or published, and how it performs in AI search later. Publication status comes from the crawler, not from asking you. We see whether the content is live, indexable and in the sitemap.",
   },
 ];
 

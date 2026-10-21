@@ -15,6 +15,10 @@ export const PIXEL_CONTENT = "Retention Score";
 export const LI_CONVERSION_ID = 30790906;
 export const DL_EVENT = "retention_scan_request";
 export const VERTICAL = "retention";
+/* Score screen "check your inbox to confirm" banner. Keep false until the Omnisend confirmation
+   email is live in automation 1 (the R90 automations are drafts): otherwise the banner promises an
+   email that never arrives. The confirm URL, /confirmed page and r90-confirmed tag work regardless. */
+export const CONFIRM_STEP = false;
 
 /* Who takes the call (modal + summary). The lifecycle lead on the team section is separate. */
 export const HOST_NAME = "Nika Z.";

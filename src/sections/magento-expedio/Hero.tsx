@@ -38,18 +38,18 @@ export function Hero() {
             }}
           >
             Expedio
-          </motion.span>
+          </motion.span>{" "}
           <motion.span
             {...enter(0.75)}
             className="block mt-4 text-white text-[28px] sm:text-[36px] md:text-[length:min(44px,5.4vh)] leading-[1.1] tracking-[-0.025em]"
           >
-            Magento. <span style={{ color: "var(--sw-mint)" }}>2x faster.</span>
+            Magento performance, <span style={{ color: "var(--sw-mint)" }}>2x faster.</span>
           </motion.span>
         </h1>
 
         <motion.p {...enter(1)} className="mt-5 max-w-[34rem] text-white/75 text-[16px] md:text-[18px] leading-[1.55]">
-          Expedio makes your Magento store at least 2x faster, with the best of Shopify&apos;s theme technology. Same store, same
-          design, no replatforming.
+          Expedio fixes Magento performance in the backend, where stock Magento spends most of its time. Your store answers at
+          least 2x faster. Same store, same design, no replatforming.
         </motion.p>
 
         <motion.a

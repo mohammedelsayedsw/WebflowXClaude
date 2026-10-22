@@ -88,6 +88,23 @@ export function CTA() {
             </p>
           </Reveal>
 
+          {/* second ask, for people who already registered: the prototype offer */}
+          <Reveal delay={0.3} className="w-full">
+            <div className="pimcore-prototype-form mt-14 md:mt-16 w-full max-w-[560px] mx-auto">
+              <h3 className="font-head text-white text-[22px] sm:text-[26px] md:text-[30px] leading-[1.15] text-center">
+                Sign up for a{" "}
+                <span style={{ color: "var(--sw-mint)" }}>free PIM prototype</span>
+              </h3>
+              <div className="mt-6 md:mt-8 text-left">
+                <HubSpotForm
+                  portalId="25724996"
+                  formId="9951f043-3ddd-4cdb-a53f-349e6b2d8ff8"
+                  region="eu1"
+                />
+              </div>
+            </div>
+          </Reveal>
+
           <Reveal delay={0.32}>
             {/* the Platinum badge repeats the partner status right where
                 people register, next to the co-brand */}

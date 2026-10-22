@@ -7,9 +7,6 @@ import { assetUrl } from "@/lib/assets";
 import { Lockup } from "./Lockup";
 
 /**
- * The real registration form, replacing the placeholder that stood here while
- * the form ID was pending.
- *
  * HubSpotForm loads the same v2 embed script the snippet uses, and passes empty
  * `css` and `cssRequired` so HubSpot ships no stylesheet of its own. The look
  * comes from `.hubspot-form-wrapper .hbspt-form *` in globals.css, which is why
@@ -17,9 +14,9 @@ import { Lockup } from "./Lockup";
  */
 
 export function CTA() {
-  // #prototype (QR code link): the registration form above loads late and grows,
-  // which pushes the prototype form down after the browser's own jump, so re-align
-  // a few times while the HubSpot forms settle.
+  // #prototype (QR code link): content above loads late and can push the
+  // prototype form down after the browser's own jump, so re-align a few times
+  // while the page settles.
   useEffect(() => {
     if (window.location.hash !== "#prototype") return;
     const align = () => document.getElementById("prototype")?.scrollIntoView({ block: "start" });
@@ -79,27 +76,7 @@ export function CTA() {
             </p>
           </Reveal>
 
-          {/* w-full on the Reveal: it is a flex item under items-center, so
-              without it the wrapper shrinks to the form's intrinsic width. */}
-          <Reveal delay={0.2} className="w-full">
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <HubSpotForm
-                portalId="25724996"
-                formId="1a9ed7a5-66ca-4c97-9d52-cc743fcd2ca4"
-                region="eu1"
-                submitText="Save your seat"
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.26}>
-            <p className="mt-5 text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-              Can&apos;t join live? Register, and we&apos;ll send you the
-              recording.
-            </p>
-          </Reveal>
-
-          {/* second ask, for people who already registered: the prototype offer */}
+          {/* the prototype offer */}
           <Reveal delay={0.3} className="w-full">
             <div id="prototype" className="pimcore-prototype-form scroll-mt-24 mt-14 md:mt-16 w-full max-w-[560px] mx-auto">
               <h3 className="font-head text-white text-[22px] sm:text-[26px] md:text-[30px] leading-[1.15] text-center">

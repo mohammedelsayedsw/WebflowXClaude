@@ -48,37 +48,9 @@ export function CTA() {
 
       <div className="wrap relative">
         <div className="max-w-[860px] mx-auto text-center flex flex-col items-center">
-          <Reveal>
-            <div className="inline-flex items-center rounded-[2px] border border-white/60 px-2.5 py-1 mb-6">
-              <span className="font-head text-[10px] md:text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-                {/* Held whole per part, as in the hero, so a narrow screen
-                    breaks at a separator and never mid-phrase. */}
-                <span className="whitespace-nowrap">Free webinar</span> &middot;{" "}
-                <span className="whitespace-nowrap">22 October</span> &middot;{" "}
-                <span className="whitespace-nowrap">10:00 GMT</span> &middot;{" "}
-                <span className="whitespace-nowrap">60 minutes</span>
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[22ch] mx-auto">
-              See the cost of product data problems and{" "}
-              <span style={{ color: "var(--sw-mint)" }}>learn the fix</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.14}>
-            <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mx-auto text-balance">
-              In one hour, we&apos;ll walk through four common problems and how
-              each one is fixed in Pimcore. Afterwards, you can request a free PIM prototype built on your
-              own catalog.
-            </p>
-          </Reveal>
-
           {/* the prototype offer */}
           <Reveal delay={0.3} className="w-full">
-            <div id="prototype" className="pimcore-prototype-form scroll-mt-24 mt-14 md:mt-16 w-full max-w-[560px] mx-auto">
+            <div id="prototype" className="pimcore-prototype-form scroll-mt-24 w-full max-w-[560px] mx-auto">
               <h3 className="font-head text-white text-[22px] sm:text-[26px] md:text-[30px] leading-[1.15] text-center">
                 Sign up for a{" "}
                 <span style={{ color: "var(--sw-mint)" }}>free PIM prototype</span>

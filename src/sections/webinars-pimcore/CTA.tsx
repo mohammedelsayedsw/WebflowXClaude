@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { assetUrl } from "@/lib/assets";
@@ -16,6 +17,16 @@ import { Lockup } from "./Lockup";
  */
 
 export function CTA() {
+  // #prototype (QR code link): the registration form above loads late and grows,
+  // which pushes the prototype form down after the browser's own jump, so re-align
+  // a few times while the HubSpot forms settle.
+  useEffect(() => {
+    if (window.location.hash !== "#prototype") return;
+    const align = () => document.getElementById("prototype")?.scrollIntoView({ block: "start" });
+    const timers = [300, 1000, 2000, 3500].map((ms) => window.setTimeout(align, ms));
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, []);
+
   return (
     <section
       id="cta"
@@ -90,7 +101,7 @@ export function CTA() {
 
           {/* second ask, for people who already registered: the prototype offer */}
           <Reveal delay={0.3} className="w-full">
-            <div className="pimcore-prototype-form mt-14 md:mt-16 w-full max-w-[560px] mx-auto">
+            <div id="prototype" className="pimcore-prototype-form scroll-mt-24 mt-14 md:mt-16 w-full max-w-[560px] mx-auto">
               <h3 className="font-head text-white text-[22px] sm:text-[26px] md:text-[30px] leading-[1.15] text-center">
                 Sign up for a{" "}
                 <span style={{ color: "var(--sw-mint)" }}>free PIM prototype</span>

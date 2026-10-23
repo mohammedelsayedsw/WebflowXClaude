@@ -138,7 +138,7 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           onChange={(e) => { setEmail(e.target.value); setEmailErr(false); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         <label className="consent" style={consentErr ? { color: "#ff8f83" } : undefined}>
           <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setConsentErr(false); }} />
-          <span>Send me a few short emails with case studies and fixes from the scandiweb lifecycle team. Unsubscribe anytime.</span>
+          <span>Email me my results and tips. Unsubscribe anytime.</span>
         </label>
         <span className="optl">Mobile (optional)</span>
         <input type="tel" inputMode="tel" placeholder="+44 7700 900123" autoComplete="tel" value={phone}

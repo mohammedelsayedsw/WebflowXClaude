@@ -119,11 +119,13 @@ export function Hero() {
                       sets on one line or two. py-3 keeps it 48px when it
                       stacks above the box on phones. */}
                   <a
-                    href="#cta"
+                    href="https://youtu.be/ZRm1x6UqlhA"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`${btnPrimary} shrink-0 py-3`}
                     style={{ height: "auto" }}
                   >
-                    Save your seat
+                    Watch now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                   {/* no flex-1: the box hugs its two lines instead of

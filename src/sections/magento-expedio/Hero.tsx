@@ -17,13 +17,13 @@ export const btnSecondary =
 
 /**
  * The reveal, centred under the falling light: the "Introducing" label, Expedio
- * as the headline, the promise under it, one line on what it is, and the two ways in. Sized to its
- * content rather than the viewport, so the next section starts in view.
+ * as the headline, the promise under it, one line on what it is, and the two ways in. Fills the
+ * first screen on its own.
  */
 export function Hero() {
   return (
-    <section className="relative z-10 flex flex-col items-center text-center overflow-hidden">
-      <div className="wrap relative z-10 w-full flex flex-col items-center pt-[clamp(128px,20vh,220px)] pb-[clamp(72px,12vh,128px)]">
+    <section className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center text-center overflow-hidden">
+      <div className="wrap relative z-10 w-full flex flex-col items-center pt-24 pb-16 md:pt-[clamp(120px,15vh,170px)] md:pb-[clamp(48px,8vh,96px)]">
         <motion.div {...enter(0.3)} className="label-code !text-[13px] md:!text-[14px] !tracking-[0.24em]" style={{ color: "#ffffff" }}>
           Introducing
         </motion.div>

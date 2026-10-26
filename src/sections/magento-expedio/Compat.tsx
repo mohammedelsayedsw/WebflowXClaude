@@ -17,7 +17,7 @@ const ITEMS = [
   },
   {
     title: "Any hosting",
-    body: "Built into ReadyMage, where it switches on for an existing store.",
+    body: "Runs on ReadyMage or any other Magento hosting.",
   },
   {
     title: "Nothing changes for your team",

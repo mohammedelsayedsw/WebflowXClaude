@@ -1,15 +1,16 @@
 "use client";
 
 import { Reveal } from "@/components/primitives/Reveal";
+import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "@/sections/webinars-legacy-bridge/Eyebrow";
-import { EYEBROW_PARTS, RESTREAM_REGISTRATION_URL } from "./details";
+import { EYEBROW_PARTS, HUBSPOT_FORM } from "./details";
 import { Lockup } from "./Lockup";
 import { Stars } from "./Stars";
 
 /**
- * Registration: the Restream registration page, embedded. From lg up the frame
- * is 900px wide, past Restream's own breakpoint (~880px), so it shows the
- * banner and the form side by side; below that it is Restream's phone layout.
+ * Registration: the HubSpot form, in the same dark card the other webinar
+ * pages use. HubSpotForm ships no HubSpot stylesheet, so the fields take the
+ * page's own look from globals.css.
  */
 export function CTA() {
   return (
@@ -43,14 +44,8 @@ export function CTA() {
           </Reveal>
 
           <Reveal delay={0.2} className="w-full">
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] lg:max-w-[900px] mx-auto text-left">
-              <iframe
-                src={RESTREAM_REGISTRATION_URL}
-                title="Expedio Live registration"
-                allow="camera; microphone; fullscreen; autoplay"
-                loading="lazy"
-                className="block w-full max-w-[420px] h-[600px] lg:max-w-[900px] lg:h-[560px] mx-auto border-0 rounded-[12px]"
-              />
+            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
+              <HubSpotForm {...HUBSPOT_FORM} />
             </div>
           </Reveal>
 

@@ -7,8 +7,12 @@ export const EYEBROW_PARTS = ["Free webinar", "10 November", "3 PM GMT"];
 /** The Expedio demo: the same store on Magento and on Expedio, side by side. */
 export const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 
-/** Restream registration page, embedded in the final CTA as the sign-up form. */
-export const RESTREAM_REGISTRATION_URL = "https://studio.restream.io/webinar/wpnm-ydbn-ulr";
+/** HubSpot registration form, embedded in the final CTA. */
+export const HUBSPOT_FORM = {
+  portalId: "25724996",
+  formId: "0cc9ef45-ca7b-469d-b2c4-8a489b42cc3e",
+  region: "eu1",
+};
 
 /* `photo` is the card portrait, `face` the small hero avatar. */
 export const SPEAKERS = [

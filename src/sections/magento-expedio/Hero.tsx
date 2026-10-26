@@ -16,15 +16,19 @@ export const btnSecondary =
   "inline-flex h-12 items-center justify-center gap-2 rounded-[2px] border border-white/30 text-white/80 px-8 text-[17px] hover:border-white/60 hover:text-white transition font-[family-name:var(--font-golos)] font-semibold";
 
 /**
- * The reveal, centred under the falling light: Expedio as the headline, the
- * promise under it, one line on what it is, and the two ways in. Sized to its
+ * The reveal, centred under the falling light: the "Introducing" label, Expedio
+ * as the headline, the promise under it, one line on what it is, and the two ways in. Sized to its
  * content rather than the viewport, so the next section starts in view.
  */
 export function Hero() {
   return (
     <section className="relative z-10 flex flex-col items-center text-center overflow-hidden">
       <div className="wrap relative z-10 w-full flex flex-col items-center pt-[clamp(128px,20vh,220px)] pb-[clamp(72px,12vh,128px)]">
-        <h1>
+        <motion.div {...enter(0.3)} className="label-code !text-[13px] md:!text-[14px] !tracking-[0.24em]" style={{ color: "#ffffff" }}>
+          Introducing
+        </motion.div>
+
+        <h1 className="mt-5">
           <motion.span
             {...enter(0.5)}
             className="block text-[84px] sm:text-[120px] md:text-[length:min(190px,22vh)] lg:text-[length:min(210px,23vh)] leading-[0.86] tracking-[-0.06em] bg-clip-text text-transparent px-[0.06em] pb-[0.04em]"

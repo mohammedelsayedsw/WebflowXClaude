@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { EXPEDIO_SHARE_IMAGE } from "@/sections/magento-expedio/share";
 
 // The root layout applies the `%s | scandiweb` template; OG and Twitter titles are not templated.
-const TITLE = "Expedio: Magento 2x faster";
+const TITLE = "Expedio: Magento Performance 2x Faster";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "Expedio speeds up Magento's backend. At peak traffic, every page type answered at least twice as fast. Same store, same data, no replatforming.";
+  "Expedio makes Magento performance 2x faster in the backend: 20 ms homepage response at peak traffic vs 519 ms stock. Hyvä, Luma, any theme. No replatforming.";
 const URL = "https://scandiweb.com/solutions/magento/expedio";
 
 export const metadata: Metadata = {

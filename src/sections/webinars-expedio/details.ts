@@ -10,7 +10,7 @@ export const DEMO_URL = "https://expedio-demo.scandiweb.com/";
 /** HubSpot registration form, embedded in the final CTA. */
 export const HUBSPOT_FORM = {
   portalId: "25724996",
-  formId: "0cc9ef45-ca7b-469d-b2c4-8a489b42cc3e",
+  formId: "1c74ce44-f857-49f6-9476-51ed0a2ce79e",
   region: "eu1",
 };
 

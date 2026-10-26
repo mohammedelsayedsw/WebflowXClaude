@@ -40,8 +40,7 @@ export function Demo() {
           </div>
           <div className="lg:col-span-5">
             <p className="text-white/70 text-[17px] leading-[1.6]">
-              The same store runs twice, on the same data and hardware, with no page cache. Click anything on one
-              side and the other follows, with the timings measured live under each.
+              Same data, same hardware, no page cache. Click on one side and the other follows.
             </p>
           </div>
         </Reveal>

@@ -88,7 +88,9 @@ export function Faq() {
     <section id="faq" className="relative z-10 py-24 md:py-36 scroll-mt-20">
       <div className="wrap grid lg:grid-cols-12 gap-12 lg:gap-16">
         <Reveal className="lg:col-span-4">
-          <h2 className="text-[40px] md:text-[56px] lg:text-[64px]">Questions</h2>
+          <h2 className="text-[30px] md:text-[44px] leading-[1.06] tracking-[-0.022em] [text-wrap:balance]">
+            Questions about Expedio and Magento performance
+          </h2>
         </Reveal>
         <Reveal delay={0.1} className="lg:col-span-8 border-t border-white/10">
           {QA.map((x) => (

@@ -43,8 +43,13 @@ export function Benchmarks() {
   return (
     <section id="benchmark" className="relative z-10 py-24 md:py-36 scroll-mt-4">
       <div className="wrap">
-        <Reveal>
-          <h2 className="text-[40px] md:text-[56px] lg:text-[64px]">Benchmark</h2>
+        <Reveal className="max-w-[46rem]">
+          <h2 className="text-[30px] md:text-[44px] lg:text-[50px] leading-[1.06] tracking-[-0.022em] [text-wrap:balance]">
+            Magento performance benchmark: Expedio vs stock Magento
+          </h2>
+          <p className="mt-5 text-white/70 text-[18px] md:text-[21px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
+            One real merchant&apos;s store, measured twice on the same server, with no page cache in front of either.
+          </p>
         </Reveal>
         <div className="relative mt-10">
         <div role="tablist" aria-label="Benchmark views" className="tabs-scroll flex gap-1 overflow-x-auto hair-b -mx-1 px-1 pb-1 md:pb-0">

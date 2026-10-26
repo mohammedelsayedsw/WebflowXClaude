@@ -13,8 +13,6 @@ import { Reveal } from "@/components/primitives/Reveal";
  * names are left out on purpose.
  */
 
-const H2 = "text-[40px] md:text-[56px] lg:text-[64px]";
-
 /**
  * What shoppers get from a faster backend, each backed by a benchmark figure.
  * Only things the benchmark measured: no checkout, no admin.
@@ -23,57 +21,80 @@ const GAINS = [
   {
     num: "6.4x",
     title: "Faster response time, all page types",
-    body: "Median across the eight page types tested, at peak traffic.",
+    body: "Median of eight page types, peak traffic.",
   },
   {
-    num: "20\u00a0ms",
+    num: "20 ms",
     title: "Homepage response time",
-    body: "At peak traffic. Stock Magento: 519\u00a0ms on the same server.",
+    body: "Stock Magento: 519 ms, same server.",
   },
   {
     num: "3x",
     title: "More traffic on the same server",
-    body: "Requests per second the server handled before response times started to rise.",
+    body: "Before response times start to rise.",
   },
   {
     num: "3.2x",
     title: "Faster with all caches empty",
-    body: "Category pages: 57\u00a0ms on Expedio, 181\u00a0ms on stock Magento.",
+    body: "Category page: 57 ms vs 181 ms.",
   },
 ];
 
+/**
+ * One short line visible, the four findings as a ruled grid, and the Shopify
+ * and Liquid background in a disclosure. A <details> keeps that copy in the
+ * server HTML, so crawlers and answer engines still read it.
+ */
 export function WhatItIs() {
   return (
-    <section id="expedio" className="relative z-10 py-24 md:py-36 scroll-mt-20">
+    <section id="expedio" className="relative z-10 py-20 md:py-32 scroll-mt-20 border-t border-white/10">
       <div className="wrap">
         <Reveal className="max-w-[46rem]">
-          <h2 className={H2}>What Expedio is</h2>
-          <p className="mt-6 text-white/85 text-[19px] md:text-[22px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
-            Merchants who leave Magento for Shopify usually leave for a faster storefront. Expedio brings the best of
-            Shopify&apos;s theme technology to Magento, so the store you already run gets that speed.
-          </p>
-          <p className="mt-5 text-white/65 text-[16px] md:text-[17px] leading-[1.65]">
-            Expedio works under your theme, in the server-side work that builds each page. It is built on Liquid, the
-            open-source template language created by Shopify&apos;s co-founder and used in Shopify themes. Your Hyvä or
-            Luma storefront, your design, and your data stay as they are, and every page answers faster.
+          <h2 className="text-[30px] md:text-[44px] lg:text-[50px] leading-[1.06] tracking-[-0.022em] [text-wrap:balance]">
+            What Expedio is and how it improves Magento performance
+          </h2>
+          <p className="mt-5 text-white/70 text-[18px] md:text-[21px] leading-[1.45] font-[family-name:var(--font-golos)] font-medium [text-wrap:balance]">
+            Expedio works under your theme, in the server-side work that builds each page. Your Hyvä or Luma storefront,
+            design and data stay as they are.
           </p>
         </Reveal>
-        <Reveal delay={0.1} className="mt-14 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-4">
-          {GAINS.map((g, i) => (
-            <div
-              key={g.title}
-              className={`py-8 sm:pr-8 ${i > 0 ? "lg:pl-8 lg:border-l lg:border-white/10" : ""} ${i % 2 === 1 ? "sm:pl-8 sm:border-l sm:border-white/10" : ""}`}
-            >
+        <Reveal
+          delay={0.1}
+          className="mt-12 md:mt-14 grid gap-px bg-white/10 border border-white/10 rounded-[2px] sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {GAINS.map((g) => (
+            <div key={g.title} className="bg-[var(--sw-ink)] px-6 pt-7 pb-6 grid gap-2.5 content-start min-w-0">
               <div
-                className="font-[family-name:var(--font-golos)] font-bold text-[56px] md:text-[64px] leading-none tracking-[-0.04em] tabular-nums whitespace-nowrap"
+                className="font-[family-name:var(--font-golos)] font-bold text-[44px] md:text-[56px] leading-none tracking-[-0.04em] tabular-nums whitespace-nowrap"
                 style={{ color: "var(--sw-mint)" }}
               >
                 {g.num}
               </div>
-              <h3 className="mt-6 text-white text-[20px] md:text-[21px] leading-[1.25] [text-wrap:balance]">{g.title}</h3>
-              <p className="mt-3 text-white/60 text-[15px] leading-[1.6]">{g.body}</p>
+              <h3 className="text-white text-[17px] leading-[1.3] [text-wrap:balance]">{g.title}</h3>
+              <p className="text-white/55 text-[14px] leading-[1.55]">{g.body}</p>
             </div>
           ))}
+        </Reveal>
+        <Reveal delay={0.15} className="mt-10 max-w-[46rem]">
+          <details className="group border-t border-white/10">
+            <summary className="flex items-center gap-3 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden font-[family-name:var(--font-golos)] font-semibold text-[16px] text-white/70 hover:text-white transition">
+              <span
+                aria-hidden
+                className="shrink-0 w-[9px] h-[9px] border-r-[1.5px] border-b-[1.5px] border-[var(--sw-mint)] rotate-45 -translate-y-0.5 transition-transform duration-300 group-open:rotate-[225deg] group-open:translate-y-0.5"
+              />
+              Why merchants leave, and what Expedio borrows from Shopify
+            </summary>
+            <div className="pb-6 grid gap-4 text-white/65 text-[16px] leading-[1.65] max-w-[66ch]">
+              <p>
+                Merchants who leave Magento for Shopify usually leave for a faster storefront. Expedio brings the best of
+                Shopify&apos;s theme technology to Magento, so the store you already run gets that speed.
+              </p>
+              <p>
+                It is built on Liquid, the open-source template language created by Shopify&apos;s co-founder and used in
+                Shopify themes, applied to how Magento builds a page.
+              </p>
+            </div>
+          </details>
         </Reveal>
       </div>
     </section>

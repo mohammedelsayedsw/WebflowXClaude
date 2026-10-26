@@ -5,7 +5,7 @@ import { EXPEDIO_SHARE_IMAGE } from "@/sections/magento-expedio/share";
 const TITLE = "Expedio: Magento Performance 2x Faster";
 const SHARE_TITLE = `${TITLE} | scandiweb`;
 const DESCRIPTION =
-  "Expedio makes Magento performance 2x faster in the backend: 20 ms homepage response at peak traffic vs 519 ms stock. Hyvä, Luma, any theme. No replatforming.";
+  "Expedio makes Magento performance 2x faster in the backend: 20 ms homepage response at peak load vs 519 ms stock. Hyvä, Luma, any theme. No replatforming.";
 const URL = "https://scandiweb.com/solutions/magento/expedio";
 
 export const metadata: Metadata = {

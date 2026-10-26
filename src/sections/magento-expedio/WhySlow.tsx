@@ -29,7 +29,7 @@ const body = "text-white/65 text-[16px] leading-[1.65]";
 
 export function WhySlow() {
   return (
-    <section id="why-slow" className="relative z-10 py-20 md:py-32 scroll-mt-20 border-t border-white/10">
+    <section id="why-slow" className="relative z-10 py-20 md:py-32 scroll-mt-20">
       <div className="wrap">
         <Reveal className="max-w-[46rem]">
           <h2 className="text-[30px] md:text-[44px] lg:text-[50px] leading-[1.06] tracking-[-0.022em] [text-wrap:balance]">

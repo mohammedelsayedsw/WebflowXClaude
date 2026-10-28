@@ -3,6 +3,11 @@ import { APP_BASE_PATH } from "./src/lib/appBasePath";
 
 const nextConfig: NextConfig = {
   basePath: APP_BASE_PATH,
+  // /solutions/AEO-rankings serves the ranking (2026-10-28). Routes are case-sensitive and this match is not, so it also
+  // covers /aeo-rankings, which the filesystem serves first anyway. A redirect here would loop; a rewrite cannot.
+  async rewrites() {
+    return [{ source: "/AEO-rankings", destination: "/aeo-rankings" }];
+  },
   // Redirect old /pages/<slug> URLs to /accelerator/<slug> (renamed 2026-05-06).
   async redirects() {
     return [

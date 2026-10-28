@@ -22,8 +22,22 @@
 .bbf .px-a{width:8px;height:8px;left:14px;top:22px}
 .bbf .px-b{width:6px;height:6px;right:12px;bottom:14px}
 .bbf .top-r{padding:22px 28px}
-.bbf .by{font-size:12px;text-transform:uppercase;letter-spacing:.08em;background:var(--ink);padding:8px 12px;display:inline-block}
-.bbf .by a{color:var(--pink)}
+.bbf .top-r{position:relative}
+.bbf .menu{display:flex;list-style:none;margin:0;padding:0;background:var(--ink)}
+.bbf .menu-a{display:block;padding:9px 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--white)}
+.bbf .menu-a:hover,.bbf .menu-a.on{color:var(--pink)}
+.bbf .menu-by{padding:9px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid var(--line);color:var(--white);white-space:nowrap}
+.bbf .menu-by a{color:var(--pink)}
+.bbf .menu-btn{display:none}
+@media (max-width:1100px){
+  .bbf .menu-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);padding:10px 14px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+  .bbf .burger{position:relative;width:16px;height:2px;background:currentColor}
+  .bbf .burger::after{content:"";position:absolute;left:0;top:5px;width:16px;height:2px;background:currentColor}
+  .bbf .menu{display:none;position:absolute;right:28px;top:calc(100% - 18px);flex-direction:column;min-width:270px}
+  .bbf .menu.open{display:flex}
+  .bbf .menu-a{padding:15px 18px;font-size:13px;border-bottom:1px solid var(--line)}
+  .bbf .menu-by{border-left:0;padding:15px 18px}
+}
 
 /* type */
 .bbf .big{font:800 clamp(56px,9.6vw,148px)/.86 var(--disp);text-transform:uppercase;letter-spacing:-.005em}
@@ -202,7 +216,7 @@
   .bbf .mark-t{font-size:20px}
   .bbf .px-a{left:9px;top:16px;width:6px;height:6px}
   .bbf .top-r{padding:14px 12px}
-  .bbf .by{font-size:10px;padding:6px 8px}
+  .bbf .menu{right:12px;top:calc(100% - 10px);min-width:0;width:calc(100vw - 24px)}
   .bbf .hero,.bbf .r-head{padding-top:130px}
   .bbf .search input{font-size:16px;padding:20px 60px 20px 16px}
   .bbf .sugg li{padding:12px 16px}
@@ -220,3 +234,63 @@
   .bbf .sq2{display:none}
 }
 @media (max-width:900px){ .bbf .tbl .hide-m{display:none} }
+
+/* subpages: hero lead, winners podiums, guide steps and FAQ */
+.bbf .hero-lead{font-size:18px;max-width:58ch;margin-top:28px}
+.bbf .podiums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.bbf .podium{padding:30px 28px 34px 0}
+.bbf .podium+.podium{padding-left:28px;border-left:1px solid var(--line)}
+.bbf .win{display:block;background:var(--pink);color:var(--ink);padding:20px 18px;margin-top:18px}
+.bbf .win .lbl{display:block;opacity:1}
+.bbf .win-n{display:block;font:800 clamp(40px,4.2vw,64px)/.88 var(--disp);text-transform:uppercase;margin:10px 0 8px;text-decoration:none;overflow-wrap:anywhere}
+.bbf .win-n:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.bbf .win-x{font-size:13px;font-weight:600}
+.bbf .fin-l{margin-top:26px}
+.bbf .fin{list-style:none;margin-top:10px;border-top:1px solid var(--line)}
+.bbf .fin li{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.bbf .fin b{font:800 26px/1 var(--disp)}
+.bbf .fin-n{font-weight:700;text-decoration:none}
+.bbf .fin-n:hover{text-decoration:underline;text-underline-offset:3px}
+.bbf .fin .sub{display:block;font-size:12px;opacity:.6}
+.bbf .fin-s{font:800 24px/1 var(--disp)}
+.bbf .steps{list-style:none;margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);column-gap:56px;border-top:1px solid var(--ink)}
+.bbf .steps li{display:grid;grid-template-columns:64px 1fr;padding:26px 0;border-bottom:1px solid rgba(0,0,0,.15)}
+.bbf .steps b{font:800 56px/.85 var(--disp)}
+.bbf .steps h3{font:800 28px/.95 var(--disp);text-transform:uppercase;margin-bottom:10px}
+.bbf .steps p{font-size:15px}
+.bbf .steps a,.bbf .faq a,.bbf .reasons a{text-decoration:underline;text-underline-offset:3px}
+.bbf .measures{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border-top:1px solid var(--line)}
+.bbf .measures div{padding:26px 28px 26px 0;border-bottom:1px solid var(--line)}
+.bbf .measures div+div{padding-left:28px;border-left:1px solid var(--line)}
+.bbf .measures h3{font:800 44px/.9 var(--disp);text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+.bbf .measures p{font-size:15px;opacity:.85}
+.bbf .faq{margin-top:30px;border-top:1px solid var(--ink)}
+.bbf .faq details{border-bottom:1px solid rgba(0,0,0,.15)}
+.bbf .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font:800 clamp(24px,2.4vw,32px)/1 var(--disp);text-transform:uppercase}
+.bbf .faq summary::-webkit-details-marker{display:none}
+.bbf .faq summary::after{content:"+";font:800 32px/1 var(--disp)}
+.bbf .faq details[open] summary::after{content:"−"}
+.bbf .faq details p{font-size:16px;max-width:72ch;padding:0 0 24px}
+.bbf .reasons{list-style:none;margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;border-top:1px solid var(--ink)}
+.bbf .reasons li{padding:26px 0;border-bottom:1px solid rgba(0,0,0,.15)}
+.bbf .reasons h3{font:800 32px/.95 var(--disp);text-transform:uppercase;margin-bottom:10px}
+.bbf .reasons p{font-size:15px;max-width:52ch}
+.bbf .hero .search+.hint{margin-top:14px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:1100px){
+  .bbf .podiums{grid-template-columns:1fr 1fr}
+  .bbf .podium:nth-child(3){padding-left:0;border-left:0}
+  .bbf .podium:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:900px){
+  .bbf .steps,.bbf .reasons{grid-template-columns:1fr}
+  .bbf .measures{grid-template-columns:1fr}
+  .bbf .measures div+div{padding-left:0;border-left:0}
+}
+@media (max-width:640px){
+  .bbf .podiums{grid-template-columns:1fr}
+  .bbf .podium,.bbf .podium+.podium{padding:28px 0;border-left:0}
+  .bbf .podium+.podium{border-top:1px solid var(--line)}
+  .bbf .steps li{grid-template-columns:48px 1fr}
+  .bbf .steps b{font-size:44px}
+}
+.bbf .clip tr.more-row{display:none}

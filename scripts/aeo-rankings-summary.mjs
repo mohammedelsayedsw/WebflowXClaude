@@ -40,14 +40,29 @@ CC.forEach((cc) => {
     .sort((a, b) => a.ind.localeCompare(b.ind));
 });
 
+// Leader vs fifth place: average visibility across every industry ranking (industry x country) that has them.
+const lead = [];
+const fifth = [];
+CC.forEach((cc) => {
+  const groups = new Map();
+  D.countries[cc].forEach((r) => { if (!groups.has(r[1])) groups.set(r[1], []); groups.get(r[1]).push(r); });
+  groups.forEach((rows) => {
+    if (rows[0][4] != null) lead.push(rows[0][4]);
+    if (rows[4]?.[4] != null) fifth.push(rows[4][4]);
+  });
+});
+const mean = (a) => Math.round((a.reduce((s, x) => s + x, 0) / a.length) * 10) / 10;
+const stats = { rankings: lead.length, leaderVis: mean(lead), fifthVis: mean(fifth) };
+
 const companies = new Set(CC.flatMap((cc) => D.countries[cc].map((r) => r[0]))).size;
 const questions = Object.values(D.prompts).reduce((s, p) => s + CC.reduce((t, cc) => t + p[cc].length, 0), 0);
 
 const out = {
   totals: { companies, industries: D.industries.length, questions, baltic: D.baltic.length, ...Object.fromEntries(CC.map((cc) => [cc, D.countries[cc].length])) },
+  stats,
   baltic,
   country,
   industries,
 };
 writeFileSync("src/sections/aeo-rankings/summary.json", JSON.stringify(out));
-console.log(out.totals);
+console.log(out.totals, out.stats);

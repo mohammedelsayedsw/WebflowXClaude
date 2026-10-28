@@ -14,7 +14,24 @@ const WORK_EMAIL_MSG = "Use your work email";
 type Fields = { email: string; website: string };
 
 /** Closing band on every view: work email and website, no gate. On a company or industry view the message names what was looked up. */
-export function Contact({ company, industry, cc, website = "" }: { company?: string; industry?: string; cc?: CC; website?: string }) {
+export function Contact({
+  company,
+  industry,
+  cc,
+  website = "",
+  title,
+  text,
+  topic,
+}: {
+  company?: string;
+  industry?: string;
+  cc?: CC;
+  website?: string;
+  /** heading, intro and message subject for pages that are not about one company */
+  title?: string;
+  text?: string;
+  topic?: string;
+}) {
   const [f, setF] = useState<Fields>({ email: "", website });
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "error" | "done">("idle");
@@ -44,7 +61,7 @@ export function Contact({ company, industry, cc, website = "" }: { company?: str
       ? `Baltic AI Brand Ranking: looked up ${company}${where}`
       : industry
         ? `Baltic AI Brand Ranking: looked up the ${industry} ranking${where}`
-        : "Baltic AI Brand Ranking";
+        : `Baltic AI Brand Ranking${topic ? `: ${topic}` : ""}`;
     const cookie = document.cookie.match(/(^|;\s*)hubspotutk=([^;]+)/);
     const hutk = cookie ? decodeURIComponent(cookie[2]) : undefined;
 
@@ -87,8 +104,8 @@ export function Contact({ company, industry, cc, website = "" }: { company?: str
     <section className="band mag">
       <div className="wrap cta">
         <div>
-          <h2 className="mid">Want to move {subject} up this list?</h2>
-          <p>scandiweb helps Baltic brands get named in AI answers. We&apos;ll show you which questions {subject} is missing from.</p>
+          <h2 className="mid">{title ?? `Want to move ${subject} up this list?`}</h2>
+          <p>{text ?? `scandiweb helps Baltic brands get named in AI answers. We'll show you which questions ${subject} is missing from.`}</p>
         </div>
         {status === "done" ? (
           <div className="form form-done" role="status">

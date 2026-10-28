@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { CC, fmt, searchBrands, type Brand, type Model } from "./data";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { CC, fmt, loadModel, searchBrands, type Brand, type Model } from "./data";
 import { useGo } from "./nav";
 
 /** Company search with keyboard selection. The full dataset loads on first focus if it has not loaded yet. */
@@ -78,4 +78,11 @@ export function Search({ model, need }: { model: Model | null; need: () => void 
       )}
     </div>
   );
+}
+
+/** The search box on its own, for pages outside the ranking: loads the dataset on first focus, opens the company on the ranking. */
+export function SearchBox() {
+  const [model, setModel] = useState<Model | null>(null);
+  const need = useCallback(() => { loadModel().then(setModel, () => {}); }, []);
+  return <Search model={model} need={need} />;
 }

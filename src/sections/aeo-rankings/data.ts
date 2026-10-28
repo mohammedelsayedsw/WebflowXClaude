@@ -13,6 +13,8 @@ export type CountryTop = { k: string; n: string; dom: string | null; ind: string
 export type IndustryTop = { ind: string; count: number; top: { k: string; n: string; sc: number }[] };
 export type Summary = {
   totals: { companies: number; industries: number; questions: number; baltic: number } & Record<CC, number>;
+  /** industry rankings (industry x country) and the average visibility of the leader and of fifth place in them */
+  stats: { rankings: number; leaderVis: number; fifthVis: number };
   baltic: BalticTop[];
   country: Record<CC, CountryTop[]>;
   industries: Record<CC, IndustryTop[]>;

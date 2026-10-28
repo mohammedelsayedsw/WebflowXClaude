@@ -1,25 +1,72 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { assetUrl } from "@/lib/assets";
 import { Go } from "./nav";
+import { PAGES, ROUTE } from "./paths";
 import { ANSWERRANK_URL } from "./status";
 
-/** The event app's sticky mark (top left) and "built by scandiweb" (top right). */
+const MENU = [
+  { href: ROUTE, label: "Ranking" },
+  { href: PAGES.winners, label: "Winners & finalists" },
+  { href: PAGES.howTo, label: "How to rank in AI search?" },
+  { href: PAGES.missing, label: "Don't see your brand?" },
+];
+
+/** Link to the ranking home: switches the view in place on the ranking route, a normal route change elsewhere. */
+function HomeLink({ here, className, children, onClick }: { here: boolean; className?: string; children: React.ReactNode; onClick?: () => void }) {
+  if (here) return <Go to={{ kind: "home" }} className={className} onClick={onClick}>{children}</Go>;
+  return <Link href={ROUTE} className={className} onClick={onClick}>{children}</Link>;
+}
+
+/** The event app's sticky mark (top left) and the menu with "built by scandiweb" (top right). Under 1100px the menu folds into a MENU button. */
 export function Top() {
+  const path = usePathname().replace(/\/$/, "").toLowerCase();
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <header className="top">
-      <Go to={{ kind: "home" }} className="mark">
+      <HomeLink here={path === ROUTE} className="mark">
         <span className="px px-a" /><span className="px px-b" />
         <span className="mark-t">Baltic<br />AI Brand<br />Ranking</span>
-      </Go>
-      <div className="top-r">
-        <span className="by">built by <a href="https://scandiweb.com">scandiweb</a></span>
-      </div>
+      </HomeLink>
+      <nav className="top-r" aria-label="Baltic AI Brand Ranking">
+        <button type="button" className="menu-btn" aria-expanded={open} aria-controls="ar-menu" onClick={() => setOpen((o) => !o)}>
+          {open ? "Close" : "Menu"}
+          <span className="burger" aria-hidden />
+        </button>
+        <ul id="ar-menu" className={`menu ${open ? "open" : ""}`}>
+          {MENU.map((m) => {
+            const current = path === m.href;
+            return (
+              <li key={m.href}>
+                {m.href === ROUTE ? (
+                  <HomeLink here={current} className={`menu-a ${current ? "on" : ""}`} onClick={close}>{m.label}</HomeLink>
+                ) : (
+                  <Link href={m.href} className={`menu-a ${current ? "on" : ""}`} aria-current={current ? "page" : undefined} onClick={close}>{m.label}</Link>
+                )}
+              </li>
+            );
+          })}
+          <li className="menu-by">
+            built by <a href="https://scandiweb.com">scandiweb</a>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
 
-/** Credits and the method note under every view. */
+/** Credits and the method note under every page. */
 export function Bottom() {
   return (
     <>
@@ -44,7 +91,7 @@ export function Bottom() {
           <div>
             <p className="mid sm">Method</p>
             <p>
-              Each industry was tested with the same buyer questions in Latvia, Estonia, and Lithuania, and every company named in the AI answers was scored. Visibility is the share of answers that mention the company. Sentiment is how favorably the answers describe it. Avg. position is where it appears in the answer, 1 being first. Score rolls the three into one number out of 100. The Baltic ranking lists companies AI names in all three countries.
+              We asked ChatGPT, Gemini, and Perplexity the same buyer questions for each industry in Latvia, Estonia, and Lithuania over a month, and scored every company named in the answers. Visibility is the share of answers that mention the company. Sentiment is how favorably the answers describe it. Avg. position is where it appears in the answer, 1 being first. Score rolls the three into one number out of 100, with visibility weighted most. The Baltic ranking lists companies AI names in all three countries.
             </p>
           </div>
           <div>

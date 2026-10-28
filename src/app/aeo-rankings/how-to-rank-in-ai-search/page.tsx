@@ -43,8 +43,8 @@ export default function Page() {
       <Steps />
       <Faq />
       <Contact
-        title="Want to know where AI places your brand?"
-        text="scandiweb measures how AI assistants name and describe Baltic brands, and shows which buyer questions your brand is missing from."
+        title="Want help with these steps?"
+        text={`scandiweb starts by measuring where ChatGPT, Gemini, and Perplexity place your brand and which buyer questions leave it out. Then we work through the ${STEP_COUNT} steps with your team.`}
         topic="how to rank in AI search"
       />
       {LD.map((d, i) => <JsonLd key={i} data={d} />)}

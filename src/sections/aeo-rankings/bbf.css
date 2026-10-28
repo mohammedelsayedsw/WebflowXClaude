@@ -27,7 +27,8 @@
 .bbf .menu-a{display:block;padding:9px 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--white)}
 .bbf .menu-a:hover,.bbf .menu-a.on{color:var(--pink)}
 .bbf .menu-by{padding:9px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid var(--line);color:var(--white);white-space:nowrap}
-.bbf .menu-by a{color:var(--pink)}
+.bbf .menu-by a{color:var(--pink);text-transform:none}
+.bbf .sw{text-transform:none}
 .bbf .menu-btn{display:none}
 @media (max-width:1100px){
   .bbf .menu-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);padding:10px 14px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
@@ -167,9 +168,12 @@
 .bbf .cta{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
 .bbf .cta p{font-size:17px;max-width:46ch;margin-top:18px}
 .bbf .form{display:grid;gap:8px;background:var(--ink);padding:28px}
-.bbf .form input{width:100%;background:var(--white);color:var(--ink);border:0;border-radius:0;font:600 17px/1 var(--mono);padding:17px 16px;margin-bottom:10px;outline:3px solid transparent}
-.bbf .form input:focus{outline-color:var(--pink)}
+.bbf .fld{display:grid;gap:8px;min-width:0}
+.bbf .form input,.bbf .form textarea{width:100%;background:var(--white);color:var(--ink);border:0;border-radius:0;font:600 17px/1 var(--mono);padding:17px 16px;margin-bottom:10px;outline:3px solid transparent}
+.bbf .form textarea{display:block;font-size:15px;line-height:1.4;padding:13px 16px;resize:vertical;min-height:72px}
+.bbf .form input:focus,.bbf .form textarea:focus{outline-color:var(--pink)}
 .bbf .form input[aria-invalid=true]{outline-color:var(--orange)}
+.bbf .form .opt{text-transform:none;letter-spacing:0;font-weight:400;opacity:.7;margin-left:6px}
 .bbf .form .btn{margin-top:6px;background:var(--pink);color:var(--ink);border-color:var(--pink)}
 .bbf .form .btn:hover{background:var(--white);border-color:var(--white)}
 .bbf .form-err{color:var(--pink);font-size:13px;font-weight:600;margin:-6px 0 8px}
@@ -275,6 +279,28 @@
 .bbf .reasons li{padding:26px 0;border-bottom:1px solid rgba(0,0,0,.15)}
 .bbf .reasons h3{font:800 32px/.95 var(--disp);text-transform:uppercase;margin-bottom:10px}
 .bbf .reasons p{font-size:15px;max-width:52ch}
+/* guide hero: headline left, scandiweb offer and form right */
+.bbf .hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:56px;align-items:start}
+.bbf .hero-split .big{font-size:clamp(56px,7.4vw,120px)}
+.bbf .hero-offer .sq2{right:auto;left:38%}
+.bbf .offer{background:var(--ink);padding:26px 28px 10px;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,0 100%)}
+.bbf .offer-k{color:var(--pink);opacity:1}
+.bbf .offer-h{font:800 clamp(30px,2.5vw,36px)/.95 var(--disp);text-transform:uppercase;margin:10px 0 12px}
+.bbf .offer-t{font-size:14px;opacity:.85;margin-bottom:18px}
+.bbf .offer .form{padding:0;background:none;grid-template-columns:1fr 1fr;column-gap:12px;gap:6px 12px}
+.bbf .offer .form>*:not(.fld),.bbf .offer .fld.wide{grid-column:1/-1}
+.bbf .offer .form input{font-size:15px;padding:13px 14px}
+.bbf .offer .form textarea{min-height:58px;padding:11px 14px;font-size:14px}
+@media (max-width:1100px){
+  .bbf .hero-split{grid-template-columns:1fr;gap:44px}
+  .bbf .hero-split .big{font-size:clamp(56px,9.6vw,148px)}
+  .bbf .offer{max-width:560px}
+  .bbf .hero-offer .sq2{display:none}
+}
+@media (max-width:560px){
+  .bbf .offer{padding:22px 20px 6px}
+  .bbf .offer .form{grid-template-columns:1fr}
+}
 .bbf .hero .search+.hint{margin-top:14px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 @media (max-width:1100px){
   .bbf .podiums{grid-template-columns:1fr 1fr}

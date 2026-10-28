@@ -1414,7 +1414,6 @@ body.noscroll{overflow:hidden}
 /* optional mobile + SMS consent on the email gate */
 .r90 .gate .optl{display:block;text-align:left;font-size:12.5px;color:var(--mut2,var(--mut));margin:2px 0 6px}
 .r90 .gate .consent.sms{margin-top:0}
-.r90 .gate .smserr{font-size:13px;color:#ff8f83;text-align:left;margin:-6px 0 12px}
 
 /* score screen: "check your inbox to confirm" banner */
 .r90 .confirmbar{display:flex;gap:12px;align-items:flex-start;margin:0 0 22px;padding:14px 16px;border:1px solid rgba(110,247,110,.35);background:rgba(110,247,110,.07);border-radius:12px;font-size:14.5px;line-height:1.5;color:var(--fg2,rgba(255,255,255,.82))}
@@ -1437,3 +1436,9 @@ body.noscroll{overflow:hidden}
 .r90 .cf-host b{display:block;color:#fff;font-size:15px}
 .r90 .cf-host span{color:#a3a7bf;font-size:13px}
 @media(max-width:600px){.r90 .cf-card{margin-top:32px;padding:34px 20px 30px}}
+
+/* email gate: inline errors (one at a time, under the field that blocked the submit) */
+.r90 .gate .gerr{font-size:13px;line-height:1.4;color:#ff8f83;text-align:left;margin:-8px 0 12px}
+.r90 .gate .consent + .gerr{margin-top:-10px}
+.r90 .gate .consent.invalid input{outline:2px solid #e04f4f;outline-offset:2px;border-radius:3px}
+.r90 .gate .consent.invalid span{color:#ffb3ab}

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
+import { RECORDING_URL } from "./details";
 
 const DOCS: { icon: typeof FileText; title: string; body: string }[] = [
   {
@@ -101,13 +102,15 @@ export function AnyDocument() {
             <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[62ch]">
               Does your team type at least one of these documents by hand?
               <br />
-              Join the webinar and watch it go into the AS/400 (IBM&nbsp;i) by itself.
+              Watch the webinar and see it go into the AS/400 (IBM&nbsp;i) by itself.
             </p>
             <a
-              href="#cta"
+              href={RECORDING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${btnPrimary} w-full justify-center md:w-auto md:shrink-0`}
             >
-              Save your seat
+              Watch now
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

@@ -13,3 +13,6 @@ export const WEBINAR_TIME = "15:00 GMT";
  * meets the same short promise at the top of the page and at the form.
  */
 export const EYEBROW_PARTS = ["Free webinar", WEBINAR_DATE, WEBINAR_TIME];
+
+/** Recording of the webinar; every CTA on the page links here. */
+export const RECORDING_URL = "https://youtu.be/kpjm-m2UvCQ";

@@ -11,43 +11,41 @@ const FREE_MAIL = new Set([
 ]);
 const WORK_EMAIL_MSG = "Use your work email";
 
-type Fields = { email: string; website: string };
+type Fields = { name: string; email: string; website: string; note: string };
+type Field = keyof Fields;
 
-/** Closing band on every view: work email and website, no gate. On a company or industry view the message names what was looked up. */
-export function Contact({
-  company,
-  industry,
-  cc,
-  website = "",
-  title,
-  text,
-  topic,
-}: {
+type Context = {
   company?: string;
   industry?: string;
   cc?: CC;
   website?: string;
-  /** heading, intro and message subject for pages that are not about one company */
-  title?: string;
-  text?: string;
+  /** message subject for pages that are not about one company */
   topic?: string;
-}) {
-  const [f, setF] = useState<Fields>({ email: "", website });
-  const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
+  /** where the form sits, for the dataLayer event */
+  placement?: string;
+};
+
+/**
+ * Name, work email, website and an optional request. The HubSpot form only has email, website and message,
+ * and its public endpoint rejects fields that are not on the form, so name and request go into the message.
+ */
+export function ContactForm({ company, industry, cc, website = "", topic, placement = "footer" }: Context) {
+  const [f, setF] = useState<Fields>({ name: "", email: "", website, note: "" });
+  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "error" | "done">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const subject = company ?? "your brand";
   const id = useId();
 
-  const set = (k: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  const set = (k: Field) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setF((s) => ({ ...s, [k]: e.target.value }));
     setErrors((s) => ({ ...s, [k]: "" }));
   };
 
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-    const e: Partial<Record<keyof Fields, string>> = {};
+    const e: Partial<Record<Field, string>> = {};
     const em = f.email.trim().toLowerCase();
+    if (!f.name.trim()) e.name = "Enter your name";
     if (!EMAIL_OK.test(em)) e.email = "Enter a valid email address";
     else if (FREE_MAIL.has(em.split("@")[1])) e.email = WORK_EMAIL_MSG;
     if (!f.website.trim()) e.website = "Enter your website";
@@ -57,11 +55,14 @@ export function Contact({
     setErrorMsg("");
 
     const where = cc ? ` (${COUNTRY[cc]})` : "";
-    const message = company
+    const subject = company
       ? `Baltic AI Brand Ranking: looked up ${company}${where}`
       : industry
         ? `Baltic AI Brand Ranking: looked up the ${industry} ranking${where}`
         : `Baltic AI Brand Ranking${topic ? `: ${topic}` : ""}`;
+    const message = [subject, `Name: ${f.name.trim()}`, f.note.trim() && `Wants AI to recommend them for: ${f.note.trim()}`]
+      .filter(Boolean)
+      .join("\n");
     const cookie = document.cookie.match(/(^|;\s*)hubspotutk=([^;]+)/);
     const hutk = cookie ? decodeURIComponent(cookie[2]) : undefined;
 
@@ -81,7 +82,7 @@ export function Contact({
       if (res.ok) {
         const w = window as unknown as { dataLayer?: unknown[] };
         w.dataLayer = w.dataLayer || [];
-        w.dataLayer.push({ event: "aeo_rankings_contact_submit", form_id: HUBSPOT_FORM_ID, company: company ?? null, country: cc ?? null });
+        w.dataLayer.push({ event: "aeo_rankings_contact_submit", form_id: HUBSPOT_FORM_ID, company: company ?? null, country: cc ?? null, placement });
         setStatus("done");
         return;
       }
@@ -100,33 +101,61 @@ export function Contact({
     }
   };
 
+  if (status === "done")
+    return (
+      <div className="form form-done" role="status">
+        <p className="mid sm">Request sent</p>
+        <p>scandiweb will email {f.email.trim()} to arrange the call.</p>
+      </div>
+    );
+
+  const err = (k: Field) => errors[k] && <p className="form-err" role="alert">{errors[k]}</p>;
+  return (
+    <form className="form" onSubmit={submit} noValidate aria-label="AI visibility call request">
+      <div className="fld">
+        <label className="lbl" htmlFor={`${id}n`}>Name</label>
+        <input id={`${id}n`} type="text" autoComplete="name" placeholder="Your name" value={f.name} onChange={set("name")} aria-invalid={!!errors.name} />
+        {err("name")}
+      </div>
+      <div className="fld">
+        <label className="lbl" htmlFor={`${id}e`}>Work email</label>
+        <input id={`${id}e`} type="email" autoComplete="email" placeholder="you@company.com" value={f.email} onChange={set("email")} aria-invalid={!!errors.email} />
+        {err("email")}
+      </div>
+      <div className="fld wide">
+        <label className="lbl" htmlFor={`${id}w`}>Website</label>
+        <input id={`${id}w`} type="text" inputMode="url" autoComplete="url" placeholder="company.com" value={f.website} onChange={set("website")} aria-invalid={!!errors.website} />
+        {err("website")}
+      </div>
+      <div className="fld wide">
+        <label className="lbl" htmlFor={`${id}m`}>What should AI recommend you for? <span className="opt">Optional</span></label>
+        <textarea id={`${id}m`} rows={2} placeholder="Best bank for small businesses in Latvia" value={f.note} onChange={set("note")} />
+      </div>
+      <button type="submit" className="btn" disabled={status === "submitting"}>
+        {status === "submitting" ? "Sending" : <>Talk to <span className="sw">scandiweb</span></>}
+      </button>
+      {status === "error" && <p className="form-err" role="alert" style={{ marginTop: 8 }}>{errorMsg}</p>}
+      <p className="form-note">
+        <a href="https://scandiweb.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+      </p>
+    </form>
+  );
+}
+
+/** Keeps "scandiweb" lowercase inside the uppercase BBF headings. */
+const lower = (t: string) => t.split(/(scandiweb)/i).map((x, i) => (i % 2 ? <span key={i} className="sw">{x}</span> : x));
+
+/** Closing band on every view, no gate. On a company or industry view the message names what was looked up. */
+export function Contact({ title, text, ...ctx }: Context & { title?: string; text?: string }) {
+  const subject = ctx.company ?? "your brand";
   return (
     <section className="band mag">
       <div className="wrap cta">
         <div>
-          <h2 className="mid">{title ?? `Want to move ${subject} up this list?`}</h2>
+          <h2 className="mid">{lower(title ?? `Want to move ${subject} up this list?`)}</h2>
           <p>{text ?? `scandiweb helps Baltic brands get named in AI answers. We'll show you which questions ${subject} is missing from.`}</p>
         </div>
-        {status === "done" ? (
-          <div className="form form-done" role="status">
-            <p className="mid sm">Request sent</p>
-            <p>scandiweb will email {f.email.trim()} to arrange the call.</p>
-          </div>
-        ) : (
-          <form className="form" onSubmit={submit} noValidate aria-label="AI visibility call request">
-            <label className="lbl" htmlFor={`${id}e`}>Work email</label>
-            <input id={`${id}e`} type="email" autoComplete="email" placeholder="you@company.com" value={f.email} onChange={set("email")} aria-invalid={!!errors.email} />
-            {errors.email && <p className="form-err" role="alert">{errors.email}</p>}
-            <label className="lbl" htmlFor={`${id}w`}>Website</label>
-            <input id={`${id}w`} type="text" inputMode="url" autoComplete="url" placeholder="company.com" value={f.website} onChange={set("website")} aria-invalid={!!errors.website} />
-            {errors.website && <p className="form-err" role="alert">{errors.website}</p>}
-            <button type="submit" className="btn" disabled={status === "submitting"}>{status === "submitting" ? "Sending" : "Talk to scandiweb"}</button>
-            {status === "error" && <p className="form-err" role="alert" style={{ marginTop: 8 }}>{errorMsg}</p>}
-            <p className="form-note">
-              <a href="https://scandiweb.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
-            </p>
-          </form>
-        )}
+        <ContactForm {...ctx} />
       </div>
     </section>
   );

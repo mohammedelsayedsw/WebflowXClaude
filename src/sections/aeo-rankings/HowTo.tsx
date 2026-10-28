@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactForm } from "./Contact";
 import { fmt, num, type Summary } from "./data";
 import { PAGES, ROUTE } from "./paths";
 
@@ -62,16 +63,27 @@ const STEPS: { h: string; p: React.ReactNode }[] = [
 ];
 export const STEP_COUNT = STEPS.length;
 
+/** Guide hero with scandiweb's offer and the contact form beside the headline. */
 export function HowToHero({ summary }: { summary: Summary }) {
   return (
-    <section className="hero" id="hero">
-      <div className="sq sq1" /><div className="sq sq2" /><div className="sq sq3" />
-      <div className="hero-in">
-        <p className="kick">Guide &nbsp;■&nbsp; Baltic AI Brand Ranking</p>
-        <h1 className="big">How to Rank<br />in AI Search</h1>
-        <p className="hero-lead">
-          What decides which brands ChatGPT, Gemini, and Perplexity recommend, and the steps that make your brand easier for them to name. Based on {num(summary.totals.companies)} companies ranked in Latvia, Estonia, and Lithuania.
-        </p>
+    <section className="hero hero-offer" id="hero">
+      <div className="sq sq1" /><div className="sq sq2" />
+      <div className="hero-in hero-split">
+        <div>
+          <p className="kick">Guide &nbsp;■&nbsp; Baltic AI Brand Ranking</p>
+          <h1 className="big">How to Rank<br />in AI Search</h1>
+          <p className="hero-lead">
+            What decides which brands ChatGPT, Gemini, and Perplexity recommend, and the steps that make your brand easier for them to name. Based on {num(summary.totals.companies)} companies ranked in Latvia, Estonia, and Lithuania.
+          </p>
+        </div>
+        <aside className="offer" aria-labelledby="offer-h">
+          <p className="lbl offer-k">AI search optimization by <span className="sw">scandiweb</span></p>
+          <h2 id="offer-h" className="offer-h">Want AI to recommend your brand?</h2>
+          <p className="offer-t">
+            scandiweb finds the buyer questions where AI names your competitors instead of you, then works on your site and the sources AI reads.
+          </p>
+          <ContactForm topic="how to rank in AI search" placement="hero" />
+        </aside>
       </div>
     </section>
   );

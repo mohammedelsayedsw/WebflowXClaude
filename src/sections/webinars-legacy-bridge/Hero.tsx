@@ -7,7 +7,7 @@ import { assetUrl } from "@/lib/assets";
 import { Badges } from "./Badges";
 import { Eyebrow } from "./Eyebrow";
 import { HeroVisual } from "./HeroVisual";
-import { EYEBROW_PARTS } from "./details";
+import { EYEBROW_PARTS, RECORDING_URL } from "./details";
 import { TrustBar } from "./TrustBar";
 
 function HeroBg() {
@@ -71,8 +71,14 @@ export function Hero() {
 
               <Reveal delay={0.22}>
                 <div className="mt-[clamp(20px,3.4vh,40px)]">
-                  <a href="#cta" className={`${btnPrimary} py-3`} style={{ height: "auto" }}>
-                    Save your seat
+                  <a
+                    href={RECORDING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${btnPrimary} py-3`}
+                    style={{ height: "auto" }}
+                  >
+                    Watch now
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>

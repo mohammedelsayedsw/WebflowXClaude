@@ -1,16 +1,13 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
+import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { Reveal } from "@/components/primitives/Reveal";
-import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { Eyebrow } from "./Eyebrow";
-import { EYEBROW_PARTS } from "./details";
+import { EYEBROW_PARTS, RECORDING_URL } from "./details";
 import { Lockup } from "./Lockup";
 
-/**
- * Registration. The HubSpot form renders unstyled by HubSpot (empty `css` and
- * `cssRequired` in HubSpotForm); the look comes from
- * `.hubspot-form-wrapper .hbspt-form *` in globals.css.
- */
+/** Closing CTA. The webinar is over, so it links to the recording. */
 
 export function CTA() {
   return (
@@ -44,36 +41,30 @@ export function CTA() {
           <Reveal delay={0.08}>
             <h2 className="font-head text-white text-[26px] sm:text-[34px] md:text-[46px] lg:text-[52px] leading-[1.06] tracking-[-0.01em] max-w-[20ch] mx-auto">
               See the AS/400 (IBM&nbsp;i) screen{" "}
-              <span style={{ color: "var(--sw-mint)" }}>fill itself in</span>,
-              live
+              <span style={{ color: "var(--sw-mint)" }}>fill itself in</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
             <p className="mt-6 text-white/80 text-[16px] md:text-[18px] leading-relaxed max-w-[56ch] mx-auto text-balance">
-              Watch the full demo and ask the founder about your own AS/400
-              (IBM&nbsp;i) setup.
+              Watch the full demo recording and see LegacyBridge work on a
+              real AS/400 (IBM&nbsp;i) screen.
             </p>
           </Reveal>
 
-          {/* w-full on the Reveal: it is a flex item under items-center, so
-              without it the wrapper shrinks to the form's intrinsic width. */}
-          <Reveal delay={0.2} className="w-full">
-            <div className="mt-10 md:mt-12 w-full max-w-[560px] mx-auto text-left">
-              <HubSpotForm
-                portalId="25724996"
-                formId="6f775a13-d110-4293-943c-86bbc43e2e84"
-                region="eu1"
-                submitText="Save your seat"
-              />
+          <Reveal delay={0.2}>
+            <div className="mt-10 md:mt-12 flex justify-center">
+              <a
+                href={RECORDING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${btnPrimary} py-3`}
+                style={{ height: "auto" }}
+              >
+                Watch now
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
-          </Reveal>
-
-          <Reveal delay={0.26}>
-            <p className="mt-5 text-white/60 text-[13px] md:text-[14px] leading-relaxed">
-              Can&apos;t join live? Register and we&apos;ll send you the
-              recording.
-            </p>
           </Reveal>
 
           <Reveal delay={0.32}>

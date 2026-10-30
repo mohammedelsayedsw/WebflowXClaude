@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FORM_ENDPOINT, SMS_CONSENT, SUBMIT_ENDPOINT } from "./config";
+import { SMS_CONSENT, SUBMIT_ENDPOINT } from "./config";
+import { relayLead, type LeadFunnel } from "@/lib/leadRelay";
 import { disp, list, str, type Field, type FunnelCfg, type QuizData, type Utm } from "./types";
 import { adConversions, pushLeadEvent, setTestMode, track, trackLead } from "./track";
 import { Arrow } from "./ui";
@@ -106,13 +107,10 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
 
     const payload = Q.lead(data, readUtm());
     trackLead({ name, email, [Q.companyKey]: str(data, Q.companyKey), website: str(data, "website"), whatsapp: str(data, "whatsapp"), ...Q.summary(data) });
-    let ok = false;
-    try {
-      const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
-      ok = r.ok;
-    } catch { ok = false; }
-    track("lead_mail", { ok: ok ? 1 : 0 });
-    if (!ok) { setBusy(false); setBad("submit"); track("gate_result", { r: "fail" }); return; }
+    /* Lead email: FormSubmit, with the hub as store + fallback mailer. Never blocks the lead:
+       until 30 Oct 2026 a FormSubmit failure stopped the form here, and its outage (29 Oct) lost every AEO lead. */
+    const relay = await relayLead(cfg.fn as LeadFunnel, payload as unknown as Record<string, string>);
+    track("lead_mail", { ok: relay.fsOk ? 1 : 0, kind: relay.fsKind, hub: relay.hub });
 
     sentRef.current = true;
     track("gate_result", { r: "ok" });

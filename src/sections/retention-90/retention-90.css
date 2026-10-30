@@ -1442,3 +1442,19 @@ body.noscroll{overflow:hidden}
 .r90 .gate .consent + .gerr{margin-top:-10px}
 .r90 .gate .consent.invalid input{outline:2px solid #e04f4f;outline-offset:2px;border-radius:3px}
 .r90 .gate .consent.invalid span{color:#ffb3ab}
+
+/* email gate: less top space on desktop so "Show my score" clears a 720px-high screen */
+.r90 #screen-gate .qbody{padding-top:28px!important}
+/* email gate on phones: fit the whole form, "Show my score" included, above the fold */
+@media(max-width:560px){
+  .r90 #screen-gate .qhead{padding-bottom:10px!important}
+  .r90 #screen-gate .qhead .wrap{padding-bottom:6px}
+  .r90 #screen-gate .qbody{padding:10px 16px 40px!important}
+  .r90 #screen-gate .gate .domchip{margin-bottom:8px;padding:4px 11px;font-size:12.5px}
+  .r90 #screen-gate .gate h2{font-size:21px!important;line-height:1.2;margin-bottom:6px}
+  .r90 #screen-gate .gate p{font-size:14px;line-height:1.4;margin-bottom:12px}
+  .r90 #screen-gate .gate input[type=text],.r90 #screen-gate .gate input[type=email],.r90 #screen-gate .gate input[type=tel]{padding:11px 14px;margin-bottom:8px}
+  .r90 #screen-gate .gate .optl{margin:0 0 4px}
+  .r90 #screen-gate .gate .consent{margin:4px 0 12px}
+  .r90 #screen-gate .gate .btn.big{padding-top:14px!important;padding-bottom:14px!important}
+}

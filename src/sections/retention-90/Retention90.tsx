@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "./retention-90.css";
 import { QUESTIONS } from "./copy";
 import { computeLeak, computeScore, fmt, fmtK } from "./scoring";
-import { CONFIRM_STEP, DL_EVENT, FORM_ENDPOINT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
+import { CONFIRM_STEP, DL_EVENT, UPDATE_ENDPOINT, LEAD_SUBJECT, LI_CONVERSION_ID, NOTIFY_CC, PIXEL_CONTENT, SUBMIT_ENDPOINT, VERTICAL } from "./status";
 import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Proof, Steps, Team, Terms } from "./Landing";
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
+import { relayLead } from "@/lib/leadRelay";
 import { SMS_CONSENT } from "./copy";
 import { buildOmni, OMNI_BAND_HEAD } from "./omni";
 import { BookingModal } from "./BookingModal";
@@ -122,10 +123,12 @@ export function Retention90() {
       delete lead.company_website;
       /* backup copy in the hub (auth-protected there), independent of the email */
       trackLead({ name: lead.name, email: lead.email, store: lead.store, score: lead.retentionScore, leak: lead.estimatedOpportunity, country: lead.country || "" });
-      /* record what formsubmit answered, so a silent stop shows up in the hub the same day */
-      return fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(lead) })
-        .then((r) => (r.json() as Promise<{ success?: string | boolean; message?: string }>).catch(() => ({} as { success?: string; message?: string })).then((j) => track("lead_mail", { pass: r.status, kind: String(j.success) === "true" ? "ok" : String(j.message || "unknown").slice(0, 100) })))
-        .catch((e) => track("lead_mail", { pass: 0, kind: "network: " + String(e).slice(0, 80) }));
+      /* FormSubmit first, then the hub (stores the lead; emails it itself if FormSubmit failed).
+         Both results are recorded, so a silent stop shows up in the hub the same day. */
+      return relayLead("retention", lead).then((r) => {
+        track("lead_mail", { pass: r.fsOk ? 200 : 0, kind: r.fsKind });
+        track("lead_hub", { kind: r.hub });
+      });
     };
     try {
       fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...payload, omni }) })

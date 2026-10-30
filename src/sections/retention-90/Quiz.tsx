@@ -129,13 +129,13 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
 
   const submit = () => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) return fail("email", "Enter a valid email so we can send your score.");
-    if (!consent) return fail("consent", "Tick the box so we can email your score.");
     /* mobile is optional; if one is typed it must be valid and have its own SMS consent */
     const p = normPhone(phone);
     if (p) {
       if (!/^\+[1-9]\d{6,14}$/.test(p)) return fail("phone", "Enter your mobile with the country code, like +44 7700 900123, or leave it empty.");
       if (!sms) return fail("sms_consent", "Tick the SMS box so we can text you, or leave the mobile empty.");
     }
+    if (!consent) return fail("consent", "Tick the box so we can email your score.");
     setErr(null);
     onSubmit(name.trim(), email.trim(), hp, p && sms ? p : "");
   };
@@ -149,7 +149,6 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
         <div className="progrow"><div className="progress"><i style={{ width: "100%" }} /></div><span className="ppct">100%</span></div>
       </div>
       <div className="qbody"><div className="gate">
-        <div className="ring-teaser" />
         <div><span className="domchip">{store}</span></div>
         <h2>Your Retention Score is ready.</h2>
         <p>Enter your email to see your score now, including your estimated revenue gap, 90-day upside, and the flows with the biggest opportunity.</p>
@@ -160,12 +159,6 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           {...inv("email")}
           onChange={(e) => { setEmail(e.target.value); clear("email"); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         {errFor("email")}
-        <label className={"consent" + (err?.field === "consent" ? " invalid" : "")}>
-          <input ref={refs.consent} type="checkbox" checked={consent} {...inv("consent")}
-            onChange={(e) => { setConsent(e.target.checked); if (e.target.checked) clear("consent"); }} />
-          <span>Email me my results and tips. Unsubscribe anytime.</span>
-        </label>
-        {errFor("consent")}
         <span className="optl">Mobile (optional)</span>
         <input ref={refs.phone} type="tel" inputMode="tel" placeholder="+44 7700 900123" autoComplete="tel" value={phone}
           className={err?.field === "phone" ? "err" : ""} {...inv("phone")}
@@ -179,6 +172,12 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           </label>
         ) : null}
         {errFor("sms_consent")}
+        <label className={"consent" + (err?.field === "consent" ? " invalid" : "")}>
+          <input ref={refs.consent} type="checkbox" checked={consent} {...inv("consent")}
+            onChange={(e) => { setConsent(e.target.checked); if (e.target.checked) clear("consent"); }} />
+          <span>Email me my results and tips. Unsubscribe anytime.</span>
+        </label>
+        {errFor("consent")}
         <button className="btn big" style={{ width: "100%" }} onClick={submit}>Show my score →</button>
         <p className="priv">No spam. No list selling. Your data stays private.</p>
         <div className="gproof">

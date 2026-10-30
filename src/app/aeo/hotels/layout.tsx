@@ -35,7 +35,10 @@ fbq('init','421756528598953');fbq('track','PageView');`}
       <style>{`.footer_block{display:none!important}
 #hachly-ai-container{display:none!important}
 .intercom-lightweight-app,.intercom-launcher,.intercom-launcher-frame,#intercom-container{display:none!important}
-#hs-web-interactives-top-push-anchor,#hs-web-interactives-top-anchor,#hs-web-interactives-bottom-anchor,#hs-web-interactives-floating-container,#hs-interactives-modal-overlay{display:none!important}`}</style>
+#hs-web-interactives-top-push-anchor,#hs-web-interactives-top-anchor,#hs-web-interactives-bottom-anchor,#hs-web-interactives-floating-container,#hs-interactives-modal-overlay{display:none!important}
+/* HubSpot locks page scroll (an overflow:hidden class on body) while one of its pop-up CTAs is open.
+   The pop-ups are hidden above, so the lock froze the page. Keep it scrollable unless our own popup is open. */
+body:not(.noscroll):not(.aeolp-lock){overflow-y:auto!important}`}</style>
       {children}
     </>
   );

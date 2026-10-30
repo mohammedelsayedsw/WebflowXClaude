@@ -9,6 +9,7 @@ import { Call, Cases, EntryHero, Facts, FixHero, Flows, LIFT_CTA, Objections, Pr
 import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { relayLead } from "@/lib/leadRelay";
+import { postWithRetry } from "@/lib/postRetry";
 import { SMS_CONSENT } from "./copy";
 import { buildOmni, OMNI_BAND_HEAD } from "./omni";
 import { BookingModal } from "./BookingModal";
@@ -130,15 +131,21 @@ export function Retention90() {
         track("lead_hub", { kind: r.hub });
       });
     };
-    try {
-      fetch(SUBMIT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...payload, omni }) })
-        .then((r) => r.json() as Promise<{ ok?: boolean; bookingUrl?: string; ip?: string; country?: string }>)
-        .then((j) => {
-          track("gate_result", { pass: j && j.bookingUrl ? 1 : 0, country: (j && j.country) || "" });
-          if (j && j.bookingUrl) { setBookingUrl(j.bookingUrl); sendLead({ ip: j.ip || "", country: j.country || "", user_agent: navigator.userAgent }); }
-        })
-        .catch(() => { track("gate_result", { pass: "unreachable" }); sendLead({ gate: "unreachable", user_agent: navigator.userAgent }); });
-    } catch {}
+    /* The route saves the lead to Omnisend and returns the booking link. One retry: in-app browsers
+       sometimes drop the first request, and an unanswered call here means no Omnisend contact. */
+    postWithRetry(SUBMIT_ENDPOINT, { ...payload, omni })
+      .then(async ({ res, tries }) => {
+        let j: { ok?: boolean; bookingUrl?: string; ip?: string; country?: string } | null = null;
+        try { j = res ? await res.json() : null; } catch { j = null; }
+        if (!j) {
+          track("gate_result", { pass: "unreachable", tries, status: res ? res.status : 0 });
+          sendLead({ gate: "unreachable", user_agent: navigator.userAgent });
+          return;
+        }
+        track("gate_result", { pass: j.bookingUrl ? 1 : 0, country: j.country || "", tries });
+        if (j.bookingUrl) { setBookingUrl(j.bookingUrl); sendLead({ ip: j.ip || "", country: j.country || "", user_agent: navigator.userAgent }); }
+      })
+      .catch(() => { track("gate_result", { pass: "unreachable" }); sendLead({ gate: "unreachable", user_agent: navigator.userAgent }); });
     /* 2. Meta, same Lead event the audit funnels fire */
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: PIXEL_CONTENT, value: leak, currency: "USD" }); } catch {}
     /* 2b. LinkedIn: event-specific Lead conversion (Insight Tag already on the page) */

@@ -7,10 +7,10 @@ export type Funnel = "aeo-hotels" | "aeo-clinics";
 export const FORM_ENDPOINT = "https://formsubmit.co/ajax/9d1b2680c9cd3f7648a04329a9ece4aa";
 export const NOTIFY_CC = "marcusopt@gmail.com";
 
-/* Marko's hub collector. OFF until track.php / the hub dashboards can split funnels by `fn`:
-   today r-retention-funnel counts every session in the log, so AEO visits would inflate the
-   Retention numbers. Flip to true once the hub filters by fn. GTM dataLayer + Meta fire regardless. */
-export const HUB_TRACKING = false;
+/* Marko's hub collector. ON since 30 Oct 2026: track.php keeps `fn` and its sessions view returns
+   Retention only unless asked for an AEO funnel, so AEO visits never touch the Retention numbers.
+   The hub's "AEO funnels" page reads them. GTM dataLayer + Meta fire regardless. */
+export const HUB_TRACKING = true;
 
 /* Omnisend wiring (server routes in app/api/aeo). The lead email still goes from the browser to FormSubmit. */
 export const SUBMIT_ENDPOINT = "/solutions/api/aeo/submit";

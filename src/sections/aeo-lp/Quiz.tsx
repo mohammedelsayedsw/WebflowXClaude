@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SMS_CONSENT, SUBMIT_ENDPOINT } from "./config";
 import { relayLead, type LeadFunnel } from "@/lib/leadRelay";
+import { postWithRetry } from "@/lib/postRetry";
 import { disp, list, str, type Field, type FunnelCfg, type QuizData, type Utm } from "./types";
 import { adConversions, pushLeadEvent, setTestMode, track, trackLead } from "./track";
 import { Arrow } from "./ui";
@@ -116,12 +117,10 @@ export function Quiz({ cfg, open, onClose, onStep, onSent, onBook }: Props) {
     track("gate_result", { r: "ok" });
     pushLeadEvent(Q.summary(data));
     /* Omnisend: subscribe + tags/props + personal booking link (server route; never blocks the lead) */
-    try {
-      fetch(SUBMIT_ENDPOINT, {
-        method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
-        body: JSON.stringify({ funnel: cfg.fn.replace("aeo-", ""), email, name, phone: sms ? phone : "", sms_consent: sms ? "yes" : "", omni: Q.omni(data) }),
-      }).then((r) => track("omni", { res: r.headers.get("x-omnisend") || String(r.status), sms: sms ? 1 : 0 })).catch(() => track("omni", { res: "network" }));
-    } catch {}
+    /* One retry: in-app browsers sometimes drop the first request, which would leave the lead out of Omnisend */
+    postWithRetry(SUBMIT_ENDPOINT, { funnel: cfg.fn.replace("aeo-", ""), email, name, phone: sms ? phone : "", sms_consent: sms ? "yes" : "", omni: Q.omni(data) }, { keepalive: true })
+      .then(({ res, tries }) => track("omni", { res: res ? (res.headers.get("x-omnisend") || String(res.status)) : "network", sms: sms ? 1 : 0, tries }))
+      .catch(() => track("omni", { res: "network" }));
     try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: cfg.pixel.lead }); } catch {}
     adConversions(email);
     setBusy(false); setSent(true); onStep("done");

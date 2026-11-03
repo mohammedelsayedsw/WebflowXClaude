@@ -142,14 +142,15 @@ export async function POST(req: NextRequest) {
      the server only decides and hands back the booking link plus ip/country to attach. */
   const link = await bookingUrl(name, email, store);
   /* optional mobile from the same form; the browser only sends it with the SMS box ticked */
-  const phone = String(body.phone || "").replace(/[\s().-]/g, "");
+  const phoneRaw = String(body.phone || "").trim().slice(0, 40);
+  const phone = phoneRaw.replace(/[\s().-]/g, "");
   const sms = /^\+[1-9]\d{6,14}$/.test(phone) && !!String(body.sms_consent || "").trim();
   /* 10. Omnisend: subscribe the contact with consent, scan answers as r90_* properties and
      band/focus tags. Starts the confirm + nurture flow. No key in env = logged no-op. */
   const omni = await omnisendUpsert({
     email, firstName: name, subscribeEmail: true,
     tags: cleanTags([...(Array.isArray(body.omni?.tags) ? body.omni.tags : []), ...(sms ? ["r90-sms-optin"] : [])]),
-    props: { ...cleanProps(body.omni?.props), r90_book_url: bookPageUrl(link, email), r90_confirm_url: confirmPageUrl(link, email), r90_country: country, ...(sms ? { r90_sms: "yes" } : {}) },
+    props: { ...cleanProps(body.omni?.props), r90_book_url: bookPageUrl(link, email), r90_confirm_url: confirmPageUrl(link, email), r90_country: country, ...(phoneRaw ? { r90_phone: phoneRaw } : {}), ...(sms ? { r90_sms: "yes" } : {}) },
     ...(sms ? { phone, sms: true } : {}),
     consent: { ip, userAgent: ua, source: "scandiweb-retention-90" },
   });

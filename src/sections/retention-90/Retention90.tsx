@@ -10,7 +10,6 @@ import { Gate, Quiz } from "./Quiz";
 import { Summary } from "./Summary";
 import { relayLead } from "@/lib/leadRelay";
 import { postWithRetry } from "@/lib/postRetry";
-import { SMS_CONSENT } from "./copy";
 import { buildOmni, OMNI_BAND_HEAD } from "./omni";
 import { BookingModal } from "./BookingModal";
 import { R90Footer, R90Header } from "./SiteChrome";
@@ -99,8 +98,7 @@ export function Retention90() {
     if (/@example\.com$/i.test(email)) setTestMode(true);
     const omni = buildOmni(store, answers, labels, score, leak, OMNI_BAND_HEAD(score));
     leadRef.current = { name, email, tags: omni.tags };
-    track("submit", { score, leak, store, hp: honeypot ? 1 : 0, sms: phone ? 1 : 0 });
-    if (phone) track("sms_optin", { cc: (phone.match(/^\+(\d{1,3})/) || [])[1] || "", where: "gate" });
+    track("submit", { score, leak, store, hp: honeypot ? 1 : 0, phone: phone ? 1 : 0 });
     const payload: Record<string, string> = {
       name, email, store,
       vertical: VERTICAL,
@@ -109,8 +107,8 @@ export function Retention90() {
       consent: "yes",
       company_website: honeypot,
     };
-    /* optional mobile, only sent with its own ticked SMS consent */
-    if (phone) { payload.phone = phone; payload.sms_consent = SMS_CONSENT; payload.sms_consent_at = new Date().toISOString(); }
+    /* optional mobile, any format; a contact detail only (no SMS sign-up) */
+    if (phone) payload.phone = phone;
     QUESTIONS.forEach((Q) => { payload[Q.q] = labels[Q.k] || ""; });
     const P = new URLSearchParams(window.location.search);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => { const v = P.get(k); if (v) payload[k] = v; });

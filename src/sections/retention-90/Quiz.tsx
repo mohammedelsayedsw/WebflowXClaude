@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { COPY, QUESTIONS, SMS_CONSENT, T, img } from "./copy";
+import { COPY, QUESTIONS, T, img } from "./copy";
 import { cleanDomain, validDomain } from "./scoring";
 
 const KEYS = "ABCDEF";
@@ -81,21 +81,15 @@ export function Quiz({ store, qi, onStore, onPick, onBack }: QuizProps) {
   );
 }
 
-type GateField = "email" | "consent" | "phone" | "sms_consent";
+type GateField = "email" | "consent";
 
 type GateProps = {
   store: string;
   onBack: () => void;
-  /* phone is "" unless a valid number was entered AND the SMS box was ticked */
+  /* phone: optional, any format, "" when left empty */
   onSubmit: (name: string, email: string, honeypot: string, phone: string) => void;
   onError?: (kind: string) => void;
 };
-
-export function normPhone(v: string) {
-  let p = v.trim().replace(/[\s().-]/g, "");
-  if (p.startsWith("00")) p = "+" + p.slice(2);
-  return p;
-}
 
 export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
   const [name, setName] = useState("");
@@ -103,14 +97,11 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
   const [consent, setConsent] = useState(false);
   const [hp, setHp] = useState("");
   const [phone, setPhone] = useState("");
-  const [sms, setSms] = useState(false);
   /* One visible error at a time, shown under the field that blocked the submit (role="alert"). */
   const [err, setErr] = useState<{ field: GateField; msg: string } | null>(null);
   const refs = {
     email: useRef<HTMLInputElement>(null),
     consent: useRef<HTMLInputElement>(null),
-    phone: useRef<HTMLInputElement>(null),
-    sms_consent: useRef<HTMLInputElement>(null),
   };
   const clear = (f: GateField) => setErr((e) => (e && e.field === f ? null : e));
 
@@ -123,21 +114,15 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
       if (!el) return;
       const r = el.getBoundingClientRect();
       if (r.top < 0 || r.bottom > window.innerHeight) el.scrollIntoView({ behavior: "smooth", block: "center" });
-      if (field === "email" || field === "phone") el.focus({ preventScroll: true });
+      if (field === "email") el.focus({ preventScroll: true });
     });
   };
 
   const submit = () => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) return fail("email", "Enter a valid email so we can send your score.");
-    /* mobile is optional; if one is typed it must be valid and have its own SMS consent */
-    const p = normPhone(phone);
-    if (p) {
-      if (!/^\+[1-9]\d{6,14}$/.test(p)) return fail("phone", "Enter your mobile with the country code, like +44 7700 900123, or leave it empty.");
-      if (!sms) return fail("sms_consent", "Tick the SMS box so we can text you, or leave the mobile empty.");
-    }
     if (!consent) return fail("consent", "Tick the box so we can email your score.");
     setErr(null);
-    onSubmit(name.trim(), email.trim(), hp, p && sms ? p : "");
+    onSubmit(name.trim(), email.trim(), hp, phone.trim());
   };
   const errFor = (f: GateField) => (err && err.field === f ? <div className="gerr" id={"gerr-" + f} role="alert">{err.msg}</div> : null);
   const inv = (f: GateField) => (err && err.field === f ? { "aria-invalid": true as const, "aria-describedby": "gerr-" + f } : {});
@@ -160,18 +145,8 @@ export function Gate({ store, onBack, onSubmit, onError }: GateProps) {
           onChange={(e) => { setEmail(e.target.value); clear("email"); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         {errFor("email")}
         <span className="optl">Mobile (optional)</span>
-        <input ref={refs.phone} type="tel" inputMode="tel" placeholder="+44 7700 900123" autoComplete="tel" value={phone}
-          className={err?.field === "phone" ? "err" : ""} {...inv("phone")}
-          onChange={(e) => { setPhone(e.target.value); clear("phone"); if (!e.target.value.trim()) clear("sms_consent"); }} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
-        {errFor("phone")}
-        {phone.trim() ? (
-          <label className={"consent sms" + (err?.field === "sms_consent" ? " invalid" : "")}>
-            <input ref={refs.sms_consent} type="checkbox" checked={sms} {...inv("sms_consent")}
-              onChange={(e) => { setSms(e.target.checked); if (e.target.checked) clear("sms_consent"); }} />
-            <span>{SMS_CONSENT}</span>
-          </label>
-        ) : null}
-        {errFor("sms_consent")}
+        <input type="tel" inputMode="tel" placeholder="Mobile number" autoComplete="tel" value={phone}
+          onChange={(e) => setPhone(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
         <label className={"consent" + (err?.field === "consent" ? " invalid" : "")}>
           <input ref={refs.consent} type="checkbox" checked={consent} {...inv("consent")}
             onChange={(e) => { setConsent(e.target.checked); if (e.target.checked) clear("consent"); }} />

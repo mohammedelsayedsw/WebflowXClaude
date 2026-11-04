@@ -275,6 +275,13 @@
   width: 100% !important;
   float: none !important;
 }
+/* Hidden HubSpot fields (UTM capture) must stay hidden: the flex rule above
+   overrides HubSpot's own display:none, which printed their labels. */
+.hubspot-form-wrapper .hs-form-field:has(input[type="hidden"]),
+.hubspot-form-wrapper fieldset > div:has(> .input input[type="hidden"]),
+.hubspot-form-wrapper fieldset:has(input[type="hidden"]):not(:has(input:not([type="hidden"]), textarea, select)) {
+  display: none !important;
+}
 .hubspot-form-wrapper .hs-form-field > label,
 .hubspot-form-wrapper fieldset > div > label {
   display: block !important;

@@ -29,4 +29,4 @@ export const OMNISEND_API_KEY_FALLBACK = "6acda3b7160c976a2a289b79-OoKM8xT4FE3th
 
 /* Calendly personal access token for the no-show webhook (api/retention/calendly).
    Used only when env CALENDLY_WEBHOOK_TOKEN is not set. Paste the token between the quotes. */
-export const CALENDLY_WEBHOOK_TOKEN_FALLBACK = "";
+export const CALENDLY_WEBHOOK_TOKEN_FALLBACK = "eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNzkzNzY5NDUyLCJqdGkiOiIwMTk3ZmEyMC1hMWM3LTQ2ZjItYWZiNC0yZDI2YTdkN2RkNzMiLCJ1c2VyX3V1aWQiOiJhYmM1ZjJkYy1mNTAxLTQ4MDMtOWJmYy05ZTZhMGZkODdiMDEiLCJzY29wZSI6IndlYmhvb2tzOnJlYWQgd2ViaG9va3M6d3JpdGUifQ.6OsMupuHJ0PESjrwVl14F0BTx619Eyf55QS4iajNL7KRjkc-5BCdsjAPX0mNpnZqmQIZf7XosXONbqKQTvE8rg";

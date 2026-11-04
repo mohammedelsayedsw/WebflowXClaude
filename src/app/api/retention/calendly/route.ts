@@ -1,6 +1,6 @@
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { CALENDLY_EVENT_TYPE } from "@/sections/retention-90/server-config";
+import { CALENDLY_EVENT_TYPE, CALENDLY_WEBHOOK_TOKEN_FALLBACK } from "@/sections/retention-90/server-config";
 import { omnisendFind, omnisendRetag } from "@/sections/retention-90/omnisend-server";
 
 export const runtime = "nodejs";
@@ -25,7 +25,7 @@ const EVENTS = ["invitee.created", "invitee_no_show.created", "invitee_no_show.d
 const API = "https://api.calendly.com";
 const MAX_AGE_SEC = 600;
 
-const token = () => process.env.CALENDLY_WEBHOOK_TOKEN || "";
+const token = () => process.env.CALENDLY_WEBHOOK_TOKEN || CALENDLY_WEBHOOK_TOKEN_FALLBACK;
 const signingKey = (t: string) => createHash("sha256").update(t + ":r90-calendly-webhook").digest("hex");
 const json = (body: unknown, status = 200) => NextResponse.json(body, { status });
 

@@ -89,3 +89,48 @@ export async function omnisendUpsert(c: Upsert): Promise<string> {
     return "fail:network";
   }
 }
+
+/* ---------- for server-to-server updates (Calendly webhook) ----------
+   Read a contact, then write tags/props back without touching consent: the email status
+   sent is the contact's current one, so an unsubscribed contact stays unsubscribed.
+   Never creates a contact (callers only act when found). */
+export type OmniContact = { email: string; tags: string[]; emailStatus: string };
+
+export async function omnisendFind(email: string): Promise<OmniContact | null | "error"> {
+  const key = process.env.OMNISEND_API_KEY || OMNISEND_API_KEY_FALLBACK;
+  if (!key) return "error";
+  try {
+    const r = await fetch(`${process.env.OMNISEND_API_URL || API}?email=${encodeURIComponent(email)}`, {
+      headers: { Authorization: `Omnisend-API-Key ${key}`, "Omnisend-Version": VERSION, Accept: "application/json" },
+      signal: AbortSignal.timeout(6000),
+    });
+    if (!r.ok) return "error";
+    const j = (await r.json()) as { contacts?: { email?: string; tags?: unknown; identifiers?: { type?: string; channels?: { email?: { status?: string } } }[] }[] };
+    const c = j.contacts?.[0];
+    if (!c) return null;
+    const idf = (c.identifiers || []).find((i) => i.type === "email");
+    return { email: c.email || email, tags: Array.isArray(c.tags) ? c.tags.map(String) : [], emailStatus: idf?.channels?.email?.status || "nonSubscribed" };
+  } catch { return "error"; }
+}
+
+export async function omnisendRetag(c: OmniContact, tags: string[], props: Record<string, string>): Promise<string> {
+  const key = process.env.OMNISEND_API_KEY || OMNISEND_API_KEY_FALLBACK;
+  if (!key) return "skip:no_key";
+  try {
+    const r = await fetch(process.env.OMNISEND_API_URL || API, {
+      method: "POST",
+      headers: { Authorization: `Omnisend-API-Key ${key}`, "Omnisend-Version": VERSION, "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        identifiers: [{ type: "email", id: c.email, channels: { email: { status: c.emailStatus } } }],
+        tags: [...new Set(tags)].slice(0, 100),
+        customProperties: props,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!r.ok) { console.log(JSON.stringify({ event: "omnisend_retag_failed", status: r.status, body: (await r.text()).slice(0, 300) })); return `fail:${r.status}`; }
+    return "ok";
+  } catch (e) {
+    console.log(JSON.stringify({ event: "omnisend_retag_failed", error: String(e) }));
+    return "fail:network";
+  }
+}

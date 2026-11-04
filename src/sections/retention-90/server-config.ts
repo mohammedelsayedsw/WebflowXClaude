@@ -26,3 +26,7 @@ export const BLOCKLIST = {
    request (13 Oct 2026) until an env var is available. env OMNISEND_API_KEY wins when set.
    Rotate this key in Omnisend once it moves to env: the repo is public. */
 export const OMNISEND_API_KEY_FALLBACK = "6acda3b7160c976a2a289b79-OoKM8xT4FE3thK8jAXLsDHTozIQzGLf9BhylNwVytBNYj7JTHd";
+
+/* Calendly personal access token for the no-show webhook (api/retention/calendly).
+   Used only when env CALENDLY_WEBHOOK_TOKEN is not set. Paste the token between the quotes. */
+export const CALENDLY_WEBHOOK_TOKEN_FALLBACK = "";

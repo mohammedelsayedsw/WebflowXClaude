@@ -24,3 +24,5 @@ export const CLIENTS: { name: string; src: string; w: number; h: number; lg: boo
   { name: "Acer", src: "/chat-to-buy/clients/acer.svg", w: 83, h: 56, lg: true },
   { name: "Samsung", src: "/chat-to-buy/clients/samsung.svg", w: 116, h: 56, lg: true },
 ];
+
+// Retriggers the Webflow Cloud build: #836 merged 2026-11-06 13:11 UTC with CI green and was not published.

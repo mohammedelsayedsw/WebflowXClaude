@@ -3,22 +3,26 @@
 import { useEffect, useRef } from "react";
 import { animate, useInView, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/primitives/Reveal";
-import { AMAZON_SOURCE } from "./status";
+import { assetUrl } from "@/lib/assets";
 import { LAVENDER, LINE_LIGHT, SECTION_Y } from "./ui";
 
 const H2_LIGHT =
   "font-head font-bold text-[var(--sw-black)] text-[30px] sm:text-[36px] md:text-[48px] leading-[1.05] tracking-[-0.02em]";
 
-const NUMBERS: { who: string; tag: string; value: number; suffix: string; text: string }[] = [
+const NUMBERS: { who: string; logo: string; logoClass: string; tag: string; value: number; suffix: string; text: string }[] = [
   {
     who: "Amazon",
-    tag: AMAZON_SOURCE,
+    logo: "/chat-to-buy/logos/amazon.svg",
+    logoClass: "h-[30px] md:h-[34px] translate-y-[5px]",
+    tag: "Has conversational commerce",
     value: 60,
     suffix: "%+",
     text: "more likely to buy when shoppers use Amazon’s AI assistant",
   },
   {
     who: "Byggmax",
+    logo: "/chat-to-buy/logos/byggmax.svg",
+    logoClass: "h-[17px] md:h-[19px]",
     tag: "Uses Chat to Buy",
     value: 5,
     suffix: "×",
@@ -26,6 +30,8 @@ const NUMBERS: { who: string; tag: string; value: number; suffix: string; text: 
   },
   {
     who: "Zorro",
+    logo: "/chat-to-buy/logos/zorro.png",
+    logoClass: "h-[21px] md:h-[24px]",
     tag: "Uses Chat to Buy",
     value: 32,
     suffix: "%",
@@ -81,9 +87,10 @@ export function Proof() {
               delay={i * 0.07}
               className={`py-4 md:py-0 md:pt-[clamp(20px,4vh,40px)] md:px-8 lg:px-10 ${i ? `border-t md:border-t-0 md:border-l ${LINE_LIGHT}` : "md:pl-0"}`}
             >
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-head font-bold text-[18px] md:text-[20px] text-[var(--sw-black)]">{n.who}</span>
-                <span className="text-[12px] md:text-[13px] text-[var(--sw-black)]/50">{n.tag}</span>
+              <div className="flex h-9 items-center justify-between gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={assetUrl(n.logo)} alt={n.who} className={`${n.logoClass} w-auto`} />
+                <span className="text-right text-[12px] md:text-[13px] leading-snug text-[var(--sw-black)]/50">{n.tag}</span>
               </div>
               <div className="mt-2 md:mt-[clamp(10px,2.4vh,24px)] font-head font-bold text-[var(--sw-blue)] text-[44px] md:text-[clamp(48px,min(6vw,10vh),88px)] leading-none tracking-[-0.04em] tabular-nums">
                 <CountUp value={n.value} suffix={n.suffix} />

@@ -150,7 +150,7 @@ export function ChatDemo() {
       ref={ref}
       role="img"
       aria-label="Example conversation: the assistant greets a shopper, who asks for a sofa for a small apartment under 1,000 euros. The assistant recommends three sofas from the store, explains which one is easiest to clean, and the shopper adds it to the cart."
-      className="flex h-[440px] max-md:[@media(max-height:700px)]:h-[400px] md:h-[clamp(400px,62vh,540px)] w-full flex-col overflow-hidden rounded-[2px] bg-white lg:ml-auto lg:max-w-[460px]"
+      className="flex h-[440px] max-md:[@media(max-height:700px)]:h-[400px] md:h-[clamp(340px,56vh,540px)] w-full flex-col overflow-hidden rounded-[2px] bg-white lg:ml-auto lg:max-w-[460px]"
     >
       <div aria-hidden className="flex h-12 shrink-0 items-center justify-between border-b border-[#dfe1f0] px-4">
         <span className="font-head font-bold text-[15px] text-[var(--sw-black)]">Chat to Buy</span>

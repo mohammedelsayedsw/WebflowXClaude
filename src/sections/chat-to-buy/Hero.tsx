@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
 import { assetUrl } from "@/lib/assets";
 import { ChatDemo } from "./ChatDemo";
+import { CLIENTS } from "./status";
 import { scrollToId } from "./ui";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -13,12 +14,28 @@ const enter = (delay: number) => ({
   transition: { duration: 0.9, delay, ease: EASE },
 });
 
-/** One full screen under the site header: the promise and one button on the left, the assistant selling in a conversation on the right. */
+function ClientLogos({ className = "" }: { className?: string }) {
+  return (
+    <ul className={`flex flex-wrap items-center gap-x-8 gap-y-5 md:gap-x-12 ${className}`} aria-label="Our clients include">
+      {CLIENTS.map((c) => (
+        <li key={c.name}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={assetUrl(c.src)} alt={c.name} className={`${c.h} w-auto opacity-80`} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * One full screen under the site header: the promise and one button on the left, the assistant selling in a conversation
+ * on the right, and the big clients along the bottom (under the button on phones, so they stay in the first screen).
+ */
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col justify-center bg-[var(--sw-black)] overflow-hidden"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col bg-[var(--sw-black)] overflow-hidden"
     >
       {/* scandiweb waves: the scandiweb.com homepage hero loop */}
       <video
@@ -51,7 +68,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap w-full relative pt-[120px] md:pt-[clamp(110px,16vh,140px)] pb-12 md:pb-[clamp(40px,7vh,96px)] grid gap-10 lg:gap-16 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
+      <div className="wrap w-full relative flex-1 pt-[120px] md:pt-[clamp(100px,14vh,130px)] pb-12 lg:pb-[clamp(20px,4vh,48px)] grid gap-10 lg:gap-16 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center content-center">
         <div>
           <motion.div {...enter(0.1)} className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={{ color: "var(--sw-mint)" }}>
             Chat to Buy by scandiweb
@@ -74,12 +91,25 @@ export function Hero() {
             </a>
             <p className="mt-3.5 text-[14px] text-white/60">Built on your own products. Nothing changes on your live store.</p>
           </motion.div>
+          <motion.div {...enter(0.5)} className="mt-9 lg:hidden">
+            <p className="text-[13px] text-white/50">Our clients include</p>
+            <ClientLogos className="mt-4" />
+          </motion.div>
         </div>
 
         <motion.div {...enter(0.35)}>
           <ChatDemo />
         </motion.div>
       </div>
+
+      <motion.div {...enter(0.55)} className="relative hidden lg:block">
+        <div className="wrap w-full">
+          <div className="flex items-center justify-between gap-10 border-t border-white/10 py-[clamp(16px,3vh,28px)]">
+            <p className="shrink-0 text-[14px] text-white/50">Our clients include</p>
+            <ClientLogos className="justify-end" />
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

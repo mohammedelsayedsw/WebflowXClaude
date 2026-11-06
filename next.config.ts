@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        // Chat to Buy has one page so far: the free demo (2026-11-06).
+        source: "/chat-to-buy",
+        destination: "/chat-to-buy/free-demo",
+        permanent: false,
+      },
+      {
         // AI Visibility Core moved from /aeo (2026-10-19). Exact match only: /aeo/hotels and /aeo/clinics stay.
         source: "/aeo",
         destination: "/ai-visibility-package",

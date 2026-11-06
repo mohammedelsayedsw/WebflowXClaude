@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { btnPrimary } from "@/components/primitives/buttonStyles";
-import { HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID } from "./status";
+import { FORM_HAS_CONTACT_FIELDS, HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID } from "./status";
 import { H2_DARK, SECTION_Y } from "./ui";
 
 const STEPS: [string, string][] = [
@@ -63,14 +63,30 @@ export function Demo() {
 
     const ref = readRef();
     const [first, ...rest] = f.name.trim().split(/\s+/);
-    const message = [f.notes.trim(), ref && `Ref: ${ref}`].filter(Boolean).join("\n\n");
+    const message = FORM_HAS_CONTACT_FIELDS
+      ? [f.notes.trim(), ref && `Ref: ${ref}`].filter(Boolean).join("\n\n")
+      : [
+          "Chat to Buy free demo request",
+          `Name: ${f.name.trim()}`,
+          f.company.trim() && `Company: ${f.company.trim()}`,
+          f.phone.trim() && `Phone or WhatsApp: ${f.phone.trim()}`,
+          f.notes.trim() && `Note: ${f.notes.trim()}`,
+          ref && `Ref: ${ref}`,
+        ]
+          .filter(Boolean)
+          .join("\n");
+    const contact = FORM_HAS_CONTACT_FIELDS
+      ? [
+          { name: "firstname", value: first },
+          { name: "lastname", value: rest.join(" ") },
+          { name: "company", value: f.company.trim() },
+          { name: "phone", value: f.phone.trim() },
+        ]
+      : [];
     const fields = [
       { name: "email", value: f.email.trim() },
       { name: "website", value: f.website.trim() },
-      { name: "firstname", value: first },
-      { name: "lastname", value: rest.join(" ") },
-      { name: "company", value: f.company.trim() },
-      { name: "phone", value: f.phone.trim() },
+      ...contact,
       { name: "message", value: message },
     ]
       .filter((x) => x.value)
@@ -100,7 +116,7 @@ export function Demo() {
         | null;
       const type = body?.errors?.[0]?.errorType;
       if (type === "INVALID_EMAIL" || type === "BLOCKED_EMAIL") {
-        setErrors({ email: "Enter a valid email address" });
+        setErrors({ email: type === "BLOCKED_EMAIL" ? "Use your work email" : "Enter a valid email address" });
         setStatus("idle");
         return;
       }

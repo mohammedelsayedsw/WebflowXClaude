@@ -14,13 +14,23 @@ const enter = (delay: number) => ({
   transition: { duration: 0.9, delay, ease: EASE },
 });
 
-function ClientLogos({ className = "" }: { className?: string }) {
+const TRUSTED = "Trusted with AI by industry giants";
+
+/** Logos at their intrinsic size (as on the scandiweb.com homepage), scaled down on phones. */
+function ClientLogos({ className = "", phone = false }: { className?: string; phone?: boolean }) {
   return (
-    <ul className={`flex flex-wrap items-center gap-x-8 gap-y-5 md:gap-x-12 ${className}`} aria-label="Our clients include">
+    <ul className={`flex items-center ${className}`} aria-label={TRUSTED}>
       {CLIENTS.map((c) => (
-        <li key={c.name}>
+        <li key={c.name} className={phone ? (c.lg ? "" : "hidden") : c.lg ? "" : "hidden xl:block"}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assetUrl(c.src)} alt={c.name} className={`${c.h} w-auto opacity-80`} />
+          <img
+            src={assetUrl(c.src)}
+            alt={c.name}
+            width={c.w}
+            height={c.h}
+            className="block max-w-none"
+            style={phone ? { width: c.w * 0.55, height: c.h * 0.55 } : undefined}
+          />
         </li>
       ))}
     </ul>
@@ -68,7 +78,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
 
-      <div className="wrap w-full relative flex-1 pt-[120px] md:pt-[clamp(100px,14vh,130px)] pb-12 lg:pb-[clamp(20px,4vh,48px)] grid gap-10 lg:gap-16 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center content-center">
+      <div className="wrap w-full relative flex-1 pt-[120px] md:pt-[clamp(91px,13vh,130px)] pb-12 lg:pb-[clamp(20px,4vh,48px)] grid gap-10 lg:gap-16 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center content-center">
         <div>
           <motion.div {...enter(0.1)} className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={{ color: "var(--sw-mint)" }}>
             Chat to Buy by scandiweb
@@ -91,9 +101,9 @@ export function Hero() {
             </a>
             <p className="mt-3.5 text-[14px] text-white/60">Built on your own products. Nothing changes on your live store.</p>
           </motion.div>
-          <motion.div {...enter(0.5)} className="mt-9 lg:hidden">
-            <p className="text-[13px] text-white/50">Our clients include</p>
-            <ClientLogos className="mt-4" />
+          <motion.div {...enter(0.5)} className="mt-9 border-t border-[rgba(126,131,160,0.3)] pt-6 lg:hidden">
+            <p className="font-head font-bold text-white text-[16px] leading-[1.5]">{TRUSTED}</p>
+            <ClientLogos phone className="mt-3 justify-between gap-x-3" />
           </motion.div>
         </div>
 
@@ -102,12 +112,10 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <motion.div {...enter(0.55)} className="relative hidden lg:block">
-        <div className="wrap w-full">
-          <div className="flex items-center justify-between gap-10 border-t border-white/10 py-[clamp(16px,3vh,28px)]">
-            <p className="shrink-0 text-[14px] text-white/50">Our clients include</p>
-            <ClientLogos className="justify-end" />
-          </div>
+      <motion.div {...enter(0.55)} className="relative hidden lg:block border-t border-[rgba(126,131,160,0.3)]">
+        <div className="wrap w-full flex items-center justify-between gap-10 py-[clamp(14px,3vh,32px)]">
+          <p className="w-[240px] shrink-0 font-head font-bold text-white text-[18px] leading-[28px]">{TRUSTED}</p>
+          <ClientLogos className="flex-1 justify-between gap-6 max-w-[1000px]" />
         </div>
       </motion.div>
     </section>

@@ -1,476 +1,471 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion, animate, AnimatePresence } from "motion/react";
+import { Inbox, Link2, ListChecks, Database } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { assetUrl } from "@/lib/assets";
-import { Rise, btnMain, go } from "@/sections/operalayer/kit/parts";
-import {
-  QUICK,
-  PROBLEMS,
-  FULL,
-  STATS,
-  STEPS,
-  ROLES,
-  FIT,
-  START,
-  HOOD,
-  FAQ_GROUPS,
-} from "@/sections/operalayer-invoice-matching/copy";
+import { H2, Rise, btnMain, btnSoft, go } from "@/sections/operalayer/kit/parts";
+import { C, Window, AppButton, ease } from "@/sections/operalayer/kit/ui";
+import { LayerField } from "@/sections/operalayer/kit/LayerField";
+import { QUICK, FULL, STEPS, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 
-/* ---------- Shared bits ---------- */
+/* Copy on this page is Anton's, word for word (copy.ts). Nothing here adds sentences of its own. */
 
 const PAD = "py-[clamp(64px,11vh,128px)]";
-const ON_LIGHT_H2 =
-  "font-head font-bold text-[var(--sw-black)] text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.02em]";
-const ON_DARK_H2 =
-  "font-head font-bold text-white text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.02em]";
-const RULE_LIGHT = "border-[rgba(63,74,175,0.2)]";
-const RULE_DARK = "border-[rgba(126,131,160,0.3)]";
+const ESELO = assetUrl("/operalayer/invoice-matching/eselo-mark.png");
 
-export const btnBlue =
-  "inline-flex h-12 items-center justify-center gap-2 rounded-[2px] border border-[var(--sw-blue)] text-[var(--sw-blue)] px-8 text-[17px] font-head font-semibold hover:bg-[var(--sw-blue)] hover:text-white transition whitespace-nowrap";
-
-const INSPECT = "ol-im-inspect";
-
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <div className={`font-head font-semibold text-[15px] md:text-[16px] mb-4 md:mb-5 ${dark ? "text-[var(--sw-mint)]" : "text-[var(--sw-blue)]"}`}>
-      {children}
-    </div>
-  );
-}
-
-function PlusMinus({ dark = false }: { dark?: boolean }) {
-  const c = dark ? "bg-[var(--sw-mint)]" : "bg-[var(--sw-blue)]";
-  return (
-    <span aria-hidden className="relative h-4 w-4 shrink-0">
-      <span className={`absolute left-0 top-1/2 h-[2px] w-4 -translate-y-1/2 ${c}`} />
-      <span className={`absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 ${c} transition-transform duration-200 group-open:scale-y-0`} />
-    </span>
-  );
-}
-
-function Acc({ title, children, open = false }: { title: string; children: React.ReactNode; open?: boolean }) {
-  return (
-    <details open={open} className={`group border-b ${RULE_LIGHT}`}>
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 md:py-6 text-[var(--sw-black)] text-[18px] md:text-[20px] font-semibold font-head leading-snug [&::-webkit-details-marker]:hidden hover:text-[var(--sw-blue)] transition-colors">
-        {title}
-        <PlusMinus />
-      </summary>
-      <div className="pb-6 md:pb-7 pr-2 md:pr-10">{children}</div>
-    </details>
-  );
-}
-
-function Bullets({ items, dark = false }: { items: string[]; dark?: boolean }) {
-  return (
-    <ul className="grid gap-3">
-      {items.map((t) => (
-        <li key={t} className={`relative pl-6 text-[16px] md:text-[17px] leading-[1.55] ${dark ? "text-white/75" : "text-[var(--sw-black)]/75"}`}>
-          <span aria-hidden className={`absolute left-0 top-[0.62em] h-[6px] w-[6px] ${dark ? "bg-[var(--sw-mint)]" : "bg-[var(--sw-blue)]"}`} />
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-/** Keyboard support for a row of tabs, as on Anton's page: arrows, Home, End. */
-function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k: number) => void, group: string) {
-  const order: Record<string, number> = { ArrowRight: (i + 1) % n, ArrowLeft: (i + n - 1) % n, Home: 0, End: n - 1 };
-  if (!(e.key in order)) return;
-  e.preventDefault();
-  set(order[e.key]);
-  document.getElementById(`${group}-tab-${order[e.key]}`)?.focus();
-}
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 14, filter: "blur(8px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  transition: { duration: 1, delay, ease },
+});
 
 /* ---------- Hero ---------- */
 
 export function Hero() {
-  const [i, setI] = useState(0);
-  const s = QUICK[i];
-  const inspect = (e: React.MouseEvent) => {
-    window.dispatchEvent(new CustomEvent(INSPECT, { detail: i }));
-    go("example")(e);
-  };
   return (
-    <section id="top" className="relative bg-[var(--sw-black)] min-h-[100svh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center justify-center text-center overflow-hidden">
+      <LayerField />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(52rem 34rem at 88% 38%, rgba(63,74,175,0.32), rgba(63,74,175,0) 70%), radial-gradient(40rem 26rem at 0% 100%, rgba(63,74,175,0.14), rgba(63,74,175,0) 70%)",
-        }}
+        style={{ background: "radial-gradient(44rem 20rem at 50% 46%, rgba(5,7,15,0.66), rgba(5,7,15,0) 70%)" }}
       />
-      <div className="wrap relative w-full flex-1 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] items-center gap-12 lg:gap-10 xl:gap-16 pt-[96px] pb-12 lg:pt-[clamp(88px,14vh,140px)] lg:pb-[clamp(20px,4vh,72px)]">
-        <div>
-          <Rise>
-            <Eyebrow dark>Invoice matching</Eyebrow>
-            <h1 className="font-head font-bold text-white text-[44px] sm:text-[60px] lg:text-[clamp(48px,min(4.2vw,8.6vh),64px)] leading-[1.04] tracking-[-0.025em]">
-              Catch invoice errors
-              <span className="block text-[var(--sw-mint)]">before you pay.</span>
-            </h1>
-          </Rise>
-          <Rise delay={0.08}>
-            <p className="mt-6 lg:mt-[clamp(12px,2.4vh,24px)] max-w-[38rem] text-white/80 text-[17px] md:text-[19px] lg:text-[clamp(15px,2.2vh,19px)] leading-[1.55]">
-              OperaLayer connects your warehouse, accounting and ERP to check every invoice against what you ordered and received. Wrong prices, missing
-              quantities and different products reach your team before the bill is approved.
-            </p>
-            <p className="mt-3 text-white/55 text-[15px] leading-[1.5]">For wholesalers, distributors and retailers buying stock from many suppliers.</p>
-            <p className="mt-5 lg:mt-[clamp(10px,2vh,20px)] font-head font-semibold text-white text-[18px] md:text-[20px] lg:text-[clamp(17px,2.4vh,20px)]">Give your team its mornings back.</p>
-          </Rise>
-          <Rise delay={0.16} className="mt-7 lg:mt-[clamp(14px,2.8vh,28px)] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-7">
-            <a href="#demo" onClick={go("demo")} className={btnMain}>
-              Book a demo call
-            </a>
-            <a href="#example" onClick={go("example")} className="font-head font-semibold text-[17px] text-white/80 hover:text-[var(--sw-mint)] transition self-start sm:self-auto">
-              See an invoice example ↓
-            </a>
-          </Rise>
-        </div>
-
-        <Rise delay={0.2} className="w-full max-w-[34rem] lg:justify-self-end">
-          <div className="rounded-[2px] border border-white/15 bg-[rgba(255,255,255,0.04)] p-4 md:p-5 lg:p-[clamp(12px,2vh,20px)] backdrop-blur-[2px]">
-            <div className="flex items-center justify-between gap-4 text-[13px] md:text-[14px] mb-4 lg:mb-[clamp(8px,1.6vh,16px)]">
-              <span className="font-head font-semibold text-white">Example invoice</span>
-              <span className="text-white/55 tabular-nums">PO-1048 / INV-2846</span>
-            </div>
-            <div role="tablist" aria-label="Invoice quick examples" className="grid grid-cols-3 rounded-[2px] border border-white/20 p-1 mb-4 lg:mb-[clamp(8px,1.6vh,16px)]">
-              {QUICK.map((q, k) => (
-                <button
-                  key={q.tab}
-                  id={`quick-tab-${k}`}
-                  role="tab"
-                  aria-selected={k === i}
-                  aria-controls="quick-panel"
-                  tabIndex={k === i ? 0 : -1}
-                  onClick={() => setI(k)}
-                  onKeyDown={(e) => onTabKeys(e, k, QUICK.length, setI, "quick")}
-                  className={`h-9 md:h-10 lg:h-[clamp(32px,5vh,40px)] rounded-[2px] font-head font-semibold text-[14px] md:text-[15px] transition ${
-                    k === i ? "bg-[var(--sw-beige)] text-[var(--sw-black)]" : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {q.tab}
-                </button>
-              ))}
-            </div>
-            <div id="quick-panel" role="tabpanel" aria-labelledby={`quick-tab-${i}`} className="rounded-[2px] bg-white text-[var(--sw-black)] p-5 md:p-6 lg:p-[clamp(14px,2.4vh,24px)]">
-              <div className="flex items-center justify-between text-[12px] tracking-[0.06em] text-[var(--sw-black)]/55 pb-3 border-b border-dashed border-[var(--sw-black)]/20">
-                <span>SUPPLIER INVOICE</span>
-                <span className="tabular-nums">INV-2846</span>
-              </div>
-              <div className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] text-[14px] text-[var(--sw-blue)] font-head font-semibold">{s.product}</div>
-              <h3 className="mt-1.5 font-head font-bold text-[var(--sw-black)] text-[24px] md:text-[28px] lg:text-[clamp(20px,3.4vh,28px)] leading-[1.1] tracking-[-0.02em]">{s.title}</h3>
-              <div className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] grid grid-cols-2 border border-[var(--sw-light-grey)] rounded-[2px]">
-                {s.pair.map((p, k) => (
-                  <div key={p.k} className={`px-4 py-3 lg:py-[clamp(6px,1.2vh,12px)] ${k ? "border-l border-[var(--sw-light-grey)] bg-[rgba(224,79,79,0.07)]" : "bg-[var(--sw-beige)]"}`}>
-                    <div className="text-[12px] text-[var(--sw-black)]/55">{p.k}</div>
-                    <div className={`mt-1 font-head font-semibold text-[19px] tabular-nums ${k ? "text-[var(--sw-red)]" : "text-[var(--sw-black)]"}`}>{p.v}</div>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] text-[15px] leading-[1.5] text-[var(--sw-black)]/80">{s.note}</p>
-              <div className="mt-4 pt-4 lg:mt-[clamp(8px,1.6vh,16px)] lg:pt-[clamp(8px,1.6vh,16px)] border-t border-dashed border-[var(--sw-black)]/20">
-                <div className="text-[13px] font-head font-semibold text-[var(--sw-black)]">Suggested action</div>
-                <p className="mt-1 text-[15px] leading-[1.5] text-[var(--sw-black)]/80">{s.action}</p>
-              </div>
-              <a href="#example" onClick={inspect} className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] inline-flex font-head font-semibold text-[15px] text-[var(--sw-blue)] hover:underline underline-offset-4">
-                Inspect this line →
-              </a>
-            </div>
-          </div>
-        </Rise>
+      <div className="wrap relative z-10 w-full flex flex-col items-center pt-28 pb-[14vh]">
+        <h1 className="m-0">
+          <motion.span
+            {...enter(0.3)}
+            className="block bg-clip-text text-transparent font-[family-name:var(--font-inter)] font-medium leading-[0.98] tracking-[-0.06em] px-[0.05em] pb-[0.08em] text-[40px] sm:text-[64px] md:text-[80px] lg:text-[clamp(72px,min(8vw,13vh),116px)]"
+            style={{
+              backgroundImage: "linear-gradient(180deg, #ffffff 10%, #e6e9ff 55%, #9aa6f5 100%)",
+              filter: "drop-shadow(0 0 48px rgba(123,134,232,0.35))",
+            }}
+          >
+            Catch invoice errors
+          </motion.span>
+          <motion.span
+            {...enter(0.55)}
+            className="block mt-2 text-[var(--sw-mint)] font-[family-name:var(--font-inter)] font-medium tracking-[-0.045em] text-[32px] sm:text-[44px] md:text-[56px] lg:text-[clamp(52px,min(5.2vw,8.5vh),72px)] leading-[1.05]"
+          >
+            before you pay.
+          </motion.span>
+        </h1>
+        <motion.p {...enter(0.8)} className="mt-7 max-w-[40rem] text-white/75 text-[17px] md:text-[19px] leading-[1.55]">
+          OperaLayer connects your warehouse, accounting and ERP to check every invoice against what you ordered and received.
+        </motion.p>
+        <motion.div {...enter(1.05)} className="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+          <a href="#contact" onClick={go("contact")} className={btnMain}>
+            Book a demo call
+          </a>
+          <a href="#example" onClick={go("example")} className={btnSoft}>
+            See an invoice example
+          </a>
+        </motion.div>
       </div>
+    </section>
+  );
+}
 
-      <div className="wrap relative w-full">
-        <div className={`border-t ${RULE_DARK} py-5 md:py-6 lg:py-[clamp(12px,2.4vh,24px)] flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-10`}>
+/* ---------- Results strip ---------- */
+
+function Count({ to, dec = 0 }: { to: number; dec?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const run = useInView(ref, { once: true, amount: 0.8 });
+  const reduce = useReducedMotion();
+  /* The server HTML carries the real number (crawlers read it); the browser resets to 0 before paint and counts up on view. */
+  const [v, setV] = useState(to);
+  useLayoutEffect(() => {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setV(0);
+  }, []);
+  useEffect(() => {
+    if (!run) return;
+    const c = animate(0, to, { duration: reduce ? 0 : 1.4, ease, onUpdate: setV });
+    return () => c.stop();
+  }, [run, to, reduce]);
+  return <span ref={ref}>{v.toFixed(dec)}</span>;
+}
+
+const RESULTS: { n: number; dec?: number; post: string; unit?: string; label: string }[] = [
+  { n: 150, post: "+", label: "suppliers" },
+  { n: 2, post: " hours", unit: "per person", label: "back for the team" },
+  { n: 36, post: " seconds", label: "from upload to posting" },
+  { n: 98.5, dec: 1, post: "%", label: "matching accuracy after two weeks" },
+];
+
+export function Results() {
+  return (
+    <section id="results" className="relative pb-[clamp(56px,9vh,112px)] scroll-mt-20">
+      <div className="wrap">
+        <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-white/10">
+          {RESULTS.map((s, i) => (
+            <Rise
+              key={s.label}
+              delay={i * 0.06}
+              className={`py-8 pr-4 ${i % 2 ? "pl-5 border-l border-white/10" : ""} ${i > 1 ? "border-t lg:border-t-0 border-white/10" : ""} ${i > 0 ? "lg:pl-8 lg:border-l lg:border-white/10" : ""}`}
+            >
+              <div className="font-head font-bold text-[var(--sw-mint)] text-[32px] sm:text-[44px] lg:text-[clamp(36px,2.95vw,48px)] leading-none tracking-[-0.03em] tabular-nums">
+                <span className="whitespace-nowrap">
+                  <Count to={s.n} dec={s.dec} />
+                  {s.post}
+                </span>
+                {s.unit && <span className="inline-block whitespace-nowrap ml-1.5 text-white/60 text-[14px] lg:text-[15px] font-semibold tracking-[-0.01em]">{s.unit}</span>}
+              </div>
+              <div className="mt-3 text-white/80 text-[15px] md:text-[16px] font-head font-semibold leading-snug">{s.label}</div>
+            </Rise>
+          ))}
+        </div>
+        <Rise delay={0.1} className="border-t border-white/10 pt-7 flex items-center gap-4">
+          <img src={ESELO} alt="ESELO" className="h-9 w-9 object-contain brightness-0 invert opacity-90 shrink-0" />
           <div>
-            <p className="font-head font-semibold text-white text-[17px] md:text-[19px] lg:text-[clamp(16px,2.3vh,19px)] leading-snug">
+            <p className="font-head font-semibold text-white text-[17px] md:text-[20px] leading-snug">
               “Our employees smiling again. Two hours per person of ‘monkey work’ gone.”
             </p>
-            <p className="mt-1 text-white/55 text-[14px]">Māris Renigers, E-business Manager, ESELO</p>
+            <p className="mt-1 text-white/50 text-[14px]">Māris Renigers, E-business Manager, ESELO</p>
           </div>
-          <a href="#customer-case" onClick={go("customer-case")} className="font-head font-semibold text-[16px] text-white/85 hover:text-[var(--sw-mint)] transition whitespace-nowrap self-start md:self-auto">
-            Read one customer’s story →
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- The problem ---------- */
-
-export function Problem() {
-  return (
-    <section id="problem" className={`bg-[var(--sw-beige)] ${PAD}`}>
-      <div className="wrap">
-        <Rise>
-          <Eyebrow>The problem</Eyebrow>
-          <h2 className={`${ON_LIGHT_H2} max-w-[22ch]`}>A supplier can send you a perfectly good invoice for the wrong thing.</h2>
         </Rise>
-        <div className="mt-12 md:mt-16 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
-          {PROBLEMS.map((p, i) => (
-            <Rise key={p.title} delay={i * 0.07} className={`border-t ${RULE_LIGHT} pt-6`}>
-              <h3 className="font-head font-bold text-[var(--sw-black)] text-[22px] md:text-[24px] leading-[1.2] tracking-[-0.01em]">{p.title}</h3>
-              <p className="mt-4 text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-[1.6]">{p.body}</p>
-            </Rise>
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-/* ---------- Inside an invoice ---------- */
+/* ---------- The invoice, checked in the app ---------- */
+
+/** Which cell disagrees in each example: [row, column] in Record / Item / Quantity / Unit price. */
+const FLAG: [number, number][] = [
+  [2, 3],
+  [1, 2],
+  [2, 1],
+];
+const STEP_MS = [500, 1300, 1400, 3800];
+const TOTAL = STEP_MS.reduce((a, b) => a + b, 0);
+
+function useMatchPlayer() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.35 });
+  const reduce = useReducedMotion();
+  const [i, setI] = useState(0);
+  const [phase, setPhase] = useState(0);
+  const [auto, setAuto] = useState(true);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduce) {
+      const t = window.setTimeout(() => {
+        setPhase(3);
+        setAuto(false);
+      }, 0);
+      return () => clearTimeout(t);
+    }
+    if (phase < 3) {
+      const t = window.setTimeout(() => setPhase((p) => p + 1), STEP_MS[phase]);
+      return () => clearTimeout(t);
+    }
+    if (auto) {
+      const t = window.setTimeout(() => {
+        setI((k) => (k + 1) % 3);
+        setPhase(0);
+      }, STEP_MS[3]);
+      return () => clearTimeout(t);
+    }
+  }, [inView, reduce, phase, auto]);
+
+  const pick = (k: number) => {
+    setAuto(false);
+    setI(k);
+    setPhase(reduce ? 3 : 0);
+  };
+  return { ref, i, phase, auto: auto && inView, pick };
+}
+
+const box = { containerType: "inline-size" as const, fontSize: "clamp(11px,1.85cqw,15px)" };
+
+function ReviewWindow({ i, phase }: { i: number; phase: number }) {
+  const x = FULL[i];
+  const [fr, fc] = FLAG[i];
+  const flagged = phase >= 2;
+  return (
+    <div style={box}>
+      <Window title="app.operalayer / invoice review">
+        <div className="flex flex-wrap items-center gap-x-[1.2em] gap-y-1 px-[1.4em] py-[0.9em] border-b" style={{ borderColor: C.line }}>
+          <span className="font-semibold" style={{ fontSize: "1.15em" }}>
+            Supplier invoice INV-2846
+          </span>
+          <span className="ml-auto" style={{ color: C.faint, fontSize: "0.9em" }}>
+            Example records · INV-2846
+          </span>
+        </div>
+
+        <div>
+          {/* The three records side by side */}
+          <div className="px-[1.4em] py-[1.3em] min-w-0">
+            <AnimatePresence mode="wait">
+              <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, ease }}>
+                <div style={{ color: C.faint, fontSize: "0.88em" }}>{x.line}</div>
+                <div className="mt-[0.2em] font-semibold tracking-[-0.01em]" style={{ fontSize: "1.45em" }}>
+                  {x.title}
+                </div>
+
+                <div className="mt-[1em] rounded-[2px] overflow-hidden" style={{ boxShadow: `inset 0 0 0 1px ${C.line}` }}>
+                  <div
+                    className="hidden sm:grid grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)_minmax(0,0.9fr)_minmax(0,0.9fr)] gap-x-[0.8em] px-[1em] py-[0.55em]"
+                    style={{ color: C.faint, fontSize: "0.85em", background: "#080b18" }}
+                  >
+                    {["Record", "Item", "Quantity", "Unit price"].map((h) => (
+                      <span key={h}>{h}</span>
+                    ))}
+                  </div>
+                  {x.rows.map((r, k) => {
+                    const shown = phase >= 1;
+                    return (
+                      <motion.div
+                        key={r[0]}
+                        className="grid grid-cols-3 sm:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)_minmax(0,0.9fr)_minmax(0,0.9fr)] gap-x-[0.8em] gap-y-[0.3em] px-[1em] py-[0.75em] border-t items-center"
+                        style={{ borderColor: C.line }}
+                        initial={false}
+                        animate={{ opacity: shown ? 1 : 0.2 }}
+                        transition={{ duration: 0.35, delay: shown ? k * 0.28 : 0 }}
+                      >
+                        {r.map((c, n) => {
+                          const bad = flagged && k === fr && n === fc;
+                          const agreed = flagged && k !== fr && n === fc && !(i === 2 && k === 1);
+                          return (
+                            <span
+                              key={n}
+                              className={`rounded-[2px] tabular-nums leading-[1.35] ${n === 0 ? "col-span-3 sm:col-span-1 font-semibold" : ""}`}
+                              style={{
+                                color: bad ? C.orange : agreed ? C.mint : n === 0 ? C.text : C.dim,
+                                background: bad ? "rgba(255,90,49,0.12)" : "transparent",
+                                boxShadow: bad ? "inset 0 0 0 1px rgba(255,90,49,0.45)" : "none",
+                                padding: bad ? "0.1em 0.4em" : 0,
+                                margin: bad ? "0 -0.4em" : 0,
+                                transition: "color .35s, background .35s, box-shadow .35s",
+                              }}
+                            >
+                              {c}
+                            </span>
+                          );
+                        })}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                <motion.div
+                  className="mt-[1.1em] grid grid-cols-[minmax(0,1fr)] sm:grid-cols-[minmax(0,1fr)_auto] gap-[1em] items-end"
+                  initial={false}
+                  animate={{ opacity: flagged ? 1 : 0, y: flagged ? 0 : 6 }}
+                  transition={{ duration: 0.4, ease }}
+                >
+                  <div>
+                    <div className="font-semibold" style={{ fontSize: "0.92em" }}>
+                      Why it matters
+                    </div>
+                    <p className="mt-[0.3em] leading-[1.5]" style={{ color: C.dim, fontSize: "0.92em" }}>
+                      {x.why}
+                    </p>
+                  </div>
+                  <AppButton state={phase >= 3 ? 2 : 1} idle={x.hold} busy={x.hold} done="On hold" />
+                </motion.div>
+                <div className="mt-[0.7em] min-h-[1.5em]" style={{ color: C.mint, fontSize: "0.88em" }}>
+                  {phase >= 3 ? x.result : ""}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </Window>
+    </div>
+  );
+}
 
 export function Example() {
-  const [i, setI] = useState(0);
-  const [held, setHeld] = useState<boolean[]>([false, false, false]);
-  useEffect(() => {
-    const on = (e: Event) => setI((e as CustomEvent<number>).detail);
-    window.addEventListener(INSPECT, on);
-    return () => window.removeEventListener(INSPECT, on);
-  }, []);
-  const x = FULL[i];
-  const setHold = (v: boolean) => setHeld((h) => h.map((b, k) => (k === i ? v : b)));
+  const { ref, i, phase, auto, pick } = useMatchPlayer();
   return (
-    <section id="example" className={`bg-white ${PAD} scroll-mt-16`}>
-      <div className="wrap">
-        <Rise>
-          <Eyebrow>Inside an invoice</Eyebrow>
-          <h2 className={`${ON_LIGHT_H2} max-w-[20ch]`}>Follow one invoice with three different problems.</h2>
-          <p className="mt-5 max-w-[46rem] text-[var(--sw-black)]/70 text-[17px] md:text-[19px] leading-[1.55]">
-            Switch between the lines. In each example you can see what the supplier billed, what the order says and who can settle the difference.
-          </p>
-        </Rise>
-
-        <Rise delay={0.08} className="mt-10 md:mt-12">
-          <div className="rounded-[2px] border border-[var(--sw-light-grey)] overflow-hidden">
-            <div className="flex items-center justify-between gap-4 bg-[var(--sw-black)] px-5 md:px-8 py-3.5 text-[14px]">
-              <span className="font-head font-semibold text-white">Invoice review</span>
-              <span className="text-white/55 tabular-nums">Example records · INV-2846</span>
-            </div>
-            <div role="tablist" aria-label="Invoice full examples" className="grid grid-cols-3 md:flex bg-[var(--sw-beige)] border-b border-[var(--sw-light-grey)] px-1 md:px-5">
-              {FULL.map((f, k) => (
-                <button
-                  key={f.tab}
-                  id={`full-tab-${k}`}
-                  role="tab"
-                  aria-selected={k === i}
-                  aria-controls="full-panel"
-                  tabIndex={k === i ? 0 : -1}
-                  onClick={() => setI(k)}
-                  onKeyDown={(e) => onTabKeys(e, k, FULL.length, setI, "full")}
-                  className={`relative shrink-0 min-h-14 py-3 px-2 md:px-4 font-head font-semibold text-[14px] leading-[1.2] md:text-[16px] md:whitespace-nowrap transition ${
-                    k === i ? "text-[var(--sw-black)]" : "text-[var(--sw-black)]/50 hover:text-[var(--sw-black)]"
-                  }`}
-                >
-                  {f.tab}
-                  <span aria-hidden className={`absolute left-2 right-2 md:left-4 md:right-4 bottom-0 h-[2px] bg-[var(--sw-blue)] transition-opacity ${k === i ? "opacity-100" : "opacity-0"}`} />
-                </button>
-              ))}
-            </div>
-
-            <div id="full-panel" role="tabpanel" aria-labelledby={`full-tab-${i}`} className="p-5 md:p-8 lg:p-10">
-              <div className="text-[14px] text-[var(--sw-blue)] font-head font-semibold">{x.line}</div>
-              <h3 className="mt-2 font-head font-bold text-[var(--sw-black)] text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.02em]">{x.title}</h3>
-              <p className="mt-3 max-w-[48rem] text-[var(--sw-black)]/70 text-[16px] md:text-[17px] leading-[1.6]">{x.body}</p>
-
-              <div className="mt-6 md:hidden grid gap-2">
-                {x.rows.map((r, k) => {
-                  const last = k === x.rows.length - 1;
-                  return (
-                    <div key={r[0]} className={`rounded-[2px] border border-[var(--sw-light-grey)] p-4 ${last ? "bg-[rgba(224,79,79,0.07)] shadow-[inset_2px_0_0_var(--sw-red)]" : ""}`}>
-                      <div className="font-semibold text-[15px] text-[var(--sw-black)]">{r[0]}</div>
-                      <dl className="mt-2 grid grid-cols-3 gap-3 text-[14px]">
-                        {["Item", "Quantity", "Unit price"].map((h, n) => (
-                          <div key={h}>
-                            <dt className="text-[12px] text-[var(--sw-black)]/55">{h}</dt>
-                            <dd className="mt-0.5 text-[var(--sw-black)] tabular-nums">{r[n + 1]}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-7 hidden md:block overflow-x-auto rounded-[2px] border border-[var(--sw-light-grey)]">
-                <table className="w-full min-w-[600px] text-left text-[15px]">
-                  <thead className="bg-[var(--sw-beige)] text-[13px] text-[var(--sw-black)]/60">
-                    <tr>
-                      {["Record", "Item", "Quantity", "Unit price"].map((h) => (
-                        <th key={h} scope="col" className="font-head font-semibold px-4 md:px-5 py-3">
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="text-[var(--sw-black)]">
-                    {x.rows.map((r, k) => {
-                      const last = k === x.rows.length - 1;
-                      return (
-                        <tr key={r[0]} className={`border-t border-[var(--sw-light-grey)] ${last ? "bg-[rgba(224,79,79,0.07)]" : ""}`}>
-                          {r.map((c, n) => (
-                            <td key={n} className={`px-4 md:px-5 py-3.5 tabular-nums ${n === 0 ? "font-semibold" : ""} ${last && n === 0 ? "shadow-[inset_2px_0_0_var(--sw-red)]" : ""}`}>
-                              {c}
-                            </td>
-                          ))}
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-8 grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-6 md:gap-10">
-                <div>
-                  <h4 className="font-head font-semibold text-[var(--sw-black)] text-[18px]">Why it matters</h4>
-                  <p className="mt-2 text-[var(--sw-black)]/70 text-[16px] leading-[1.6]">{x.why}</p>
-                </div>
-                <div>
-                  <h4 className="font-head font-semibold text-[var(--sw-black)] text-[18px]">Suggested action</h4>
-                  <p className="mt-2 text-[var(--sw-black)]/70 text-[16px] leading-[1.6]">{x.action}</p>
-                </div>
-              </div>
-
-              <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                <button
-                  type="button"
-                  disabled={held[i]}
-                  onClick={() => setHold(true)}
-                  className={`${btnBlue} self-start disabled:cursor-default disabled:border-[var(--sw-dark-grey)] disabled:text-[var(--sw-dark-grey)] disabled:hover:bg-transparent`}
-                >
-                  {held[i] ? "On hold" : `${x.hold} →`}
-                </button>
-                <span role="status" className="text-[15px] text-[var(--sw-black)]/80">
-                  {held[i] ? x.result : ""}
-                </span>
-                {held[i] && (
-                  <button type="button" onClick={() => setHold(false)} className="text-[15px] font-head font-semibold text-[var(--sw-blue)] underline underline-offset-4 self-start sm:self-auto">
-                    Reset example
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </Rise>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- One customer's story ---------- */
-
-export function CustomerCase() {
-  return (
-    <section id="customer-case" className={`relative bg-[var(--sw-black)] ${PAD} scroll-mt-16 overflow-hidden`}>
+    <section id="example" className={`relative ${PAD} scroll-mt-16 overflow-hidden`}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(46rem 30rem at 100% 0%, rgba(63,74,175,0.22), rgba(63,74,175,0) 70%)" }}
+        className="pointer-events-none absolute inset-x-0 top-1/4 h-[70%]"
+        style={{ background: "radial-gradient(760px 420px at 70% 50%, rgba(63,74,175,0.26), transparent 70%)" }}
       />
-      <div className="wrap relative">
-        <Rise>
-          <Eyebrow dark>One customer’s story</Eyebrow>
-          <h2 className={`${ON_DARK_H2} max-w-[20ch]`}>What changed for an electrical goods distributor</h2>
-          <p className="mt-5 max-w-[48rem] text-white/75 text-[17px] md:text-[19px] leading-[1.55]">
-            For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts,
-            product codes and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
-          </p>
-        </Rise>
-
-        <Rise delay={0.08} className="mt-10 md:mt-12">
-          <figure className="border-l-2 border-[var(--sw-mint)] pl-6 md:pl-8 max-w-[60rem]">
-            <blockquote className="font-head font-semibold text-white text-[24px] md:text-[32px] lg:text-[36px] leading-[1.22] tracking-[-0.015em]">
-              “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
-            </blockquote>
-            <figcaption className="mt-5 flex items-center gap-3">
-              <img src={assetUrl("/operalayer/invoice-matching/eselo-mark.png")} alt="ESELO" className="h-8 w-8 object-contain brightness-0 invert" />
-              <span className="text-white/60 text-[15px]">Māris Renigers, E-business Manager, ESELO</span>
-            </figcaption>
-          </figure>
-        </Rise>
-
-        <div className="mt-12 md:mt-16 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-3 gap-10 lg:gap-12">
-          {STATS.map((s, i) => (
-            <Rise key={s.n} delay={i * 0.07} className={`border-t ${RULE_DARK} pt-6`}>
-              <div className="font-head font-bold text-[var(--sw-mint)] text-[38px] sm:text-[44px] lg:text-[clamp(34px,2.9vw,42px)] leading-[1.05] tracking-[-0.03em] whitespace-nowrap">{s.n}</div>
-              <div className="mt-3 font-head font-semibold text-white text-[18px] md:text-[19px]">{s.label}</div>
-              <p className="mt-2 text-white/60 text-[15px] md:text-[16px] leading-[1.6]">{s.body}</p>
-            </Rise>
-          ))}
+      <div className="wrap relative" ref={ref}>
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <Rise className="lg:col-span-4">
+            <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[clamp(32px,min(3.1vw,6vh),46px)] leading-[1.05] tracking-[-0.025em] text-balance mb-8 lg:mb-[clamp(20px,4vh,40px)]">
+              Follow one invoice with three different problems.
+            </h2>
+            <div role="tablist" aria-label="Invoice examples" className="grid grid-cols-3 lg:grid-cols-1 gap-2 lg:gap-0 lg:border-t lg:border-white/10">
+              {QUICK.map((q, k) => {
+                const on = k === i;
+                return (
+                  <button
+                    key={q.tab}
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => pick(k)}
+                    className={`relative text-left rounded-[2px] lg:rounded-none border lg:border-0 lg:border-b px-3 py-3 lg:px-0 lg:py-[clamp(12px,2.4vh,24px)] transition ${
+                      on ? "border-white/40 lg:border-white/10" : "border-white/10"
+                    }`}
+                  >
+                    <div className={`text-[13px] lg:text-[14px] font-head font-semibold ${on ? "text-[var(--sw-mint)]" : "text-white/45"}`}>{FULL[k].tab}</div>
+                    <div
+                      className={`hidden lg:block mt-1.5 font-head font-bold text-[20px] xl:text-[clamp(20px,min(1.8vw,3.4vh),26px)] leading-[1.15] tracking-[-0.015em] transition-colors ${
+                        on ? "text-white" : "text-white/40"
+                      }`}
+                    >
+                      {q.title}
+                    </div>
+                    <AnimatePresence initial={false}>
+                      {on && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.35, ease }}
+                          className="hidden lg:block overflow-hidden text-white/60 text-[16px] leading-[1.55]"
+                        >
+                          <span className="block pt-3">{q.note}</span>
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                    {on && auto && (
+                      <span
+                        key={`p${i}`}
+                        aria-hidden
+                        className="absolute left-0 bottom-[-1px] h-[2px] bg-[var(--sw-mint)]"
+                        style={{ animation: `olProgress ${TOTAL}ms linear forwards` }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="lg:hidden mt-5">
+              <div className="font-head font-bold text-white text-[22px] leading-[1.2]">{QUICK[i].title}</div>
+              <p className="mt-2 text-white/60 text-[15px] leading-[1.55]">{QUICK[i].note}</p>
+            </div>
+          </Rise>
+          <Rise delay={0.1} className="lg:col-span-8">
+            <ReviewWindow i={i} phase={phase} />
+          </Rise>
         </div>
       </div>
+      <style>{`@keyframes olProgress { from { width: 0 } to { width: 100% } }`}</style>
     </section>
   );
 }
 
 /* ---------- How it works ---------- */
 
+const ICONS = [Inbox, Link2, ListChecks, Database];
+
 export function HowItWorks() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.4 });
+  const reduce = useReducedMotion();
+  const [k, setK] = useState(1);
+  useEffect(() => {
+    if (!inView || reduce) return;
+    const t = window.setInterval(() => setK((v) => (v % 4) + 1), 1800);
+    return () => clearInterval(t);
+  }, [inView, reduce]);
+  const lit = reduce ? 4 : k;
   return (
-    <section id="solution" className={`bg-[var(--sw-beige)] ${PAD}`}>
-      <div className="wrap">
+    <section id="how" className={`relative ${PAD} scroll-mt-16`}>
+      <div className="wrap" ref={ref}>
         <Rise>
-          <Eyebrow>How it works</Eyebrow>
-          <h2 className={`${ON_LIGHT_H2} max-w-[20ch]`}>From the supplier inbox to an invoice you can approve.</h2>
-          <p className="mt-5 max-w-[46rem] text-[var(--sw-black)]/70 text-[17px] md:text-[19px] leading-[1.55]">
-            OperaLayer reads the documents, finds the purchase order in your ERP and compares the lines. Your rules decide what can move ahead and what needs a buyer,
-            a warehouse colleague or an accountant.
-          </p>
+          <h2 className={`${H2} max-w-[20ch]`}>From the supplier inbox to an invoice you can approve.</h2>
         </Rise>
-        <ol className="mt-12 md:mt-14 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
-          {STEPS.map((t, i) => (
-            <li key={t} className={`list-none border-t ${RULE_LIGHT} pt-5`}>
-              <Rise delay={i * 0.07}>
-                <div className="font-head font-bold text-[var(--sw-blue)] text-[28px] leading-none">{i + 1}</div>
-                <p className="mt-4 text-[var(--sw-black)]/85 text-[16px] md:text-[17px] leading-[1.55]">{t}</p>
+        {/* Phones and tablets: the four icons in a row, the active step's sentence below */}
+        <div className="lg:hidden mt-10">
+          <div className="relative flex justify-between">
+            <div aria-hidden className="absolute left-6 right-6 top-6 h-px bg-white/[0.12]" />
+            <motion.div
+              aria-hidden
+              className="absolute left-6 right-6 top-6 h-px bg-[var(--sw-mint)] origin-left"
+              initial={false}
+              animate={{ scaleX: Math.max(0, Math.min(lit, 4) - 1) / 3 }}
+              transition={{ duration: 0.9, ease }}
+            />
+            {STEPS.map((t, n) => {
+              const Icon = ICONS[n];
+              const on = lit >= n + 1 || (lit === 0 && n === 0);
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  aria-label={`Step ${n + 1}`}
+                  onClick={() => setK(n + 1)}
+                  className="relative z-10 h-12 w-12 rounded-[2px] flex items-center justify-center bg-[#05070f] transition-shadow duration-500"
+                  style={{ boxShadow: on ? "inset 0 0 0 1px rgba(110,247,110,0.9), 0 0 28px -6px rgba(110,247,110,0.55)" : "inset 0 0 0 1px rgba(255,255,255,0.16)" }}
+                >
+                  <Icon className="h-5 w-5" style={{ color: on ? C.mint : "rgba(255,255,255,0.55)" }} strokeWidth={1.6} />
+                </button>
+              );
+            })}
+          </div>
+          <div className="mt-7 min-h-[7.5em]">
+            <AnimatePresence mode="wait">
+              <motion.div key={Math.max(1, lit)} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35, ease }}>
+                <div className="font-head font-bold text-[var(--sw-mint)] text-[15px]">{Math.max(1, lit)}</div>
+                <p className="mt-2 text-white/90 text-[17px] leading-[1.55]">{STEPS[Math.max(1, lit) - 1]}</p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <div className="relative mt-14 md:mt-20 hidden lg:grid grid-cols-4 gap-x-8 gap-y-12">
+          <div aria-hidden className="hidden lg:block absolute left-7 right-7 top-7 h-px bg-white/[0.12]" />
+          <motion.div
+            aria-hidden
+            className="hidden lg:block absolute left-7 right-7 top-7 h-px bg-[var(--sw-mint)] origin-left"
+            initial={false}
+            animate={{ scaleX: Math.max(0, Math.min(lit, 4) - 1) / 3 }}
+            transition={{ duration: 0.9, ease }}
+          />
+          {STEPS.map((t, n) => {
+            const Icon = ICONS[n];
+            const on = lit >= n + 1 || (lit === 0 && n === 0);
+            return (
+              <Rise key={t} delay={n * 0.07} className="relative">
+                <motion.div
+                  className="relative z-10 h-14 w-14 rounded-[2px] flex items-center justify-center bg-[#05070f]"
+                  initial={false}
+                  animate={{
+                    boxShadow: on ? "inset 0 0 0 1px rgba(110,247,110,0.9), 0 0 32px -6px rgba(110,247,110,0.55)" : "inset 0 0 0 1px rgba(255,255,255,0.16)",
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Icon className="h-6 w-6 transition-colors duration-500" style={{ color: on ? C.mint : "rgba(255,255,255,0.55)" }} strokeWidth={1.6} />
+                </motion.div>
+                <div className="mt-6 font-head font-bold text-white/35 text-[15px]">{n + 1}</div>
+                <p className={`mt-2 text-[16px] md:text-[17px] leading-[1.55] transition-colors duration-500 ${on ? "text-white/90" : "text-white/55"}`}>{t}</p>
               </Rise>
-            </li>
-          ))}
-        </ol>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
 
-/* ---------- Roles + best fit ---------- */
+/* ---------- Quote ---------- */
 
-export function Roles() {
+export function Quote() {
   return (
-    <section id="roles" className={`bg-white ${PAD}`}>
+    <section id="customer-case" className={`relative ${PAD}`}>
       <div className="wrap">
-        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
-          <Rise className="lg:col-span-5">
-            <h2 className={`${ON_LIGHT_H2} max-w-[14ch]`}>What does it change for you?</h2>
-          </Rise>
-          <Rise delay={0.08} className={`lg:col-span-7 border-t ${RULE_LIGHT}`}>
-            {ROLES.map((r, i) => (
-              <Acc key={r.role} title={r.role} open={i === 0}>
-                <Bullets items={r.items} />
-              </Acc>
-            ))}
-          </Rise>
-        </div>
-
-        <Rise delay={0.05} className="mt-14 md:mt-20">
-          <div className="rounded-[2px] bg-[var(--sw-beige)] p-7 md:p-10 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-2 gap-8 lg:gap-14">
-            <div>
-              <Eyebrow>Best fit</Eyebrow>
-              <h3 className="font-head font-bold text-[var(--sw-black)] text-[26px] md:text-[32px] leading-[1.12] tracking-[-0.015em]">
-                Built for businesses that buy stock from many suppliers
-              </h3>
-              <p className="mt-4 text-[var(--sw-black)]/60 text-[15px] md:text-[16px] leading-[1.6]">
-                Electrical and industrial distribution · Wholesale · Food service supply · Multi-store retail
-              </p>
-            </div>
-            <div className="lg:pt-10">
-              <Bullets items={FIT} />
-            </div>
-          </div>
+        <Rise className="max-w-[60rem]">
+          <blockquote>
+            <p className="font-head font-semibold text-white text-[28px] md:text-[42px] lg:text-[50px] leading-[1.14] tracking-[-0.02em]">
+              <span className="text-[var(--sw-mint)]">“From demo to live in weeks.</span> Fastest implementation we have experienced so far for such a complex system and
+              functionality.”
+            </p>
+            <footer className="mt-9 flex items-center gap-4">
+              <img src={ESELO} alt="ESELO" className="h-10 w-10 object-contain brightness-0 invert opacity-90" />
+              <span className="text-white/60 text-[15px] md:text-[16px]">Māris Renigers, E-business Manager, ESELO</span>
+            </footer>
+          </blockquote>
         </Rise>
       </div>
     </section>
@@ -479,176 +474,119 @@ export function Roles() {
 
 /* ---------- Calculator ---------- */
 
-const DEFAULTS = { volume: "2000", minutes: "4", rate: "25", credits: "8", amount: "65" };
+const DEFAULTS = { volume: 2000, minutes: 4, rate: 25, credits: 8, amount: 65 };
 type Key = keyof typeof DEFAULTS;
-const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 2, minimumFractionDigits: 0 });
+const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const count = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
 
-function Field({ id, label, step, value, onChange }: { id: Key; label: string; step: string; value: string; onChange: (k: Key, v: string) => void }) {
-  return (
-    <label htmlFor={`calc-${id}`} className="flex items-center justify-between gap-4 py-2">
-      <span className="text-white/80 text-[15px] md:text-[16px]">{label}</span>
-      <input
-        id={`calc-${id}`}
-        type="number"
-        inputMode="decimal"
-        min="0"
-        step={step}
-        value={value}
-        onChange={(e) => onChange(id, e.target.value)}
-        className="w-[112px] h-11 shrink-0 rounded-[2px] border border-white/25 bg-transparent px-3 text-right text-white text-[16px] tabular-nums outline-none focus:border-[var(--sw-mint)] transition [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-      />
-    </label>
-  );
-}
+const SLIDERS: { group: string; items: { k: Key; label: string; min: number; max: number; step: number }[] }[] = [
+  {
+    group: "Time back for your team",
+    items: [
+      { k: "volume", label: "Invoices per month", min: 0, max: 10000, step: 50 },
+      { k: "minutes", label: "Minutes saved per invoice", min: 0, max: 15, step: 0.5 },
+      { k: "rate", label: "Staff cost per hour (€)", min: 10, max: 80, step: 1 },
+    ],
+  },
+  {
+    group: "Supplier bills corrected",
+    items: [
+      { k: "credits", label: "Confirmed corrections per month", min: 0, max: 50, step: 1 },
+      { k: "amount", label: "Average accepted reduction (€)", min: 0, max: 500, step: 5 },
+    ],
+  },
+];
+
+const range =
+  "w-full h-5 cursor-pointer appearance-none bg-transparent outline-none " +
+  "[&::-webkit-slider-runnable-track]:h-[2px] [&::-webkit-slider-runnable-track]:[background:linear-gradient(90deg,#6ef76e_var(--p),rgba(255,255,255,0.14)_var(--p))] " +
+  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:-mt-[7px] [&::-webkit-slider-thumb]:rounded-[2px] [&::-webkit-slider-thumb]:bg-[var(--sw-mint)] [&::-webkit-slider-thumb]:shadow-[0_0_0_4px_rgba(110,247,110,0.15)] " +
+  "[&::-moz-range-track]:h-[2px] [&::-moz-range-track]:bg-white/15 [&::-moz-range-progress]:h-[2px] [&::-moz-range-progress]:bg-[var(--sw-mint)] [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:rounded-[2px] [&::-moz-range-thumb]:bg-[var(--sw-mint)]";
 
 export function Calculator() {
-  const [v, setV] = useState<Record<Key, string>>(DEFAULTS);
-  const set = (k: Key, val: string) => setV((o) => ({ ...o, [k]: val }));
-  const n = (k: Key) => Number(v[k]);
-  const valid = (Object.keys(v) as Key[]).every((k) => v[k] !== "" && Number.isFinite(n(k)) && n(k) >= 0);
-  const hours = (n("volume") * n("minutes")) / 60 * 12;
-  const capacity = hours * n("rate");
-  const reductions = n("credits") * n("amount") * 12;
-  const ok = valid && Number.isFinite(capacity + reductions);
+  const [v, setV] = useState(DEFAULTS);
+  const hours = ((v.volume * v.minutes) / 60) * 12;
+  const capacity = hours * v.rate;
+  const reductions = v.credits * v.amount * 12;
   const isDefault = (Object.keys(v) as Key[]).every((k) => v[k] === DEFAULTS[k]);
-  const out = (s: string) => (ok ? s : "…");
-
   return (
-    <section id="calculator" className={`bg-[var(--sw-black)] ${PAD} scroll-mt-16`}>
-      <div className="wrap">
-        <Rise>
-          <Eyebrow dark>Annual value calculator</Eyebrow>
-          <h2 className={ON_DARK_H2}>What is invoice checking costing you?</h2>
-          <p className="mt-5 max-w-[46rem] text-white/70 text-[17px] md:text-[19px] leading-[1.55]">
-            Use your own volumes and costs to explore a year. The example separates the value of staff time from actual supplier corrections.
-          </p>
-        </Rise>
-
-        <Rise delay={0.08} className="mt-10 md:mt-12 max-w-[64rem]">
-          <div className="flex items-center justify-between mb-3 text-[14px]">
-            <span className="text-white/55">{isDefault ? "Example inputs" : "Your inputs"}</span>
-            <button type="button" onClick={() => setV(DEFAULTS)} className="font-head font-semibold text-white/80 underline underline-offset-4 hover:text-[var(--sw-mint)] transition">
-              Reset example
-            </button>
-          </div>
-          <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-4">
-            <div className="rounded-[2px] border border-white/15 bg-white/[0.03] p-6 md:p-7 flex flex-col">
-              <h3 className="font-head font-bold text-white text-[22px] md:text-[24px]">Time back for your team</h3>
-              <div className="mt-4">
-                <Field id="volume" label="Invoices per month" step="1" value={v.volume} onChange={set} />
-                <Field id="minutes" label="Minutes saved per invoice" step="0.1" value={v.minutes} onChange={set} />
-                <Field id="rate" label="Staff cost per hour (€)" step="0.01" value={v.rate} onChange={set} />
-              </div>
-              <div className="mt-auto pt-5 border-t border-white/15">
-                <div className="mt-5 font-head font-bold text-white text-[36px] md:text-[40px] leading-none tabular-nums">{out(euro.format(capacity))}</div>
-                <div className="mt-2 text-white/60 text-[15px]">
-                  value of <strong className="text-white font-semibold">{out(count.format(hours))}</strong> hours per year
+    <section id="calculator" className={`relative ${PAD} scroll-mt-16 overflow-hidden`}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(700px 420px at 80% 55%, rgba(63,74,175,0.22), transparent 70%)" }}
+      />
+      <div className="wrap relative">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-x-14 gap-y-10 lg:gap-y-[clamp(24px,4.4vh,40px)]">
+          <Rise className="lg:col-span-6 lg:col-start-1 lg:row-start-1">
+            <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[clamp(34px,min(3.4vw,6.6vh),50px)] leading-[1.05] tracking-[-0.025em] text-balance">What is invoice checking costing you?</h2>
+            <p className="mt-4 max-w-[40rem] text-white/65 text-[17px] md:text-[18px] leading-[1.55]">Use your own volumes and costs to explore a year.</p>
+          </Rise>
+          <Rise delay={0.05} className="lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:row-span-2 self-center grid gap-[clamp(20px,4vh,36px)]">
+            {SLIDERS.map((g) => (
+              <div key={g.group}>
+                <div className="font-head font-semibold text-white text-[17px] md:text-[18px]">{g.group}</div>
+                <div className="mt-3 grid gap-[clamp(10px,2.2vh,20px)]">
+                  {g.items.map((s) => {
+                    const p = ((v[s.k] - s.min) / (s.max - s.min)) * 100;
+                    return (
+                      <label key={s.k} className="block">
+                        <span className="flex items-baseline justify-between gap-4 text-[15px]">
+                          <span className="text-white/65">{s.label}</span>
+                          <span className="font-head font-semibold text-white tabular-nums">{count.format(v[s.k])}</span>
+                        </span>
+                        <input
+                          type="range"
+                          min={s.min}
+                          max={s.max}
+                          step={s.step}
+                          value={v[s.k]}
+                          onChange={(e) => setV((o) => ({ ...o, [s.k]: Number(e.target.value) }))}
+                          className={`mt-2 ${range}`}
+                          style={{ ["--p" as string]: `${p}%` } as React.CSSProperties}
+                        />
+                      </label>
+                    );
+                  })}
                 </div>
               </div>
+            ))}
+            <div className="flex items-center gap-4 text-[14px] min-h-[21px]">
+              <span className="text-white/45">{isDefault ? "Example inputs" : "Your inputs"}</span>
+              {!isDefault && (
+                <button type="button" onClick={() => setV(DEFAULTS)} className="font-head font-semibold text-white/80 underline underline-offset-4 hover:text-[var(--sw-mint)] transition">
+                  Reset example
+                </button>
+              )}
             </div>
-            <div className="rounded-[2px] border border-white/15 bg-white/[0.03] p-6 md:p-7 flex flex-col">
-              <h3 className="font-head font-bold text-white text-[22px] md:text-[24px]">Supplier bills corrected</h3>
-              <div className="mt-4">
-                <Field id="credits" label="Confirmed corrections per month" step="1" value={v.credits} onChange={set} />
-                <Field id="amount" label="Average accepted reduction (€)" step="0.01" value={v.amount} onChange={set} />
+          </Rise>
+          <Rise delay={0.1} className="lg:col-span-6 lg:col-start-1 lg:row-start-2">
+            <div
+              className="rounded-[4px] p-7 md:p-10 lg:p-[clamp(24px,4.4vh,40px)]"
+              style={{ background: C.panel, boxShadow: "0 0 0 1px rgba(255,255,255,0.1), 0 50px 120px -40px rgba(0,0,0,0.9), 0 0 80px -30px rgba(63,74,175,0.45)" }}
+            >
+              <div className="text-white/60 text-[15px] md:text-[16px]">Gross annual value in this scenario</div>
+              <div className="mt-3 font-head font-bold text-[var(--sw-mint)] leading-none tracking-[-0.035em] tabular-nums text-[52px] sm:text-[72px] lg:text-[clamp(52px,min(5.2vw,10vh),88px)]">
+                {euro.format(capacity + reductions)}
               </div>
-              <div className="mt-auto pt-5 border-t border-white/15">
-                <div className="mt-5 font-head font-bold text-white text-[36px] md:text-[40px] leading-none tabular-nums">{out(euro.format(reductions))}</div>
-                <div className="mt-2 text-white/60 text-[15px]">in confirmed reductions per year</div>
+              <div className="mt-[clamp(18px,3.4vh,32px)] grid grid-cols-2 gap-6 border-t border-white/10 pt-[clamp(14px,2.6vh,24px)]">
+                <div>
+                  <div className="font-head font-bold text-white text-[22px] md:text-[30px] tabular-nums leading-none">{euro.format(capacity)}</div>
+                  <div className="mt-2 text-white/55 text-[14px] leading-snug">
+                    value of <b className="text-white font-semibold">{count.format(hours)}</b> hours per year
+                  </div>
+                </div>
+                <div>
+                  <div className="font-head font-bold text-white text-[22px] md:text-[30px] tabular-nums leading-none">{euro.format(reductions)}</div>
+                  <div className="mt-2 text-white/55 text-[14px] leading-snug">in confirmed reductions per year</div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="mt-4 rounded-[2px] border border-[var(--sw-mint)]/50 px-6 md:px-7 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <span className="font-head font-semibold text-white text-[17px] md:text-[18px]">Gross annual value in this scenario</span>
-            <span className="font-head font-bold text-[var(--sw-mint)] text-[40px] md:text-[48px] leading-none tabular-nums">{out(euro.format(capacity + reductions))}</span>
-          </div>
-          <p className="mt-5 text-white/65 text-[15px] leading-[1.6]" aria-live="polite">
-            {ok
-              ? `This combines ${euro.format(capacity)} of staff time and ${euro.format(reductions)} in corrected bills.`
-              : "Enter a valid number in each field. Use zero for any amount you want to leave out."}
-          </p>
-          <p className="mt-2 max-w-[52rem] text-white/50 text-[14px] leading-[1.6]">
-            Time released becomes a cash saving when it reduces overtime, hiring or other spending. Deduct licence, setup and support costs when you estimate the return.
-          </p>
-        </Rise>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Getting started ---------- */
-
-export function GettingStarted() {
-  return (
-    <section id="first-step" className={`bg-[var(--sw-beige)] ${PAD}`}>
-      <div className="wrap">
-        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
-          <Rise className="lg:col-span-5">
-            <div className="lg:sticky lg:top-28">
-              <Eyebrow>Getting started</Eyebrow>
-              <h2 className={`${ON_LIGHT_H2} max-w-[16ch]`}>Start with one supplier and one real invoice.</h2>
-              <p className="mt-5 text-[var(--sw-black)]/70 text-[17px] md:text-[19px] leading-[1.55]">
-                Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.
+              <p className="mt-[clamp(14px,2.8vh,28px)] text-white/40 text-[13px] leading-[1.6]">
+                Time released becomes a cash saving when it reduces overtime, hiring or other spending. Deduct licence, setup and support costs when you estimate the return.
               </p>
             </div>
           </Rise>
-          <ol className={`lg:col-span-7 border-t ${RULE_LIGHT}`}>
-            {START.map((s, i) => (
-              <li key={s.title} className={`list-none border-b ${RULE_LIGHT} py-6 md:py-7`}>
-                <Rise delay={i * 0.05} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-3">
-                  <span className="font-head font-bold text-[var(--sw-blue)] text-[22px] leading-[1.25]">{i + 1}</span>
-                  <div>
-                    <h3 className="font-head font-bold text-[var(--sw-black)] text-[21px] md:text-[23px] leading-[1.25]">{s.title}</h3>
-                    <p className="mt-3 text-[var(--sw-black)]/80 text-[16px] leading-[1.6]">{s.team}</p>
-                    <p className="mt-2 text-[var(--sw-black)]/60 text-[16px] leading-[1.6]">{s.us}</p>
-                  </div>
-                </Rise>
-              </li>
-            ))}
-          </ol>
         </div>
-
-        <Rise delay={0.05} className="mt-14 md:mt-16">
-          <div className="rounded-[2px] bg-white p-7 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-12">
-            <div className="max-w-[44rem]">
-              <h3 className="font-head font-bold text-[var(--sw-black)] text-[24px] md:text-[28px] leading-[1.15]">See it before connecting your ERP</h3>
-              <p className="mt-3 text-[var(--sw-black)]/70 text-[16px] leading-[1.6]">
-                The first call uses example documents. Follow a price change, a short delivery and a different product code, then discuss the suppliers and records that
-                matter in your business.
-              </p>
-            </div>
-            <a href="#demo" onClick={go("demo")} className={`${btnBlue} self-start md:self-auto`}>
-              Book a demo call
-            </a>
-          </div>
-        </Rise>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Under the hood ---------- */
-
-export function UnderTheHood() {
-  return (
-    <section id="technology" className={`bg-white ${PAD}`}>
-      <div className="wrap grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
-        <Rise className="lg:col-span-5">
-          <Eyebrow>Under the hood</Eyebrow>
-          <h2 className={`${ON_LIGHT_H2} max-w-[16ch]`}>How OperaLayer knows two different lines refer to the same item</h2>
-          <p className="mt-5 text-[var(--sw-black)]/70 text-[17px] md:text-[19px] leading-[1.55]">
-            Your PO might say 120 pieces. The supplier might write 10 boxes of 12 and use its own item code. OperaLayer has to establish the product and the unit before a
-            price comparison means anything.
-          </p>
-        </Rise>
-        <Rise delay={0.08} className={`lg:col-span-7 border-t ${RULE_LIGHT} self-start`}>
-          {HOOD.map((h) => (
-            <Acc key={h.q} title={h.q}>
-              <p className="text-[var(--sw-black)]/75 text-[16px] md:text-[17px] leading-[1.65]">{h.a}</p>
-            </Acc>
-          ))}
-        </Rise>
       </div>
     </section>
   );
@@ -657,55 +595,77 @@ export function UnderTheHood() {
 /* ---------- Questions ---------- */
 
 export function Questions() {
+  const [g, setG] = useState(0);
   return (
-    <section id="questions" className={`bg-[var(--sw-beige)] ${PAD}`}>
-      <div className="wrap">
-        <Rise>
-          <Eyebrow>Questions</Eyebrow>
-          <h2 className={ON_LIGHT_H2}>Fair questions before you start</h2>
+    <section id="faq" className={`relative ${PAD} scroll-mt-16`}>
+      <div className="wrap grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
+        <Rise className="lg:col-span-4">
+          <h2 className={`${H2} max-w-[12ch]`}>Fair questions before you start</h2>
         </Rise>
-        <div className="mt-10 md:mt-14 grid gap-12 md:gap-14">
-          {FAQ_GROUPS.map((g, i) => (
-            <Rise key={g.group} delay={i * 0.05} className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-16">
-              <h3 className="lg:col-span-4 font-head font-bold text-[var(--sw-black)] text-[21px] md:text-[23px] leading-[1.25] lg:pt-5">{g.group}</h3>
-              <div className={`lg:col-span-8 border-t ${RULE_LIGHT}`}>
-                {g.items.map((x) => (
-                  <Acc key={x.q} title={x.q}>
-                    <p className="text-[var(--sw-black)]/75 text-[16px] md:text-[17px] leading-[1.65]">{x.a}</p>
-                  </Acc>
-                ))}
-              </div>
-            </Rise>
-          ))}
-        </div>
+        <Rise delay={0.08} className="lg:col-span-8">
+          <div role="tablist" aria-label="Question groups" className="flex flex-wrap gap-2 mb-6">
+            {FAQ_GROUPS.map((x, k) => (
+              <button
+                key={x.group}
+                role="tab"
+                aria-selected={k === g}
+                onClick={() => setG(k)}
+                className={`h-9 px-4 rounded-[2px] text-[14px] font-head font-semibold transition ${
+                  k === g ? "bg-[var(--sw-beige)] text-[var(--sw-black)]" : "text-white/65 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)] hover:text-white"
+                }`}
+              >
+                {x.group}
+              </button>
+            ))}
+          </div>
+          <div className="border-t border-white/10">
+            {FAQ_GROUPS[g].items.map((x) => (
+              <details key={x.q} className="group border-b border-white/10">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 md:py-6 text-white text-[18px] md:text-[20px] font-semibold font-head leading-snug [&::-webkit-details-marker]:hidden">
+                  {x.q}
+                  <span aria-hidden className="relative h-4 w-4 shrink-0">
+                    <span className="absolute left-0 top-1/2 h-[2px] w-4 -translate-y-1/2 bg-[var(--sw-mint)]" />
+                    <span className="absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 bg-[var(--sw-mint)] transition-transform group-open:scale-y-0" />
+                  </span>
+                </summary>
+                <p className="pb-6 md:pb-7 pr-2 md:pr-10 text-white/65 text-[16px] md:text-[17px] leading-[1.65] max-w-[44rem]">{x.a}</p>
+              </details>
+            ))}
+          </div>
+        </Rise>
       </div>
     </section>
   );
 }
 
-/* ---------- Book a demo call ---------- */
+/* ---------- Contact ---------- */
 
-export function Demo() {
+export function Contact() {
   return (
-    <section id="demo" className={`relative bg-[var(--sw-black)] ${PAD} scroll-mt-4 overflow-hidden`}>
+    <section id="contact" className="relative overflow-hidden scroll-mt-4">
+      <LayerField line={false} />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(50rem 32rem at 12% 10%, rgba(63,74,175,0.3), rgba(63,74,175,0) 70%)" }}
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{ background: "linear-gradient(180deg, rgba(5,7,15,0.2) 0%, rgba(5,7,15,0.7) 50%, rgba(5,7,15,0.95) 100%)" }}
       />
-      <div className="wrap relative grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-        <Rise className="lg:col-span-6">
-          <h2 className={`${ON_DARK_H2} max-w-[16ch]`}>Bring the invoice that made three people stop working.</h2>
-          <p className="mt-6 text-white/80 text-[17px] md:text-[19px] leading-[1.55]">
+      <div className="wrap relative z-10 w-full py-[clamp(56px,10vh,128px)]">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <Rise className="text-center lg:text-left lg:col-span-6 max-w-[40rem] mx-auto lg:mx-0">
+          <h2
+            className="font-[family-name:var(--font-inter)] font-medium text-white text-[40px] sm:text-[56px] lg:text-[clamp(48px,min(4.6vw,9vh),72px)] leading-[1] tracking-[-0.05em]"
+            style={{ textShadow: "0 0 60px rgba(123,134,232,0.3)" }}
+          >
+            Bring the invoice that made three people stop working.
+          </h2>
+          <p className="mt-6 text-white/75 text-[17px] md:text-[19px] leading-[1.55] max-w-[38rem] mx-auto lg:mx-0">
             See which line OperaLayer would flag, the evidence the reviewer would see, and how an accepted invoice gets back into your ERP.
           </p>
-          <p className="mt-4 text-white/60 text-[15px] md:text-[16px] leading-[1.6]">
-            Start with our example records. You leave knowing which documents, checks and connections to test in your own business.
-          </p>
         </Rise>
-        <Rise delay={0.08} className="lg:col-span-6">
+        <Rise delay={0.1} className="lg:col-span-6 w-full max-w-[40rem] mx-auto text-left">
           <HubSpotForm portalId="25724996" formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6" region="eu1" submitText="Book a demo call" />
         </Rise>
+        </div>
       </div>
     </section>
   );

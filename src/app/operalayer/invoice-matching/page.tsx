@@ -1,13 +1,15 @@
 "use client";
 
-import { OLHeader, MoreApps } from "@/sections/operalayer/kit/parts";
+import { MoreApps } from "@/sections/operalayer/kit/parts";
 import {
   Hero,
+  QuoteBand,
   Problem,
   Example,
   CustomerCase,
   HowItWorks,
   Roles,
+  BestFit,
   Calculator,
   GettingStarted,
   UnderTheHood,
@@ -15,6 +17,7 @@ import {
   Demo,
 } from "@/sections/operalayer-invoice-matching/Sections";
 import { FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
+import "@/sections/akeneo-plus-bundle/range.css";
 
 const faqLd = {
   "@context": "https://schema.org",
@@ -26,31 +29,27 @@ const faqLd = {
   })),
 };
 
-/** OperaLayer invoice matching. Copy: Anton's page, verbatim and complete (sections/operalayer-invoice-matching/copy.ts). */
+/** OperaLayer invoice matching on the scandiweb page system (/akeneo/plus-bundle). Copy: Anton's page, verbatim and complete (sections/operalayer-invoice-matching/copy.ts). */
 export default function Page() {
   return (
-    <main className="relative min-h-screen flex flex-col bg-[#05070f]">
+    <main className="relative isolate min-h-screen flex flex-col bg-[var(--sw-black)] font-body">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <OLHeader
-        links={[
-          { id: "example", label: "Invoice example" },
-          { id: "customer-case", label: "Customer case" },
-          { id: "calculator", label: "Calculator" },
-        ]}
-        cta={{ id: "demo", label: "Book a demo call" }}
-      />
       <Hero />
+      <QuoteBand />
       <Problem />
       <Example />
       <CustomerCase />
       <HowItWorks />
       <Roles />
+      <BestFit />
       <Calculator />
       <GettingStarted />
       <UnderTheHood />
       <Questions />
       <Demo />
-      <MoreApps current="invoice-matching" />
+      <div className="bg-[var(--sw-black)]">
+        <MoreApps current="invoice-matching" />
+      </div>
     </main>
   );
 }

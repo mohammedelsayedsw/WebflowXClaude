@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/site/Header";
 
 const title = "OperaLayer | Purchase order and invoice matching";
 const description =
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 export default function InvoiceMatchingLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

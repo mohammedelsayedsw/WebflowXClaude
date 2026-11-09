@@ -1,89 +1,102 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion, animate, AnimatePresence } from "motion/react";
+import { motion, useInView, useReducedMotion, animate } from "motion/react";
 import {
+  ArrowDown,
+  ArrowRight,
+  Boxes,
+  Check,
+  Database,
+  FileText,
   Inbox,
+  Landmark,
+  Layers,
   Link2,
   ListChecks,
-  Database,
-  ShoppingCart,
   Package,
+  Plus,
   Receipt,
-  Landmark,
-  Workflow,
-  Server,
-  Users,
-  Check,
-  FileText,
-  Search,
-  Boxes,
   Scale,
-  Layers,
-  ArrowRight,
+  Search,
+  Server,
+  ShoppingCart,
+  Users,
+  Workflow,
 } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { Reveal } from "@/components/primitives/Reveal";
+import { btnLight, btnPrimary } from "@/components/primitives/buttonStyles";
 import { assetUrl } from "@/lib/assets";
-import { Rise, btnMain, go } from "@/sections/operalayer/kit/parts";
-import { C, Window, ease } from "@/sections/operalayer/kit/ui";
-import {
-  QUICK,
-  PROBLEMS,
-  FULL,
-  STATS,
-  STEPS,
-  ROLES,
-  FIT,
-  START,
-  HOOD,
-  FAQ_GROUPS,
-} from "@/sections/operalayer-invoice-matching/copy";
+import { QUICK, PROBLEMS, FULL, STATS, STEPS, ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 
-/* All visible copy is Anton's, word for word (copy.ts and the strings below). */
+/*
+ * OperaLayer invoice matching, on the scandiweb page system (/akeneo/plus-bundle, /ai-visibility-package):
+ * wave hero with a white card, then white, lavender and navy sections with hairline lists.
+ * All visible copy is Anton's, word for word (copy.ts and the strings below).
+ */
 
 const ESELO = assetUrl("/operalayer/invoice-matching/eselo-mark.png");
 const INSPECT = "ol-im-inspect";
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const SECTION = "relative overflow-clip py-[clamp(80px,12vh,136px)] border-t border-white/[0.06]";
-const H2 = "font-head font-bold text-white text-[34px] md:text-[46px] lg:text-[54px] leading-[1.05] tracking-[-0.028em] text-balance";
-const LEAD = "text-white/65 text-[17px] md:text-[19px] leading-[1.6]";
-const CARD = "rounded-[4px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.012))]";
-const SURFACE = "#0a0d1c";
+const LAVENDER = "#f0f1fa";
+const LINE = "border-[#dfe1f0]";
+const SECTION_Y = "py-[clamp(56px,9vh,112px)]";
+const H2_LIGHT = "font-head font-bold text-[var(--sw-black)] text-[32px] sm:text-[38px] md:text-[46px] lg:text-[48px] leading-[1.06] tracking-[-0.02em]";
+const H2_DARK = "font-head font-bold text-white text-[32px] sm:text-[38px] md:text-[46px] lg:text-[48px] leading-[1.06] tracking-[-0.02em]";
+const BODY_LIGHT = "text-[var(--sw-black)]/70 text-[16px] md:text-[18px] leading-relaxed";
+const BODY_DARK = "text-white/75 text-[16px] md:text-[18px] leading-relaxed";
 
-/* ---------- Background pieces (no curtain) ---------- */
-
-function Grid({ at = "50% 0%", size = "70% 60%" }: { at?: string; size?: string }) {
-  const mask = `radial-gradient(ellipse ${size} at ${at}, #000 25%, transparent 75%)`;
+function Eyebrow({ children, tone = "blue" }: { children: React.ReactNode; tone?: "blue" | "mint" }) {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-        maskImage: mask,
-        WebkitMaskImage: mask,
-      }}
-    />
+    <div className="font-head font-bold uppercase text-[12px] tracking-[0.16em]" style={{ color: tone === "mint" ? "var(--sw-mint)" : "var(--sw-blue)" }}>
+      {children}
+    </div>
   );
 }
 
-function Glow({ at = "50% 50%", size = "56rem 34rem", color = "rgba(63,74,175,0.28)" }: { at?: string; size?: string; color?: string }) {
-  return <div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: `radial-gradient(${size} at ${at}, ${color}, transparent 70%)` }} />;
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <div className="mb-5 font-head font-semibold text-[15px] md:text-[16px] text-[var(--sw-mint)]">{children}</div>;
-}
-
-function PlusMinus() {
+/** The coloured part of a headline: blue on light, green on dark, on its own line. */
+function Hi({ children, tone = "blue" }: { children: React.ReactNode; tone?: "blue" | "mint" }) {
   return (
-    <span aria-hidden className="relative h-4 w-4 shrink-0">
-      <span className="absolute left-0 top-1/2 h-[2px] w-4 -translate-y-1/2 bg-[var(--sw-mint)]" />
-      <span className="absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 bg-[var(--sw-mint)] transition-transform duration-200 group-open:scale-y-0" />
+    <span className="block" style={{ color: tone === "mint" ? "var(--sw-mint)" : "var(--sw-blue)" }}>
+      {children}
     </span>
   );
+}
+
+/** A list item that rises into view (Reveal renders a div, which cannot sit directly in a list). */
+function RevealItem({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) {
+  return (
+    <motion.li
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, delay, ease: EASE }}
+    >
+      {children}
+    </motion.li>
+  );
+}
+
+/** In-page links do not scroll on their own in this app (smooth scroll on html, overflow on body), so each link scrolls itself. */
+function scrollToId(id: string) {
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const from = window.scrollY;
+    const to = from + target.getBoundingClientRect().top;
+    const started = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - started) / 700);
+      window.scrollTo({ top: from + (to - from) * (1 - Math.pow(1 - t, 3)), behavior: "instant" });
+      if (t < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+    window.history.replaceState(null, "", `#${id}`);
+  };
 }
 
 function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k: number) => void, group: string) {
@@ -94,11 +107,60 @@ function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k: number
   document.getElementById(`${group}-tab-${order[e.key]}`)?.focus();
 }
 
+/** Underline tabs, blue on light (the scandiweb.com homepage "Our work" tabs). */
+function Tabs({ items, i, set, group, label }: { items: string[]; i: number; set: (k: number) => void; group: string; label: string }) {
+  return (
+    <div role="tablist" aria-label={label} className={`grid grid-cols-3 sm:flex sm:gap-8 border-b ${LINE}`}>
+      {items.map((t, k) => (
+        <button
+          key={t}
+          id={`${group}-tab-${k}`}
+          role="tab"
+          aria-selected={k === i}
+          aria-controls={`${group}-panel-${k}`}
+          tabIndex={k === i ? 0 : -1}
+          onClick={() => set(k)}
+          onKeyDown={(e) => onTabKeys(e, k, items.length, set, group)}
+          className={`relative -mb-px py-3 px-1 sm:px-0 font-head font-semibold text-[14px] sm:text-[15px] leading-[1.2] transition-colors ${
+            k === i ? "text-[var(--sw-blue)]" : "text-[var(--sw-black)]/55 hover:text-[var(--sw-black)]"
+          }`}
+        >
+          {t}
+          {k === i && <motion.span layoutId={`${group}-line`} className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--sw-blue)]" transition={{ duration: 0.35, ease: EASE }} />}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Every panel sits in the same grid cell, so switching tabs never changes the height of the page. */
+function Panels({ i, group, children }: { i: number; group: string; children: React.ReactNode[] }) {
+  return (
+    <div className="grid">
+      {children.map((c, k) => (
+        <motion.div
+          key={k}
+          id={`${group}-panel-${k}`}
+          role="tabpanel"
+          aria-labelledby={`${group}-tab-${k}`}
+          aria-hidden={k !== i}
+          initial={false}
+          animate={{ opacity: k === i ? 1 : 0, y: k === i ? 0 : 6 }}
+          transition={{ duration: 0.3, ease: EASE }}
+          className={`[grid-area:1/1] ${k === i ? "" : "invisible pointer-events-none"}`}
+        >
+          {c}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 /* ============================================================
-   1. Hero: copy on the left, the example invoice on the right
+   1. Hero: waves, copy on the left, the example invoice in a white card
    ============================================================ */
 
-function HeroInvoice() {
+function HeroCard() {
   const [i, setI] = useState(0);
   const [touched, setTouched] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -113,240 +175,228 @@ function HeroInvoice() {
     setTouched(true);
     setI(k);
   };
-  const s = QUICK[i];
-  const inspect = (e: React.MouseEvent) => {
+  const inspect = (e: React.MouseEvent<HTMLAnchorElement>) => {
     window.dispatchEvent(new CustomEvent(INSPECT, { detail: i }));
-    go("example")(e);
+    scrollToId("example")(e);
   };
   return (
-    <div ref={ref} className="relative">
-      <div aria-hidden className="absolute -inset-10 rounded-[24px] blur-3xl opacity-70" style={{ background: "radial-gradient(closest-side, rgba(63,74,175,0.45), transparent)" }} />
-      <div className="relative" style={{ fontSize: 15 }}>
-        <Window title="app.operalayer / invoices">
-          <div className="p-4 md:p-5 lg:p-[clamp(14px,2.2vh,20px)]">
-            <div className="flex items-center justify-between gap-4 text-[13px] md:text-[14px]">
-              <span className="font-head font-semibold text-white">Example invoice</span>
-              <span className="text-white/45 tabular-nums">PO-1048 / INV-2846</span>
-            </div>
-            <div role="tablist" aria-label="Invoice quick examples" className="mt-3 lg:mt-[clamp(8px,1.6vh,14px)] grid grid-cols-3 rounded-[2px] p-1 bg-black/30 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
-              {QUICK.map((q, k) => (
-                <button
-                  key={q.tab}
-                  id={`quick-tab-${k}`}
-                  role="tab"
-                  aria-selected={k === i}
-                  aria-controls="quick-panel"
-                  tabIndex={k === i ? 0 : -1}
-                  onClick={() => pick(k)}
-                  onKeyDown={(e) => onTabKeys(e, k, QUICK.length, pick, "quick")}
-                  className={`relative h-9 lg:h-[clamp(32px,4.6vh,38px)] rounded-[2px] font-head font-semibold text-[14px] transition-colors ${k === i ? "text-[var(--sw-black)]" : "text-white/60 hover:text-white"}`}
-                >
-                  {k === i && <motion.span layoutId="quickTab" className="absolute inset-0 rounded-[2px] bg-[var(--sw-beige)]" transition={{ duration: 0.35, ease }} />}
-                  <span className="relative">{q.tab}</span>
-                </button>
+    <div ref={ref} className="bg-white rounded-[2px] p-5 md:p-7 lg:p-[clamp(18px,3.2vh,32px)] lg:ml-auto lg:max-w-[460px] text-[var(--sw-black)]">
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[22px] leading-[1.15] tracking-[-0.01em]">Example invoice</h2>
+        <span className="text-[13px] text-[var(--sw-black)]/50 tabular-nums">PO-1048 / INV-2846</span>
+      </div>
+      <div className="mt-3 lg:mt-[clamp(6px,1.2vh,12px)]">
+        <Tabs items={QUICK.map((q) => q.tab)} i={i} set={pick} group="quick" label="Invoice quick examples" />
+      </div>
+      <Panels i={i} group="quick">
+        {QUICK.map((s) => (
+          <div key={s.tab} className="pt-4 lg:pt-[clamp(10px,2vh,20px)]">
+            <div className="font-head font-semibold text-[13px] text-[var(--sw-blue)]">{s.product}</div>
+            <div className="mt-1 font-head font-bold text-[24px] md:text-[28px] lg:text-[clamp(22px,3.4vh,28px)] leading-[1.1] tracking-[-0.02em]">{s.title}</div>
+            <div className={`mt-4 lg:mt-[clamp(10px,1.8vh,16px)] grid grid-cols-2 border ${LINE} rounded-[2px]`}>
+              {s.pair.map((p, k) => (
+                <div key={p.k} className={`px-4 py-3 lg:py-[clamp(8px,1.4vh,12px)] ${k ? `border-l ${LINE} bg-[rgba(224,79,79,0.07)]` : ""}`}>
+                  <div className="font-head font-semibold text-[12px] uppercase tracking-[0.08em] text-[var(--sw-black)]/50">{p.k}</div>
+                  <div className={`mt-0.5 font-head font-bold text-[20px] tabular-nums ${k ? "text-[var(--sw-red)]" : ""}`}>{p.v}</div>
+                </div>
               ))}
             </div>
-
-            {/* The supplier's paper */}
-            <div id="quick-panel" role="tabpanel" aria-labelledby={`quick-tab-${i}`} className="relative mt-3 lg:mt-[clamp(8px,1.6vh,14px)]">
-              <div className="relative rounded-[2px] bg-[var(--sw-beige)] text-[var(--sw-black)] p-5 md:p-6 lg:p-[clamp(14px,2.6vh,24px)] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]">
-                <div className="flex items-center justify-between text-[11px] tracking-[0.08em] text-[var(--sw-black)]/50 pb-3 border-b border-dashed border-[var(--sw-black)]/20">
-                  <span>SUPPLIER INVOICE</span>
-                  <span className="tabular-nums">INV-2846</span>
-                </div>
-                <AnimatePresence mode="wait">
-                  <motion.div key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.3, ease }}>
-                    <div className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] text-[13px] text-[var(--sw-blue)] font-head font-semibold">{s.product}</div>
-                    <div className="mt-1 font-head font-bold text-[24px] md:text-[27px] lg:text-[clamp(20px,3.2vh,27px)] leading-[1.1] tracking-[-0.02em]">{s.title}</div>
-                    <div className="mt-4 lg:mt-[clamp(8px,1.6vh,16px)] grid grid-cols-2 rounded-[2px] overflow-hidden shadow-[inset_0_0_0_1px_rgba(16,19,44,0.12)]">
-                      {s.pair.map((p, k) => (
-                        <div key={p.k} className={`px-4 py-3 lg:py-[clamp(6px,1.2vh,12px)] ${k ? "bg-[rgba(224,79,79,0.09)]" : "bg-white"}`}>
-                          <div className="text-[11px] tracking-[0.06em] text-[var(--sw-black)]/50">{p.k.toUpperCase()}</div>
-                          <div className={`mt-0.5 font-head font-semibold text-[19px] tabular-nums ${k ? "text-[var(--sw-red)]" : ""}`}>{p.v}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="mt-3 lg:mt-[clamp(8px,1.4vh,14px)] text-[14.5px] leading-[1.5] text-[var(--sw-black)]/75">{s.note}</p>
-                    <div className="mt-3 pt-3 lg:mt-[clamp(8px,1.4vh,14px)] lg:pt-[clamp(8px,1.4vh,14px)] border-t border-dashed border-[var(--sw-black)]/20">
-                      <div className="text-[11px] tracking-[0.08em] font-semibold text-[var(--sw-black)]/55">SUGGESTED ACTION</div>
-                      <p className="mt-1 text-[14.5px] leading-[1.5] text-[var(--sw-black)]/80">{s.action}</p>
-                    </div>
-                    <a href="#example" onClick={inspect} className="mt-3 lg:mt-[clamp(8px,1.4vh,14px)] inline-flex items-center gap-1.5 font-head font-semibold text-[14px] text-[var(--sw-blue)] hover:gap-2.5 transition-all">
-                      Inspect this line <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+            <p className="mt-3 lg:mt-[clamp(8px,1.6vh,14px)] text-[15px] leading-[1.5] text-[var(--sw-black)]/70">{s.note}</p>
+            <div className={`mt-3 pt-3 lg:mt-[clamp(8px,1.6vh,14px)] lg:pt-[clamp(8px,1.6vh,14px)] border-t ${LINE}`}>
+              <div className="font-head font-bold text-[14px]">Suggested action</div>
+              <p className="mt-1 text-[15px] leading-[1.5] text-[var(--sw-black)]/70">{s.action}</p>
             </div>
           </div>
-        </Window>
-      </div>
+        ))}
+      </Panels>
+      <a href="#example" onClick={inspect} className={`${btnLight} mt-5 lg:mt-[clamp(12px,2.4vh,24px)] w-full h-auto min-h-12 py-3 px-4`}>
+        Inspect this line
+      </a>
     </div>
   );
 }
 
+const enter = (delay: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, delay, ease: EASE },
+});
+
 export function Hero() {
   return (
-    <section id="top" className="relative min-h-[100svh] flex flex-col overflow-hidden">
-      <Grid at="72% 42%" size="62% 70%" />
-      <Glow at="78% 42%" size="50rem 36rem" color="rgba(63,74,175,0.3)" />
-      <Glow at="0% 100%" size="40rem 24rem" color="rgba(110,247,110,0.05)" />
-      <div className="wrap relative w-full flex-1 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-2 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] items-center gap-12 lg:gap-10 xl:gap-16 pt-[104px] pb-12 lg:pt-[clamp(92px,13vh,140px)] lg:pb-[clamp(20px,4vh,56px)]">
+    <section
+      id="top"
+      className="relative z-10 -mt-[60px] md:-mt-[75px] flex min-h-[calc(100svh+60px)] md:min-h-[calc(100svh+75px)] flex-col justify-center bg-[var(--sw-black)] overflow-hidden"
+    >
+      {/* scandiweb waves: the scandiweb.com homepage hero loop */}
+      <video
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        src={assetUrl("/operalayer/invoice-matching/hero-waves.mp4")}
+        poster={assetUrl("/operalayer/invoice-matching/hero-waves-poster.jpg")}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img aria-hidden alt="" src={assetUrl("/operalayer/invoice-matching/hero-waves-poster.jpg")} className="absolute inset-0 h-full w-full object-cover hidden motion-reduce:block" />
+      <div
+        aria-hidden
+        className="absolute inset-0 hidden lg:block"
+        style={{ background: "linear-gradient(90deg, rgba(16,19,44,0.82) 0%, rgba(16,19,44,0.5) 40%, rgba(16,19,44,0) 64%, rgba(16,19,44,0) 100%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 lg:hidden"
+        style={{ background: "linear-gradient(180deg, rgba(16,19,44,0.35) 0%, rgba(16,19,44,0.6) 40%, rgba(16,19,44,0.88) 75%, rgba(16,19,44,0.95) 100%)" }}
+      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-24" style={{ background: "linear-gradient(180deg, rgba(16,19,44,0) 0%, var(--sw-black) 100%)" }} />
+
+      <div className="wrap w-full relative pt-[124px] md:pt-[150px] lg:pt-[clamp(120px,17vh,160px)] pb-12 md:pb-[clamp(40px,7vh,96px)] grid grid-cols-[minmax(0,1fr)] gap-10 lg:gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center">
         <div>
-          <Rise>
-            <Eyebrow>Invoice matching</Eyebrow>
-            <h1 className="font-head font-bold text-white text-[44px] sm:text-[60px] lg:text-[clamp(46px,min(4.1vw,8.4vh),62px)] leading-[1.03] tracking-[-0.035em]">
-              Catch invoice errors
-              <span className="block text-[var(--sw-mint)]">before you pay.</span>
-            </h1>
-          </Rise>
-          <Rise delay={0.08}>
-            <p className="mt-6 lg:mt-[clamp(14px,2.6vh,26px)] max-w-[36rem] text-white/70 text-[17px] md:text-[19px] lg:text-[clamp(15px,2vh,19px)] leading-[1.6]">
-              OperaLayer connects your warehouse, accounting and ERP to check every invoice against what you ordered and received. Wrong prices, missing quantities and
-              different products reach your team before the bill is approved.
-            </p>
-            <p className="mt-3 text-white/45 text-[15px] leading-[1.5]">For wholesalers, distributors and retailers buying stock from many suppliers.</p>
-            <p className="mt-5 lg:mt-[clamp(10px,2vh,20px)] font-head font-semibold text-white text-[18px] md:text-[20px] lg:text-[clamp(17px,2.4vh,20px)]">
-              Give your team its mornings back.
-            </p>
-          </Rise>
-          <Rise delay={0.16} className="mt-7 lg:mt-[clamp(14px,3vh,30px)] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-7">
-            <a href="#demo" onClick={go("demo")} className={`${btnMain} self-start`}>
+          <motion.div {...enter(0.1)}>
+            <Eyebrow tone="mint">Invoice matching</Eyebrow>
+          </motion.div>
+          <motion.h1
+            {...enter(0.2)}
+            className="mt-4 md:mt-5 font-head font-bold text-white text-[40px] sm:text-[56px] lg:text-[clamp(44px,min(4.4vw,8vh),64px)] leading-[1.02] tracking-[-0.03em]"
+          >
+            Catch invoice errors
+            <span className="block" style={{ color: "var(--sw-mint)" }}>
+              before you pay.
+            </span>
+          </motion.h1>
+          <motion.p {...enter(0.3)} className="mt-5 md:mt-6 lg:mt-[clamp(14px,2.6vh,24px)] text-white/80 text-[17px] md:text-[19px] lg:text-[clamp(16px,2.2vh,19px)] leading-relaxed max-w-[44ch]">
+            OperaLayer connects your warehouse, accounting and ERP to check every invoice against what you ordered and received. Wrong prices, missing quantities and
+            different products reach your team before the bill is approved.
+          </motion.p>
+          <motion.p {...enter(0.34)} className="mt-3 text-white/60 text-[15px] md:text-[16px] leading-[1.5]">
+            For wholesalers, distributors and retailers buying stock from many suppliers.
+          </motion.p>
+          <motion.p {...enter(0.38)} className="mt-5 lg:mt-[clamp(12px,2.2vh,22px)] flex items-center gap-2.5 font-head font-semibold text-white text-[17px] md:text-[18px]">
+            <Check aria-hidden className="h-5 w-5 shrink-0" style={{ color: "var(--sw-mint)" }} strokeWidth={3} />
+            Give your team its mornings back.
+          </motion.p>
+          <motion.div {...enter(0.45)} className="mt-8 lg:mt-[clamp(18px,3.6vh,40px)] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+            <a href="#demo" onClick={scrollToId("demo")} className={`${btnPrimary} w-full sm:w-auto h-auto min-h-12 py-3`}>
               Book a demo call
             </a>
-            <a href="#example" onClick={go("example")} className="font-head font-semibold text-[17px] text-white/75 hover:text-[var(--sw-mint)] transition self-start sm:self-auto">
-              See an invoice example ↓
+            <a
+              href="#example"
+              onClick={scrollToId("example")}
+              className="self-start sm:self-auto inline-flex items-center gap-1.5 font-head font-semibold text-[16px] text-white border-b border-white/40 hover:border-white py-1 transition"
+            >
+              See an invoice example <ArrowDown aria-hidden className="h-4 w-4" />
             </a>
-          </Rise>
+          </motion.div>
         </div>
-        <Rise delay={0.2} className="w-full max-w-[33rem] lg:justify-self-end">
-          <HeroInvoice />
-        </Rise>
-      </div>
-
-      <div className="wrap relative w-full">
-        <div className="border-t border-white/10 py-5 md:py-6 lg:py-[clamp(12px,2.4vh,24px)] flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-10">
-          <div className="flex items-center gap-4">
-            <img src={ESELO} alt="ESELO" className="h-8 w-8 object-contain brightness-0 invert opacity-90 shrink-0" />
-            <div>
-              <p className="font-head font-semibold text-white text-[16px] md:text-[18px] lg:text-[clamp(14px,2vh,18px)] leading-snug">
-                “Our employees smiling again. Two hours per person of ‘monkey work’ gone.”
-              </p>
-              <p className="mt-0.5 text-white/45 text-[13px] md:text-[14px]">Māris Renigers, E-business Manager, ESELO</p>
-            </div>
-          </div>
-          <a href="#customer-case" onClick={go("customer-case")} className="font-head font-semibold text-[15px] md:text-[16px] text-white/80 hover:text-[var(--sw-mint)] transition whitespace-nowrap self-start md:self-auto">
-            Read one customer’s story →
-          </a>
-        </div>
+        <motion.div {...enter(0.3)}>
+          <HeroCard />
+        </motion.div>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   2. The problem: three cards, each with its picture
+   2. The customer's words, in the band where the client logos sit on other scandiweb pages
    ============================================================ */
 
-function PriceVisual() {
+export function QuoteBand() {
   return (
-    <div className="flex items-center justify-center gap-4 sm:gap-6">
-      <div className="text-center">
-        <div className="text-[12px] text-white/40 font-head font-semibold">PO</div>
-        <div className="mt-1 font-head font-bold text-white text-[34px] tabular-nums">€4.80</div>
-      </div>
-      <ArrowRight className="h-5 w-5 text-white/30" />
-      <div className="text-center">
-        <div className="text-[12px] text-[var(--sw-orange)] font-head font-semibold">Billed</div>
-        <div className="mt-1 font-head font-bold text-[var(--sw-orange)] text-[34px] tabular-nums" style={{ textShadow: "0 0 28px rgba(255,90,49,0.45)" }}>
-          €5.10
+    <section
+      aria-label="What our customer says"
+      className="relative z-10 border-t border-white/10"
+      style={{
+        background: "radial-gradient(ellipse 30% 220% at 55% 50%, rgba(68,76,170,0.68) 0%, rgba(39,45,103,0.25) 52%, transparent 80%), var(--sw-black)",
+      }}
+    >
+      <div className="wrap py-7 md:py-8 flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10">
+        <div className="flex items-center gap-4 md:gap-5 flex-1">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={ESELO} alt="ESELO" className="h-10 w-10 md:h-12 md:w-12 object-contain brightness-0 invert shrink-0" />
+          <div>
+            <p className="font-head font-bold text-white text-[17px] md:text-[20px] leading-[1.35]">
+              “Our employees smiling again. Two hours per person of ‘monkey work’ gone.”
+            </p>
+            <p className="mt-1 text-white/60 text-[14px]">Māris Renigers, E-business Manager, ESELO</p>
+          </div>
         </div>
+        <a
+          href="#customer-case"
+          onClick={scrollToId("customer-case")}
+          className="self-start lg:self-auto shrink-0 inline-flex items-center gap-1.5 font-head font-semibold text-[16px] text-white border-b border-white/40 hover:border-white py-1 transition"
+        >
+          Read one customer’s story <ArrowRight aria-hidden className="h-4 w-4" />
+        </a>
       </div>
-    </div>
+    </section>
   );
 }
 
-function ShortVisual() {
-  return (
-    <div className="flex items-center justify-center gap-6">
-      <div className="grid grid-cols-10 gap-[3px]">
-        {Array.from({ length: 100 }, (_, k) => {
-          const missing = k >= 92;
-          return (
-            <span
-              key={k}
-              className={`h-[9px] w-[9px] rounded-[1px] ${missing ? "animate-pulse" : ""}`}
-              style={{
-                background: missing ? "transparent" : "rgba(110,247,110,0.55)",
-                boxShadow: missing ? "inset 0 0 0 1px rgba(255,90,49,0.9)" : "none",
-              }}
-            />
-          );
-        })}
-      </div>
-      <div className="grid gap-3 text-left">
-        <div>
-          <div className="text-[12px] text-white/40 font-head font-semibold">Billed</div>
-          <div className="font-head font-bold text-white text-[26px] leading-none tabular-nums">100</div>
-        </div>
-        <div>
-          <div className="text-[12px] text-white/40 font-head font-semibold">Received</div>
-          <div className="font-head font-bold text-[var(--sw-orange)] text-[26px] leading-none tabular-nums">92</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+/* ============================================================
+   3. The problem: three columns, each with the evidence on top
+   ============================================================ */
 
-function PeopleVisual() {
-  const who = [ShoppingCart, Package, Receipt];
+function Pair({ a, b }: { a: [string, string]; b: [string, string] }) {
   return (
-    <div className="relative w-full max-w-[270px] mx-auto h-[118px]">
-      <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 270 118" fill="none" preserveAspectRatio="none">
-        {[45, 135, 225].map((x) => (
-          <path key={x} d={`M135 26 C 135 60, ${x} 52, ${x} 84`} stroke="rgba(255,255,255,0.2)" strokeDasharray="3 4" />
-        ))}
-      </svg>
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 rounded-[2px] px-3 py-1.5 bg-[rgba(255,90,49,0.1)] shadow-[inset_0_0_0_1px_rgba(255,90,49,0.5)] text-[12px] font-head font-semibold text-[var(--sw-orange)] whitespace-nowrap">
-        INV-2846
-      </div>
-      {who.map((Icon, k) => (
-        <div key={k} className="absolute bottom-0 -translate-x-1/2" style={{ left: `${((45 + k * 90) / 270) * 100}%` }}>
-          <span className="h-9 w-9 rounded-[2px] flex items-center justify-center bg-[#05070f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]">
-            <Icon className="h-4 w-4 text-white/75" strokeWidth={1.7} />
-          </span>
+    <div className="grid grid-cols-2 h-full">
+      {[a, b].map(([k, v], n) => (
+        <div key={k} className={`flex flex-col justify-center px-5 ${n ? `border-l ${LINE}` : ""}`}>
+          <div className="font-head font-semibold text-[12px] uppercase tracking-[0.08em] text-[var(--sw-black)]/50">{k}</div>
+          <div className={`mt-1 font-head font-bold text-[26px] md:text-[30px] leading-none tabular-nums tracking-[-0.02em] ${n ? "text-[var(--sw-red)]" : "text-[var(--sw-black)]"}`}>{v}</div>
         </div>
       ))}
     </div>
   );
 }
 
-const PROBLEM_VISUALS = [PriceVisual, ShortVisual, PeopleVisual];
+function Holders() {
+  const who: [typeof ShoppingCart, string][] = [
+    [ShoppingCart, "Buyer"],
+    [Package, "Receiving"],
+    [Receipt, "Accounting"],
+  ];
+  return (
+    <div className="grid grid-cols-3 h-full">
+      {who.map(([Icon, t], n) => (
+        <div key={t} className={`flex flex-col items-center justify-center gap-2 ${n ? `border-l ${LINE}` : ""}`}>
+          <Icon aria-hidden className="h-6 w-6 text-[var(--sw-blue)]" strokeWidth={1.5} />
+          <span className="font-head font-semibold text-[14px] text-[var(--sw-black)]">{t}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const EVIDENCE = [
+  <Pair key="p" a={["PO", "€4.80"]} b={["Billed", "€5.10"]} />,
+  <Pair key="q" a={["Billed", "100"]} b={["Received", "92"]} />,
+  <Holders key="h" />,
+];
 
 export function Problem() {
   return (
-    <section id="problem" className={SECTION}>
-      <Glow at="50% 0%" size="60rem 26rem" color="rgba(63,74,175,0.18)" />
-      <div className="wrap relative">
-        <Rise>
+    <section id="problem" className={`relative z-10 bg-white ${SECTION_Y}`}>
+      <div className="wrap w-full">
+        <Reveal>
           <Eyebrow>The problem</Eyebrow>
-          <h2 className={`${H2} max-w-[22ch]`}>A supplier can send you a perfectly good invoice for the wrong thing.</h2>
-        </Rise>
-        <div className="mt-12 md:mt-16 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-5">
-          {PROBLEMS.map((p, i) => {
-            const V = PROBLEM_VISUALS[i];
-            return (
-              <Rise key={p.title} delay={i * 0.07} className={`${CARD} overflow-hidden flex flex-col`}>
-                <div className="h-[168px] flex items-center justify-center px-6 border-b border-white/[0.07]" style={{ background: SURFACE }}>
-                  <V />
-                </div>
-                <div className="p-7">
-                  <h3 className="font-head font-bold text-white text-[21px] md:text-[22px] leading-[1.22] tracking-[-0.01em]">{p.title}</h3>
-                  <p className="mt-3 text-white/60 text-[16px] leading-[1.6]">{p.body}</p>
-                </div>
-              </Rise>
-            );
-          })}
+          <h2 className={`${H2_LIGHT} mt-4 max-w-[26ch]`}>
+            A supplier can send you a perfectly good invoice <Hi>for the wrong thing.</Hi>
+          </h2>
+        </Reveal>
+        <div className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-10 md:gap-0">
+          {PROBLEMS.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.07} className={`md:px-8 first:md:pl-0 last:md:pr-0 ${i ? `md:border-l ${LINE}` : ""}`}>
+              <div className={`h-[104px] border ${LINE} rounded-[2px]`} style={{ background: LAVENDER }}>
+                {EVIDENCE[i]}
+              </div>
+              <h3 className="mt-6 font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[21px] leading-[1.25]">{p.title}</h3>
+              <p className="mt-3 text-[var(--sw-black)]/70 text-[16px] leading-relaxed">{p.body}</p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -354,7 +404,7 @@ export function Problem() {
 }
 
 /* ============================================================
-   3. Inside an invoice: the review screen
+   4. Inside an invoice: the three examples in full
    ============================================================ */
 
 /** The cell that disagrees in each example: [row, column] of Record / Item / Quantity / Unit price. */
@@ -363,7 +413,81 @@ const FLAG: [number, number][] = [
   [1, 2],
   [2, 1],
 ];
-const ROW_COLS = "md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.3fr)_minmax(0,0.9fr)_minmax(0,0.9fr)]";
+const ROW_COLS = "md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.3fr)_minmax(0,0.9fr)_minmax(0,0.9fr)]";
+
+function ExamplePanel({ k, held, setHold }: { k: number; held: boolean; setHold: (v: boolean) => void }) {
+  const x = FULL[k];
+  const [fr, fc] = FLAG[k];
+  return (
+    <div className="p-5 md:p-8 lg:p-10">
+      <div className="max-w-[46rem]">
+        <div className="font-head font-semibold text-[13px] text-[var(--sw-blue)]">{x.line}</div>
+        <h3 className="mt-1.5 font-head font-bold text-[var(--sw-black)] text-[24px] md:text-[30px] leading-[1.12] tracking-[-0.02em]">{x.title}</h3>
+        <p className="mt-3 text-[var(--sw-black)]/70 text-[16px] leading-relaxed">{x.body}</p>
+      </div>
+
+      <div className={`mt-6 border ${LINE} rounded-[2px] overflow-hidden`}>
+        <div className={`hidden md:grid ${ROW_COLS} gap-x-4 px-5 py-2.5 font-head font-semibold text-[13px] text-[var(--sw-black)]/55`} style={{ background: LAVENDER }}>
+          {["Record", "Item", "Quantity", "Unit price"].map((h) => (
+            <span key={h}>{h}</span>
+          ))}
+        </div>
+        {x.rows.map((r, n) => (
+          <div key={r[0]} className={`grid grid-cols-3 ${ROW_COLS} gap-x-4 gap-y-1 px-5 py-3.5 border-t ${LINE} first:border-t-0 md:first:border-t text-[15px] items-center`}>
+            {r.map((c, m) => {
+              const bad = n === fr && m === fc;
+              return (
+                <span
+                  key={m}
+                  className={`tabular-nums leading-[1.35] ${m === 0 ? "col-span-3 md:col-span-1 font-head font-semibold text-[var(--sw-black)]" : bad ? "" : "text-[var(--sw-black)]/70"}`}
+                >
+                  {bad ? (
+                    <span className="inline-block -mx-1.5 px-1.5 py-0.5 rounded-[2px] bg-[rgba(224,79,79,0.1)] text-[var(--sw-red)] font-semibold">{c}</span>
+                  ) : (
+                    c
+                  )}
+                </span>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+      <div className={`mt-6 grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-6 md:gap-10 border-t ${LINE} pt-6`}>
+        <div>
+          <h4 className="font-head font-bold text-[var(--sw-black)] text-[16px]">Why it matters</h4>
+          <p className="mt-2 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">{x.why}</p>
+        </div>
+        <div>
+          <h4 className="font-head font-bold text-[var(--sw-black)] text-[16px]">Suggested action</h4>
+          <p className="mt-2 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">{x.action}</p>
+        </div>
+      </div>
+
+      <div className="mt-7 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+        <div className="flex flex-wrap items-center gap-4">
+          {held ? (
+            <span className="inline-flex h-12 items-center gap-2 rounded-[2px] px-6 font-head font-semibold text-[16px] text-[var(--sw-blue)] border border-[var(--sw-blue)]" style={{ background: LAVENDER }}>
+              <Check aria-hidden className="h-4 w-4" strokeWidth={3} /> On hold
+            </span>
+          ) : (
+            <button type="button" onClick={() => setHold(true)} className={`${btnLight} h-12 px-6`}>
+              {x.hold} <ArrowRight aria-hidden className="h-4 w-4" />
+            </button>
+          )}
+          {held && (
+            <button type="button" onClick={() => setHold(false)} className="font-head font-semibold text-[15px] text-[var(--sw-black)]/60 underline underline-offset-4 hover:text-[var(--sw-blue)]">
+              Reset example
+            </button>
+          )}
+        </div>
+        <span role="status" className="text-[15px] font-semibold text-[var(--sw-blue)] min-h-[1.4em]">
+          {held ? x.result : ""}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export function Example() {
   const [i, setI] = useState(0);
@@ -373,164 +497,42 @@ export function Example() {
     window.addEventListener(INSPECT, on);
     return () => window.removeEventListener(INSPECT, on);
   }, []);
-  const x = FULL[i];
-  const [fr, fc] = FLAG[i];
-  const setHold = (v: boolean) => setHeld((h) => h.map((b, k) => (k === i ? v : b)));
   return (
-    <section id="example" className={`${SECTION} scroll-mt-16`}>
-      <Grid at="50% 100%" size="80% 60%" />
-      <Glow at="70% 70%" size="60rem 36rem" color="rgba(63,74,175,0.22)" />
-      <div className="wrap relative">
-        <Rise className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+    <section id="example" className={`relative z-10 ${SECTION_Y}`} style={{ background: LAVENDER }}>
+      <div className="wrap w-full">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
           <div className="lg:col-span-7">
             <Eyebrow>Inside an invoice</Eyebrow>
-            <h2 className={H2}>Follow one invoice with three different problems.</h2>
+            <h2 className={`${H2_LIGHT} mt-4`}>
+              Follow one invoice with <Hi>three different problems.</Hi>
+            </h2>
           </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>
+          <p className={`lg:col-span-5 ${BODY_LIGHT}`}>
             Switch between the lines. In each example you can see what the supplier billed, what the order says and who can settle the difference.
           </p>
-        </Rise>
+        </Reveal>
 
-        <Rise delay={0.08} className="mt-10 md:mt-14">
-          <div style={{ fontSize: 15 }}>
-            <Window title="app.operalayer / invoice review">
-              <div className="flex items-center justify-between gap-4 px-5 md:px-7 py-3.5 border-b border-white/[0.08] text-[14px]">
-                <span className="font-head font-semibold text-white">Invoice review</span>
-                <span className="text-white/45 tabular-nums">Example records · INV-2846</span>
-              </div>
-              <div role="tablist" aria-label="Invoice full examples" className="grid grid-cols-3 md:flex border-b border-white/[0.08] px-1 md:px-5" style={{ background: "#080b18" }}>
-                {FULL.map((f, k) => (
-                  <button
-                    key={f.tab}
-                    id={`full-tab-${k}`}
-                    role="tab"
-                    aria-selected={k === i}
-                    aria-controls="full-panel"
-                    tabIndex={k === i ? 0 : -1}
-                    onClick={() => setI(k)}
-                    onKeyDown={(e) => onTabKeys(e, k, FULL.length, setI, "full")}
-                    className={`relative min-h-14 py-3 px-2 md:px-4 font-head font-semibold text-[14px] md:text-[15px] leading-[1.2] md:whitespace-nowrap transition-colors ${
-                      k === i ? "text-white" : "text-white/45 hover:text-white/80"
-                    }`}
-                  >
-                    {f.tab}
-                    {k === i && <motion.span layoutId="fullTab" className="absolute left-2 right-2 md:left-4 md:right-4 bottom-0 h-[2px] bg-[var(--sw-mint)]" transition={{ duration: 0.35, ease }} />}
-                  </button>
-                ))}
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={i}
-                  id="full-panel"
-                  role="tabpanel"
-                  aria-labelledby={`full-tab-${i}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3, ease }}
-                  className="p-5 md:p-8 lg:p-10"
-                >
-                  <div className="max-w-[46rem]">
-                    <div className="text-[13px] text-[var(--sw-mint)] font-head font-semibold">{x.line}</div>
-                    <h3 className="mt-2 font-head font-bold text-white text-[26px] md:text-[32px] leading-[1.1] tracking-[-0.02em]">{x.title}</h3>
-                    <p className="mt-3 text-white/60 text-[16px] leading-[1.6]">{x.body}</p>
-                  </div>
-                      <div className="mt-6 rounded-[2px] overflow-hidden shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)]">
-                        <div className={`hidden md:grid ${ROW_COLS} gap-x-4 px-4 py-2.5 text-[12.5px] text-white/40 font-head font-semibold`} style={{ background: "#080b18" }}>
-                          {["Record", "Item", "Quantity", "Unit price"].map((h) => (
-                            <span key={h}>{h}</span>
-                          ))}
-                        </div>
-                        {x.rows.map((r, k) => {
-                          const invoice = k === x.rows.length - 1;
-                          return (
-                            <motion.div
-                              key={r[0]}
-                              initial={{ opacity: 0, x: -6 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.35, delay: 0.1 + k * 0.12, ease }}
-                              className={`relative grid grid-cols-3 ${ROW_COLS} gap-x-4 gap-y-1 px-4 py-3.5 border-t border-white/[0.07] text-[14.5px] items-center ${
-                                invoice ? "bg-[rgba(255,90,49,0.06)]" : ""
-                              }`}
-                            >
-                              {invoice && <span aria-hidden className="absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--sw-orange)]" />}
-                              {r.map((c, n) => {
-                                const bad = k === fr && n === fc;
-                                return (
-                                  <span key={n} className={`tabular-nums leading-[1.35] ${n === 0 ? "col-span-3 md:col-span-1 font-semibold text-white" : bad ? "" : "text-white/65"}`}>
-                                    {bad ? (
-                                      <motion.span
-                                        initial={{ backgroundColor: "rgba(255,90,49,0)" }}
-                                        animate={{ backgroundColor: "rgba(255,90,49,0.16)" }}
-                                        transition={{ delay: 0.6, duration: 0.4 }}
-                                        className="inline-block -mx-1.5 px-1.5 rounded-[2px] text-[var(--sw-orange)] font-semibold shadow-[inset_0_0_0_1px_rgba(255,90,49,0.5)]"
-                                      >
-                                        {c}
-                                      </motion.span>
-                                    ) : (
-                                      c
-                                    )}
-                                  </span>
-                                );
-                              })}
-                            </motion.div>
-                          );
-                        })}
-                      </div>
-
-                  <div className="mt-5 grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-4">
-                    <div className="rounded-[2px] p-5 md:p-6 bg-white/[0.03] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07)]">
-                      <h4 className="font-head font-semibold text-white text-[16px]">Why it matters</h4>
-                      <p className="mt-2 text-white/60 text-[15px] leading-[1.6]">{x.why}</p>
-                    </div>
-                    <div className="rounded-[2px] p-5 md:p-6 bg-white/[0.03] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07)]">
-                      <h4 className="font-head font-semibold text-white text-[16px]">Suggested action</h4>
-                      <p className="mt-2 text-white/60 text-[15px] leading-[1.6]">{x.action}</p>
-                    </div>
-                  </div>
-                      <div className="mt-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
-                        <div className="flex flex-wrap items-center gap-4">
-                          <button
-                            type="button"
-                            disabled={held[i]}
-                            onClick={() => setHold(true)}
-                            className={`inline-flex h-11 items-center gap-2 rounded-[2px] px-5 font-head font-semibold text-[15px] transition ${
-                              held[i] ? "bg-[var(--sw-mint)] text-[var(--sw-black)] cursor-default" : "bg-[var(--sw-beige)] text-[var(--sw-black)] hover:bg-white"
-                            }`}
-                          >
-                            {held[i] ? (
-                              <>
-                                <Check className="h-4 w-4" strokeWidth={3} /> On hold
-                              </>
-                            ) : (
-                              <>
-                                {x.hold} <ArrowRight className="h-4 w-4" />
-                              </>
-                            )}
-                          </button>
-                          {held[i] && (
-                            <button type="button" onClick={() => setHold(false)} className="text-[14px] font-head font-semibold text-white/60 underline underline-offset-4 hover:text-white">
-                              Reset example
-                            </button>
-                          )}
-                        </div>
-                        <span role="status" className="text-[14.5px] text-[var(--sw-mint)] min-h-[1.4em]">
-                          {held[i] ? x.result : ""}
-                        </span>
-                      </div>
-                </motion.div>
-              </AnimatePresence>
-            </Window>
+        <Reveal delay={0.08} className={`mt-10 md:mt-12 bg-white border ${LINE} rounded-[2px]`}>
+          <div className="px-5 md:px-8 lg:px-10 pt-2 flex items-end justify-between gap-6">
+            <div className="flex-1 sm:flex-none">
+              <Tabs items={FULL.map((f) => f.tab)} i={i} set={setI} group="full" label="Invoice full examples" />
+            </div>
+            <span className="hidden md:block pb-3 text-[13px] text-[var(--sw-black)]/50 tabular-nums">Example records · INV-2846</span>
           </div>
-        </Rise>
+          <div className={`border-t ${LINE} -mt-px`} />
+          <Panels i={i} group="full">
+            {FULL.map((f, k) => (
+              <ExamplePanel key={f.tab} k={k} held={held[k]} setHold={(v) => setHeld((h) => h.map((b, n) => (n === k ? v : b)))} />
+            ))}
+          </Panels>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   4. One customer's story
+   5. One customer's story: three results in columns, then the quote
    ============================================================ */
 
 function Count({ to, dec = 0 }: { to: number; dec?: number }) {
@@ -544,7 +546,7 @@ function Count({ to, dec = 0 }: { to: number; dec?: number }) {
   }, []);
   useEffect(() => {
     if (!run) return;
-    const c = animate(0, to, { duration: reduce ? 0 : 1.4, ease, onUpdate: setV });
+    const c = animate(0, to, { duration: reduce ? 0 : 1.4, ease: EASE, onUpdate: setV });
     return () => c.stop();
   }, [run, to, reduce]);
   return <span ref={ref}>{v.toFixed(dec)}</span>;
@@ -554,19 +556,19 @@ function AccuracyBars() {
   const ref = useRef<HTMLDivElement>(null);
   const run = useInView(ref, { once: true, amount: 0.6 });
   return (
-    <div ref={ref} className="mt-5 grid gap-2">
+    <div ref={ref} className="mt-5 grid gap-2.5">
       {[69, 87, 98.5].map((n, k) => (
         <div key={n} className="flex items-center gap-3">
-          <div className="h-[6px] flex-1 rounded-[1px] bg-white/[0.07] overflow-hidden">
+          <div className="h-[6px] flex-1 bg-white/10 overflow-hidden">
             <motion.div
-              className="h-full rounded-[1px]"
-              style={{ background: k === 2 ? "var(--sw-mint)" : "rgba(110,247,110,0.35)" }}
+              className="h-full"
+              style={{ background: k === 2 ? "var(--sw-mint)" : "rgba(255,255,255,0.35)" }}
               initial={{ width: 0 }}
               animate={{ width: run ? `${n}%` : 0 }}
-              transition={{ duration: 1, delay: k * 0.25, ease }}
+              transition={{ duration: 1, delay: k * 0.25, ease: EASE }}
             />
           </div>
-          <span className={`w-12 text-right text-[13px] tabular-nums ${k === 2 ? "text-[var(--sw-mint)] font-semibold" : "text-white/45"}`}>{n}%</span>
+          <span className={`w-12 text-right text-[13px] tabular-nums ${k === 2 ? "text-[var(--sw-mint)] font-semibold" : "text-white/55"}`}>{n}%</span>
         </div>
       ))}
     </div>
@@ -581,46 +583,55 @@ const STAT_NUM = [
 
 export function CustomerCase() {
   return (
-    <section id="customer-case" className={`${SECTION} scroll-mt-16`} style={{ background: "#070a16" }}>
-      <Glow at="0% 30%" size="50rem 36rem" color="rgba(63,74,175,0.22)" />
-      <div className="wrap relative grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-        <Rise className="lg:col-span-7">
-          <Eyebrow>One customer’s story</Eyebrow>
-          <h2 className={`${H2} max-w-[18ch]`}>What changed for an electrical goods distributor</h2>
-          <p className={`mt-6 ${LEAD}`}>
-            For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product
-            codes and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
+    <section id="customer-case" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
+      <div className="wrap w-full">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
+          <div className="lg:col-span-7">
+            <Eyebrow tone="mint">One customer’s story</Eyebrow>
+            <h2 className={`${H2_DARK} mt-4`}>
+              What changed for an <Hi tone="mint">electrical goods distributor</Hi>
+            </h2>
+          </div>
+          <p className={`lg:col-span-5 ${BODY_DARK}`}>
+            For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product codes
+            and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
           </p>
-          <figure className="mt-10 relative pl-7 border-l-2 border-[var(--sw-mint)]">
-            <blockquote className="font-head font-semibold text-white text-[22px] md:text-[28px] leading-[1.3] tracking-[-0.015em]">
-              “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
-            </blockquote>
-            <figcaption className="mt-5 flex items-center gap-3">
-              <img src={ESELO} alt="ESELO" className="h-8 w-8 object-contain brightness-0 invert opacity-90" />
-              <span className="text-white/55 text-[15px]">Māris Renigers, E-business Manager, ESELO</span>
-            </figcaption>
-          </figure>
-        </Rise>
-        <div className="lg:col-span-5 grid gap-4">
+        </Reveal>
+
+        <div className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 border-t border-white/15">
           {STATS.map((s, i) => (
-            <Rise key={s.n} delay={i * 0.08} className={`${CARD} p-6 md:p-7`}>
-              <div className="font-head font-bold text-[var(--sw-mint)] text-[34px] md:text-[42px] leading-none tracking-[-0.03em] tabular-nums">
-                <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
-                {STAT_NUM[i].post}
+            <Reveal key={s.n} delay={i * 0.08} className={`pt-7 md:pt-8 pb-2 md:px-8 first:md:pl-0 last:md:pr-0 ${i ? "border-t md:border-t-0 md:border-l border-white/15 mt-7 md:mt-0" : ""}`}>
+              <div className="font-head font-bold text-[var(--sw-mint)] leading-none tracking-[-0.03em] tabular-nums whitespace-nowrap">
+                <span className="text-[52px] md:text-[64px]">
+                  <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
+                  {STAT_NUM[i].post === "%" ? "%" : ""}
+                </span>
+                {STAT_NUM[i].post !== "%" && <span className="text-[24px] md:text-[28px] tracking-[-0.02em]">{STAT_NUM[i].post}</span>}
               </div>
-              <div className="mt-3 font-head font-semibold text-white text-[17px]">{s.label}</div>
-              <p className="mt-1.5 text-white/55 text-[15px] leading-[1.55]">{s.body}</p>
+              <div className="mt-4 font-head font-bold text-white text-[17px] md:text-[18px]">{s.label}</div>
+              <p className="mt-2 text-white/65 text-[15px] leading-relaxed">{s.body}</p>
               {i === 2 && <AccuracyBars />}
-            </Rise>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.1} className="mt-12 md:mt-16 border-t border-white/15 pt-8 md:pt-10 grid grid-cols-[minmax(0,1fr)] md:grid-cols-[64px_minmax(0,1fr)] gap-5 md:gap-8 items-start">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={ESELO} alt="ESELO" className="h-12 w-12 md:h-16 md:w-16 object-contain brightness-0 invert" />
+          <figure>
+            <blockquote className="font-head font-bold text-white text-[22px] md:text-[30px] leading-[1.3] tracking-[-0.015em] max-w-[40ch]">
+              “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
+            </blockquote>
+            <figcaption className="mt-4 text-white/60 text-[15px]">Māris Renigers, E-business Manager, ESELO</figcaption>
+          </figure>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   5. How it works
+   6. How it works: four steps, a blue line runs across them
    ============================================================ */
 
 const STEP_ICONS = [Inbox, Link2, ListChecks, Database];
@@ -637,127 +648,124 @@ export function HowItWorks() {
   }, [inView, reduce]);
   const lit = reduce ? 4 : k;
   return (
-    <section id="solution" className={SECTION}>
-      <Grid at="50% 60%" size="70% 70%" />
-      <div className="wrap relative" ref={ref}>
-        <Rise className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+    <section id="solution" className={`relative z-10 bg-white ${SECTION_Y}`}>
+      <div className="wrap w-full" ref={ref}>
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
           <div className="lg:col-span-7">
             <Eyebrow>How it works</Eyebrow>
-            <h2 className={H2}>From the supplier inbox to an invoice you can approve.</h2>
+            <h2 className={`${H2_LIGHT} mt-4`}>
+              From the supplier inbox to an invoice <Hi>you can approve.</Hi>
+            </h2>
           </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>
+          <p className={`lg:col-span-5 ${BODY_LIGHT}`}>
             OperaLayer reads the documents, finds the purchase order in your ERP and compares the lines. Your rules decide what can move ahead and what needs a buyer, a
             warehouse colleague or an accountant.
           </p>
-        </Rise>
-        <div className="relative mt-14 md:mt-20 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div aria-hidden className="hidden lg:block absolute left-[12.5%] right-[12.5%] top-[52px] h-px bg-white/[0.1]" />
-          <motion.div
-            aria-hidden
-            className="hidden lg:block absolute left-[12.5%] right-[12.5%] top-[52px] h-px bg-[var(--sw-mint)] origin-left"
-            initial={false}
-            animate={{ scaleX: (Math.min(lit, 4) - 1) / 3 }}
-            transition={{ duration: 0.9, ease }}
-          />
+        </Reveal>
+        <ol className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
           {STEPS.map((t, n) => {
             const Icon = STEP_ICONS[n];
             const on = lit >= n + 1;
             return (
-              <Rise key={t} delay={n * 0.07} className={`${CARD} relative p-6 md:p-7 pt-[30px] text-center transition-colors duration-500 ${on ? "border-white/[0.14]" : ""}`}>
-                <motion.div
-                  className="relative z-10 mx-auto h-11 w-11 rounded-[2px] flex items-center justify-center"
-                  style={{ background: "#05070f" }}
-                  initial={false}
-                  animate={{
-                    boxShadow: on ? "inset 0 0 0 1px rgba(110,247,110,0.9), 0 0 30px -4px rgba(110,247,110,0.5)" : "inset 0 0 0 1px rgba(255,255,255,0.18)",
-                  }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Icon className="h-5 w-5 transition-colors duration-500" style={{ color: on ? C.mint : "rgba(255,255,255,0.55)" }} strokeWidth={1.7} />
-                </motion.div>
-                <div className={`mt-5 font-head font-bold text-[14px] transition-colors duration-500 ${on ? "text-[var(--sw-mint)]" : "text-white/35"}`}>{n + 1}</div>
-                <p className={`mt-2 text-[16px] leading-[1.55] transition-colors duration-500 ${on ? "text-white/90" : "text-white/60"}`}>{t}</p>
-              </Rise>
+              <RevealItem key={t} delay={n * 0.07}>
+                  <div className="relative h-[2px] bg-[#dfe1f0]">
+                    <motion.div
+                      aria-hidden
+                      className="absolute inset-0 bg-[var(--sw-blue)] origin-left"
+                      initial={false}
+                      animate={{ scaleX: on ? 1 : 0 }}
+                      transition={{ duration: 0.6, ease: EASE }}
+                    />
+                  </div>
+                  <div className="mt-6 flex items-center justify-between">
+                    <span className="font-head font-bold text-[34px] md:text-[40px] leading-none text-[var(--sw-blue)]">{n + 1}</span>
+                    <Icon aria-hidden className={`h-6 w-6 transition-colors duration-500 ${on ? "text-[var(--sw-blue)]" : "text-[var(--sw-black)]/30"}`} strokeWidth={1.5} />
+                  </div>
+                  <p className="mt-4 text-[var(--sw-black)]/80 text-[16px] leading-relaxed">{t}</p>
+              </RevealItem>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   6. What does it change for you? + best fit
+   7. What does it change for you: six roles in white cards on lavender
    ============================================================ */
 
 const ROLE_ICONS = [Landmark, Receipt, ShoppingCart, Package, Workflow, Server];
 
 export function Roles() {
   return (
-    <section id="roles" className={SECTION}>
-      <Glow at="50% 0%" size="60rem 30rem" color="rgba(63,74,175,0.16)" />
-      <div className="wrap relative">
-        <Rise>
-          <h2 className={`${H2} max-w-[18ch]`}>What does it change for you?</h2>
-        </Rise>
-        <div className="mt-12 md:mt-14 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+    <section id="roles" className={`relative z-10 ${SECTION_Y}`} style={{ background: LAVENDER }}>
+      <div className="wrap w-full">
+        <Reveal>
+          <h2 className={H2_LIGHT}>
+            What does it change <Hi>for you?</Hi>
+          </h2>
+        </Reveal>
+        <div className="mt-10 md:mt-12 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {ROLES.map((r, i) => {
             const Icon = ROLE_ICONS[i];
             return (
-              <Rise key={r.role} delay={(i % 3) * 0.07} className={`${CARD} p-6 md:p-7 transition-colors hover:border-white/[0.16]`}>
-                <div className="flex items-center gap-3">
-                  <span className="h-10 w-10 shrink-0 rounded-[2px] flex items-center justify-center bg-[rgba(110,247,110,0.08)] shadow-[inset_0_0_0_1px_rgba(110,247,110,0.3)]">
-                    <Icon className="h-[18px] w-[18px] text-[var(--sw-mint)]" strokeWidth={1.7} />
-                  </span>
-                  <h3 className="font-head font-bold text-white text-[19px] leading-[1.2]">{r.role}</h3>
-                </div>
-                <ul className="mt-5 grid gap-3">
+              <Reveal key={r.role} delay={(i % 3) * 0.06} className={`bg-white border ${LINE} rounded-[2px] p-6 md:p-7`}>
+                <Icon aria-hidden className="h-7 w-7 text-[var(--sw-blue)]" strokeWidth={1.5} />
+                <h3 className="mt-5 font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[20px] leading-[1.2]">{r.role}</h3>
+                <ul className={`mt-4 border-t ${LINE}`}>
                   {r.items.map((t) => (
-                    <li key={t} className="relative pl-5 text-white/65 text-[15.5px] leading-[1.55]">
-                      <span aria-hidden className="absolute left-0 top-[0.6em] h-[5px] w-[5px] bg-[var(--sw-mint)]" />
+                    <li key={t} className={`flex gap-3 border-b ${LINE} last:border-b-0 py-3 text-[var(--sw-black)]/75 text-[15px] leading-[1.5]`}>
+                      <Check aria-hidden className="mt-[3px] h-4 w-4 shrink-0 text-[var(--sw-blue)]" strokeWidth={3} />
                       {t}
                     </li>
                   ))}
                 </ul>
-              </Rise>
+              </Reveal>
             );
           })}
         </div>
-
-        <Rise delay={0.05} className="mt-6 md:mt-8">
-          <div className="relative rounded-[4px] p-px" style={{ background: "linear-gradient(120deg, rgba(110,247,110,0.55), rgba(63,74,175,0.5) 45%, rgba(255,255,255,0.08))" }}>
-            <div className="relative rounded-[3px] p-7 md:p-10 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-2 gap-8 lg:gap-14" style={{ background: "#080b18" }}>
-              <div>
-                <Eyebrow>Best fit</Eyebrow>
-                <h3 className="font-head font-bold text-white text-[26px] md:text-[32px] leading-[1.12] tracking-[-0.02em]">Built for businesses that buy stock from many suppliers</h3>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Electrical and industrial distribution", "Wholesale", "Food service supply", "Multi-store retail"].map((c) => (
-                    <span key={c} className="rounded-[2px] px-3 py-1.5 text-[13.5px] text-white/75 bg-white/[0.04] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]">
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <ul className="grid gap-4 self-center">
-                {FIT.map((t) => (
-                  <li key={t} className="flex gap-3 text-white/80 text-[16px] leading-[1.55]">
-                    <span className="mt-[2px] h-5 w-5 shrink-0 rounded-[2px] flex items-center justify-center bg-[var(--sw-mint)]">
-                      <Check className="h-3.5 w-3.5 text-[var(--sw-black)]" strokeWidth={3} />
-                    </span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Rise>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   7. Calculator
+   8. Best fit
+   ============================================================ */
+
+export function BestFit() {
+  return (
+    <section id="best-fit" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
+      <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+        <Reveal>
+          <Eyebrow tone="mint">Best fit</Eyebrow>
+          <h2 className={`${H2_DARK} mt-4`}>
+            Built for businesses that buy stock from <Hi tone="mint">many suppliers</Hi>
+          </h2>
+          <ul className="mt-7 flex flex-wrap gap-2.5">
+            {["Electrical and industrial distribution", "Wholesale", "Food service supply", "Multi-store retail"].map((c) => (
+              <li key={c} className="rounded-[2px] border border-white/25 px-3.5 py-2 font-head font-semibold text-[14px] text-white/85">
+                {c}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+        <ul className="border-t border-white/15">
+          {FIT.map((t, i) => (
+            <RevealItem key={t} delay={i * 0.06} className="flex gap-4 border-b border-white/15 py-5 md:py-6 text-white/85 text-[16px] md:text-[18px] leading-relaxed">
+              <Check aria-hidden className="mt-[4px] h-5 w-5 shrink-0" style={{ color: "var(--sw-mint)" }} strokeWidth={3} />
+              {t}
+            </RevealItem>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   9. Calculator
    ============================================================ */
 
 const DEFAULTS = { volume: 2000, minutes: 4, rate: 25, credits: 8, amount: 65 };
@@ -765,19 +773,13 @@ type Key = keyof typeof DEFAULTS;
 const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 2, minimumFractionDigits: 0 });
 const count = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
 
-const range =
-  "w-full h-5 cursor-pointer appearance-none bg-transparent outline-none " +
-  "[&::-webkit-slider-runnable-track]:h-[2px] [&::-webkit-slider-runnable-track]:[background:linear-gradient(90deg,#6ef76e_var(--p),rgba(255,255,255,0.14)_var(--p))] " +
-  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:-mt-[7px] [&::-webkit-slider-thumb]:rounded-[2px] [&::-webkit-slider-thumb]:bg-[var(--sw-mint)] [&::-webkit-slider-thumb]:shadow-[0_0_0_4px_rgba(110,247,110,0.15)] " +
-  "[&::-moz-range-track]:h-[2px] [&::-moz-range-track]:bg-white/15 [&::-moz-range-progress]:h-[2px] [&::-moz-range-progress]:bg-[var(--sw-mint)] [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:rounded-[2px] [&::-moz-range-thumb]:bg-[var(--sw-mint)]";
-
 function Slider({ k, label, min, max, step, v, set }: { k: Key; label: string; min: number; max: number; step: number; v: number; set: (k: Key, n: number) => void }) {
   const p = ((v - min) / (max - min)) * 100;
   return (
     <label className="block">
       <span className="flex items-baseline justify-between gap-4 text-[15px]">
-        <span className="text-white/65">{label}</span>
-        <span className="font-head font-semibold text-white tabular-nums">{count.format(v)}</span>
+        <span className="text-[var(--sw-black)]/70">{label}</span>
+        <span className="font-head font-bold text-[var(--sw-black)] tabular-nums">{count.format(v)}</span>
       </span>
       <input
         type="range"
@@ -786,8 +788,8 @@ function Slider({ k, label, min, max, step, v, set }: { k: Key; label: string; m
         step={step}
         value={v}
         onChange={(e) => set(k, Number(e.target.value))}
-        className={`mt-2 ${range}`}
-        style={{ ["--p" as string]: `${p}%` } as React.CSSProperties}
+        className="akeneo-range mt-3 w-full"
+        style={{ ["--fill" as string]: `${p}%` } as React.CSSProperties}
       />
     </label>
   );
@@ -800,170 +802,150 @@ export function Calculator() {
   const capacity = hours * v.rate;
   const reductions = v.credits * v.amount * 12;
   const isDefault = (Object.keys(v) as Key[]).every((k) => v[k] === DEFAULTS[k]);
+  const PANEL = `border ${LINE} rounded-[2px] p-6 md:p-8 flex flex-col`;
   return (
-    <section id="calculator" className={`${SECTION} scroll-mt-16`} style={{ background: "#070a16" }}>
-      <Grid at="50% 100%" size="80% 55%" />
-      <Glow at="80% 80%" size="50rem 30rem" color="rgba(110,247,110,0.07)" />
-      <div className="wrap relative">
-        <Rise className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+    <section id="calculator" className={`relative z-10 bg-white ${SECTION_Y}`}>
+      <div className="wrap w-full">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
           <div className="lg:col-span-7">
             <Eyebrow>Annual value calculator</Eyebrow>
-            <h2 className={H2}>What is invoice checking costing you?</h2>
+            <h2 className={`${H2_LIGHT} mt-4`}>
+              What is invoice checking <Hi>costing you?</Hi>
+            </h2>
           </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>
+          <p className={`lg:col-span-5 ${BODY_LIGHT}`}>
             Use your own volumes and costs to explore a year. The example separates the value of staff time from actual supplier corrections.
           </p>
-        </Rise>
+        </Reveal>
 
-        <Rise delay={0.08} className="mt-10 md:mt-14">
+        <Reveal delay={0.08} className="mt-10 md:mt-12">
           <div className="flex items-center justify-between mb-3 text-[14px]">
-            <span className="text-white/45">{isDefault ? "Example inputs" : "Your inputs"}</span>
-            <button type="button" onClick={() => setV(DEFAULTS)} className="font-head font-semibold text-white/70 underline underline-offset-4 hover:text-[var(--sw-mint)] transition">
+            <span className="font-head font-semibold text-[var(--sw-black)]/55">{isDefault ? "Example inputs" : "Your inputs"}</span>
+            <button type="button" onClick={() => setV(DEFAULTS)} className="font-head font-semibold text-[var(--sw-blue)] border-b border-[var(--sw-blue)]/40 hover:border-[var(--sw-blue)] transition">
               Reset example
             </button>
           </div>
-          <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-4">
-            <div className={`${CARD} p-6 md:p-8 flex flex-col`}>
-              <h3 className="font-head font-bold text-white text-[21px] md:text-[23px]">Time back for your team</h3>
-              <div className="mt-6 grid gap-5">
+          <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-2 gap-4 md:gap-5">
+            <div className={PANEL} style={{ background: LAVENDER }}>
+              <h3 className="font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[22px]">Time back for your team</h3>
+              <div className="mt-6 grid gap-6">
                 <Slider k="volume" label="Invoices per month" min={0} max={10000} step={50} v={v.volume} set={set} />
                 <Slider k="minutes" label="Minutes saved per invoice" min={0} max={15} step={0.5} v={v.minutes} set={set} />
                 <Slider k="rate" label="Staff cost per hour (€)" min={10} max={80} step={1} v={v.rate} set={set} />
               </div>
-              <div className="mt-auto pt-7">
-                <div className="pt-6 border-t border-white/[0.08]">
-                  <div className="font-head font-bold text-white text-[36px] md:text-[42px] leading-none tabular-nums tracking-[-0.02em]">{euro.format(capacity)}</div>
-                  <div className="mt-2 text-white/55 text-[15px]">
-                    value of <strong className="text-white font-semibold">{count.format(hours)}</strong> hours per year
+              <div className={`mt-auto pt-7`}>
+                <div className={`pt-6 border-t ${LINE}`}>
+                  <div className="font-head font-bold text-[var(--sw-blue)] text-[38px] md:text-[44px] leading-none tabular-nums tracking-[-0.02em]">{euro.format(capacity)}</div>
+                  <div className="mt-2 text-[var(--sw-black)]/65 text-[15px]">
+                    value of <strong className="font-semibold text-[var(--sw-black)]">{count.format(hours)}</strong> hours per year
                   </div>
                 </div>
               </div>
             </div>
-            <div className={`${CARD} p-6 md:p-8 flex flex-col`}>
-              <h3 className="font-head font-bold text-white text-[21px] md:text-[23px]">Supplier bills corrected</h3>
-              <div className="mt-6 grid gap-5">
+            <div className={PANEL} style={{ background: LAVENDER }}>
+              <h3 className="font-head font-bold text-[var(--sw-black)] text-[20px] md:text-[22px]">Supplier bills corrected</h3>
+              <div className="mt-6 grid gap-6">
                 <Slider k="credits" label="Confirmed corrections per month" min={0} max={50} step={1} v={v.credits} set={set} />
                 <Slider k="amount" label="Average accepted reduction (€)" min={0} max={500} step={5} v={v.amount} set={set} />
               </div>
               <div className="mt-auto pt-7">
-                <div className="pt-6 border-t border-white/[0.08]">
-                  <div className="font-head font-bold text-white text-[36px] md:text-[42px] leading-none tabular-nums tracking-[-0.02em]">{euro.format(reductions)}</div>
-                  <div className="mt-2 text-white/55 text-[15px]">in confirmed reductions per year</div>
+                <div className={`pt-6 border-t ${LINE}`}>
+                  <div className="font-head font-bold text-[var(--sw-blue)] text-[38px] md:text-[44px] leading-none tabular-nums tracking-[-0.02em]">{euro.format(reductions)}</div>
+                  <div className="mt-2 text-[var(--sw-black)]/65 text-[15px]">in confirmed reductions per year</div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-4 relative rounded-[4px] p-px" style={{ background: "linear-gradient(90deg, rgba(110,247,110,0.6), rgba(110,247,110,0.12))" }}>
-            <div className="rounded-[3px] px-6 md:px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: "#08120f" }}>
-              <span className="font-head font-semibold text-white text-[17px] md:text-[19px]">Gross annual value in this scenario</span>
-              <span className="font-head font-bold text-[var(--sw-mint)] text-[44px] md:text-[56px] leading-none tabular-nums tracking-[-0.03em]">{euro.format(capacity + reductions)}</span>
-            </div>
+          <div className="mt-4 md:mt-5 rounded-[2px] bg-[var(--sw-black)] px-6 md:px-8 py-6 md:py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <span className="font-head font-bold text-white text-[17px] md:text-[20px]">Gross annual value in this scenario</span>
+            <span className="font-head font-bold text-[var(--sw-mint)] text-[42px] md:text-[56px] leading-none tabular-nums tracking-[-0.03em]">{euro.format(capacity + reductions)}</span>
           </div>
-          <p className="mt-5 text-white/65 text-[15px] leading-[1.6]" aria-live="polite">
+          <p className="mt-5 text-[var(--sw-black)]/75 text-[15px] md:text-[16px] leading-relaxed" aria-live="polite">
             This combines {euro.format(capacity)} of staff time and {euro.format(reductions)} in corrected bills.
           </p>
-          <p className="mt-1.5 max-w-[52rem] text-white/40 text-[14px] leading-[1.6]">
+          <p className="mt-1.5 max-w-[52rem] text-[var(--sw-black)]/55 text-[14px] leading-relaxed">
             Time released becomes a cash saving when it reduces overtime, hiring or other spending. Deduct licence, setup and support costs when you estimate the return.
           </p>
-        </Rise>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   8. Getting started
+   10. Getting started: four numbered steps, then the demo offer
    ============================================================ */
 
 export function GettingStarted() {
   return (
-    <section id="first-step" className={SECTION}>
-      <Glow at="0% 20%" size="44rem 30rem" color="rgba(63,74,175,0.18)" />
-      <div className="wrap relative">
-        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-12 lg:gap-16">
-          <Rise className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
-            <div>
-              <Eyebrow>Getting started</Eyebrow>
-              <h2 className={`${H2} max-w-[15ch]`}>Start with one supplier and one real invoice.</h2>
-              <p className={`mt-6 ${LEAD}`}>
-                Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.
-              </p>
-            </div>
-          </Rise>
-          <ol className="lg:col-span-7 relative">
-            <span aria-hidden className="absolute left-[19px] top-6 bottom-6 w-px bg-gradient-to-b from-[var(--sw-mint)] via-white/15 to-white/5" />
+    <section id="first-step" className={`relative z-10 ${SECTION_Y}`} style={{ background: LAVENDER }}>
+      <div className="wrap w-full">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
+          <Reveal className="lg:col-span-5 lg:sticky lg:top-12 lg:self-start">
+            <Eyebrow>Getting started</Eyebrow>
+            <h2 className={`${H2_LIGHT} mt-4`}>
+              Start with one supplier and <Hi>one real invoice.</Hi>
+            </h2>
+            <p className={`mt-5 md:mt-6 ${BODY_LIGHT}`}>
+              Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.
+            </p>
+          </Reveal>
+          <ol className="lg:col-span-7 grid gap-4">
             {START.map((s, i) => (
-              <li key={s.title} className="relative pl-16 pb-6 last:pb-0">
-                <span className="absolute left-0 top-0 h-10 w-10 rounded-[2px] flex items-center justify-center font-head font-bold text-[16px] text-[var(--sw-black)] bg-[var(--sw-mint)] shadow-[0_0_24px_-4px_rgba(110,247,110,0.6)]">
-                  {i + 1}
-                </span>
-                <Rise delay={i * 0.05} className={`${CARD} p-6 md:p-7`}>
-                  <h3 className="font-head font-bold text-white text-[20px] md:text-[22px] leading-[1.25]">{s.title}</h3>
-                  <div className="mt-4 grid gap-3">
-                    <p className="flex gap-3 text-white/75 text-[15.5px] leading-[1.6]">
-                      <Users className="h-[18px] w-[18px] mt-[3px] shrink-0 text-white/40" strokeWidth={1.7} />
+              <RevealItem key={s.title} delay={i * 0.05} className={`bg-white border ${LINE} rounded-[2px] p-6 md:p-7`}>
+                  <div className="flex items-center gap-4">
+                    <span className={`h-9 w-9 shrink-0 flex items-center justify-center rounded-[2px] border ${LINE} font-head font-bold text-[15px] text-[var(--sw-blue)]`}>{i + 1}</span>
+                    <h3 className="font-head font-bold text-[var(--sw-black)] text-[19px] md:text-[21px] leading-[1.25]">{s.title}</h3>
+                  </div>
+                  <div className={`mt-5 border-t ${LINE}`}>
+                    <p className={`flex gap-3 border-b ${LINE} py-3.5 text-[var(--sw-black)]/80 text-[15px] md:text-[16px] leading-relaxed`}>
+                      <Users aria-hidden className="mt-[3px] h-[18px] w-[18px] shrink-0 text-[var(--sw-black)]/40" strokeWidth={1.7} />
                       <span>{s.team}</span>
                     </p>
-                    <p className="flex gap-3 text-white/60 text-[15.5px] leading-[1.6]">
-                      <Layers className="h-[18px] w-[18px] mt-[3px] shrink-0 text-[var(--sw-mint)]" strokeWidth={1.7} />
+                    <p className="flex gap-3 pt-3.5 text-[var(--sw-black)]/70 text-[15px] md:text-[16px] leading-relaxed">
+                      <Layers aria-hidden className="mt-[3px] h-[18px] w-[18px] shrink-0 text-[var(--sw-blue)]" strokeWidth={1.7} />
                       <span>{s.us}</span>
                     </p>
                   </div>
-                </Rise>
-              </li>
+              </RevealItem>
             ))}
           </ol>
         </div>
 
-        <Rise delay={0.05} className="mt-14 md:mt-16">
-          <div
-            className="relative overflow-hidden rounded-[4px] p-7 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-12 border border-white/[0.1]"
-            style={{ background: "linear-gradient(110deg, #111638, #0a0d1c 60%)" }}
-          >
-            <Grid at="90% 50%" size="40% 120%" />
-            <div className="relative max-w-[44rem]">
-              <h3 className="font-head font-bold text-white text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.015em]">See it before connecting your ERP</h3>
-              <p className="mt-3 text-white/60 text-[16px] leading-[1.6]">
-                The first call uses example documents. Follow a price change, a short delivery and a different product code, then discuss the suppliers and records that
-                matter in your business.
-              </p>
-            </div>
-            <a href="#demo" onClick={go("demo")} className={`${btnMain} relative self-start md:self-auto whitespace-nowrap`}>
-              Book a demo call
-            </a>
+        <Reveal delay={0.05} className="mt-10 md:mt-14 rounded-[2px] bg-[var(--sw-black)] p-7 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-12">
+          <div className="max-w-[44rem]">
+            <h3 className="font-head font-bold text-white text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.015em]">See it before connecting your ERP</h3>
+            <p className="mt-3 text-white/70 text-[16px] leading-relaxed">
+              The first call uses example documents. Follow a price change, a short delivery and a different product code, then discuss the suppliers and records that matter
+              in your business.
+            </p>
           </div>
-        </Rise>
+          <a href="#demo" onClick={scrollToId("demo")} className={`${btnPrimary} self-start md:self-auto whitespace-nowrap`}>
+            Book a demo call
+          </a>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   9. Under the hood
+   11. Under the hood
    ============================================================ */
 
 const HOOD_ICONS = [FileText, Search, Boxes, Scale, Database];
 
 function PackVisual() {
   return (
-    <div className="mt-10 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
-      <div className={`${CARD} p-4`}>
-        <div className="text-[12px] text-white/40 font-head font-semibold">Supplier invoice</div>
-        <div className="mt-2 font-head font-bold text-white text-[19px] leading-tight">10 boxes of 12</div>
-        <div className="mt-3 h-2 w-3/4 rounded-[1px] bg-white/[0.08]" />
-        <div className="mt-1.5 h-2 w-1/2 rounded-[1px] bg-white/[0.08]" />
+    <div className="mt-8 md:mt-10 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 md:gap-4">
+      <div className="border border-white/20 rounded-[2px] px-4 py-4 md:px-5">
+        <div className="font-head font-semibold text-[12px] uppercase tracking-[0.08em] text-white/50">Supplier invoice</div>
+        <div className="mt-2 font-head font-bold text-white text-[19px] md:text-[22px] leading-tight whitespace-nowrap">10 boxes of 12</div>
       </div>
-      <div className="flex flex-col items-center gap-2">
-        <span className="h-9 w-9 rounded-[2px] flex items-center justify-center bg-[rgba(110,247,110,0.1)] shadow-[inset_0_0_0_1px_rgba(110,247,110,0.5),0_0_24px_-4px_rgba(110,247,110,0.45)]">
-          <Layers className="h-4 w-4 text-[var(--sw-mint)]" strokeWidth={1.8} />
-        </span>
-        <ArrowRight className="h-4 w-4 text-white/30" />
-      </div>
-      <div className={`${CARD} p-4`}>
-        <div className="text-[12px] text-white/40 font-head font-semibold">Purchase order</div>
-        <div className="mt-2 font-head font-bold text-[var(--sw-mint)] text-[19px] leading-tight">120 pieces</div>
-        <div className="mt-3 h-2 w-3/4 rounded-[1px] bg-white/[0.08]" />
-        <div className="mt-1.5 h-2 w-1/2 rounded-[1px] bg-white/[0.08]" />
+      <ArrowRight aria-hidden className="h-5 w-5 text-[var(--sw-mint)]" />
+      <div className="border border-[var(--sw-mint)]/60 rounded-[2px] px-4 py-4 md:px-5">
+        <div className="font-head font-semibold text-[12px] uppercase tracking-[0.08em] text-white/50">Purchase order</div>
+        <div className="mt-2 font-head font-bold text-[var(--sw-mint)] text-[19px] md:text-[22px] leading-tight whitespace-nowrap">120 pieces</div>
       </div>
     </div>
   );
@@ -971,68 +953,76 @@ function PackVisual() {
 
 export function UnderTheHood() {
   return (
-    <section id="technology" className={SECTION} style={{ background: "#070a16" }}>
-      <Grid at="20% 80%" size="50% 60%" />
-      <div className="wrap relative grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-12 lg:gap-16">
-        <Rise className="lg:col-span-5">
-          <Eyebrow>Under the hood</Eyebrow>
-          <h2 className={`${H2} max-w-[16ch]`}>How OperaLayer knows two different lines refer to the same item</h2>
-          <p className={`mt-6 ${LEAD}`}>
-            Your PO might say 120 pieces. The supplier might write 10 boxes of 12 and use its own item code. OperaLayer has to establish the product and the unit before a
-            price comparison means anything.
+    <section id="technology" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
+      <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-10 lg:gap-16">
+        <Reveal className="lg:col-span-5">
+          <Eyebrow tone="mint">Under the hood</Eyebrow>
+          <h2 className={`${H2_DARK} mt-4`}>
+            How OperaLayer knows two different lines refer to <Hi tone="mint">the same item</Hi>
+          </h2>
+          <p className={`mt-5 md:mt-6 ${BODY_DARK}`}>
+            Your PO might say 120 pieces. The supplier might write 10 boxes of 12 and use its own item code. OperaLayer has to establish the product and the unit before a price
+            comparison means anything.
           </p>
           <PackVisual />
-        </Rise>
-        <Rise delay={0.08} className="lg:col-span-7 self-center grid gap-3">
+        </Reveal>
+        <Reveal delay={0.08} className="lg:col-span-7 self-center border-t border-white/15">
           {HOOD.map((h, i) => {
             const Icon = HOOD_ICONS[i];
             return (
-              <details key={h.q} open={i === 0} className={`group ${CARD} open:border-white/[0.16] transition-colors`}>
-                <summary className="flex cursor-pointer list-none items-center gap-4 px-5 md:px-6 py-5 [&::-webkit-details-marker]:hidden">
-                  <span className="h-9 w-9 shrink-0 rounded-[2px] flex items-center justify-center bg-white/[0.04] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] group-open:bg-[rgba(110,247,110,0.1)] group-open:shadow-[inset_0_0_0_1px_rgba(110,247,110,0.45)] transition">
-                    <Icon className="h-4 w-4 text-white/60 group-open:text-[var(--sw-mint)]" strokeWidth={1.8} />
-                  </span>
-                  <span className="flex-1 font-head font-semibold text-white text-[17px] md:text-[19px] leading-snug">{h.q}</span>
-                  <PlusMinus />
+              <details key={h.q} open={i === 0} className="group border-b border-white/15">
+                <summary className="flex cursor-pointer list-none items-center gap-4 py-5 md:py-6 [&::-webkit-details-marker]:hidden">
+                  <Icon aria-hidden className="h-5 w-5 shrink-0 text-[var(--sw-mint)]" strokeWidth={1.6} />
+                  <span className="flex-1 font-head font-bold text-white text-[17px] md:text-[19px] leading-snug">{h.q}</span>
+                  <Plus aria-hidden className="h-5 w-5 shrink-0 text-[var(--sw-mint)] group-open:rotate-45 transition" />
                 </summary>
-                <p className="px-5 md:px-6 pb-6 md:pl-[76px] text-white/65 text-[15.5px] md:text-[16px] leading-[1.65]">{h.a}</p>
+                <p className="pb-6 pl-9 pr-2 md:pr-10 text-white/70 text-[15px] md:text-[16px] leading-relaxed">{h.a}</p>
               </details>
             );
           })}
-        </Rise>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ============================================================
-   10. Questions
+   12. Questions
    ============================================================ */
 
 export function Questions() {
   return (
-    <section id="questions" className={SECTION}>
-      <div className="wrap relative">
-        <Rise>
+    <section id="questions" className={`relative z-10 bg-white ${SECTION_Y}`}>
+      <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16 items-start">
+        <Reveal className="lg:sticky lg:top-12">
           <Eyebrow>Questions</Eyebrow>
-          <h2 className={H2}>Fair questions before you start</h2>
-        </Rise>
-        <div className="mt-12 md:mt-14 grid gap-12 md:gap-14">
+          <h2 className={`${H2_LIGHT} mt-4`}>
+            Fair questions <Hi>before you start</Hi>
+          </h2>
+          <a
+            href="#demo"
+            onClick={scrollToId("demo")}
+            className="mt-6 md:mt-8 inline-block font-head font-bold text-[16px] text-[var(--sw-blue)] border-b border-[var(--sw-blue)] py-1 hover:opacity-80 transition"
+          >
+            Book a demo call
+          </a>
+        </Reveal>
+        <div className="grid gap-10 md:gap-12">
           {FAQ_GROUPS.map((g, i) => (
-            <Rise key={g.group} delay={i * 0.05} className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-16">
-              <h3 className="lg:col-span-4 font-head font-bold text-white text-[20px] md:text-[22px] leading-[1.25] lg:pt-5">{g.group}</h3>
-              <div className="lg:col-span-8 border-t border-white/10">
+            <Reveal key={g.group} delay={i * 0.04}>
+              <h3 className="font-head font-bold text-[var(--sw-blue)] text-[13px] uppercase tracking-[0.14em]">{g.group}</h3>
+              <div className={`mt-3 border-t ${LINE}`}>
                 {g.items.map((x) => (
-                  <details key={x.q} className="group border-b border-white/10">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 md:py-6 text-white text-[17px] md:text-[19px] font-semibold font-head leading-snug [&::-webkit-details-marker]:hidden hover:text-[var(--sw-mint)] transition-colors">
-                      {x.q}
-                      <PlusMinus />
+                  <details key={x.q} className={`group border-b ${LINE}`}>
+                    <summary className="cursor-pointer list-none flex items-center justify-between gap-6 py-4 md:py-5 [&::-webkit-details-marker]:hidden">
+                      <span className="font-head font-bold text-[var(--sw-black)] text-[16px] md:text-[18px] leading-[1.3]">{x.q}</span>
+                      <Plus aria-hidden className="h-5 w-5 shrink-0 text-[var(--sw-blue)] group-open:rotate-45 transition" />
                     </summary>
-                    <p className="pb-6 md:pb-7 pr-2 md:pr-10 text-white/65 text-[16px] md:text-[17px] leading-[1.65] max-w-[46rem]">{x.a}</p>
+                    <p className="pb-5 pr-2 md:pr-10 max-w-[68ch] text-[15px] md:text-[16px] text-[var(--sw-black)]/70 leading-relaxed">{x.a}</p>
                   </details>
                 ))}
               </div>
-            </Rise>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -1041,29 +1031,27 @@ export function Questions() {
 }
 
 /* ============================================================
-   11. Book a demo call
+   13. Book a demo call
    ============================================================ */
 
 export function Demo() {
   return (
-    <section id="demo" className={`${SECTION} scroll-mt-4`} style={{ background: "#070a16" }}>
-      <Grid at="25% 40%" size="55% 80%" />
-      <Glow at="20% 30%" size="46rem 32rem" color="rgba(63,74,175,0.3)" />
-      <div className="wrap relative grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <Rise className="lg:col-span-6">
-          <h2 className="font-head font-bold text-white text-[38px] md:text-[52px] lg:text-[clamp(44px,4.4vw,64px)] leading-[1.03] tracking-[-0.03em] text-balance">
-            Bring the invoice that made three people stop working.
+    <section id="demo" className={`relative z-10 bg-[var(--sw-black)] ${SECTION_Y}`}>
+      <div className="wrap w-full max-w-[760px] mx-auto text-center">
+        <Reveal>
+          <h2 className={H2_DARK}>
+            Bring the invoice that made three people <Hi tone="mint">stop working.</Hi>
           </h2>
-          <p className="mt-6 text-white/75 text-[17px] md:text-[19px] leading-[1.6]">
+          <p className={`mt-5 md:mt-6 ${BODY_DARK}`}>
             See which line OperaLayer would flag, the evidence the reviewer would see, and how an accepted invoice gets back into your ERP.
           </p>
-          <p className="mt-4 text-white/50 text-[15px] md:text-[16px] leading-[1.6]">
+          <p className="mt-3 text-white/60 text-[15px] md:text-[16px] leading-relaxed">
             Start with our example records. You leave knowing which documents, checks and connections to test in your own business.
           </p>
-        </Rise>
-        <Rise delay={0.08} className="lg:col-span-6">
+        </Reveal>
+        <Reveal delay={0.08} className="mt-10 md:mt-12 text-left">
           <HubSpotForm portalId="25724996" formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6" region="eu1" submitText="Book a demo call" />
-        </Rise>
+        </Reveal>
       </div>
     </section>
   );

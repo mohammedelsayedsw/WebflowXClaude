@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-const title = "AI Invoice Matching for Microsoft Dynamics NAV | OperaLayer";
+const title = "OperaLayer | Purchase order and invoice matching";
 const description =
-  "OperaLayer reads supplier PDF invoices in any layout and checks every line against the purchase order in Microsoft Dynamics NAV. Your team reviews only the exceptions.";
+  "Check supplier invoices against purchase orders and warehouse receipts. Follow three invoice examples and read one customer’s story.";
 
 export const metadata: Metadata = {
   title,

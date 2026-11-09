@@ -65,7 +65,13 @@ export function useSeq(n: number, gap = 550, start = 400, amount = 0.2) {
 
 /* ---------- Header: scandiweb logo, section links, one CTA ---------- */
 
-export function OLHeader({ links }: { links: { id: string; label: string }[] }) {
+export function OLHeader({
+  links,
+  cta = { id: "contact", label: "Book a demo" },
+}: {
+  links: { id: string; label: string }[];
+  cta?: { id: string; label: string };
+}) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
@@ -92,11 +98,11 @@ export function OLHeader({ links }: { links: { id: string; label: string }[] }) 
             </a>
           ))}
           <a
-            href="#contact"
-            onClick={go("contact")}
+            href={`#${cta.id}`}
+            onClick={go(cta.id)}
             className="h-10 md:h-11 inline-flex items-center px-4 md:px-6 rounded-[2px] border border-[var(--sw-beige)] text-[var(--sw-beige)] font-semibold hover:bg-[var(--sw-beige)] hover:text-[var(--sw-black)] transition whitespace-nowrap"
           >
-            Book a demo
+            {cta.label}
           </a>
         </nav>
       </div>

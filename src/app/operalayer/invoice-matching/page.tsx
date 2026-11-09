@@ -29,7 +29,7 @@ const faqLd = {
   })),
 };
 
-/** OperaLayer invoice matching on the scandiweb page system (/akeneo/plus-bundle). Copy: Anton's page, verbatim and complete (sections/operalayer-invoice-matching/copy.ts). */
+/** OperaLayer invoice matching on the scandiweb page system (/akeneo/plus-bundle, PR #842). Copy: Anton's page, verbatim and complete (sections/operalayer-invoice-matching/copy.ts). */
 export default function Page() {
   return (
     <main className="relative isolate min-h-screen flex flex-col bg-[var(--sw-black)] font-body">

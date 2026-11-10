@@ -1,39 +1,24 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useId } from "react";
+import { motion, useReducedMotion } from "motion/react";
 
 /*
- * Building blocks taken from the OperaLayer app itself (operalayer-demo): the mark,
- * status tags, document chips, callouts, buttons, tabs. Colours come from light.css.
+ * Shared pieces for the invoice matching page: scandiweb type (Golos Text + Inter), 2px corners,
+ * and the OperaLayer logo's three layers, which stand for the three records the product compares.
  */
 
-export const EASE = [0.22, 0.7, 0.2, 1] as [number, number, number, number];
+export const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-export const T = {
-  text: "text-[var(--ol-text)]",
-  text2: "text-[var(--ol-text2)]",
-  text3: "text-[var(--ol-text3)]",
-  accent: "text-[var(--ol-accent)]",
-  border: "border-[var(--ol-border)]",
-  card: "bg-white border border-[var(--ol-border)] rounded-[12px]",
-};
+export const SECTION_Y = "py-[clamp(72px,11vh,136px)]";
+export const H2 = "font-head font-bold text-[34px] sm:text-[40px] lg:text-[48px] leading-[1.08] tracking-[-0.025em] text-balance";
+export const LEAD = "font-body text-[17px] md:text-[18px] leading-[1.6]";
 
-export const SECTION_Y = "py-[clamp(64px,10vh,128px)]";
-export const H2 = "font-head font-bold text-[var(--ol-text)] text-[34px] sm:text-[40px] lg:text-[48px] leading-[1.06] tracking-[-0.03em] text-balance";
-export const LEAD = "text-[var(--ol-text2)] text-[17px] md:text-[18px] leading-[1.6]";
-
-export const btnPrimary =
-  "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-[7px] bg-[var(--ol-accent)] text-white font-head font-semibold text-[16px] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_1px_2px_rgba(26,25,23,0.2)] hover:bg-[var(--ol-accent-strong)] transition-colors";
-export const btnSecondary =
-  "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-[7px] border border-[var(--ol-border-strong)] bg-white text-[var(--ol-text)] font-head font-semibold text-[16px] hover:bg-[var(--ol-s2)] transition-colors";
-/** In-app sized buttons, as in the review screen. */
-export const uiPrimary =
-  "inline-flex items-center justify-center gap-1.5 h-9 px-3.5 rounded-[5px] bg-[var(--ol-accent)] text-white font-body font-semibold text-[13.5px] hover:bg-[var(--ol-accent-strong)] transition-colors";
-export const uiSecondary =
-  "inline-flex items-center justify-center gap-1.5 h-9 px-3.5 rounded-[5px] border border-[var(--ol-border)] bg-[var(--ol-s2)] text-[var(--ol-text)] font-body font-semibold text-[13.5px] hover:bg-[var(--ol-s3)] transition-colors";
+export const btn =
+  "group inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-[2px] bg-[var(--blue)] text-white font-head font-semibold text-[17px] hover:bg-[var(--blue-deep)] transition-colors";
 
 /** In-page links do not scroll on their own in this app (smooth scroll on html, overflow on body), so each link scrolls itself. */
-export function scrollToId(id: string, offset = 72) {
+export function scrollToId(id: string, offset = 0) {
   return (e: React.MouseEvent<HTMLElement>) => {
     const target = document.getElementById(id);
     if (!target) return;
@@ -54,103 +39,131 @@ export function scrollToId(id: string, offset = 72) {
 export function Reveal({ children, delay = 0, className, as = "div" }: { children: React.ReactNode; delay?: number; className?: string; as?: "div" | "li" }) {
   const M = as === "li" ? motion.li : motion.div;
   return (
-    <M
-      className={className}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
-    >
+    <M className={className} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, delay, ease: EASE }}>
       {children}
     </M>
   );
 }
 
-/** The OperaLayer mark: two bars on a lavender tile. */
-export function Mark({ size = 24 }: { size?: number }) {
+export function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return <div className={`font-head font-semibold text-[15px] ${dark ? "text-[var(--peri)]" : "text-[var(--blue)]"}`}>{children}</div>;
+}
+
+/** The coloured part of a headline: blue on light, periwinkle on navy. */
+export function Hi({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return <span className={dark ? "text-[var(--peri)]" : "text-[var(--blue)]"}>{children}</span>;
+}
+
+/* ============================================================
+   The OperaLayer logo, drawn as three separate layers so each can move.
+   Geometry and colours are measured from the logo file.
+   ============================================================ */
+
+const LOGO_W = 642;
+const LOGO_H = 618;
+
+/**
+ * `lift` pulls the layers apart vertically (0 is the logo as drawn).
+ * `slide` moves a layer sideways, `fade` sets its opacity; index 0 is the top ring, 1 the middle, 2 the bottom.
+ */
+export function Layers({
+  lift = 0,
+  slide = [0, 0, 0],
+  fade = [1, 1, 1],
+  room = 0,
+  float = false,
+  className = "",
+  title,
+}: {
+  lift?: number;
+  slide?: number[];
+  fade?: number[];
+  /** Extra width on the right so a sliding layer is not clipped. */
+  room?: number;
+  float?: boolean;
+  className?: string;
+  title?: string;
+}) {
+  const id = useId().replace(/:/g, "");
+  const reduce = useReducedMotion();
+  const bob = (n: number) =>
+    float && !reduce ? { animate: { y: [0, -5, 0] }, transition: { duration: 6, delay: n * 0.9, repeat: Infinity, ease: "easeInOut" as const } } : {};
+  const move = (n: number) => ({
+    initial: false as const,
+    animate: { x: slide[n] ?? 0, opacity: fade[n] ?? 1 },
+    transition: { type: "spring" as const, stiffness: 120, damping: 18 },
+  });
   return (
-    <svg width={size} height={size} viewBox="0 0 28 28" aria-hidden className="shrink-0">
-      <rect width="28" height="28" rx="7" fill="#e4e3fb" />
-      <rect x="7" y="9" width="10.5" height="4" rx="2" fill="#5b57e0" />
-      <rect x="7" y="15" width="14" height="4" rx="2" fill="#26264d" />
+    <svg viewBox={`0 0 ${LOGO_W + room} ${LOGO_H + 2 * lift}`} className={className} role={title ? "img" : undefined} aria-label={title} aria-hidden={title ? undefined : true}>
+      <defs>
+        <linearGradient id={`${id}a`} x1="70" y1="300" x2="560" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#30d2ff" />
+          <stop offset="0.5" stopColor="#1b6dfe" />
+          <stop offset="1" stopColor="#1243fd" />
+        </linearGradient>
+        <linearGradient id={`${id}b`} x1="10" y1="330" x2="632" y2="300" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#5f98f6" />
+          <stop offset="1" stopColor="#a374fd" />
+        </linearGradient>
+        <linearGradient id={`${id}c`} x1="30" y1="520" x2="620" y2="400" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#5cfadb" />
+          <stop offset="0.55" stopColor="#96f6ea" />
+          <stop offset="1" stopColor="#b8c0fb" />
+        </linearGradient>
+        <linearGradient id={`${id}d`} x1="149" y1="330" x2="493" y2="330" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#b4bcfb" />
+          <stop offset="1" stopColor="#a9a2fb" />
+        </linearGradient>
+        {/* the ring's opening goes through the whole stack, as in the logo */}
+        <mask id={`${id}m`} maskUnits="userSpaceOnUse" x="0" y="0" width={LOGO_W + room} height={LOGO_H + 2 * lift}>
+          <rect width={LOGO_W + room} height={LOGO_H + 2 * lift} fill="#fff" />
+          {lift === 0 && <ellipse cx="321" cy="219" rx="172" ry="88" fill="#000" />}
+        </mask>
+      </defs>
+      <g mask={`url(#${id}m)`}>
+      {/* bottom layer */}
+      <motion.g {...move(2)}>
+        <motion.g {...bob(2)}>
+          <ellipse cx="321" cy={441 + 2 * lift} rx="312" ry="168" fill={`url(#${id}c)`} />
+        </motion.g>
+      </motion.g>
+      {/* middle layer */}
+      <motion.g {...move(1)}>
+        <motion.g {...bob(1)}>
+          <ellipse cx="321" cy={311 + lift} rx="312" ry="160" fill={`url(#${id}b)`} fillOpacity="0.9" />
+        </motion.g>
+      </motion.g>
+      {/* the core that runs down from the ring's opening */}
+      <path
+        d={`M149 219 L149 ${372 + (lift ? 2 * lift + 20 : 0)} A172 ${lift ? 88 : 70} 0 0 0 493 ${372 + (lift ? 2 * lift + 20 : 0)} L493 219 Z`}
+        fill={`url(#${id}d)`}
+        fillOpacity={lift ? 0.3 : 0.85}
+      />
+      </g>
+      {/* top ring */}
+      <motion.g {...move(0)}>
+        <motion.g {...bob(0)}>
+          <path
+            fillRule="evenodd"
+            fill={`url(#${id}a)`}
+            d="M13 171 A308 163 0 1 0 629 171 A308 163 0 1 0 13 171 Z M149 219 A172 88 0 1 1 493 219 A172 88 0 1 1 149 219 Z"
+          />
+        </motion.g>
+      </motion.g>
     </svg>
   );
 }
 
-export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`font-body font-semibold tracking-[-0.015em] text-[var(--ol-text)] ${className}`}>
-      Opera<span className="text-[var(--ol-accent)]">Layer</span>
-    </span>
-  );
+/** Where each layer's centre sits, as a share of the drawing's height, for labels placed beside it. */
+export function layerY(lift: number) {
+  const h = LOGO_H + 2 * lift;
+  return [171 / h, (311 + lift) / h, (441 + 2 * lift) / h];
 }
+export const layerRatio = (lift: number, room = 0) => (LOGO_W + room) / (LOGO_H + 2 * lift);
 
-export function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <div className="font-head font-semibold text-[15px] text-[var(--ol-accent)]">{children}</div>;
-}
-
-/** The coloured part of a headline. */
-export function Hi({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--ol-accent)]">{children}</span>;
-}
-
-export type Tone = "crit" | "caution" | "ok" | "info" | "accent" | "neutral";
-const TAG: Record<Tone, string> = {
-  crit: "text-[var(--ol-crit-strong)] bg-[var(--ol-crit-bg)] border-[var(--ol-crit)]",
-  caution: "text-[var(--ol-caution-strong)] bg-[var(--ol-caution-bg)] border-[var(--ol-caution)]",
-  ok: "text-[var(--ol-ok-strong)] bg-[var(--ol-ok-bg)] border-[var(--ol-ok)]",
-  info: "text-[var(--ol-info-strong)] bg-[var(--ol-info-bg)] border-[var(--ol-info)]",
-  accent: "text-[var(--ol-accent-strong)] bg-[var(--ol-accent-bg)] border-[var(--ol-accent-line)]",
-  neutral: "text-[var(--ol-text2)] bg-[var(--ol-s2)] border-[var(--ol-border-strong)]",
-};
-
-/** Status tag, as in the app's document lists ("Mismatch (1)", "Needs review", "Ready to export"). */
-export function Tag({ tone, children, className = "" }: { tone: Tone; children: React.ReactNode; className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-1 rounded-[5px] border px-1.5 text-[12px] leading-[19px] font-semibold whitespace-nowrap ${TAG[tone]} ${className}`}>{children}</span>
-  );
-}
-
-/** A document number, set in mono on a lavender chip ("PO-1048"). */
-export function Doc({ children, plain = false }: { children: React.ReactNode; plain?: boolean }) {
-  return plain ? (
-    <span className="ol-mono text-[0.94em]">{children}</span>
-  ) : (
-    <span className="ol-mono inline-block rounded-[4px] bg-[var(--ol-accent-bg)] px-1.5 text-[12px] leading-[20px] text-[var(--ol-accent-strong)]">{children}</span>
-  );
-}
-
-const CALLOUT = {
-  caution: { box: "bg-[var(--ol-caution-bg)] border-[var(--ol-caution-line)]", title: "text-[var(--ol-caution-strong)]", body: "text-[#5c4410]" },
-  accent: { box: "bg-[var(--ol-accent-bg)] border-[var(--ol-accent-line)]", title: "text-[var(--ol-accent-strong)]", body: "text-[#3d3a73]" },
-  info: { box: "bg-[var(--ol-info-bg)] border-[#c5d4f8]", title: "text-[var(--ol-info-strong)]", body: "text-[#2a3f73]" },
-};
-
-/** Tinted note, as the app's "Delivery note recorded different values" and "Suggested matches" blocks. */
-export function Callout({
-  tone,
-  icon,
-  title,
-  children,
-  className = "",
-}: {
-  tone: keyof typeof CALLOUT;
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const c = CALLOUT[tone];
-  return (
-    <div className={`rounded-[8px] border p-4 md:p-[18px] ${c.box} ${className}`}>
-      <div className={`flex items-center gap-2 font-body font-semibold text-[14px] ${c.title}`}>
-        <span className="shrink-0 [&>svg]:h-4 [&>svg]:w-4">{icon}</span>
-        {title}
-      </div>
-      <div className={`mt-1.5 text-[14px] md:text-[14.5px] leading-[1.55] ${c.body}`}>{children}</div>
-    </div>
-  );
-}
+/* ============================================================
+   Tabs and panels
+   ============================================================ */
 
 export function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k: number) => void, group: string) {
   const order: Record<string, number> = { ArrowRight: (i + 1) % n, ArrowLeft: (i + n - 1) % n, Home: 0, End: n - 1 };
@@ -160,7 +173,7 @@ export function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k:
   document.getElementById(`${group}-tab-${order[e.key]}`)?.focus();
 }
 
-/** The app's tabs: plain labels on a hairline, the active one underlined in the accent. `progress` fills the underline over that many seconds. */
+/** Text tabs on a hairline; the active one is blue with a 2px rule. `progress` fills the rule over that many seconds. */
 export function Tabs({
   items,
   i,
@@ -179,7 +192,7 @@ export function Tabs({
   className?: string;
 }) {
   return (
-    <div role="tablist" aria-label={label} className={`flex gap-5 sm:gap-7 border-b border-[var(--ol-border)] ${className}`}>
+    <div role="tablist" aria-label={label} className={`flex gap-6 sm:gap-9 border-b border-[var(--line)] ${className}`}>
       {items.map((t, k) => (
         <button
           key={t}
@@ -190,25 +203,22 @@ export function Tabs({
           tabIndex={k === i ? 0 : -1}
           onClick={() => set(k)}
           onKeyDown={(e) => onTabKeys(e, k, items.length, set, group)}
-          className={`relative -mb-px py-2.5 font-body font-semibold text-[13.5px] sm:text-[14px] leading-[1.25] text-left transition-colors ${
-            k === i ? "text-[var(--ol-accent)]" : "text-[var(--ol-text2)] hover:text-[var(--ol-text)]"
+          className={`relative -mb-px pb-3 pt-1 font-head font-semibold text-[15px] sm:text-[16px] leading-[1.25] text-left transition-colors ${
+            k === i ? "text-[var(--blue)]" : "text-[var(--ink)]/55 hover:text-[var(--ink)]"
           }`}
         >
           {t}
           {k === i &&
             (progress ? (
-              <>
-                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--ol-accent-line)]" />
-                <motion.span
-                  key={`${group}-${k}-run`}
-                  className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--ol-accent)] origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: progress, ease: "linear" }}
-                />
-              </>
+              <motion.span
+                key={`${group}-${k}-run`}
+                className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--blue)] origin-left"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: progress, ease: "linear" }}
+              />
             ) : (
-              <motion.span layoutId={`${group}-line`} className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--ol-accent)]" transition={{ duration: 0.3, ease: EASE }} />
+              <motion.span layoutId={`${group}-line`} className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--blue)]" transition={{ duration: 0.35, ease: EASE }} />
             ))}
         </button>
       ))}
@@ -228,8 +238,8 @@ export function Panels({ i, group, children }: { i: number; group: string; child
           aria-labelledby={`${group}-tab-${k}`}
           aria-hidden={k !== i}
           initial={false}
-          animate={{ opacity: k === i ? 1 : 0, y: k === i ? 0 : 6 }}
-          transition={{ duration: 0.3, ease: EASE }}
+          animate={{ opacity: k === i ? 1 : 0, y: k === i ? 0 : 8 }}
+          transition={{ duration: 0.35, ease: EASE }}
           className={`[grid-area:1/1] min-w-0 ${k === i ? "" : "invisible pointer-events-none"}`}
         >
           {c}
@@ -239,13 +249,8 @@ export function Panels({ i, group, children }: { i: number; group: string; child
   );
 }
 
-/** A label and a value joined by a dotted rule, as in the app's invoice header. */
-export function Row({ k, children, className = "" }: { k: React.ReactNode; children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`flex items-baseline gap-3 ${className}`}>
-      <span className="text-[var(--ol-text2)]">{k}</span>
-      <span aria-hidden className="flex-1 border-b border-dotted border-[var(--ol-border-strong)] translate-y-[-3px]" />
-      <span className="text-right">{children}</span>
-    </div>
-  );
+/** A small dot in a layer's colour, to mark which record a row belongs to. */
+export function Dot({ layer }: { layer: "inv" | "rec" | "po" }) {
+  const c = { inv: "var(--l-inv)", rec: "var(--l-rec)", po: "var(--l-po)" }[layer];
+  return <span aria-hidden className="inline-block h-[9px] w-[18px] rounded-[50%] shrink-0" style={{ background: c }} />;
 }

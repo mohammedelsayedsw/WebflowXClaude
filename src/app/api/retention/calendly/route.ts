@@ -12,7 +12,8 @@ export const dynamic = "force-dynamic";
    - invitee_no_show.deleted (the mark is removed):          - r90-noshow
    - invitee.created on the Growth Intro Meeting:            no-show earlier? + r90-rebooked, - r90-noshow
                                                              not booked yet? + r90-booked (stops the nurture)
-   Only acts on contacts already in Omnisend with the retention-90 tag; never creates one and
+   Only acts on contacts already in Omnisend with the retention-90 or growth-accelerator tag
+   (Growth Accelerator contacts get the same tags with the ga- prefix); never creates one and
    never changes their email status.
 
    Setup: the token lives only in env CALENDLY_WEBHOOK_TOKEN (Webflow Cloud). GET ?setup=1 makes
@@ -82,27 +83,30 @@ export async function POST(req: NextRequest) {
 
   const c = await omnisendFind(email);
   if (c === "error") return json({ ok: false, state: "omnisend_unreachable" }, 503); /* Calendly retries */
-  if (!c || !c.tags.includes("retention-90")) return json({ ok: true, skip: "not_a_retention_contact" });
+  /* Growth Accelerator contacts (growth-accelerator tag) get ga-* tags; Retention Score contacts r90-* */
+  const p = c && c.tags.includes("growth-accelerator") ? "ga" : c && c.tags.includes("retention-90") ? "r90" : "";
+  if (!c || !p) return json({ ok: true, skip: "not_a_funnel_contact" });
 
   const today = new Date().toISOString().slice(0, 10);
   const has = (x: string) => c.tags.includes(x);
+  const T = (x: string) => `${p}-${x}`;
   let tags = c.tags, props: Record<string, string> = {};
   if (ev === "invitee_no_show.created") {
-    tags = [...c.tags.filter((x) => x !== "r90-rebooked"), "r90-noshow"];
-    props = { r90_noshow: "yes", r90_noshow_date: today };
+    tags = [...c.tags.filter((x) => x !== T("rebooked")), T("noshow")];
+    props = { [`${p}_noshow`]: "yes", [`${p}_noshow_date`]: today };
   } else if (ev === "invitee_no_show.deleted") {
-    tags = c.tags.filter((x) => x !== "r90-noshow");
-    props = { r90_noshow: "no" };
-  } else if (has("r90-noshow")) {
-    tags = [...c.tags.filter((x) => x !== "r90-noshow"), "r90-rebooked"];
-    props = { r90_rebooked: "yes", r90_rebooked_date: today };
-  } else if (!has("r90-booked")) {
-    tags = [...c.tags, "r90-booked"];
-    props = { r90_booked: "yes", r90_booked_date: today };
+    tags = c.tags.filter((x) => x !== T("noshow"));
+    props = { [`${p}_noshow`]: "no" };
+  } else if (has(T("noshow"))) {
+    tags = [...c.tags.filter((x) => x !== T("noshow")), T("rebooked")];
+    props = { [`${p}_rebooked`]: "yes", [`${p}_rebooked_date`]: today };
+  } else if (!has(T("booked"))) {
+    tags = [...c.tags, T("booked")];
+    props = { [`${p}_booked`]: "yes", [`${p}_booked_date`]: today };
   } else {
     return json({ ok: true, skip: "already_booked" });
   }
   const result = await omnisendRetag(c, tags, props);
-  console.log(JSON.stringify({ event: "calendly_hook", type: ev, result }));
+  console.log(JSON.stringify({ event: "calendly_hook", type: ev, ns: p, result }));
   return json({ ok: result === "ok", result }, result === "ok" ? 200 : 503);
 }

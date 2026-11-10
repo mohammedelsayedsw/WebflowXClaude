@@ -1,0 +1,105 @@
+/*
+ * OperaLayer invoice matching. scandiweb type (Golos Text + Inter), 2px corners,
+ * ink / blue / lavender, and the three layer colours of the OperaLayer logo.
+ * Everything is scoped to .olp so no other page changes.
+ */
+.olp {
+  --ink: #10132c;
+  --blue: #424bae;
+  --blue-deep: #353d96;
+  --peri: #8b93ff;
+  --slate: #5a6282;
+  --lav: #f0f1f9;
+  --line: #dcdfef;
+  --red: #e04f4f;
+  /* the logo's layers: invoice (top), receipt (middle), purchase order (bottom) */
+  --l-inv: #1f6bff;
+  --l-rec: #8a7ffb;
+  --l-po: #58e9d2;
+  color: var(--ink);
+  background: #fff;
+}
+.olp ::selection {
+  background: rgba(66, 75, 174, 0.22);
+}
+
+/* Range inputs: a hairline track that fills with blue, a square thumb. */
+.olp .ol-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--blue) var(--fill, 50%), var(--line) var(--fill, 50%));
+}
+.olp .ol-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--blue);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--blue);
+}
+.olp .ol-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--blue);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--blue);
+}
+.olp .ol-range:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 8px;
+}
+
+/* The demo form sits on navy and keeps the site's dark form styling; only the button changes, to the page's filled blue. */
+.olp .hubspot-form-wrapper {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  border-radius: 2px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  box-shadow: none !important;
+}
+.olp .hubspot-form-wrapper .hs-form-field > label,
+.olp .hubspot-form-wrapper fieldset > div > label {
+  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.olp .hubspot-form-wrapper input[type="text"],
+.olp .hubspot-form-wrapper input[type="email"],
+.olp .hubspot-form-wrapper input[type="tel"],
+.olp .hubspot-form-wrapper input[type="number"],
+.olp .hubspot-form-wrapper input[type="url"],
+.olp .hubspot-form-wrapper textarea,
+.olp .hubspot-form-wrapper select {
+  font-family: var(--font-inter), Inter, system-ui, sans-serif !important;
+  font-size: 15px !important;
+}
+.olp .hubspot-form-wrapper input:focus,
+.olp .hubspot-form-wrapper textarea:focus,
+.olp .hubspot-form-wrapper select:focus {
+  border-color: var(--peri) !important;
+  box-shadow: 0 0 0 3px rgba(139, 147, 255, 0.2) !important;
+}
+.olp .hubspot-form-wrapper input[type="submit"],
+.olp .hubspot-form-wrapper button[type="submit"],
+.olp .hubspot-form-wrapper .hs-button {
+  height: 56px !important;
+  border: 1px solid var(--blue) !important;
+  border-radius: 2px !important;
+  background-color: var(--blue) !important;
+  color: #fff !important;
+  letter-spacing: 0 !important;
+}
+.olp .hubspot-form-wrapper input[type="submit"]:hover,
+.olp .hubspot-form-wrapper button[type="submit"]:hover,
+.olp .hubspot-form-wrapper .hs-button:hover {
+  background-color: #4d57c4 !important;
+  border-color: #4d57c4 !important;
+  color: #fff !important;
+}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
 
 const title = "OperaLayer | Purchase order and invoice matching";
 const description =
@@ -20,17 +19,9 @@ export const metadata: Metadata = {
   },
 };
 
-/** The OperaLayer app sets document numbers and amounts in JetBrains Mono; the page does the same. */
-const mono = JetBrains_Mono({
-  variable: "--font-jbmono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
 /** This page brings its own light header (scandiweb | OperaLayer). Footer stays in the root layout. */
 export default function InvoiceMatchingLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <div className={mono.variable}>{children}</div>;
+  return <>{children}</>;
 }

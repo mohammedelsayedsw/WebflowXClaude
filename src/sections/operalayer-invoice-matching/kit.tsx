@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 /*
  * Page-level pieces: type scale, buttons, reveal, the stage that product screens sit on, the logo.
@@ -36,6 +36,20 @@ export function scrollToId(id: string, offset = 68) {
     window.requestAnimationFrame(step);
     window.history.replaceState(null, "", `#${id}`);
   };
+}
+
+/** Where a call can be booked directly, without the form. */
+export const CALENDLY = "https://calendly.com/scandi-bd/operalayer-demo";
+
+/** A link straight to the booking calendar. It opens in a new tab so the page stays where it was. */
+export function CalendlyLink({ children = "Pick a time on Calendly", className = "" }: { children?: React.ReactNode; className?: string }) {
+  return (
+    <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={`group ${className}`}>
+      {children}
+      <ArrowUpRight aria-hidden className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  );
 }
 
 export function Reveal({ children, delay = 0, className, as = "div" }: { children: React.ReactNode; delay?: number; className?: string; as?: "div" | "li" }) {

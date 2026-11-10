@@ -593,7 +593,8 @@ export function Demo() {
             <p className="mt-4 font-body text-white/80 text-[16px] leading-[1.6]">Start with our example records. You leave knowing which documents, checks and connections to test in your own business.</p>
           </Reveal>
           <Reveal delay={0.08} className="bg-white rounded-[2px] p-6 sm:p-8 shadow-[0_60px_120px_-50px_rgba(15,19,48,0.7)]">
-            <HubSpotForm portalId="25724996" formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6" region="eu1" submitText="Book a demo call" />
+            {/* its own HubSpot form, "[Contact form] OperaLayer invoice matching demo", so these leads are not counted under a shared form */}
+            <HubSpotForm portalId="25724996" formId="5e39f0f9-5336-44a7-a062-5ef4ffeddf0a" region="eu1" submitText="Book a demo call" />
             <div aria-hidden className="mt-6 flex items-center gap-4 font-body text-[13px] text-[var(--t3)]">
               <span className="h-px flex-1 bg-[var(--line)]" />
               or

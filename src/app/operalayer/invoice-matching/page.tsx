@@ -16,7 +16,7 @@ const faqLd = {
 };
 
 /**
- * OperaLayer invoice matching: a product-led page. The app (sections/operalayer-invoice-matching/app.tsx)
+ * OperaLayer invoice matching (PR #848): a product-led page. The app (sections/operalayer-invoice-matching/app.tsx)
  * is shown reading the example invoice and flagging its three lines.
  * Copy: Anton's page (sections/operalayer-invoice-matching/copy.ts).
  */

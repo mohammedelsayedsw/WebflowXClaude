@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, Problem, Example, CustomerCase, HowItWorks } from "@/sections/operalayer-invoice-matching/Sections";
+import { Nav, Hero, Proof, Problem, Example, HowItWorks, CustomerCase } from "@/sections/operalayer-invoice-matching/Sections";
 import { Roles, Calculator, GettingStarted, UnderTheHood, Questions, Demo } from "@/sections/operalayer-invoice-matching/Sections2";
 import { FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 import "@/sections/operalayer-invoice-matching/page.css";
@@ -16,20 +16,21 @@ const faqLd = {
 };
 
 /**
- * OperaLayer invoice matching. scandiweb type and 2px corners; the three records the product compares
- * are drawn as the three layers of the OperaLayer logo.
- * Copy: Anton's page, verbatim and complete (sections/operalayer-invoice-matching/copy.ts).
+ * OperaLayer invoice matching: a product-led page. The app (sections/operalayer-invoice-matching/app.tsx)
+ * is shown reading the example invoice and flagging its three lines.
+ * Copy: Anton's page (sections/operalayer-invoice-matching/copy.ts).
  */
 export default function Page() {
   return (
     <main className="olp relative isolate min-h-screen flex flex-col font-body">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <Header />
+      <Nav />
       <Hero />
+      <Proof />
       <Problem />
       <Example />
-      <CustomerCase />
       <HowItWorks />
+      <CustomerCase />
       <Roles />
       <Calculator />
       <GettingStarted />

@@ -45,7 +45,8 @@ export function Nav() {
             <img src={assetUrl("/logos/scandiweb-black.svg")} alt="scandiweb" className="h-[14px] sm:h-[15px] w-auto block" />
           </a>
           <span aria-hidden className="h-5 w-px bg-[var(--ink)]/15" />
-          <a href={assetUrl("/operalayer")} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          {/* stays on this page: the mark takes you back to the top */}
+          <a href="#top" onClick={scrollToId("top", 0)} aria-label="OperaLayer, back to the top" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Logo className="h-[24px] w-auto" />
             <span className="font-head font-semibold text-[17px] tracking-[-0.01em] text-[var(--ink)] max-[519px]:hidden">OperaLayer</span>
           </a>
@@ -356,16 +357,20 @@ export function Problem() {
   return (
     <section id="problem" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="max-w-[52rem]">
+        <Reveal>
           <Eyebrow>The problem</Eyebrow>
           <h2 className={`${H2} mt-4`}>
-            A supplier can send you a perfectly good invoice <Hi>for the wrong thing.</Hi>
+            A supplier can send you a perfectly good invoice{" "}
+            <span className="xl:block">
+              <Hi>for the wrong thing.</Hi>
+            </span>
           </h2>
         </Reveal>
         <Reveal delay={0.06} className="mt-8 md:mt-14">
           <Swipe
             label="The problem"
-            className="md:grid md:grid-cols-3 md:gap-5 lg:gap-6"
+            until="lg"
+            className="lg:grid lg:grid-cols-3 lg:gap-6"
             items={PROBLEMS.map((p, i) => {
               const C = CROPS[i];
               return (
@@ -632,23 +637,20 @@ export function HowItWorks() {
   return (
     <section id="how" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
-          <div className="lg:col-span-7">
-            <Eyebrow>How it works</Eyebrow>
-            <h2 className={`${H2} mt-4`}>
-              From the supplier inbox to an invoice <Hi>you can approve.</Hi>
-            </h2>
-          </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>
-            OperaLayer reads the documents, finds the purchase order in your ERP and compares the lines. Your rules decide what can move ahead and what needs a buyer, a
-            warehouse colleague or an accountant.
-          </p>
+        <Reveal>
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            From the supplier inbox to an invoice{" "}
+            <span className="xl:block">
+              <Hi>you can approve.</Hi>
+            </span>
+          </h2>
         </Reveal>
         <Reveal delay={0.06} className="mt-8 md:mt-14">
           <div ref={ref}>
             <Swipe
               label="How it works"
-              className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5"
+              className="md:grid md:grid-cols-2 xl:grid-cols-4 md:gap-5"
               items={STEPS.map((t, n) => {
                 const T = STEP_TILES[n];
                 const on = !reduce && k === n;
@@ -669,6 +671,13 @@ export function HowItWorks() {
               })}
             />
           </div>
+        </Reveal>
+        {/* what the four steps add up to, said once they have been seen */}
+        <Reveal delay={0.1} className="mt-8 md:mt-14">
+          <p className="max-w-[62rem] font-head font-medium text-[var(--ink)] text-[19px] md:text-[24px] lg:text-[26px] leading-[1.4] tracking-[-0.015em] text-pretty">
+            OperaLayer reads the documents, finds the purchase order in your ERP and compares the lines. Your rules decide what can move ahead and what needs a buyer, a
+            warehouse colleague or an accountant.
+          </p>
         </Reveal>
       </div>
     </section>
@@ -760,12 +769,12 @@ export function CustomerCase() {
     <section id="customer-case" className={`relative overflow-hidden text-white ${SECTION_Y}`} style={{ background: "var(--stage)" }}>
       <div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 70% at 0% 0%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(180deg, rgba(15,19,48,0.18), rgba(15,19,48,0.34))" }} />
       <div className="wrap relative w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
-          <div className="lg:col-span-7">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
+          <div className="xl:col-span-7">
             <Eyebrow light>One customer’s story</Eyebrow>
             <h2 className="mt-4 font-head font-bold text-white text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.03em] text-balance">What changed for an electrical goods distributor</h2>
           </div>
-          <p className="lg:col-span-5 font-body text-white/85 text-[16px] md:text-[18px] leading-[1.55]">
+          <p className="xl:col-span-5 max-xl:max-w-[46rem] font-body text-white/85 text-[16px] md:text-[18px] leading-[1.55]">
             For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product codes
             and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
           </p>
@@ -775,7 +784,8 @@ export function CustomerCase() {
           <Swipe
             light
             label="What changed"
-            className="md:grid md:grid-cols-3 md:gap-4 lg:gap-5"
+            until="lg"
+            className="lg:grid lg:grid-cols-3 lg:gap-5"
             items={STATS.map((s, i) => (
               <div key={s.n} className={`h-full ${GLASS}`}>
               <div className="font-head font-bold leading-[0.95] tracking-[-0.045em] whitespace-nowrap">

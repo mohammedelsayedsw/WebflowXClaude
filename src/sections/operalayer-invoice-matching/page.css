@@ -70,6 +70,25 @@
   }
 }
 
+/* The three-card rows keep scrolling sideways on tablets, where three columns would squeeze the text. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .olp .ol-swipe.ol-swipe-lg {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+    scroll-padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+  .olp .ol-swipe.ol-swipe-lg::-webkit-scrollbar {
+    display: none;
+  }
+  .olp .ol-swipe.ol-swipe-lg > * {
+    scroll-snap-align: start;
+  }
+}
+
 /* Range inputs */
 .olp .ol-range {
   -webkit-appearance: none;

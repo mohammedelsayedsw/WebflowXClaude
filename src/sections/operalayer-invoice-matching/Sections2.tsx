@@ -176,14 +176,14 @@ export function Calculator() {
   return (
     <section id="calculator" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
-          <div className="lg:col-span-7">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
+          <div className="xl:col-span-7">
             <Eyebrow>Annual value calculator</Eyebrow>
             <h2 className={`${H2} mt-4`}>
               What is invoice checking <Hi>costing you?</Hi>
             </h2>
           </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>Use your own volumes and costs to explore a year. The example separates the value of staff time from actual supplier corrections.</p>
+          <p className={`xl:col-span-5 max-xl:max-w-[46rem] ${LEAD}`}>Use your own volumes and costs to explore a year. The example separates the value of staff time from actual supplier corrections.</p>
         </Reveal>
 
         <Reveal delay={0.08} className={`mt-10 md:mt-12 ${CARD} overflow-hidden grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]`}>
@@ -260,14 +260,14 @@ export function GettingStarted() {
   return (
     <section id="first-step" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
-          <div className="lg:col-span-7">
+        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
+          <div className="xl:col-span-7">
             <Eyebrow>Getting started</Eyebrow>
             <h2 className={`${H2} mt-4`}>
               Start with one supplier and <Hi>one real invoice.</Hi>
             </h2>
           </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.</p>
+          <p className={`xl:col-span-5 max-xl:max-w-[46rem] ${LEAD}`}>Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.</p>
         </Reveal>
 
         <Reveal delay={0.08} className="hidden md:block mt-12 rounded-[2px] border border-[var(--line)]">
@@ -479,14 +479,15 @@ export function UnderTheHood() {
   return (
     <section id="technology" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
-          <div className="lg:col-span-7">
-            <Eyebrow>Under the hood</Eyebrow>
-            <h2 className={`${H2} mt-4`}>
-              How OperaLayer knows two different lines refer to <Hi>the same item</Hi>
-            </h2>
-          </div>
-          <p className={`lg:col-span-5 ${LEAD}`}>
+        <Reveal>
+          <Eyebrow>Under the hood</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            How OperaLayer knows two different lines{" "}
+            <span className="xl:block">
+              refer to <Hi>the same item</Hi>
+            </span>
+          </h2>
+          <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>
             Your PO might say 120 pieces. The supplier might write 10 boxes of 12 and use its own item code. OperaLayer has to establish the product and the unit before a price
             comparison means anything.
           </p>
@@ -540,8 +541,8 @@ export function UnderTheHood() {
 export function Questions() {
   return (
     <section id="questions" className={`relative ${SECTION_Y}`}>
-      <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16 items-start">
-        <Reveal className="lg:sticky lg:top-28">
+      <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] gap-8 lg:gap-12 xl:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] xl:gap-16 items-start">
+        <Reveal className="xl:sticky xl:top-28">
           <Eyebrow>Questions</Eyebrow>
           <h2 className={`${H2} mt-4`}>
             Fair questions <Hi>before you start</Hi>
@@ -581,7 +582,7 @@ export function Demo() {
       <div className="wrap relative w-full">
         <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-8 lg:gap-16 items-center">
           <Reveal>
-            <h2 className="font-head font-bold text-white text-[32px] sm:text-[46px] lg:text-[clamp(44px,4.6vw,66px)] leading-[1.05] tracking-[-0.035em] text-balance">Bring the invoice that made three people stop working.</h2>
+            <h2 className="font-head font-bold text-white text-[32px] sm:text-[46px] lg:text-[clamp(40px,3.9vw,56px)] leading-[1.06] tracking-[-0.035em] text-balance">Bring the invoice that made three people stop working.</h2>
             <p className="mt-5 md:mt-6 font-body text-white text-[17px] md:text-[20px] leading-[1.5]">
               See which line OperaLayer would flag, the evidence the reviewer would see, and how an accepted invoice gets back into your ERP.
             </p>

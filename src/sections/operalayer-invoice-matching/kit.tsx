@@ -147,6 +147,7 @@ export function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k:
 /**
  * A set of cards. From tablets up it is whatever grid `className` describes. On phones it is one row that scrolls
  * sideways: the next card peeks in from the right, and dots and arrows underneath show where you are.
+ * `until="lg"` keeps the row on tablets as well, for sets whose columns would be too narrow there.
  */
 export function Swipe({
   items,
@@ -155,6 +156,7 @@ export function Swipe({
   label,
   light = false,
   inset = false,
+  until = "md",
 }: {
   items: React.ReactNode[];
   /** Layout from md up, e.g. "md:grid md:grid-cols-3 md:gap-5". */
@@ -165,6 +167,8 @@ export function Swipe({
   light?: boolean;
   /** Inside a padded panel instead of the page gutter. */
   inset?: boolean;
+  /** The width at which the row becomes the grid. */
+  until?: "md" | "lg";
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [i, setI] = useState(0);
@@ -193,16 +197,20 @@ export function Swipe({
   const arrow = `h-10 w-10 flex items-center justify-center rounded-[2px] border transition-opacity disabled:opacity-30 ${
     light ? "border-white/45 text-white" : "border-[#cfd3e3] text-[var(--ink)] bg-white"
   }`;
+  const at =
+    until === "lg"
+      ? { row: "ol-swipe-lg max-lg:flex max-lg:gap-3", item: "max-lg:shrink-0 max-lg:w-[84%] sm:max-lg:w-[46%]", controls: "lg:hidden" }
+      : { row: "max-md:flex max-md:gap-3", item: "max-md:shrink-0 max-md:w-[84%] sm:max-md:w-[46%]", controls: "md:hidden" };
   return (
     <div>
-      <div ref={ref} onScroll={onScroll} role="group" aria-label={label} className={`ol-swipe ${inset ? "ol-swipe-in" : ""} relative max-md:flex max-md:gap-3 ${className}`}>
+      <div ref={ref} onScroll={onScroll} role="group" aria-label={label} className={`ol-swipe ${inset ? "ol-swipe-in" : ""} relative ${at.row} ${className}`}>
         {items.map((c, n) => (
-          <div key={n} className={`max-md:shrink-0 max-md:w-[84%] sm:max-md:w-[46%] min-w-0 ${itemClassName}`}>
+          <div key={n} className={`${at.item} min-w-0 ${itemClassName}`}>
             {c}
           </div>
         ))}
       </div>
-      <div className="md:hidden mt-4 flex items-center justify-between gap-4">
+      <div className={`${at.controls} mt-4 flex items-center justify-between gap-4`}>
         <div className="flex items-center gap-1.5" aria-hidden>
           {items.map((_, n) => (
             <span

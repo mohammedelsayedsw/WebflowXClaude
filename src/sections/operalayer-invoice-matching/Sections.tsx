@@ -6,15 +6,18 @@ import { ArrowDown, ArrowRight, Camera, Check, ChevronRight, FileText, Link2, Ma
 import { assetUrl } from "@/lib/assets";
 import { QUICK, PROBLEMS, FULL, STATS, STEPS } from "@/sections/operalayer-invoice-matching/copy";
 import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btn, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
-import { Bad, LINES, Mark, Paper, Status, Window } from "@/sections/operalayer-invoice-matching/app";
+import { Bad, LINES, Mark, Status, Window } from "@/sections/operalayer-invoice-matching/app";
 
 /*
  * OperaLayer invoice matching: a product-led page. The app is drawn once (app.tsx) and shown doing its job:
- * reading the example invoice, comparing it with the order and the receipt, and flagging the three lines.
- * Copy is Anton's (copy.ts and the strings below).
+ * checking the example invoice against the order and the receipt, and saying in a sentence what is wrong on each line.
+ * Copy is Anton's (copy.ts and the strings below), except where a comment says otherwise.
  */
 
 const ESELO = assetUrl("/operalayer/invoice-matching/eselo-mark.png");
+/* Māris Renigers of ESELO, who gave both quotes: a square for the quote strip, a portrait for the case study. */
+const MARIS_SQ = assetUrl("/operalayer/invoice-matching/maris-renigers-sq.jpg");
+const MARIS = assetUrl("/operalayer/invoice-matching/maris-renigers.jpg");
 const INSPECT = "ol-im-inspect";
 
 /* ============================================================
@@ -24,7 +27,7 @@ const INSPECT = "ol-im-inspect";
 const LINKS = [
   { id: "example", label: "Invoice example" },
   { id: "how", label: "How it works" },
-  { id: "customer-case", label: "Customer case" },
+  { id: "customer-case", label: "Case studies" },
   { id: "calculator", label: "Calculator" },
 ];
 
@@ -71,27 +74,31 @@ export function Nav() {
    ============================================================ */
 
 const AUTO = 5.5;
-const COLS = "grid-cols-[26px_minmax(0,1fr)_58px_34px] sm:grid-cols-[30px_minmax(0,1fr)_92px_58px_40px_56px]";
+const COLS = "grid-cols-[24px_minmax(0,1fr)_auto] sm:grid-cols-[34px_minmax(0,1.5fr)_minmax(0,0.85fr)_minmax(0,0.6fr)_minmax(0,1.1fr)]";
 
+/**
+ * One screen, two parts. On top, what OperaLayer found on the open line, as a sentence.
+ * Under it, the three lines of the example invoice; each one opens its own finding.
+ */
 function ReviewDemo() {
   const ref = useRef<HTMLDivElement>(null);
   const seen = useInView(ref, { once: true, amount: 0.25 });
   const inView = useInView(ref, { amount: 0.3 });
   const reduce = useReducedMotion();
-  /* 0 the document arrives and is read, 1 its lines appear, 2 each is checked, 3 one line is open */
+  /* 0 the invoice is being checked, 1 its three lines are flagged, 2 one of them is open */
   const [phase, setPhase] = useState(0);
   const [i, setI] = useState(0);
   const [touched, setTouched] = useState(false);
   useEffect(() => {
     if (!seen) return;
     if (reduce) {
-      const t = window.setTimeout(() => setPhase(3), 0);
+      const t = window.setTimeout(() => setPhase(2), 0);
       return () => clearTimeout(t);
     }
-    const ts = [window.setTimeout(() => setPhase(1), 1500), window.setTimeout(() => setPhase(2), 2700), window.setTimeout(() => setPhase(3), 3700)];
+    const ts = [window.setTimeout(() => setPhase(1), 1200), window.setTimeout(() => setPhase(2), 2000)];
     return () => ts.forEach(clearTimeout);
   }, [seen, reduce]);
-  const auto = phase === 3 && !touched && inView && !reduce;
+  const auto = phase === 2 && !touched && inView && !reduce;
   useEffect(() => {
     if (!auto) return;
     const t = window.setInterval(() => setI((k) => (k + 1) % QUICK.length), AUTO * 1000);
@@ -99,109 +106,113 @@ function ReviewDemo() {
   }, [auto]);
   const pick = (k: number) => {
     setTouched(true);
-    setPhase(3);
+    setPhase(2);
     setI(k);
   };
   const inspect = (e: React.MouseEvent<HTMLElement>) => {
     window.dispatchEvent(new CustomEvent(INSPECT, { detail: i }));
     scrollToId("example")(e);
   };
+  const PAD = "px-4 sm:px-8 lg:px-10";
   return (
     <div ref={ref}>
       <Window
+        brand
         crumbs={["Invoices", "INV-2846"]}
         right={
-          phase < 2 ? (
+          phase < 1 ? (
             <Status tone="idle" pulse>
-              Reading
+              Checking
             </Status>
           ) : (
             <Status tone="review">Needs review</Status>
           )
         }
       >
-        <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)]">
-          {/* the supplier's document */}
-          <div className="hidden md:block bg-[var(--canvas)] border-r border-[var(--line)] p-5 lg:p-6">
-            <div className="font-body font-medium text-[12px] text-[var(--t3)]">PO-1048 / INV-2846</div>
-            <motion.div initial={{ opacity: 0, y: 14 }} animate={seen ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: EASE }}>
-              <Paper active={phase === 3 ? i : -1} scan={seen && phase < 2} className="mt-3 shadow-[0_18px_40px_-24px_rgba(15,19,48,0.45)]" />
-            </motion.div>
-          </div>
-
-          {/* its lines, checked against the order and the receipt */}
-          <div className="min-w-0">
-            <div className={`grid ${COLS} gap-x-3 px-4 md:px-6 py-2.5 border-b border-[var(--line)] font-body font-medium text-[11.5px] text-[var(--t3)]`}>
-              <span>Line</span>
-              <span>Example invoice</span>
-              <span className="text-right max-sm:hidden">Qty</span>
-              <span className="text-right">Billed</span>
-              <span className="text-center">PO</span>
-              <span className="text-center max-sm:hidden">Receipt</span>
-            </div>
-            <div role="tablist" aria-label="Invoice quick examples">
-              {LINES.map((r, k) => {
-                const on = phase === 3 && k === i;
-                const shown = phase >= 1;
+        {/* what was found on the open line */}
+        <div className={`relative ${PAD} pt-6 pb-6 sm:pt-9 sm:pb-8 lg:pt-10 lg:pb-9`}>
+          <motion.div aria-hidden initial={false} animate={{ opacity: phase < 2 ? 1 : 0 }} transition={{ duration: 0.3 }} className={`pointer-events-none absolute inset-0 flex items-center ${PAD}`}>
+            <Status tone="idle" pulse>
+              Checking against the order and the receipt
+            </Status>
+          </motion.div>
+          <motion.div initial={false} animate={{ opacity: phase === 2 ? 1 : 0, y: phase === 2 ? 0 : 10 }} transition={{ duration: 0.5, ease: EASE }}>
+            <Panels i={i} group="quick">
+              {QUICK.map((s, k) => {
+                const parts = s.title.split(". ");
                 return (
-                  <motion.button
-                    key={r.n}
-                    id={`quick-tab-${k}`}
-                    role="tab"
-                    aria-selected={on}
-                    aria-controls={`quick-panel-${k}`}
-                    aria-label={QUICK[k].tab}
-                    tabIndex={on || (phase < 3 && k === 0) ? 0 : -1}
-                    onClick={() => pick(k)}
-                    onKeyDown={(e) => onTabKeys(e, k, LINES.length, pick, "quick", true)}
-                    initial={false}
-                    animate={{ opacity: shown ? 1 : 0, y: shown ? 0 : 8 }}
-                    transition={{ duration: 0.45, delay: shown ? k * 0.14 : 0, ease: EASE }}
-                    className={`relative w-full grid ${COLS} gap-x-3 items-center px-4 md:px-6 py-3 md:py-3.5 border-b border-[var(--line)] text-left font-body text-[13px] md:text-[13.5px] tabular-nums transition-colors ${
-                      on ? "bg-[rgba(42,85,245,0.06)]" : "hover:bg-[var(--canvas)]"
-                    }`}
-                  >
-                    {on && <motion.span layoutId="quick-bar" className="absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--accent)]" transition={{ duration: 0.3, ease: EASE }} />}
-                    <span className="text-[var(--t3)]">{r.n}</span>
-                    <span className="min-w-0 truncate font-medium text-[var(--ink)]">{r.flag === "item" && phase >= 2 ? <Bad>{r.item}</Bad> : r.item}</span>
-                    <span className="text-right text-[var(--t2)] max-sm:hidden">{r.flag === "qty" && phase >= 2 ? <Bad>{r.qty}</Bad> : r.qty}</span>
-                    <span className="text-right text-[var(--t2)]">{r.flag === "price" && phase >= 2 ? <Bad>{r.price}</Bad> : r.price}</span>
-                    <span className="flex justify-center">{phase >= 2 ? <Mark v={r.po} /> : <span className="ol-pulse h-1.5 w-1.5 rounded-[1px] bg-[var(--t3)]" />}</span>
-                    <span className="flex justify-center max-sm:hidden">{phase >= 2 ? <Mark v={r.rec} /> : <span className="ol-pulse h-1.5 w-1.5 rounded-[1px] bg-[var(--t3)]" />}</span>
-                  </motion.button>
-                );
-              })}
-            </div>
-
-            {/* the open line */}
-            <motion.div initial={false} animate={{ opacity: phase === 3 ? 1 : 0, y: phase === 3 ? 0 : 10 }} transition={{ duration: 0.5, ease: EASE }} className="px-4 md:px-6 py-5 md:py-6">
-              <Panels i={i} group="quick">
-                {QUICK.map((s) => (
-                  <div key={s.tab}>
-                    <div className="font-body font-medium text-[12px] text-[var(--accent)]">
-                      {s.tab} <span className="text-[var(--t3)]">· {s.product}</span>
+                  <div key={s.tab} className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] gap-5 md:gap-10 lg:gap-14 md:items-center">
+                    <div>
+                      <div className="font-body font-medium text-[12.5px] sm:text-[13.5px] text-[var(--accent)]">
+                        {s.tab} <span className="text-[var(--t3)]">· {s.product}</span>
+                      </div>
+                      {/* the two halves of the mismatch, one under the other; the billed one is the one in question */}
+                      <div className="mt-2 sm:mt-3 font-head font-bold text-[var(--ink)] text-[26px] sm:text-[38px] lg:text-[46px] leading-[1.1] tracking-[-0.03em]">
+                        {parts.map((p, n) => (
+                          <span key={p} className={`block ${/billed/.test(p) ? "text-[var(--red)]" : ""}`}>
+                            {n < parts.length - 1 ? `${p}.` : p}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-3 sm:mt-4 font-body text-[14.5px] sm:text-[17px] leading-[1.5] text-[var(--t2)]">{s.note}</p>
                     </div>
-                    <div className="mt-1.5 font-head font-bold text-[var(--ink)] text-[21px] md:text-[26px] leading-[1.15] tracking-[-0.02em]">{s.title}</div>
-                    <div className="mt-4 flex flex-wrap items-end gap-x-9 gap-y-3">
-                      {s.pair.map((p, n) => (
-                        <div key={p.k}>
-                          <div className="font-body font-medium text-[11.5px] text-[var(--t3)]">{p.k}</div>
-                          <div className={`mt-1 font-head font-semibold text-[24px] md:text-[30px] leading-none tracking-[-0.025em] tabular-nums whitespace-nowrap ${n ? "text-[var(--red)]" : "text-[var(--ink)]"}`}>{p.v}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="mt-4 font-body text-[13.5px] md:text-[14.5px] leading-[1.5] text-[var(--t2)]">{s.note}</p>
-                    <div className="mt-4 md:mt-5 pt-4 border-t border-[var(--line)] font-body text-[13.5px] md:text-[14px] leading-[1.5]">
-                      <span className="font-semibold text-[var(--ink)]">Suggested action</span>
-                      <span className="text-[var(--t2)]"> · {s.action}</span>
+                    {/* what to do about it */}
+                    <div className="rounded-[2px] bg-[var(--canvas)] border border-[var(--line)] p-4 sm:p-5 lg:p-6">
+                      <div className="font-head font-semibold text-[14px] sm:text-[15px] text-[var(--ink)]">Suggested action</div>
+                      <p className="mt-1.5 font-body text-[14px] sm:text-[15.5px] leading-[1.5] text-[var(--t2)]">{s.action}</p>
+                      <a
+                        href="#example"
+                        onClick={inspect}
+                        tabIndex={phase === 2 && k === i ? 0 : -1}
+                        className="group mt-3.5 sm:mt-4 inline-flex items-center gap-1.5 font-head font-semibold text-[14.5px] sm:text-[15px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors"
+                      >
+                        Inspect this line <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </a>
                     </div>
                   </div>
-                ))}
-              </Panels>
-              <a href="#example" onClick={inspect} tabIndex={phase === 3 ? 0 : -1} className="group mt-4 inline-flex items-center gap-1.5 font-head font-semibold text-[14.5px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors">
-                Inspect this line <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </motion.div>
+                );
+              })}
+            </Panels>
+          </motion.div>
+        </div>
+
+        {/* the invoice's lines */}
+        <div className="border-t border-[var(--line)]">
+          <div className={`grid ${COLS} gap-x-3 ${PAD} py-2.5 bg-[var(--canvas)] border-b border-[var(--line)] font-body font-medium text-[11.5px] sm:text-[12px] text-[var(--t3)]`}>
+            <span>Line</span>
+            <span>Example invoice</span>
+            <span className="max-sm:hidden">Qty</span>
+            <span className="max-sm:hidden">Unit price</span>
+            <span>Problem</span>
+          </div>
+          <div role="tablist" aria-label="Invoice quick examples">
+            {LINES.map((r, k) => {
+              const on = phase === 2 && k === i;
+              const flagged = phase >= 1;
+              return (
+                <button
+                  key={r.n}
+                  id={`quick-tab-${k}`}
+                  role="tab"
+                  aria-selected={on}
+                  aria-controls={`quick-panel-${k}`}
+                  aria-label={QUICK[k].tab}
+                  tabIndex={on || (phase < 2 && k === 0) ? 0 : -1}
+                  onClick={() => pick(k)}
+                  onKeyDown={(e) => onTabKeys(e, k, LINES.length, pick, "quick", true)}
+                  className={`relative w-full grid ${COLS} gap-x-3 items-center ${PAD} py-3.5 sm:py-4 border-b last:border-b-0 border-[var(--line)] text-left font-body text-[13px] sm:text-[14.5px] tabular-nums transition-colors ${
+                    on ? "bg-[rgba(42,85,245,0.06)]" : "hover:bg-[var(--canvas)]"
+                  }`}
+                >
+                  {on && <motion.span layoutId="quick-bar" className="absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--accent)]" transition={{ duration: 0.3, ease: EASE }} />}
+                  <span className="text-[var(--t3)]">{r.n}</span>
+                  <span className="min-w-0 truncate font-medium text-[var(--ink)]">{r.flag === "item" && flagged ? <Bad className="max-w-full truncate align-bottom">{r.item}</Bad> : r.item}</span>
+                  <span className="text-[var(--t2)] max-sm:hidden">{r.flag === "qty" && flagged ? <Bad>{r.qty}</Bad> : r.qty}</span>
+                  <span className="text-[var(--t2)] max-sm:hidden">{r.flag === "price" && flagged ? <Bad>{r.price}</Bad> : r.price}</span>
+                  <span className="min-w-0">{flagged ? <Status tone="bad" className="sm:!text-[13.5px]">{FULL[k].tab}</Status> : <span className="ol-pulse inline-block h-1.5 w-1.5 rounded-[1px] bg-[var(--t3)]" />}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </Window>
@@ -262,17 +273,21 @@ export function Proof() {
   return (
     <section aria-label="What our customer says" className="relative">
       <div className="wrap w-full">
-        <Reveal className="border-y border-[var(--line)] py-6 md:py-7 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-          <div className="flex items-center gap-4 flex-1 min-w-0">
+        <Reveal className="border-y border-[var(--line)] py-6 md:py-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+          <div className="flex items-center gap-4 md:gap-5 flex-1 min-w-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ESELO} alt="ESELO" className="h-10 w-10 object-contain brightness-0 shrink-0" />
-            <div>
+            <img src={MARIS_SQ} alt="Māris Renigers" width={400} height={400} loading="lazy" className="h-16 w-16 md:h-[72px] md:w-[72px] rounded-[2px] object-cover shrink-0" />
+            <div className="min-w-0">
               <p className="font-head font-semibold text-[var(--ink)] text-[17px] md:text-[20px] leading-[1.35]">“Our employees smiling again. Two hours per person of ‘monkey work’ gone.”</p>
-              <p className="mt-0.5 font-body text-[var(--t3)] text-[14px]">Māris Renigers, E-business Manager, ESELO</p>
+              <p className="mt-2 flex items-center gap-2.5 font-body text-[var(--t3)] text-[14px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ESELO} alt="ESELO" className="h-6 w-6 object-contain brightness-0 shrink-0" />
+                Māris Renigers, E-business Manager, ESELO
+              </p>
             </div>
           </div>
           <a href="#customer-case" onClick={scrollToId("customer-case")} className="group self-start md:self-auto shrink-0 inline-flex items-center gap-1.5 font-head font-semibold text-[16px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors">
-            Read one customer’s story <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            Read the case study <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </Reveal>
       </div>
@@ -488,7 +503,7 @@ export function Example() {
               ))}
             </div>
 
-            <Window sidebar={false} crumbs={["Invoices", "INV-2846", x.line]} right={<Status tone={held[i] ? "hold" : "review"}>{held[i] ? "On hold" : "Needs review"}</Status>} className="mt-3 sm:mt-7">
+            <Window crumbs={["Invoices", "INV-2846", x.line]} right={<Status tone={held[i] ? "hold" : "review"}>{held[i] ? "On hold" : "Needs review"}</Status>} className="mt-3 sm:mt-7">
               <Panels i={i} group="full" collapse>
                 {FULL.map((f, k) => (
                   <div key={f.tab}>
@@ -623,6 +638,8 @@ function StepSend() {
 }
 
 const STEP_TILES = [StepRead, StepLink, StepCheck, StepSend];
+/* Short names for the four steps (ours); the sentence under each one is Anton's. */
+const STEP_TITLES = ["Upload the invoice", "Match it to your order", "Compare every line", "Review and send to the ERP"];
 
 export function HowItWorks() {
   const ref = useRef<HTMLDivElement>(null);
@@ -663,8 +680,8 @@ export function HowItWorks() {
                       </div>
                     </div>
                     <div className="p-5 lg:p-6 flex-1">
-                      <span className={`font-head font-semibold text-[15px] transition-colors duration-500 ${on ? "text-[var(--accent)]" : "text-[var(--t3)]"}`}>Step {n + 1}</span>
-                      <p className="mt-2.5 font-body text-[var(--ink)] text-[15.5px] md:text-[16px] leading-[1.55]">{t}</p>
+                      <h3 className={`font-head font-bold text-[19px] md:text-[20px] leading-[1.2] tracking-[-0.015em] transition-colors duration-500 ${on ? "text-[var(--accent)]" : "text-[var(--ink)]"}`}>{STEP_TITLES[n]}</h3>
+                      <p className="mt-2.5 font-body text-[var(--t2)] text-[15.5px] md:text-[16px] leading-[1.55]">{t}</p>
                     </div>
                   </div>
                 );
@@ -685,7 +702,7 @@ export function HowItWorks() {
 }
 
 /* ============================================================
-   5. One customer's story
+   5. Case study
    ============================================================ */
 
 function Count({ to, dec = 0 }: { to: number; dec?: number }) {
@@ -705,58 +722,6 @@ function Count({ to, dec = 0 }: { to: number; dec?: number }) {
   return <span ref={ref}>{v.toFixed(dec)}</span>;
 }
 
-/** 69% → 87% → 98.5%, the three figures in the customer's account. */
-function AccuracyChart() {
-  const ref = useRef<SVGSVGElement>(null);
-  const run = useInView(ref, { once: true, amount: 0.6 });
-  const pts = [
-    { x: 30, v: 69 },
-    { x: 160, v: 87 },
-    { x: 290, v: 98.5 },
-  ].map((p) => ({ ...p, y: 96 - ((p.v - 60) / 40) * 66 }));
-  const line = `M${pts[0].x} ${pts[0].y} C ${pts[0].x + 62} ${pts[0].y}, ${pts[1].x - 62} ${pts[1].y}, ${pts[1].x} ${pts[1].y} S ${pts[2].x - 62} ${pts[2].y}, ${pts[2].x} ${pts[2].y}`;
-  return (
-    <svg ref={ref} viewBox="0 0 320 108" className="w-full h-auto" role="img" aria-label="Matching accuracy: 69%, then 87%, then 98.5%">
-      <line x1="10" x2="310" y1="104" y2="104" stroke="rgba(255,255,255,0.25)" />
-      <motion.path d={line} fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: run ? 1 : 0 }} transition={{ duration: 1.3, ease: EASE }} />
-      {pts.map((p, k) => (
-        <motion.g key={p.v} initial={{ opacity: 0 }} animate={{ opacity: run ? 1 : 0 }} transition={{ duration: 0.4, delay: 0.3 + k * 0.4 }}>
-          <circle cx={p.x} cy={p.y} r="4.5" fill={k === 2 ? "#fff" : "#5a63f5"} stroke="#fff" strokeWidth="2.5" />
-          <text x={p.x} y={p.y - 13} textAnchor="middle" fontSize="13" fontWeight={k === 2 ? 700 : 500} fill="#fff" fillOpacity={k === 2 ? 1 : 0.8} style={{ fontFamily: "var(--font-inter)" }}>
-            {p.v}%
-          </text>
-        </motion.g>
-      ))}
-    </svg>
-  );
-}
-
-/** From upload to posting: a mark travels the line. */
-function UploadToPosting() {
-  const reduce = useReducedMotion();
-  return (
-    <div className="font-body text-[12.5px] text-white/80">
-      <div className="relative h-[2px] bg-white/25 mt-2">
-        <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-[1px] bg-white" />
-        <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-[1px] bg-white" />
-        {!reduce && (
-          <motion.span
-            className="absolute top-1/2 h-[6px] w-10 -translate-y-1/2 bg-white"
-            initial={{ left: "0%", opacity: 0 }}
-            animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 0.8, ease: "easeInOut" }}
-            style={{ marginLeft: -20 }}
-          />
-        )}
-      </div>
-      <div className="mt-3 flex justify-between">
-        <span>upload</span>
-        <span>posting</span>
-      </div>
-    </div>
-  );
-}
-
 const STAT_NUM = [
   { n: 2, post: " hours per person" },
   { n: 36, post: " seconds" },
@@ -769,18 +734,42 @@ export function CustomerCase() {
     <section id="customer-case" className={`relative overflow-hidden text-white ${SECTION_Y}`} style={{ background: "var(--stage)" }}>
       <div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 70% at 0% 0%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(180deg, rgba(15,19,48,0.18), rgba(15,19,48,0.34))" }} />
       <div className="wrap relative w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
-          <div className="xl:col-span-7">
-            <Eyebrow light>One customer’s story</Eyebrow>
-            <h2 className="mt-4 font-head font-bold text-white text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.03em] text-balance">What changed for an electrical goods distributor</h2>
-          </div>
-          <p className="xl:col-span-5 max-xl:max-w-[46rem] font-body text-white/85 text-[16px] md:text-[18px] leading-[1.55]">
-            For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product codes
-            and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
-          </p>
+        <Reveal>
+          <Eyebrow light>Case studies</Eyebrow>
+          <h2 className="mt-4 font-head font-bold text-white text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.03em] text-balance">What changed for an electrical goods distributor</h2>
         </Reveal>
 
-        <Reveal delay={0.06} className="mt-8 md:mt-14">
+        {/* who says so, and the story in two sentences */}
+        <Reveal delay={0.06} className="mt-8 md:mt-12 grid grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(0,0.62fr)_minmax(0,1.38fr)] gap-6 md:gap-10 lg:gap-16 items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={MARIS}
+            alt="Māris Renigers, E-business Manager at ESELO"
+            width={840}
+            height={1050}
+            loading="lazy"
+            className="w-full aspect-[4/3] md:aspect-[4/5] object-cover object-[50%_18%] rounded-[2px] shadow-[0_40px_80px_-40px_rgba(15,19,48,0.8)]"
+          />
+          <div>
+            <p className="max-w-[44rem] font-body text-white text-[17px] md:text-[20px] leading-[1.55]">
+              For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product codes
+              and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
+            </p>
+            <figure className="mt-7 md:mt-9 pt-7 md:pt-9 border-t border-white/25">
+              <blockquote className="max-w-[40rem] font-head font-bold text-white text-[22px] md:text-[28px] lg:text-[32px] leading-[1.22] tracking-[-0.02em]">
+                “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
+              </blockquote>
+              <figcaption className="mt-5 flex items-center gap-3 font-body text-white/85 text-[15px] md:text-[16px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ESELO} alt="ESELO" className="h-9 w-9 object-contain brightness-0 invert shrink-0" />
+                Māris Renigers, E-business Manager, ESELO
+              </figcaption>
+            </figure>
+          </div>
+        </Reveal>
+
+        {/* what was measured */}
+        <Reveal delay={0.08} className="mt-9 md:mt-14">
           <Swipe
             light
             label="What changed"
@@ -788,45 +777,20 @@ export function CustomerCase() {
             className="lg:grid lg:grid-cols-3 lg:gap-5"
             items={STATS.map((s, i) => (
               <div key={s.n} className={`h-full ${GLASS}`}>
-              <div className="font-head font-bold leading-[0.95] tracking-[-0.045em] whitespace-nowrap">
-                <span className="text-[64px] lg:text-[80px]">
-                  <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
-                  {STAT_NUM[i].post === "%" ? "%" : ""}
-                </span>
-                {STAT_NUM[i].post !== "%" && <span className="text-[21px] lg:text-[24px] tracking-[-0.02em] text-white/85">{STAT_NUM[i].post}</span>}
-              </div>
-              <div className="mt-4 font-head font-semibold text-[18px]">{s.label}</div>
-              <p className="mt-2 font-body text-white/80 text-[15px] leading-[1.55]">{s.body}</p>
-              <div className="mt-auto pt-6">
-                {i === 0 && (
-                  <div className="flex flex-wrap gap-2 font-body text-[12.5px]">
-                    {["Buyers", "receivers", "accountants"].map((r) => (
-                      <span key={r} className="rounded-[2px] border border-white/35 px-2.5 py-1">
-                        {r}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                {i === 1 && <UploadToPosting />}
-                {i === 2 && <AccuracyChart />}
-              </div>
+                <div className="font-head font-bold leading-[0.95] tracking-[-0.045em] whitespace-nowrap">
+                  <span className="text-[64px] lg:text-[80px]">
+                    <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
+                    {STAT_NUM[i].post === "%" ? "%" : ""}
+                  </span>
+                  {STAT_NUM[i].post !== "%" && <span className="text-[21px] lg:text-[24px] tracking-[-0.02em] text-white/85">{STAT_NUM[i].post}</span>}
+                </div>
+                <div className="mt-4 font-head font-semibold text-[18px]">{s.label}</div>
+                <p className="mt-2 font-body text-white/80 text-[15px] leading-[1.55]">{s.body}</p>
               </div>
             ))}
           />
-        </Reveal>
-
-        <Reveal delay={0.1} className="mt-9 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-[64px_minmax(0,1fr)] gap-4 md:gap-9 items-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={ESELO} alt="ESELO" className="h-12 w-12 md:h-16 md:w-16 object-contain brightness-0 invert" />
-          <figure>
-            <blockquote className="max-w-[38ch] font-head font-bold text-white text-[22px] md:text-[34px] leading-[1.22] tracking-[-0.02em]">
-              “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
-            </blockquote>
-            <figcaption className="mt-4 font-body text-white/75 text-[15px]">Māris Renigers, E-business Manager, ESELO</figcaption>
-          </figure>
         </Reveal>
       </div>
     </section>
   );
 }
-

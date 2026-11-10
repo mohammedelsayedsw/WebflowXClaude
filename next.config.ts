@@ -29,6 +29,13 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        // The Growth Accelerator replaced the Retention Score funnel (2026-11-10). Exact match only:
+        // /retention-90/book and /retention-90/confirmed stay, because live Retention emails link to them.
+        source: "/retention-90",
+        destination: "/growth-accelerator",
+        permanent: false,
+      },
+      {
         // Chat to Buy has one page so far: the free demo (2026-11-06).
         source: "/chat-to-buy",
         destination: "/chat-to-buy/free-demo",

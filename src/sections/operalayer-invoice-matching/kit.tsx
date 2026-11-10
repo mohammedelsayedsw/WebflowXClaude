@@ -1,7 +1,8 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /*
  * Page-level pieces: type scale, buttons, reveal, the stage that product screens sit on, the logo.
@@ -9,9 +10,9 @@ import { motion } from "motion/react";
 
 export const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-export const SECTION_Y = "py-[clamp(64px,10vh,128px)]";
-export const H2 = "font-head font-bold text-[var(--ink)] text-[34px] sm:text-[42px] lg:text-[52px] leading-[1.06] tracking-[-0.03em] text-balance";
-export const LEAD = "font-body text-[var(--t2)] text-[17px] md:text-[19px] leading-[1.55]";
+export const SECTION_Y = "py-14 md:py-[clamp(64px,10vh,128px)]";
+export const H2 = "font-head font-bold text-[var(--ink)] text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.03em] text-balance";
+export const LEAD = "font-body text-[var(--t2)] text-[16px] md:text-[19px] leading-[1.55]";
 
 export const btn =
   "group inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-[2px] bg-[var(--accent)] text-white font-head font-semibold text-[16px] hover:bg-[var(--accent-deep)] transition-colors";
@@ -111,7 +112,7 @@ export function Logo({ className = "" }: { className?: string }) {
 }
 
 /** Every panel sits in the same grid cell, so switching never changes the height of the page. */
-export function Panels({ i, group, children, className = "" }: { i: number; group: string; children: React.ReactNode[]; className?: string }) {
+export function Panels({ i, group, children, className = "", collapse = false }: { i: number; group: string; children: React.ReactNode[]; className?: string; collapse?: boolean }) {
   return (
     <div className={`grid ${className}`}>
       {children.map((c, k) => (
@@ -124,7 +125,7 @@ export function Panels({ i, group, children, className = "" }: { i: number; grou
           initial={false}
           animate={{ opacity: k === i ? 1 : 0, y: k === i ? 0 : 8 }}
           transition={{ duration: 0.35, ease: EASE }}
-          className={`[grid-area:1/1] min-w-0 ${k === i ? "" : "invisible pointer-events-none"}`}
+          className={`[grid-area:1/1] min-w-0 ${k === i ? "" : `invisible pointer-events-none ${collapse ? "max-md:hidden" : ""}`}`}
         >
           {c}
         </motion.div>
@@ -141,4 +142,84 @@ export function onTabKeys(e: React.KeyboardEvent, i: number, n: number, set: (k:
   e.preventDefault();
   set(order[e.key]);
   document.getElementById(`${group}-tab-${order[e.key]}`)?.focus();
+}
+
+/**
+ * A set of cards. From tablets up it is whatever grid `className` describes. On phones it is one row that scrolls
+ * sideways: the next card peeks in from the right, and dots and arrows underneath show where you are.
+ */
+export function Swipe({
+  items,
+  className = "",
+  itemClassName = "",
+  label,
+  light = false,
+  inset = false,
+}: {
+  items: React.ReactNode[];
+  /** Layout from md up, e.g. "md:grid md:grid-cols-3 md:gap-5". */
+  className?: string;
+  itemClassName?: string;
+  label: string;
+  /** On a dark or coloured ground. */
+  light?: boolean;
+  /** Inside a padded panel instead of the page gutter. */
+  inset?: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [i, setI] = useState(0);
+  const onScroll = () => {
+    const el = ref.current;
+    if (!el) return;
+    const mid = el.scrollLeft + el.clientWidth / 2;
+    let best = 0;
+    let dist = Infinity;
+    ([...el.children] as HTMLElement[]).forEach((k, n) => {
+      const d = Math.abs(k.offsetLeft + k.offsetWidth / 2 - mid);
+      if (d < dist) {
+        dist = d;
+        best = n;
+      }
+    });
+    /* the last card cannot reach the middle, so the end of the row counts as the last card */
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) best = items.length - 1;
+    setI(best);
+  };
+  const go = (n: number) => {
+    const el = ref.current;
+    const k = el?.children[Math.max(0, Math.min(items.length - 1, n))] as HTMLElement | undefined;
+    if (el && k) el.scrollTo({ left: k.offsetLeft - parseFloat(getComputedStyle(el).paddingLeft || "0"), behavior: "smooth" });
+  };
+  const arrow = `h-10 w-10 flex items-center justify-center rounded-[2px] border transition-opacity disabled:opacity-30 ${
+    light ? "border-white/45 text-white" : "border-[#cfd3e3] text-[var(--ink)] bg-white"
+  }`;
+  return (
+    <div>
+      <div ref={ref} onScroll={onScroll} role="group" aria-label={label} className={`ol-swipe ${inset ? "ol-swipe-in" : ""} relative max-md:flex max-md:gap-3 ${className}`}>
+        {items.map((c, n) => (
+          <div key={n} className={`max-md:shrink-0 max-md:w-[84%] sm:max-md:w-[46%] min-w-0 ${itemClassName}`}>
+            {c}
+          </div>
+        ))}
+      </div>
+      <div className="md:hidden mt-4 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-1.5" aria-hidden>
+          {items.map((_, n) => (
+            <span
+              key={n}
+              className={`h-[5px] rounded-[1px] transition-all duration-300 ${n === i ? `w-7 ${light ? "bg-white" : "bg-[var(--accent)]"}` : `w-[5px] ${light ? "bg-white/40" : "bg-[#c5c9dc]"}`}`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-2">
+          <button type="button" aria-label="Previous" disabled={i === 0} onClick={() => go(i - 1)} className={arrow}>
+            <ChevronLeft aria-hidden className="h-[18px] w-[18px]" />
+          </button>
+          <button type="button" aria-label="Next" disabled={i === items.length - 1} onClick={() => go(i + 1)} className={arrow}>
+            <ChevronRight aria-hidden className="h-[18px] w-[18px]" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

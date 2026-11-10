@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Boxes, Check, ChevronRight, Database, FileText, Landmark, Package, Plus, Receipt, Scale, Search, Server, ShoppingCart, TriangleAlert, Workflow } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
-import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
+import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Status } from "@/sections/operalayer-invoice-matching/app";
 
 const CARD = "bg-white rounded-[2px] font-body text-[var(--ink)] shadow-[0_30px_60px_-34px_rgba(15,19,48,0.55),0_0_0_1px_rgba(15,19,48,0.06)]";
@@ -330,13 +330,16 @@ export function GettingStarted() {
                   matter in your business.
                 </p>
               </div>
-              <a
-                href="#demo"
-                onClick={scrollToId("demo")}
-                className="group self-start md:self-auto shrink-0 inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-[2px] bg-white text-[var(--ink)] font-head font-semibold text-[16px] hover:bg-[var(--ink)] hover:text-white transition-colors"
-              >
-                Book a demo call <ChevronRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              <div className="shrink-0 flex flex-col items-start md:items-center gap-3.5">
+                <a
+                  href="#demo"
+                  onClick={scrollToId("demo")}
+                  className="group inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-[2px] bg-white text-[var(--ink)] font-head font-semibold text-[16px] hover:bg-[var(--ink)] hover:text-white transition-colors"
+                >
+                  Book a demo call <ChevronRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <CalendlyLink className="inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white underline-offset-4 hover:underline">or pick a time on Calendly</CalendlyLink>
+              </div>
             </div>
           </Stage>
         </Reveal>
@@ -547,6 +550,10 @@ export function Questions() {
           <h2 className={`${H2} mt-4`}>
             Fair questions <Hi>before you start</Hi>
           </h2>
+          <p className="mt-5 md:mt-6 font-body text-[16px] md:text-[17px] text-[var(--t2)] leading-[1.55]">
+            Not answered here?{" "}
+            <CalendlyLink className="inline-flex items-center gap-1 font-semibold text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors" />
+          </p>
         </Reveal>
         <div className="grid gap-9 md:gap-11">
           {FAQ_GROUPS.map((g, i) => (
@@ -590,6 +597,12 @@ export function Demo() {
           </Reveal>
           <Reveal delay={0.08} className="bg-white rounded-[2px] p-6 sm:p-8 shadow-[0_60px_120px_-50px_rgba(15,19,48,0.7)]">
             <HubSpotForm portalId="25724996" formId="520a2e9a-5eb9-4ca9-a1d0-13e8f339f4b6" region="eu1" submitText="Book a demo call" />
+            <div aria-hidden className="mt-6 flex items-center gap-4 font-body text-[13px] text-[var(--t3)]">
+              <span className="h-px flex-1 bg-[var(--line)]" />
+              or
+              <span className="h-px flex-1 bg-[var(--line)]" />
+            </div>
+            <CalendlyLink className={`${btnGhost} mt-5 w-full`} />
           </Reveal>
         </div>
 

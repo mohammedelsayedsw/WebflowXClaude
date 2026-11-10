@@ -5,7 +5,7 @@ import { motion, useInView, useReducedMotion, animate } from "motion/react";
 import { ArrowDown, ArrowRight, Camera, Check, ChevronRight, FileText, Link2, Mail, Package, Receipt, ShoppingCart, Upload } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 import { QUICK, PROBLEMS, FULL, STATS, STEPS } from "@/sections/operalayer-invoice-matching/copy";
-import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, btn, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
+import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btn, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Bad, LINES, Mark, Paper, Status, Window } from "@/sections/operalayer-invoice-matching/app";
 
 /*
@@ -47,7 +47,7 @@ export function Nav() {
           <span aria-hidden className="h-5 w-px bg-[var(--ink)]/15" />
           <a href={assetUrl("/operalayer")} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Logo className="h-[24px] w-auto" />
-            <span className="font-head font-semibold text-[17px] tracking-[-0.01em] text-[var(--ink)] max-[400px]:hidden">OperaLayer</span>
+            <span className="font-head font-semibold text-[17px] tracking-[-0.01em] text-[var(--ink)] max-[519px]:hidden">OperaLayer</span>
           </a>
         </div>
         <nav aria-label="On this page" className="hidden lg:flex items-center gap-8">
@@ -362,20 +362,24 @@ export function Problem() {
             A supplier can send you a perfectly good invoice <Hi>for the wrong thing.</Hi>
           </h2>
         </Reveal>
-        <div className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-5 lg:gap-6">
-          {PROBLEMS.map((p, i) => {
-            const C = CROPS[i];
-            return (
-              <Reveal key={p.title} delay={i * 0.08} className="flex flex-col">
-                <Stage soft className="h-[212px] flex items-center px-5 lg:px-7 [&>div]:w-full">
-                  <C />
-                </Stage>
-                <h3 className="mt-6 font-head font-bold text-[var(--ink)] text-[21px] lg:text-[23px] leading-[1.22] tracking-[-0.015em]">{p.title}</h3>
-                <p className="mt-3 font-body text-[var(--t2)] text-[16px] leading-[1.6]">{p.body}</p>
-              </Reveal>
-            );
-          })}
-        </div>
+        <Reveal delay={0.06} className="mt-8 md:mt-14">
+          <Swipe
+            label="The problem"
+            className="md:grid md:grid-cols-3 md:gap-5 lg:gap-6"
+            items={PROBLEMS.map((p, i) => {
+              const C = CROPS[i];
+              return (
+                <div key={p.title} className="flex flex-col">
+                  <Stage soft className="h-[196px] md:h-[212px] flex items-center px-5 lg:px-7 [&>div]:w-full">
+                    <C />
+                  </Stage>
+                  <h3 className="mt-5 md:mt-6 font-head font-bold text-[var(--ink)] text-[20px] lg:text-[23px] leading-[1.22] tracking-[-0.015em]">{p.title}</h3>
+                  <p className="mt-2.5 md:mt-3 font-body text-[var(--t2)] text-[15.5px] md:text-[16px] leading-[1.6]">{p.body}</p>
+                </div>
+              );
+            })}
+          />
+        </Reveal>
       </div>
     </section>
   );
@@ -398,8 +402,11 @@ function Records({ k }: { k: number }) {
   const x = FULL[k];
   const [fr, ff] = FLAG[k];
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] sm:grid-cols-3 gap-3">
-      {x.rows.map((r, n) => {
+    <Swipe
+      inset
+      label="Records"
+      className="md:grid md:grid-cols-3 md:gap-3"
+      items={x.rows.map((r, n) => {
         const Icon = REC_ICONS[n];
         const cut = r[0].lastIndexOf(" ");
         const odd = n === fr;
@@ -431,7 +438,7 @@ function Records({ k }: { k: number }) {
           </div>
         );
       })}
-    </div>
+    />
   );
 }
 
@@ -457,8 +464,8 @@ export function Example() {
         </Reveal>
 
         <Reveal delay={0.08} className="mt-9 md:mt-12">
-          <Stage className="px-3 pb-3 pt-4 sm:px-8 sm:pb-10 sm:pt-7 lg:px-16 lg:pb-14 lg:pt-8">
-            <div role="tablist" aria-label="Invoice full examples" className="flex flex-wrap justify-center gap-2">
+          <Stage className="px-2.5 pb-2.5 pt-3 sm:px-8 sm:pb-10 sm:pt-7 lg:px-16 lg:pb-14 lg:pt-8">
+            <div role="tablist" aria-label="Invoice full examples" className="grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-2">
               {FULL.map((f, k) => (
                 <button
                   key={f.tab}
@@ -469,15 +476,15 @@ export function Example() {
                   tabIndex={k === i ? 0 : -1}
                   onClick={() => setI(k)}
                   onKeyDown={(e) => onTabKeys(e, k, FULL.length, setI, "full")}
-                  className={`h-10 px-4 rounded-[2px] font-head font-semibold text-[14px] sm:text-[15px] transition-colors ${k === i ? "bg-white text-[var(--ink)]" : "bg-white/15 text-white hover:bg-white/25"}`}
+                  className={`min-h-11 px-2 sm:px-4 py-1.5 rounded-[2px] font-head font-semibold text-[13px] leading-[1.15] sm:text-[15px] transition-colors ${k === i ? "bg-white text-[var(--ink)]" : "bg-white/15 text-white hover:bg-white/25"}`}
                 >
                   {f.tab}
                 </button>
               ))}
             </div>
 
-            <Window sidebar={false} crumbs={["Invoices", "INV-2846", x.line]} right={<Status tone={held[i] ? "hold" : "review"}>{held[i] ? "On hold" : "Needs review"}</Status>} className="mt-5 sm:mt-7">
-              <Panels i={i} group="full">
+            <Window sidebar={false} crumbs={["Invoices", "INV-2846", x.line]} right={<Status tone={held[i] ? "hold" : "review"}>{held[i] ? "On hold" : "Needs review"}</Status>} className="mt-3 sm:mt-7">
+              <Panels i={i} group="full" collapse>
                 {FULL.map((f, k) => (
                   <div key={f.tab}>
                     <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,0.74fr)_minmax(0,1.26fr)]">
@@ -613,7 +620,7 @@ function StepSend() {
 const STEP_TILES = [StepRead, StepLink, StepCheck, StepSend];
 
 export function HowItWorks() {
-  const ref = useRef<HTMLOListElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
   const reduce = useReducedMotion();
   const [k, setK] = useState(0);
@@ -637,26 +644,32 @@ export function HowItWorks() {
             warehouse colleague or an accountant.
           </p>
         </Reveal>
-        <ol ref={ref} className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {STEPS.map((t, n) => {
-            const T = STEP_TILES[n];
-            const on = !reduce && k === n;
-            return (
-              <Reveal as="li" key={t} delay={n * 0.08} className="list-none bg-white rounded-[2px] border border-[var(--line)] flex flex-col">
-                <div className="relative h-[196px] overflow-hidden flex items-center px-5" style={{ background: "var(--stage-soft)" }}>
-                  <motion.div aria-hidden className="absolute inset-0" style={{ background: "var(--stage)" }} initial={false} animate={{ opacity: on ? 1 : 0 }} transition={{ duration: 0.7 }} />
-                  <div className="relative w-full">
-                    <T />
+        <Reveal delay={0.06} className="mt-8 md:mt-14">
+          <div ref={ref}>
+            <Swipe
+              label="How it works"
+              className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5"
+              items={STEPS.map((t, n) => {
+                const T = STEP_TILES[n];
+                const on = !reduce && k === n;
+                return (
+                  <div key={t} className="h-full bg-white rounded-[2px] border border-[var(--line)] flex flex-col">
+                    <div className="relative h-[196px] overflow-hidden flex items-center px-5" style={{ background: "var(--stage-soft)" }}>
+                      <motion.div aria-hidden className="absolute inset-0" style={{ background: "var(--stage)" }} initial={false} animate={{ opacity: on ? 1 : 0 }} transition={{ duration: 0.7 }} />
+                      <div className="relative w-full">
+                        <T />
+                      </div>
+                    </div>
+                    <div className="p-5 lg:p-6 flex-1">
+                      <span className={`font-head font-semibold text-[15px] transition-colors duration-500 ${on ? "text-[var(--accent)]" : "text-[var(--t3)]"}`}>Step {n + 1}</span>
+                      <p className="mt-2.5 font-body text-[var(--ink)] text-[15.5px] md:text-[16px] leading-[1.55]">{t}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="p-5 lg:p-6 flex-1">
-                  <span className={`font-head font-semibold text-[15px] transition-colors duration-500 ${on ? "text-[var(--accent)]" : "text-[var(--t3)]"}`}>Step {n + 1}</span>
-                  <p className="mt-2.5 font-body text-[var(--ink)] text-[16px] leading-[1.55]">{t}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </ol>
+                );
+              })}
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -750,17 +763,21 @@ export function CustomerCase() {
         <Reveal className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12 gap-5 lg:gap-12 items-end">
           <div className="lg:col-span-7">
             <Eyebrow light>One customer’s story</Eyebrow>
-            <h2 className="mt-4 font-head font-bold text-white text-[34px] sm:text-[42px] lg:text-[52px] leading-[1.06] tracking-[-0.03em] text-balance">What changed for an electrical goods distributor</h2>
+            <h2 className="mt-4 font-head font-bold text-white text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-0.03em] text-balance">What changed for an electrical goods distributor</h2>
           </div>
-          <p className="lg:col-span-5 font-body text-white/85 text-[17px] md:text-[18px] leading-[1.55]">
+          <p className="lg:col-span-5 font-body text-white/85 text-[16px] md:text-[18px] leading-[1.55]">
             For one of our customers, electrical goods distributor ESELO, buying from more than 150 suppliers meant working through different document layouts, product codes
             and pack sizes. Purchasing, warehouse and finance now use OperaLayer to compare orders, deliveries and invoices.
           </p>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-3 gap-4 lg:gap-5">
-          {STATS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.08} className={GLASS}>
+        <Reveal delay={0.06} className="mt-8 md:mt-14">
+          <Swipe
+            light
+            label="What changed"
+            className="md:grid md:grid-cols-3 md:gap-4 lg:gap-5"
+            items={STATS.map((s, i) => (
+              <div key={s.n} className={`h-full ${GLASS}`}>
               <div className="font-head font-bold leading-[0.95] tracking-[-0.045em] whitespace-nowrap">
                 <span className="text-[64px] lg:text-[80px]">
                   <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
@@ -783,15 +800,16 @@ export function CustomerCase() {
                 {i === 1 && <UploadToPosting />}
                 {i === 2 && <AccuracyChart />}
               </div>
-            </Reveal>
-          ))}
-        </div>
+              </div>
+            ))}
+          />
+        </Reveal>
 
-        <Reveal delay={0.1} className="mt-10 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-[64px_minmax(0,1fr)] gap-5 md:gap-9 items-start">
+        <Reveal delay={0.1} className="mt-9 md:mt-14 grid grid-cols-[minmax(0,1fr)] md:grid-cols-[64px_minmax(0,1fr)] gap-4 md:gap-9 items-start">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={ESELO} alt="ESELO" className="h-12 w-12 md:h-16 md:w-16 object-contain brightness-0 invert" />
           <figure>
-            <blockquote className="max-w-[38ch] font-head font-bold text-white text-[24px] md:text-[34px] leading-[1.22] tracking-[-0.02em]">
+            <blockquote className="max-w-[38ch] font-head font-bold text-white text-[22px] md:text-[34px] leading-[1.22] tracking-[-0.02em]">
               “From demo to live in weeks. Fastest implementation we have experienced so far for such a complex system and functionality.”
             </blockquote>
             <figcaption className="mt-4 font-body text-white/75 text-[15px]">Māris Renigers, E-business Manager, ESELO</figcaption>

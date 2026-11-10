@@ -4,9 +4,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Boxes, Check, ChevronRight, Database, FileText, Landmark, Package, Plus, Receipt, Scale, Search, Server, ShoppingCart, TriangleAlert, Workflow } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
-import { assetUrl } from "@/lib/assets";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
-import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
+import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Status } from "@/sections/operalayer-invoice-matching/app";
 
 const CARD = "bg-white rounded-[2px] font-body text-[var(--ink)] shadow-[0_30px_60px_-34px_rgba(15,19,48,0.55),0_0_0_1px_rgba(15,19,48,0.06)]";
@@ -21,7 +20,7 @@ function Changes({ items }: { items: string[] }) {
   return (
     <ul>
       {items.map((t, n) => (
-        <li key={t} className={`flex gap-3.5 px-5 md:px-7 py-4 md:py-[22px] font-body text-[var(--ink)] text-[16px] md:text-[18px] lg:text-[19px] leading-[1.45] ${n ? "border-t border-[var(--line)]" : ""}`}>
+        <li key={t} className={`flex gap-3 md:gap-3.5 px-5 md:px-7 py-3.5 md:py-[22px] font-body text-[var(--ink)] text-[15.5px] md:text-[18px] lg:text-[19px] leading-[1.45] ${n ? "border-t border-[var(--line)]" : ""}`}>
           <Check aria-hidden className="mt-[4px] h-[18px] w-[18px] shrink-0 text-[var(--green)]" strokeWidth={2.75} />
           {t}
         </li>
@@ -87,28 +86,31 @@ export function Roles() {
           </Stage>
         </Reveal>
 
-        {/* phones: every role, one under another */}
-        <div className="mt-8 md:hidden grid gap-4">
-          {ROLES.map((r, k) => {
-            const Icon = ROLE_ICONS[k];
-            return (
-              <Reveal key={r.role} className="rounded-[2px] border border-[var(--line)]">
-                <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--line)]">
-                  <Icon aria-hidden className="h-5 w-5 text-[var(--accent)]" strokeWidth={1.75} />
-                  <h3 className="font-head font-bold text-[var(--ink)] text-[19px]">{r.role}</h3>
+        {/* phones: the six roles in one row */}
+        <Reveal className="mt-7 md:hidden">
+          <Swipe
+            label="Roles"
+            items={ROLES.map((r, k) => {
+              const Icon = ROLE_ICONS[k];
+              return (
+                <div key={r.role} className="h-full rounded-[2px] border border-[var(--line)]">
+                  <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--line)]">
+                    <Icon aria-hidden className="h-5 w-5 text-[var(--accent)]" strokeWidth={1.75} />
+                    <h3 className="font-head font-bold text-[var(--ink)] text-[18px] leading-[1.2]">{r.role}</h3>
+                  </div>
+                  <Changes items={r.items} />
                 </div>
-                <Changes items={r.items} />
-              </Reveal>
-            );
-          })}
-        </div>
+              );
+            })}
+          />
+        </Reveal>
 
         {/* best fit */}
-        <Reveal delay={0.05} className="mt-14 md:mt-20 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-8 lg:gap-16 items-start">
+        <Reveal delay={0.05} className="mt-12 md:mt-20 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-6 lg:gap-16 items-start">
           <div>
             <Eyebrow>Best fit</Eyebrow>
-            <h3 className="mt-4 font-head font-bold text-[var(--ink)] text-[28px] md:text-[38px] leading-[1.1] tracking-[-0.03em] text-balance">Built for businesses that buy stock from many suppliers</h3>
-            <ul className="mt-6 flex flex-wrap gap-2">
+            <h3 className="mt-3 md:mt-4 font-head font-bold text-[var(--ink)] text-[26px] md:text-[38px] leading-[1.1] tracking-[-0.03em] text-balance">Built for businesses that buy stock from many suppliers</h3>
+            <ul className="mt-5 md:mt-6 flex flex-wrap gap-2">
               {["Electrical and industrial distribution", "Wholesale", "Food service supply", "Multi-store retail"].map((c) => (
                 <li key={c} className="rounded-[2px] border border-[#cfd3e3] px-3 py-1.5 font-body font-medium text-[14px] text-[var(--ink)]">
                   {c}
@@ -118,7 +120,7 @@ export function Roles() {
           </div>
           <ul className="border-t border-[var(--line)]">
             {FIT.map((t) => (
-              <li key={t} className="flex gap-3.5 border-b border-[var(--line)] py-4 md:py-[18px] font-body text-[var(--ink)] text-[16px] md:text-[17px] leading-[1.5]">
+              <li key={t} className="flex gap-3.5 border-b border-[var(--line)] py-3.5 md:py-[18px] font-body text-[var(--ink)] text-[15.5px] md:text-[17px] leading-[1.5]">
                 <Check aria-hidden className="mt-[4px] h-[18px] w-[18px] shrink-0 text-[var(--accent)]" strokeWidth={2.75} />
                 {t}
               </li>
@@ -193,7 +195,7 @@ export function Calculator() {
                 Reset example
               </button>
             </div>
-            <div className="mt-8 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 gap-x-11 gap-y-11">
+            <div className="mt-7 md:mt-8 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 gap-x-11 gap-y-9 md:gap-y-11">
               <div className="flex flex-col">
                 <h3 className="font-head font-bold text-[var(--ink)] text-[20px] tracking-[-0.01em]">Time back for your team</h3>
                 <div className="mt-6 grid gap-6">
@@ -254,7 +256,7 @@ export function Calculator() {
    ============================================================ */
 
 export function GettingStarted() {
-  const COLS = "lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)_minmax(0,1fr)]";
+  const COLS = "grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)_minmax(0,1fr)]";
   return (
     <section id="first-step" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
@@ -268,39 +270,61 @@ export function GettingStarted() {
           <p className={`lg:col-span-5 ${LEAD}`}>Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.</p>
         </Reveal>
 
-        <Reveal delay={0.08} className="mt-10 md:mt-12 rounded-[2px] border border-[var(--line)]">
-          <div className={`hidden lg:grid ${COLS} bg-[var(--canvas)] border-b border-[var(--line)] font-head font-semibold text-[14px] text-[var(--t2)]`}>
-            <span className="px-8 py-3.5" />
-            <span className="px-8 py-3.5 border-l border-[var(--line)]">Your team</span>
-            <span className="px-8 py-3.5 border-l border-[var(--line)] flex items-center gap-2">
+        <Reveal delay={0.08} className="hidden md:block mt-12 rounded-[2px] border border-[var(--line)]">
+          <div className={`grid ${COLS} bg-[var(--canvas)] border-b border-[var(--line)] font-head font-semibold text-[14px] text-[var(--t2)]`}>
+            <span className="px-6 lg:px-8 py-3.5" />
+            <span className="px-6 lg:px-8 py-3.5 border-l border-[var(--line)]">Your team</span>
+            <span className="px-6 lg:px-8 py-3.5 border-l border-[var(--line)] flex items-center gap-2">
               <Logo className="h-[16px] w-auto" /> OperaLayer
             </span>
           </div>
           <ol>
             {START.map((s, i) => (
-              <li key={s.title} className={`grid grid-cols-[minmax(0,1fr)] ${COLS} ${i ? "border-t border-[var(--line)]" : ""}`}>
-                <div className="px-5 md:px-8 pt-6 lg:py-8 flex items-start gap-4">
+              <li key={s.title} className={`grid ${COLS} ${i ? "border-t border-[var(--line)]" : ""}`}>
+                <div className="px-6 lg:px-8 py-7 lg:py-8 flex items-start gap-4">
                   <span className="mt-[1px] h-7 w-7 shrink-0 rounded-[2px] bg-[var(--accent)] text-white flex items-center justify-center font-head font-semibold text-[14px]">{i + 1}</span>
-                  <h3 className="font-head font-bold text-[var(--ink)] text-[19px] lg:text-[21px] leading-[1.25] tracking-[-0.015em]">{s.title}</h3>
+                  <h3 className="font-head font-bold text-[var(--ink)] text-[18px] lg:text-[21px] leading-[1.25] tracking-[-0.015em]">{s.title}</h3>
                 </div>
-                <div className="px-5 md:px-8 pt-4 lg:py-8 lg:border-l border-[var(--line)]">
-                  <div className="lg:hidden mb-1 font-head font-semibold text-[13px] text-[var(--t3)]">Your team</div>
-                  <p className="font-body text-[var(--ink)]/85 text-[15.5px] leading-[1.6]">{s.team}</p>
+                <div className="px-6 lg:px-8 py-7 lg:py-8 border-l border-[var(--line)]">
+                  <p className="font-body text-[var(--ink)]/85 text-[15px] lg:text-[15.5px] leading-[1.6]">{s.team}</p>
                 </div>
-                <div className="px-5 md:px-8 pt-4 pb-6 lg:py-8 lg:border-l border-[var(--line)]">
-                  <div className="lg:hidden mb-1 font-head font-semibold text-[13px] text-[var(--t3)]">OperaLayer</div>
-                  <p className="font-body text-[var(--ink)]/85 text-[15.5px] leading-[1.6]">{s.us}</p>
+                <div className="px-6 lg:px-8 py-7 lg:py-8 border-l border-[var(--line)]">
+                  <p className="font-body text-[var(--ink)]/85 text-[15px] lg:text-[15.5px] leading-[1.6]">{s.us}</p>
                 </div>
               </li>
             ))}
           </ol>
         </Reveal>
 
-        <Reveal delay={0.05} className="mt-6">
-          <Stage className="px-6 py-8 md:px-11 md:py-11">
+        <Reveal delay={0.08} className="md:hidden mt-7">
+          <Swipe
+            label="Getting started"
+            items={START.map((s, i) => (
+              <div key={s.title} className="h-full rounded-[2px] border border-[var(--line)]">
+                <div className="flex items-start gap-3.5 px-5 py-4 border-b border-[var(--line)]">
+                  <span className="mt-[1px] h-7 w-7 shrink-0 rounded-[2px] bg-[var(--accent)] text-white flex items-center justify-center font-head font-semibold text-[14px]">{i + 1}</span>
+                  <h3 className="font-head font-bold text-[var(--ink)] text-[18px] leading-[1.25] tracking-[-0.015em]">{s.title}</h3>
+                </div>
+                <div className="px-5 py-4 border-b border-[var(--line)]">
+                  <div className="mb-1.5 font-head font-semibold text-[13px] text-[var(--t3)]">Your team</div>
+                  <p className="font-body text-[var(--ink)]/85 text-[15px] leading-[1.55]">{s.team}</p>
+                </div>
+                <div className="px-5 py-4">
+                  <div className="mb-1.5 flex items-center gap-1.5 font-head font-semibold text-[13px] text-[var(--t3)]">
+                    <Logo className="h-[14px] w-auto" /> OperaLayer
+                  </div>
+                  <p className="font-body text-[var(--ink)]/85 text-[15px] leading-[1.55]">{s.us}</p>
+                </div>
+              </div>
+            ))}
+          />
+        </Reveal>
+
+        <Reveal delay={0.05} className="mt-8 md:mt-6">
+          <Stage className="px-5 py-7 md:px-11 md:py-11">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-12 text-white">
               <div className="max-w-[44rem]">
-                <h3 className="font-head font-bold text-[26px] md:text-[34px] leading-[1.12] tracking-[-0.025em]">See it before connecting your ERP</h3>
+                <h3 className="font-head font-bold text-white text-[24px] md:text-[34px] leading-[1.12] tracking-[-0.025em]">See it before connecting your ERP</h3>
                 <p className="mt-3 font-body text-white/85 text-[16px] md:text-[17px] leading-[1.55]">
                   The first call uses example documents. Follow a price change, a short delivery and a different product code, then discuss the suppliers and records that
                   matter in your business.
@@ -468,7 +492,7 @@ export function UnderTheHood() {
           </p>
         </Reveal>
 
-        <div className="mt-10 md:mt-12 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] gap-6 lg:gap-12 items-stretch">
+        <div className="mt-7 md:mt-12 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] gap-6 lg:gap-12 items-stretch">
           <Reveal className="border-t border-[#d9dcea] self-center w-full">
             {HOOD.map((h, k) => {
               const Icon = HOOD_ICONS[k];
@@ -552,13 +576,13 @@ export function Questions() {
 
 export function Demo() {
   return (
-    <section id="demo" className="relative overflow-hidden text-white py-[clamp(64px,10vh,128px)]" style={{ background: "var(--stage)" }}>
+    <section id="demo" className="relative overflow-hidden text-white py-14 md:py-[clamp(64px,10vh,128px)]" style={{ background: "var(--stage)" }}>
       <div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 70% at 0% 0%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(180deg, rgba(15,19,48,0.14), rgba(15,19,48,0.32))" }} />
       <div className="wrap relative w-full">
-        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-8 lg:gap-16 items-center">
           <Reveal>
-            <h2 className="font-head font-bold text-white text-[36px] sm:text-[46px] lg:text-[clamp(44px,4.6vw,66px)] leading-[1.03] tracking-[-0.035em] text-balance">Bring the invoice that made three people stop working.</h2>
-            <p className="mt-6 font-body text-white text-[18px] md:text-[20px] leading-[1.5]">
+            <h2 className="font-head font-bold text-white text-[32px] sm:text-[46px] lg:text-[clamp(44px,4.6vw,66px)] leading-[1.05] tracking-[-0.035em] text-balance">Bring the invoice that made three people stop working.</h2>
+            <p className="mt-5 md:mt-6 font-body text-white text-[17px] md:text-[20px] leading-[1.5]">
               See which line OperaLayer would flag, the evidence the reviewer would see, and how an accepted invoice gets back into your ERP.
             </p>
             <p className="mt-4 font-body text-white/80 text-[16px] leading-[1.6]">Start with our example records. You leave knowing which documents, checks and connections to test in your own business.</p>
@@ -568,20 +592,6 @@ export function Demo() {
           </Reveal>
         </div>
 
-        <div className="mt-14 md:mt-20 border-t border-white/25 pt-7 flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
-          <div className="font-body text-white/75 text-[15px] shrink-0">More from OperaLayer</div>
-          <div className="flex flex-wrap gap-x-10 gap-y-3">
-            {[
-              ["", "OperaLayer overview"],
-              ["supplier-purchasing", "Supplier purchasing"],
-              ["pricing-control", "Pricing control"],
-            ].map(([slug, title]) => (
-              <a key={title} href={assetUrl(slug ? `/operalayer/${slug}` : "/operalayer")} className="group inline-flex items-center gap-1.5 font-head font-semibold text-white text-[17px] hover:opacity-80 transition-opacity">
-                {title} <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

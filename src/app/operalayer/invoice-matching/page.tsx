@@ -24,6 +24,8 @@ export default function Page() {
   return (
     <main className="olp relative isolate min-h-screen flex flex-col font-body">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      {/* The site-wide chat bubble (HachlyAI, loaded by GTM) covers a third of a phone screen; it stays on larger screens. */}
+      <style>{`@media (max-width: 767px){#hachly-ai-container{display:none!important}}`}</style>
       <Nav />
       <Hero />
       <Proof />

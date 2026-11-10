@@ -25,16 +25,7 @@
   background: rgba(42, 85, 245, 0.2);
 }
 
-/* The document being read: a soft band travels down the page once. */
-@keyframes ol-scan {
-  0% { transform: translateY(-30%); opacity: 0; }
-  12% { opacity: 1; }
-  88% { opacity: 1; }
-  100% { transform: translateY(330%); opacity: 0; }
-}
-.olp .ol-scan {
-  animation: ol-scan 1.9s cubic-bezier(0.45, 0, 0.3, 1) 0.25s both;
-}
+/* A status dot that is still working. */
 @keyframes ol-pulse {
   0%, 100% { opacity: 0.35; }
   50% { opacity: 1; }
@@ -43,7 +34,7 @@
   animation: ol-pulse 1s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .olp .ol-scan, .olp .ol-pulse { animation: none; opacity: 0; }
+  .olp .ol-pulse { animation: none; opacity: 0; }
 }
 
 /* Card rows that scroll sideways on phones (kit.tsx Swipe). They run to the screen edge so the next card peeks in. */

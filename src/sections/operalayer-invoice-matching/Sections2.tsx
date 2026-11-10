@@ -7,6 +7,7 @@ import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Status } from "@/sections/operalayer-invoice-matching/app";
+import { DYNAMICS_365, SAP } from "@/sections/operalayer-invoice-matching/logos";
 
 const CARD = "bg-white rounded-[2px] font-body text-[var(--ink)] shadow-[0_30px_60px_-34px_rgba(15,19,48,0.55),0_0_0_1px_rgba(15,19,48,0.06)]";
 
@@ -110,13 +111,7 @@ export function Roles() {
           <div>
             <Eyebrow>Best fit</Eyebrow>
             <h3 className="mt-3 md:mt-4 font-head font-bold text-[var(--ink)] text-[26px] md:text-[38px] leading-[1.1] tracking-[-0.03em] text-balance">Built for businesses that buy stock from many suppliers</h3>
-            <ul className="mt-5 md:mt-6 flex flex-wrap gap-2">
-              {["Electrical and industrial distribution", "Wholesale", "Food service supply", "Multi-store retail"].map((c) => (
-                <li key={c} className="rounded-[2px] border border-[#cfd3e3] px-3 py-1.5 font-body font-medium text-[14px] text-[var(--ink)]">
-                  {c}
-                </li>
-              ))}
-            </ul>
+            <p className={`${LEAD} mt-4 md:mt-5`}>Electrical and industrial distribution, wholesale, food service supply and multi-store retail.</p>
           </div>
           <ul className="border-t border-[var(--line)]">
             {FIT.map((t) => (
@@ -141,107 +136,87 @@ type Key = keyof typeof DEFAULTS;
 const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 2, minimumFractionDigits: 0 });
 const count = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
 
-function Slider({ k, label, min, max, step, v, set }: { k: Key; label: string; min: number; max: number; step: number; v: number; set: (k: Key, n: number) => void }) {
+/*
+ * The five questions, in the words a finance or purchasing lead would use (ours, not Anton's:
+ * his labels were "Minutes saved per invoice", "Confirmed corrections per month", "Average accepted reduction").
+ */
+const QUESTIONS: { k: Key; label: string; min: number; max: number; step: number; money?: boolean }[] = [
+  { k: "volume", label: "Supplier invoices you get each month", min: 0, max: 10000, step: 50 },
+  { k: "minutes", label: "Minutes of checking saved on each invoice", min: 0, max: 15, step: 0.5 },
+  { k: "rate", label: "What one hour of your team’s time costs", min: 10, max: 80, step: 1, money: true },
+  { k: "credits", label: "Wrong invoices your suppliers correct each month", min: 0, max: 50, step: 1 },
+  { k: "amount", label: "Average amount taken off a wrong invoice", min: 0, max: 500, step: 5, money: true },
+];
+
+function Slider({ label, min, max, step, v, money = false, onChange }: { label: string; min: number; max: number; step: number; v: number; money?: boolean; onChange: (n: number) => void }) {
   const p = ((v - min) / (max - min)) * 100;
   return (
     <label className="block">
       <span className="flex items-baseline justify-between gap-4">
-        <span className="font-body text-[14.5px] text-[var(--t2)]">{label}</span>
-        <span className="font-head font-semibold text-[17px] text-[var(--ink)] tabular-nums">{count.format(v)}</span>
+        <span className="font-body text-[15.5px] md:text-[17px] leading-[1.35] text-[var(--ink)]">{label}</span>
+        <span className="shrink-0 font-head font-bold text-[19px] md:text-[21px] text-[var(--ink)] tabular-nums">{money ? euro.format(v) : count.format(v)}</span>
       </span>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={v}
-        onChange={(e) => set(k, Number(e.target.value))}
-        className="ol-range mt-3.5"
-        style={{ ["--fill" as string]: `${p}%` } as React.CSSProperties}
-      />
+      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => onChange(Number(e.target.value))} className="ol-range mt-3.5" style={{ ["--fill" as string]: `${p}%` } as React.CSSProperties} />
     </label>
   );
 }
 
 export function Calculator() {
   const [v, setV] = useState(DEFAULTS);
-  const set = (k: Key, n: number) => setV((o) => ({ ...o, [k]: n }));
   const hours = ((v.volume * v.minutes) / 60) * 12;
   const capacity = hours * v.rate;
   const reductions = v.credits * v.amount * 12;
   const total = capacity + reductions;
-  const share = total > 0 ? (capacity / total) * 100 : 0;
   const isDefault = (Object.keys(v) as Key[]).every((k) => v[k] === DEFAULTS[k]);
-  const RESULT = "font-head font-bold text-[var(--ink)] text-[32px] leading-none tracking-[-0.03em] tabular-nums";
   return (
     <section id="calculator" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
-          <div className="xl:col-span-7">
-            <Eyebrow>Annual value calculator</Eyebrow>
-            <h2 className={`${H2} mt-4`}>
-              What is invoice checking <Hi>costing you?</Hi>
-            </h2>
-          </div>
-          <p className={`xl:col-span-5 max-xl:max-w-[46rem] ${LEAD}`}>Use your own volumes and costs to explore a year. The example separates the value of staff time from actual supplier corrections.</p>
+        <Reveal>
+          <Eyebrow>Calculator</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            What is invoice checking <Hi>costing you?</Hi>
+          </h2>
+          <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>
+            Put in your own numbers. You will see how many hours your team gets back in a year, and how much comes off invoices your suppliers got wrong.
+          </p>
         </Reveal>
 
-        <Reveal delay={0.08} className={`mt-10 md:mt-12 ${CARD} overflow-hidden grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]`}>
-          {/* inputs */}
+        <Reveal delay={0.08} className={`mt-9 md:mt-12 ${CARD} overflow-hidden grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]`}>
+          {/* your numbers */}
           <div className="p-6 md:p-9 lg:p-11">
-            <div className="flex items-center justify-between">
-              <Status tone={isDefault ? "idle" : "hold"}>{isDefault ? "Example inputs" : "Your inputs"}</Status>
-              <button type="button" onClick={() => setV(DEFAULTS)} className="font-head font-semibold text-[14.5px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors">
-                Reset example
-              </button>
+            <div className="flex items-baseline justify-between gap-4 min-h-[28px]">
+              <h3 className="font-head font-bold text-[var(--ink)] text-[20px] md:text-[22px] tracking-[-0.015em]">{isDefault ? "Start with our example, then use your numbers" : "Your numbers"}</h3>
+              {!isDefault && (
+                <button type="button" onClick={() => setV(DEFAULTS)} className="shrink-0 font-head font-semibold text-[14.5px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors">
+                  Back to the example
+                </button>
+              )}
             </div>
-            <div className="mt-7 md:mt-8 grid grid-cols-[minmax(0,1fr)] sm:grid-cols-2 gap-x-11 gap-y-9 md:gap-y-11">
-              <div className="flex flex-col">
-                <h3 className="font-head font-bold text-[var(--ink)] text-[20px] tracking-[-0.01em]">Time back for your team</h3>
-                <div className="mt-6 grid gap-6">
-                  <Slider k="volume" label="Invoices per month" min={0} max={10000} step={50} v={v.volume} set={set} />
-                  <Slider k="minutes" label="Minutes saved per invoice" min={0} max={15} step={0.5} v={v.minutes} set={set} />
-                  <Slider k="rate" label="Staff cost per hour (€)" min={10} max={80} step={1} v={v.rate} set={set} />
-                </div>
-                <div className="mt-auto pt-8">
-                  <div className="pt-5 border-t border-[var(--line)]">
-                    <div className={RESULT}>{euro.format(capacity)}</div>
-                    <div className="mt-2 font-body text-[var(--t2)] text-[14.5px]">
-                      value of <strong className="font-semibold text-[var(--ink)]">{count.format(hours)}</strong> hours per year
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <h3 className="font-head font-bold text-[var(--ink)] text-[20px] tracking-[-0.01em]">Supplier bills corrected</h3>
-                <div className="mt-6 grid gap-6">
-                  <Slider k="credits" label="Confirmed corrections per month" min={0} max={50} step={1} v={v.credits} set={set} />
-                  <Slider k="amount" label="Average accepted reduction (€)" min={0} max={500} step={5} v={v.amount} set={set} />
-                </div>
-                <div className="mt-auto pt-8">
-                  <div className="pt-5 border-t border-[var(--line)]">
-                    <div className={RESULT}>{euro.format(reductions)}</div>
-                    <div className="mt-2 font-body text-[var(--t2)] text-[14.5px]">in confirmed reductions per year</div>
-                  </div>
-                </div>
-              </div>
+            <div className="mt-7 md:mt-9 grid gap-7 md:gap-8">
+              {QUESTIONS.map((q) => (
+                <Slider key={q.k} label={q.label} min={q.min} max={q.max} step={q.step} money={q.money} v={v[q.k]} onChange={(n) => setV((o) => ({ ...o, [q.k]: n }))} />
+              ))}
             </div>
           </div>
 
-          {/* result */}
+          {/* what a year of that is worth */}
           <div className="relative text-white p-6 md:p-9 lg:p-11 flex flex-col justify-center" style={{ background: "var(--stage)" }}>
             <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(15,19,48,0.08),rgba(15,19,48,0.3))]" />
-            <div className="relative">
-              <div className="font-head font-semibold text-[17px] text-white/90">Gross annual value in this scenario</div>
+            <div className="relative" aria-live="polite">
+              <div className="font-head font-semibold text-[17px] md:text-[19px] text-white">In one year, that is worth</div>
               <div className="mt-3 font-head font-bold text-[54px] sm:text-[68px] lg:text-[clamp(54px,5.4vw,80px)] leading-[0.95] tracking-[-0.045em] tabular-nums">{euro.format(total)}</div>
-              <div className="mt-7 h-[6px] rounded-[1px] bg-white/25 flex overflow-hidden">
-                <motion.div className="h-full bg-white" initial={false} animate={{ width: `${share}%` }} transition={{ duration: 0.4, ease: EASE }} />
-              </div>
-              <p className="mt-6 font-body text-white text-[16px] leading-[1.55]" aria-live="polite">
-                This combines {euro.format(capacity)} of staff time and {euro.format(reductions)} in corrected bills.
-              </p>
-              <p className="mt-3 font-body text-white/75 text-[13.5px] leading-[1.6]">
-                Time released becomes a cash saving when it reduces overtime, hiring or other spending. Deduct licence, setup and support costs when you estimate the return.
+              <dl className="mt-8 md:mt-10 border-t border-white/30 font-body text-[16px] md:text-[17px] leading-[1.4]">
+                <div className="flex items-baseline justify-between gap-6 py-4 border-b border-white/30">
+                  <dt>{count.format(hours)} hours your team gets back</dt>
+                  <dd className="shrink-0 font-head font-bold text-[19px] md:text-[21px] tabular-nums">{euro.format(capacity)}</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-6 py-4 border-b border-white/30">
+                  <dt>Taken off invoices your suppliers got wrong</dt>
+                  <dd className="shrink-0 font-head font-bold text-[19px] md:text-[21px] tabular-nums">{euro.format(reductions)}</dd>
+                </div>
+              </dl>
+              <p className="mt-5 font-body text-white/80 text-[13.5px] md:text-[14px] leading-[1.6]">
+                Hours saved turn into cash when they cut overtime, hiring or other spending. The cost of OperaLayer is not taken off this total.
               </p>
             </div>
           </div>
@@ -260,14 +235,12 @@ export function GettingStarted() {
   return (
     <section id="first-step" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
-        <Reveal className="grid grid-cols-[minmax(0,1fr)] xl:grid-cols-12 gap-5 xl:gap-12 items-end">
-          <div className="xl:col-span-7">
-            <Eyebrow>Getting started</Eyebrow>
-            <h2 className={`${H2} mt-4`}>
-              Start with one supplier and <Hi>one real invoice.</Hi>
-            </h2>
-          </div>
-          <p className={`xl:col-span-5 max-xl:max-w-[46rem] ${LEAD}`}>Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.</p>
+        <Reveal>
+          <Eyebrow>Getting started</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            Start with one supplier and <Hi>one real invoice.</Hi>
+          </h2>
+          <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>Choose an invoice your team knows well. The best example is one where somebody had to call the warehouse, check a price or ask what the supplier meant.</p>
         </Reveal>
 
         <Reveal delay={0.08} className="hidden md:block mt-12 rounded-[2px] border border-[var(--line)]">
@@ -340,6 +313,31 @@ export function GettingStarted() {
                 </a>
                 <CalendlyLink className="inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white underline-offset-4 hover:underline">or pick a time on Calendly</CalendlyLink>
               </div>
+            </div>
+            {/* which ERPs: the two with a live connection, then the rest in Anton's terms */}
+            <div className="mt-7 md:mt-9 pt-6 md:pt-7 border-t border-white/25 text-white">
+              <ul className="flex flex-wrap items-center gap-x-8 gap-y-4 font-head font-semibold text-[16px] md:text-[17px] tracking-[-0.01em]">
+                {["Dynamics NAV", "Business Central"].map((n) => (
+                  <li key={n} className="flex items-center gap-2.5">
+                    <svg viewBox="0 0 24 24" aria-hidden className="h-7 w-7 fill-white shrink-0">
+                      <path d={DYNAMICS_365} />
+                    </svg>
+                    <span>
+                      <span className="sr-only">Microsoft </span>
+                      {n}
+                    </span>
+                  </li>
+                ))}
+                <li className="flex items-center">
+                  <svg viewBox="0 0 24 24" role="img" aria-label="SAP" className="h-12 w-12 fill-white shrink-0">
+                    <path d={SAP} />
+                  </svg>
+                </li>
+                <li className="text-white/85">and other ERPs</li>
+              </ul>
+              <p className="mt-4 md:mt-5 max-w-[52rem] font-body text-white/85 text-[14.5px] md:text-[15.5px] leading-[1.55]">
+                Microsoft Dynamics NAV and Business Central are connected today. For SAP or another ERP, we review its interfaces and test the connection with your records before rollout.
+              </p>
             </div>
           </Stage>
         </Reveal>
@@ -546,9 +544,8 @@ export function Questions() {
     <section id="questions" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full grid grid-cols-[minmax(0,1fr)] gap-8 lg:gap-12 xl:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] xl:gap-16 items-start">
         <Reveal className="xl:sticky xl:top-28">
-          <Eyebrow>Questions</Eyebrow>
-          <h2 className={`${H2} mt-4`}>
-            Fair questions <Hi>before you start</Hi>
+          <h2 className={H2}>
+            Frequently <Hi>asked questions</Hi>
           </h2>
           <p className="mt-5 md:mt-6 font-body text-[16px] md:text-[17px] text-[var(--t2)] leading-[1.55]">
             Not answered here?{" "}

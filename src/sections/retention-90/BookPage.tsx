@@ -23,7 +23,8 @@ function embedUrl(cal: string, utm: URLSearchParams): string {
   return u.toString();
 }
 
-export function BookPage() {
+/* fn "ga": the Growth Accelerator booking page (/growth-accelerator/book) writes ga-booked instead. */
+export function BookPage({ fn }: { fn?: "ga" } = {}) {
   const [cal, setCal] = useState("");
   const [booked, setBooked] = useState(false);
   const [ready, setReady] = useState(false);
@@ -42,11 +43,11 @@ export function BookPage() {
       if (!email) return;
       fetch(UPDATE_ENDPOINT, {
         method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
-        body: JSON.stringify({ kind: "booked", email }),
+        body: JSON.stringify({ kind: "booked", email, ...(fn ? { fn } : {}) }),
       }).then((r) => track("bookpage_omni", { pass: r.status, res: r.headers.get("x-omnisend") || "" })).catch(() => track("bookpage_omni", { pass: 0 }));
     };
     return watchCalendly(onBooked);
-  }, []);
+  }, [fn]);
 
   return (
     <div className="r90" style={{ minHeight: "100vh", background: "#10132c", color: "#fff", padding: "40px 16px 56px" }}>

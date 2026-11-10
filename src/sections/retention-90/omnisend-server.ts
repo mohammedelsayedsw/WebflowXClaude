@@ -12,6 +12,8 @@ export type OmniScope = { base: string; prefix: string };
 export const R90_SCOPE: OmniScope = { base: "retention-90", prefix: "r90" };
 export const AEOH_SCOPE: OmniScope = { base: "aeo-hotels", prefix: "aeoh" };
 export const AEOC_SCOPE: OmniScope = { base: "aeo-clinics", prefix: "aeoc" };
+/* Growth Accelerator (replaced the Retention Score funnel on 10 Nov 2026) */
+export const GA_SCOPE: OmniScope = { base: "growth-accelerator", prefix: "ga" };
 
 const propRe = (s: OmniScope) => new RegExp(`^${s.prefix}_[a-z0-9_]{1,40}$`);
 const tagRe = (s: OmniScope) => new RegExp(`^(${s.base}|${s.prefix}-[a-z0-9-]{1,40})$`);

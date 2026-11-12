@@ -1,7 +1,7 @@
 "use client";
 
 import { Nav, Hero, Proof, Problem, Example, HowItWorks, CustomerCase } from "@/sections/operalayer-invoice-matching/Sections";
-import { Roles, Calculator, GettingStarted, UnderTheHood, Questions, Resources, Events, Demo } from "@/sections/operalayer-invoice-matching/Sections2";
+import { Roles, Calculator, GettingStarted, UnderTheHood, Questions, News, Events, Demo } from "@/sections/operalayer-invoice-matching/Sections2";
 import { FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 import "@/sections/operalayer-invoice-matching/page.css";
 
@@ -38,7 +38,7 @@ export default function Page() {
       <GettingStarted />
       <UnderTheHood />
       <Questions />
-      <Resources />
+      <News />
       <Events />
       <Demo />
     </main>

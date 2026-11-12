@@ -577,7 +577,7 @@ export function Questions() {
 }
 
 /* ============================================================
-   10. What the team has published: the webinar recording and two articles (all real, all scandiweb's own)
+   10. News: the webinar recording, two articles and the press about OperaLayer (all real, all linked)
    ============================================================ */
 
 const READ = [
@@ -607,19 +607,40 @@ const READ = [
   },
 ];
 
-export function Resources() {
+/* Press about OperaLayer. Headlines as published, with the company name in house lower case. */
+const PRESS_NEWS = [
+  {
+    outlet: "IT Wire",
+    title: "scandiweb’s OperaLayer ships 72-hour MVPs to plug the gaps your ERP can’t see",
+    href: "https://itwire.com/business-it-news/business-software/scandiwebs-operalayer-ships-72-hour-mvps-to-plug-the-gaps-your-erp-cant-see",
+  },
+  {
+    outlet: "Retail Tech Innovation Hub",
+    title: "scandiweb releases new version of OperaLayer to help retailers respond faster to supply chain disruptions",
+    href: "https://retailtechinnovationhub.com/home/2026/6/1/scandiweb-releases-new-version-of-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions",
+  },
+  {
+    outlet: "The European Business Review",
+    title: "scandiweb Announces Stock and Shipment Control Cockpit and Exception Allocation Technology Built on OperaLayer to Help Retailers Respond Faster to Supply Chain Disruptions",
+    href: "https://www.europeanbusinessreview.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
+  },
+  {
+    outlet: "scandiweb",
+    title: "scandiweb Acquires LegacyBridge to Modernize the Systems Behind Customer Experience",
+    href: "https://scandiweb.com/blog/legacybridge-joins-operalayer/",
+  },
+];
+
+export function News() {
   return (
-    <section id="resources" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
+    <section id="news" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
       <div className="wrap w-full">
         <Reveal>
-          <Eyebrow>Articles and webinar</Eyebrow>
-          <h2 className={`${H2} mt-4`}>
-            Articles and a webinar <Hi>from the team</Hi>
-          </h2>
+          <h2 className={H2}>News</h2>
         </Reveal>
         <Reveal delay={0.06} className="mt-8 md:mt-12">
           <Swipe
-            label="Articles and webinar"
+            label="News"
             className="md:grid md:grid-cols-3 md:gap-5"
             items={READ.map((r) => (
               <a
@@ -644,6 +665,30 @@ export function Resources() {
               </a>
             ))}
           />
+        </Reveal>
+
+        {/* press releases and coverage */}
+        <Reveal delay={0.08} className="mt-10 md:mt-14">
+          <h3 className="font-head font-semibold text-[var(--accent)] text-[15px]">Press</h3>
+          <ul className="mt-3 border-t border-[#d9dcea]">
+            {PRESS_NEWS.map((n) => (
+              <li key={n.href} className="border-b border-[#d9dcea]">
+                <a
+                  href={n.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[230px_minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-1 py-4 md:py-5"
+                >
+                  <span className="max-md:col-span-2 font-body font-medium text-[14px] text-[var(--t2)]">{n.outlet}</span>
+                  <span className="font-head font-semibold text-[var(--ink)] text-[16px] md:text-[18px] leading-[1.35] group-hover:text-[var(--accent)] transition-colors">
+                    {n.title}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </span>
+                  <ArrowUpRight aria-hidden className="self-center h-[18px] w-[18px] text-[var(--t3)] transition-all group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

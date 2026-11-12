@@ -722,14 +722,125 @@ function Count({ to, dec = 0 }: { to: number; dec?: number }) {
   return <span ref={ref}>{v.toFixed(dec)}</span>;
 }
 
-const STAT_NUM = [
-  { n: 2, post: " hours per person" },
-  { n: 36, post: " seconds" },
-  { n: 98.5, dec: 1, post: "%" },
+/** Dashes that travel along a connector, so the picture reads left to right. */
+function Wire({ d, className = "" }: { d: string[]; className?: string }) {
+  return (
+    <svg aria-hidden viewBox="0 0 56 100" preserveAspectRatio="none" className={`h-full w-full overflow-visible ${className}`}>
+      {d.map((p) => (
+        <g key={p} fill="none" vectorEffect="non-scaling-stroke">
+          <path d={p} stroke="#d5d9e8" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <path d={p} stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="5 13" className="ol-wire" vectorEffect="non-scaling-stroke" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+const FLOW_DOCS: [typeof Mail, string, string][] = [
+  [Mail, "Invoice", "inbox"],
+  [Upload, "Delivery note", "upload"],
+  [Camera, "CMR", "photo"],
+];
+/* Matching accuracy over the first two weeks, from the customer's account. */
+const ACCURACY: [string, number][] = [
+  ["At the start", 69],
+  ["Week 1", 87],
+  ["Week 2", 98.5],
 ];
 
+/**
+ * The customer's three figures (copy.ts STATS) drawn as what happens to a supplier document:
+ * it comes in, OperaLayer matches it, it is posted, and the team gets its time back.
+ */
+function CaseFlow() {
+  const ref = useRef<HTMLDivElement>(null);
+  const run = useInView(ref, { once: true, amount: 0.35 });
+  const [hours, seconds, accuracy] = STATS;
+  const STEP = "font-head font-semibold text-[14.5px] text-[var(--ink)]";
+  const NUM = "ol-display font-head text-[var(--ink)] text-[44px] sm:text-[52px] leading-none";
+  const step = (n: number, t: string) => (
+    <div className={STEP}>
+      <span className="mr-2 text-[var(--accent)]">{n}</span>
+      {t}
+    </div>
+  );
+  return (
+    <div ref={ref} className="bg-white text-[var(--ink)] rounded-[2px] p-5 sm:p-8 lg:p-10 shadow-[0_50px_100px_-50px_rgba(15,19,48,0.75)]">
+      <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,0.9fr)_56px_minmax(0,1.2fr)_56px_minmax(0,1.15fr)] lg:grid-rows-[auto_1fr] gap-y-4 lg:gap-y-5">
+        {/* 1. what comes in */}
+        <div className="lg:col-start-1 lg:row-start-1">{step(1, "Documents from 150+ suppliers")}</div>
+        <ul className="lg:col-start-1 lg:row-start-2 grid lg:grid-rows-3 border-t border-[var(--line)] font-body text-[15px]">
+          {FLOW_DOCS.map(([Icon, t, via]) => (
+            <li key={t} className="flex items-center gap-3 border-b border-[var(--line)] py-3.5 lg:py-0 lg:pr-2">
+              <Icon aria-hidden className="h-[17px] w-[17px] text-[var(--t3)]" strokeWidth={1.75} />
+              <span className="font-medium">{t}</span>
+              <span className="ml-auto text-[13.5px] text-[var(--t3)]">{via}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="max-lg:hidden lg:col-start-2 lg:row-start-2">
+          <Wire d={["M0 16.67 C 30 16.67, 26 50, 56 50", "M0 50 L 56 50", "M0 83.33 C 30 83.33, 26 50, 56 50"]} />
+        </div>
+        <div aria-hidden className="lg:hidden ml-6 h-7 w-px bg-[linear-gradient(180deg,var(--accent)_50%,transparent_50%)] bg-[length:1px_10px]" />
+
+        {/* 2. what OperaLayer does with it */}
+        <div className="lg:col-start-3 lg:row-start-1">{step(2, "Matched by OperaLayer")}</div>
+        <div className="lg:col-start-3 lg:row-start-2 border border-[var(--ink)] rounded-[2px] p-5 sm:p-6 lg:p-7">
+          <div className="flex flex-wrap items-end gap-x-4 gap-y-1">
+            <span className={NUM}>
+              <Count to={98.5} dec={1} />%
+            </span>
+            <span className="pb-1 font-head font-semibold text-[16px] sm:text-[17px]">{accuracy.label}</span>
+          </div>
+          <div className="mt-6 grid gap-3">
+            {ACCURACY.map(([t, v], n) => (
+              <div key={t} className="grid grid-cols-[86px_minmax(0,1fr)_48px] items-center gap-3 font-body text-[13.5px]">
+                <span className="text-[var(--t2)]">{t}</span>
+                <span className="h-[6px] rounded-[1px] bg-[var(--canvas)] overflow-hidden">
+                  <motion.span
+                    className={`block h-full ${n === 2 ? "bg-[var(--accent)]" : "bg-[#b9c2ee]"}`}
+                    initial={{ width: 0 }}
+                    animate={{ width: run ? `${v}%` : 0 }}
+                    transition={{ duration: 1, delay: 0.15 + n * 0.25, ease: EASE }}
+                  />
+                </span>
+                <span className={`text-right tabular-nums ${n === 2 ? "font-semibold text-[var(--ink)]" : "text-[var(--t2)]"}`}>{v}%</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 font-body text-[14.5px] leading-[1.55] text-[var(--t2)]">{accuracy.body}</p>
+        </div>
+        <div className="max-lg:hidden lg:col-start-4 lg:row-start-2">
+          <Wire d={["M0 50 C 30 50, 26 25, 56 25", "M0 50 C 30 50, 26 75, 56 75"]} />
+        </div>
+        <div aria-hidden className="lg:hidden ml-6 h-7 w-px bg-[linear-gradient(180deg,var(--accent)_50%,transparent_50%)] bg-[length:1px_10px]" />
+
+        {/* 3. what that changed */}
+        <div className="lg:col-start-5 lg:row-start-1">{step(3, "What changed")}</div>
+        <div className="lg:col-start-5 lg:row-start-2 grid lg:grid-rows-2 border-t border-[var(--line)]">
+          {[
+            { s: seconds, n: 36, unit: "seconds" },
+            { s: hours, n: 2, unit: "hours per person" },
+          ].map(({ s, n, unit }) => (
+            <div key={unit} className="flex flex-col justify-center border-b border-[var(--line)] py-5 lg:py-4 lg:pl-4">
+              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+                <span className={NUM}>
+                  <Count to={n} />
+                </span>
+                <span className="pb-1 font-head font-semibold text-[16px] sm:text-[17px]">
+                  {unit} {s.label}
+                </span>
+              </div>
+              <p className="mt-2.5 font-body text-[14.5px] leading-[1.55] text-[var(--t2)]">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function CustomerCase() {
-  const GLASS = "rounded-[2px] bg-white/[0.11] border border-white/25 p-6 lg:p-7 flex flex-col";
   return (
     <section id="customer-case" className={`relative overflow-hidden text-white ${SECTION_Y}`} style={{ background: "var(--stage)" }}>
       <div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 70% at 0% 0%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(180deg, rgba(15,19,48,0.18), rgba(15,19,48,0.34))" }} />
@@ -768,27 +879,9 @@ export function CustomerCase() {
           </div>
         </Reveal>
 
-        {/* what was measured */}
+        {/* what was measured, in the order it happens */}
         <Reveal delay={0.08} className="mt-9 md:mt-14">
-          <Swipe
-            light
-            label="What changed"
-            until="lg"
-            className="lg:grid lg:grid-cols-3 lg:gap-5"
-            items={STATS.map((s, i) => (
-              <div key={s.n} className={`h-full ${GLASS}`}>
-                <div className="font-head font-bold leading-[0.95] tracking-[-0.045em] whitespace-nowrap">
-                  <span className="text-[64px] lg:text-[80px]">
-                    <Count to={STAT_NUM[i].n} dec={STAT_NUM[i].dec} />
-                    {STAT_NUM[i].post === "%" ? "%" : ""}
-                  </span>
-                  {STAT_NUM[i].post !== "%" && <span className="text-[21px] lg:text-[24px] tracking-[-0.02em] text-white/85">{STAT_NUM[i].post}</span>}
-                </div>
-                <div className="mt-4 font-head font-semibold text-[18px]">{s.label}</div>
-                <p className="mt-2 font-body text-white/80 text-[15px] leading-[1.55]">{s.body}</p>
-              </div>
-            ))}
-          />
+          <CaseFlow />
         </Reveal>
       </div>
     </section>

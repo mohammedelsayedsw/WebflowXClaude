@@ -269,6 +269,38 @@ export function Hero() {
    One customer, in his words
    ============================================================ */
 
+/*
+ * Outlets that covered OperaLayer (May and June 2026). The same links and logo files as the webinar page.
+ * "In use at" follows IT Wire, 30 May 2026: "Existing OperaLayer deployments include Sportland ... and ESELO".
+ */
+const PRESS: { name: string; href: string; logo: string; h: number }[] = [
+  { name: "IT Wire", href: "https://itwire.com/business-it-news/business-software/scandiwebs-operalayer-ships-72-hour-mvps-to-plug-the-gaps-your-erp-cant-see", logo: "/webinars/opera-layer/press/itwire.png", h: 19 },
+  {
+    name: "The European Business Review",
+    href: "https://www.europeanbusinessreview.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
+    logo: "/webinars/opera-layer/press/ebr.png",
+    h: 34,
+  },
+  {
+    name: "TechBullion",
+    href: "https://techbullion.com/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
+    logo: "/webinars/opera-layer/press/techbullion.png",
+    h: 25,
+  },
+  {
+    name: "Retail Tech Innovation Hub",
+    href: "https://retailtechinnovationhub.com/home/2026/6/1/scandiweb-releases-new-version-of-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions",
+    logo: "/webinars/opera-layer/press/rtih.png",
+    h: 29,
+  },
+  {
+    name: "Retail Focus",
+    href: "https://retail-focus.co.uk/scandiweb-announces-stock-and-shipment-control-cockpit-and-exception-allocation-technology-built-on-operalayer-to-help-retailers-respond-faster-to-supply-chain-disruptions/",
+    logo: "/webinars/opera-layer/press/retailfocus.png",
+    h: 18,
+  },
+];
+
 export function Proof() {
   return (
     <section aria-label="What our customer says" className="relative">
@@ -289,6 +321,30 @@ export function Proof() {
           <a href="#customer-case" onClick={scrollToId("customer-case")} className="group self-start md:self-auto shrink-0 inline-flex items-center gap-1.5 font-head font-semibold text-[16px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors">
             Read the case study <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
+        </Reveal>
+
+        {/* who runs it, and who has written about it */}
+        <Reveal delay={0.05} className="border-b border-[var(--line)] py-6 md:py-7 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-11">
+          <div className="flex items-center gap-5 md:gap-7 shrink-0">
+            <span className="font-body text-[13.5px] text-[var(--t3)]">In use at</span>
+            <span className="flex items-center gap-2 font-head font-bold text-[17px] text-[var(--ink)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={ESELO} alt="" className="h-7 w-7 object-contain brightness-0" />
+              ESELO
+            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assetUrl("/shared/logos/clients/sportland.png")} alt="Sportland" className="h-[18px] w-auto brightness-0" />
+          </div>
+          <span aria-hidden className="max-lg:hidden h-8 w-px bg-[var(--line)]" />
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 min-w-0">
+            <span className="font-body text-[13.5px] text-[var(--t3)]">Featured in</span>
+            {PRESS.map((p) => (
+              <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} on OperaLayer (opens in a new tab)`} className="opacity-55 hover:opacity-100 transition-opacity">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={assetUrl(p.logo)} alt={p.name} style={{ height: p.h }} className="w-auto brightness-0" />
+              </a>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Boxes, Check, ChevronRight, Database, FileText, Landmark, Package, Plus, Receipt, Scale, Search, Server, ShoppingCart, TriangleAlert, Workflow } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Boxes, Check, ChevronRight, Database, FileText, Landmark, Package, Plus, Receipt, Scale, Search, Server, ShoppingCart, TriangleAlert, Workflow } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { assetUrl } from "@/lib/assets";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
@@ -577,6 +577,80 @@ export function Questions() {
 }
 
 /* ============================================================
+   10. What the team has published: the webinar recording and two articles (all real, all scandiweb's own)
+   ============================================================ */
+
+const READ = [
+  {
+    kind: "Webinar recording",
+    title: "Cut the manual work between your systems",
+    by: "Martins Jakubovskis, Enterprise Architect at scandiweb",
+    cta: "Watch the recording",
+    href: "https://youtu.be/HWJnUuX_2sg",
+    img: "/operalayer/invoice-matching/read-webinar.jpg",
+  },
+  {
+    kind: "Article, 14 min read",
+    title: "Three Way Matching: How AI Matches 87% of Invoices Without a Human",
+    by: "Glebs Vrevsky, Co-Founder & Executive Board",
+    cta: "Read the article",
+    href: "https://scandiweb.com/blog/three-way-matching/",
+    img: "/operalayer/invoice-matching/read-three-way-matching.jpg",
+  },
+  {
+    kind: "Article, 10 min read",
+    title: "Introducing OperaLayer: Close the Gap Between Your Business Systems",
+    by: "Antons Sapriko, Founder & Executive Chairman",
+    cta: "Read the article",
+    href: "https://scandiweb.com/blog/operalayer-by-scandiweb/",
+    img: "/operalayer/invoice-matching/read-introducing-operalayer.jpg",
+  },
+];
+
+export function Resources() {
+  return (
+    <section id="resources" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
+      <div className="wrap w-full">
+        <Reveal>
+          <Eyebrow>Articles and webinar</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            Articles and a webinar <Hi>from the team</Hi>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.06} className="mt-8 md:mt-12">
+          <Swipe
+            label="Articles and webinar"
+            className="md:grid md:grid-cols-3 md:gap-5"
+            items={READ.map((r) => (
+              <a
+                key={r.href}
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group h-full flex flex-col bg-white rounded-[2px] border border-[var(--line)] overflow-hidden hover:border-[#aab4ea] transition-colors"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={assetUrl(r.img)} alt="" width={960} height={540} loading="lazy" className="block w-full aspect-[16/9] object-cover" />
+                <div className="flex flex-1 flex-col p-5 lg:p-6">
+                  <div className="font-body font-medium text-[13px] text-[var(--accent)]">{r.kind}</div>
+                  <h3 className="mt-2 font-head font-bold text-[var(--ink)] text-[18px] lg:text-[20px] leading-[1.25]">{r.title}</h3>
+                  <p className="mt-2.5 font-body text-[14.5px] leading-[1.5] text-[var(--t2)]">{r.by}</p>
+                  <span className="mt-auto pt-5 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-[var(--accent)] group-hover:text-[var(--accent-deep)] transition-colors">
+                    {r.cta}
+                    <ArrowUpRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </span>
+                </div>
+              </a>
+            ))}
+          />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    11. Out of the office: the team at AI WEEK 2026 in Milan (the team's own photos, from Martins)
    ============================================================ */
 
@@ -586,9 +660,19 @@ const PHOTOS = [
   { src: "/operalayer/invoice-matching/aiweek-hall.jpg", alt: "The main stage at AI WEEK, seen from the back of a full hall", w: 1200, h: 800 },
 ];
 
+/* scandiweb.com/events lists B2B Online Europe 2026 (Berlin, 2 December). The line disappears once the day has passed. */
+const NEXT_EVENT_ENDS = Date.UTC(2026, 11, 3);
+const noop = () => () => {};
+
 export function Events() {
+  /* false on the server and in the first client render, so the markup always matches */
+  const upcoming = useSyncExternalStore(
+    noop,
+    () => Date.now() < NEXT_EVENT_ENDS,
+    () => false,
+  );
   return (
-    <section id="events" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
+    <section id="events" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
         <Reveal>
           <Eyebrow>Events</Eyebrow>
@@ -599,9 +683,21 @@ export function Events() {
             </span>
           </h2>
           <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>
-            May 2026. You do not have to wait for the next event to meet us.{" "}
+            You do not have to wait for the next event to meet us.{" "}
             <CalendlyLink className="inline-flex items-center gap-1 font-semibold text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors" />
           </p>
+          {upcoming && (
+            <p className="mt-4 flex items-center gap-2.5 font-body text-[15px] md:text-[16px] text-[var(--ink)]">
+              <span aria-hidden className="ol-pulse h-2 w-2 shrink-0 rounded-[1px] bg-[var(--green)]" />
+              <span>
+                Next, meet scandiweb at{" "}
+                <a href="https://scandiweb.com/events/b2b-online-europe-2026" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4 decoration-[#b9c2ee] hover:decoration-[var(--accent)]">
+                  B2B Online Europe in Berlin on 2 December
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </span>
+            </p>
+          )}
         </Reveal>
 
         {/* tablets and up: one large photo, two beside it */}

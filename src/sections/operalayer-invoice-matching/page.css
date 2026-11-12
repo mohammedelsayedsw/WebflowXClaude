@@ -27,10 +27,13 @@
  * Big headlines run at regular weight, small headings and labels at medium.
  */
 .olp {
-  --font-head: var(--font-roboto-flex), system-ui, sans-serif;
-  --font-body: var(--font-instrument-sans), system-ui, sans-serif;
-  --font-golos: var(--font-roboto-flex), system-ui, sans-serif;
-  --font-inter: var(--font-instrument-sans), system-ui, sans-serif;
+  /* the extra-letters file first: it only answers for its own range, so Latin text falls through to the main file */
+  --ol-display: var(--font-rf-ext), var(--font-rf), system-ui, sans-serif;
+  --ol-text: var(--font-is-ext), var(--font-is), system-ui, sans-serif;
+  --font-head: var(--ol-display);
+  --font-body: var(--ol-text);
+  --font-golos: var(--ol-display);
+  --font-inter: var(--ol-text);
 }
 .olp .font-head {
   font-variation-settings: "wdth" 110, "opsz" 32;

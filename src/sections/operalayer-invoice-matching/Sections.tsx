@@ -2,10 +2,10 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, animate } from "motion/react";
-import { ArrowDown, ArrowRight, Camera, Check, ChevronRight, FileText, Link2, Mail, Package, Receipt, ShoppingCart, Upload } from "lucide-react";
+import { ArrowDown, ArrowRight, Camera, Check, FileText, Link2, Mail, Package, Receipt, ShoppingCart, Upload } from "lucide-react";
 import { assetUrl } from "@/lib/assets";
 import { QUICK, PROBLEMS, FULL, STATS, STEPS } from "@/sections/operalayer-invoice-matching/copy";
-import { EASE, H2, LEAD, SECTION_Y, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btn, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
+import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btn, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Bad, LINES, Mark, Status, Window } from "@/sections/operalayer-invoice-matching/app";
 
 /*
@@ -61,9 +61,9 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <a href="#demo" onClick={scrollToId("demo")} className={`${btn} !h-10 !px-4 !text-[14.5px] shrink-0`}>
+        <CalendlyLink icon={false} className={`${btn} !h-10 !px-4 !text-[14.5px] shrink-0`}>
           Book a demo call
-        </a>
+        </CalendlyLink>
       </div>
     </header>
   );
@@ -242,9 +242,7 @@ export function Hero() {
           different products reach your team before the bill is approved. <span className="font-semibold text-[var(--ink)]">Give your team its mornings back.</span>
         </motion.p>
         <motion.div {...enter(0.28)} className="mt-7 lg:mt-[clamp(18px,3.2vh,32px)] flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="#demo" onClick={scrollToId("demo")} className={`${btn} w-full sm:w-auto`}>
-            Book a demo call <ChevronRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          <CalendlyLink className={`${btn} w-full sm:w-auto`}>Book a demo call</CalendlyLink>
           <a href="#example" onClick={scrollToId("example")} className={`${btnGhost} w-full sm:w-auto`}>
             See an invoice example <ArrowDown aria-hidden className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
           </a>

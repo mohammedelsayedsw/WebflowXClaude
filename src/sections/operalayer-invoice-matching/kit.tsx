@@ -41,12 +41,15 @@ export function scrollToId(id: string, offset = 68) {
 /** Where a call can be booked directly, without the form. */
 export const CALENDLY = "https://calendly.com/scandi-bd/operalayer-demo";
 
-/** A link straight to the booking calendar. It opens in a new tab so the page stays where it was. */
-export function CalendlyLink({ children = "Pick a time on Calendly", className = "" }: { children?: React.ReactNode; className?: string }) {
+/**
+ * A link straight to the booking calendar, which is where every "Book a demo call" button goes.
+ * It opens in a new tab so the page stays where it was. The contact form at the bottom is the other way in.
+ */
+export function CalendlyLink({ children = "Pick a time on Calendly", className = "", icon = true }: { children?: React.ReactNode; className?: string; icon?: boolean }) {
   return (
     <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={`group ${className}`}>
       {children}
-      <ArrowUpRight aria-hidden className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      {icon && <ArrowUpRight aria-hidden className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );

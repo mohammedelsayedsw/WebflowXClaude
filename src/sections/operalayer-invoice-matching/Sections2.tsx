@@ -705,70 +705,115 @@ const PHOTOS = [
   { src: "/operalayer/invoice-matching/aiweek-hall.jpg", alt: "The main stage at AI WEEK, seen from the back of a full hall", w: 1200, h: 800 },
 ];
 
-/* scandiweb.com/events lists B2B Online Europe 2026 (Berlin, 2 December). The line disappears once the day has passed. */
+/*
+ * The calendar on scandiweb.com/events (read 12 November 2026): one event ahead, the rest in the weeks before it.
+ * Past events carry no date so the list does not read as old; the next one shows its day and moves into
+ * "Recently" by itself once that day has passed.
+ */
+const NEXT_EVENT = { name: "B2B Online Europe", place: "Berlin", day: "2 Dec", href: "https://scandiweb.com/events/b2b-online-europe-2026" };
 const NEXT_EVENT_ENDS = Date.UTC(2026, 11, 3);
+const RECENT_EVENTS = [
+  { name: "B2B Online Atlanta", place: "Atlanta" },
+  { name: "Meet Magento Netherlands", place: "Amsterdam" },
+  { name: "B2B eCommerce World Americas", place: "Indianapolis" },
+  { name: "Commerce Unboxed Summit", place: "Brussels" },
+  { name: "Meet Magento Germany", place: "Mainz" },
+  { name: "AI WEEK", place: "Milan" },
+];
 const noop = () => () => {};
 
 export function Events() {
-  /* false on the server and in the first client render, so the markup always matches */
+  /* both are false on the server and in the first client render, so the markup always matches */
+  const inBrowser = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  );
   const upcoming = useSyncExternalStore(
     noop,
     () => Date.now() < NEXT_EVENT_ENDS,
     () => false,
   );
+  const recent = inBrowser && !upcoming ? [{ name: NEXT_EVENT.name, place: NEXT_EVENT.place }, ...RECENT_EVENTS] : RECENT_EVENTS;
   return (
     <section id="events" className={`relative ${SECTION_Y}`}>
       <div className="wrap w-full">
         <Reveal>
-          <Eyebrow>Events</Eyebrow>
-          <h2 className={`${H2} mt-4`}>
-            The OperaLayer team{" "}
-            <span className="xl:block">
-              <Hi>at AI WEEK in Milan</Hi>
-            </span>
-          </h2>
+          <h2 className={H2}>Events</h2>
           <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>
-            You do not have to wait for the next event to meet us.{" "}
+            Catch scandiweb at the next event and ask us about OperaLayer. Or skip the trip.{" "}
             <CalendlyLink className="inline-flex items-center gap-1 font-semibold text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors" />
           </p>
-          {upcoming && (
-            <p className="mt-4 flex items-center gap-2.5 font-body text-[15px] md:text-[16px] text-[var(--ink)]">
-              <span aria-hidden className="ol-pulse h-2 w-2 shrink-0 rounded-[1px] bg-[var(--green)]" />
-              <span>
-                Next, meet scandiweb at{" "}
-                <a href="https://scandiweb.com/events/b2b-online-europe-2026" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4 decoration-[#b9c2ee] hover:decoration-[var(--accent)]">
-                  B2B Online Europe in Berlin on 2 December
+        </Reveal>
+
+        <div className="mt-9 md:mt-12 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] gap-9 lg:gap-14 items-start">
+          {/* the calendar */}
+          <Reveal>
+            {upcoming && (
+              <div className="mb-8">
+                <h3 className="flex items-center gap-2.5 font-head font-semibold text-[15px] text-[var(--ink)]">
+                  <span aria-hidden className="ol-pulse h-2 w-2 shrink-0 rounded-[1px] bg-[var(--green)]" />
+                  Next
+                </h3>
+                <a
+                  href={NEXT_EVENT.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-3 flex items-center gap-4 border-y border-[var(--ink)] py-4 md:py-5"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-head font-bold text-[var(--ink)] text-[21px] md:text-[24px] leading-[1.2] group-hover:text-[var(--accent)] transition-colors">{NEXT_EVENT.name}</span>
+                    <span className="mt-1 block font-body text-[15px] text-[var(--t2)]">{NEXT_EVENT.place}</span>
+                  </span>
+                  <span className="ml-auto shrink-0 font-head font-bold text-[var(--ink)] text-[21px] md:text-[24px] tabular-nums">{NEXT_EVENT.day}</span>
+                  <ArrowUpRight aria-hidden className="h-5 w-5 shrink-0 text-[var(--t3)] transition-all group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
-              </span>
-            </p>
-          )}
-        </Reveal>
-
-        {/* tablets and up: one large photo, two beside it */}
-        <Reveal delay={0.06} className="mt-9 md:mt-12 hidden md:grid grid-cols-[minmax(0,1.86fr)_minmax(0,1fr)] gap-3 lg:gap-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assetUrl(PHOTOS[0].src)} alt={PHOTOS[0].alt} width={PHOTOS[0].w} height={PHOTOS[0].h} loading="lazy" className="block w-full h-auto aspect-[16/10] object-cover rounded-[2px]" />
-          <div className="grid grid-rows-2 gap-3 lg:gap-4">
-            {PHOTOS.slice(1).map((p) => (
-              <div key={p.src} className="relative min-h-0 overflow-hidden rounded-[2px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               </div>
-            ))}
-          </div>
-        </Reveal>
+            )}
+            <h3 className="font-head font-semibold text-[var(--accent)] text-[15px]">Recently</h3>
+            <ul className="mt-3 border-t border-[var(--line)]">
+              {recent.map((e) => (
+                <li key={e.name} className="flex items-baseline gap-4 border-b border-[var(--line)] py-3.5">
+                  <span className="min-w-0 font-head font-semibold text-[var(--ink)] text-[16px] md:text-[18px] leading-[1.3]">{e.name}</span>
+                  <span className="ml-auto shrink-0 font-body text-[15px] text-[var(--t2)]">{e.place}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://scandiweb.com/events"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors"
+            >
+              All scandiweb events
+              <ArrowUpRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </Reveal>
 
-        {/* phones: the same three in a row */}
-        <Reveal className="mt-7 md:hidden">
-          <Swipe
-            label="Photos from AI WEEK"
-            items={PHOTOS.map((p) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={p.src} src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="block w-full aspect-[4/3] object-cover rounded-[2px]" />
-            ))}
-          />
-        </Reveal>
+          {/* photos from one of them */}
+          <Reveal delay={0.06}>
+            <div className="hidden md:grid grid-cols-2 gap-3 lg:gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assetUrl(PHOTOS[0].src)} alt={PHOTOS[0].alt} width={PHOTOS[0].w} height={PHOTOS[0].h} loading="lazy" className="col-span-2 block w-full aspect-[16/9] object-cover object-[50%_35%] rounded-[2px]" />
+              {PHOTOS.slice(1).map((p) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={p.src} src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="block w-full aspect-[3/2] object-cover rounded-[2px]" />
+              ))}
+            </div>
+            <div className="md:hidden">
+              <Swipe
+                label="Photos from AI WEEK"
+                items={PHOTOS.map((p) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={p.src} src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="block w-full aspect-[4/3] object-cover rounded-[2px]" />
+                ))}
+              />
+            </div>
+            <p className="mt-3 font-body text-[13.5px] text-[var(--t3)]">AI WEEK, Milan</p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

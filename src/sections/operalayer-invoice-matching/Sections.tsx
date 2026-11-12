@@ -271,7 +271,6 @@ export function Hero() {
 
 /*
  * Outlets that covered OperaLayer (May and June 2026). The same links and logo files as the webinar page.
- * "In use at" follows IT Wire, 30 May 2026: "Existing OperaLayer deployments include Sportland ... and ESELO".
  */
 const PRESS: { name: string; href: string; logo: string; h: number }[] = [
   { name: "IT Wire", href: "https://itwire.com/business-it-news/business-software/scandiwebs-operalayer-ships-72-hour-mvps-to-plug-the-gaps-your-erp-cant-see", logo: "/webinars/opera-layer/press/itwire.png", h: 19 },
@@ -323,20 +322,9 @@ export function Proof() {
           </a>
         </Reveal>
 
-        {/* who runs it, and who has written about it */}
-        <Reveal delay={0.05} className="border-b border-[var(--line)] py-6 md:py-7 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-11">
-          <div className="flex items-center gap-5 md:gap-7 shrink-0">
-            <span className="font-body text-[13.5px] text-[var(--t3)]">In use at</span>
-            <span className="flex items-center gap-2 font-head font-bold text-[17px] text-[var(--ink)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ESELO} alt="" className="h-7 w-7 object-contain brightness-0" />
-              ESELO
-            </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assetUrl("/shared/logos/clients/sportland.png")} alt="Sportland" className="h-[18px] w-auto brightness-0" />
-          </div>
-          <span aria-hidden className="max-lg:hidden h-8 w-px bg-[var(--line)]" />
-          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 min-w-0">
+        {/* who has written about it */}
+        <Reveal delay={0.05} className="border-b border-[var(--line)] py-6 md:py-7">
+          <div className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-4 min-w-0">
             <span className="font-body text-[13.5px] text-[var(--t3)]">Featured in</span>
             {PRESS.map((p) => (
               <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} on OperaLayer (opens in a new tab)`} className="opacity-55 hover:opacity-100 transition-opacity">

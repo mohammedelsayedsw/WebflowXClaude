@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Boxes, Check, ChevronRight, Database, FileText, Landmark, Package, Plus, Receipt, Scale, Search, Server, ShoppingCart, TriangleAlert, Workflow } from "lucide-react";
 import { HubSpotForm } from "@/components/site/HubSpotForm";
+import { assetUrl } from "@/lib/assets";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
 import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Status } from "@/sections/operalayer-invoice-matching/app";
@@ -570,6 +571,63 @@ export function Questions() {
             </Reveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   11. Out of the office: the team at AI WEEK 2026 in Milan (the team's own photos, from Martins)
+   ============================================================ */
+
+const PHOTOS = [
+  { src: "/operalayer/invoice-matching/aiweek-team.jpg", alt: "Three people from the OperaLayer team in front of the large AI WEEK letters", w: 1760, h: 1100 },
+  { src: "/operalayer/invoice-matching/aiweek-entrance.jpg", alt: "Two people from the team on the pink carpet at the entrance, under the AI WEEK sign", w: 1200, h: 800 },
+  { src: "/operalayer/invoice-matching/aiweek-hall.jpg", alt: "The main stage at AI WEEK, seen from the back of a full hall", w: 1200, h: 800 },
+];
+
+export function Events() {
+  return (
+    <section id="events" className={`relative bg-[var(--canvas)] ${SECTION_Y}`}>
+      <div className="wrap w-full">
+        <Reveal>
+          <Eyebrow>Events</Eyebrow>
+          <h2 className={`${H2} mt-4`}>
+            The OperaLayer team{" "}
+            <span className="xl:block">
+              <Hi>at AI WEEK in Milan</Hi>
+            </span>
+          </h2>
+          <p className={`${LEAD} mt-5 md:mt-6 max-w-[46rem]`}>
+            May 2026. You do not have to wait for the next event to meet us.{" "}
+            <CalendlyLink className="inline-flex items-center gap-1 font-semibold text-[var(--accent)] hover:text-[var(--accent-deep)] transition-colors" />
+          </p>
+        </Reveal>
+
+        {/* tablets and up: one large photo, two beside it */}
+        <Reveal delay={0.06} className="mt-9 md:mt-12 hidden md:grid grid-cols-[minmax(0,1.86fr)_minmax(0,1fr)] gap-3 lg:gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={assetUrl(PHOTOS[0].src)} alt={PHOTOS[0].alt} width={PHOTOS[0].w} height={PHOTOS[0].h} loading="lazy" className="block w-full h-auto aspect-[16/10] object-cover rounded-[2px]" />
+          <div className="grid grid-rows-2 gap-3 lg:gap-4">
+            {PHOTOS.slice(1).map((p) => (
+              <div key={p.src} className="relative min-h-0 overflow-hidden rounded-[2px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* phones: the same three in a row */}
+        <Reveal className="mt-7 md:hidden">
+          <Swipe
+            label="Photos from AI WEEK"
+            items={PHOTOS.map((p) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={p.src} src={assetUrl(p.src)} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="block w-full aspect-[4/3] object-cover rounded-[2px]" />
+            ))}
+          />
+        </Reveal>
       </div>
     </section>
   );

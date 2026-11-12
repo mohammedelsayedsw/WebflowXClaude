@@ -21,8 +21,48 @@
   color: var(--ink);
   background: #fff;
 }
+/*
+ * Type. Inside .olp the site's font variables point at this page's two faces (loaded in the route layout):
+ * Roboto Flex, set a little wide, for headlines and labels; Instrument Sans for text.
+ * Big headlines run at regular weight, small headings and labels at medium.
+ */
+.olp {
+  --font-head: var(--font-roboto-flex), system-ui, sans-serif;
+  --font-body: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-golos: var(--font-roboto-flex), system-ui, sans-serif;
+  --font-inter: var(--font-instrument-sans), system-ui, sans-serif;
+}
+.olp .font-head {
+  font-variation-settings: "wdth" 110, "opsz" 32;
+  letter-spacing: -0.012em;
+}
+.olp .font-head.font-bold {
+  font-weight: 560;
+}
+.olp .font-head.font-semibold {
+  font-weight: 520;
+}
+.olp h1.font-head,
+.olp h2.font-head,
+.olp .ol-display {
+  font-weight: 420;
+  font-variation-settings: "wdth" 114, "opsz" 144;
+  letter-spacing: -0.026em;
+}
+
 .olp ::selection {
   background: rgba(42, 85, 245, 0.2);
+}
+
+/* Connector dashes in the case-study picture move in the direction of travel. */
+@keyframes ol-wire {
+  to { stroke-dashoffset: -18; }
+}
+.olp .ol-wire {
+  animation: ol-wire 0.9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .olp .ol-wire { animation: none; }
 }
 
 /* A status dot that is still working. */

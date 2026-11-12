@@ -6,9 +6,9 @@ import { ArrowRight, ArrowUpRight, Boxes, Check, ChevronRight, Database, FileTex
 import { HubSpotForm } from "@/components/site/HubSpotForm";
 import { assetUrl } from "@/lib/assets";
 import { ROLES, FIT, START, HOOD, FAQ_GROUPS } from "@/sections/operalayer-invoice-matching/copy";
-import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, btnGhost, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
+import { EASE, H2, LEAD, SECTION_Y, CalendlyLink, Eyebrow, Hi, Logo, Panels, Reveal, Stage, Swipe, onTabKeys, scrollToId } from "@/sections/operalayer-invoice-matching/kit";
 import { Status } from "@/sections/operalayer-invoice-matching/app";
-import { DYNAMICS_365, SAP } from "@/sections/operalayer-invoice-matching/logos";
+import { DYNAMICS_365, ODOO, ORACLE, SAGE, SAP } from "@/sections/operalayer-invoice-matching/logos";
 
 const CARD = "bg-white rounded-[2px] font-body text-[var(--ink)] shadow-[0_30px_60px_-34px_rgba(15,19,48,0.55),0_0_0_1px_rgba(15,19,48,0.06)]";
 
@@ -305,19 +305,18 @@ export function GettingStarted() {
                 </p>
               </div>
               <div className="shrink-0 flex flex-col items-start md:items-center gap-3.5">
-                <a
-                  href="#demo"
-                  onClick={scrollToId("demo")}
-                  className="group inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-[2px] bg-white text-[var(--ink)] font-head font-semibold text-[16px] hover:bg-[var(--ink)] hover:text-white transition-colors"
-                >
-                  Book a demo call <ChevronRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <CalendlyLink className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-[2px] bg-white text-[var(--ink)] font-head font-semibold text-[16px] hover:bg-[var(--ink)] hover:text-white transition-colors">
+                  Book a demo call
+                </CalendlyLink>
+                <a href="#demo" onClick={scrollToId("demo")} className="font-head font-semibold text-[15px] text-white underline-offset-4 hover:underline">
+                  or leave your details
                 </a>
-                <CalendlyLink className="inline-flex items-center gap-1.5 font-head font-semibold text-[15px] text-white underline-offset-4 hover:underline">or pick a time on Calendly</CalendlyLink>
               </div>
             </div>
-            {/* which ERPs: the two with a live connection, then the rest in Anton's terms */}
+            {/* Glebs, 12 November 2026: say plainly that it works with any ERP, and show many of them */}
             <div className="mt-7 md:mt-9 pt-6 md:pt-7 border-t border-white/25 text-white">
-              <ul className="flex flex-wrap items-center gap-x-8 gap-y-4 font-head font-semibold text-[16px] md:text-[17px] tracking-[-0.01em]">
+              <div className="font-head font-semibold text-[17px] md:text-[19px]">Works with any ERP</div>
+              <ul className="mt-5 flex flex-wrap items-center gap-x-8 lg:gap-x-10 gap-y-5 font-head font-semibold text-[16px] md:text-[17px] tracking-[-0.01em]">
                 {["Dynamics NAV", "Business Central"].map((n) => (
                   <li key={n} className="flex items-center gap-2.5">
                     <svg viewBox="0 0 24 24" aria-hidden className="h-7 w-7 fill-white shrink-0">
@@ -330,15 +329,39 @@ export function GettingStarted() {
                   </li>
                 ))}
                 <li className="flex items-center">
-                  <svg viewBox="0 0 24 24" role="img" aria-label="SAP" className="h-12 w-12 fill-white shrink-0">
+                  <svg viewBox="0 6 24 12" role="img" aria-label="SAP" className="h-[26px] w-auto fill-white shrink-0">
                     <path d={SAP} />
                   </svg>
                 </li>
-                <li className="text-white/85">and other ERPs</li>
+                <li className="flex items-center gap-2">
+                  <svg viewBox="0 4.4 24 15.2" aria-hidden className="h-[19px] w-auto fill-white shrink-0">
+                    <path d={ORACLE} />
+                  </svg>
+                  <span>
+                    <span className="sr-only">Oracle </span>NetSuite
+                  </span>
+                </li>
+                <li className="flex items-center">
+                  <svg viewBox="0 7.5 24 9" role="img" aria-label="Odoo" className="h-[22px] w-auto fill-white shrink-0">
+                    <path d={ODOO} />
+                  </svg>
+                </li>
+                <li className="flex items-center">
+                  <svg viewBox="0 5 24 14" role="img" aria-label="Sage" className="h-[30px] w-auto fill-white shrink-0">
+                    <path d={SAGE} />
+                  </svg>
+                </li>
+                {[
+                  ["Epicor", "epicor", "h-[17px]"],
+                  ["Acumatica", "acumatica", "h-[30px]"],
+                  ["Exact", "exact", "h-[21px]"],
+                ].map(([name, file, h]) => (
+                  <li key={file} className="flex items-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={assetUrl(`/operalayer/invoice-matching/erp/${file}.svg`)} alt={name} loading="lazy" className={`${h} w-auto brightness-0 invert`} />
+                  </li>
+                ))}
               </ul>
-              <p className="mt-4 md:mt-5 max-w-[52rem] font-body text-white/85 text-[14.5px] md:text-[15.5px] leading-[1.55]">
-                Microsoft Dynamics NAV and Business Central are connected today. For SAP or another ERP, we review its interfaces and test the connection with your records before rollout.
-              </p>
             </div>
           </Stage>
         </Reveal>
@@ -835,16 +858,15 @@ export function Demo() {
               See which line OperaLayer would flag, the evidence the reviewer would see, and how an accepted invoice gets back into your ERP.
             </p>
             <p className="mt-4 font-body text-white/80 text-[16px] leading-[1.6]">Start with our example records. You leave knowing which documents, checks and connections to test in your own business.</p>
+            <CalendlyLink className="mt-7 md:mt-9 inline-flex items-center justify-center gap-2 h-[56px] px-7 rounded-[2px] bg-white text-[var(--ink)] font-head font-semibold text-[17px] hover:bg-[var(--ink)] hover:text-white transition-colors max-sm:w-full">
+              Book a demo call
+            </CalendlyLink>
           </Reveal>
           <Reveal delay={0.08} className="bg-white rounded-[2px] p-6 sm:p-8 shadow-[0_60px_120px_-50px_rgba(15,19,48,0.7)]">
-            {/* its own HubSpot form, "[Contact form] OperaLayer invoice matching demo", so these leads are not counted under a shared form */}
-            <HubSpotForm portalId="25724996" formId="5e39f0f9-5336-44a7-a062-5ef4ffeddf0a" region="eu1" submitText="Book a demo call" />
-            <div aria-hidden className="mt-6 flex items-center gap-4 font-body text-[13px] text-[var(--t3)]">
-              <span className="h-px flex-1 bg-[var(--line)]" />
-              or
-              <span className="h-px flex-1 bg-[var(--line)]" />
-            </div>
-            <CalendlyLink className={`${btnGhost} mt-5 w-full`} />
+            {/* the contact form, for people who would rather be contacted. Its own HubSpot form, "[Contact form] OperaLayer invoice matching demo" */}
+            <h3 className="font-head font-bold text-[var(--ink)] text-[20px] md:text-[22px] leading-[1.2]">Or leave your details</h3>
+            <p className="mt-2 mb-6 font-body text-[15px] leading-[1.5] text-[var(--t2)]">We will get in touch to set up the call.</p>
+            <HubSpotForm portalId="25724996" formId="5e39f0f9-5336-44a7-a062-5ef4ffeddf0a" region="eu1" submitText="Contact me" />
           </Reveal>
         </div>
 

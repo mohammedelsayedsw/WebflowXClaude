@@ -27,12 +27,14 @@ export function Reel() {
         className="relative overflow-hidden rounded-[8px] border border-[rgba(243,241,234,0.12)] bg-black"
         style={{ width: "min(calc((100svh - 180px) * 9 / 16), calc(100vw - 32px), 540px)", aspectRatio: "9 / 16" }}
       >
+        {/* object-contain: in fullscreen on a landscape screen the portrait video is letterboxed, not cropped and
+            blown up. preload="auto": the page exists to play this video, so buffering starts before the click. */}
         <video
           ref={video}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full bg-black object-contain"
           src={VIDEO}
           poster={POSTER}
-          preload="metadata"
+          preload="auto"
           playsInline
           controls={started}
           onPlay={() => setStarted(true)}
